@@ -10,7 +10,7 @@ tags:
     * 由于 HTML 是一种超文本标记语言，是在浏览器中展示网页用的，所以 DOM 其实针对浏览器为应用程序提供的编程接口
 
 2. 产生的背景：(1998年10月)
-    Netscape 和 微软 公司为获得更得更多的浏览器市场份额，都自己开发了 DHTML( Dynamic HTML ), 两个浏览器之间的网页不兼容，导致跨平台的 web网页的特新消失，增加应用的开发成本，于是 负责制定 Web 通信标准的W3C (World Wide Web Consortium，万维网联盟)开始规划 DOM
+    Netscape 和 微软 公司为获得更得更多的浏览器市场份额，都自己开发了 DHTML( Dynamic HTML ), 两个浏览器之间的网页不兼容，导致 web 网页的跨平台特性消失，增加应用的开发成本，于是负责制定 Web 通信标准的 W3C (World Wide Web Consortium，万维网联盟)开始规划 DOM
 
     HTML 规范的发展的发展：
       * 1992年11月     HTML 1.1 规范完成

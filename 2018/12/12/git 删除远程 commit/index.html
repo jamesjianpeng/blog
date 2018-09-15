@@ -5,15 +5,20 @@
   
 
   
-  <title>Archives: 2018/5 | 彭涧</title>
+  <title>git 删除远程 commit | 彭涧</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="彭涧">
-<meta property="og:url" content="http://yoursite.com/archives/2018/05/index.html">
+  <meta name="description" content="发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响： 是回到指定的 commit 版本，回到指定的版本的时候 stash 中的代码都会 pop  1$ git reset commit_id  把工作区的代码储藏，这一步是为了准备同步 本地和 远程的版本  1$ git stash  为啥不用 git push 而是使用强制推送？，你试试就知道  1">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git 删除远程 commit">
+<meta property="og:url" content="http://yoursite.com/2018/12/12/git 删除远程 commit/index.html">
 <meta property="og:site_name" content="彭涧">
+<meta property="og:description" content="发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响： 是回到指定的 commit 版本，回到指定的版本的时候 stash 中的代码都会 pop  1$ git reset commit_id  把工作区的代码储藏，这一步是为了准备同步 本地和 远程的版本  1$ git stash  为啥不用 git push 而是使用强制推送？，你试试就知道  1">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-15T10:11:47.271Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="彭涧">
+<meta name="twitter:title" content="git 删除远程 commit">
+<meta name="twitter:description" content="发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响： 是回到指定的 commit 版本，回到指定的版本的时候 stash 中的代码都会 pop  1$ git reset commit_id  把工作区的代码储藏，这一步是为了准备同步 本地和 远程的版本  1$ git stash  为啥不用 git push 而是使用强制推送？，你试试就知道  1">
   
     <link rel="alternate" href="/atom.xml" title="彭涧" type="application/atom+xml">
   
@@ -60,40 +65,74 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/03/浏览器中的 BOM/" class="archive-article-date">
-  <time datetime="2018-05-03T02:20:43.000Z" itemprop="datePublished">May 3</time>
+        <section id="main"><article id="post-git 删除远程 commit" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/12/git 删除远程 commit/" class="article-date">
+  <time datetime="2018-12-12T09:05:42.000Z" itemprop="datePublished">2018-12-12</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/03/浏览器中的 BOM/">浏览器中的 BOM</a>
+    <h1 class="article-title" itemprop="name">
+      git 删除远程 commit
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="发现上一个-push-到远程分支的-commit-有问题，需要删除它，并工作区的代码不受到影响："><a href="#发现上一个-push-到远程分支的-commit-有问题，需要删除它，并工作区的代码不受到影响：" class="headerlink" title="发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响："></a>发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响：</h3><ol>
+<li>是回到指定的 commit 版本，回到指定的版本的时候 stash 中的代码都会 pop</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset commit_id</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>把工作区的代码储藏，这一步是为了准备同步 本地和 远程的版本</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>为啥不用 git push 而是使用强制推送？，你试试就知道</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push --force</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>把储藏的文件释放到工作区中 为下一次提交做准本</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash pop</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>正常的 push 流程</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add &lt;file&gt;....</span><br><span class="line">$ git commit -m &quot;xxx&quot;</span><br><span class="line">$ git push</span><br></pre></td></tr></table></figure>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/12/git 删除远程 commit/" data-id="cjm39w0b4000ipg2vmvf9sj4n" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/26/http 概述/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">http 概述</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         

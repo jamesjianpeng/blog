@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>JavaScript 的使用 script 标签 | 彭涧</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="script 标签在 HTML 4.01    1. 属性       [1] async   下载之后立刻执行，载下载期间不影响页面的其他操作（页面的解析和展示，后者执行后面的代码）[ HTML5 ]       [2] defer   需要等 页面中所有的 html 都解析完成，在 window.onload 之前，执行 defer       [3] charset 规定展示 JavaSc">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 的使用 script 标签">
+<meta property="og:url" content="http://yoursite.com/2018/09/15/JavaScript 的使用 script 标签/index.html">
+<meta property="og:site_name" content="彭涧">
+<meta property="og:description" content="script 标签在 HTML 4.01    1. 属性       [1] async   下载之后立刻执行，载下载期间不影响页面的其他操作（页面的解析和展示，后者执行后面的代码）[ HTML5 ]       [2] defer   需要等 页面中所有的 html 都解析完成，在 window.onload 之前，执行 defer       [3] charset 规定展示 JavaSc">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-15T10:06:17.828Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 的使用 script 标签">
+<meta name="twitter:description" content="script 标签在 HTML 4.01    1. 属性       [1] async   下载之后立刻执行，载下载期间不影响页面的其他操作（页面的解析和展示，后者执行后面的代码）[ HTML5 ]       [2] defer   需要等 页面中所有的 html 都解析完成，在 window.onload 之前，执行 defer       [3] charset 规定展示 JavaSc">
+  
+    <link rel="alternate" href="/atom.xml" title="彭涧" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">彭涧</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JavaScript 的使用 script 标签" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/15/JavaScript 的使用 script 标签/" class="article-date">
+  <time datetime="2018-09-15T10:01:21.000Z" itemprop="datePublished">2018-09-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript 的使用 script 标签
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="script-标签"><a href="#script-标签" class="headerlink" title="script 标签"></a>script 标签</h3><pre><code>在 HTML 4.01
+
+  1. 属性
+      [1] async   下载之后立刻执行，载下载期间不影响页面的其他操作（页面的解析和展示，后者执行后面的代码）[ HTML5 ]
+      [2] defer   需要等 页面中所有的 html 都解析完成，在 window.onload 之前，执行 defer
+      [3] charset 规定展示 JavaScript 代码哪一种字符集进行编码展示
+      [4] scr     这个是需要执行的代码的外部文件
+      [5] type    表示编写该脚本用到的语言：type=&quot;text/javascript&quot;
+
+  2. script 标签的使用
+      [1] 内嵌
+          写在 `&lt;script&gt; &lt;/script&gt;` 标签之间的代码
+
+      [2] 外链
+          通过 src 属性链接的外部文件
+
+      这两种写法值得注意的地方：
+
+          1. 在内嵌的写法中，&apos; &lt;/script&gt; &apos; 会报错（需要转义：&apos;&lt;\/script&gt;&apos;），但是在外部链接中就不会报错
+          2. 在代码解释和执行这块差不多：
+              [1] 从上到下解释并执行
+              [2] 遇到变量和函数进行解释，保存到当前的执行环境
+              [3] 在 JavaScript 代码进行解释和执行完成之前，页面的处理会暂时停止
+              [4] 使用 async 和 defer 则会改变该脚本文件的额处理方式
+
+          3. 在 HTML 文档中必须使用 script 闭合标签
+          4. 使用 src 链接外部文件必须要使用 .js 文件名
+          5. 在同一个 script 标签中，使用 外链 和 内嵌 同时使用，则外链的脚本会生效果，内嵌则不会生效
+          6. script 标签中的 src 必须是一个以 .js 结尾资源的路径，否则显示资源加载失败
+          7. script 中的 src 属性是支持跨域获取资源（和 img 中 src 效果一致）
+
+  3. script 的位置，延迟脚本 和 异步脚本
+      [1] 传统的做法 script 标签和 link 标签放在一起：这样做会有问题，等多所有的 js 和 css 文件加载完之后才能才能去解析 HTML 渲染页面
+      [2] 现在 web 应用程序的改进之后的做法：把 script 标签放在 body 的后面，等页面解析并渲染之后再下载，解析和执行脚本，这样减少 HTML 页面出现在用户的面前
+      [3] script 标签中 defer 和 async 的使用
+          a. script 支持 defer 属性，可是把 script 标签放在任何位置（这样可能不好管理脚本），多个外部文件通过 src 加载进来，若多使用 defer 会有问题，执行的顺序是无法控制的
+          b. async 是去下载并执行，在下载期间不会组织其他的页面的行为，async 属性的脚本是一定会在 window.onload 事件之前，在 DOMContentLoaded 事件触发之前
+
+  4. XHTML 中使用
+      [1] 一些字符必须使用 实体符号 代替。特殊字符 &apos;&lt;&apos;，使用 &apos;&amp;lt&apos; 实体符号代替
+
+      [2] 若想按照正常的方式写 JavaScript 则需要使用 CDATA 片段（为了不降低 JavaScript 代码的可读性，方便维护）
+      <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &lt;! [CDATA[</span></span><br><span class="line"><span class="undefined">        ... javascript 代码片段 ...</span></span><br><span class="line"><span class="undefined">    ]] &gt;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      [3] 有些浏览器是不兼容 XHTML, 则需要使用注释的语法（为了兼容不支持 XHTML 的浏览器）
+      <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// &lt;! [CDATA[</span></span></span><br><span class="line"><span class="undefined">        ... javascript 代码片段 ...</span></span><br><span class="line"><span class="javascript">    <span class="comment">// ]] &gt;</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+  5. 不推荐的语法
+      [1] 在 script 标签纸中使用 HTML &lt;!-- --&gt; 注释
+      <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &lt;!--</span></span><br><span class="line"><span class="undefined">        ... javascript ...</span></span><br><span class="line"><span class="undefined">    --&gt;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      [2] 之前为什么浏览器会支持这种语法：最早引入 script 元素的时候，和传统解析 html 的规则有冲突，会把 script 中的脚本展示在页面中，所以需要这个方法兼容
+
+  6. 推荐使用外部文件，原因：
+      [1]  可维护性
+      [2]  可缓存和提高脚本复用程度
+      [3]  未来的趋势：使用外部文件则可以不使用兼容 XHTML 和不知 script 标签的处理，没有兼容性问题
+
+  7. 文档模式
+      [1] 混杂模式
+      [2] 标准模式
+      [3] 准标准模式（兼容 标准模式和混杂模式）
+
+      文档模式的设置：使用 !DOCTYPE 来设置
+      标准模式设置如下：
+      <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br></pre></td></tr></table></figure>
+
+      不同的文档模式会导致浏览器对于 CSS 的内容呈现，在某些情况下也会影响 javascrit 的解析执行
+
+  8. noscript 标签的使用
+      [1]浏览器不支持脚本的时候
+      [2] 在 javascript 被禁止
+
+      其他正常情况下 noscript 内容会隐藏起来
+
+      <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">noscript</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>本页面需要浏览器支持（启用）JavaScript<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">noscript</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</code></pre><hr>
+<p>参考文献：</p>
+<ul>
+<li>《JavaScript 高级程序设计》 第三版</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/15/JavaScript 的使用 script 标签/" data-id="cjm39ov510009jr2vpbgedysa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/15/http 概述/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">http 概述</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/history/">history</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/history/" style="font-size: 10px;">history</a> <a href="/tags/http/" style="font-size: 10px;">http</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/15/JavaScript 的使用 script 标签/">JavaScript 的使用 script 标签</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/15/http 概述/">http 概述</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/15/git 提交和追加提交/">git 提交和追加提交</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/15/git 删除远程 commit/">git 删除远程 commit</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/14/JavaScript 的历史/">JavaScript 的历史</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 james<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

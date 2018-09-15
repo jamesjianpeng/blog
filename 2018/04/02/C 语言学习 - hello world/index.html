@@ -5,15 +5,20 @@
   
 
   
-  <title>Archives: 2017 | 彭涧</title>
+  <title>C 语言学习 - hello world | 彭涧</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="彭涧">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+  <meta name="description" content="Mac 去编译和链接 c 程序例子：如：/helloWrold.c 123456#include &amp;lt;stdio.h&amp;gt;int main()&amp;#123;    printf(&quot;hello world!&quot;);    return 0;&amp;#125; 编译和链接的步骤合并1$ cc helloWrold.c 将会生成 a.out 在 mac 下可执行文件的后缀，windows 下则是 a.ex">
+<meta name="keywords" content="c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C 语言学习 - hello world">
+<meta property="og:url" content="http://yoursite.com/2018/04/02/C 语言学习 - hello world/index.html">
 <meta property="og:site_name" content="彭涧">
+<meta property="og:description" content="Mac 去编译和链接 c 程序例子：如：/helloWrold.c 123456#include &amp;lt;stdio.h&amp;gt;int main()&amp;#123;    printf(&quot;hello world!&quot;);    return 0;&amp;#125; 编译和链接的步骤合并1$ cc helloWrold.c 将会生成 a.out 在 mac 下可执行文件的后缀，windows 下则是 a.ex">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-15T10:05:09.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="彭涧">
+<meta name="twitter:title" content="C 语言学习 - hello world">
+<meta name="twitter:description" content="Mac 去编译和链接 c 程序例子：如：/helloWrold.c 123456#include &amp;lt;stdio.h&amp;gt;int main()&amp;#123;    printf(&quot;hello world!&quot;);    return 0;&amp;#125; 编译和链接的步骤合并1$ cc helloWrold.c 将会生成 a.out 在 mac 下可执行文件的后缀，windows 下则是 a.ex">
   
     <link rel="alternate" href="/atom.xml" title="彭涧" type="application/atom+xml">
   
@@ -60,40 +65,78 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/11/19/git 初始仓库/" class="archive-article-date">
-  <time datetime="2017-11-19T06:00:06.000Z" itemprop="datePublished">Nov 19</time>
+        <section id="main"><article id="post-C 语言学习 - hello world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/02/C 语言学习 - hello world/" class="article-date">
+  <time datetime="2018-04-02T09:42:27.000Z" itemprop="datePublished">2018-04-02</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/19/git 初始仓库/">git 初始仓库</a>
+    <h1 class="article-title" itemprop="name">
+      C 语言学习 - hello world
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="Mac-去编译和链接-c-程序"><a href="#Mac-去编译和链接-c-程序" class="headerlink" title="Mac 去编译和链接 c 程序"></a>Mac 去编译和链接 c 程序</h3><p>例子：<br>如：/helloWrold.c</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello world!"</span>);</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="编译和链接的步骤合并"><a href="#编译和链接的步骤合并" class="headerlink" title="编译和链接的步骤合并"></a>编译和链接的步骤合并</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cc helloWrold.c</span><br></pre></td></tr></table></figure>
+<p>将会生成 a.out 在 mac 下可执行文件的后缀，windows 下则是 a.exe 结尾</p>
+<h4 id="编译和链接的步骤可分开"><a href="#编译和链接的步骤可分开" class="headerlink" title="编译和链接的步骤可分开"></a>编译和链接的步骤可分开</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cc -c helloWorld.c</span><br></pre></td></tr></table></figure>
+<ul>
+<li>生成 helloWorld.o</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cc -o helloWorld helloWorld.o</span><br></pre></td></tr></table></figure>
+<p>生成 helloWorld</p>
+<h4 id="执行编译后的文件"><a href="#执行编译后的文件" class="headerlink" title="执行编译后的文件"></a>执行编译后的文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./a.out</span><br></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./helloWorld</span><br></pre></td></tr></table></figure></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
+<li>编写程序 -&gt; 编译 -&gt; 链接 -&gt; 运行</li>
+</ol>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/02/C 语言学习 - hello world/" data-id="cjm39ov4l0000jr2v77sa0geb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/04/21/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hexo Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/09/git 撤销 - 针对本地没有 push 的 commit/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">git 撤销 - 针对本地没有 push 的 commit</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         

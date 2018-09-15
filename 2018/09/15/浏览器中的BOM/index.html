@@ -5,20 +5,20 @@
   
 
   
-  <title>git分支最佳实践 | 彭涧</title>
+  <title>浏览器中的BOM | 彭涧</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="测试在 experience，用测试域名  测试完，服务端发布，合并到 preview，使用正式域名自测下  没什么问题就提交审核合并 master，打上 tag   测试环境 development （自测） experience （服务端发布，提测）  正式环境 preview （服务端发布，自测） master （线上）">
-<meta name="keywords" content="git">
+  <meta name="description" content="HTML5 把很多 BOM 相关功能都纳入 HTML5 规范  根本上：BOM 只处理浏览器窗口和框架（人们习惯把针对浏览器的 JavaScript 的扩展算作 BOM 的一部分）  比如：  弹出新浏览器窗口的功能 移动，缩放和关闭浏览器窗口的功能 提供浏览器详细信息的 navigator 对象 提供浏览器所加载页面的详细信息的 location 对象 提供用户显示器分辨率详细信息的 scree">
+<meta name="keywords" content="BOM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git分支最佳实践">
-<meta property="og:url" content="http://yoursite.com/2018/01/15/git分支最佳实践/index.html">
+<meta property="og:title" content="浏览器中的BOM">
+<meta property="og:url" content="http://yoursite.com/2018/09/15/浏览器中的BOM/index.html">
 <meta property="og:site_name" content="彭涧">
-<meta property="og:description" content="测试在 experience，用测试域名  测试完，服务端发布，合并到 preview，使用正式域名自测下  没什么问题就提交审核合并 master，打上 tag   测试环境 development （自测） experience （服务端发布，提测）  正式环境 preview （服务端发布，自测） master （线上）">
+<meta property="og:description" content="HTML5 把很多 BOM 相关功能都纳入 HTML5 规范  根本上：BOM 只处理浏览器窗口和框架（人们习惯把针对浏览器的 JavaScript 的扩展算作 BOM 的一部分）  比如：  弹出新浏览器窗口的功能 移动，缩放和关闭浏览器窗口的功能 提供浏览器详细信息的 navigator 对象 提供浏览器所加载页面的详细信息的 location 对象 提供用户显示器分辨率详细信息的 scree">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-15T09:16:58.406Z">
+<meta property="og:updated_time" content="2018-09-15T09:58:06.645Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git分支最佳实践">
-<meta name="twitter:description" content="测试在 experience，用测试域名  测试完，服务端发布，合并到 preview，使用正式域名自测下  没什么问题就提交审核合并 master，打上 tag   测试环境 development （自测） experience （服务端发布，提测）  正式环境 preview （服务端发布，自测） master （线上）">
+<meta name="twitter:title" content="浏览器中的BOM">
+<meta name="twitter:description" content="HTML5 把很多 BOM 相关功能都纳入 HTML5 规范  根本上：BOM 只处理浏览器窗口和框架（人们习惯把针对浏览器的 JavaScript 的扩展算作 BOM 的一部分）  比如：  弹出新浏览器窗口的功能 移动，缩放和关闭浏览器窗口的功能 提供浏览器详细信息的 navigator 对象 提供浏览器所加载页面的详细信息的 location 对象 提供用户显示器分辨率详细信息的 scree">
   
     <link rel="alternate" href="/atom.xml" title="彭涧" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-git分支最佳实践" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-浏览器中的BOM" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/01/15/git分支最佳实践/" class="article-date">
-  <time datetime="2018-01-15T05:14:48.000Z" itemprop="datePublished">2018-01-15</time>
+    <a href="/2018/09/15/浏览器中的BOM/" class="article-date">
+  <time datetime="2018-09-15T09:56:43.000Z" itemprop="datePublished">2018-09-15</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      git分支最佳实践
+      浏览器中的BOM
     </h1>
   
 
@@ -87,31 +87,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
+        <h3 id="HTML5-把很多-BOM-相关功能都纳入-HTML5-规范"><a href="#HTML5-把很多-BOM-相关功能都纳入-HTML5-规范" class="headerlink" title="HTML5 把很多 BOM 相关功能都纳入 HTML5 规范"></a>HTML5 把很多 BOM 相关功能都纳入 HTML5 规范</h3><p>  根本上：BOM 只处理浏览器窗口和框架（人们习惯把针对浏览器的 JavaScript 的扩展算作 BOM 的一部分）<br>  比如：</p>
 <ul>
-<li><p>测试在 experience，用测试域名</p>
-</li>
-<li><p>测试完，服务端发布，合并到 preview，使用正式域名自测下</p>
-</li>
-<li><p>没什么问题就提交审核合并 master，打上 tag</p>
-</li>
-</ul>
-<h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><ul>
-<li>development （自测）</li>
-<li>experience （服务端发布，提测）</li>
-</ul>
-<h3 id="正式环境"><a href="#正式环境" class="headerlink" title="正式环境"></a>正式环境</h3><ul>
-<li>preview （服务端发布，自测）</li>
-<li>master （线上）</li>
+<li>弹出新浏览器窗口的功能</li>
+<li>移动，缩放和关闭浏览器窗口的功能</li>
+<li>提供浏览器详细信息的 navigator 对象</li>
+<li>提供浏览器所加载页面的详细信息的 location 对象</li>
+<li>提供用户显示器分辨率详细信息的 screen 对象</li>
+<li>对 cookies 的支持</li>
+<li>像 XMLHttpRequest 和 IE 的 ActiveObject 这样的自定义的对象</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/15/git分支最佳实践/" data-id="cjm39dv2b000bcr2v74yp4xj8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/15/浏览器中的BOM/" data-id="cjm39dv2r000tcr2vea5gulr3" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BOM/">BOM</a></li></ul>
 
     </footer>
   </div>
@@ -119,19 +112,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/03/09/git撤销 - 针对本地没有 push 的commit/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          git撤销 - 针对本地没有 push 的commit
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/11/19/git初始仓库/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/09/15/http概述/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">git初始仓库</div>
+      <div class="article-nav-title">http概述</div>
     </a>
   
 </nav>

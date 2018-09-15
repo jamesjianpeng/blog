@@ -62,6 +62,105 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-http概述" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/15/http概述/" class="article-date">
+  <time datetime="2018-09-15T09:21:01.000Z" itemprop="datePublished">2018-09-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/15/http概述/">http概述</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="HTTP-是什么，作用是什么"><a href="#HTTP-是什么，作用是什么" class="headerlink" title="HTTP 是什么，作用是什么"></a>HTTP 是什么，作用是什么</h3><ul>
+<li>HTTP 是一种数据传输协议，作用是：确保数据在传输过程中不会被损坏或产生混乱。是应用层协议</li>
+<li>HTTP 在网络中所处的层次：应用层</li>
+</ul>
+<h4 id="web客户端"><a href="#web客户端" class="headerlink" title="web客户端"></a>web客户端</h4><ul>
+<li>什么是web客户端：用户使用的终端</li>
+<li>客户端的作用是什么：发送 HTTP 请求，展示 HTTP 服务器返回的数据</li>
+</ul>
+<h4 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h4><ul>
+<li>什么是服务器</li>
+<li>客户端的作用是什么： HTTP服务器是存储着因特网的资源</li>
+</ul>
+<h4 id="资源的种类"><a href="#资源的种类" class="headerlink" title="资源的种类"></a>资源的种类</h4><ol>
+<li><p>媒体标签 MIME type</p>
+<ul>
+<li>json格式的文本文档: Content-Type: application/json</li>
+<li>HTML 格式的文本文档：Content-Type: text/html</li>
+<li>ASCII 文本文档：Content-Type: text/plain</li>
+<li>JPEG格式的图片：Content-Type: image/jpeg</li>
+<li>GIF格式的图片：Content-Type: image/gif</li>
+<li>Apple 的 QuickTime 电影格式：Content-Type: vdeo/quicktime</li>
+<li>微软的 PowerPoint 演示文件：Content-Type: application/vnd.ms-powerpoint</li>
+</ul>
+</li>
+<li><p>URI<br>服务器资源名被称为统一资源标识符，（ Uniform Resource Identifier, URI ）具有唯一性</p>
+<ul>
+<li>两种形式：URL 和 URN<br>URL ：统一资源定位符，描述一台特定服务器上某资源的特定位置.例如： <a href="http://www.joes-hardware.com/specials/saw-blade.gif，URL" target="_blank" rel="noopener">http://www.joes-hardware.com/specials/saw-blade.gif，URL</a> 指明了协议，服务器，本地资源<br>URN ：统一资源名，作为特定内容的唯一名称使用的，与目前的资源所在地无关。通过 URN 可以用同一个名字通过多种网络访问协议来访问资源。例如：urn:ierf:rfc:2141。在使用阶段，尚未大范围使用</li>
+</ul>
+</li>
+</ol>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><ul>
+<li>一个 HTTP 事务由一条（从客户端发往服务器的）请求命令和 一个（从服务器发回客户端的）响应结果组成。这种通信是通过名为 HTTP 报文 （ HTTP message ）的格式化数据进行的</li>
+</ul>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
+<li>GET</li>
+<li>PUT</li>
+<li>DELETE</li>
+<li>POST</li>
+<li>HEAD<h4 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h4></li>
+<li>必要性：每个 HTTP 响应报文返回时都会携带一个状态码</li>
+<li>形式：三位数字，伴随着么个数字状态码，HTTP 还会发送一条解释性的 ‘ 原因短语 ’</li>
+<li>作用：告知客户端请求是否成功，或者是否需要采取其他动作</li>
+</ul>
+<h4 id="Web页面中可以包含多个对象"><a href="#Web页面中可以包含多个对象" class="headerlink" title="Web页面中可以包含多个对象"></a>Web页面中可以包含多个对象</h4><ul>
+<li>一个首页，首先获取 HTML ，然后获取每个嵌入式的图片，其他的程序。</li>
+</ul>
+<h4 id="报文"><a href="#报文" class="headerlink" title="报文"></a>报文</h4><ul>
+<li>形式：<ul>
+<li>HTTP 报文由一行一行的简单字符串组成的，HTTP 报文是纯文本，不是二进制代码。</li>
+<li>HTTP 报文包括三部分：<ul>
+<li>起始行：<br>作用：在请求报文中用来说明做些什么，在响应报文中说明出现来什么情况</li>
+<li>首部字段</li>
+<li>主体<br>作用：在请求主体中包括来要发送给 Web 服务器的数据，响应主体中装载来要返回给客户端的数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>种类：请求报文 （ request message ）, 响应报文 （ response message ）</li>
+</ul>
+<h3 id="连接-（TCP）"><a href="#连接-（TCP）" class="headerlink" title="连接 （TCP）"></a>连接 （TCP）</h3><h4 id="TCP-什么是TCP-作用是什么"><a href="#TCP-什么是TCP-作用是什么" class="headerlink" title="TCP 什么是TCP 作用是什么"></a>TCP 什么是TCP 作用是什么</h4><pre><code>- TCP ( Transmission Control Protocol ), 是一种传输控制协议
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/15/http概述/" data-id="cjm38l4yb000jv82vv5ti0n85" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-git提交和追加提交" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/15/git提交和追加提交/" class="article-date">
@@ -100,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/15/git提交和追加提交/" data-id="cjm37yyd9000fma2vwdkqxl4s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/15/git提交和追加提交/" data-id="cjm38l4y5000bv82vhd2ohcuv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -159,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/15/git删除远程commit/" data-id="cjm37yyd7000dma2vlr27kmup" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/15/git删除远程commit/" data-id="cjm38l4y6000dv82vuz54o08u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -282,7 +381,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/14/JavaScript的历史/" data-id="cjm37yyd00005ma2vkoaps66p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/14/JavaScript的历史/" data-id="cjm38l4y00005v82v7z4tupsp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/history/">history</a></li></ul>
@@ -448,7 +547,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/02/性能优化之DOM/" data-id="cjm37yydf000lma2v49js083t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/02/性能优化之DOM/" data-id="cjm38l4ye000nv82vcxzkg875" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -460,7 +559,7 @@
 
 
   
-    <article id="ES6函数特性-ES6函数特性" class="article article-type-ES6函数特性" itemscope itemprop="blogPost">
+    <article id="post-ES6函数特性" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/14/ES6函数特性/" class="article-date">
   <time datetime="2018-08-14T10:29:22.000Z" itemprop="datePublished">2018-08-14</time>
@@ -474,7 +573,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/14/ES6函数特性/">函数特性</a>
+      <a class="article-title" href="/2018/08/14/ES6函数特性/">ES6函数特性</a>
     </h1>
   
 
@@ -579,7 +678,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/14/ES6函数特性/" data-id="cjm37yyct0001ma2vu4b5j9qi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/14/ES6函数特性/" data-id="cjm38l4xt0001v82v1c30z2am" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -672,7 +771,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/03/ES6对象的扩展/" data-id="cjm37yycx0003ma2vec4wwkbf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/03/ES6对象的扩展/" data-id="cjm38l4xx0003v82vrzr0vwij" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -752,7 +851,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/ES6模块/" data-id="cjm37yycz0004ma2v46mi816o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/ES6模块/" data-id="cjm38l4xy0004v82vk56fbim6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -819,63 +918,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/我的 CSS/" data-id="cjm37yydh000nma2vd5bqonvy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/我的 CSS/" data-id="cjm38l4yd000lv82vd6gifddo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-c语言学习-hello-world-md" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/19/c语言学习-hello-world-md/" class="article-date">
-  <time datetime="2018-06-19T06:15:24.000Z" itemprop="datePublished">2018-06-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/19/c语言学习-hello-world-md/">c语言学习-hello_world</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Mac-去编译和链接-c-程序"><a href="#Mac-去编译和链接-c-程序" class="headerlink" title="Mac 去编译和链接 c 程序"></a>Mac 去编译和链接 c 程序</h3><p>例子：<br>如：/helloWrold.c</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello world!"</span>);</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="编译和链接的步骤合并"><a href="#编译和链接的步骤合并" class="headerlink" title="编译和链接的步骤合并"></a>编译和链接的步骤合并</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cc helloWrold.c</span><br></pre></td></tr></table></figure>
-<p>将会生成 a.out 在 mac 下可执行文件的后缀，windows 下则是 a.exe 结尾</p>
-<h4 id="编译和链接的步骤可分开"><a href="#编译和链接的步骤可分开" class="headerlink" title="编译和链接的步骤可分开"></a>编译和链接的步骤可分开</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cc -c helloWorld.c</span><br></pre></td></tr></table></figure>
-<ul>
-<li>生成 helloWorld.o</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cc -o helloWorld helloWorld.o</span><br></pre></td></tr></table></figure>
-<p>生成 helloWorld</p>
-<h4 id="执行编译后的文件"><a href="#执行编译后的文件" class="headerlink" title="执行编译后的文件"></a>执行编译后的文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./a.out</span><br></pre></td></tr></table></figure>
-<p>或者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./helloWorld</span><br></pre></td></tr></table></figure></p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
-<li>编写程序 -&gt; 编译 -&gt; 链接 -&gt; 运行</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/19/c语言学习-hello-world-md/" data-id="cjm37yyd20008ma2vnt5utt1w" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
 
     </footer>
   </div>
@@ -974,7 +1020,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/22/DOM的历史/" data-id="cjm37yycp0000ma2vgftpisf7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/22/DOM的历史/" data-id="cjm38l4xp0000v82vcvxxr6oc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li></ul>
@@ -1004,7 +1050,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/history/">history</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/history/">history</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li></ul>
     </div>
   </div>
 
@@ -1014,7 +1060,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/history/" style="font-size: 10px;">history</a>
+      <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/history/" style="font-size: 10px;">history</a> <a href="/tags/http/" style="font-size: 10px;">http</a>
     </div>
   </div>
 
@@ -1023,7 +1069,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
     </div>
   </div>
 
@@ -1034,6 +1080,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/09/15/http概述/">http概述</a>
+          </li>
         
           <li>
             <a href="/2018/09/15/git提交和追加提交/">git提交和追加提交</a>
@@ -1049,10 +1099,6 @@
         
           <li>
             <a href="/2018/09/02/性能优化之DOM/">性能优化之DOM</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/14/ES6函数特性/">函数特性</a>
           </li>
         
       </ul>

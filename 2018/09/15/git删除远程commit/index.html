@@ -5,20 +5,20 @@
   
 
   
-  <title>ES6模块 | 彭涧</title>
+  <title>git删除远程commit | 彭涧</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ES6之前的代码模块封装 使用闭包，产生一个作用域去封装数据和代码，并挂载到 window 对象  模块 模块是是什么：模块是自动运行在严格模式下并且没有办法退出运行的 JavaScript 代码。  模块化的特点： 与作用域的关系：在模块顶部创建的变量不会自动添加到全局共享作用域，只会在该模块的顶级作用域中存在 在模块的顶部，；this 的值是 undefined 模块不支持 HTML 风格的">
-<meta name="keywords" content="JavaScript">
+  <meta name="description" content="发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响： 是回到指定的 commit 版本，回到指定的版本的时候 stash 中的代码都会 pop  1$ git reset commit_id  把工作区的代码储藏，这一步是为了准备同步 本地和 远程的版本  1$ git stash  为啥不用 git push 而是使用强制推送？，你试试就知道  1">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6模块">
-<meta property="og:url" content="http://yoursite.com/2018/07/20/ES6模块/index.html">
+<meta property="og:title" content="git删除远程commit">
+<meta property="og:url" content="http://yoursite.com/2018/09/15/git删除远程commit/index.html">
 <meta property="og:site_name" content="彭涧">
-<meta property="og:description" content="ES6之前的代码模块封装 使用闭包，产生一个作用域去封装数据和代码，并挂载到 window 对象  模块 模块是是什么：模块是自动运行在严格模式下并且没有办法退出运行的 JavaScript 代码。  模块化的特点： 与作用域的关系：在模块顶部创建的变量不会自动添加到全局共享作用域，只会在该模块的顶级作用域中存在 在模块的顶部，；this 的值是 undefined 模块不支持 HTML 风格的">
+<meta property="og:description" content="发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响： 是回到指定的 commit 版本，回到指定的版本的时候 stash 中的代码都会 pop  1$ git reset commit_id  把工作区的代码储藏，这一步是为了准备同步 本地和 远程的版本  1$ git stash  为啥不用 git push 而是使用强制推送？，你试试就知道  1">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-14T11:54:48.285Z">
+<meta property="og:updated_time" content="2018-09-15T09:09:39.894Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6模块">
-<meta name="twitter:description" content="ES6之前的代码模块封装 使用闭包，产生一个作用域去封装数据和代码，并挂载到 window 对象  模块 模块是是什么：模块是自动运行在严格模式下并且没有办法退出运行的 JavaScript 代码。  模块化的特点： 与作用域的关系：在模块顶部创建的变量不会自动添加到全局共享作用域，只会在该模块的顶级作用域中存在 在模块的顶部，；this 的值是 undefined 模块不支持 HTML 风格的">
+<meta name="twitter:title" content="git删除远程commit">
+<meta name="twitter:description" content="发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响： 是回到指定的 commit 版本，回到指定的版本的时候 stash 中的代码都会 pop  1$ git reset commit_id  把工作区的代码储藏，这一步是为了准备同步 本地和 远程的版本  1$ git stash  为啥不用 git push 而是使用强制推送？，你试试就知道  1">
   
     <link rel="alternate" href="/atom.xml" title="彭涧" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-ES6模块" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-git删除远程commit" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/07/20/ES6模块/" class="article-date">
-  <time datetime="2018-07-20T04:48:44.000Z" itemprop="datePublished">2018-07-20</time>
+    <a href="/2018/09/15/git删除远程commit/" class="article-date">
+  <time datetime="2018-09-15T09:05:42.000Z" itemprop="datePublished">2018-09-15</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      ES6模块
+      git删除远程commit
     </h1>
   
 
@@ -88,55 +88,34 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h3 id="ES6之前的代码模块封装"><a href="#ES6之前的代码模块封装" class="headerlink" title="ES6之前的代码模块封装"></a>ES6之前的代码模块封装</h3><ol>
-<li>使用闭包，产生一个作用域去封装数据和代码，并挂载到 window 对象</li>
+<h3 id="发现上一个-push-到远程分支的-commit-有问题，需要删除它，并工作区的代码不受到影响："><a href="#发现上一个-push-到远程分支的-commit-有问题，需要删除它，并工作区的代码不受到影响：" class="headerlink" title="发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响："></a>发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响：</h3><ol>
+<li>是回到指定的 commit 版本，回到指定的版本的时候 stash 中的代码都会 pop</li>
 </ol>
-<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><ol>
-<li>模块是是什么：模块是自动运行在严格模式下并且没有办法退出运行的 JavaScript 代码。</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset commit_id</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>把工作区的代码储藏，这一步是为了准备同步 本地和 远程的版本</li>
 </ol>
-<h3 id="模块化的特点："><a href="#模块化的特点：" class="headerlink" title="模块化的特点："></a>模块化的特点：</h3><ol>
-<li>与作用域的关系：在模块顶部创建的变量不会自动添加到全局共享作用域，只会在该模块的顶级作用域中存在</li>
-<li>在模块的顶部，；this 的值是 undefined</li>
-<li>模块不支持 HTML 风格的代码注释</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>为啥不用 git push 而是使用强制推送？，你试试就知道</li>
 </ol>
-<h3 id="模块和脚本的区别"><a href="#模块和脚本的区别" class="headerlink" title="模块和脚本的区别"></a>模块和脚本的区别</h3><ol>
-<li>脚本：任何不是模块的 JavaScript 代码</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push --force</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>把储藏的文件释放到工作区中 为下一次提交做准本</li>
 </ol>
-<h3 id="模块的-导入和导出"><a href="#模块的-导入和导出" class="headerlink" title="模块的 导入和导出"></a>模块的 导入和导出</h3><ul>
-<li><p>导出：导出声明和导出引用</p>
-</li>
-<li><p>导入：导入单个绑定，导入多个绑定，命名空间导入, 无绑定导入</p>
-</li>
-<li><p>注意：不管 import 语句把一个模块写了多少次，该模块将只执行一次</p>
-</li>
-<li><p>as 可以用于改变导入或导出的名字</p>
-</li>
-<li><p>导入和导出默认值这个语法被优化过，尽量使用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; name <span class="keyword">as</span> <span class="keyword">default</span> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重新导出一个绑定</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">'./path'</span></span><br><span class="line"><span class="keyword">export</span> &#123; name <span class="keyword">as</span> newName &#125; <span class="string">'./path'</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>模块语法的限制</p>
-<ol>
-<li><p>export 和 import 一个重要的限制是：它们必须在其他语句和函数之外使用，否则会出现语法的错误</p>
-<ul>
-<li>原因： 其中一个原因： 是要让 JavaScript 引擎静态地确定哪些可以导出</li>
-</ul>
-</li>
-<li><p>import 只能在顶部使用</p>
-</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash pop</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>正常的 push 流程</li>
 </ol>
-</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add &lt;file&gt;....</span><br><span class="line">$ git commit -m &quot;xxx&quot;</span><br><span class="line">$ git push</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/ES6模块/" data-id="cjm37w9f60004kd2vsrnihw73" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/15/git删除远程commit/" data-id="cjm37w9fd000bkd2vir2f7u5h" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
 
     </footer>
   </div>
@@ -144,19 +123,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/08/03/ES6对象的扩展/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/09/15/git提交和追加提交/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          ES6对象的扩展
+          git提交和追加提交
         
       </div>
     </a>
   
   
-    <a href="/2018/07/07/我的 CSS/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/09/15/git初始仓库/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">我的 CSS</div>
+      <div class="article-nav-title">git初始仓库</div>
     </a>
   
 </nav>

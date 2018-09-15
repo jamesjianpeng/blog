@@ -7,18 +7,18 @@
   
   <title>JavaScript数据的存取 | 彭涧</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="影响器读取速度1. 数据的存储位置会很大程度上影响器读取速度 JavaScript 的存储位置1. 字面量： 字符串，数字，布尔值，对象，数组，函数，正则表达式，以及特殊的 null 和 undefined  2. 本地变量： 使用 var, let, const 定义的数据存储单元  3. 数组元素：存储在 JavaScript 数组对象内部，以数字作为索引  4. 对象成员：存储在 Java">
+  <meta name="description" content="影响器读取速度 数据的存储位置会很大程度上影响器读取速度  JavaScript 的存储位置 字面量： 字符串，数字，布尔值，对象，数组，函数，正则表达式，以及特殊的 null 和 undefined  本地变量： 使用 var, let, const 定义的数据存储单元  数组元素：存储在 JavaScript 数组对象内部，以数字作为索引  对象成员：存储在 JavaScript 对象内部，">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript数据的存取">
 <meta property="og:url" content="http://yoursite.com/2018/06/27/JavaScript数据的存取/index.html">
 <meta property="og:site_name" content="彭涧">
-<meta property="og:description" content="影响器读取速度1. 数据的存储位置会很大程度上影响器读取速度 JavaScript 的存储位置1. 字面量： 字符串，数字，布尔值，对象，数组，函数，正则表达式，以及特殊的 null 和 undefined  2. 本地变量： 使用 var, let, const 定义的数据存储单元  3. 数组元素：存储在 JavaScript 数组对象内部，以数字作为索引  4. 对象成员：存储在 Java">
+<meta property="og:description" content="影响器读取速度 数据的存储位置会很大程度上影响器读取速度  JavaScript 的存储位置 字面量： 字符串，数字，布尔值，对象，数组，函数，正则表达式，以及特殊的 null 和 undefined  本地变量： 使用 var, let, const 定义的数据存储单元  数组元素：存储在 JavaScript 数组对象内部，以数字作为索引  对象成员：存储在 JavaScript 对象内部，">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-15T09:51:46.198Z">
+<meta property="og:updated_time" content="2018-09-15T09:53:03.490Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript数据的存取">
-<meta name="twitter:description" content="影响器读取速度1. 数据的存储位置会很大程度上影响器读取速度 JavaScript 的存储位置1. 字面量： 字符串，数字，布尔值，对象，数组，函数，正则表达式，以及特殊的 null 和 undefined  2. 本地变量： 使用 var, let, const 定义的数据存储单元  3. 数组元素：存储在 JavaScript 数组对象内部，以数字作为索引  4. 对象成员：存储在 Java">
+<meta name="twitter:description" content="影响器读取速度 数据的存储位置会很大程度上影响器读取速度  JavaScript 的存储位置 字面量： 字符串，数字，布尔值，对象，数组，函数，正则表达式，以及特殊的 null 和 undefined  本地变量： 使用 var, let, const 定义的数据存储单元  数组元素：存储在 JavaScript 数组对象内部，以数字作为索引  对象成员：存储在 JavaScript 对象内部，">
   
     <link rel="alternate" href="/atom.xml" title="彭涧" type="application/atom+xml">
   
@@ -88,17 +88,21 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h3 id="影响器读取速度"><a href="#影响器读取速度" class="headerlink" title="影响器读取速度"></a>影响器读取速度</h3><pre><code>1. 数据的存储位置会很大程度上影响器读取速度
-</code></pre><h3 id="JavaScript-的存储位置"><a href="#JavaScript-的存储位置" class="headerlink" title="JavaScript 的存储位置"></a>JavaScript 的存储位置</h3><pre><code>1. 字面量： 字符串，数字，布尔值，对象，数组，函数，正则表达式，以及特殊的 null 和 undefined
-
-2. 本地变量： 使用 var, let, const 定义的数据存储单元
-
-3. 数组元素：存储在 JavaScript 数组对象内部，以数字作为索引
-
-4. 对象成员：存储在 JavaScript 对象内部，以字符或数字作为索引
-
-访问的性能：字面量～= 本地变量 &lt; 数组对象或对象成员
-</code></pre><h3 id="管理作用域-待更新"><a href="#管理作用域-待更新" class="headerlink" title="管理作用域(待更新)"></a>管理作用域(待更新)</h3><hr>
+<h3 id="影响器读取速度"><a href="#影响器读取速度" class="headerlink" title="影响器读取速度"></a>影响器读取速度</h3><ol>
+<li>数据的存储位置会很大程度上影响器读取速度</li>
+</ol>
+<h3 id="JavaScript-的存储位置"><a href="#JavaScript-的存储位置" class="headerlink" title="JavaScript 的存储位置"></a>JavaScript 的存储位置</h3><ol>
+<li><p>字面量： 字符串，数字，布尔值，对象，数组，函数，正则表达式，以及特殊的 null 和 undefined</p>
+</li>
+<li><p>本地变量： 使用 var, let, const 定义的数据存储单元</p>
+</li>
+<li><p>数组元素：存储在 JavaScript 数组对象内部，以数字作为索引</p>
+</li>
+<li><p>对象成员：存储在 JavaScript 对象内部，以字符或数字作为索引</p>
+<p>访问的性能：字面量～= 本地变量 &lt; 数组对象或对象成员</p>
+</li>
+</ol>
+<h3 id="管理作用域-待更新"><a href="#管理作用域-待更新" class="headerlink" title="管理作用域(待更新)"></a>管理作用域(待更新)</h3><hr>
 <p>参考文献：</p>
 <ul>
 <li>《高新能的 JavaScript》</li>
@@ -107,7 +111,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/27/JavaScript数据的存取/" data-id="cjm395omr00087s2vu3fi629y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/27/JavaScript数据的存取/" data-id="cjm397qdi0008982vedba4xrq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>

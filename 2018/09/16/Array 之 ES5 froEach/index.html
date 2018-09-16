@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="彭涧">
 <meta property="og:description" content="Array.prototype.forEach Grammar:  array.forEach(callback[, thisArg]) array.forEach(callback(currentValue, index, array){ //do something }, this)   Description: 循环数组  Return: undefind 特点：  从头开始至尾进行迭代">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-16T04:11:16.151Z">
+<meta property="og:updated_time" content="2018-09-16T04:16:56.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Array 之 ES5 froEach">
 <meta name="twitter:description" content="Array.prototype.forEach Grammar:  array.forEach(callback[, thisArg]) array.forEach(callback(currentValue, index, array){ //do something }, this)   Description: 循环数组  Return: undefind 特点：  从头开始至尾进行迭代">
@@ -115,7 +115,7 @@
 </ol>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._forEach) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 循环数组中的元素</span></span><br><span class="line"><span class="comment">     * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">     * @returns undefind</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_forEach'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                len;</span><br><span class="line">            <span class="comment">// 1. 判断参数</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断数组长度</span></span><br><span class="line">            len = <span class="keyword">this</span>.length;</span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 3. 初始化循环起点，并开始循环</span></span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">              callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>)</span><br><span class="line">              i++</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._forEach) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 循环数组中的元素</span></span><br><span class="line"><span class="comment">     * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">     * @returns undefind</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_forEach'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                len;</span><br><span class="line">            <span class="comment">// 1. 判断参数</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断数组长度</span></span><br><span class="line">            len = <span class="keyword">this</span>.length;</span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 3. 初始化循环起点，并开始循环</span></span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">              callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>) <span class="comment">// // 在 Array.prototype._map 中有赋值这一步</span></span><br><span class="line">              i++</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
 </ul>
@@ -128,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/16/Array 之 ES5 froEach/" data-id="cjm4cjcff0000qh2v1rewraft" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/16/Array 之 ES5 froEach/" data-id="cjm4cqqne0000tt2vy0g0kkuj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -138,15 +138,6 @@
   
     
 <nav id="article-nav">
-  
-    <a href="/2018/09/16/Array 之 ES5 map/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Array 之 ES5 map
-        
-      </div>
-    </a>
   
   
     <a href="/2018/09/14/JavaScript 的历史/" id="article-nav-older" class="article-nav-link-wrap">
@@ -202,10 +193,6 @@
       <ul>
         
           <li>
-            <a href="/2018/09/16/Array 之 ES5 map/">Array 之 ES5 map</a>
-          </li>
-        
-          <li>
             <a href="/2018/09/16/Array 之 ES5 froEach/">Array 之 ES5 froEach</a>
           </li>
         
@@ -219,6 +206,10 @@
         
           <li>
             <a href="/2018/08/11/Array 之 ES6 includes/">Array 之 ES6 includes</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/06/ES6函数特性/">ES6 函数特性</a>
           </li>
         
       </ul>

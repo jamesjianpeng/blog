@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="彭涧">
 <meta property="og:description" content="Array.prototype.includes Grammar: arr.includes(searchElement[, searchIndex]) Description: 遍历 arr 去寻找我们想要的元素，找到则返回 true，没有找到则返回 false Return: 数据类型：Boolean 特点：满足该条件的时候就立即返回，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-16T02:50:48.425Z">
+<meta property="og:updated_time" content="2018-09-16T04:13:19.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Array 之 ES6 includes">
 <meta name="twitter:description" content="Array.prototype.includes Grammar: arr.includes(searchElement[, searchIndex]) Description: 遍历 arr 去寻找我们想要的元素，找到则返回 true，没有找到则返回 false Return: 数据类型：Boolean 特点：满足该条件的时候就立即返回，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一">
@@ -92,7 +92,7 @@
 <li>Grammar: arr.includes(searchElement[, searchIndex])</li>
 <li>Description: 遍历 arr 去寻找我们想要的元素，找到则返回 true，没有找到则返回 false</li>
 <li>Return: 数据类型：Boolean</li>
-<li><p>特点：满足该条件的时候就立即返回，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个；</p>
+<li><p>特点：满足该条件的时候就立即返回，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个，中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError；</p>
 </li>
 <li><p>Compared with Array.prototype.indexOf</p>
 <ol>
@@ -112,7 +112,6 @@
 </li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._includes) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据 searchElement 按顺序在数组中元素的对比，=== 则是 true 否则为 false</span></span><br><span class="line"><span class="comment">     * @param &#123;*&#125; searchElement</span></span><br><span class="line"><span class="comment">     * @param &#123;Number&#125; searchIndex</span></span><br><span class="line"><span class="comment">     * @returns &#123;Boolean&#125; result</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_includes'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">searchElement, searchIndex</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                result = <span class="literal">false</span>,</span><br><span class="line">                len = <span class="keyword">this</span>.length;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断数组长度</span></span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断 searchIndex</span></span><br><span class="line">            <span class="keyword">if</span> (!searchIndex || <span class="keyword">typeof</span> searchIndex !== <span class="string">'number'</span>) searchIndex = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// #region 3. 获取遍历的起点</span></span><br><span class="line">            i = searchIndex;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (searchIndex &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                searchIndex += len;</span><br><span class="line">                i = searchIndex &lt; <span class="number">0</span> ? <span class="number">0</span> : searchIndex;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (searchIndex &gt;= len) &#123;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// #endregion 3. 获取遍历的起点</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>[i] === searchElement) &#123;</span><br><span class="line">                  result = <span class="literal">true</span>;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
 <p>参考资料：</p>
 <ul>
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
@@ -121,7 +120,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/11/Array 之 ES6 includes/" data-id="cjm49k63n0003l72vlz4bzk5l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/11/Array 之 ES6 includes/" data-id="cjm4cjcfs0005qh2v0q2t3lwx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -195,6 +194,14 @@
       <ul>
         
           <li>
+            <a href="/2018/09/16/Array 之 ES5 map/">Array 之 ES5 map</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/16/Array 之 ES5 froEach/">Array 之 ES5 froEach</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/14/JavaScript 的历史/">JavaScript 的历史</a>
           </li>
         
@@ -204,14 +211,6 @@
         
           <li>
             <a href="/2018/08/11/Array 之 ES6 includes/">Array 之 ES6 includes</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/06/ES6函数特性/">ES6 函数特性</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/03/ES6 对象的扩展/">ES6 对象的扩展</a>
           </li>
         
       </ul>

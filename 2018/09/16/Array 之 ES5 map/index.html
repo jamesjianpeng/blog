@@ -5,20 +5,19 @@
   
 
   
-  <title>git 分支最佳实践 | 彭涧</title>
+  <title>Array 之 ES5 map | 彭涧</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="测试在 experience，用测试域名  测试完，服务端发布，合并到 preview，使用正式域名自测下  没什么问题就提交审核合并 master，打上 tag   测试环境 development （自测） experience （服务端发布，提测）  正式环境 preview （服务端发布，自测） master （线上）">
-<meta name="keywords" content="git">
+  <meta name="description" content="Array.prototype.map Grammar:  array.map(callback[, thisArg]) array.map(callback(currentValue, index, array){ //do something }, this)   Description: 迭代数组  Return: 迭代后的数组 特点：  中途不可跳出循环，使用 break 会导致：Unc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git 分支最佳实践">
-<meta property="og:url" content="http://yoursite.com/2018/01/24/git 分支最佳实践/index.html">
+<meta property="og:title" content="Array 之 ES5 map">
+<meta property="og:url" content="http://yoursite.com/2018/09/16/Array 之 ES5 map/index.html">
 <meta property="og:site_name" content="彭涧">
-<meta property="og:description" content="测试在 experience，用测试域名  测试完，服务端发布，合并到 preview，使用正式域名自测下  没什么问题就提交审核合并 master，打上 tag   测试环境 development （自测） experience （服务端发布，提测）  正式环境 preview （服务端发布，自测） master （线上）">
+<meta property="og:description" content="Array.prototype.map Grammar:  array.map(callback[, thisArg]) array.map(callback(currentValue, index, array){ //do something }, this)   Description: 迭代数组  Return: 迭代后的数组 特点：  中途不可跳出循环，使用 break 会导致：Unc">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-15T10:11:36.085Z">
+<meta property="og:updated_time" content="2018-09-16T04:10:18.745Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git 分支最佳实践">
-<meta name="twitter:description" content="测试在 experience，用测试域名  测试完，服务端发布，合并到 preview，使用正式域名自测下  没什么问题就提交审核合并 master，打上 tag   测试环境 development （自测） experience （服务端发布，提测）  正式环境 preview （服务端发布，自测） master （线上）">
+<meta name="twitter:title" content="Array 之 ES5 map">
+<meta name="twitter:description" content="Array.prototype.map Grammar:  array.map(callback[, thisArg]) array.map(callback(currentValue, index, array){ //do something }, this)   Description: 迭代数组  Return: 迭代后的数组 特点：  中途不可跳出循环，使用 break 会导致：Unc">
   
     <link rel="alternate" href="/atom.xml" title="彭涧" type="application/atom+xml">
   
@@ -65,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-git 分支最佳实践" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Array 之 ES5 map" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/01/24/git 分支最佳实践/" class="article-date">
-  <time datetime="2018-01-24T05:14:48.000Z" itemprop="datePublished">2018-01-24</time>
+    <a href="/2018/09/16/Array 之 ES5 map/" class="article-date">
+  <time datetime="2018-09-16T03:45:31.000Z" itemprop="datePublished">2018-09-16</time>
 </a>
     
   </div>
@@ -79,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      git 分支最佳实践
+      Array 之 ES5 map
     </h1>
   
 
@@ -88,50 +87,55 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
+<h3 id="Array-prototype-map"><a href="#Array-prototype-map" class="headerlink" title="Array.prototype.map"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank" rel="noopener">Array.prototype.map</a></h3><ul>
+<li><p>Grammar:</p>
+<ol>
+<li>array.map(callback[, thisArg])</li>
+<li>array.map(callback(currentValue, index, array){ //do something }, this)</li>
+</ol>
+</li>
+<li><p>Description: 迭代数组</p>
+</li>
+<li>Return: 迭代后的数组</li>
+<li><p>特点：</p>
+<ol>
+<li>中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError</li>
+<li>可在回调函数中使用 return 替换当前的元素</li>
+</ol>
+</li>
+<li><p>Compared with forEach:</p>
+<ol>
+<li>不同点：<ul>
+<li>可在回调函数中使用 return 替换当前的元素</li>
+<li>返回值是迭代后的数组，支持链式调用</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._map) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 循环数组中的元素</span></span><br><span class="line"><span class="comment">     * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">     * @returns undefind</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_map'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                len;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断参数</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断数组长度</span></span><br><span class="line">            len = <span class="keyword">this</span>.length;</span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 3. 初始化循环起点，并开始循环</span></span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">              <span class="keyword">this</span>[i] = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>)</span><br><span class="line">              i++</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>参考资料：</p>
 <ul>
-<li><p>测试在 experience，用测试域名</p>
-</li>
-<li><p>测试完，服务端发布，合并到 preview，使用正式域名自测下</p>
-</li>
-<li><p>没什么问题就提交审核合并 master，打上 tag</p>
-</li>
-</ul>
-<h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><ul>
-<li>development （自测）</li>
-<li>experience （服务端发布，提测）</li>
-</ul>
-<h3 id="正式环境"><a href="#正式环境" class="headerlink" title="正式环境"></a>正式环境</h3><ul>
-<li>preview （服务端发布，自测）</li>
-<li>master （线上）</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/24/git 分支最佳实践/" data-id="cjm4cjcg8000uqh2v0db4aad0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/16/Array 之 ES5 map/" data-id="cjm4cjcfl0001qh2v495uw5rg" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2018/02/23/C 语言学习 - hello world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          C 语言学习 - hello world
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/20/git 提交和追加提交/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/09/16/Array 之 ES5 froEach/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">git 提交和追加提交</div>
+      <div class="article-nav-title">Array 之 ES5 froEach</div>
     </a>
   
 </nav>

@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="彭涧">
 <meta property="og:description" content="Array.prototype.find Grammar: arr.find(callback[, thisArg]) Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的元素，否则返回 undefind; Return: 数据类型：* 特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要找到的元素在数组的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-16T02:50:33.575Z">
+<meta property="og:updated_time" content="2018-09-16T04:13:01.523Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Array 之 ES6 find">
 <meta name="twitter:description" content="Array.prototype.find Grammar: arr.find(callback[, thisArg]) Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的元素，否则返回 undefind; Return: 数据类型：* 特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要找到的元素在数组的">
@@ -92,7 +92,7 @@
 <li>Grammar: arr.find(callback[, thisArg])</li>
 <li>Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的元素，否则返回 undefind;</li>
 <li>Return: 数据类型：*</li>
-<li><p>特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个；</p>
+<li><p>特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个, 中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError；</p>
 </li>
 <li><p><a href="https://www.pengjiandry.com/2018/04/20/Array%20%E4%B9%8B%20ES6%20findIndex/" target="_blank" rel="noopener">Compared with Array.prototype.findIndex</a></p>
 </li>
@@ -110,7 +110,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/09/Array 之 ES6 find/" data-id="cjm49k63j0001l72vifjm6tvy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/09/Array 之 ES6 find/" data-id="cjm4cjcfp0003qh2v20gjv7l4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -184,6 +184,14 @@
       <ul>
         
           <li>
+            <a href="/2018/09/16/Array 之 ES5 map/">Array 之 ES5 map</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/16/Array 之 ES5 froEach/">Array 之 ES5 froEach</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/14/JavaScript 的历史/">JavaScript 的历史</a>
           </li>
         
@@ -193,14 +201,6 @@
         
           <li>
             <a href="/2018/08/11/Array 之 ES6 includes/">Array 之 ES6 includes</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/06/ES6函数特性/">ES6 函数特性</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/03/ES6 对象的扩展/">ES6 对象的扩展</a>
           </li>
         
       </ul>

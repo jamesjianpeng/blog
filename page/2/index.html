@@ -62,6 +62,168 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JavaScript 数据的存取" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/27/JavaScript 数据的存取/" class="article-date">
+  <time datetime="2018-06-26T23:50:58.000Z" itemprop="datePublished">2018-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/27/JavaScript 数据的存取/">JavaScript 数据的存取</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="影响器读取速度"><a href="#影响器读取速度" class="headerlink" title="影响器读取速度"></a>影响器读取速度</h3><ol>
+<li>数据的存储位置会很大程度上影响器读取速度</li>
+</ol>
+<h3 id="JavaScript-的存储位置"><a href="#JavaScript-的存储位置" class="headerlink" title="JavaScript 的存储位置"></a>JavaScript 的存储位置</h3><ol>
+<li><p>字面量： 字符串，数字，布尔值，对象，数组，函数，正则表达式，以及特殊的 null 和 undefined</p>
+</li>
+<li><p>本地变量： 使用 var, let, const 定义的数据存储单元</p>
+</li>
+<li><p>数组元素：存储在 JavaScript 数组对象内部，以数字作为索引</p>
+</li>
+<li><p>对象成员：存储在 JavaScript 对象内部，以字符或数字作为索引</p>
+<p>访问的性能：字面量～= 本地变量 &lt; 数组对象或对象成员</p>
+</li>
+</ol>
+<h3 id="管理作用域-待更新"><a href="#管理作用域-待更新" class="headerlink" title="管理作用域(待更新)"></a>管理作用域(待更新)</h3><hr>
+<p>参考文献：</p>
+<ul>
+<li>《高新能的 JavaScript》</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/27/JavaScript 数据的存取/" data-id="cjm4cjcg1000hqh2vg1d55z2c" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-http 概述" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/26/http 概述/" class="article-date">
+  <time datetime="2018-06-26T09:21:01.000Z" itemprop="datePublished">2018-06-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/26/http 概述/">http 概述</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="HTTP-是什么，作用是什么"><a href="#HTTP-是什么，作用是什么" class="headerlink" title="HTTP 是什么，作用是什么"></a>HTTP 是什么，作用是什么</h3><ul>
+<li>HTTP 是一种数据传输协议，作用是：确保数据在传输过程中不会被损坏或产生混乱。是应用层协议</li>
+<li>HTTP 在网络中所处的层次：应用层</li>
+</ul>
+<h4 id="web客户端"><a href="#web客户端" class="headerlink" title="web客户端"></a>web客户端</h4><ul>
+<li>什么是web客户端：用户使用的终端</li>
+<li>客户端的作用是什么：发送 HTTP 请求，展示 HTTP 服务器返回的数据</li>
+</ul>
+<h4 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h4><ul>
+<li>什么是服务器</li>
+<li>客户端的作用是什么： HTTP服务器是存储着因特网的资源</li>
+</ul>
+<h4 id="资源的种类"><a href="#资源的种类" class="headerlink" title="资源的种类"></a>资源的种类</h4><ol>
+<li><p>媒体标签 MIME type</p>
+<ul>
+<li>json格式的文本文档: Content-Type: application/json</li>
+<li>HTML 格式的文本文档：Content-Type: text/html</li>
+<li>ASCII 文本文档：Content-Type: text/plain</li>
+<li>JPEG格式的图片：Content-Type: image/jpeg</li>
+<li>GIF格式的图片：Content-Type: image/gif</li>
+<li>Apple 的 QuickTime 电影格式：Content-Type: vdeo/quicktime</li>
+<li>微软的 PowerPoint 演示文件：Content-Type: application/vnd.ms-powerpoint</li>
+</ul>
+</li>
+<li><p>URI<br>服务器资源名被称为统一资源标识符，（ Uniform Resource Identifier, URI ）具有唯一性</p>
+<ul>
+<li>两种形式：URL 和 URN<br>URL ：统一资源定位符，描述一台特定服务器上某资源的特定位置.例如： <a href="http://www.joes-hardware.com/specials/saw-blade.gif，URL" target="_blank" rel="noopener">http://www.joes-hardware.com/specials/saw-blade.gif，URL</a> 指明了协议，服务器，本地资源<br>URN ：统一资源名，作为特定内容的唯一名称使用的，与目前的资源所在地无关。通过 URN 可以用同一个名字通过多种网络访问协议来访问资源。例如：urn:ierf:rfc:2141。在使用阶段，尚未大范围使用</li>
+</ul>
+</li>
+</ol>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><ul>
+<li>一个 HTTP 事务由一条（从客户端发往服务器的）请求命令和 一个（从服务器发回客户端的）响应结果组成。这种通信是通过名为 HTTP 报文 （ HTTP message ）的格式化数据进行的</li>
+</ul>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
+<li>GET</li>
+<li>PUT</li>
+<li>DELETE</li>
+<li>POST</li>
+<li>HEAD<h4 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h4></li>
+<li>必要性：每个 HTTP 响应报文返回时都会携带一个状态码</li>
+<li>形式：三位数字，伴随着么个数字状态码，HTTP 还会发送一条解释性的 ‘ 原因短语 ’</li>
+<li>作用：告知客户端请求是否成功，或者是否需要采取其他动作</li>
+</ul>
+<h4 id="Web页面中可以包含多个对象"><a href="#Web页面中可以包含多个对象" class="headerlink" title="Web页面中可以包含多个对象"></a>Web页面中可以包含多个对象</h4><ul>
+<li>一个首页，首先获取 HTML ，然后获取每个嵌入式的图片，其他的程序。</li>
+</ul>
+<h4 id="报文"><a href="#报文" class="headerlink" title="报文"></a>报文</h4><ul>
+<li>形式：<ul>
+<li>HTTP 报文由一行一行的简单字符串组成的，HTTP 报文是纯文本，不是二进制代码。</li>
+<li>HTTP 报文包括三部分：<ul>
+<li>起始行：<br>作用：在请求报文中用来说明做些什么，在响应报文中说明出现来什么情况</li>
+<li>首部字段</li>
+<li>主体<br>作用：在请求主体中包括来要发送给 Web 服务器的数据，响应主体中装载来要返回给客户端的数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>种类：请求报文 （ request message ）, 响应报文 （ response message ）</li>
+</ul>
+<h3 id="连接-（TCP）"><a href="#连接-（TCP）" class="headerlink" title="连接 （TCP）"></a>连接 （TCP）</h3><ol>
+<li>TCP 什么是TCP 作用是什么<ul>
+<li>TCP ( Transmission Control Protocol ), 是一种传输控制协议</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/26/http 概述/" data-id="cjm4cjcgh0019qh2vge797ujk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-浏览器中的 BOM" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/03/浏览器中的 BOM/" class="article-date">
@@ -98,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/03/浏览器中的 BOM/" data-id="cjm49k64h001dl72v1tq83lmd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/03/浏览器中的 BOM/" data-id="cjm4cjcgk001dqh2vtihvrbfz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BOM/">BOM</a></li></ul>
@@ -200,7 +362,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/22/DOM 的历史/" data-id="cjm49k63p0005l72vbqr8qn6b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/22/DOM 的历史/" data-id="cjm4cjcfy000cqh2vimb2i9aw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li></ul>
@@ -248,7 +410,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/21/hello-world/" data-id="cjm49k64e0018l72v07o8qie5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/21/hello-world/" data-id="cjm4cjcgc0010qh2v2m49wrdl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -285,7 +447,7 @@
 <li>Grammar: arr.findIndex(callback[, thisArg])</li>
 <li>Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的索引，否则 返回 -1</li>
 <li>Return: 数据类型：Number</li>
-<li><p>特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个；</p>
+<li><p>特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个，中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError；</p>
 </li>
 <li><p>Compared with Array.prototype.indexOf:</p>
 <ol>
@@ -336,7 +498,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/20/Array 之 ES6 findIndex/" data-id="cjm49k63f0000l72v0dl6ds52" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/20/Array 之 ES6 findIndex/" data-id="cjm4cjcfq0004qh2vxu4n4e8z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -382,7 +544,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/09/git 撤销 - 针对本地没有 push 的 commit/" data-id="cjm49k64a0010l72vvlgzb1bd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/09/git 撤销 - 针对本地没有 push 的 commit/" data-id="cjm4cjcgg0017qh2vgqd0uk3c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -500,7 +662,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/04/JavaScript 的使用 script 标签/" data-id="cjm49k63z000hl72vx2y90vln" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/04/JavaScript 的使用 script 标签/" data-id="cjm4cjcg2000jqh2v401pvlv5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -554,7 +716,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/02/23/C 语言学习 - hello world/" data-id="cjm49k63o0004l72v0a5pteq1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/02/23/C 语言学习 - hello world/" data-id="cjm4cjcfw000aqh2vuawaj2fh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
@@ -609,116 +771,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/24/git 分支最佳实践/" data-id="cjm49k646000rl72vlvpqtoqc" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-git 提交和追加提交" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/20/git 提交和追加提交/" class="article-date">
-  <time datetime="2018-01-20T00:50:00.000Z" itemprop="datePublished">2018-01-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/20/git 提交和追加提交/">git 提交和追加提交</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h3 id="追加提交信息和文件"><a href="#追加提交信息和文件" class="headerlink" title="追加提交信息和文件"></a>追加提交信息和文件</h3><ul>
-<li>我想修改 commit msg 和 追加提交文件使用一下操作</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add &lt;file_1&gt;...</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;msg&quot;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>我们提交之后发现还需要追加提交的文件，并且需要重新写 msg</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add &lt;file_2&gt;...</span><br><span class="line"></span><br><span class="line">$ git commit -a</span><br></pre></td></tr></table></figure>
-<ul>
-<li>之后就会出现把 file_2… 加入之前的 commit 中并重写 msg , 编辑完之后:wq , 追加就成功了</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/20/git 提交和追加提交/" data-id="cjm49k649000yl72v7towkmyg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-git 删除远程 commit" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/12/git 删除远程 commit/" class="article-date">
-  <time datetime="2017-12-12T09:05:42.000Z" itemprop="datePublished">2017-12-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/12/git 删除远程 commit/">git 删除远程 commit</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h3 id="发现上一个-push-到远程分支的-commit-有问题，需要删除它，并工作区的代码不受到影响："><a href="#发现上一个-push-到远程分支的-commit-有问题，需要删除它，并工作区的代码不受到影响：" class="headerlink" title="发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响："></a>发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响：</h3><ol>
-<li>是回到指定的 commit 版本，回到指定的版本的时候 stash 中的代码都会 pop</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset commit_id</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>把工作区的代码储藏，这一步是为了准备同步 本地和 远程的版本</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>为啥不用 git push 而是使用强制推送？，你试试就知道</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push --force</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>把储藏的文件释放到工作区中 为下一次提交做准本</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash pop</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>正常的 push 流程</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add &lt;file&gt;....</span><br><span class="line">$ git commit -m &quot;xxx&quot;</span><br><span class="line">$ git push</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/12/git 删除远程 commit/" data-id="cjm49k648000wl72vqfisk7rj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/24/git 分支最佳实践/" data-id="cjm4cjcg8000uqh2v0db4aad0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -780,6 +833,14 @@
       <ul>
         
           <li>
+            <a href="/2018/09/16/Array 之 ES5 map/">Array 之 ES5 map</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/16/Array 之 ES5 froEach/">Array 之 ES5 froEach</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/14/JavaScript 的历史/">JavaScript 的历史</a>
           </li>
         
@@ -789,14 +850,6 @@
         
           <li>
             <a href="/2018/08/11/Array 之 ES6 includes/">Array 之 ES6 includes</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/06/ES6函数特性/">ES6 函数特性</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/03/ES6 对象的扩展/">ES6 对象的扩展</a>
           </li>
         
       </ul>

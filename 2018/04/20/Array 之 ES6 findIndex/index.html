@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="彭涧">
 <meta property="og:description" content="Array.prototype.findIndex Grammar: arr.findIndex(callback[, thisArg]) Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的索引，否则 返回 -1 Return: 数据类型：Number 特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-16T02:50:41.926Z">
+<meta property="og:updated_time" content="2018-09-16T04:13:11.213Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Array 之 ES6 findIndex">
 <meta name="twitter:description" content="Array.prototype.findIndex Grammar: arr.findIndex(callback[, thisArg]) Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的索引，否则 返回 -1 Return: 数据类型：Number 特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要">
@@ -92,7 +92,7 @@
 <li>Grammar: arr.findIndex(callback[, thisArg])</li>
 <li>Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的索引，否则 返回 -1</li>
 <li>Return: 数据类型：Number</li>
-<li><p>特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个；</p>
+<li><p>特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个，中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError；</p>
 </li>
 <li><p>Compared with Array.prototype.indexOf:</p>
 <ol>
@@ -143,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/20/Array 之 ES6 findIndex/" data-id="cjm49k63f0000l72v0dl6ds52" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/20/Array 之 ES6 findIndex/" data-id="cjm4cjcfq0004qh2vxu4n4e8z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -217,6 +217,14 @@
       <ul>
         
           <li>
+            <a href="/2018/09/16/Array 之 ES5 map/">Array 之 ES5 map</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/16/Array 之 ES5 froEach/">Array 之 ES5 froEach</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/14/JavaScript 的历史/">JavaScript 的历史</a>
           </li>
         
@@ -226,14 +234,6 @@
         
           <li>
             <a href="/2018/08/11/Array 之 ES6 includes/">Array 之 ES6 includes</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/06/ES6函数特性/">ES6 函数特性</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/03/ES6 对象的扩展/">ES6 对象的扩展</a>
           </li>
         
       </ul>

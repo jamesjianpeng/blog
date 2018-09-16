@@ -173,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/14/JavaScript 的历史/" data-id="cjm4879dl000iyn2v39fzx8um" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/14/JavaScript 的历史/" data-id="cjm494zyh000jea2vhdurhfta" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/history/">history</a></li></ul>
@@ -339,7 +339,70 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/02/性能优化之 DOM/" data-id="cjm4879dy0016yn2v0z0187hn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/02/性能优化之 DOM/" data-id="cjm494zyt0018ea2vlikslgyz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Array 之 ES6 includes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/11/Array 之 ES6 includes/" class="article-date">
+  <time datetime="2018-08-11T02:20:04.000Z" itemprop="datePublished">2018-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/11/Array 之 ES6 includes/">Array 之 ES6 includes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="Array-prototype-includes"><a href="#Array-prototype-includes" class="headerlink" title="Array.prototype.includes"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank" rel="noopener">Array.prototype.includes</a></h3><ul>
+<li>Grammar: arr.includes(searchElement[, searchIndex])</li>
+<li>Description: 遍历 arr 去寻找我们想要的元素，找到则返回 true，没有找到则返回 false</li>
+<li>Return: 数据类型：Boolean</li>
+<li><p>特点：满足该条件的时候就立即返回，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个；</p>
+</li>
+<li><p>Compared with Array.prototype.indexOf</p>
+<ol>
+<li><p>不同点（返回值）</p>
+<ul>
+<li>返回值有区别，includes 的返回值是：Boolean，indexOf 则是 Number 类型</li>
+<li>Array.prototype.indexOf 是属于 ES3 的规范，Array.prototype.findIndex 是属于 ES6 的规范</li>
+</ul>
+</li>
+<li><p>相同点</p>
+<ul>
+<li>接受的参数一致</li>
+<li>不改变数组本身</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._includes) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据 searchElement 按顺序在数组中元素的对比，=== 则是 true 否则为 false</span></span><br><span class="line"><span class="comment">     * @param &#123;*&#125; searchElement</span></span><br><span class="line"><span class="comment">     * @param &#123;Number&#125; searchIndex</span></span><br><span class="line"><span class="comment">     * @returns &#123;Boolean&#125; result</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_includes'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">searchElement, searchIndex</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                result = <span class="literal">false</span>,</span><br><span class="line">                len = <span class="keyword">this</span>.length;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断数组长度</span></span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断 searchIndex</span></span><br><span class="line">            <span class="keyword">if</span> (!searchIndex || <span class="keyword">typeof</span> searchIndex !== <span class="string">'number'</span>) searchIndex = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// #region 3. 获取遍历的起点</span></span><br><span class="line">            i = searchIndex;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (searchIndex &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                searchIndex += len;</span><br><span class="line">                i = searchIndex &lt; <span class="number">0</span> ? <span class="number">0</span> : searchIndex;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (searchIndex &gt;= len) &#123;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// #endregion 3. 获取遍历的起点</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>[i] === searchElement) &#123;</span><br><span class="line">                  result = <span class="literal">true</span>;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/11/Array 之 ES6 includes/" data-id="cjm494zy30003ea2vosuknkew" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -470,7 +533,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/06/ES6函数特性/" data-id="cjm4879dh000ayn2vvzebzkwp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/06/ES6函数特性/" data-id="cjm494zyc000cea2v04y2ffc7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -563,7 +626,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/03/ES6 对象的扩展/" data-id="cjm4879da0005yn2vxr4jg5f3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/03/ES6 对象的扩展/" data-id="cjm494zy90008ea2vwz3cjf3c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -643,7 +706,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/ES6 模块/" data-id="cjm4879df0008yn2vakw28820" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/ES6 模块/" data-id="cjm494zya0009ea2vgp0v9oz7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -687,7 +750,7 @@
 <li><p><a href="https://www.pengjiandry.com/2018/04/20/Array%20%E4%B9%8B%20ES6%20findIndex/" target="_blank" rel="noopener">Compared with Array.prototype.findIndex</a></p>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._find) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 根据 callback 的返回值的 true/false 决定返回的元素</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @return &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._find = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            callbackState,</span><br><span class="line">            result,</span><br><span class="line">            len;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                result = <span class="keyword">this</span>[i]; <span class="comment">// 在 Array.prototype.findIndex result =i</span></span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 是否使用 break，决定了获取到的值的顺序</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._find) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 根据 callback 的返回值的 true/false 决定返回的元素</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @returns &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._find = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            callbackState,</span><br><span class="line">            result,</span><br><span class="line">            len;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 1. 判断callback</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 2. 判断数组长度</span></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">// #endregion 2. 判断数组长度</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                result = <span class="keyword">this</span>[i]; <span class="comment">// 在 Array.prototype._findIndex 中 result =i</span></span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 是否使用 break，决定了获取到的值的顺序</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>thisArg 这个参数都很少使用所以就不实现这个功能</li>
 </ul>
@@ -695,7 +758,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/09/Array 之 ES6 find/" data-id="cjm4879cz0000yn2vpapmo3no" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/09/Array 之 ES6 find/" data-id="cjm494zxv0000ea2v2cdto23j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -762,7 +825,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/我的 CSS/" data-id="cjm4879dz0017yn2vwdwm01fx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/我的 CSS/" data-id="cjm494zyu001aea2vk6725wwt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
@@ -820,7 +883,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/27/JavaScript 数据的存取/" data-id="cjm4879di000dyn2v8tt3oyga" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/27/JavaScript 数据的存取/" data-id="cjm494zyd000eea2vm4n7egcq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -924,58 +987,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/26/http 概述/" data-id="cjm4879dw0011yn2v4mb03aq0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/26/http 概述/" data-id="cjm494zys0015ea2vyqa711ix" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-浏览器中的 BOM" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/03/浏览器中的 BOM/" class="article-date">
-  <time datetime="2018-05-03T02:20:43.000Z" itemprop="datePublished">2018-05-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/03/浏览器中的 BOM/">浏览器中的 BOM</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="HTML5-把很多-BOM-相关功能都纳入-HTML5-规范"><a href="#HTML5-把很多-BOM-相关功能都纳入-HTML5-规范" class="headerlink" title="HTML5 把很多 BOM 相关功能都纳入 HTML5 规范"></a>HTML5 把很多 BOM 相关功能都纳入 HTML5 规范</h3><p>  根本上：BOM 只处理浏览器窗口和框架（人们习惯把针对浏览器的 JavaScript 的扩展算作 BOM 的一部分）<br>  比如：</p>
-<ul>
-<li>弹出新浏览器窗口的功能</li>
-<li>移动，缩放和关闭浏览器窗口的功能</li>
-<li>提供浏览器详细信息的 navigator 对象</li>
-<li>提供浏览器所加载页面的详细信息的 location 对象</li>
-<li>提供用户显示器分辨率详细信息的 screen 对象</li>
-<li>对 cookies 的支持</li>
-<li>像 XMLHttpRequest 和 IE 的 ActiveObject 这样的自定义的对象</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/03/浏览器中的 BOM/" data-id="cjm4879e0001ayn2vql5ood7s" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BOM/">BOM</a></li></ul>
 
     </footer>
   </div>
@@ -1042,15 +1057,15 @@
           </li>
         
           <li>
+            <a href="/2018/08/11/Array 之 ES6 includes/">Array 之 ES6 includes</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/06/ES6函数特性/">ES6 函数特性</a>
           </li>
         
           <li>
             <a href="/2018/08/03/ES6 对象的扩展/">ES6 对象的扩展</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/20/ES6 模块/">ES6 模块</a>
           </li>
         
       </ul>

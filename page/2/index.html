@@ -62,6 +62,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-浏览器中的 BOM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/03/浏览器中的 BOM/" class="article-date">
+  <time datetime="2018-05-03T02:20:43.000Z" itemprop="datePublished">2018-05-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/03/浏览器中的 BOM/">浏览器中的 BOM</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="HTML5-把很多-BOM-相关功能都纳入-HTML5-规范"><a href="#HTML5-把很多-BOM-相关功能都纳入-HTML5-规范" class="headerlink" title="HTML5 把很多 BOM 相关功能都纳入 HTML5 规范"></a>HTML5 把很多 BOM 相关功能都纳入 HTML5 规范</h3><p>  根本上：BOM 只处理浏览器窗口和框架（人们习惯把针对浏览器的 JavaScript 的扩展算作 BOM 的一部分）<br>  比如：</p>
+<ul>
+<li>弹出新浏览器窗口的功能</li>
+<li>移动，缩放和关闭浏览器窗口的功能</li>
+<li>提供浏览器详细信息的 navigator 对象</li>
+<li>提供浏览器所加载页面的详细信息的 location 对象</li>
+<li>提供用户显示器分辨率详细信息的 screen 对象</li>
+<li>对 cookies 的支持</li>
+<li>像 XMLHttpRequest 和 IE 的 ActiveObject 这样的自定义的对象</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/05/03/浏览器中的 BOM/" data-id="cjm494zyv001dea2v365efy2z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BOM/">BOM</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-DOM 的历史" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/22/DOM 的历史/" class="article-date">
@@ -152,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/22/DOM 的历史/" data-id="cjm4879d90004yn2vnwdocdin" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/22/DOM 的历史/" data-id="cjm494zy60005ea2v4ni94bx8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li></ul>
@@ -200,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/21/hello-world/" data-id="cjm4879dx0013yn2v6scbzd0r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/21/hello-world/" data-id="cjm494zyr0013ea2vbdx11su9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -275,12 +323,15 @@
 </ol>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._findIndex) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 根据 callback 的返回值的 true/false 决定返回的元素</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @return &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._findIndex = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            callbackState,</span><br><span class="line">            result,</span><br><span class="line">            len;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                result = i; <span class="comment">// 在 Array.prototype.find result = this[i]</span></span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 是否使用 break，决定了获取到的值的顺序</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._findIndex) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 根据 callback 的返回值的 true/false 决定返回的元素</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @returns &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._findIndex = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            callbackState,</span><br><span class="line">            result,</span><br><span class="line">            len;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 1. 判断callback</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 2. 判断数组长度</span></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">// #endregion 2. 判断数组长度</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                result = i; <span class="comment">// 在 Array.prototype._find 中 result = this[i]</span></span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 是否使用 break，决定了获取到的值的顺序</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/20/Array 之 ES6 findIndex/" data-id="cjm4879d40001yn2v3hogy1vw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/20/Array 之 ES6 findIndex/" data-id="cjm494zxz0001ea2vn89a34mx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -326,7 +377,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/09/git 撤销 - 针对本地没有 push 的 commit/" data-id="cjm4879du000yyn2v4x0arq03" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/09/git 撤销 - 针对本地没有 push 的 commit/" data-id="cjm494zyp0010ea2v2g94mk6r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -444,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/04/JavaScript 的使用 script 标签/" data-id="cjm4879dk000fyn2vnslse8cz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/04/JavaScript 的使用 script 标签/" data-id="cjm494zyg000hea2v0pbdschf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -498,7 +549,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/02/23/C 语言学习 - hello world/" data-id="cjm4879d70003yn2v945tbv4k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/02/23/C 语言学习 - hello world/" data-id="cjm494zy40004ea2vvuf6hkfc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
@@ -553,7 +604,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/24/git 分支最佳实践/" data-id="cjm4879dp000pyn2vblcv8kop" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/24/git 分支最佳实践/" data-id="cjm494zyl000rea2vcykp99ng" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -603,7 +654,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/20/git 提交和追加提交/" data-id="cjm4879dt000wyn2vvgpwgkpy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/20/git 提交和追加提交/" data-id="cjm494zyo000yea2vgal1ibne" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -662,73 +713,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/12/git 删除远程 commit/" data-id="cjm4879ds000uyn2v55af10yv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-git 初始仓库" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/08/git 初始仓库/" class="article-date">
-  <time datetime="2017-11-08T06:00:06.000Z" itemprop="datePublished">2017-11-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/08/git 初始仓库/">git 初始仓库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h3 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">$ git add &lt;file&gt;</span><br><span class="line">$ git commit -m <span class="string">"xxx"</span></span><br></pre></td></tr></table></figure>
-<h3 id="首次强制拉取"><a href="#首次强制拉取" class="headerlink" title="首次强制拉取"></a>首次强制拉取</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master ----allow-unrelated-histories</span><br></pre></td></tr></table></figure>
-<h3 id="config-用户名和邮箱"><a href="#config-用户名和邮箱" class="headerlink" title="config 用户名和邮箱"></a>config 用户名和邮箱</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name &quot;xxx&quot;</span><br><span class="line">$ git config user.email &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="查看配置文件"><a href="#查看配置文件" class="headerlink" title="查看配置文件"></a>查看配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list</span><br></pre></td></tr></table></figure>
-<h3 id="拉去其他分支，并切换到该分支"><a href="#拉去其他分支，并切换到该分支" class="headerlink" title="拉去其他分支，并切换到该分支"></a>拉去其他分支，并切换到该分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch orign &lt;branch_name&gt;</span><br><span class="line">$ git checout &lt;fetch_branch_name&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="代码-clone-的方式"><a href="#代码-clone-的方式" class="headerlink" title="代码 clone 的方式"></a>代码 clone 的方式</h3><p>  代码库的链接：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ https: https://gitlab.pengjiandry.com/root/cnodeNews.git</span><br><span class="line">$ ssh: git@gitlab.pengjiandry.com:root/cnodeNews.git</span><br></pre></td></tr></table></figure>
-<p>  第一种方式：使用默认的用户和密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://gitlab.pengjiandry.com/root/cnodeNews.git</span><br></pre></td></tr></table></figure>
-<p>第二种方式：显示的指定用户和密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone http://username:password@gitlab.pengjiandry.com/root/cnodeNews.git</span><br></pre></td></tr></table></figure>
-<p>第三种方式：使用 ssh, 在 clone 之前请先检查一下 ssh 密钥设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@gitlab.pengjiandry.com:root/cnodeNews.git</span><br></pre></td></tr></table></figure>
-<p>  ssh密钥的生成：</p>
-<ol>
-<li>需要的操作：先生成一个在 ~ (/User/pengjian) ~/.ssh 下</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;your.email@example.com&quot; -b 4096</span><br></pre></td></tr></table></figure>
-<ul>
-<li>第一个交互是输入名字，默认是：id_rsa</li>
-<li>完成后会生成两个文件： id_rsa.pub / id_rsa</li>
-<li>在服务端就是需要 id_rsa.pub 的内容</li>
-</ul>
-<ol start="2">
-<li>~/.ssh/config 其中一个 ssh 密钥的配置</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host git.coding.net # git的访问地址</span><br><span class="line">User 2393375953@qq.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/coding_rsa</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/08/git 初始仓库/" data-id="cjm4879dq000ryn2vlqwx2h1d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/12/git 删除远程 commit/" data-id="cjm494zyn000wea2vn1b42vpt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -798,15 +783,15 @@
           </li>
         
           <li>
+            <a href="/2018/08/11/Array 之 ES6 includes/">Array 之 ES6 includes</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/06/ES6函数特性/">ES6 函数特性</a>
           </li>
         
           <li>
             <a href="/2018/08/03/ES6 对象的扩展/">ES6 对象的扩展</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/20/ES6 模块/">ES6 模块</a>
           </li>
         
       </ul>

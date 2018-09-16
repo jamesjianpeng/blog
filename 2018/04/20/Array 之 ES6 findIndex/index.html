@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="彭涧">
 <meta property="og:description" content="Array.prototype.findIndex Grammar: arr.findIndex(callback[, thisArg]) Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的索引，否则 返回 -1 Return: 数据类型：Number 特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-16T02:12:41.990Z">
+<meta property="og:updated_time" content="2018-09-16T02:38:43.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Array 之 ES6 findIndex">
 <meta name="twitter:description" content="Array.prototype.findIndex Grammar: arr.findIndex(callback[, thisArg]) Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的索引，否则 返回 -1 Return: 数据类型：Number 特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要">
@@ -130,12 +130,15 @@
 </ol>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._findIndex) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 根据 callback 的返回值的 true/false 决定返回的元素</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @return &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._findIndex = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            callbackState,</span><br><span class="line">            result,</span><br><span class="line">            len;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                result = i; <span class="comment">// 在 Array.prototype.find result = this[i]</span></span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 是否使用 break，决定了获取到的值的顺序</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._findIndex) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 根据 callback 的返回值的 true/false 决定返回的元素</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @returns &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._findIndex = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            callbackState,</span><br><span class="line">            result,</span><br><span class="line">            len;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 1. 判断callback</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 2. 判断数组长度</span></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">// #endregion 2. 判断数组长度</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                result = i; <span class="comment">// 在 Array.prototype._find 中 result = this[i]</span></span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 是否使用 break，决定了获取到的值的顺序</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/20/Array 之 ES6 findIndex/" data-id="cjm4879d40001yn2v3hogy1vw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/20/Array 之 ES6 findIndex/" data-id="cjm494zxz0001ea2vn89a34mx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -217,15 +220,15 @@
           </li>
         
           <li>
+            <a href="/2018/08/11/Array 之 ES6 includes/">Array 之 ES6 includes</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/06/ES6函数特性/">ES6 函数特性</a>
           </li>
         
           <li>
             <a href="/2018/08/03/ES6 对象的扩展/">ES6 对象的扩展</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/20/ES6 模块/">ES6 模块</a>
           </li>
         
       </ul>

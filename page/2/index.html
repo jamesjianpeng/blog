@@ -152,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/22/DOM 的历史/" data-id="cjm39w0at0008pg2vui03lilh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/22/DOM 的历史/" data-id="cjm483mjp0004wg2vyvtthofr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li></ul>
@@ -200,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/21/hello-world/" data-id="cjm39w0b9000ppg2vrzbmwacc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/21/hello-world/" data-id="cjm483mkd0011wg2vtqwmw78o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,10 +210,10 @@
 
 
   
-    <article id="post-C 语言学习 - hello world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Array 之 ES6 findIndex" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/04/02/C 语言学习 - hello world/" class="article-date">
-  <time datetime="2018-04-02T09:42:27.000Z" itemprop="datePublished">2018-04-02</time>
+    <a href="/2018/04/20/Array 之 ES6 findIndex/" class="article-date">
+  <time datetime="2018-04-20T01:42:20.000Z" itemprop="datePublished">2018-04-20</time>
 </a>
     
   </div>
@@ -224,7 +224,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/02/C 语言学习 - hello world/">C 语言学习 - hello world</a>
+      <a class="article-title" href="/2018/04/20/Array 之 ES6 findIndex/">Array 之 ES6 findIndex</a>
     </h1>
   
 
@@ -233,29 +233,57 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h3 id="Mac-去编译和链接-c-程序"><a href="#Mac-去编译和链接-c-程序" class="headerlink" title="Mac 去编译和链接 c 程序"></a>Mac 去编译和链接 c 程序</h3><p>例子：<br>如：/helloWrold.c</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello world!"</span>);</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="编译和链接的步骤合并"><a href="#编译和链接的步骤合并" class="headerlink" title="编译和链接的步骤合并"></a>编译和链接的步骤合并</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cc helloWrold.c</span><br></pre></td></tr></table></figure>
-<p>将会生成 a.out 在 mac 下可执行文件的后缀，windows 下则是 a.exe 结尾</p>
-<h4 id="编译和链接的步骤可分开"><a href="#编译和链接的步骤可分开" class="headerlink" title="编译和链接的步骤可分开"></a>编译和链接的步骤可分开</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cc -c helloWorld.c</span><br></pre></td></tr></table></figure>
+<h3 id="Array-prototype-findIndex"><a href="#Array-prototype-findIndex" class="headerlink" title="Array.prototype.findIndex"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" target="_blank" rel="noopener">Array.prototype.findIndex</a></h3><ul>
+<li>Grammar: arr.findIndex(callback[, thisArg])</li>
+<li>Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的索引，否则 返回 -1</li>
+<li>Return: 数据类型：Number</li>
+<li><p>特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个；</p>
+</li>
+<li><p>Compared with Array.prototype.indexOf:</p>
+<ol>
+<li><p>不同点（参数不同）：</p>
 <ul>
-<li>生成 helloWorld.o</li>
+<li>arr.indexOf 接受的是 arr 中的一个元素，或者其他的值, arr.findIndex 的参数是一个 callback, 通过是否满足我们的测试条件来决定是否返回索引</li>
+<li>arr.indexOf 第二个参数还支持，从指定位置开始查找</li>
+<li>Array.prototype.indexOf 是属于 ES3 的规范，Array.prototype.findIndex 是属于 ES6 的规范</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cc -o helloWorld helloWorld.o</span><br></pre></td></tr></table></figure>
-<p>生成 helloWorld</p>
-<h4 id="执行编译后的文件"><a href="#执行编译后的文件" class="headerlink" title="执行编译后的文件"></a>执行编译后的文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./a.out</span><br></pre></td></tr></table></figure>
-<p>或者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./helloWorld</span><br></pre></td></tr></table></figure></p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
-<li>编写程序 -&gt; 编译 -&gt; 链接 -&gt; 运行</li>
+</li>
+<li><p>相同点：</p>
+<ul>
+<li>返回的值：元素在数组的索引或者 -1, 返回值的类型是 Number</li>
+<li>不改变数组本身</li>
+<li>找到满足的条件就立即结束并返回对应的值</li>
+</ul>
+</li>
 </ol>
+</li>
+<li><p>Compared with Array.prototype.find</p>
+<ol>
+<li><p>不同点（返回的值）</p>
+<ul>
+<li>Array.prototype.find 是返回满足条件的元素，Array.prototype.findIndex 是返回满足条件的索引</li>
+</ul>
+</li>
+<li><p>相同点：</p>
+<ul>
+<li>参数相同</li>
+<li>不改变数组本身</li>
+<li>找到满足的条件就立即结束并返回对应的值    </li>
+<li>都是属于 ES6 的规范</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._findIndex) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 根据 callback 的返回值的 true/false 决定返回的元素</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @return &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._findIndex = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            callbackState,</span><br><span class="line">            result,</span><br><span class="line">            len;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                result = i; <span class="comment">// 在 Array.prototype.find result = this[i]</span></span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 是否使用 break，决定了获取到的值的顺序</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/02/C 语言学习 - hello world/" data-id="cjm39w0af0000pg2vv69bvkod" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/20/Array 之 ES6 findIndex/" data-id="cjm483mjk0001wg2v3ttf6jcp" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
     </footer>
   </div>
@@ -298,7 +326,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/09/git 撤销 - 针对本地没有 push 的 commit/" data-id="cjm39w0b7000npg2vorwhcrbe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/09/git 撤销 - 针对本地没有 push 的 commit/" data-id="cjm483mkb000ywg2veu1wzpuw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -416,10 +444,64 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/04/JavaScript 的使用 script 标签/" data-id="cjm39w0aq0004pg2vafnro0ta" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/04/JavaScript 的使用 script 标签/" data-id="cjm483mk0000fwg2v3nbmsq7y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-C 语言学习 - hello world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/23/C 语言学习 - hello world/" class="article-date">
+  <time datetime="2018-02-23T09:42:27.000Z" itemprop="datePublished">2018-02-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/23/C 语言学习 - hello world/">C 语言学习 - hello world</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="Mac-去编译和链接-c-程序"><a href="#Mac-去编译和链接-c-程序" class="headerlink" title="Mac 去编译和链接 c 程序"></a>Mac 去编译和链接 c 程序</h3><p>例子：<br>如：/helloWrold.c</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello world!"</span>);</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="编译和链接的步骤合并"><a href="#编译和链接的步骤合并" class="headerlink" title="编译和链接的步骤合并"></a>编译和链接的步骤合并</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cc helloWrold.c</span><br></pre></td></tr></table></figure>
+<p>将会生成 a.out 在 mac 下可执行文件的后缀，windows 下则是 a.exe 结尾</p>
+<h4 id="编译和链接的步骤可分开"><a href="#编译和链接的步骤可分开" class="headerlink" title="编译和链接的步骤可分开"></a>编译和链接的步骤可分开</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cc -c helloWorld.c</span><br></pre></td></tr></table></figure>
+<ul>
+<li>生成 helloWorld.o</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cc -o helloWorld helloWorld.o</span><br></pre></td></tr></table></figure>
+<p>生成 helloWorld</p>
+<h4 id="执行编译后的文件"><a href="#执行编译后的文件" class="headerlink" title="执行编译后的文件"></a>执行编译后的文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./a.out</span><br></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./helloWorld</span><br></pre></td></tr></table></figure></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
+<li>编写程序 -&gt; 编译 -&gt; 链接 -&gt; 运行</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/23/C 语言学习 - hello world/" data-id="cjm483mjo0003wg2vc0tneqgy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
 
     </footer>
   </div>
@@ -471,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/24/git 分支最佳实践/" data-id="cjm39w0ay000bpg2vhgpxuweo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/24/git 分支最佳实践/" data-id="cjm483mk6000pwg2vp1quo789" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -521,7 +603,66 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/20/git 提交和追加提交/" data-id="cjm39w0b6000lpg2vsbg2x9w6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/20/git 提交和追加提交/" data-id="cjm483mka000wwg2vjhs51cdn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git 删除远程 commit" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/12/git 删除远程 commit/" class="article-date">
+  <time datetime="2017-12-12T09:05:42.000Z" itemprop="datePublished">2017-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/12/git 删除远程 commit/">git 删除远程 commit</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="发现上一个-push-到远程分支的-commit-有问题，需要删除它，并工作区的代码不受到影响："><a href="#发现上一个-push-到远程分支的-commit-有问题，需要删除它，并工作区的代码不受到影响：" class="headerlink" title="发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响："></a>发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响：</h3><ol>
+<li>是回到指定的 commit 版本，回到指定的版本的时候 stash 中的代码都会 pop</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset commit_id</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>把工作区的代码储藏，这一步是为了准备同步 本地和 远程的版本</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>为啥不用 git push 而是使用强制推送？，你试试就知道</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push --force</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>把储藏的文件释放到工作区中 为下一次提交做准本</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash pop</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>正常的 push 流程</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add &lt;file&gt;....</span><br><span class="line">$ git commit -m &quot;xxx&quot;</span><br><span class="line">$ git push</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/12/git 删除远程 commit/" data-id="cjm483mk9000uwg2vfiaudosl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -587,7 +728,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/08/git 初始仓库/" data-id="cjm39w0b0000dpg2v7ix11qtj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/08/git 初始仓库/" data-id="cjm483mk7000rwg2vn0zdfjut" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -603,7 +744,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -636,7 +777,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
     </div>
   </div>
 
@@ -649,14 +790,6 @@
       <ul>
         
           <li>
-            <a href="/2018/12/12/git 删除远程 commit/">git 删除远程 commit</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/26/http 概述/">http 概述</a>
-          </li>
-        
-          <li>
             <a href="/2018/09/14/JavaScript 的历史/">JavaScript 的历史</a>
           </li>
         
@@ -666,6 +799,14 @@
         
           <li>
             <a href="/2018/08/06/ES6函数特性/">ES6 函数特性</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/03/ES6 对象的扩展/">ES6 对象的扩展</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/20/ES6 模块/">ES6 模块</a>
           </li>
         
       </ul>

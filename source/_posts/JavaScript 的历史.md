@@ -1,5 +1,5 @@
 ---
-title: JavaScript的历史
+title: JavaScript 的历史
 date: 2018-09-14 17:36:20
 tags: history
 ---

@@ -1,8 +1,7 @@
 ---
-layout: ES6函数特性
-title: 函数特性
-date: 2018-08-14 18:29:22
-tags: Web JavaScript ES6 笔记
+title: ES6 函数特性
+date: 2018-08-06 18:29:22
+tags: JavaScript
 ---
 
 ---------
@@ -101,10 +100,10 @@ tags: Web JavaScript ES6 笔记
 
 ```js
   if (true) {
-    console.log(typeof add)
-    function add (a, ...b) {
-      return a + b[0]
-    }
+      console.log(typeof add)
+      function add (a, ...b) {
+          return a + b[0]
+      }
   }
 ```
 
@@ -126,6 +125,7 @@ tags: Web JavaScript ES6 笔记
     5. 不支持 arguments 对象
 
     6. 不支持重复的命名参数
+
 ---------
 
 ### 尾调用优化

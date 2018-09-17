@@ -62,10 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Array 之 ES5 froEach" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Array 之 ES5 reduce" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/09/16/Array 之 ES5 froEach/" class="article-date">
-  <time datetime="2018-09-16T03:24:43.000Z" itemprop="datePublished">2018-09-16</time>
+    <a href="/2018/09/17/Array 之 ES5 reduce/" class="article-date">
+  <time datetime="2018-09-17T04:25:34.000Z" itemprop="datePublished">2018-09-17</time>
 </a>
     
   </div>
@@ -76,7 +76,72 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/16/Array 之 ES5 froEach/">Array 之 ES5 froEach</a>
+      <a class="article-title" href="/2018/09/17/Array 之 ES5 reduce/">Array 之 ES5 reduce</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Array-prototype-reduce"><a href="#Array-prototype-reduce" class="headerlink" title="Array.prototype.reduce"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce" target="_blank" rel="noopener">Array.prototype.reduce</a></h3><ul>
+<li><p>Grammar:</p>
+<ol>
+<li>array.reduce(callback[, thisArg])</li>
+<li>array.reduce(callback(firstOrTotalNum, nextNum, index, array){ //do something }[, initNum])</li>
+</ol>
+</li>
+<li><p>Description:</p>
+<ol>
+<li>若 initNum 作为参数传入，则在 index 为 0 的时候 firstOrTotalNum 的值是为 initNum</li>
+<li>若 initNum 没有作为参数传入，则在 index 为 0 的时候 firstOrTotalNum 的值是为 数组中的第一个元素</li>
+<li>在 index 不为 0 的时候 firstOrTotalNum 值是在 callback function return 的值</li>
+</ol>
+</li>
+<li><p>Return: 任何数据类型</p>
+</li>
+<li>特点：<ol>
+<li>可以使用它进行累加，累乘或者拼接字符</li>
+<li>或者其他的功能</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._reduce) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Array.prototype._reduce</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @param &#123;*&#125; initNum</span></span><br><span class="line"><span class="comment">   * @returns &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._reduce = <span class="function"><span class="keyword">function</span>(<span class="params">callback, initNum</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            len,</span><br><span class="line">            result,</span><br><span class="line">            k,</span><br><span class="line">            callbackNum,</span><br><span class="line">            noInitNum;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1. 判断传入的参数</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Array.prototype._reduce params is not function'</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 判断数组长度</span></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line">        result = initNum || <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 合并之后，并不好读😢</span></span><br><span class="line">        <span class="comment">// noInitNum = initNum === undefined ? true : false;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">// len = noInitNum ? len - 1 : len; // 没有 初始值 的时候实际上是从数组的第二项开始的，所以循环的最大长度 - 1</span></span><br><span class="line">        <span class="comment">// while(i &lt; len) &#123;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     callbackNum = i === 0</span></span><br><span class="line">        <span class="comment">//         ? (noInitNum ? this[i] : Number(initNum)) // 没有 初始值 的时候实际上是从 callback 接受的第一个参数是数组的第一项元素，第二个参数是数组的二项元素</span></span><br><span class="line">        <span class="comment">//         : result;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     k = noInitNum ? i + 1 : i; // 没有 初始值 的时候实际上是从数组的第二项开始的</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     result = callback(callbackNum, this[k], i, this);</span></span><br><span class="line">        <span class="comment">//     i++;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// #endregion 合并之后</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 第一次写</span></span><br><span class="line">        <span class="keyword">if</span> (initNum === <span class="literal">undefined</span>) &#123; <span class="comment">// 关键点：1. 需要判断 初始化的值</span></span><br><span class="line">            len-- <span class="comment">// 关键点：2. 没有 初始值 的时候实际上是从 callback 接受的第一个参数是数组的第一项元素，第二个参数是数组的二项元素，实际上是从第二项开始</span></span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                callbackNum = i === <span class="number">0</span> ? <span class="keyword">this</span>[i] : result;</span><br><span class="line">                result = callback(callbackNum, <span class="keyword">this</span>[i + <span class="number">1</span>], i, <span class="keyword">this</span>);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                callbackNum = i === <span class="number">0</span> ? <span class="built_in">Number</span>(initNum) : result; <span class="comment">// 关键点：3. 使用 Number 会把值转化为 number 类型</span></span><br><span class="line">                result = callback(callbackNum, <span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// #endregion 第一次写</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/17/Array 之 ES5 reduce/" data-id="cjm5v100p0004vr2vvm3f46yv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Array 之 ES5 some" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/17/Array 之 ES5 some/" class="article-date">
+  <time datetime="2018-09-17T03:33:31.000Z" itemprop="datePublished">2018-09-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/17/Array 之 ES5 some/">Array 之 ES5 some</a>
     </h1>
   
 
@@ -85,34 +150,40 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h3 id="Array-prototype-forEach"><a href="#Array-prototype-forEach" class="headerlink" title="Array.prototype.forEach"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank" rel="noopener">Array.prototype.forEach</a></h3><ul>
+<h3 id="Array-prototype-some"><a href="#Array-prototype-some" class="headerlink" title="Array.prototype.some"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some" target="_blank" rel="noopener">Array.prototype.some</a></h3><ul>
 <li><p>Grammar:</p>
 <ol>
-<li>array.forEach(callback[, thisArg])</li>
-<li>array.forEach(callback(currentValue, index, array){ //do something }, this)</li>
+<li>array.some(callback[, thisArg])</li>
+<li>array.some(callback(currentValue, index, array){ //do something }, this)</li>
 </ol>
 </li>
-<li><p>Description: 循环数组</p>
+<li><p>Description: 循环数组，找到一个满足条件的元素，就返回 true，若所有元素都不满足条件就返回 false</p>
 </li>
-<li>Return: undefind</li>
+<li>Return: Boolean</li>
 <li><p>特点：</p>
 <ol>
-<li>从头开始至尾进行迭代</li>
 <li>中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError</li>
-<li>作用和 for 循环类似</li>
+<li>找到不满足条件的元素，直接结束循环，就返回 false</li>
+<li>空数组直接返回 false</li>
 </ol>
 </li>
-<li><p>Compared with for:</p>
+<li><p>Compared with Array.prototype.every</p>
 <ol>
-<li>不同点：<ul>
-<li>for 可以退出循环</li>
-<li>for 是 JavaScript 的一个循环语句</li>
+<li><p>不同点：</p>
+<ul>
+<li>some 是遇到满足条件时结束循环，并返回值 true；every 是遇到不满足条件时结束循环，并返回值 false</li>
+</ul>
+</li>
+<li><p>相同点</p>
+<ul>
+<li>返回的参数类型都是 Boolean</li>
+<li>参数一样，都是 callback function</li>
 </ul>
 </li>
 </ol>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._forEach) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 循环数组中的元素</span></span><br><span class="line"><span class="comment">     * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">     * @returns undefind</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_forEach'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                len;</span><br><span class="line">            <span class="comment">// 1. 判断参数</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断数组长度</span></span><br><span class="line">            len = <span class="keyword">this</span>.length;</span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 3. 初始化循环起点，并开始循环</span></span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">              callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>) <span class="comment">// // 在 Array.prototype._map 中有赋值这一步</span></span><br><span class="line">              i++</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._some) &#123;</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_some'</span>, &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 只要数组中的任意一个元素满足条件就返回 true ，否则返回 false</span></span><br><span class="line"><span class="comment">         * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">         * @returns &#123;Boolean&#125; result</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                len,</span><br><span class="line">                callbackState,</span><br><span class="line">                result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断参数</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Array.prototype._some params is not callback'</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断数组的长度</span></span><br><span class="line">            result = <span class="literal">false</span></span><br><span class="line">            len = <span class="keyword">this</span>.length;</span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">                callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">                <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                  result = <span class="literal">true</span>;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">                &#125;;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
 </ul>
@@ -125,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/16/Array 之 ES5 froEach/" data-id="cjm4cqqne0000tt2vy0g0kkuj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/17/Array 之 ES5 some/" data-id="cjm5v100q0005vr2vw4j3mzpd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -248,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/14/JavaScript 的历史/" data-id="cjm4cqqo6000ott2vc5jxcusj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/14/JavaScript 的历史/" data-id="cjm5v1015000qvr2vw1m6xc05" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/history/">history</a></li></ul>
@@ -414,7 +485,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/02/性能优化之 DOM/" data-id="cjm4cqqok001btt2v0qs019v7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/02/性能优化之 DOM/" data-id="cjm5v101o001kvr2vmdohfnan" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -472,7 +543,7 @@
 </ol>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._includes) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据 searchElement 按顺序在数组中元素的对比，=== 则是 true 否则为 false</span></span><br><span class="line"><span class="comment">     * @param &#123;*&#125; searchElement</span></span><br><span class="line"><span class="comment">     * @param &#123;Number&#125; searchIndex</span></span><br><span class="line"><span class="comment">     * @returns &#123;Boolean&#125; result</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_includes'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">searchElement, searchIndex</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                result = <span class="literal">false</span>,</span><br><span class="line">                len = <span class="keyword">this</span>.length;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断数组长度</span></span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断 searchIndex</span></span><br><span class="line">            <span class="keyword">if</span> (!searchIndex || <span class="keyword">typeof</span> searchIndex !== <span class="string">'number'</span>) searchIndex = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// #region 3. 获取遍历的起点</span></span><br><span class="line">            i = searchIndex;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (searchIndex &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                searchIndex += len;</span><br><span class="line">                i = searchIndex &lt; <span class="number">0</span> ? <span class="number">0</span> : searchIndex;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (searchIndex &gt;= len) &#123;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// #endregion 3. 获取遍历的起点</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>[i] === searchElement) &#123;</span><br><span class="line">                  result = <span class="literal">true</span>;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._includes) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据 searchElement 按顺序在数组中元素的对比，=== 则是 true 否则为 false</span></span><br><span class="line"><span class="comment">     * @param &#123;*&#125; searchElement</span></span><br><span class="line"><span class="comment">     * @param &#123;Number&#125; searchIndex</span></span><br><span class="line"><span class="comment">     * @returns &#123;Boolean&#125; result</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_includes'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">searchElement, searchIndex</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                result = <span class="literal">false</span>,</span><br><span class="line">                len = <span class="keyword">this</span>.length;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断数组长度</span></span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断 searchIndex</span></span><br><span class="line">            <span class="keyword">if</span> (!searchIndex || <span class="keyword">typeof</span> searchIndex !== <span class="string">'number'</span>) searchIndex = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// #region 3. 获取遍历的起点</span></span><br><span class="line">            i = searchIndex;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (searchIndex &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                searchIndex += len;</span><br><span class="line">                i = searchIndex &lt; <span class="number">0</span> ? <span class="number">0</span> : searchIndex;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (searchIndex &gt;= len) &#123;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// #endregion 3. 获取遍历的起点</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>[i] === searchElement) &#123; <span class="comment">// 必须是 ===</span></span><br><span class="line">                  result = <span class="literal">true</span>;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>参考资料：</p>
 <ul>
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
@@ -481,7 +552,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/11/Array 之 ES6 includes/" data-id="cjm4cqqnq0005tt2va088omw5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/11/Array 之 ES6 includes/" data-id="cjm5v100w000dvr2v6g0xt0ez" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -612,7 +683,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/06/ES6函数特性/" data-id="cjm4cqqo0000htt2vlcurpc76" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/06/ES6函数特性/" data-id="cjm5v1016000tvr2v7wljgh94" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -705,7 +776,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/03/ES6 对象的扩展/" data-id="cjm4cqqnx000dtt2vc6txc0tb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/03/ES6 对象的扩展/" data-id="cjm5v1011000jvr2v954co54a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -790,7 +861,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/ES6 模块/" data-id="cjm4cqqny000ftt2v8f2p69pr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/ES6 模块/" data-id="cjm5v100x000fvr2vksgijis8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -839,6 +910,7 @@
 <ol>
 <li>中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError</li>
 <li>可在回调函数中使用 return 替换当前的元素</li>
+<li>不会改变原数组</li>
 </ol>
 </li>
 <li><p>Compared with forEach:</p>
@@ -851,7 +923,7 @@
 </ol>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._map) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 循环数组中的元素</span></span><br><span class="line"><span class="comment">     * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">     * @returns undefind</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_map'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                len;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断参数</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断数组长度</span></span><br><span class="line">            len = <span class="keyword">this</span>.length;</span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 3. 初始化循环起点，并开始循环</span></span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">              <span class="keyword">this</span>[i] = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>) <span class="comment">// 在 Array.prototype._forEach 中没有赋值这一步</span></span><br><span class="line">              i++</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._map) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 循环数组中的元素，可以在 callback function 中使用 return 生成新的数组的元素</span></span><br><span class="line"><span class="comment">     * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">     * @returns &#123;Array&#125; 改变</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_map'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                len,</span><br><span class="line">                result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断参数</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断数组长度</span></span><br><span class="line">            len = <span class="keyword">this</span>.length;</span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 3. 初始化循环起点，并开始循环</span></span><br><span class="line">            result = [];</span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">              result = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>) <span class="comment">// 在 Array.prototype._forEach 中没有赋值这一步</span></span><br><span class="line">              i++</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
 </ul>
@@ -864,9 +936,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/10/Array 之 ES5 map/" data-id="cjm4cqqnj0001tt2ve2mp1zgj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/10/Array 之 ES5 map/" data-id="cjm5v100n0003vr2vmggr8pqs" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
     </footer>
   </div>
   
@@ -906,7 +980,7 @@
 <li><p><a href="https://www.pengjiandry.com/2018/04/20/Array%20%E4%B9%8B%20ES6%20findIndex/" target="_blank" rel="noopener">Compared with Array.prototype.findIndex</a></p>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._find) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 根据 callback 的返回值的 true/false 决定返回的元素</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @returns &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._find = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            callbackState,</span><br><span class="line">            result,</span><br><span class="line">            len;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 1. 判断callback</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 2. 判断数组长度</span></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">// #endregion 2. 判断数组长度</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                result = <span class="keyword">this</span>[i]; <span class="comment">// 在 Array.prototype._findIndex 中 result =i</span></span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 是否使用 break，决定了获取到的值的顺序</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._find) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 返回满足条件的第一个元素，若数组没有项元素满足条件则返回 undefined</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @returns &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._find = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            callbackState,</span><br><span class="line">            result,</span><br><span class="line">            len;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 1. 判断callback</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 2. 判断数组长度</span></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">// #endregion 2. 判断数组长度</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                result = <span class="keyword">this</span>[i]; <span class="comment">// 在 Array.prototype._findIndex 中 result =i</span></span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 是否使用 break，决定了获取到的值的顺序</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
 </ul>
@@ -919,77 +993,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/09/Array 之 ES6 find/" data-id="cjm4cqqnp0004tt2v5gfmd1tw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/09/Array 之 ES6 find/" data-id="cjm5v100s0008vr2vq4duunrw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-我的 CSS" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/07/我的 CSS/" class="article-date">
-  <time datetime="2018-07-07T10:25:47.000Z" itemprop="datePublished">2018-07-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/07/我的 CSS/">我的 CSS</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h3 id="HTML5秘籍-第-6-章-美妙的-CSS3-字体和特效"><a href="#HTML5秘籍-第-6-章-美妙的-CSS3-字体和特效" class="headerlink" title="HTML5秘籍 第 6 章 - 美妙的 CSS3 字体和特效"></a>HTML5秘籍 第 6 章 - 美妙的 CSS3 字体和特效</h3><p>工具：</p>
-<ol>
-<li>使用 Can i use 去检查 CSS 的兼容</li>
-<li>-prefix-free 库自动为需要添加浏览器前缀的 CSS 样式</li>
-</ol>
-<hr>
-<h3 id="CSS-分类"><a href="#CSS-分类" class="headerlink" title="CSS 分类"></a>CSS 分类</h3><ol>
-<li><p>透明：<br> CSS3: opacity, rgba()</p>
-</li>
-<li><p>圆角：<br> CSS3: border-radius</p>
-</li>
-<li><p>背景：<br> CSS3: background-image, background-position, background-repeat</p>
-</li>
-<li><p>阴影(CSS3)</p>
-<ul>
-<li><p>盒子阴影<br> CSS3: box-shadow [IE 9]</p>
-</li>
-<li><p>文本阴影<br> CSS3: text-shadow [IE 10]</p>
-</li>
-</ul>
-</li>
-<li><p>渐变(CSS3)</p>
-<ul>
-<li>线性渐变: linear-gradient() [IE 10]</li>
-<li>放射性渐变: radial-gradient() [IE 10]</li>
-</ul>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/我的 CSS/" data-id="cjm4cqqom001ctt2vv3mjdt0h" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
 
     </footer>
   </div>
@@ -1048,7 +1055,11 @@
       <ul>
         
           <li>
-            <a href="/2018/09/16/Array 之 ES5 froEach/">Array 之 ES5 froEach</a>
+            <a href="/2018/09/17/Array 之 ES5 reduce/">Array 之 ES5 reduce</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/17/Array 之 ES5 some/">Array 之 ES5 some</a>
           </li>
         
           <li>
@@ -1061,10 +1072,6 @@
         
           <li>
             <a href="/2018/08/11/Array 之 ES6 includes/">Array 之 ES6 includes</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/06/ES6函数特性/">ES6 函数特性</a>
           </li>
         
       </ul>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>性能优化之 DOM | 彭涧</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="访问和修改 DOM 元素 修改 DOM 元素的样式会导致重绘（repaint）和重排（reflow） 通过 DOM 事件处理与用户的交互  什么是 DOM, 他为什么慢 文档对象模型（DOM）是一个独立于语言的，用于操作 XML 和 HTML 文档的程序接口（API）  浏览器中的 DOM :  在 web 应用程序中获取 XML 文档，并使用 DOM API 用来访问文档中的数据，DOM 再">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="性能优化之 DOM">
+<meta property="og:url" content="http://yoursite.com/2018/09/02/性能优化之 DOM/index.html">
+<meta property="og:site_name" content="彭涧">
+<meta property="og:description" content="访问和修改 DOM 元素 修改 DOM 元素的样式会导致重绘（repaint）和重排（reflow） 通过 DOM 事件处理与用户的交互  什么是 DOM, 他为什么慢 文档对象模型（DOM）是一个独立于语言的，用于操作 XML 和 HTML 文档的程序接口（API）  浏览器中的 DOM :  在 web 应用程序中获取 XML 文档，并使用 DOM API 用来访问文档中的数据，DOM 再">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-15T10:12:10.184Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="性能优化之 DOM">
+<meta name="twitter:description" content="访问和修改 DOM 元素 修改 DOM 元素的样式会导致重绘（repaint）和重排（reflow） 通过 DOM 事件处理与用户的交互  什么是 DOM, 他为什么慢 文档对象模型（DOM）是一个独立于语言的，用于操作 XML 和 HTML 文档的程序接口（API）  浏览器中的 DOM :  在 web 应用程序中获取 XML 文档，并使用 DOM API 用来访问文档中的数据，DOM 再">
+  
+    <link rel="alternate" href="/atom.xml" title="彭涧" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">彭涧</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-性能优化之 DOM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/02/性能优化之 DOM/" class="article-date">
+  <time datetime="2018-09-02T11:57:40.000Z" itemprop="datePublished">2018-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      性能优化之 DOM
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<ol>
+<li>访问和修改 DOM 元素</li>
+<li>修改 DOM 元素的样式会导致重绘（repaint）和重排（reflow）</li>
+<li>通过 DOM 事件处理与用户的交互</li>
+</ol>
+<h3 id="什么是-DOM-他为什么慢"><a href="#什么是-DOM-他为什么慢" class="headerlink" title="什么是 DOM, 他为什么慢"></a>什么是 DOM, 他为什么慢</h3><ol>
+<li><p>文档对象模型（DOM）是一个独立于语言的，用于操作 XML 和 HTML 文档的程序接口（API）</p>
+</li>
+<li><p>浏览器中的 DOM :</p>
+<ol>
+<li>在 web 应用程序中获取 XML 文档，并使用 DOM API 用来访问文档中的数据，DOM 再浏览器中的接口却是用 JavaScript 实现的</li>
+<li>再浏览器中通常把 DOM 和 JavaScript 独立实现<ul>
+<li>IE 中 JavaScript 的实现名为 JScript 位于 jscript.dll 文件中， DOM 的实现则是在另外一个库中：mshtml.dll（内部称 Trident ）;分离的优点：允许使用其他技术和语言共享使用 DOM 和 Trident 提供的渲染函数</li>
+<li>Safari 中的 DOM 和渲染使用 Webkit 中的 WebCore 实现，JavaScript 部分是由独立的 JavaScriptCore 引擎（ 最新版本的名字为 SquirrelFish）</li>
+<li>Google Chrome 同样使用 Webkit 中的 WebCore 库来渲染页面，JavaScript 部分名为 V8 的引擎</li>
+<li>Firefox 是使用 名为 Gecko 的渲染引擎来渲染页面， JavaScript部分是引擎名为 SpiderMonkey （ 最新：TraceMonkey）的引擎</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>DOM 为什么慢</p>
+<ol>
+<li>天生就慢（简单理解：两个互相独立的功能只要通过接口彼此链接，就会产生消耗）<ul>
+<li>解决方案：尽量在 ES（ js 三大部分之一）中处理，尽可能减少 DOM 操作</li>
+</ul>
+</li>
+<li><p>天生慢的具体表现：</p>
+<ul>
+<li><p>DOM 的访问和修改 –&gt; 会导致浏览器重新计算页面的几何变化 –&gt; 通用法则：减少访问 DOM 的次数，把运算尽量留在 ECMAScript 这一端</p>
+<ul>
+<li>innerHTML 和 DOM 方法（document.createElement() 和 document.createTextNode()）</li>
+<li><p>节点克隆（element.cloneNode()）,比上面两种方式要快一点点</p>
+</li>
+<li><p>HTML 集合（类数组列表）底层文档对象更新时，他也自动更新<br>获取 HTML 集合</p>
+<ol>
+<li>document.getElementsByName() // 获取</li>
+<li>document.getElementsByClassName() // 获取以 class name 组成的集合</li>
+<li>document.getElementsByTagName()</li>
+<li>document.images // 页面所有的 img 元素</li>
+<li>document.links // 页面所有的 a 元素</li>
+<li>document.forms[0].element // 页面中第一个表单的所有字段</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="4">
+<li><p>重排和重绘</p>
+<p>什么是重排，影响因素</p>
+<ol>
+<li><p>重排：DOM 的变化影响来元素的几何属性（比如宽高等）其他的元素可能会因此受收到影响，浏览器会使渲染树中受到影响的部分失效，并重新构造渲染树，这个过程称为：重排</p>
+</li>
+<li><p>重排何时发生（如何避免重排重绘）</p>
+<ul>
+<li>添加和删除可见的 DOM 元素</li>
+<li>元素位置改变</li>
+<li>元素尺寸改变（包括：padding margin border height width）</li>
+<li>内容改变，例如：文本改变或图片被另外一个不同尺寸的图片代替</li>
+<li>页面渲染器初始化</li>
+<li>浏览器窗口尺寸变化</li>
+</ul>
+<ol>
+<li><p>如何避免减少重排：</p>
+<ul>
+<li>针对使用 js 修改样式： el.style.xxx 使用 el.style.cssText 合并，或者使用 el.className</li>
+<li><p>正对批量修改 DOM ：</p>
+<ol>
+<li><p>使用元素 脱离文档流（如何脱离文档流）</p>
+<ul>
+<li>隐藏元素</li>
+<li>使用文档片断（docuement fragment）在当前 DOM 之外构建一个子树，再把它拷贝回文档中</li>
+</ul>
+</li>
+<li><p>对其应用多重改变</p>
+</li>
+<li>把元素带回文档中</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>渲染树变化的排队与刷新</p>
+<ul>
+<li>获取布局信息的操作会导致队列刷新(为获取最新的布局信息，会强制页面进行重排以获取最新的尺寸)<ol>
+<li>offsetTop, offsetLeft, offsetRight, offsetBottom</li>
+<li>scrollTop, scrollLeft, scrollRight, scrollBottom</li>
+<li>clientTop, clentLeft, clientWidth, clientHeight</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="4">
+<li><p>什么是重绘，影响因素</p>
+<ol>
+<li>当 DOM 元素的改变不会影响元素的几何属性的时候，页面会在发生的区域进行重绘</li>
+</ol>
+</li>
+<li><p>重排和重绘的关系</p>
+<ol>
+<li>重排一定会引起重绘；重绘不一定会引起重排</li>
+</ol>
+</li>
+<li><p>其他的优化内容：</p>
+<ul>
+<li>缓存布局信息：避免多次获取元素的尺寸，他会强制页面进行重排，以快速获取页面的精确的尺寸</li>
+<li>动画优化：脱离文档流，减少对页面布局的影响</li>
+<li>事件委托：避免在每个需要触发的元素上绑定事件，只需要在我们指定的父级上绑定事件</li>
+<li>尽量少访问 HTML 集合，HTML 集合时类数组列表，但是访问数组比访问类数组要快</li>
+<li>使用访问局部变量去访问 DOM</li>
+<li>DOM 的方法去访问元素的改进</li>
+<li>选择 API 的使用</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>参考文献：</p>
+<ul>
+<li>《高新能的 JavaScript》</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/02/性能优化之 DOM/" data-id="cjm39kz6y000vv02v5yillan0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/09/14/JavaScript 的历史/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaScript 的历史
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/11/Array 之 ES6 includes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Array 之 ES6 includes</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/history/">history</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/history/" style="font-size: 10px;">history</a> <a href="/tags/http/" style="font-size: 10px;">http</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/17/Array 之 ES5 reduce/">Array 之 ES5 reduce</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/17/Array 之 ES5 some/">Array 之 ES5 some</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/14/JavaScript 的历史/">JavaScript 的历史</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/02/性能优化之 DOM/">性能优化之 DOM</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/11/Array 之 ES6 includes/">Array 之 ES6 includes</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 james<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -62,10 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-DOM的历史" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Array 之 ES5 reduce" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/09/14/DOM的历史/" class="article-date">
-  <time datetime="2018-09-14T10:11:47.000Z" itemprop="datePublished">2018-09-14</time>
+    <a href="/2018/09/17/Array 之 ES5 reduce/" class="article-date">
+  <time datetime="2018-09-17T04:25:34.000Z" itemprop="datePublished">2018-09-17</time>
 </a>
     
   </div>
@@ -76,7 +76,72 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/14/DOM的历史/">DOM的历史</a>
+      <a class="article-title" href="/2018/09/17/Array 之 ES5 reduce/">Array 之 ES5 reduce</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Array-prototype-reduce"><a href="#Array-prototype-reduce" class="headerlink" title="Array.prototype.reduce"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce" target="_blank" rel="noopener">Array.prototype.reduce</a></h3><ul>
+<li><p>Grammar:</p>
+<ol>
+<li>array.reduce(callback[, thisArg])</li>
+<li>array.reduce(callback(firstOrTotalNum, nextNum, index, array){ //do something }[, initNum])</li>
+</ol>
+</li>
+<li><p>Description:</p>
+<ol>
+<li>若 initNum 作为参数传入，则在 index 为 0 的时候 firstOrTotalNum 的值是为 initNum</li>
+<li>若 initNum 没有作为参数传入，则在 index 为 0 的时候 firstOrTotalNum 的值是为 数组中的第一个元素</li>
+<li>在 index 不为 0 的时候 firstOrTotalNum 值是在 callback function return 的值</li>
+</ol>
+</li>
+<li><p>Return: 任何数据类型</p>
+</li>
+<li>特点：<ol>
+<li>可以使用它进行累加，累乘或者拼接字符</li>
+<li>或者其他的功能</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._reduce) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Array.prototype._reduce</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @param &#123;*&#125; initNum</span></span><br><span class="line"><span class="comment">   * @returns &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._reduce = <span class="function"><span class="keyword">function</span>(<span class="params">callback, initNum</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            len,</span><br><span class="line">            result,</span><br><span class="line">            k,</span><br><span class="line">            callbackNum,</span><br><span class="line">            noInitNum;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1. 判断传入的参数</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Array.prototype._reduce params is not function'</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 判断数组长度</span></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line">        result = initNum || <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 合并之后，并不好读😢</span></span><br><span class="line">        <span class="comment">// noInitNum = initNum === undefined ? true : false;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">// len = noInitNum ? len - 1 : len; // 没有 初始值 的时候实际上是从数组的第二项开始的，所以循环的最大长度 - 1</span></span><br><span class="line">        <span class="comment">// while(i &lt; len) &#123;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     callbackNum = i === 0</span></span><br><span class="line">        <span class="comment">//         ? (noInitNum ? this[i] : Number(initNum)) // 没有 初始值 的时候实际上是从 callback 接受的第一个参数是数组的第一项元素，第二个参数是数组的二项元素</span></span><br><span class="line">        <span class="comment">//         : result;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     k = noInitNum ? i + 1 : i; // 没有 初始值 的时候实际上是从数组的第二项开始的</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     result = callback(callbackNum, this[k], i, this);</span></span><br><span class="line">        <span class="comment">//     i++;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// #endregion 合并之后</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 第一次写</span></span><br><span class="line">        <span class="keyword">if</span> (initNum === <span class="literal">undefined</span>) &#123; <span class="comment">// 关键点：1. 需要判断 初始化的值</span></span><br><span class="line">            len-- <span class="comment">// 关键点：2. 没有 初始值 的时候实际上是从 callback 接受的第一个参数是数组的第一项元素，第二个参数是数组的二项元素，实际上是从第二项开始</span></span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                callbackNum = i === <span class="number">0</span> ? <span class="keyword">this</span>[i] : result;</span><br><span class="line">                result = callback(callbackNum, <span class="keyword">this</span>[i + <span class="number">1</span>], i, <span class="keyword">this</span>);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                callbackNum = i === <span class="number">0</span> ? <span class="built_in">Number</span>(initNum) : result; <span class="comment">// 关键点：3. 使用 Number 会把值转化为 number 类型</span></span><br><span class="line">                result = callback(callbackNum, <span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// #endregion 第一次写</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/17/Array 之 ES5 reduce/" data-id="cjm5sg7sb000pjx2v1um26z58" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Array 之 ES5 some" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/17/Array 之 ES5 some/" class="article-date">
+  <time datetime="2018-09-17T03:33:31.000Z" itemprop="datePublished">2018-09-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/17/Array 之 ES5 some/">Array 之 ES5 some</a>
     </h1>
   
 
@@ -85,76 +150,57 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h3 id="DOM-是什么"><a href="#DOM-是什么" class="headerlink" title="DOM 是什么"></a>DOM 是什么</h3><ol>
-<li><p>文档对象模型（DOM, Document Object Model）:是针对 XML 但经过扩展用于 HTML 的应用程序编程接口（API Application Programming Interface）</p>
-<ul>
-<li>由于 HTML 是一种超文本标记语言，是在浏览器中展示网页用的，所以 DOM 其实针对浏览器为应用程序提供的编程接口</li>
-</ul>
-</li>
-<li><p>产生的背景：(1998年10月)<br> Netscape 和 微软 公司为获得更得更多的浏览器市场份额，都自己开发了 DHTML( Dynamic HTML ), 两个浏览器之间的网页不兼容，导致 web 网页的跨平台特性消失，增加应用的开发成本，于是负责制定 Web 通信标准的 W3C (World Wide Web Consortium，万维网联盟)开始规划 DOM</p>
-<p> HTML 规范的发展的发展：</p>
-<ul>
-<li>1992年11月     HTML 1.1 规范完成</li>
-<li>1997年         HTML 4.0</li>
-<li>1999年         HTML 4.1</li>
-<li>2014年10月     HTML 5.0 标准定制</li>
-</ul>
-</li>
-<li><p>DOM 级别</p>
+<h3 id="Array-prototype-some"><a href="#Array-prototype-some" class="headerlink" title="Array.prototype.some"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some" target="_blank" rel="noopener">Array.prototype.some</a></h3><ul>
+<li><p>Grammar:</p>
 <ol>
-<li><p>DOM 0：指的就是 Internet Explorer 4.0 和 Netscxape Navigator 4.0 中最初支持的 DHTML</p>
+<li>array.some(callback[, thisArg])</li>
+<li>array.some(callback(currentValue, index, array){ //do something }, this)</li>
+</ol>
 </li>
-<li><p>DOM 1：</p>
+<li><p>Description: 循环数组，找到一个满足条件的元素，就返回 true，若所有元素都不满足条件就返回 false</p>
+</li>
+<li>Return: Boolean</li>
+<li><p>特点：</p>
+<ol>
+<li>中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError</li>
+<li>找到不满足条件的元素，直接结束循环，就返回 false</li>
+<li>空数组直接返回 false</li>
+</ol>
+</li>
+<li><p>Compared with Array.prototype.every</p>
+<ol>
+<li><p>不同点：</p>
 <ul>
-<li>主要目标： DOM 对象映射 HTML 文档结构</li>
-<li>DOM core</li>
-<li>DOM HTML：DOM HTML 是建立在 DOM core 的基础之上，扩展 HTML 的对象和方法</li>
+<li>some 是遇到满足条件时结束循环，并返回值 true；every 是遇到不满足条件时结束循环，并返回值 false</li>
 </ul>
 </li>
-<li><p>DOM 2</p>
+<li><p>相同点</p>
 <ul>
-<li>DOM 2 是在 DOM 1 的基础之上进行扩充：</li>
-<li>DOM View（ DOM 视图）：定义跟踪不同文档</li>
-<li>DOM Events（ DOM 事件）：定义事件和事件处理的接口</li>
-<li>DOM Style （ DOM 样式 ）：定义基于 CSS 为元素应用样式的接口</li>
-<li>DOM 遍历和范围 （ DOM Traversal and Range ）：定义了遍历和操作文档的接口</li>
-</ul>
-</li>
-<li><p>DOM 3</p>
-<ul>
-<li>DOM3 级则进一步扩展了 DOM：</li>
-<li>引入了以统一方式加载和保存文档的方法（在 DOM 加载和保存模块（DOMLoad and Save）中定义）</li>
-<li>新增了验证文档的方法（在 DOM 验证（DOMValidation）模块中定义）</li>
-<li>也对 DOM core 进行了扩展（支持 XML 1.0）</li>
+<li>返回的参数类型都是 Boolean</li>
+<li>参数一样，都是 callback function</li>
 </ul>
 </li>
 </ol>
 </li>
-</ol>
-<hr>
-<h3 id="其他的-DOM-标准"><a href="#其他的-DOM-标准" class="headerlink" title="其他的 DOM 标准"></a>其他的 DOM 标准</h3><p>除了 DOM core 和 DOM HTML 之外其他的 DOM标准：</p>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._some) &#123;</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_some'</span>, &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 只要数组中的任意一个元素满足条件就返回 true ，否则返回 false</span></span><br><span class="line"><span class="comment">         * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">         * @returns &#123;Boolean&#125; result</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                len,</span><br><span class="line">                callbackState,</span><br><span class="line">                result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断参数</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Array.prototype._some params is not callback'</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断数组的长度</span></span><br><span class="line">            result = <span class="literal">false</span></span><br><span class="line">            len = <span class="keyword">this</span>.length;</span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">                callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">                <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                  result = <span class="literal">true</span>;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">                &#125;;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>SVG( 可伸缩矢量图 )</li>
-<li>MathML( 数学标记语言 )</li>
-<li>SMIL( 同步多媒体集成语言 )</li>
+<li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
 </ul>
 <hr>
-<h3 id="其他时间："><a href="#其他时间：" class="headerlink" title="其他时间："></a>其他时间：</h3><ul>
-<li>1989 年互联网才开始转为民用</li>
-<li>1999年 IE5 中首次实现 DOM</li>
-</ul>
-<hr>
-<p>参考文献：</p>
+<p>参考资料：</p>
 <ul>
-<li>《JavaScript 高级程序设计》 第三版</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/14/DOM的历史/" data-id="cjm1uwkso0000sc2v7nezj5ya" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/17/Array 之 ES5 some/" data-id="cjm5qj1u3000mjxaqb5iigkw0" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
     </footer>
   </div>
   
@@ -162,9 +208,9 @@
 
 
   
-    <article id="post-JavaScript的历史" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-JavaScript 的历史" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/09/14/JavaScript的历史/" class="article-date">
+    <a href="/2018/09/14/JavaScript 的历史/" class="article-date">
   <time datetime="2018-09-14T09:36:20.000Z" itemprop="datePublished">2018-09-14</time>
 </a>
     
@@ -176,7 +222,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/14/JavaScript的历史/">JavaScript的历史</a>
+      <a class="article-title" href="/2018/09/14/JavaScript 的历史/">JavaScript 的历史</a>
     </h1>
   
 
@@ -273,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/14/JavaScript的历史/" data-id="cjm1uwkss0001sc2vsx2ondi5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/14/JavaScript 的历史/" data-id="cjm39ktfs000tv02v7t7yxeig" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/history/">history</a></li></ul>
@@ -285,10 +331,10 @@
 
 
   
-    <article id="post-我的 CSS" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-性能优化之 DOM" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/07/07/我的 CSS/" class="article-date">
-  <time datetime="2018-07-07T10:25:47.000Z" itemprop="datePublished">2018-07-07</time>
+    <a href="/2018/09/02/性能优化之 DOM/" class="article-date">
+  <time datetime="2018-09-02T11:57:40.000Z" itemprop="datePublished">2018-09-02</time>
 </a>
     
   </div>
@@ -299,7 +345,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/07/我的 CSS/">我的 CSS</a>
+      <a class="article-title" href="/2018/09/02/性能优化之 DOM/">性能优化之 DOM</a>
     </h1>
   
 
@@ -308,42 +354,141 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h3 id="HTML5秘籍-第-6-章-美妙的-CSS3-字体和特效"><a href="#HTML5秘籍-第-6-章-美妙的-CSS3-字体和特效" class="headerlink" title="HTML5秘籍 第 6 章 - 美妙的 CSS3 字体和特效"></a>HTML5秘籍 第 6 章 - 美妙的 CSS3 字体和特效</h3><p>工具：</p>
 <ol>
-<li>使用 Can i use 去检查 CSS 的兼容</li>
-<li>-prefix-free 库自动为需要添加浏览器前缀的 CSS 样式</li>
+<li>访问和修改 DOM 元素</li>
+<li>修改 DOM 元素的样式会导致重绘（repaint）和重排（reflow）</li>
+<li>通过 DOM 事件处理与用户的交互</li>
+</ol>
+<h3 id="什么是-DOM-他为什么慢"><a href="#什么是-DOM-他为什么慢" class="headerlink" title="什么是 DOM, 他为什么慢"></a>什么是 DOM, 他为什么慢</h3><ol>
+<li><p>文档对象模型（DOM）是一个独立于语言的，用于操作 XML 和 HTML 文档的程序接口（API）</p>
+</li>
+<li><p>浏览器中的 DOM :</p>
+<ol>
+<li>在 web 应用程序中获取 XML 文档，并使用 DOM API 用来访问文档中的数据，DOM 再浏览器中的接口却是用 JavaScript 实现的</li>
+<li>再浏览器中通常把 DOM 和 JavaScript 独立实现<ul>
+<li>IE 中 JavaScript 的实现名为 JScript 位于 jscript.dll 文件中， DOM 的实现则是在另外一个库中：mshtml.dll（内部称 Trident ）;分离的优点：允许使用其他技术和语言共享使用 DOM 和 Trident 提供的渲染函数</li>
+<li>Safari 中的 DOM 和渲染使用 Webkit 中的 WebCore 实现，JavaScript 部分是由独立的 JavaScriptCore 引擎（ 最新版本的名字为 SquirrelFish）</li>
+<li>Google Chrome 同样使用 Webkit 中的 WebCore 库来渲染页面，JavaScript 部分名为 V8 的引擎</li>
+<li>Firefox 是使用 名为 Gecko 的渲染引擎来渲染页面， JavaScript部分是引擎名为 SpiderMonkey （ 最新：TraceMonkey）的引擎</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>DOM 为什么慢</p>
+<ol>
+<li>天生就慢（简单理解：两个互相独立的功能只要通过接口彼此链接，就会产生消耗）<ul>
+<li>解决方案：尽量在 ES（ js 三大部分之一）中处理，尽可能减少 DOM 操作</li>
+</ul>
+</li>
+<li><p>天生慢的具体表现：</p>
+<ul>
+<li><p>DOM 的访问和修改 –&gt; 会导致浏览器重新计算页面的几何变化 –&gt; 通用法则：减少访问 DOM 的次数，把运算尽量留在 ECMAScript 这一端</p>
+<ul>
+<li>innerHTML 和 DOM 方法（document.createElement() 和 document.createTextNode()）</li>
+<li><p>节点克隆（element.cloneNode()）,比上面两种方式要快一点点</p>
+</li>
+<li><p>HTML 集合（类数组列表）底层文档对象更新时，他也自动更新<br>获取 HTML 集合</p>
+<ol>
+<li>document.getElementsByName() // 获取</li>
+<li>document.getElementsByClassName() // 获取以 class name 组成的集合</li>
+<li>document.getElementsByTagName()</li>
+<li>document.images // 页面所有的 img 元素</li>
+<li>document.links // 页面所有的 a 元素</li>
+<li>document.forms[0].element // 页面中第一个表单的所有字段</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="4">
+<li><p>重排和重绘</p>
+<p>什么是重排，影响因素</p>
+<ol>
+<li><p>重排：DOM 的变化影响来元素的几何属性（比如宽高等）其他的元素可能会因此受收到影响，浏览器会使渲染树中受到影响的部分失效，并重新构造渲染树，这个过程称为：重排</p>
+</li>
+<li><p>重排何时发生（如何避免重排重绘）</p>
+<ul>
+<li>添加和删除可见的 DOM 元素</li>
+<li>元素位置改变</li>
+<li>元素尺寸改变（包括：padding margin border height width）</li>
+<li>内容改变，例如：文本改变或图片被另外一个不同尺寸的图片代替</li>
+<li>页面渲染器初始化</li>
+<li>浏览器窗口尺寸变化</li>
+</ul>
+<ol>
+<li><p>如何避免减少重排：</p>
+<ul>
+<li>针对使用 js 修改样式： el.style.xxx 使用 el.style.cssText 合并，或者使用 el.className</li>
+<li><p>正对批量修改 DOM ：</p>
+<ol>
+<li><p>使用元素 脱离文档流（如何脱离文档流）</p>
+<ul>
+<li>隐藏元素</li>
+<li>使用文档片断（docuement fragment）在当前 DOM 之外构建一个子树，再把它拷贝回文档中</li>
+</ul>
+</li>
+<li><p>对其应用多重改变</p>
+</li>
+<li>把元素带回文档中</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>渲染树变化的排队与刷新</p>
+<ul>
+<li>获取布局信息的操作会导致队列刷新(为获取最新的布局信息，会强制页面进行重排以获取最新的尺寸)<ol>
+<li>offsetTop, offsetLeft, offsetRight, offsetBottom</li>
+<li>scrollTop, scrollLeft, scrollRight, scrollBottom</li>
+<li>clientTop, clentLeft, clientWidth, clientHeight</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="4">
+<li><p>什么是重绘，影响因素</p>
+<ol>
+<li>当 DOM 元素的改变不会影响元素的几何属性的时候，页面会在发生的区域进行重绘</li>
+</ol>
+</li>
+<li><p>重排和重绘的关系</p>
+<ol>
+<li>重排一定会引起重绘；重绘不一定会引起重排</li>
+</ol>
+</li>
+<li><p>其他的优化内容：</p>
+<ul>
+<li>缓存布局信息：避免多次获取元素的尺寸，他会强制页面进行重排，以快速获取页面的精确的尺寸</li>
+<li>动画优化：脱离文档流，减少对页面布局的影响</li>
+<li>事件委托：避免在每个需要触发的元素上绑定事件，只需要在我们指定的父级上绑定事件</li>
+<li>尽量少访问 HTML 集合，HTML 集合时类数组列表，但是访问数组比访问类数组要快</li>
+<li>使用访问局部变量去访问 DOM</li>
+<li>DOM 的方法去访问元素的改进</li>
+<li>选择 API 的使用</li>
+</ul>
+</li>
 </ol>
 <hr>
-<h3 id="CSS-分类"><a href="#CSS-分类" class="headerlink" title="CSS 分类"></a>CSS 分类</h3><ol>
-<li><p>透明：<br> CSS3: opacity, rgba()</p>
-</li>
-<li><p>圆角：<br> CSS3: border-radius</p>
-</li>
-<li><p>背景：<br> CSS3: background-image, background-position, background-repeat</p>
-</li>
-<li><p>阴影(CSS3)</p>
+<p>参考文献：</p>
 <ul>
-<li><p>盒子阴影<br> CSS3: box-shadow [IE 9]</p>
-</li>
-<li><p>文本阴影<br> CSS3: text-shadow [IE 10]</p>
-</li>
+<li>《高新能的 JavaScript》</li>
 </ul>
-</li>
-<li><p>渐变(CSS3)</p>
-<ul>
-<li>线性渐变: linear-gradient() [IE 10]</li>
-<li>放射性渐变: radial-gradient() [IE 10]</li>
-</ul>
-</li>
-</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/我的 CSS/" data-id="cjm1uwkt00005sc2vdbtlyft3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/02/性能优化之 DOM/" data-id="cjm39kz6y000vv02v5yillan0" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5-CSS3-HTML-CSS/">HTML5 CSS3 HTML CSS</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
     </footer>
   </div>
@@ -352,10 +497,10 @@
 
 
   
-    <article id="post-c语言学习-hello-world-md" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Array 之 ES6 includes" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/06/19/c语言学习-hello-world-md/" class="article-date">
-  <time datetime="2018-06-19T06:15:24.000Z" itemprop="datePublished">2018-06-19</time>
+    <a href="/2018/08/11/Array 之 ES6 includes/" class="article-date">
+  <time datetime="2018-08-11T02:20:04.000Z" itemprop="datePublished">2018-08-11</time>
 </a>
     
   </div>
@@ -366,7 +511,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/19/c语言学习-hello-world-md/">c语言学习-hello_world</a>
+      <a class="article-title" href="/2018/08/11/Array 之 ES6 includes/">Array 之 ES6 includes</a>
     </h1>
   
 
@@ -374,29 +519,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Mac-去编译和链接-c-程序"><a href="#Mac-去编译和链接-c-程序" class="headerlink" title="Mac 去编译和链接 c 程序"></a>Mac 去编译和链接 c 程序</h3><p>例子：<br>如：/helloWrold.c</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello world!"</span>);</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="编译和链接的步骤合并"><a href="#编译和链接的步骤合并" class="headerlink" title="编译和链接的步骤合并"></a>编译和链接的步骤合并</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cc helloWrold.c</span><br></pre></td></tr></table></figure>
-<p>将会生成 a.out 在 mac 下可执行文件的后缀，windows 下则是 a.exe 结尾</p>
-<h4 id="编译和链接的步骤可分开"><a href="#编译和链接的步骤可分开" class="headerlink" title="编译和链接的步骤可分开"></a>编译和链接的步骤可分开</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cc -c helloWorld.c</span><br></pre></td></tr></table></figure>
+        <hr>
+<h3 id="Array-prototype-includes"><a href="#Array-prototype-includes" class="headerlink" title="Array.prototype.includes"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank" rel="noopener">Array.prototype.includes</a></h3><ul>
+<li>Grammar: arr.includes(searchElement[, searchIndex])</li>
+<li>Description: 遍历 arr 去寻找我们想要的元素，找到则返回 true，没有找到则返回 false</li>
+<li>Return: 数据类型：Boolean</li>
+<li><p>特点：满足该条件的时候就立即返回，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个，中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError；</p>
+</li>
+<li><p>Compared with Array.prototype.indexOf</p>
+<ol>
+<li><p>不同点（返回值）</p>
 <ul>
-<li>生成 helloWorld.o</li>
+<li>返回值有区别，includes 的返回值是：Boolean，indexOf 则是 Number 类型</li>
+<li>Array.prototype.indexOf 是属于 ES3 的规范，Array.prototype.findIndex 是属于 ES6 的规范</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cc -o helloWorld helloWorld.o</span><br></pre></td></tr></table></figure>
-<p>生成 helloWorld</p>
-<h4 id="执行编译后的文件"><a href="#执行编译后的文件" class="headerlink" title="执行编译后的文件"></a>执行编译后的文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./a.out</span><br></pre></td></tr></table></figure>
-<p>或者<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./helloWorld</span><br></pre></td></tr></table></figure></p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
-<li>编写程序 -&gt; 编译 -&gt; 链接 -&gt; 运行</li>
+</li>
+<li><p>相同点</p>
+<ul>
+<li>接受的参数一致</li>
+<li>不改变数组本身</li>
+</ul>
+</li>
 </ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._includes) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据 searchElement 按顺序在数组中元素的对比，=== 则是 true 否则为 false</span></span><br><span class="line"><span class="comment">     * @param &#123;*&#125; searchElement</span></span><br><span class="line"><span class="comment">     * @param &#123;Number&#125; searchIndex</span></span><br><span class="line"><span class="comment">     * @returns &#123;Boolean&#125; result</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_includes'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">searchElement, searchIndex</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                result = <span class="literal">false</span>,</span><br><span class="line">                len = <span class="keyword">this</span>.length;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断数组长度</span></span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断 searchIndex</span></span><br><span class="line">            <span class="keyword">if</span> (!searchIndex || <span class="keyword">typeof</span> searchIndex !== <span class="string">'number'</span>) searchIndex = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// #region 3. 获取遍历的起点</span></span><br><span class="line">            i = searchIndex;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (searchIndex &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                searchIndex += len;</span><br><span class="line">                i = searchIndex &lt; <span class="number">0</span> ? <span class="number">0</span> : searchIndex;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (searchIndex &gt;= len) &#123;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// #endregion 3. 获取遍历的起点</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>[i] === searchElement) &#123; <span class="comment">// 必须是 ===</span></span><br><span class="line">                  result = <span class="literal">true</span>;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/19/c语言学习-hello-world-md/" data-id="cjm1uwksv0002sc2vtq27nsp3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/11/Array 之 ES6 includes/" data-id="cjm48gs8j0007jx2vfhph4v2p" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
     </footer>
   </div>
@@ -405,10 +564,10 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-ES6函数特性" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/04/21/hello-world/" class="article-date">
-  <time datetime="2018-04-21T14:55:23.251Z" itemprop="datePublished">2018-04-21</time>
+    <a href="/2018/08/06/ES6函数特性/" class="article-date">
+  <time datetime="2018-08-06T10:29:22.000Z" itemprop="datePublished">2018-08-06</time>
 </a>
     
   </div>
@@ -419,7 +578,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/21/hello-world/">Hello World</a>
+      <a class="article-title" href="/2018/08/06/ES6函数特性/">ES6 函数特性</a>
     </h1>
   
 
@@ -427,23 +586,418 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>author</p>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <hr>
+<h3 id="设置默认参数"><a href="#设置默认参数" class="headerlink" title="设置默认参数"></a>设置默认参数</h3><ol>
+<li>形参为 undefined 或不传则使用默认值</li>
+<li>默认参数对 arguments 的影响<ul>
+<li>使用默认参数 arguments 对象不会跟随参数的改变而改变，只保留初始的值</li>
+<li>这个种表现和 在使用 “use strict” 的表现一样</li>
+</ul>
+</li>
+<li>默认参数的临时死区</li>
+</ol>
+<hr>
+<h3 id="使用不定参数"><a href="#使用不定参数" class="headerlink" title="使用不定参数"></a>使用不定参数</h3><ol>
+<li><p>function (obj, …arg) {}<br>特点：</p>
+<ol>
+<li>每个函数只能声明一个不定参数</li>
+<li>而且一定要放在所有参数的末尾</li>
+<li>不能用于对象字面量 setter 之中</li>
+</ol>
+<p>值得注意的地方，不定参数设计的目的：代替 arguments 对象</p>
+</li>
+</ol>
+<hr>
+<h3 id="展开运算符"><a href="#展开运算符" class="headerlink" title="展开运算符"></a>展开运算符</h3><ol>
+<li>[…arg]</li>
+</ol>
+<hr>
+<h3 id="函数-name-属性-调试作用"><a href="#函数-name-属性-调试作用" class="headerlink" title="函数 name 属性(调试作用)"></a>函数 name 属性(调试作用)</h3><hr>
+<h3 id="明确函数的多重用途"><a href="#明确函数的多重用途" class="headerlink" title="明确函数的多重用途"></a>明确函数的多重用途</h3><p>函数的调用有两种方式：</p>
+<ul>
+<li>第一种：func()</li>
+<li>第二种：new Func()</li>
+</ul>
+<p>这两种调用方式的区别：</p>
+<ul>
+<li>使用 第一种方式的时候实际调用是函数内部的 [[Call]] 方法</li>
+<li>使用 第二种方式的时候实际调用是函数内部的 [[Construct]] 方法，这个方法会创建一个该构造函数的新实例，并将 this 绑定到新实例上。</li>
+</ul>
+<hr>
+<h3 id="ECMAScript5-中判断函数被调用的方法"><a href="#ECMAScript5-中判断函数被调用的方法" class="headerlink" title="ECMAScript5 中判断函数被调用的方法"></a>ECMAScript5 中判断函数被调用的方法</h3><ol>
+<li>使用 instanceof</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> <span class="keyword">instanceof</span> Person) &#123;</span><br><span class="line">      <span class="keyword">this</span>.name = name</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'必须通过 new 关键词调用 Person'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">'99'</span>) <span class="comment">// 使用 new 关键字 有效</span></span><br><span class="line"><span class="keyword">var</span> person = Person(<span class="string">'69'</span>) <span class="comment">// 抛出错误</span></span><br><span class="line"><span class="keyword">var</span> person = Person.call(person, <span class="string">'66'</span>) <span class="comment">// 主动改变 construct 中的 this 绑定 有效</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用 call 或者 applly 来调用 construct</li>
+</ol>
+<hr>
+<h3 id="ECMAScript6-中判断函数被调用的方法"><a href="#ECMAScript6-中判断函数被调用的方法" class="headerlink" title="ECMAScript6 中判断函数被调用的方法"></a>ECMAScript6 中判断函数被调用的方法</h3><ol>
+<li><p>使用 new.traget 元属性，是指非对象的属性，可以提供非对象目标的补充信息（例如： new）</p>
+</li>
+<li><p>调用 [[call]] 方法也会报错，必须使用 new 关键字 new.traget === ‘undefined’</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="keyword">new</span>.target !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.name = name</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'必须通过 new 关键词调用 Person'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  注意：在函数外使用 new.traget 是一个语法错误</p>
+<hr>
+<h3 id="块级函数（有利于提升声明声明的能力）"><a href="#块级函数（有利于提升声明声明的能力）" class="headerlink" title="块级函数（有利于提升声明声明的能力）"></a>块级函数（有利于提升声明声明的能力）</h3><p>在作用域的顶部使用 ‘use strict’</p>
+<p>和使用 let 表达式比较相似，执行过程流出流代码块，函数定义立即被销毁</p>
+<p>在该代码块中，块级函数会被提升至块的顶部，但是 let 定义的函数表达式不会被提升</p>
+<p>非严格模式下</p>
+<ol>
+<li>块级函数被提升到全局作用域中</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> add)</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">add</span> (<span class="params">a, ...b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b[<span class="number">0</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="箭头函数的目标"><a href="#箭头函数的目标" class="headerlink" title="箭头函数的目标"></a>箭头函数的目标</h3><ol>
+<li><p>即用即弃</p>
+<h4 id="箭头函数的特点："><a href="#箭头函数的特点：" class="headerlink" title="箭头函数的特点："></a>箭头函数的特点：</h4><ol>
+<li><p>没有 this, super, arguments, new.target 绑定</p>
+</li>
+<li><p>不能通过 new 关键字调用</p>
+</li>
+<li><p>没有原型<br>原因：不能通过 new 关键字调用 =&gt; 箭头函数是没有 construct 方法 （没有原型）</p>
+</li>
+<li><p>不可以改变 this 的绑定<br>表现：不能通过 bind，call，apply 来改变 this 的直线</p>
+</li>
+<li><p>不支持 arguments 对象</p>
+</li>
+<li><p>不支持重复的命名参数</p>
+</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="尾调用优化"><a href="#尾调用优化" class="headerlink" title="尾调用优化"></a>尾调用优化</h3><p>  自动开启尾调用优化的三个条件：</p>
+<ol>
+<li>尾调用不访问当前栈帧的变量</li>
+<li>在函数内部，尾调用是最后一条语句</li>
+<li>尾调用的结果作为函数值返回</li>
+</ol>
+<hr>
+<p>参考文献：</p>
+<ul>
+<li>《深入理解 ES6》</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/21/hello-world/" data-id="cjm1uwksz0004sc2vbyzqlze1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/06/ES6函数特性/" data-id="cjm1v2o090009dw2vsrg6z37t" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ES6 对象的扩展" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/03/ES6 对象的扩展/" class="article-date">
+  <time datetime="2018-08-03T11:30:27.000Z" itemprop="datePublished">2018-08-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/03/ES6 对象的扩展/">ES6 对象的扩展</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="对象的分类"><a href="#对象的分类" class="headerlink" title="对象的分类"></a>对象的分类</h3><ol>
+<li><p>普通对象<br>具有 JavaScript 对象所有的默认内部行为</p>
+</li>
+<li><p>特异对象<br>具有某些与默认行为不符的内部行为</p>
+</li>
+<li><p>标准对象<br>ES6 规范中定义的对象，例如： Array, Date 等。标准对象既可以是普通对象，也可以是特异对象</p>
+</li>
+<li><p>内建对象<br>脚本开始执行时存在于 JavaScript 执行环境中的对象，所有标准对象都是内建对象</p>
+</li>
+</ol>
+<h3 id="对象字面量语法扩展"><a href="#对象字面量语法扩展" class="headerlink" title="对象字面量语法扩展"></a>对象字面量语法扩展</h3><ol>
+<li>属性初始值的简写</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">'1'</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>对象方法的简写</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  name() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>可计算属性名</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">'name'</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  [ name ]() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="新增方法"><a href="#新增方法" class="headerlink" title="新增方法"></a>新增方法</h3><ol>
+<li>Object.is()</li>
+<li>Object.assign()</li>
+</ol>
+<hr>
+<h3 id="重复的对象字面量属性"><a href="#重复的对象字面量属性" class="headerlink" title="重复的对象字面量属性"></a>重复的对象字面量属性</h3><ol>
+<li>ES5 的时候，重复的字面量属性是会报错</li>
+<li>ES6 会使用重复属性名中最后一个属性</li>
+</ol>
+<hr>
+<h3 id="自有属性枚举顺序"><a href="#自有属性枚举顺序" class="headerlink" title="自有属性枚举顺序"></a>自有属性枚举顺序</h3><ol>
+<li>ES5 自有属性的枚举是根据 JavaScript 引擎厂商自行决定</li>
+<li>ES6 严格规定对象的自有属性被枚举<ol>
+<li>所有数字键按升序排序</li>
+<li>所有字符串按照它们被加入对象的顺序排序</li>
+<li>s所有 symbol 按照它们被加入对象的顺序排序</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="增强对象原型"><a href="#增强对象原型" class="headerlink" title="增强对象原型"></a>增强对象原型</h3><ol>
+<li>改变对象的原型<br>ES5: Object.getPrototypeof(obj)<br>ES6: Object.setPrototypeof(obj, prototypeFun)<br>  super.xxxx(用于获取当前对象的 prototype)</li>
+</ol>
+<hr>
+<h3 id="正式的方法定义"><a href="#正式的方法定义" class="headerlink" title="正式的方法定义"></a>正式的方法定义</h3><ol>
+<li>ECMAScript6 关于对象中方法的定义：定义为一个 函数，它会有一个内部的 [[HomeObject]] 属性来容纳这个方法从属的对象</li>
+</ol>
+<hr>
+<p>参考文献：</p>
+<ul>
+<li>《深入理解 ES6》</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/03/ES6 对象的扩展/" data-id="cjm39me4l001bv02vw8wyow2k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ES6 模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/20/ES6 模块/" class="article-date">
+  <time datetime="2018-07-20T04:48:44.000Z" itemprop="datePublished">2018-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/20/ES6 模块/">ES6 模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="ES6之前的代码模块封装"><a href="#ES6之前的代码模块封装" class="headerlink" title="ES6之前的代码模块封装"></a>ES6之前的代码模块封装</h3><ol>
+<li>使用闭包，产生一个作用域去封装数据和代码，并挂载到 window 对象</li>
+</ol>
+<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><ol>
+<li>模块是是什么：模块是自动运行在严格模式下并且没有办法退出运行的 JavaScript 代码。</li>
+</ol>
+<h3 id="模块化的特点："><a href="#模块化的特点：" class="headerlink" title="模块化的特点："></a>模块化的特点：</h3><ol>
+<li>与作用域的关系：在模块顶部创建的变量不会自动添加到全局共享作用域，只会在该模块的顶级作用域中存在</li>
+<li>在模块的顶部，；this 的值是 undefined</li>
+<li>模块不支持 HTML 风格的代码注释</li>
+</ol>
+<h3 id="模块和脚本的区别"><a href="#模块和脚本的区别" class="headerlink" title="模块和脚本的区别"></a>模块和脚本的区别</h3><ol>
+<li>脚本：任何不是模块的 JavaScript 代码</li>
+</ol>
+<h3 id="模块的-导入和导出"><a href="#模块的-导入和导出" class="headerlink" title="模块的 导入和导出"></a>模块的 导入和导出</h3><ul>
+<li><p>导出：导出声明和导出引用</p>
+</li>
+<li><p>导入：导入单个绑定，导入多个绑定，命名空间导入, 无绑定导入</p>
+</li>
+<li><p>注意：不管 import 语句把一个模块写了多少次，该模块将只执行一次</p>
+</li>
+<li><p>as 可以用于改变导入或导出的名字</p>
+</li>
+<li><p>导入和导出默认值这个语法被优化过，尽量使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; name <span class="keyword">as</span> <span class="keyword">default</span> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新导出一个绑定</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">'./path'</span></span><br><span class="line"><span class="keyword">export</span> &#123; name <span class="keyword">as</span> newName &#125; <span class="string">'./path'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模块语法的限制</p>
+<ol>
+<li><p>export 和 import 一个重要的限制是：它们必须在其他语句和函数之外使用，否则会出现语法的错误</p>
+<ul>
+<li>原因： 其中一个原因： 是要让 JavaScript 引擎静态地确定哪些可以导出</li>
+</ul>
+</li>
+<li><p>import 只能在顶部使用</p>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<p>参考文献：</p>
+<ul>
+<li>《深入理解 ES6》</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/20/ES6 模块/" data-id="cjm39m6wr0019v02vcla6qk7y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Array 之 ES5 map" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/10/Array 之 ES5 map/" class="article-date">
+  <time datetime="2018-07-10T03:45:31.000Z" itemprop="datePublished">2018-07-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/10/Array 之 ES5 map/">Array 之 ES5 map</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="Array-prototype-map"><a href="#Array-prototype-map" class="headerlink" title="Array.prototype.map"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank" rel="noopener">Array.prototype.map</a></h3><ul>
+<li><p>Grammar:</p>
+<ol>
+<li>array.map(callback[, thisArg])</li>
+<li>array.map(callback(currentValue, index, array){ //do something }, this)</li>
+</ol>
+</li>
+<li><p>Description: 迭代数组</p>
+</li>
+<li>Return: 迭代后的数组</li>
+<li><p>特点：</p>
+<ol>
+<li>中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError</li>
+<li>可在回调函数中使用 return 替换当前的元素</li>
+<li>不会改变原数组</li>
+</ol>
+</li>
+<li><p>Compared with forEach:</p>
+<ol>
+<li>不同点：<ul>
+<li>可在回调函数中使用 return 替换当前的元素</li>
+<li>返回值是迭代后的数组，支持链式调用</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._map) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 循环数组中的元素，可以在 callback function 中使用 return 生成新的数组的元素</span></span><br><span class="line"><span class="comment">     * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">     * @returns &#123;Array&#125; 改变</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_map'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                len,</span><br><span class="line">                result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断参数</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断数组长度</span></span><br><span class="line">            len = <span class="keyword">this</span>.length;</span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 3. 初始化循环起点，并开始循环</span></span><br><span class="line">            result = [];</span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">              result = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>) <span class="comment">// 在 Array.prototype._forEach 中没有赋值这一步</span></span><br><span class="line">              i++</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
+</ul>
+<hr>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/10/Array 之 ES5 map/" data-id="cjm4bin31000djx2v34rzmwrv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Array 之 ES6 find" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/09/Array 之 ES6 find/" class="article-date">
+  <time datetime="2018-07-09T01:57:01.000Z" itemprop="datePublished">2018-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/09/Array 之 ES6 find/">Array 之 ES6 find</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="Array-prototype-find"><a href="#Array-prototype-find" class="headerlink" title="Array.prototype.find"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/find" target="_blank" rel="noopener">Array.prototype.find</a></h3><ul>
+<li>Grammar: arr.find(callback[, thisArg])</li>
+<li>Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的元素，否则返回 undefind;</li>
+<li>Return: 数据类型：*</li>
+<li><p>特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个, 中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError；</p>
+</li>
+<li><p><a href="https://www.pengjiandry.com/2018/04/20/Array%20%E4%B9%8B%20ES6%20findIndex/" target="_blank" rel="noopener">Compared with Array.prototype.findIndex</a></p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._find) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 返回满足条件的第一个元素，若数组没有项元素满足条件则返回 undefined</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @returns &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._find = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            callbackState,</span><br><span class="line">            result,</span><br><span class="line">            len;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 1. 判断callback</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 2. 判断数组长度</span></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">// #endregion 2. 判断数组长度</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                result = <span class="keyword">this</span>[i]; <span class="comment">// 在 Array.prototype._findIndex 中 result =i</span></span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 是否使用 break，决定了获取到的值的顺序</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
+</ul>
+<hr>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/09/Array 之 ES6 find/" data-id="cjm47nhz90004jx2vvph96dz7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
     </footer>
   </div>
   
@@ -452,6 +1006,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -464,7 +1023,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5-CSS3-HTML-CSS/">HTML5 CSS3 HTML CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/history/">history</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BOM/">BOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/history/">history</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li></ul>
     </div>
   </div>
 
@@ -474,7 +1033,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/HTML5-CSS3-HTML-CSS/" style="font-size: 10px;">HTML5 CSS3 HTML CSS</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/history/" style="font-size: 10px;">history</a>
+      <a href="/tags/BOM/" style="font-size: 10px;">BOM</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/history/" style="font-size: 10px;">history</a> <a href="/tags/http/" style="font-size: 10px;">http</a>
     </div>
   </div>
 
@@ -483,7 +1042,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
     </div>
   </div>
 
@@ -496,23 +1055,23 @@
       <ul>
         
           <li>
-            <a href="/2018/09/14/DOM的历史/">DOM的历史</a>
+            <a href="/2018/09/17/Array 之 ES5 reduce/">Array 之 ES5 reduce</a>
           </li>
         
           <li>
-            <a href="/2018/09/14/JavaScript的历史/">JavaScript的历史</a>
+            <a href="/2018/09/17/Array 之 ES5 some/">Array 之 ES5 some</a>
           </li>
         
           <li>
-            <a href="/2018/07/07/我的 CSS/">我的 CSS</a>
+            <a href="/2018/09/14/JavaScript 的历史/">JavaScript 的历史</a>
           </li>
         
           <li>
-            <a href="/2018/06/19/c语言学习-hello-world-md/">c语言学习-hello_world</a>
+            <a href="/2018/09/02/性能优化之 DOM/">性能优化之 DOM</a>
           </li>
         
           <li>
-            <a href="/2018/04/21/hello-world/">Hello World</a>
+            <a href="/2018/08/11/Array 之 ES6 includes/">Array 之 ES6 includes</a>
           </li>
         
       </ul>

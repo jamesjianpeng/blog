@@ -1,7 +1,7 @@
 ---
 title: ES6 函数特性
 date: 2018-08-06 18:29:22
-tags: JavaScript
+tags: [ JavaScript, ECMAScript6, Function ]
 ---
 
 ---------
@@ -120,7 +120,7 @@ tags: JavaScript
         原因：不能通过 new 关键字调用 => 箭头函数是没有 construct 方法 （没有原型）
 
     4. 不可以改变 this 的绑定
-        表现：不能通过 bind，call，apply 来改变 this 的直线
+        表现：不能通过 bind，call，apply 来改变 this 的指向
 
     5. 不支持 arguments 对象
 

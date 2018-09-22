@@ -1,7 +1,7 @@
 ---
 title: Array 之 ES6 find
 date: 2018-07-09 09:57:01
-tags: JavaScript
+tags: [ JavaScript, ECMAScript6 ]
 ---
 
 -----

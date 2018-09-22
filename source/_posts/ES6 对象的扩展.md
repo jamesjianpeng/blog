@@ -1,7 +1,7 @@
 ---
 title: ES6 对象的扩展
 date: 2018-08-3 19:30:27
-tags: JavaScript
+tags: [ JavaScript, ECMAScript6, Object ]
 ---
 
 -------
@@ -54,7 +54,25 @@ tags: JavaScript
 ### 新增方法
 
   1. Object.is()
+
+```js
+    // es5
+    console.log(NaN === NaN); // false
+    console.log(0 === -0); // true
+    console.log(0 === +0); // true
+    console.log(-0 === -0); // true
+
+    // es6
+    Object.is(NaN, NaN); // true
+
+    // es6
+    Object.is(-0, +0); // false
+    Object.is(-0, 0); // false
+    Object.is(+0, 0); // false
+```
+
   2. Object.assign()
+
 -----
 
 ### 重复的对象字面量属性
@@ -68,7 +86,7 @@ tags: JavaScript
   2. ES6 严格规定对象的自有属性被枚举
     1. 所有数字键按升序排序
     2. 所有字符串按照它们被加入对象的顺序排序
-    3. s所有 symbol 按照它们被加入对象的顺序排序
+    3. 所有 symbol 按照它们被加入对象的顺序排序
 -----
 
 ### 增强对象原型

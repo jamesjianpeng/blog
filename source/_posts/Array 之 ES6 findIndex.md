@@ -1,7 +1,7 @@
 ---
 title: Array 之 ES6 findIndex
 date: 2018-04-20 09:42:20
-tags: JavaScript
+tags: [ JavaScript, ECMAScript6 ]
 ---
 
 -----

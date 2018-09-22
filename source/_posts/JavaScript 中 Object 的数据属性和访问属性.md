@@ -1,7 +1,7 @@
 ---
 title: JavaScript Object 的数据属性和访问属性
 date: 2018-02-01 13:41:42
-tags: JavaScript
+tags: [ JavaScript, Object ]
 ---
 
 ---

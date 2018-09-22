@@ -1,7 +1,7 @@
 ---
 title: Array 之 ES5 every
 date: 2017-11-10 11:15:46
-tags: JavaScript
+tags: [ JavaScript, ECMAScript5 ]
 ---
 
 ---

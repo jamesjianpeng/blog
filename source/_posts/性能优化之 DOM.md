@@ -1,7 +1,7 @@
 ---
 title: 性能优化之 DOM
 date: 2018-09-02 19:57:40
-tags: JavaScript
+tags: [ JavaScript, DOM ]
 ---
 
 ------

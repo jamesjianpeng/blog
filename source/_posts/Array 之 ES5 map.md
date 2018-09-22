@@ -1,7 +1,7 @@
 ---
 title: Array 之 ES5 map
 date: 2018-07-10 11:45:31
-tags: JavaScript
+tags: [ JavaScript, ECMAScript5 ]
 ---
 
 ---

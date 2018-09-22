@@ -1,7 +1,7 @@
 ---
 title: JavaScript 的历史
 date: 2018-09-14 17:36:20
-tags: history
+tags: [ JavaScript, History ]
 ---
 
 ---------
@@ -9,7 +9,7 @@ tags: history
 ### JavaScript 的历史概述
 
 1. 在 JavaScript 之前表单的验证是在服务端进行
-      * 对应用户说体验不好
+      * 对于用户说体验不好
       * 对于服务端来说，会在一定程度上浪费服务端的资源
 
 2. 为了解决这样的提高 web 应用的性能和提高用户的体养验 JavaScript 便出现了
@@ -18,7 +18,7 @@ tags: history
           Netscape 公司开发的 Netscape Navigator 2 浏览器上支持名为 LiveScript 的脚本。为了按照预期的时间发布这个新的语言，该公司就和 Sun 公司合作一起研发。最终成功发布，是不过为了蹭 Java 的顺风车，临时改名为 JavaScript
 
       * 199?年?月 JavaScript 1.1
-          Netscape Navigator 3 发布，JavaScript 1.0 并更新到 JavaScript 1.1
+          Netscape Navigator 3 发布，JavaScript 1.0 更新到 JavaScript 1.1
 
       * 1996年8月 JScript 1.0
           Netscape 公司发布的 JavaScript 脚本为 Netscape Navigator 获得更多的用户，它的竞争对手 微软 为了不失去原来的地位，决定发布 Internet Explorer 3 浏览，并且支持自己研发的 JScript 脚本，浏览器市场份额大战开始了

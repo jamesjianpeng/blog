@@ -1,7 +1,7 @@
 ---
 title: Array 之 ES6 includes
 date: 2018-08-11 10:20:04
-tags: JavaScript
+tags: [ JavaScript, ECMAScript6 ]
 ---
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: JavaScript 的使用 script 标签
 date: 2018-03-04 18:01:21
-tags: JavaScript
+tags: [ JavaScript, HTML ]
 ---
 
 -----

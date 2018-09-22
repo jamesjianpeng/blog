@@ -1,7 +1,7 @@
 ---
 title: Array 之 ES5 reduce
 date: 2018-09-17 12:25:34
-tags: JavaScript
+tags: [ JavaScript, ECMAScript5 ]
 ---
 
 ### [Array.prototype.reduce](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)

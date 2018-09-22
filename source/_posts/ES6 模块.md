@@ -1,7 +1,7 @@
 ---
 title: ES6 模块
 date: 2018-07-20 12:48:44
-tags: JavaScript
+tags: [ JavaScript, ECMAScript6, module ]
 ---
 
 -----

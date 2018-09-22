@@ -1,7 +1,7 @@
 ---
 title: Array 之 ES5 forEach
 date: 2017-12-18 11:24:43
-tags: JavaScript
+tags: [ JavaScript, ECMAScript5 ]
 ---
 
 ----

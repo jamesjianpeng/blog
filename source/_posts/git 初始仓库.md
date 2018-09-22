@@ -17,6 +17,11 @@ tags: git
   git pull origin master ----allow-unrelated-histories
 ```
 
+### 首次推送
+```
+  git push -u origin master
+```
+
 ### config 用户名和邮箱
 
 ```

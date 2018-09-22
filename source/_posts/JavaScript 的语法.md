@@ -1,7 +1,7 @@
 ---
 title: JavaScript 的语法
 date: 2017-7-05 14:16:49
-tags: JavaScript
+tags: [ JavaScript, ECMAScript ]
 ---
 ----
 

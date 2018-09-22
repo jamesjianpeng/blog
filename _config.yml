@@ -73,11 +73,11 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-## theme: landscape // 1
-## theme: next // 2
-## theme: hexo-theme-zhl // 3 页码有 bug, themes delete
+## theme: landscape ## 1
+theme: next ## 2
+## theme: hexo-theme-zhl ## 3 页码有 bug, themes delete
 ## theme: hexo-theme-mdui // 4 打不开
-theme: hexo-theme-indigo
+## theme: hexo-theme-indigo
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

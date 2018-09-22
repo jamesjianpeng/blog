@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="history," />
+  <meta name="keywords" content="JavaScript," />
 
 
 
@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="JavaScript 的历史概述 在 JavaScript 之前表单的验证是在服务端进行  对于用户说体验不好 对于服务端来说，会在一定程度上浪费服务端的资源   为了解决这样的提高 web 应用的性能和提高用户的体养验 JavaScript 便出现了  1995年2月 JavaScript 1.0  Netscape 公司开发的 Netscape Navigator 2 浏览器上支持名为 Li">
-<meta name="keywords" content="history">
+<meta name="description" content="设置默认参数 形参为 undefined 或不传则使用默认值 默认参数对 arguments 的影响 使用默认参数 arguments 对象不会跟随参数的改变而改变，只保留初始的值 这个种表现和 在使用 “use strict” 的表现一样   默认参数的临时死区   使用不定参数 function (obj, …arg) {}特点：  每个函数只能声明一个不定参数 而且一定要放在所有参数的末尾">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript 的历史">
-<meta property="og:url" content="https://www.pengjiandry.com/2018/09/14/JavaScript 的历史/index.html">
+<meta property="og:title" content="ES6 函数特性">
+<meta property="og:url" content="https://www.pengjiandry.com/2018/08/06/ES6 函数特性/index.html">
 <meta property="og:site_name" content="彭涧">
-<meta property="og:description" content="JavaScript 的历史概述 在 JavaScript 之前表单的验证是在服务端进行  对于用户说体验不好 对于服务端来说，会在一定程度上浪费服务端的资源   为了解决这样的提高 web 应用的性能和提高用户的体养验 JavaScript 便出现了  1995年2月 JavaScript 1.0  Netscape 公司开发的 Netscape Navigator 2 浏览器上支持名为 Li">
+<meta property="og:description" content="设置默认参数 形参为 undefined 或不传则使用默认值 默认参数对 arguments 的影响 使用默认参数 arguments 对象不会跟随参数的改变而改变，只保留初始的值 这个种表现和 在使用 “use strict” 的表现一样   默认参数的临时死区   使用不定参数 function (obj, …arg) {}特点：  每个函数只能声明一个不定参数 而且一定要放在所有参数的末尾">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-22T10:01:25.914Z">
+<meta property="og:updated_time" content="2018-09-22T10:06:22.987Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript 的历史">
-<meta name="twitter:description" content="JavaScript 的历史概述 在 JavaScript 之前表单的验证是在服务端进行  对于用户说体验不好 对于服务端来说，会在一定程度上浪费服务端的资源   为了解决这样的提高 web 应用的性能和提高用户的体养验 JavaScript 便出现了  1995年2月 JavaScript 1.0  Netscape 公司开发的 Netscape Navigator 2 浏览器上支持名为 Li">
+<meta name="twitter:title" content="ES6 函数特性">
+<meta name="twitter:description" content="设置默认参数 形参为 undefined 或不传则使用默认值 默认参数对 arguments 的影响 使用默认参数 arguments 对象不会跟随参数的改变而改变，只保留初始的值 这个种表现和 在使用 “use strict” 的表现一样   默认参数的临时死区   使用不定参数 function (obj, …arg) {}特点：  每个函数只能声明一个不定参数 而且一定要放在所有参数的末尾">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://www.pengjiandry.com/2018/09/14/JavaScript 的历史/"/>
+  <link rel="canonical" href="https://www.pengjiandry.com/2018/08/06/ES6 函数特性/"/>
 
 
 
 
 
-  <title>JavaScript 的历史 | 彭涧</title>
+  <title>ES6 函数特性 | 彭涧</title>
   
 
 
@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/14/JavaScript 的历史/">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/08/06/ES6 函数特性/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="james">
@@ -268,7 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript 的历史</h1>
+          <h1 class="post-title" itemprop="name headline">ES6 函数特性</h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T17:36:20+08:00">
-                2018-09-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-06T18:29:22+08:00">
+                2018-08-06
               </time>
             
 
@@ -319,89 +319,97 @@
 
       
         <hr>
-<h3 id="JavaScript-的历史概述"><a href="#JavaScript-的历史概述" class="headerlink" title="JavaScript 的历史概述"></a>JavaScript 的历史概述</h3><ol>
-<li><p>在 JavaScript 之前表单的验证是在服务端进行</p>
-<ul>
-<li>对于用户说体验不好</li>
-<li>对于服务端来说，会在一定程度上浪费服务端的资源</li>
+<h3 id="设置默认参数"><a href="#设置默认参数" class="headerlink" title="设置默认参数"></a>设置默认参数</h3><ol>
+<li>形参为 undefined 或不传则使用默认值</li>
+<li>默认参数对 arguments 的影响<ul>
+<li>使用默认参数 arguments 对象不会跟随参数的改变而改变，只保留初始的值</li>
+<li>这个种表现和 在使用 “use strict” 的表现一样</li>
 </ul>
 </li>
-<li><p>为了解决这样的提高 web 应用的性能和提高用户的体养验 JavaScript 便出现了</p>
-<ul>
-<li><p>1995年2月 JavaScript 1.0<br>  Netscape 公司开发的 Netscape Navigator 2 浏览器上支持名为 LiveScript 的脚本。为了按照预期的时间发布这个新的语言，该公司就和 Sun 公司合作一起研发。最终成功发布，是不过为了蹭 Java 的顺风车，临时改名为 JavaScript</p>
-</li>
-<li><p>199?年?月 JavaScript 1.1<br>  Netscape Navigator 3 发布，JavaScript 1.0 更新到 JavaScript 1.1</p>
-</li>
-<li><p>1996年8月 JScript 1.0<br>  Netscape 公司发布的 JavaScript 脚本为 Netscape Navigator 获得更多的用户，它的竞争对手 微软 为了不失去原来的地位，决定发布 Internet Explorer 3 浏览，并且支持自己研发的 JScript 脚本，浏览器市场份额大战开始了</p>
-</li>
-<li><p>1997年<br>  JavaScript 1.1 为了实现统一的规范，被作为蓝本送到欧洲计算机制造商协会(ECMA，European Computer Manufactu Association)，该协会指定 39号技术委员会（TC39, Technical Committee #39）去负责：“标准化一种通用，跨平台，供应商中立的脚本语言的语法和语意”，</p>
-<p>  TC39 是由 Netscape 微软 Sun 等其他关注浏览器脚本语言发的公司的程序员组成，经过几个月的努力：ECMA-262 – 定义一种名为 ECMAScript 的新脚本语言的标准</p>
-</li>
-<li><p>1998年<br>  ISO/IEC （国际标准化组织和国际电工委员会）也采用 了 ECMAScript 作为标准（ISO/IEC-16262）</p>
-<p>从这以后，各大浏览器开发商就开始致力于将 ECMAScript 作为各种的 JavaScript 实现的基础</p>
-</li>
-</ul>
-</li>
+<li>默认参数的临时死区</li>
 </ol>
 <hr>
-<h3 id="JavaScript-的发展"><a href="#JavaScript-的发展" class="headerlink" title="JavaScript 的发展"></a>JavaScript 的发展</h3><ul>
-<li><p>JavaScript 的实现比 ECMAScript 实现要更多</p>
-<ul>
-<li>浏览器的 JavaScript 包括的部分：ECMAScript，DOM，BOM</li>
-</ul>
-</li>
-<li><p>JavaScript 除了可以在浏览器这个宿主环境中运行：</p>
-<ul>
-<li>服务端 使用 node.js</li>
-<li><p>Adobe 使用 ActionScript</p>
-<p>服务端的node.js Adobe的ActionScript 以及 浏览器中的JavaScript 都是 ECMAScript 的实现</p>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="ECMAScript-的版本"><a href="#ECMAScript-的版本" class="headerlink" title="ECMAScript 的版本"></a>ECMAScript 的版本</h3><ol>
-<li><p>ECMA-262第1版</p>
-<p> 这个版本是 Netscape Navigator 3 浏览器中的发布的 JavaScript 1.1 为基础，不过有些改动：</p>
-<ul>
-<li>支持 Unicode （支持多语言开发，为什么使用 Unicode 之后就支持多语言开发？）</li>
-<li>对象也变成和任何一个浏览器平台无关</li>
-</ul>
-</li>
-<li><p>ECMA-262第2版：这个版本就是编辑和加工，，没有新增，删除，修改任何内容</p>
-</li>
-<li><p>ECMA-262第3版：这个版本才是真正的修改，这个版本标志着 ECMAScript 成为一个真正的编程语言，修改的内容：</p>
-<ul>
-<li>支持正则表达式</li>
-<li>新控制语句</li>
-<li>try-catch 异常处理的支持</li>
-<li>适应国际化的标准的修改</li>
-</ul>
-</li>
-<li><p>ECMA-262第4版</p>
-<ul>
-<li>这个版本中新增的内容：强类型变量，新语句，新数据结构，真正的类，经典继承</li>
-<li>TC39 中的一个小组发现这个版本改动太大，于是建议较小的修改：ECMA-262第3.1版 代替 ECMA-262 第4版，但是 3.1 这个版本直到2009年12月3日，为了区别 第4版 于是作为 ECMA-262第5版 发布</li>
-</ul>
-</li>
-<li><p>ECMA-262第5版（2009年12月3日）</p>
-<p> 这个版本实际是 ECMA-262第3.1版</p>
-</li>
-</ol>
-<hr>
-<h3 id="兼容情况"><a href="#兼容情况" class="headerlink" title="兼容情况"></a>兼容情况</h3><p>2008年，五大主流 Web 浏览器(IE，Firefox，Safari，Chrome和Opera)全都做到与 ECMA-262 兼容</p>
+<h3 id="使用不定参数"><a href="#使用不定参数" class="headerlink" title="使用不定参数"></a>使用不定参数</h3><ol>
+<li><p>function (obj, …arg) {}<br>特点：</p>
 <ol>
-<li><p>ES3:<br> IE5.5 - IE7<br> Safari 3.x<br> Chrome 1+<br> Firefox 1 ~ 2 / 3.0x</p>
+<li>每个函数只能声明一个不定参数</li>
+<li>而且一定要放在所有参数的末尾</li>
+<li>不能用于对象字面量 setter 之中</li>
+</ol>
+<p>值得注意的地方，不定参数设计的目的：代替 arguments 对象</p>
 </li>
-<li><p>ES5(不完全兼容):<br> IE8<br> Safari 4.x~5.x<br> Firefox 3.5 ~ 3.6</p>
+</ol>
+<hr>
+<h3 id="展开运算符"><a href="#展开运算符" class="headerlink" title="展开运算符"></a>展开运算符</h3><ol>
+<li>[…arg]</li>
+</ol>
+<hr>
+<h3 id="函数-name-属性-调试作用"><a href="#函数-name-属性-调试作用" class="headerlink" title="函数 name 属性(调试作用)"></a>函数 name 属性(调试作用)</h3><hr>
+<h3 id="明确函数的多重用途"><a href="#明确函数的多重用途" class="headerlink" title="明确函数的多重用途"></a>明确函数的多重用途</h3><p>函数的调用有两种方式：</p>
+<ul>
+<li>第一种：func()</li>
+<li>第二种：new Func()</li>
+</ul>
+<p>这两种调用方式的区别：</p>
+<ul>
+<li>使用 第一种方式的时候实际调用是函数内部的 [[Call]] 方法</li>
+<li>使用 第二种方式的时候实际调用是函数内部的 [[Construct]] 方法，这个方法会创建一个该构造函数的新实例，并将 this 绑定到新实例上。</li>
+</ul>
+<hr>
+<h3 id="ECMAScript5-中判断函数被调用的方法"><a href="#ECMAScript5-中判断函数被调用的方法" class="headerlink" title="ECMAScript5 中判断函数被调用的方法"></a>ECMAScript5 中判断函数被调用的方法</h3><ol>
+<li>使用 instanceof</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> <span class="keyword">instanceof</span> Person) &#123;</span><br><span class="line">      <span class="keyword">this</span>.name = name</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'必须通过 new 关键词调用 Person'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">'99'</span>) <span class="comment">// 使用 new 关键字 有效</span></span><br><span class="line"><span class="keyword">var</span> person = Person(<span class="string">'69'</span>) <span class="comment">// 抛出错误</span></span><br><span class="line"><span class="keyword">var</span> person = Person.call(person, <span class="string">'66'</span>) <span class="comment">// 主动改变 construct 中的 this 绑定 有效</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用 call 或者 applly 来调用 construct</li>
+</ol>
+<hr>
+<h3 id="ECMAScript6-中判断函数被调用的方法"><a href="#ECMAScript6-中判断函数被调用的方法" class="headerlink" title="ECMAScript6 中判断函数被调用的方法"></a>ECMAScript6 中判断函数被调用的方法</h3><ol>
+<li><p>使用 new.traget 元属性，是指非对象的属性，可以提供非对象目标的补充信息（例如： new）</p>
 </li>
-<li><p>ES5:<br> IE9+<br> Firefox 4.0+</p>
+<li><p>调用 [[call]] 方法也会报错，必须使用 new 关键字 new.traget === ‘undefined’</p>
 </li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="keyword">new</span>.target !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.name = name</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'必须通过 new 关键词调用 Person'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  注意：在函数外使用 new.traget 是一个语法错误</p>
+<hr>
+<h3 id="块级函数（有利于提升声明声明的能力）"><a href="#块级函数（有利于提升声明声明的能力）" class="headerlink" title="块级函数（有利于提升声明声明的能力）"></a>块级函数（有利于提升声明声明的能力）</h3><p>在作用域的顶部使用 ‘use strict’</p>
+<p>和使用 let 表达式比较相似，执行过程流出流代码块，函数定义立即被销毁</p>
+<p>在该代码块中，块级函数会被提升至块的顶部，但是 let 定义的函数表达式不会被提升</p>
+<p>非严格模式下</p>
+<ol>
+<li>块级函数被提升到全局作用域中</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> add)</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">add</span> (<span class="params">a, ...b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b[<span class="number">0</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="箭头函数的目标"><a href="#箭头函数的目标" class="headerlink" title="箭头函数的目标"></a>箭头函数的目标</h3><ol>
+<li><p>即用即弃</p>
+<h4 id="箭头函数的特点："><a href="#箭头函数的特点：" class="headerlink" title="箭头函数的特点："></a>箭头函数的特点：</h4><ol>
+<li><p>没有 this, super, arguments, new.target 绑定</p>
+</li>
+<li><p>不能通过 new 关键字调用</p>
+</li>
+<li><p>没有原型<br>原因：不能通过 new 关键字调用 =&gt; 箭头函数是没有 construct 方法 （没有原型）</p>
+</li>
+<li><p>不可以改变 this 的绑定<br>表现：不能通过 bind，call，apply 来改变 this 的指向</p>
+</li>
+<li><p>不支持 arguments 对象</p>
+</li>
+<li><p>不支持重复的命名参数</p>
+</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="尾调用优化"><a href="#尾调用优化" class="headerlink" title="尾调用优化"></a>尾调用优化</h3><p>  自动开启尾调用优化的三个条件：</p>
+<ol>
+<li>尾调用不访问当前栈帧的变量</li>
+<li>在函数内部，尾调用是最后一条语句</li>
+<li>尾调用的结果作为函数值返回</li>
 </ol>
 <hr>
 <p>参考文献：</p>
 <ul>
-<li>《JavaScript 高级程序设计》 第三版</li>
+<li>《深入理解 ES6》</li>
 </ul>
 
       
@@ -420,7 +428,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/history/" rel="tag"># history</a>
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
           
         </div>
       
@@ -433,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/02/性能优化之 DOM/" rel="next" title="性能优化之 DOM">
-                <i class="fa fa-chevron-left"></i> 性能优化之 DOM
+              <a href="/2018/08/03/ES6 对象的扩展/" rel="next" title="ES6 对象的扩展">
+                <i class="fa fa-chevron-left"></i> ES6 对象的扩展
               </a>
             
           </div>
@@ -443,8 +451,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/17/Array 之 ES5 some/" rel="prev" title="Array 之 ES5 some">
-                Array 之 ES5 some <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/11/Array 之 ES6 includes/" rel="prev" title="Array 之 ES6 includes">
+                Array 之 ES6 includes <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -584,7 +592,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript-的历史概述"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 的历史概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript-的发展"><span class="nav-number">2.</span> <span class="nav-text">JavaScript 的发展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ECMAScript-的版本"><span class="nav-number">3.</span> <span class="nav-text">ECMAScript 的版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容情况"><span class="nav-number">4.</span> <span class="nav-text">兼容情况</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置默认参数"><span class="nav-number">1.</span> <span class="nav-text">设置默认参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用不定参数"><span class="nav-number">2.</span> <span class="nav-text">使用不定参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#展开运算符"><span class="nav-number">3.</span> <span class="nav-text">展开运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数-name-属性-调试作用"><span class="nav-number">4.</span> <span class="nav-text">函数 name 属性(调试作用)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#明确函数的多重用途"><span class="nav-number">5.</span> <span class="nav-text">明确函数的多重用途</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ECMAScript5-中判断函数被调用的方法"><span class="nav-number">6.</span> <span class="nav-text">ECMAScript5 中判断函数被调用的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ECMAScript6-中判断函数被调用的方法"><span class="nav-number">7.</span> <span class="nav-text">ECMAScript6 中判断函数被调用的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块级函数（有利于提升声明声明的能力）"><span class="nav-number">8.</span> <span class="nav-text">块级函数（有利于提升声明声明的能力）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#箭头函数的目标"><span class="nav-number">9.</span> <span class="nav-text">箭头函数的目标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#箭头函数的特点："><span class="nav-number">9.1.</span> <span class="nav-text">箭头函数的特点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尾调用优化"><span class="nav-number">10.</span> <span class="nav-text">尾调用优化</span></a></li></ol></div>
             
 
           </div>

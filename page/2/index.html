@@ -1938,7 +1938,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.2k
+                  1.1k
                 </span>
               
 
@@ -1978,83 +1978,104 @@
         
           
             <hr>
-<h3 id="script-标签"><a href="#script-标签" class="headerlink" title="script 标签"></a>script 标签</h3><pre><code>在 HTML 4.01
-
-  1. 属性
-      [1] async   下载之后立刻执行，载下载期间不影响页面的其他操作（页面的解析和展示，后者执行后面的代码）[ HTML5 ]
-      [2] defer   需要等 页面中所有的 html 都解析完成，在 window.onload 之前，执行 defer
-      [3] charset 规定展示 JavaScript 代码哪一种字符集进行编码展示
-      [4] scr     这个是需要执行的代码的外部文件
-      [5] type    表示编写该脚本用到的语言：type=&quot;text/javascript&quot;
-
-  2. script 标签的使用
-      [1] 内嵌
-          写在 `&lt;script&gt; &lt;/script&gt;` 标签之间的代码
-
-      [2] 外链
-          通过 src 属性链接的外部文件
-
-      这两种写法值得注意的地方：
-
-          1. 在内嵌的写法中，&apos; &lt;/script&gt; &apos; 会报错（需要转义：&apos;&lt;\/script&gt;&apos;），但是在外部链接中就不会报错
-          2. 在代码解释和执行这块差不多：
-              [1] 从上到下解释并执行
-              [2] 遇到变量和函数进行解释，保存到当前的执行环境
-              [3] 在 JavaScript 代码进行解释和执行完成之前，页面的处理会暂时停止
-              [4] 使用 async 和 defer 则会改变该脚本文件的额处理方式
-
-          3. 在 HTML 文档中必须使用 script 闭合标签
-          4. 使用 src 链接外部文件必须要使用 .js 文件名
-          5. 在同一个 script 标签中，使用 外链 和 内嵌 同时使用，则外链的脚本会生效果，内嵌则不会生效
-          6. script 标签中的 src 必须是一个以 .js 结尾资源的路径，否则显示资源加载失败
-          7. script 中的 src 属性是支持跨域获取资源（和 img 中 src 效果一致）
-
-  3. script 的位置，延迟脚本 和 异步脚本
-      [1] 传统的做法 script 标签和 link 标签放在一起：这样做会有问题，等多所有的 js 和 css 文件加载完之后才能才能去解析 HTML 渲染页面
-      [2] 现在 web 应用程序的改进之后的做法：把 script 标签放在 body 的后面，等页面解析并渲染之后再下载，解析和执行脚本，这样减少 HTML 页面出现在用户的面前
-      [3] script 标签中 defer 和 async 的使用
-          a. script 支持 defer 属性，可是把 script 标签放在任何位置（这样可能不好管理脚本），多个外部文件通过 src 加载进来，若多使用 defer 会有问题，执行的顺序是无法控制的
-          b. async 是去下载并执行，在下载期间不会组织其他的页面的行为，async 属性的脚本是一定会在 window.onload 事件之前，在 DOMContentLoaded 事件触发之前
-
-  4. XHTML 中使用
-      [1] 一些字符必须使用 实体符号 代替。特殊字符 &apos;&lt;&apos;，使用 &apos;&amp;lt&apos; 实体符号代替
-
-      [2] 若想按照正常的方式写 JavaScript 则需要使用 CDATA 片段（为了不降低 JavaScript 代码的可读性，方便维护）
-      <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &lt;! [CDATA[</span></span><br><span class="line"><span class="undefined">        ... javascript 代码片段 ...</span></span><br><span class="line"><span class="undefined">    ]] &gt;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-      [3] 有些浏览器是不兼容 XHTML, 则需要使用注释的语法（为了兼容不支持 XHTML 的浏览器）
-      <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// &lt;! [CDATA[</span></span></span><br><span class="line"><span class="undefined">        ... javascript 代码片段 ...</span></span><br><span class="line"><span class="javascript">    <span class="comment">// ]] &gt;</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-  5. 不推荐的语法
-      [1] 在 script 标签纸中使用 HTML &lt;!-- --&gt; 注释
-      <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &lt;!--</span></span><br><span class="line"><span class="undefined">        ... javascript ...</span></span><br><span class="line"><span class="undefined">    --&gt;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-      [2] 之前为什么浏览器会支持这种语法：最早引入 script 元素的时候，和传统解析 html 的规则有冲突，会把 script 中的脚本展示在页面中，所以需要这个方法兼容
-
-  6. 推荐使用外部文件，原因：
-      [1]  可维护性
-      [2]  可缓存和提高脚本复用程度
-      [3]  未来的趋势：使用外部文件则可以不使用兼容 XHTML 和不知 script 标签的处理，没有兼容性问题
-
-  7. 文档模式
-      [1] 混杂模式
-      [2] 标准模式
-      [3] 准标准模式（兼容 标准模式和混杂模式）
-
-      文档模式的设置：使用 !DOCTYPE 来设置
-      标准模式设置如下：
-      <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br></pre></td></tr></table></figure>
-
-      不同的文档模式会导致浏览器对于 CSS 的内容呈现，在某些情况下也会影响 javascrit 的解析执行
-
-  8. noscript 标签的使用
-      [1]浏览器不支持脚本的时候
-      [2] 在 javascript 被禁止
-
-      其他正常情况下 noscript 内容会隐藏起来
-
-      <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">noscript</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>本页面需要浏览器支持（启用）JavaScript<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">noscript</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</code></pre><hr>
+<h3 id="script-标签"><a href="#script-标签" class="headerlink" title="script 标签"></a>script 标签</h3><p>  在 HTML 4.01</p>
+<ol>
+<li><p>属性</p>
+<ul>
+<li>async   下载之后立刻执行，载下载期间不影响页面的其他操作（页面的解析和展示，后者执行后面的代码）[ HTML5 ]</li>
+<li>defer   需要等 页面中所有的 html 都解析完成，在 window.onload 之前，执行 defer</li>
+<li>charset 规定展示 JavaScript 代码哪一种字符集进行编码展示</li>
+<li>scr     这个是需要执行的代码的外部文件</li>
+<li>type    表示编写该脚本用到的语言：type=”text/javascript”</li>
+</ul>
+</li>
+<li><p>script 标签的使用</p>
+<ul>
+<li><p>内嵌: 写在 <code>&lt;script&gt; &lt;/script&gt;</code> 标签之间的代码</p>
+</li>
+<li><p>外链: 通过 src 属性链接的外部文件</p>
+</li>
+<li><p>这两种写法值得注意的地方：</p>
+<ol>
+<li>在内嵌的写法中，’  ‘ 会报错（需要转义：’&lt;\/script&gt;’），但是在外部链接中就不会报错</li>
+<li><p>在代码解释和执行这块差不多：</p>
+<ul>
+<li>从上到下解释并执行</li>
+<li>遇到变量和函数进行解释，保存到当前的执行环境</li>
+<li>在 JavaScript 代码进行解释和执行完成之前，页面的处理会暂时停止</li>
+<li>使用 async 和 defer 则会改变该脚本文件的额处理方式</li>
+</ul>
+</li>
+<li><p>在 HTML 文档中必须使用 script 闭合标签</p>
+</li>
+<li>使用 src 链接外部文件必须要使用 .js 文件名</li>
+<li>在同一个 script 标签中，使用 外链 和 内嵌 同时使用，则外链的脚本会生效果，内嵌则不会生效</li>
+<li>script 标签中的 src 必须是一个以 .js 结尾资源的路径，否则显示资源加载失败</li>
+<li>script 中的 src 属性是支持跨域获取资源（和 img 中 src 效果一致）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>script 的位置，延迟脚本 和 异步脚本</p>
+<ul>
+<li>传统的做法 script 标签和 link 标签放在一起：这样做会有问题，等多所有的 js 和 css 文件加载完之后才能才能去解析 HTML 渲染页面</li>
+<li>现在 web 应用程序的改进之后的做法：把 script 标签放在 body 的后面，等页面解析并渲染之后再下载，解析和执行脚本，这样减少 HTML 页面出现在用户的面前</li>
+<li>script 标签中 defer 和 async 的使用<ol>
+<li>script 支持 defer 属性，可是把 script 标签放在任何位置（这样可能不好管理脚本），多个外部文件通过 src 加载进来，若多使用 defer 会有问题，执行的顺序是无法控制的</li>
+<li>async 是去下载并执行，在下载期间不会组织其他的页面的行为，async 属性的脚本是一定会在 window.onload 事件之前，在 DOMContentLoaded 事件触发之前</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>XHTML 中使用</p>
+<ul>
+<li>一些字符必须使用 实体符号 代替。特殊字符 ‘&lt;’，使用 ‘&amp;lt’ 实体符号代替</li>
+<li>若想按照正常的方式写 JavaScript 则需要使用 CDATA 片段（为了不降低 JavaScript 代码的可读性，方便维护）</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &lt;! [CDATA[</span></span><br><span class="line"><span class="undefined">        ... javascript 代码片段 ...</span></span><br><span class="line"><span class="undefined">    ]] &gt;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>有些浏览器是不兼容 XHTML, 则需要使用注释的语法（为了兼容不支持 XHTML 的浏览器）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    // &lt;! [CDATA[</span></span><br><span class="line"><span class="undefined">        ... javascript 代码片段 ...</span></span><br><span class="line"><span class="undefined">    // ]] &gt;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>不推荐的语法<ul>
+<li>在 script 标签纸中使用 HTML <!-- --> 注释</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &lt;!--</span></span><br><span class="line"><span class="undefined">        ... javascript ...</span></span><br><span class="line"><span class="undefined">    --&gt;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>之前为什么浏览器会支持这种语法：最早引入 script 元素的时候，和传统解析 html 的规则有冲突，会把 script 中的脚本展示在页面中，所以需要这个方法兼容</p>
+<ol start="6">
+<li><p>推荐使用外部文件，原因：</p>
+<ul>
+<li>可维护性</li>
+<li>可缓存和提高脚本复用程度</li>
+<li>未来的趋势：使用外部文件则可以不使用兼容 XHTML 和不知 script 标签的处理，没有兼容性问题</li>
+</ul>
+</li>
+<li><p>文档模式</p>
+<ul>
+<li>混杂模式</li>
+<li>标准模式</li>
+<li><p>准标准模式（兼容 标准模式和混杂模式）</p>
+<p>文档模式的设置：使用 !DOCTYPE 来设置<br>标准模式设置如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br></pre></td></tr></table></figure>
+<p>不同的文档模式会导致浏览器对于 CSS 的内容呈现，在某些情况下也会影响 javascrit 的解析执行</p>
+</li>
+</ul>
+</li>
+<li><p>noscript 标签的使用</p>
+<ul>
+<li>浏览器不支持脚本的时候</li>
+<li><p>在 javascript 被禁止</p>
+</li>
+<li><p>其他正常情况下 noscript 内容会隐藏起来</p>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">noscript</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>本页面需要浏览器支持（启用）JavaScript<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">noscript</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
 <p>参考文献：</p>
 <ul>
 <li>《JavaScript 高级程序设计》 第三版</li>
@@ -2157,7 +2178,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

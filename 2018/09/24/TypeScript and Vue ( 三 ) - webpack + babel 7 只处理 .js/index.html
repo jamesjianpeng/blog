@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript,ECMAScript6," />
+  <meta name="keywords" content="JavaScript,Webpack," />
 
 
 
@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="Array.prototype.find Grammar: arr.find(callback[, thisArg]) Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的元素，否则返回 undefind; Return: 数据类型：* 特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要找到的元素在数组的">
-<meta name="keywords" content="JavaScript,ECMAScript6">
+<meta name="description" content="上一篇：TypeScript and Vue ( 二 ) - webpack 初始化抽离 base conf 和 use TypeScript 五，配置只解析和编译的.js modify webpack.dev.conf.js，其他的配置不变 123456789101112131415161718192021222324252627282930313233/** * @file 本地开发环境下的">
+<meta name="keywords" content="JavaScript,Webpack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Array 之 ES6 find">
-<meta property="og:url" content="https://www.pengjiandry.com/2018/07/09/Array 之 ES6 find/index.html">
+<meta property="og:title" content="TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js">
+<meta property="og:url" content="https://www.pengjiandry.com/2018/09/24/TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js/index.html">
 <meta property="og:site_name" content="彭涧">
-<meta property="og:description" content="Array.prototype.find Grammar: arr.find(callback[, thisArg]) Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的元素，否则返回 undefind; Return: 数据类型：* 特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要找到的元素在数组的">
+<meta property="og:description" content="上一篇：TypeScript and Vue ( 二 ) - webpack 初始化抽离 base conf 和 use TypeScript 五，配置只解析和编译的.js modify webpack.dev.conf.js，其他的配置不变 123456789101112131415161718192021222324252627282930313233/** * @file 本地开发环境下的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-22T11:31:04.076Z">
+<meta property="og:updated_time" content="2018-09-24T13:11:31.766Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Array 之 ES6 find">
-<meta name="twitter:description" content="Array.prototype.find Grammar: arr.find(callback[, thisArg]) Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的元素，否则返回 undefind; Return: 数据类型：* 特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要找到的元素在数组的">
+<meta name="twitter:title" content="TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js">
+<meta name="twitter:description" content="上一篇：TypeScript and Vue ( 二 ) - webpack 初始化抽离 base conf 和 use TypeScript 五，配置只解析和编译的.js modify webpack.dev.conf.js，其他的配置不变 123456789101112131415161718192021222324252627282930313233/** * @file 本地开发环境下的">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://www.pengjiandry.com/2018/07/09/Array 之 ES6 find/"/>
+  <link rel="canonical" href="https://www.pengjiandry.com/2018/09/24/TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js/"/>
 
 
 
 
 
-  <title>Array 之 ES6 find | 彭涧</title>
+  <title>TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js | 彭涧</title>
   
 
 
@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/09/Array 之 ES6 find/">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/24/TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="james">
@@ -268,7 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Array 之 ES6 find</h1>
+          <h1 class="post-title" itemprop="name headline">TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js</h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-09T09:57:01+08:00">
-                2018-07-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-24T20:41:20+08:00">
+                2018-09-24
               </time>
             
 
@@ -312,7 +312,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  269
+                  284
                 </span>
               
 
@@ -350,23 +350,26 @@
 
       
         <hr>
-<h3 id="Array-prototype-find"><a href="#Array-prototype-find" class="headerlink" title="Array.prototype.find"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/find" target="_blank" rel="noopener">Array.prototype.find</a></h3><ul>
-<li>Grammar: arr.find(callback[, thisArg])</li>
-<li>Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的元素，否则返回 undefind;</li>
-<li>Return: 数据类型：*</li>
-<li><p>特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个, 中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError；</p>
-</li>
-<li><p><a href="https://www.pengjiandry.com/2018/04/20/Array%20%E4%B9%8B%20ES6%20findIndex/">Compared with Array.prototype.findIndex</a></p>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._find) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 返回满足条件的第一个元素，若数组没有项元素满足条件则返回 undefined</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @returns &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._find = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            callbackState,</span><br><span class="line">            result,</span><br><span class="line">            len;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 1. 判断callback</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 2. 判断数组长度</span></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">// #endregion 2. 判断数组长度</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                result = <span class="keyword">this</span>[i]; <span class="comment">// 在 Array.prototype._findIndex 中 result =i</span></span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 是否使用 break，决定了获取到的值的顺序</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.pengjiandry.com/2018/09/23/TypeScript%20and%20Vue%20%28%20%E4%B8%80%20%29%20-%20git%20%E5%92%8C%20webpack%20%E6%89%93%E5%8C%85%E5%88%9D%E5%A7%8B%E5%8C%96/">上一篇：TypeScript and Vue ( 二 ) - webpack 初始化抽离 base conf 和 use TypeScript</a></p>
+<h3 id="五，配置只解析和编译的-js"><a href="#五，配置只解析和编译的-js" class="headerlink" title="五，配置只解析和编译的.js"></a>五，<a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/76fdea91282a337829b059ef24898274e1603398" target="_blank" rel="noopener">配置只解析和编译的.js</a></h3><ul>
+<li><p>modify webpack.dev.conf.js，其他的配置不变</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @file 本地开发环境下的关键配置</span><br><span class="line"> * @author jamesjianpeng</span><br><span class="line"> */</span><br><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line">const webpack = require(&apos;webpack&apos;);</span><br><span class="line">const merge = require(&apos;webpack-merge&apos;);</span><br><span class="line">const baseConf = require(&apos;./webpack.base.conf&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = (baseConf, &#123;</span><br><span class="line">    mode: &apos;development&apos;,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        contentBase: path.resolve(__dirname, &apos;../dist&apos;), // 使用相对于 dev.conf 配置的绝对路径</span><br><span class="line">        // contentBase: &apos;./dist&apos;, // 第二种方式 相对于 package.json 这一层</span><br><span class="line">        hot: true,</span><br><span class="line">        host: &apos;0.0.0.0&apos;,</span><br><span class="line">        open: true,</span><br><span class="line">        port: 8099,</span><br><span class="line">        overlay: true // 在浏览器端展示错误</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: /\.js/,</span><br><span class="line">                use: &apos;babel-loader&apos;,</span><br><span class="line">                exclude: /node_modules/</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        new webpack.HotModuleReplacementPlugin()</span><br><span class="line">    ]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <ul>
-<li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
+<li>add .babelrc</li>
 </ul>
-<hr>
-<p>参考资料：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;plugins&quot;: [&quot;@babel/plugin-syntax-dynamic-import&quot;],</span><br><span class="line">    &quot;presets&quot;: [</span><br><span class="line">        [</span><br><span class="line">            &quot;@babel/preset-env&quot;, &#123;</span><br><span class="line">                &quot;modules&quot;: false,</span><br><span class="line">                &quot;useBuiltIns&quot;: &quot;usage&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
+<li>add webpack plugins，使用 <a href="https://babeljs.io/docs/en/v7-migration" target="_blank" rel="noopener">babel 7</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm i -D @babel-core</span><br><span class="line">npm i -D @babel/preset-env</span><br><span class="line">npm i -D @babel/plugin-syntax-dynamic-import</span><br><span class="line">npm i -D @babel-loader</span><br></pre></td></tr></table></figure>
+<ul>
+<li>add <a href="https://github.com/browserslist/browserslist#queries" target="_blank" rel="noopener">.browserslistrc</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[production staging]</span><br><span class="line">&gt; 1%</span><br><span class="line">ie 10</span><br><span class="line">Android &gt;= 4.4</span><br><span class="line">iOS 8</span><br><span class="line"></span><br><span class="line">[development]</span><br><span class="line">last 1 chrome version</span><br><span class="line">last 1 firefox version</span><br></pre></td></tr></table></figure>
+<ul>
+<li>.browserslistrc 的作用就是告诉浏览器项目兼容的情况 查询 <a href="https://browserl.ist/" target="_blank" rel="noopener">https://browserl.ist/</a></li>
+</ul>
+</li>
 </ul>
 
       
@@ -387,7 +390,7 @@
           
             <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
           
-            <a href="/tags/ECMAScript6/" rel="tag"><i class="fa fa-tag"></i> ECMAScript6</a>
+            <a href="/tags/Webpack/" rel="tag"><i class="fa fa-tag"></i> Webpack</a>
           
         </div>
       
@@ -400,8 +403,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/07/我的 CSS/" rel="next" title="我的 CSS">
-                <i class="fa fa-chevron-left"></i> 我的 CSS
+              <a href="/2018/09/24/Nodejs - 通过命令传参数/" rel="next" title="Nodejs - 通过命令传参数">
+                <i class="fa fa-chevron-left"></i> Nodejs - 通过命令传参数
               </a>
             
           </div>
@@ -409,10 +412,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/10/Array 之 ES5 map/" rel="prev" title="Array 之 ES5 map">
-                Array 之 ES5 map <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -551,7 +550,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-find"><span class="nav-number">1.</span> <span class="nav-text">Array.prototype.find</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#五，配置只解析和编译的-js"><span class="nav-number">1.</span> <span class="nav-text">五，配置只解析和编译的.js</span></a></li></ol></div>
             
 
           </div>

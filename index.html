@@ -247,6 +247,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/24/TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/24/TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js/" itemprop="url">TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-24T20:41:20+08:00">
+                2018-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  284
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p><a href="https://www.pengjiandry.com/2018/09/23/TypeScript%20and%20Vue%20%28%20%E4%B8%80%20%29%20-%20git%20%E5%92%8C%20webpack%20%E6%89%93%E5%8C%85%E5%88%9D%E5%A7%8B%E5%8C%96/">上一篇：TypeScript and Vue ( 二 ) - webpack 初始化抽离 base conf 和 use TypeScript</a></p>
+<h3 id="五，配置只解析和编译的-js"><a href="#五，配置只解析和编译的-js" class="headerlink" title="五，配置只解析和编译的.js"></a>五，<a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/76fdea91282a337829b059ef24898274e1603398" target="_blank" rel="noopener">配置只解析和编译的.js</a></h3><ul>
+<li><p>modify webpack.dev.conf.js，其他的配置不变</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @file 本地开发环境下的关键配置</span><br><span class="line"> * @author jamesjianpeng</span><br><span class="line"> */</span><br><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line">const webpack = require(&apos;webpack&apos;);</span><br><span class="line">const merge = require(&apos;webpack-merge&apos;);</span><br><span class="line">const baseConf = require(&apos;./webpack.base.conf&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = (baseConf, &#123;</span><br><span class="line">    mode: &apos;development&apos;,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        contentBase: path.resolve(__dirname, &apos;../dist&apos;), // 使用相对于 dev.conf 配置的绝对路径</span><br><span class="line">        // contentBase: &apos;./dist&apos;, // 第二种方式 相对于 package.json 这一层</span><br><span class="line">        hot: true,</span><br><span class="line">        host: &apos;0.0.0.0&apos;,</span><br><span class="line">        open: true,</span><br><span class="line">        port: 8099,</span><br><span class="line">        overlay: true // 在浏览器端展示错误</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: /\.js/,</span><br><span class="line">                use: &apos;babel-loader&apos;,</span><br><span class="line">                exclude: /node_modules/</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        new webpack.HotModuleReplacementPlugin()</span><br><span class="line">    ]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>add .babelrc</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;plugins&quot;: [&quot;@babel/plugin-syntax-dynamic-import&quot;],</span><br><span class="line">    &quot;presets&quot;: [</span><br><span class="line">        [</span><br><span class="line">            &quot;@babel/preset-env&quot;, &#123;</span><br><span class="line">                &quot;modules&quot;: false,</span><br><span class="line">                &quot;useBuiltIns&quot;: &quot;usage&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>add webpack plugins，使用 <a href="https://babeljs.io/docs/en/v7-migration" target="_blank" rel="noopener">babel 7</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm i -D @babel-core</span><br><span class="line">npm i -D @babel/preset-env</span><br><span class="line">npm i -D @babel/plugin-syntax-dynamic-import</span><br><span class="line">npm i -D @babel-loader</span><br></pre></td></tr></table></figure>
+<ul>
+<li>add <a href="https://github.com/browserslist/browserslist#queries" target="_blank" rel="noopener">.browserslistrc</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[production staging]</span><br><span class="line">&gt; 1%</span><br><span class="line">ie 10</span><br><span class="line">Android &gt;= 4.4</span><br><span class="line">iOS 8</span><br><span class="line"></span><br><span class="line">[development]</span><br><span class="line">last 1 chrome version</span><br><span class="line">last 1 firefox version</span><br></pre></td></tr></table></figure>
+<ul>
+<li>.browserslistrc 的作用就是告诉浏览器项目兼容的情况 查询 <a href="https://browserl.ist/" target="_blank" rel="noopener">https://browserl.ist/</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/24/Nodejs - 通过命令传参数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2060,185 +2232,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/08/11/Array 之 ES6 includes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/11/Array 之 ES6 includes/" itemprop="url">Array 之 ES6 includes</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-11T10:20:04+08:00">
-                2018-08-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  321
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="Array-prototype-includes"><a href="#Array-prototype-includes" class="headerlink" title="Array.prototype.includes"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank" rel="noopener">Array.prototype.includes</a></h3><ul>
-<li>Grammar: arr.includes(searchElement[, searchIndex])</li>
-<li>Description: 遍历 arr 去寻找我们想要的元素，找到则返回 true，没有找到则返回 false</li>
-<li>Return: 数据类型：Boolean</li>
-<li><p>特点：满足该条件的时候就立即返回，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个，中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError；</p>
-</li>
-<li><p>Compared with Array.prototype.indexOf</p>
-<ol>
-<li><p>不同点（返回值）</p>
-<ul>
-<li>返回值有区别，includes 的返回值是：Boolean，indexOf 则是 Number 类型</li>
-<li>Array.prototype.indexOf 是属于 ES3 的规范，Array.prototype.findIndex 是属于 ES6 的规范</li>
-</ul>
-</li>
-<li><p>相同点</p>
-<ul>
-<li>接受的参数一致</li>
-<li>不改变数组本身</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._includes) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据 searchElement 按顺序在数组中元素的对比，=== 则是 true 否则为 false</span></span><br><span class="line"><span class="comment">     * @param &#123;*&#125; searchElement</span></span><br><span class="line"><span class="comment">     * @param &#123;Number&#125; searchIndex</span></span><br><span class="line"><span class="comment">     * @returns &#123;Boolean&#125; result</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_includes'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">searchElement, searchIndex</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                result = <span class="literal">false</span>,</span><br><span class="line">                len = <span class="keyword">this</span>.length;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断数组长度</span></span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断 searchIndex</span></span><br><span class="line">            <span class="keyword">if</span> (!searchIndex || <span class="keyword">typeof</span> searchIndex !== <span class="string">'number'</span>) searchIndex = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// #region 3. 获取遍历的起点</span></span><br><span class="line">            i = searchIndex;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (searchIndex &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                searchIndex += len;</span><br><span class="line">                i = searchIndex &lt; <span class="number">0</span> ? <span class="number">0</span> : searchIndex;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (searchIndex &gt;= len) &#123;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// #endregion 3. 获取遍历的起点</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>[i] === searchElement) &#123; <span class="comment">// 必须是 ===</span></span><br><span class="line">                  result = <span class="literal">true</span>;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>参考资料：</p>
-<ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2289,7 +2282,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2370,7 +2363,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">14.1k</span>
+    <span title="Site words total count">14.4k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

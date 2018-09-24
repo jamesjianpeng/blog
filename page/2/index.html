@@ -247,6 +247,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/08/11/Array 之 ES6 includes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/11/Array 之 ES6 includes/" itemprop="url">Array 之 ES6 includes</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-11T10:20:04+08:00">
+                2018-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  321
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="Array-prototype-includes"><a href="#Array-prototype-includes" class="headerlink" title="Array.prototype.includes"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank" rel="noopener">Array.prototype.includes</a></h3><ul>
+<li>Grammar: arr.includes(searchElement[, searchIndex])</li>
+<li>Description: 遍历 arr 去寻找我们想要的元素，找到则返回 true，没有找到则返回 false</li>
+<li>Return: 数据类型：Boolean</li>
+<li><p>特点：满足该条件的时候就立即返回，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个，中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError；</p>
+</li>
+<li><p>Compared with Array.prototype.indexOf</p>
+<ol>
+<li><p>不同点（返回值）</p>
+<ul>
+<li>返回值有区别，includes 的返回值是：Boolean，indexOf 则是 Number 类型</li>
+<li>Array.prototype.indexOf 是属于 ES3 的规范，Array.prototype.findIndex 是属于 ES6 的规范</li>
+</ul>
+</li>
+<li><p>相同点</p>
+<ul>
+<li>接受的参数一致</li>
+<li>不改变数组本身</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._includes) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据 searchElement 按顺序在数组中元素的对比，=== 则是 true 否则为 false</span></span><br><span class="line"><span class="comment">     * @param &#123;*&#125; searchElement</span></span><br><span class="line"><span class="comment">     * @param &#123;Number&#125; searchIndex</span></span><br><span class="line"><span class="comment">     * @returns &#123;Boolean&#125; result</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_includes'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">searchElement, searchIndex</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                result = <span class="literal">false</span>,</span><br><span class="line">                len = <span class="keyword">this</span>.length;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断数组长度</span></span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断 searchIndex</span></span><br><span class="line">            <span class="keyword">if</span> (!searchIndex || <span class="keyword">typeof</span> searchIndex !== <span class="string">'number'</span>) searchIndex = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// #region 3. 获取遍历的起点</span></span><br><span class="line">            i = searchIndex;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (searchIndex &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                searchIndex += len;</span><br><span class="line">                i = searchIndex &lt; <span class="number">0</span> ? <span class="number">0</span> : searchIndex;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (searchIndex &gt;= len) &#123;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// #endregion 3. 获取遍历的起点</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>[i] === searchElement) &#123; <span class="comment">// 必须是 ===</span></span><br><span class="line">                  result = <span class="literal">true</span>;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/08/06/ES6 函数特性/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1963,220 +2142,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/04/22/DOM 的历史/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/22/DOM 的历史/" itemprop="url">DOM 的历史</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-22T18:11:47+08:00">
-                2018-04-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  545
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="DOM-是什么"><a href="#DOM-是什么" class="headerlink" title="DOM 是什么"></a>DOM 是什么</h3><ol>
-<li><p>文档对象模型（DOM, Document Object Model）:是针对 XML 但经过扩展用于 HTML 的应用程序编程接口（API Application Programming Interface）</p>
-<ul>
-<li>由于 HTML 是一种超文本标记语言，是在浏览器中展示网页用的，所以 DOM 其实针对浏览器为应用程序提供的编程接口</li>
-</ul>
-</li>
-<li><p>产生的背景：(1998年10月)<br> Netscape 和 微软 公司为获得更得更多的浏览器市场份额，都自己开发了 DHTML( Dynamic HTML ), 两个浏览器之间的网页不兼容，导致 web 网页的跨平台特性消失，增加应用的开发成本，于是负责制定 Web 通信标准的 W3C (World Wide Web Consortium，万维网联盟)开始规划 DOM</p>
-<p> HTML 规范的发展的发展：</p>
-<ul>
-<li>1992年11月     HTML 1.1 规范完成</li>
-<li>1997年         HTML 4.0</li>
-<li>1999年         HTML 4.1</li>
-<li>2014年10月     HTML 5.0 标准定制</li>
-</ul>
-</li>
-<li><p>DOM 级别</p>
-<ol>
-<li><p>DOM 0：指的就是 Internet Explorer 4.0 和 Netscxape Navigator 4.0 中最初支持的 DHTML</p>
-</li>
-<li><p>DOM 1：</p>
-<ul>
-<li>主要目标： DOM 对象映射 HTML 文档结构</li>
-<li>DOM core</li>
-<li>DOM HTML：DOM HTML 是建立在 DOM core 的基础之上，扩展 HTML 的对象和方法</li>
-</ul>
-</li>
-<li><p>DOM 2</p>
-<ul>
-<li>DOM 2 是在 DOM 1 的基础之上进行扩充：</li>
-<li>DOM View（ DOM 视图）：定义跟踪不同文档</li>
-<li>DOM Events（ DOM 事件）：定义事件和事件处理的接口</li>
-<li>DOM Style （ DOM 样式 ）：定义基于 CSS 为元素应用样式的接口</li>
-<li>DOM 遍历和范围 （ DOM Traversal and Range ）：定义了遍历和操作文档的接口</li>
-</ul>
-</li>
-<li><p>DOM 3</p>
-<ul>
-<li>DOM3 级则进一步扩展了 DOM：</li>
-<li>引入了以统一方式加载和保存文档的方法（在 DOM 加载和保存模块（DOMLoad and Save）中定义）</li>
-<li>新增了验证文档的方法（在 DOM 验证（DOMValidation）模块中定义）</li>
-<li>也对 DOM core 进行了扩展（支持 XML 1.0）</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<hr>
-<h3 id="其他的-DOM-标准"><a href="#其他的-DOM-标准" class="headerlink" title="其他的 DOM 标准"></a>其他的 DOM 标准</h3><p>除了 DOM core 和 DOM HTML 之外其他的 DOM标准：</p>
-<ul>
-<li>SVG( 可伸缩矢量图 )</li>
-<li>MathML( 数学标记语言 )</li>
-<li>SMIL( 同步多媒体集成语言 )</li>
-</ul>
-<hr>
-<h3 id="其他时间："><a href="#其他时间：" class="headerlink" title="其他时间："></a>其他时间：</h3><ul>
-<li>1989 年互联网才开始转为民用</li>
-<li>1999年 IE5 中首次实现 DOM</li>
-</ul>
-<hr>
-<p>参考文献：</p>
-<ul>
-<li>《JavaScript 高级程序设计》 第三版</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2227,7 +2192,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2308,7 +2273,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">14.1k</span>
+    <span title="Site words total count">14.4k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

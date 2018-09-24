@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="彭涧">
 <meta property="og:description" content="上一篇：TypeScript and Vue ( 一 ) - git 和 webpack 打包初始化 四，从 local-dve 和 prod-build 中抽离公共的 base conf git commit history add webpack plugin 1npm i -D webpack-merge  add wepback.base.conf.js (/webpack/webpac">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-24T04:42:57.605Z">
+<meta property="og:updated_time" content="2018-09-24T04:47:22.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript and Vue ( 二 ) - webpack 初始化抽离 base conf 和 use TypeScript">
 <meta name="twitter:description" content="上一篇：TypeScript and Vue ( 一 ) - git 和 webpack 打包初始化 四，从 local-dve 和 prod-build 中抽离公共的 base conf git commit history add webpack plugin 1npm i -D webpack-merge  add wepback.base.conf.js (/webpack/webpac">
@@ -312,7 +312,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  558
+                  606
                 </span>
               
 
@@ -328,7 +328,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  3
                 </span>
               
             </div>
@@ -384,6 +384,10 @@
 <li>生产环境打包</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build:prod:onlyts</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>package scripts</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">  "scripts": &#123;</span><br><span class="line">    "build:prod": "node ./build/prod-build.js",</span><br><span class="line">    "build:prod:onlyts": "node ./build/prod-build.js ts",</span><br><span class="line">    "build:local": "node ./build/local-dev.js",</span><br><span class="line">    "build:local:onlyts": "node ./build/local-dev.js ts",</span><br><span class="line">    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"</span><br><span class="line">  &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>add webpack plugin</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i -D ts-loader</span><br><span class="line">npm i -D typescript</span><br></pre></td></tr></table></figure>

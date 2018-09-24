@@ -247,6 +247,203 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/20/ES6 模块/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/20/ES6 模块/" itemprop="url">ES6 模块</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-20T12:48:44+08:00">
+                2018-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  382
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="ES6之前的代码模块封装"><a href="#ES6之前的代码模块封装" class="headerlink" title="ES6之前的代码模块封装"></a>ES6之前的代码模块封装</h3><ol>
+<li>使用闭包，产生一个作用域去封装数据和代码，并挂载到 window 对象</li>
+</ol>
+<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><ol>
+<li>模块是是什么：模块是自动运行在严格模式下并且没有办法退出运行的 JavaScript 代码。</li>
+</ol>
+<h3 id="模块化的特点："><a href="#模块化的特点：" class="headerlink" title="模块化的特点："></a>模块化的特点：</h3><ol>
+<li>与作用域的关系：在模块顶部创建的变量不会自动添加到全局共享作用域，只会在该模块的顶级作用域中存在</li>
+<li>在模块的顶部，；this 的值是 undefined</li>
+<li>模块不支持 HTML 风格的代码注释</li>
+</ol>
+<h3 id="模块和脚本的区别"><a href="#模块和脚本的区别" class="headerlink" title="模块和脚本的区别"></a>模块和脚本的区别</h3><ol>
+<li>脚本：任何不是模块的 JavaScript 代码</li>
+</ol>
+<h3 id="模块的-导入和导出"><a href="#模块的-导入和导出" class="headerlink" title="模块的 导入和导出"></a>模块的 导入和导出</h3><ul>
+<li><p>导出：导出声明和导出引用</p>
+</li>
+<li><p>导入：导入单个绑定，导入多个绑定，命名空间导入, 无绑定导入</p>
+</li>
+<li><p>注意：不管 import 语句把一个模块写了多少次，该模块将只执行一次</p>
+</li>
+<li><p>as 可以用于改变导入或导出的名字</p>
+</li>
+<li><p>导入和导出默认值这个语法被优化过，尽量使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; name <span class="keyword">as</span> <span class="keyword">default</span> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新导出一个绑定</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">'./path'</span></span><br><span class="line"><span class="keyword">export</span> &#123; name <span class="keyword">as</span> newName &#125; <span class="string">'./path'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模块语法的限制</p>
+<ol>
+<li><p>export 和 import 一个重要的限制是：它们必须在其他语句和函数之外使用，否则会出现语法的错误</p>
+<ul>
+<li>原因： 其中一个原因： 是要让 JavaScript 引擎静态地确定哪些可以导出</li>
+</ul>
+</li>
+<li><p>import 只能在顶部使用</p>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<p>参考文献：</p>
+<ul>
+<li>《深入理解 ES6》</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/10/Array 之 ES5 map/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1891,164 +2088,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/03/09/git 撤销 - 针对本地没有 push 的 commit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/09/git 撤销 - 针对本地没有 push 的 commit/" itemprop="url">git 撤销 - 针对本地没有 push 的 commit</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-09T11:10:04+08:00">
-                2018-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  74
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="撤销已经-commit-的文件和-msg，没有-push-之前"><a href="#撤销已经-commit-的文件和-msg，没有-push-之前" class="headerlink" title="撤销已经 commit 的文件和 msg，没有 push 之前"></a>撤销已经 commit 的文件和 msg，没有 push 之前</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add file_name</span><br><span class="line"></span><br><span class="line">$ git commit -m (git cz)</span><br></pre></td></tr></table></figure>
-<p>发现我们的 commit 有问题，msg 有误，和遗漏或缺少 我们想要的 file，使用一下操作：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ get reset --soft HEAD^</span><br></pre></td></tr></table></figure>
-<ul>
-<li>HEAD^ 代表上一次(HEAD~1)</li>
-<li>HEAD~2 代表上二次</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2099,7 +2138,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2180,7 +2219,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">13.1k</span>
+    <span title="Site words total count">13.2k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

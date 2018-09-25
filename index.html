@@ -247,6 +247,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/24/TypeScript and Vue ( 四 ) - webpack 处理 Vue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/24/TypeScript and Vue ( 四 ) - webpack 处理 Vue/" itemprop="url">TypeScript and Vue ( 四 ) - webpack 处理 Vue</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-24T22:00:32+08:00">
+                2018-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  435
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p><a href="https://www.pengjiandry.com/2018/09/24/TypeScript%20and%20Vue%20%28%20%E4%B8%89%20%29%20-%20webpack%20+%20babel%207%20%E5%8F%AA%E5%A4%84%E7%90%86%20.js/">上一篇: TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js</a></p>
+<h3 id="六，使用-webpack-构建-Vue-应用"><a href="#六，使用-webpack-构建-Vue-应用" class="headerlink" title="六，使用 webpack 构建 Vue 应用"></a>六，<a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/7a9bbeccc7c6fe018ad543f4cc81173104a24d44" target="_blank" rel="noopener">使用 webpack 构建 Vue 应用</a></h3><ul>
+<li><p>dev 脚本文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file 本地开发环境下的 node 脚本，这种方式是通过命令行传参数</span></span><br><span class="line"><span class="comment"> * @author jamesjianpeng</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">'webpack-merge'</span>);</span><br><span class="line"><span class="keyword">const</span> webpackDevServer = <span class="built_in">require</span>(<span class="string">'webpack-dev-server'</span>);</span><br><span class="line"><span class="keyword">let</span> devConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.dev.conf'</span>);</span><br><span class="line"><span class="keyword">const</span> tsConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.ts.conf'</span>);</span><br><span class="line"><span class="keyword">const</span> vueConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.vue.conf'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> argv = <span class="built_in">Array</span>.from(process.argv)</span><br><span class="line"></span><br><span class="line"><span class="comment">/**  #region only compiler ts */</span></span><br><span class="line"><span class="keyword">if</span> (argv.includes(<span class="string">'ts'</span>)) &#123;</span><br><span class="line">    devConf = merge(devConf, tsConf)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**  #endregion */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**  #region only compiler vue */</span></span><br><span class="line"><span class="keyword">if</span> (argv.includes(<span class="string">'vue'</span>)) &#123;</span><br><span class="line">    devConf = merge(devConf, vueConf)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**  #endregion */</span></span><br><span class="line"></span><br><span class="line">webpackDevServer.addDevServerEntrypoints(devConf, devConf.devServer);</span><br><span class="line"><span class="keyword">const</span> compiler = webpack(devConf);</span><br><span class="line"><span class="keyword">new</span> webpackDevServer(compiler, devConf.devServer)</span><br><span class="line">  .listen(devConf.devServer.port);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>build 脚本文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file 生产环境下的配置</span></span><br><span class="line"><span class="comment"> * @author jamesjianpeng</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">'webpack-merge'</span>);</span><br><span class="line"><span class="keyword">const</span> tsConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.ts.conf'</span>);</span><br><span class="line"><span class="keyword">let</span> webpackConfig = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.prod.conf'</span>);</span><br><span class="line"><span class="keyword">let</span> vueConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.vue.conf'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**  #region only compiler ts */</span></span><br><span class="line"><span class="keyword">const</span> argv = <span class="built_in">Array</span>.from(process.argv)</span><br><span class="line"><span class="keyword">if</span> (argv.includes(<span class="string">'ts'</span>)) &#123;</span><br><span class="line">    webpackConfig = merge(webpackConfig, tsConf)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**  #endregion */</span></span><br><span class="line"><span class="comment">/**  #region only compiler vue */</span></span><br><span class="line"><span class="keyword">if</span> (argv.includes(<span class="string">'vue'</span>)) &#123;</span><br><span class="line">    webpackConfig = merge(webpackConfig, vueConf)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**  #endregion */</span></span><br><span class="line"></span><br><span class="line">webpack(webpackConfig, <span class="function"><span class="keyword">function</span>(<span class="params">err, stats</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">    <span class="keyword">if</span> (stats.hasErrors()) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(stats, <span class="string">'has errors end'</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'webpack TypeScript and Threejs project finish!'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>add webpack.vue.conf.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file 构建 vue 应用 基础配置</span></span><br><span class="line"><span class="comment"> * @author jamesjianpeng</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> CleanWebpackPlugin = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> VueLoaderPlugin = <span class="built_in">require</span>(<span class="string">'vue-loader/lib/plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    mode: <span class="string">'none'</span>,</span><br><span class="line">    entry: &#123;</span><br><span class="line">        <span class="string">'main'</span>: path.resolve(__dirname, <span class="string">'../src/index-vue.js'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, <span class="string">'../dist'</span>),</span><br><span class="line">        publicPath: <span class="string">'./'</span>,</span><br><span class="line">        filename: <span class="string">'[name].js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.vue$/</span>,</span><br><span class="line">                loader: <span class="string">'vue-loader'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">                use: [</span><br><span class="line">                    <span class="string">'vue-style-loader'</span>,</span><br><span class="line">                    <span class="string">'css-loader'</span>,</span><br><span class="line">                    <span class="string">'sass-loader'</span></span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> VueLoaderPlugin()</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>add webpack plugin</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i vue-loader vue-loader vue-style-loader vue-template-compiler -D</span><br><span class="line">npm i css-loader node-sass sass-loader -D</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>add index-vue.js 入口文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> createAppId = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> scriptTag = <span class="built_in">document</span>.body.lastChild;</span><br><span class="line">    <span class="keyword">const</span> app = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">    app.id = <span class="string">'app'</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.insertBefore(app, scriptTag);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'#'</span> + app.id;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: createAppId(),</span><br><span class="line">    render: <span class="function">(<span class="params">h</span>) =&gt;</span> h(App),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/24/TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1954,284 +2123,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/02/性能优化之 DOM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/02/性能优化之 DOM/" itemprop="url">性能优化之 DOM</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-02T19:57:40+08:00">
-                2018-09-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ol>
-<li>访问和修改 DOM 元素</li>
-<li>修改 DOM 元素的样式会导致重绘（repaint）和重排（reflow）</li>
-<li>通过 DOM 事件处理与用户的交互</li>
-</ol>
-<h3 id="什么是-DOM-他为什么慢"><a href="#什么是-DOM-他为什么慢" class="headerlink" title="什么是 DOM, 他为什么慢"></a>什么是 DOM, 他为什么慢</h3><ol>
-<li><p>文档对象模型（DOM）是一个独立于语言的，用于操作 XML 和 HTML 文档的程序接口（API）</p>
-</li>
-<li><p>浏览器中的 DOM :</p>
-<ol>
-<li>在 web 应用程序中获取 XML 文档，并使用 DOM API 用来访问文档中的数据，DOM 再浏览器中的接口却是用 JavaScript 实现的</li>
-<li>再浏览器中通常把 DOM 和 JavaScript 独立实现<ul>
-<li>IE 中 JavaScript 的实现名为 JScript 位于 jscript.dll 文件中， DOM 的实现则是在另外一个库中：mshtml.dll（内部称 Trident ）;分离的优点：允许使用其他技术和语言共享使用 DOM 和 Trident 提供的渲染函数</li>
-<li>Safari 中的 DOM 和渲染使用 Webkit 中的 WebCore 实现，JavaScript 部分是由独立的 JavaScriptCore 引擎（ 最新版本的名字为 SquirrelFish）</li>
-<li>Google Chrome 同样使用 Webkit 中的 WebCore 库来渲染页面，JavaScript 部分名为 V8 的引擎</li>
-<li>Firefox 是使用 名为 Gecko 的渲染引擎来渲染页面， JavaScript部分是引擎名为 SpiderMonkey （ 最新：TraceMonkey）的引擎</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>DOM 为什么慢</p>
-<ol>
-<li>天生就慢（简单理解：两个互相独立的功能只要通过接口彼此链接，就会产生消耗）<ul>
-<li>解决方案：尽量在 ES（ js 三大部分之一）中处理，尽可能减少 DOM 操作</li>
-</ul>
-</li>
-<li><p>天生慢的具体表现：</p>
-<ul>
-<li><p>DOM 的访问和修改 –&gt; 会导致浏览器重新计算页面的几何变化 –&gt; 通用法则：减少访问 DOM 的次数，把运算尽量留在 ECMAScript 这一端</p>
-<ul>
-<li>innerHTML 和 DOM 方法（document.createElement() 和 document.createTextNode()）</li>
-<li><p>节点克隆（element.cloneNode()）,比上面两种方式要快一点点</p>
-</li>
-<li><p>HTML 集合（类数组列表）底层文档对象更新时，他也自动更新<br>获取 HTML 集合</p>
-<ol>
-<li>document.getElementsByName() // 获取</li>
-<li>document.getElementsByClassName() // 获取以 class name 组成的集合</li>
-<li>document.getElementsByTagName()</li>
-<li>document.images // 页面所有的 img 元素</li>
-<li>document.links // 页面所有的 a 元素</li>
-<li>document.forms[0].element // 页面中第一个表单的所有字段</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<ol start="4">
-<li><p>重排和重绘</p>
-<p>什么是重排，影响因素</p>
-<ol>
-<li><p>重排：DOM 的变化影响来元素的几何属性（比如宽高等）其他的元素可能会因此受收到影响，浏览器会使渲染树中受到影响的部分失效，并重新构造渲染树，这个过程称为：重排</p>
-</li>
-<li><p>重排何时发生（如何避免重排重绘）</p>
-<ul>
-<li>添加和删除可见的 DOM 元素</li>
-<li>元素位置改变</li>
-<li>元素尺寸改变（包括：padding margin border height width）</li>
-<li>内容改变，例如：文本改变或图片被另外一个不同尺寸的图片代替</li>
-<li>页面渲染器初始化</li>
-<li>浏览器窗口尺寸变化</li>
-</ul>
-<ol>
-<li><p>如何避免减少重排：</p>
-<ul>
-<li>针对使用 js 修改样式： el.style.xxx 使用 el.style.cssText 合并，或者使用 el.className</li>
-<li><p>正对批量修改 DOM ：</p>
-<ol>
-<li><p>使用元素 脱离文档流（如何脱离文档流）</p>
-<ul>
-<li>隐藏元素</li>
-<li>使用文档片断（docuement fragment）在当前 DOM 之外构建一个子树，再把它拷贝回文档中</li>
-</ul>
-</li>
-<li><p>对其应用多重改变</p>
-</li>
-<li>把元素带回文档中</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>渲染树变化的排队与刷新</p>
-<ul>
-<li>获取布局信息的操作会导致队列刷新(为获取最新的布局信息，会强制页面进行重排以获取最新的尺寸)<ol>
-<li>offsetTop, offsetLeft, offsetRight, offsetBottom</li>
-<li>scrollTop, scrollLeft, scrollRight, scrollBottom</li>
-<li>clientTop, clentLeft, clientWidth, clientHeight</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<ol start="4">
-<li><p>什么是重绘，影响因素</p>
-<ol>
-<li>当 DOM 元素的改变不会影响元素的几何属性的时候，页面会在发生的区域进行重绘</li>
-</ol>
-</li>
-<li><p>重排和重绘的关系</p>
-<ol>
-<li>重排一定会引起重绘；重绘不一定会引起重排</li>
-</ol>
-</li>
-<li><p>其他的优化内容：</p>
-<ul>
-<li>缓存布局信息：避免多次获取元素的尺寸，他会强制页面进行重排，以快速获取页面的精确的尺寸</li>
-<li>动画优化：脱离文档流，减少对页面布局的影响</li>
-<li>事件委托：避免在每个需要触发的元素上绑定事件，只需要在我们指定的父级上绑定事件</li>
-<li>尽量少访问 HTML 集合，HTML 集合时类数组列表，但是访问数组比访问类数组要快</li>
-<li>使用访问局部变量去访问 DOM</li>
-<li>DOM 的方法去访问元素的改进</li>
-<li>选择 API 的使用</li>
-</ul>
-</li>
-</ol>
-<hr>
-<p>参考文献：</p>
-<ul>
-<li>《高新能的 JavaScript》</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2282,7 +2173,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2295,7 +2186,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -2363,7 +2254,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">14.4k</span>
+    <span title="Site words total count">14.8k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

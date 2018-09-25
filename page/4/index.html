@@ -247,6 +247,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2017/12/18/Array 之 ES5 forEach/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/18/Array 之 ES5 forEach/" itemprop="url">Array 之 ES5 forEach</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-18T11:24:43+08:00">
+                2017-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  206
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="Array-prototype-forEach"><a href="#Array-prototype-forEach" class="headerlink" title="Array.prototype.forEach"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank" rel="noopener">Array.prototype.forEach</a></h3><ul>
+<li><p>Grammar:</p>
+<ol>
+<li>array.forEach(callback[, thisArg])</li>
+<li>array.forEach(callback(currentValue, index, array){ //do something }, this)</li>
+</ol>
+</li>
+<li><p>Description: 循环数组</p>
+</li>
+<li>Return: undefind</li>
+<li><p>特点：</p>
+<ol>
+<li>从头开始至尾进行迭代</li>
+<li>中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError</li>
+<li>作用和 for 循环类似</li>
+</ol>
+</li>
+<li><p>Compared with for:</p>
+<ol>
+<li>不同点：<ul>
+<li>for 可以退出循环</li>
+<li>for 是 JavaScript 的一个循环语句</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._forEach) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 循环数组中的元素</span></span><br><span class="line"><span class="comment">     * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">     * @returns undefind</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_forEach'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                len;</span><br><span class="line">            <span class="comment">// 1. 判断参数</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断数组长度</span></span><br><span class="line">            len = <span class="keyword">this</span>.length;</span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 3. 初始化循环起点，并开始循环</span></span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">              callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>) <span class="comment">// // 在 Array.prototype._map 中有赋值这一步</span></span><br><span class="line">              i++</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
+</ul>
+<hr>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2017/12/12/git 删除远程 commit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1284,7 +1471,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1297,7 +1484,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -1365,7 +1552,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">14.4k</span>
+    <span title="Site words total count">14.8k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

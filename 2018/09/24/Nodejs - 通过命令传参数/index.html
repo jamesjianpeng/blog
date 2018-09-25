@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Nodejs,optimization,Webpack,Webpack optimization," />
 
 
 
@@ -93,17 +93,18 @@
 
 
 
-<meta name="description" content="前言：  作为一个 fecoder，在前端工程方面遇到了一些需要优化的方面，比如： 1. 如何使用 nodejs 命令行，去传递一些参数 为什么需要从命令行中传参数 首先传参数启动的脚本可能是同一个脚本，使用参数去区分配置，比如  执行脚本： 12node ./build/prod-build.jsnode ./build/prod-build.js ts  上面启动的脚本都是 ./build/p">
+<meta name="description" content="前言： 作为一个 fecoder，在前端工程方面遇到了一些需要优化的方面，比如： 如何使用 nodejs 命令行，去传递一些参数 把服务启动的脚本 和 配置（数据）处理的内容分离    为什么需要从命令行中传参数 首先传参数启动的脚本可能是同一个脚本，使用参数去区分配置，比如  执行脚本： 12node ./build/prod-build.jsnode ./build/prod-build.js">
+<meta name="keywords" content="Nodejs,optimization,Webpack,Webpack optimization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nodejs - 通过命令传参数">
 <meta property="og:url" content="https://www.pengjiandry.com/2018/09/24/Nodejs - 通过命令传参数/index.html">
 <meta property="og:site_name" content="彭涧">
-<meta property="og:description" content="前言：  作为一个 fecoder，在前端工程方面遇到了一些需要优化的方面，比如： 1. 如何使用 nodejs 命令行，去传递一些参数 为什么需要从命令行中传参数 首先传参数启动的脚本可能是同一个脚本，使用参数去区分配置，比如  执行脚本： 12node ./build/prod-build.jsnode ./build/prod-build.js ts  上面启动的脚本都是 ./build/p">
+<meta property="og:description" content="前言： 作为一个 fecoder，在前端工程方面遇到了一些需要优化的方面，比如： 如何使用 nodejs 命令行，去传递一些参数 把服务启动的脚本 和 配置（数据）处理的内容分离    为什么需要从命令行中传参数 首先传参数启动的脚本可能是同一个脚本，使用参数去区分配置，比如  执行脚本： 12node ./build/prod-build.jsnode ./build/prod-build.js">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-24T06:32:57.829Z">
+<meta property="og:updated_time" content="2018-09-25T11:55:10.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nodejs - 通过命令传参数">
-<meta name="twitter:description" content="前言：  作为一个 fecoder，在前端工程方面遇到了一些需要优化的方面，比如： 1. 如何使用 nodejs 命令行，去传递一些参数 为什么需要从命令行中传参数 首先传参数启动的脚本可能是同一个脚本，使用参数去区分配置，比如  执行脚本： 12node ./build/prod-build.jsnode ./build/prod-build.js ts  上面启动的脚本都是 ./build/p">
+<meta name="twitter:description" content="前言： 作为一个 fecoder，在前端工程方面遇到了一些需要优化的方面，比如： 如何使用 nodejs 命令行，去传递一些参数 把服务启动的脚本 和 配置（数据）处理的内容分离    为什么需要从命令行中传参数 首先传参数启动的脚本可能是同一个脚本，使用参数去区分配置，比如  执行脚本： 12node ./build/prod-build.jsnode ./build/prod-build.js">
 
 
 
@@ -311,7 +312,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  271
+                  557
                 </span>
               
 
@@ -327,7 +328,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  2
                 </span>
               
             </div>
@@ -348,9 +349,14 @@
       
 
       
-        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>  作为一个 fecoder，在前端工程方面遇到了一些需要优化的方面，比如：</p>
-<pre><code>1. 如何使用 nodejs 命令行，去传递一些参数
-</code></pre><h3 id="为什么需要从命令行中传参数"><a href="#为什么需要从命令行中传参数" class="headerlink" title="为什么需要从命令行中传参数"></a>为什么需要从命令行中传参数</h3><ol>
+        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><ul>
+<li>作为一个 fecoder，在前端工程方面遇到了一些需要优化的方面，比如：<ol>
+<li>如何使用 nodejs 命令行，去传递一些参数</li>
+<li>把服务启动的脚本 和 配置（数据）处理的内容分离</li>
+</ol>
+</li>
+</ul>
+<h3 id="为什么需要从命令行中传参数"><a href="#为什么需要从命令行中传参数" class="headerlink" title="为什么需要从命令行中传参数"></a>为什么需要从命令行中传参数</h3><ol>
 <li><p>首先传参数启动的脚本可能是同一个脚本，使用参数去区分配置，比如</p>
 <ul>
 <li><p>执行脚本：</p>
@@ -358,15 +364,30 @@
 </li>
 <li><p>上面启动的脚本都是 ./build/prod-build.js 这个文件，如下<a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/f982faa7cf5dc2165b0fb501b5548247dca4367e" target="_blank" rel="noopener">（ github commit ）</a></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file 本地开发环境下的 node 脚本，这种方式是通过命令行传参数</span></span><br><span class="line"><span class="comment"> * @author jamesjianpeng</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">'webpack-merge'</span>);</span><br><span class="line"><span class="keyword">const</span> webpackDevServer = <span class="built_in">require</span>(<span class="string">'webpack-dev-server'</span>);</span><br><span class="line"><span class="keyword">let</span> devConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.dev.conf'</span>);</span><br><span class="line"><span class="keyword">const</span> tsConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.ts.conf'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**  #region only compiler ts */</span></span><br><span class="line"><span class="keyword">const</span> argv = <span class="built_in">Array</span>.from(process.argv)</span><br><span class="line"><span class="keyword">if</span> (argv.includes(<span class="string">'ts'</span>)) &#123;</span><br><span class="line">    devConf = merge(devConf, tsConf)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**  #endregion */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** #region 启动一个 http服务 公用的逻辑 */</span></span><br><span class="line">webpackDevServer.addDevServerEntrypoints(devConf, devConf.devServer);</span><br><span class="line"><span class="keyword">const</span> compiler = webpack(devConf);</span><br><span class="line"><span class="keyword">new</span> webpackDevServer(compiler, devConf.devServer)</span><br><span class="line">  .listen(devConf.devServer.port);</span><br><span class="line"><span class="comment">/** #endregion */</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>上面的方式可以减少 copy 的几率，在一定程度上重用部分逻辑</li>
+</li>
 </ul>
+</li>
+</ol>
+<h3 id="把服务启动的脚本-和-配置（数据）处理的内容分离："><a href="#把服务启动的脚本-和-配置（数据）处理的内容分离：" class="headerlink" title="把服务启动的脚本 和 配置（数据）处理的内容分离："></a>把服务启动的脚本 和 配置（数据）处理的内容分离：</h3><ol>
+<li><p><a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/bd1cba1cd4f0890626f6d9c20770e9a6a4bc9b2a" target="_blank" rel="noopener">把启动 http 服务的内容从引入和合并的文件抽离</a></p>
+<ul>
+<li><p>./build/base-dev.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file 本地开发环境下的 node 脚本，这种方式是通过命令行传参数</span></span><br><span class="line"><span class="comment"> * @author jamesjianpeng</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> webpackDevServer = <span class="built_in">require</span>(<span class="string">'webpack-dev-server'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 为热更新， 启动一个 本地 http 服务</span></span><br><span class="line"><span class="comment"> * @param &#123;object&#125; devConf</span></span><br><span class="line"><span class="comment"> * @returns void</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">exports.devScript = <span class="function"><span class="keyword">function</span>(<span class="params">devConf</span>) </span>&#123;</span><br><span class="line">    webpackDevServer.addDevServerEntrypoints(devConf, devConf.devServer);</span><br><span class="line">    <span class="keyword">const</span> compiler = webpack(devConf);</span><br><span class="line">    <span class="keyword">new</span> webpackDevServer(compiler, devConf.devServer)</span><br><span class="line">      .listen(devConf.devServer.port);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>./build/local-dev.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file 把需要用到的 configuration 都引进来，根据命令行的传参数去区分启动的服务是为某个项目服务</span></span><br><span class="line"><span class="comment"> * @author jamesjianpeng</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">'webpack-merge'</span>);</span><br><span class="line"><span class="keyword">let</span> devConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.dev.conf'</span>);</span><br><span class="line"><span class="keyword">const</span> tsConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.ts.conf'</span>);</span><br><span class="line"><span class="keyword">const</span> vueConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.vue.conf'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; devScript &#125; = <span class="built_in">require</span>(<span class="string">'./base-dev.js'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**  #region only compiler ts */</span></span><br><span class="line"><span class="keyword">const</span> argv = <span class="built_in">Array</span>.from(process.argv)</span><br><span class="line"><span class="keyword">if</span> (argv.includes(<span class="string">'ts'</span>)) &#123;</span><br><span class="line">    devConf = merge(devConf, tsConf)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**  #endregion */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**  #region only compiler vue */</span></span><br><span class="line"><span class="keyword">if</span> (argv.includes(<span class="string">'vue'</span>)) &#123;</span><br><span class="line">    devConf = merge(devConf, vueConf)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**  #endregion */</span></span><br><span class="line"></span><br><span class="line">devScript(devConf)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上面的方式可以减少 copy 的几率，在一定程度上重用部分逻辑</p>
 </li>
 </ul>
 </li>
 </ol>
 <ul>
 <li>还有一种偏门的方式，后续更新，<a href="https://github.com/jamesjianpeng/vue-sunduan-ui-play/blob/master/package.json" target="_blank" rel="noopener"> git commit </a></li>
+</ul>
+<hr>
+<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><ul>
+<li>2018-9-25 <a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/bd1cba1cd4f0890626f6d9c20770e9a6a4bc9b2a" target="_blank" rel="noopener">把启动 http 服务的内容从引入和合并的文件抽离</a></li>
 </ul>
 
       
@@ -382,6 +403,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Nodejs/" rel="tag"><i class="fa fa-tag"></i> Nodejs</a>
+          
+            <a href="/tags/optimization/" rel="tag"><i class="fa fa-tag"></i> optimization</a>
+          
+            <a href="/tags/Webpack/" rel="tag"><i class="fa fa-tag"></i> Webpack</a>
+          
+            <a href="/tags/Webpack-optimization/" rel="tag"><i class="fa fa-tag"></i> Webpack optimization</a>
+          
+        </div>
       
 
       
@@ -494,7 +527,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -543,7 +576,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么需要从命令行中传参数"><span class="nav-number">2.</span> <span class="nav-text">为什么需要从命令行中传参数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么需要从命令行中传参数"><span class="nav-number">2.</span> <span class="nav-text">为什么需要从命令行中传参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把服务启动的脚本-和-配置（数据）处理的内容分离："><span class="nav-number">3.</span> <span class="nav-text">把服务启动的脚本 和 配置（数据）处理的内容分离：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#更新"><span class="nav-number">3.1.</span> <span class="nav-text">更新</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -578,7 +611,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">14.8k</span>
+    <span title="Site words total count">15.1k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

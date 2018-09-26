@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next gemini use-motion" lang="">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -107,7 +107,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -175,7 +175,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">fecode</p>
       
   </div>
 
@@ -195,22 +195,52 @@
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
+        <li class="menu-item menu-item-首页">
           <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
           <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -247,12 +277,473 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/17/Array 之 ES5 some/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/17/Array 之 ES5 some/" itemprop="url">Array 之 ES5 some</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-17T11:33:31+08:00">
+                2018-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  309
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="Array-prototype-some"><a href="#Array-prototype-some" class="headerlink" title="Array.prototype.some"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some" target="_blank" rel="noopener">Array.prototype.some</a></h3><ul>
+<li><p>Grammar:</p>
+<ol>
+<li>array.some(callback[, thisArg])</li>
+<li>array.some(callback(currentValue, index, array){ //do something }, this)</li>
+</ol>
+</li>
+<li><p>Description: 循环数组，找到一个满足条件的元素，就返回 true，若所有元素都不满足条件就返回 false</p>
+</li>
+<li>Return: Boolean</li>
+<li><p>特点：</p>
+<ol>
+<li>中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError</li>
+<li>找到不满足条件的元素，直接结束循环，就返回 false</li>
+<li>空数组直接返回 false</li>
+</ol>
+</li>
+<li><p>Compared with Array.prototype.every</p>
+<ol>
+<li><p>不同点：</p>
+<ul>
+<li>some 是遇到满足条件时结束循环，并返回值 true；every 是遇到不满足条件时结束循环，并返回值 false</li>
+</ul>
+</li>
+<li><p>相同点</p>
+<ul>
+<li>返回的参数类型都是 Boolean</li>
+<li>参数一样，都是 callback function</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._some) &#123;</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_some'</span>, &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 只要数组中的任意一个元素满足条件就返回 true ，否则返回 false</span></span><br><span class="line"><span class="comment">         * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">         * @returns &#123;Boolean&#125; result</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                len,</span><br><span class="line">                callbackState,</span><br><span class="line">                result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断参数</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Array.prototype._some params is not callback'</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断数组的长度</span></span><br><span class="line">            result = <span class="literal">false</span></span><br><span class="line">            len = <span class="keyword">this</span>.length;</span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">                callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">                <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                  result = <span class="literal">true</span>;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">                &#125;;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
+</ul>
+<hr>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/14/JavaScript 的历史/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/14/JavaScript 的历史/" itemprop="url">JavaScript 的历史</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T17:36:20+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《JavaScript-高级程序设计》-第三版/" itemprop="url" rel="index">
+                    <span itemprop="name">《JavaScript 高级程序设计》 第三版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  915
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="JavaScript-的历史概述"><a href="#JavaScript-的历史概述" class="headerlink" title="JavaScript 的历史概述"></a>JavaScript 的历史概述</h3><ol>
+<li><p>在 JavaScript 之前表单的验证是在服务端进行</p>
+<ul>
+<li>对于用户说体验不好</li>
+<li>对于服务端来说，会在一定程度上浪费服务端的资源</li>
+</ul>
+</li>
+<li><p>为了解决这样的提高 web 应用的性能和提高用户的体养验 JavaScript 便出现了</p>
+<ul>
+<li><p>1995年2月 JavaScript 1.0<br>  Netscape 公司开发的 Netscape Navigator 2 浏览器上支持名为 LiveScript 的脚本。为了按照预期的时间发布这个新的语言，该公司就和 Sun 公司合作一起研发。最终成功发布，是不过为了蹭 Java 的顺风车，临时改名为 JavaScript</p>
+</li>
+<li><p>199?年?月 JavaScript 1.1<br>  Netscape Navigator 3 发布，JavaScript 1.0 更新到 JavaScript 1.1</p>
+</li>
+<li><p>1996年8月 JScript 1.0<br>  Netscape 公司发布的 JavaScript 脚本为 Netscape Navigator 获得更多的用户，它的竞争对手 微软 为了不失去原来的地位，决定发布 Internet Explorer 3 浏览，并且支持自己研发的 JScript 脚本，浏览器市场份额大战开始了</p>
+</li>
+<li><p>1997年<br>  JavaScript 1.1 为了实现统一的规范，被作为蓝本送到欧洲计算机制造商协会(ECMA，European Computer Manufactu Association)，该协会指定 39号技术委员会（TC39, Technical Committee #39）去负责：“标准化一种通用，跨平台，供应商中立的脚本语言的语法和语意”，</p>
+<p>  TC39 是由 Netscape 微软 Sun 等其他关注浏览器脚本语言发的公司的程序员组成，经过几个月的努力：ECMA-262 – 定义一种名为 ECMAScript 的新脚本语言的标准</p>
+</li>
+<li><p>1998年<br>  ISO/IEC （国际标准化组织和国际电工委员会）也采用 了 ECMAScript 作为标准（ISO/IEC-16262）</p>
+<p>从这以后，各大浏览器开发商就开始致力于将 ECMAScript 作为各种的 JavaScript 实现的基础</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="JavaScript-的发展"><a href="#JavaScript-的发展" class="headerlink" title="JavaScript 的发展"></a>JavaScript 的发展</h3><ul>
+<li><p>JavaScript 的实现比 ECMAScript 实现要更多</p>
+<ul>
+<li>浏览器的 JavaScript 包括的部分：ECMAScript，DOM，BOM</li>
+</ul>
+</li>
+<li><p>JavaScript 除了可以在浏览器这个宿主环境中运行：</p>
+<ul>
+<li>服务端 使用 node.js</li>
+<li><p>Adobe 使用 ActionScript</p>
+<p>服务端的node.js Adobe的ActionScript 以及 浏览器中的JavaScript 都是 ECMAScript 的实现</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="ECMAScript-的版本"><a href="#ECMAScript-的版本" class="headerlink" title="ECMAScript 的版本"></a>ECMAScript 的版本</h3><ol>
+<li><p>ECMA-262第1版</p>
+<p> 这个版本是 Netscape Navigator 3 浏览器中的发布的 JavaScript 1.1 为基础，不过有些改动：</p>
+<ul>
+<li>支持 Unicode （支持多语言开发，为什么使用 Unicode 之后就支持多语言开发？）</li>
+<li>对象也变成和任何一个浏览器平台无关</li>
+</ul>
+</li>
+<li><p>ECMA-262第2版：这个版本就是编辑和加工，，没有新增，删除，修改任何内容</p>
+</li>
+<li><p>ECMA-262第3版：这个版本才是真正的修改，这个版本标志着 ECMAScript 成为一个真正的编程语言，修改的内容：</p>
+<ul>
+<li>支持正则表达式</li>
+<li>新控制语句</li>
+<li>try-catch 异常处理的支持</li>
+<li>适应国际化的标准的修改</li>
+</ul>
+</li>
+<li><p>ECMA-262第4版</p>
+<ul>
+<li>这个版本中新增的内容：强类型变量，新语句，新数据结构，真正的类，经典继承</li>
+<li>TC39 中的一个小组发现这个版本改动太大，于是建议较小的修改：ECMA-262第3.1版 代替 ECMA-262 第4版，但是 3.1 这个版本直到2009年12月3日，为了区别 第4版 于是作为 ECMA-262第5版 发布</li>
+</ul>
+</li>
+<li><p>ECMA-262第5版（2009年12月3日）</p>
+<p> 这个版本实际是 ECMA-262第3.1版</p>
+</li>
+</ol>
+<hr>
+<h3 id="兼容情况"><a href="#兼容情况" class="headerlink" title="兼容情况"></a>兼容情况</h3><p>2008年，五大主流 Web 浏览器(IE，Firefox，Safari，Chrome和Opera)全都做到与 ECMA-262 兼容</p>
+<ol>
+<li><p>ES3:<br> IE5.5 - IE7<br> Safari 3.x<br> Chrome 1+<br> Firefox 1 ~ 2 / 3.0x</p>
+</li>
+<li><p>ES5(不完全兼容):<br> IE8<br> Safari 4.x~5.x<br> Firefox 3.5 ~ 3.6</p>
+</li>
+<li><p>ES5:<br> IE9+<br> Firefox 4.0+</p>
+</li>
+</ol>
+<hr>
+<p>参考文献：</p>
+<ul>
+<li>《JavaScript 高级程序设计》 第三版</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/02/性能优化之 DOM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="james">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -288,6 +779,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《高新能的-JavaScript》/" itemprop="url" rel="index">
+                    <span itemprop="name">《高新能的 JavaScript》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -530,7 +1054,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="james">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -709,7 +1233,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="james">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -745,6 +1269,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《深入理解-ES6》/" itemprop="url" rel="index">
+                    <span itemprop="name">《深入理解 ES6》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -952,7 +1509,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="james">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -988,6 +1545,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《深入理解-ES6》/" itemprop="url" rel="index">
+                    <span itemprop="name">《深入理解 ES6》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1160,7 +1750,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="james">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1196,6 +1786,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《深入理解-ES6》/" itemprop="url" rel="index">
+                    <span itemprop="name">《深入理解 ES6》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1357,7 +1980,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="james">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1544,7 +2167,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="james">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1713,7 +2336,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="james">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1874,392 +2497,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/06/27/JavaScript 数据的存取/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/27/JavaScript 数据的存取/" itemprop="url">JavaScript 数据的存取</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-27T07:50:58+08:00">
-                2018-06-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  163
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="影响器读取速度"><a href="#影响器读取速度" class="headerlink" title="影响器读取速度"></a>影响器读取速度</h3><ol>
-<li>数据的存储位置会很大程度上影响器读取速度</li>
-</ol>
-<h3 id="JavaScript-的存储位置"><a href="#JavaScript-的存储位置" class="headerlink" title="JavaScript 的存储位置"></a>JavaScript 的存储位置</h3><ol>
-<li><p>字面量： 字符串，数字，布尔值，对象，数组，函数，正则表达式，以及特殊的 null 和 undefined</p>
-</li>
-<li><p>本地变量： 使用 var, let, const 定义的数据存储单元</p>
-</li>
-<li><p>数组元素：存储在 JavaScript 数组对象内部，以数字作为索引</p>
-</li>
-<li><p>对象成员：存储在 JavaScript 对象内部，以字符或数字作为索引</p>
-<p>访问的性能：字面量～= 本地变量 &lt; 数组对象或对象成员</p>
-</li>
-</ol>
-<h3 id="管理作用域-待更新"><a href="#管理作用域-待更新" class="headerlink" title="管理作用域(待更新)"></a>管理作用域(待更新)</h3><hr>
-<p>参考文献：</p>
-<ul>
-<li>《高新能的 JavaScript》</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/06/26/http 概述/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/26/http 概述/" itemprop="url">http 概述</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-26T17:21:01+08:00">
-                2018-06-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  737
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="HTTP-是什么，作用是什么"><a href="#HTTP-是什么，作用是什么" class="headerlink" title="HTTP 是什么，作用是什么"></a>HTTP 是什么，作用是什么</h3><ul>
-<li>HTTP 是一种数据传输协议，作用是：确保数据在传输过程中不会被损坏或产生混乱。是应用层协议</li>
-<li>HTTP 在网络中所处的层次：应用层</li>
-</ul>
-<h4 id="web客户端"><a href="#web客户端" class="headerlink" title="web客户端"></a>web客户端</h4><ul>
-<li>什么是web客户端：用户使用的终端</li>
-<li>客户端的作用是什么：发送 HTTP 请求，展示 HTTP 服务器返回的数据</li>
-</ul>
-<h4 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h4><ul>
-<li>什么是服务器</li>
-<li>客户端的作用是什么： HTTP服务器是存储着因特网的资源</li>
-</ul>
-<h4 id="资源的种类"><a href="#资源的种类" class="headerlink" title="资源的种类"></a>资源的种类</h4><ol>
-<li><p>媒体标签 MIME type</p>
-<ul>
-<li>json格式的文本文档: Content-Type: application/json</li>
-<li>HTML 格式的文本文档：Content-Type: text/html</li>
-<li>ASCII 文本文档：Content-Type: text/plain</li>
-<li>JPEG格式的图片：Content-Type: image/jpeg</li>
-<li>GIF格式的图片：Content-Type: image/gif</li>
-<li>Apple 的 QuickTime 电影格式：Content-Type: vdeo/quicktime</li>
-<li>微软的 PowerPoint 演示文件：Content-Type: application/vnd.ms-powerpoint</li>
-</ul>
-</li>
-<li><p>URI<br>服务器资源名被称为统一资源标识符，（ Uniform Resource Identifier, URI ）具有唯一性</p>
-<ul>
-<li>两种形式：URL 和 URN<br>URL ：统一资源定位符，描述一台特定服务器上某资源的特定位置.例如： <a href="http://www.joes-hardware.com/specials/saw-blade.gif，URL" target="_blank" rel="noopener">http://www.joes-hardware.com/specials/saw-blade.gif，URL</a> 指明了协议，服务器，本地资源<br>URN ：统一资源名，作为特定内容的唯一名称使用的，与目前的资源所在地无关。通过 URN 可以用同一个名字通过多种网络访问协议来访问资源。例如：urn:ierf:rfc:2141。在使用阶段，尚未大范围使用</li>
-</ul>
-</li>
-</ol>
-<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><ul>
-<li>一个 HTTP 事务由一条（从客户端发往服务器的）请求命令和 一个（从服务器发回客户端的）响应结果组成。这种通信是通过名为 HTTP 报文 （ HTTP message ）的格式化数据进行的</li>
-</ul>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
-<li>GET</li>
-<li>PUT</li>
-<li>DELETE</li>
-<li>POST</li>
-<li>HEAD<h4 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h4></li>
-<li>必要性：每个 HTTP 响应报文返回时都会携带一个状态码</li>
-<li>形式：三位数字，伴随着么个数字状态码，HTTP 还会发送一条解释性的 ‘ 原因短语 ’</li>
-<li>作用：告知客户端请求是否成功，或者是否需要采取其他动作</li>
-</ul>
-<h4 id="Web页面中可以包含多个对象"><a href="#Web页面中可以包含多个对象" class="headerlink" title="Web页面中可以包含多个对象"></a>Web页面中可以包含多个对象</h4><ul>
-<li>一个首页，首先获取 HTML ，然后获取每个嵌入式的图片，其他的程序。</li>
-</ul>
-<h4 id="报文"><a href="#报文" class="headerlink" title="报文"></a>报文</h4><ul>
-<li>形式：<ul>
-<li>HTTP 报文由一行一行的简单字符串组成的，HTTP 报文是纯文本，不是二进制代码。</li>
-<li>HTTP 报文包括三部分：<ul>
-<li>起始行：<br>作用：在请求报文中用来说明做些什么，在响应报文中说明出现来什么情况</li>
-<li>首部字段</li>
-<li>主体<br>作用：在请求主体中包括来要发送给 Web 服务器的数据，响应主体中装载来要返回给客户端的数据</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>种类：请求报文 （ request message ）, 响应报文 （ response message ）</li>
-</ul>
-<h3 id="连接-（TCP）"><a href="#连接-（TCP）" class="headerlink" title="连接 （TCP）"></a>连接 （TCP）</h3><ol>
-<li>TCP 什么是TCP 作用是什么<ul>
-<li>TCP ( Transmission Control Protocol ), 是一种传输控制协议</li>
-</ul>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2299,6 +2536,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="james" />
+            
               <p class="site-author-name" itemprop="name">james</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -2308,14 +2549,23 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
             
 
             
@@ -2323,7 +2573,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2391,7 +2641,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">15.1k</span>
+    <span title="Site words total count">16.2k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
@@ -2408,7 +2658,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -2508,6 +2758,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 

@@ -287,6 +287,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/17/Array 之 ES5 reduce/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/17/Array 之 ES5 reduce/" itemprop="url">Array 之 ES5 reduce</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-17T12:25:34+08:00">
+                2018-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  505
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Array-prototype-reduce"><a href="#Array-prototype-reduce" class="headerlink" title="Array.prototype.reduce"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce" target="_blank" rel="noopener">Array.prototype.reduce</a></h3><ul>
+<li><p>Grammar:</p>
+<ol>
+<li>array.reduce(callback[, thisArg])</li>
+<li>array.reduce(callback(firstOrTotalNum, nextNum, index, array){ //do something }[, initNum])</li>
+</ol>
+</li>
+<li><p>Description:</p>
+<ol>
+<li>若 initNum 作为参数传入，则在 index 为 0 的时候 firstOrTotalNum 的值是为 initNum</li>
+<li>若 initNum 没有作为参数传入，则在 index 为 0 的时候 firstOrTotalNum 的值是为 数组中的第一个元素</li>
+<li>在 index 不为 0 的时候 firstOrTotalNum 值是在 callback function return 的值</li>
+</ol>
+</li>
+<li><p>Return: 任何数据类型</p>
+</li>
+<li>特点：<ol>
+<li>可以使用它进行累加，累乘或者拼接字符</li>
+<li>或者其他的功能</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._reduce) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Array.prototype._reduce</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @param &#123;*&#125; initNum</span></span><br><span class="line"><span class="comment">   * @returns &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._reduce = <span class="function"><span class="keyword">function</span>(<span class="params">callback, initNum</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            len,</span><br><span class="line">            result,</span><br><span class="line">            k,</span><br><span class="line">            callbackNum,</span><br><span class="line">            noInitNum;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1. 判断传入的参数</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Array.prototype._reduce params is not function'</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 判断数组长度</span></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line">        result = initNum || <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 合并之后，并不好读😢</span></span><br><span class="line">        <span class="comment">// noInitNum = initNum === undefined ? true : false;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">// len = noInitNum ? len - 1 : len; // 没有 初始值 的时候实际上是从数组的第二项开始的，所以循环的最大长度 - 1</span></span><br><span class="line">        <span class="comment">// while(i &lt; len) &#123;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     callbackNum = i === 0</span></span><br><span class="line">        <span class="comment">//         ? (noInitNum ? this[i] : Number(initNum)) // 没有 初始值 的时候实际上是从 callback 接受的第一个参数是数组的第一项元素，第二个参数是数组的二项元素</span></span><br><span class="line">        <span class="comment">//         : result;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     k = noInitNum ? i + 1 : i; // 没有 初始值 的时候实际上是从数组的第二项开始的</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     result = callback(callbackNum, this[k], i, this);</span></span><br><span class="line">        <span class="comment">//     i++;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// #endregion 合并之后</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 第一次写</span></span><br><span class="line">        <span class="keyword">if</span> (initNum === <span class="literal">undefined</span>) &#123; <span class="comment">// 关键点：1. 需要判断 初始化的值</span></span><br><span class="line">            len-- <span class="comment">// 关键点：2. 没有 初始值 的时候实际上是从 callback 接受的第一个参数是数组的第一项元素，第二个参数是数组的二项元素，实际上是从第二项开始</span></span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                callbackNum = i === <span class="number">0</span> ? <span class="keyword">this</span>[i] : result;</span><br><span class="line">                result = callback(callbackNum, <span class="keyword">this</span>[i + <span class="number">1</span>], i, <span class="keyword">this</span>);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                callbackNum = i === <span class="number">0</span> ? <span class="built_in">Number</span>(initNum) : result; <span class="comment">// 关键点：3. 使用 Number 会把值转化为 number 类型</span></span><br><span class="line">                result = callback(callbackNum, <span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// #endregion 第一次写</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/17/Array 之 ES5 some/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2328,185 +2505,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/07/我的 CSS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/07/我的 CSS/" itemprop="url">我的 CSS</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-07T18:25:47+08:00">
-                2018-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  111
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="HTML5秘籍-第-6-章-美妙的-CSS3-字体和特效"><a href="#HTML5秘籍-第-6-章-美妙的-CSS3-字体和特效" class="headerlink" title="HTML5秘籍 第 6 章 - 美妙的 CSS3 字体和特效"></a>HTML5秘籍 第 6 章 - 美妙的 CSS3 字体和特效</h3><p>工具：</p>
-<ol>
-<li>使用 Can i use 去检查 CSS 的兼容</li>
-<li>-prefix-free 库自动为需要添加浏览器前缀的 CSS 样式</li>
-</ol>
-<hr>
-<h3 id="CSS-分类"><a href="#CSS-分类" class="headerlink" title="CSS 分类"></a>CSS 分类</h3><ol>
-<li><p>透明：<br> CSS3: opacity, rgba()</p>
-</li>
-<li><p>圆角：<br> CSS3: border-radius</p>
-</li>
-<li><p>背景：<br> CSS3: background-image, background-position, background-repeat</p>
-</li>
-<li><p>阴影(CSS3)</p>
-<ul>
-<li><p>盒子阴影<br> CSS3: box-shadow [IE 9]</p>
-</li>
-<li><p>文本阴影<br> CSS3: text-shadow [IE 10]</p>
-</li>
-</ul>
-</li>
-<li><p>渐变(CSS3)</p>
-<ul>
-<li>线性渐变: linear-gradient() [IE 10]</li>
-<li>放射性渐变: radial-gradient() [IE 10]</li>
-</ul>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2561,7 +2559,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2572,7 +2570,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2583,7 +2581,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2651,7 +2649,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">16.3k</span>
+    <span title="Site words total count">18.3k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

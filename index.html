@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  630
+                  754
                 </span>
               
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  3
                 </span>
               
             </div>
@@ -423,17 +423,17 @@
         
           
             <hr>
-<h3 id="数据库创建和删除的操作"><a href="#数据库创建和删除的操作" class="headerlink" title="数据库创建和删除的操作"></a>数据库创建和删除的操作</h3><h4 id="数据库的创建（DDL）"><a href="#数据库的创建（DDL）" class="headerlink" title="数据库的创建（DDL）"></a>数据库的创建（DDL）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE &lt;data_base_name&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="数据库创建和删除的操作"><a href="#数据库创建和删除的操作" class="headerlink" title="数据库创建和删除的操作"></a>数据库创建和删除的操作</h3><h4 id="数据库的创建（DDL）"><a href="#数据库的创建（DDL）" class="headerlink" title="数据库的创建（DDL）"></a>数据库的创建（DDL）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE &lt;data_base_name&gt;;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>值得注意的是 data_base_name，不能出现中中划线（’-‘）</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE my_data_basese_test</span><br><span class="line">Query OK, 1 row affected (0.08 sec)</span><br></pre></td></tr></table></figure>
-<h4 id="查看所有的数据库"><a href="#查看所有的数据库" class="headerlink" title="查看所有的数据库"></a>查看所有的数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW DATABASES</span><br><span class="line">+---------------------+</span><br><span class="line">| Database            |</span><br><span class="line">+---------------------+</span><br><span class="line">| information_schema  |</span><br><span class="line">| my_data_basese_test |</span><br><span class="line">| mysql               |</span><br><span class="line">| performance_schema  |</span><br><span class="line">| sys                 |</span><br><span class="line">+---------------------+</span><br></pre></td></tr></table></figure>
-<h4 id="删除数据库（高危操作⚠️，需要结对操作✌️）"><a href="#删除数据库（高危操作⚠️，需要结对操作✌️）" class="headerlink" title="删除数据库（高危操作⚠️，需要结对操作✌️）"></a>删除数据库（高危操作⚠️，需要结对操作✌️）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DROP DATABASE &lt;data_base_name&gt;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
-<h4 id="切换到某个数据库"><a href="#切换到某个数据库" class="headerlink" title="切换到某个数据库"></a>切换到某个数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; USE &lt;data_name&gt;</span><br><span class="line">Database changed</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE my_data_basese_test;</span><br><span class="line">Query OK, 1 row affected (0.08 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="查看所有的数据库"><a href="#查看所有的数据库" class="headerlink" title="查看所有的数据库"></a>查看所有的数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW DATABASES;</span><br><span class="line">+---------------------+</span><br><span class="line">| Database            |</span><br><span class="line">+---------------------+</span><br><span class="line">| information_schema  |</span><br><span class="line">| my_data_basese_test |</span><br><span class="line">| mysql               |</span><br><span class="line">| performance_schema  |</span><br><span class="line">| sys                 |</span><br><span class="line">+---------------------+</span><br></pre></td></tr></table></figure>
+<h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DROP DATABASE &lt;data_base_name&gt;;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="切换到某个数据库"><a href="#切换到某个数据库" class="headerlink" title="切换到某个数据库"></a>切换到某个数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; USE &lt;data_name&gt;;</span><br><span class="line">Database changed</span><br></pre></td></tr></table></figure>
 <h3 id="表创建和删除的操作"><a href="#表创建和删除的操作" class="headerlink" title="表创建和删除的操作"></a>表创建和删除的操作</h3><h4 id="表的创建"><a href="#表的创建" class="headerlink" title="表的创建"></a>表的创建</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysqk&gt; CREATE TABLE &lt;table_name&gt;</span><br><span class="line">  -&gt; ( &lt;column_1&gt; &lt;data_type&gt; &lt;该列的约束&gt;,</span><br><span class="line">  -&gt;  &lt;column_2&gt; &lt;data_type&gt; &lt;该列的约束&gt;,</span><br><span class="line">  -&gt; ...</span><br><span class="line">  -&gt; &lt;column_n&gt; &lt;data_type&gt; &lt;该列的约束&gt;,</span><br><span class="line">  -&gt; PRIMARY KEY (column_x)));</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>关于 table_name 和 column_name 的命名：<a href="">命名规则</a></p>
+<p>关于 table_name 和 column_name 的命名：<a href="https://www.pengjiandry.com/2018/10/14/SQL-%E5%88%9D%E8%AF%86/">SQL书记规则</a></p>
 </blockquote>
 <h5 id="数据类型-Data-Type"><a href="#数据类型-Data-Type" class="headerlink" title="数据类型 (Data Type)"></a>数据类型 (Data Type)</h5><ul>
 <li>INTEGER：存储整数的数据类型（无法存储小数）</li>
@@ -453,12 +453,25 @@
 <li><p>DATE：用来指定存储日期（年月日）的列的数据类型（日期型）</p>
 </li>
 </ul>
-<h5 id="列的约束（今天写不动了😭，后续更新）"><a href="#列的约束（今天写不动了😭，后续更新）" class="headerlink" title="列的约束（今天写不动了😭，后续更新）"></a>列的约束（今天写不动了😭，后续更新）</h5><h4 id="查看某个数据库中，某个表中的所有列"><a href="#查看某个数据库中，某个表中的所有列" class="headerlink" title="查看某个数据库中，某个表中的所有列"></a>查看某个数据库中，某个表中的所有列</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; USE &lt;data_name&gt;;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; SHOW COLUMNS FROM &lt;table_name&gt;</span><br><span class="line">    -&gt; ;</span><br><span class="line">+----------------+--------------+------+-------+---------+-------+</span><br><span class="line">| Field          | Type         | Null | Key   | Default | Extra |</span><br><span class="line">+----------------+--------------+------+-------+---------+-------+</span><br><span class="line">| columns_1      | char(4)      | NO   | PRI   | NULL    |       |</span><br><span class="line">| ......         | ......       |......|...... | ......  |...... |</span><br><span class="line">| columns_n      | date         | YES  |       | NULL    |       |</span><br><span class="line">+----------------+--------------+------+-------+---------+-------+</span><br></pre></td></tr></table></figure>
+<h5 id="列的约束"><a href="#列的约束" class="headerlink" title="列的约束"></a>列的约束</h5><ul>
+<li>目前所知道的约束：<ol>
+<li>NOT NULL:  代表不能输入空白（必填）</li>
+<li>NULL:  代表空白，可以不输入（非必填）</li>
+</ol>
+</li>
+</ul>
+<h4 id="查看某个数据库中，某个表中的所有列"><a href="#查看某个数据库中，某个表中的所有列" class="headerlink" title="查看某个数据库中，某个表中的所有列"></a>查看某个数据库中，某个表中的所有列</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; USE &lt;data_name&gt;;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; SHOW COLUMNS FROM &lt;table_name&gt;</span><br><span class="line">    -&gt; ;</span><br><span class="line">+----------------+--------------+------+-------+---------+-------+</span><br><span class="line">| Field          | Type         | Null | Key   | Default | Extra |</span><br><span class="line">+----------------+--------------+------+-------+---------+-------+</span><br><span class="line">| columns_1      | char(4)      | NO   | PRI   | NULL    |       |</span><br><span class="line">| ......         | ......       |......|...... | ......  |...... |</span><br><span class="line">| columns_n      | date         | YES  |       | NULL    |       |</span><br><span class="line">+----------------+--------------+------+-------+---------+-------+</span><br></pre></td></tr></table></figure>
 <h4 id="例子"><a href="#例子" class="headerlink" title="例子:"></a>例子:</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; USE shop;</span><br><span class="line">Database changed</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE TABLE Product</span><br><span class="line">    -&gt; (product_id CHAR(4) NOT NULL,</span><br><span class="line">    -&gt; product_name VARCHAR(100) NOT NULL,</span><br><span class="line">    -&gt; product_type VARCHAR(32),</span><br><span class="line">    -&gt; sale_price   INTEGER ,</span><br><span class="line">    -&gt; purchase_price INTEGER ,</span><br><span class="line">    -&gt; regist_data DATE ,</span><br><span class="line">    -&gt; PRIMARY KEY (product_id));</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; show columns from Product;</span><br><span class="line">+----------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field          | Type         | Null | Key | Default | Extra |</span><br><span class="line">+----------------+--------------+------+-----+---------+-------+</span><br><span class="line">| product_id     | char(4)      | NO   | PRI | NULL    |       |</span><br><span class="line">| product_name   | varchar(100) | NO   |     | NULL    |       |</span><br><span class="line">| product_type   | varchar(32)  | YES  |     | NULL    |       |</span><br><span class="line">| sale_price     | int(11)      | YES  |     | NULL    |       |</span><br><span class="line">| purchase_price | int(11)      | YES  |     | NULL    |       |</span><br><span class="line">| regist_data    | date         | YES  |     | NULL    |       |</span><br><span class="line">+----------------+--------------+------+-----+---------+-------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注意：创建表的时候需要用英文 ‘()’ 包裹我们创建的列</p>
 </blockquote>
-<h4 id="表的删除（今天写不动了😭，后续更新）"><a href="#表的删除（今天写不动了😭，后续更新）" class="headerlink" title="表的删除（今天写不动了😭，后续更新）"></a>表的删除（今天写不动了😭，后续更新）</h4><hr>
+<h4 id="表的删除"><a href="#表的删除" class="headerlink" title="表的删除"></a>表的删除</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DROP TABLE &lt;table_name&gt;;</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="表中列的添加（可追加多列）"><a href="#表中列的添加（可追加多列）" class="headerlink" title="表中列的添加（可追加多列）"></a>表中列的添加（可追加多列）</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE &lt;table_name&gt; ADD COLUMN &lt;column_1&gt; &lt;data_type&gt; &lt;该列的约束&gt;;</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br></pre></td></tr></table></figure>
+<h4 id="表中列的删除（可删除多列）"><a href="#表中列的删除（可删除多列）" class="headerlink" title="表中列的删除（可删除多列）"></a>表中列的删除（可删除多列）</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE &lt;table_name&gt; DROP COLUMN &lt;column_name&gt;;</span><br><span class="line">Query OK, 0 rows affected (0.12 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br></pre></td></tr></table></figure>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
+<li>关于删除操作都是高危操作，需要结对进行✌️</li>
+</ul>
+<hr>
 <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
 
           
@@ -604,7 +617,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  691
+                  705
                 </span>
               
 
@@ -678,7 +691,7 @@
 <li>列（column）-&gt; 数据类型：表中的一个字段</li>
 <li>行（row）：表中的一条记录</li>
 <li>单元格：列和行的交汇处；一个单元格只能输出一个数据</li>
-<li>主键（primary key）：用于区分一行的标识</li>
+<li>主键（primary key）：用于区分一行的标识，可以通过主键把该条数据找出来</li>
 </ul>
 <h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><h4 id="什么是-SQL"><a href="#什么是-SQL" class="headerlink" title="什么是 SQL"></a>什么是 SQL</h4><ul>
 <li>是结构化查询语言（Structured Query Language）</li>
@@ -2438,7 +2451,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2506,7 +2519,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">20.8k</span>
+    <span title="Site words total count">21k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

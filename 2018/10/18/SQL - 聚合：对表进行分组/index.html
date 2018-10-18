@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="彭涧, blog, Hexo, NexT" />
 
 
 
@@ -93,18 +93,17 @@
 
 
 
-<meta name="description" content="String（待更新）Number（待更新）Boolean（待更新）undefined（待更新）null（null 也属于 Object）（待更新）object es6: * （待更新） Array Date RegExp NodeList       –&amp;gt;  document.querySelectorAll(‘div’) HTMLCollection –&amp;gt;  getElement">
-<meta name="keywords" content="JavaScript">
+<meta name="description" content="GROUP BY 子句 在 GUROUP BY 子句中指定的列称为聚合键或者分组列 和 SELECT 结合使用，子句的顺序（不能改变也不能替换）：   SELECT – FROM – WHRER – GROUP BY1SELECT paramter FROM &amp;lt;table_name&amp;gt; WHERE &amp;lt;condition&amp;gt; GROUP BY &amp;lt;聚合键&amp;gt;    分组会">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript 的数据类型">
-<meta property="og:url" content="https://www.pengjiandry.com/2017/08/03/JavaScript 的数据类型/index.html">
+<meta property="og:title" content="SQL - 聚合：对表进行分组">
+<meta property="og:url" content="https://www.pengjiandry.com/2018/10/18/SQL - 聚合：对表进行分组/index.html">
 <meta property="og:site_name" content="彭涧">
-<meta property="og:description" content="String（待更新）Number（待更新）Boolean（待更新）undefined（待更新）null（null 也属于 Object）（待更新）object es6: * （待更新） Array Date RegExp NodeList       –&amp;gt;  document.querySelectorAll(‘div’) HTMLCollection –&amp;gt;  getElement">
+<meta property="og:description" content="GROUP BY 子句 在 GUROUP BY 子句中指定的列称为聚合键或者分组列 和 SELECT 结合使用，子句的顺序（不能改变也不能替换）：   SELECT – FROM – WHRER – GROUP BY1SELECT paramter FROM &amp;lt;table_name&amp;gt; WHERE &amp;lt;condition&amp;gt; GROUP BY &amp;lt;聚合键&amp;gt;    分组会">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-26T07:20:05.378Z">
+<meta property="og:updated_time" content="2018-10-18T05:46:21.517Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript 的数据类型">
-<meta name="twitter:description" content="String（待更新）Number（待更新）Boolean（待更新）undefined（待更新）null（null 也属于 Object）（待更新）object es6: * （待更新） Array Date RegExp NodeList       –&amp;gt;  document.querySelectorAll(‘div’) HTMLCollection –&amp;gt;  getElement">
+<meta name="twitter:title" content="SQL - 聚合：对表进行分组">
+<meta name="twitter:description" content="GROUP BY 子句 在 GUROUP BY 子句中指定的列称为聚合键或者分组列 和 SELECT 结合使用，子句的顺序（不能改变也不能替换）：   SELECT – FROM – WHRER – GROUP BY1SELECT paramter FROM &amp;lt;table_name&amp;gt; WHERE &amp;lt;condition&amp;gt; GROUP BY &amp;lt;聚合键&amp;gt;    分组会">
 
 
 
@@ -134,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://www.pengjiandry.com/2017/08/03/JavaScript 的数据类型/"/>
+  <link rel="canonical" href="https://www.pengjiandry.com/2018/10/18/SQL - 聚合：对表进行分组/"/>
 
 
 
 
 
-  <title>JavaScript 的数据类型 | 彭涧</title>
+  <title>SQL - 聚合：对表进行分组 | 彭涧</title>
   
 
 
@@ -291,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2017/08/03/JavaScript 的数据类型/">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/18/SQL - 聚合：对表进行分组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="james">
@@ -308,7 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript 的数据类型</h1>
+          <h1 class="post-title" itemprop="name headline">SQL - 聚合：对表进行分组</h1>
         
 
         <div class="post-meta">
@@ -320,8 +319,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-03T18:27:28+08:00">
-                2017-08-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T12:52:41+08:00">
+                2018-10-18
               </time>
             
 
@@ -330,39 +329,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《JavaScript-高级程序设计》-第三版/" itemprop="url" rel="index">
-                    <span itemprop="name">《JavaScript 高级程序设计》 第三版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -385,7 +351,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.2k
+                  310
                 </span>
               
 
@@ -401,7 +367,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  4
+                  1
                 </span>
               
             </div>
@@ -422,77 +388,38 @@
       
 
       
-        <hr>
-<h3 id="String（待更新）"><a href="#String（待更新）" class="headerlink" title="String（待更新）"></a>String（待更新）</h3><h3 id="Number（待更新）"><a href="#Number（待更新）" class="headerlink" title="Number（待更新）"></a>Number（待更新）</h3><h3 id="Boolean（待更新）"><a href="#Boolean（待更新）" class="headerlink" title="Boolean（待更新）"></a>Boolean（待更新）</h3><h3 id="undefined（待更新）"><a href="#undefined（待更新）" class="headerlink" title="undefined（待更新）"></a>undefined（待更新）</h3><h3 id="null（null-也属于-Object）（待更新）"><a href="#null（null-也属于-Object）（待更新）" class="headerlink" title="null（null 也属于 Object）（待更新）"></a>null（null 也属于 Object）（待更新）</h3><h3 id="object-es6-（待更新）"><a href="#object-es6-（待更新）" class="headerlink" title="object es6: * （待更新）"></a>object es6: * （待更新）</h3><ol>
-<li>Array</li>
-<li>Date</li>
-<li>RegExp</li>
-<li>NodeList       –&gt;  document.querySelectorAll(‘div’)</li>
-<li>HTMLCollection –&gt;  getElementsByTagName(‘div’)</li>
-<li>Set(WeakSet)*</li>
-<li>Map(WeakMap)*</li>
-<li>Symbol*</li>
-</ol>
-<h3 id="判断类型有这几种方法："><a href="#判断类型有这几种方法：" class="headerlink" title="判断类型有这几种方法："></a>判断类型有这几种方法：</h3><ul>
-<li>typeof           可以检测原始类型和函数，局限：用typeof 去判断一个没有声明的变量会报错</li>
-<li>instanceof       根据构造函数来区别对象</li>
-<li>Object.prototype.toString.call()  可以判断任何一个数据</li>
-<li>isNaN            检测 NaN</li>
-</ul>
-<h3 id="基本类型和引用类型"><a href="#基本类型和引用类型" class="headerlink" title="基本类型和引用类型"></a>基本类型和引用类型</h3><ol>
-<li>根据数据在栈中存储的类型</li>
-<li><p>数据的表现形式</p>
-</li>
-<li><p>在栈中存储的类型：<br>a. 数据的值实际存储在栈中的则是引用类型<br>b. 数据的值实际存储在堆中，而在栈中只是保留了堆物理空间的引用</p>
-<p>这种划分的手法是抽象的<br>基本类型，值存在内存的栈中，相互对立，没有直接的联系<br>引用类性：值存在内存的栈中，内部有联系（我们可以通过其他方法，切断联系，重新使用一块内存空间，JSON.parse(JSON.stringify)）</p>
-</li>
-<li><p>具体的划分 (数据表现的形式)<br>5 种基本类型：string, boolean, number, null, undefined<br>1 引用类型： 对象</p>
-<p>访问变量的方式：按值和按引用访问</p>
-<p>变量与实际数据的关系<br>变量与变量之间的关系</p>
-<p>变量的赋值</p>
+        <h3 id="GROUP-BY-子句"><a href="#GROUP-BY-子句" class="headerlink" title="GROUP BY 子句"></a>GROUP BY 子句</h3><ul>
+<li>在 GUROUP BY 子句中指定的列称为聚合键或者分组列</li>
+<li><p>和 SELECT 结合使用，子句的顺序（不能改变也不能替换）：</p>
+<ul>
+<li><ol>
+<li>SELECT – FROM – WHRER – GROUP BY<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT paramter FROM &lt;table_name&gt; WHERE &lt;condition&gt; GROUP BY &lt;聚合键&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">9</span>; <span class="comment">// 变量和基本类型值的关系</span></span><br><span class="line"><span class="keyword">var</span> b = a; <span class="comment">// 变量和变量之间的关系</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>在 JavaScript 的语法层面：</p>
-<ul>
-<li>首先使用  var 申明的变量，是被提前到作用域的顶部，并初始化为 undefined， 当 JavaScript 的执行到赋值的位置就把对应的值分配给指定的变量，遇到变量之间的赋值首先是先访问赋值的变量的值，然后再把该值赋给指定的变量。</li>
+</li>
+<li><p>分组会也会把 NULL 挑选出来为一新列</p>
+</li>
 </ul>
 </li>
-<li><p>在浏览操作内存的层面：</p>
-<ul>
-<li>首先是在栈中创建两个变量 a 和 b，一开始初始化为 undefined ，遇到值的时候就直接把这个值分配给变量，a 的值 为 9；JavaScript 继续执行下一条语句，先在栈中访问 a 变量的值，并把 a 的值进行复制一份，栈中找到 b 的位置，并把该值分配给 b。刚才的操作我们值说的在栈中的操作过程。</li>
 </ul>
-</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>若是我们创建一个引用类型的值的时候情况会稍稍不同：具体的值存储的位置有改变。引用的值的类型实际是存在堆中，在栈中分配个变量的只是堆中的一个地址的指针。语法的层面和基本类型的赋值的过程相差无几。</p>
-</li>
-<li><p>在浏览器内存的层面：</p>
+<p>####</p>
 <ul>
-<li>首先是在栈中创建 2 个变量 a 和 b，并一开始初始化为 undefined, 遇到引用类型的值，首先是在堆一个物理空间中创建并存储，赋值的时候就把这个物理空间的指针分配给栈中 a 变量。当 JavaScript 执行到下一句的时候，先是访问栈中 a 变量的值，这个值是一个指针，指向存储在堆中实际的值，把这个指针复制一个并分配给在栈中的 b 变量</li>
-</ul>
+<li><p>SELECT – FROM – GROUP BY 例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT purchase_price, COUNT(*) </span><br><span class="line">  -&gt; FROM Products </span><br><span class="line">  -&gt; GROUP BY purchase_price;</span><br><span class="line">+----------------+----------+</span><br><span class="line">| purchase_price | COUNT(*) |</span><br><span class="line">+----------------+----------+</span><br><span class="line">|             20 |        1 |</span><br><span class="line">|             80 |        1 |</span><br><span class="line">|             10 |        2 |</span><br><span class="line">|              5 |        1 |</span><br><span class="line">|           1000 |        2 |</span><br><span class="line">|              0 |        1 |</span><br><span class="line">|           NULL |        2 |</span><br><span class="line">+----------------+----------+</span><br><span class="line">7 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>将 purchase_price 作为 聚合键（分组列），展示出它们的总数</p>
+</blockquote>
 </li>
-</ol>
-<p>值的传递：<br>    在函数中参数中按值传递， 函数的接受的参数所发生的事情</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span> (<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2</span><br><span class="line">&#125;;</span><br><span class="line">add(<span class="number">10</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>首先在 JavaScript 语法层面：</p>
-<ul>
-<li>Js 的解析器解析之后，会把 add 这个函数声明提到该作用域的最顶层。当执行到调用的时候就会把创建好的两个值，传递给 add 这个函数两个内部变量（依次皴法在 arguments 这个类数组中）</li>
-</ul>
-</li>
-<li><p>在浏览器内存的层面：</p>
-<ul>
-<li>首先 Js 的解析器解析之后，并在内存的栈中创建一个 add 的变量，并且他的值就是一个指针，这个指针指向堆中的一个物理地址，这个物理地址所在的空间就存储这个 function, 这个 function 声明了两个局部变量 num1 和 num2，没有调用的时候并不会占有内存空间。当 Js 执行到 add(10, 100) 的时候会临时创建两个数据，并在栈中创建并存放 2 个变量 num1 和 num2 ，在调用这个函数的同时临时产生的数据会依次分配到栈中对应变量的位置。同时函数有自己的隐藏的变量 arguments 这个类数组中。</li>
-</ul>
-</li>
-</ol>
-<hr>
-<p>参考文献：</p>
-<ul>
-<li>《JavaScript 高级程序设计》 第三版</li>
+<li><p>SELECT – FROM – WHRER – GROUP BY 例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT purchase_price, product_type, COUNT(*)</span><br><span class="line">  -&gt; FROM Products</span><br><span class="line">  -&gt; WHERE product_type = &apos;衣服&apos; AND purchase_price IS NOT NULL </span><br><span class="line">  -&gt; GROUP BY purchase_price;</span><br><span class="line">+----------------+--------------+----------+</span><br><span class="line">| purchase_price | product_type | COUNT(*) |</span><br><span class="line">+----------------+--------------+----------+</span><br><span class="line">|             20 | 衣服         |        1 |</span><br><span class="line">|             80 | 衣服         |        1 |</span><br><span class="line">|             10 | 衣服         |        1 |</span><br><span class="line">|           1000 | 衣服         |        2 |</span><br><span class="line">+----------------+--------------+----------+</span><br><span class="line">4 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>有 WHERE 子句先过滤掉对应的数据<br>在将 purchase_price 作为 聚合键（分组列），展示出它们的 product_type 和 COUNT 的结果</p>
+</blockquote>
+<h3 id="使用-GROUP-BY-时注意的地方"><a href="#使用-GROUP-BY-时注意的地方" class="headerlink" title="使用 GROUP BY 时注意的地方"></a>使用 GROUP BY 时注意的地方</h3></li>
+<li>使用 GROUP BY 子句时，SELECT 子句中不能出现聚合键（分组列）之外的列名</li>
+<li>不能使用 alias（别名）</li>
+<li>在 SELECT 子句中没有指明排序的方式，数据的展示时无序的</li>
+<li>在 WHERE 子句中使用 聚合函数</li>
 </ul>
 
       
@@ -509,12 +436,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
-          
-        </div>
-      
 
       
       
@@ -524,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/05/JavaScript 的语法/" rel="next" title="JavaScript 的语法">
-                <i class="fa fa-chevron-left"></i> JavaScript 的语法
+              <a href="/2018/10/17/SQL - 运算/" rel="next" title="SQL - 运算">
+                <i class="fa fa-chevron-left"></i> SQL - 运算
               </a>
             
           </div>
@@ -534,8 +455,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/08/git 初始仓库/" rel="prev" title="git 初始仓库">
-                git 初始仓库 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/18/SQL - 聚合和排序/" rel="prev" title="SQL - 聚合和排序">
+                SQL - 聚合和排序 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -688,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#String（待更新）"><span class="nav-number">1.</span> <span class="nav-text">String（待更新）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number（待更新）"><span class="nav-number">2.</span> <span class="nav-text">Number（待更新）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean（待更新）"><span class="nav-number">3.</span> <span class="nav-text">Boolean（待更新）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined（待更新）"><span class="nav-number">4.</span> <span class="nav-text">undefined（待更新）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null（null-也属于-Object）（待更新）"><span class="nav-number">5.</span> <span class="nav-text">null（null 也属于 Object）（待更新）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#object-es6-（待更新）"><span class="nav-number">6.</span> <span class="nav-text">object es6: * （待更新）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断类型有这几种方法："><span class="nav-number">7.</span> <span class="nav-text">判断类型有这几种方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本类型和引用类型"><span class="nav-number">8.</span> <span class="nav-text">基本类型和引用类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GROUP-BY-子句"><span class="nav-number">1.</span> <span class="nav-text">GROUP BY 子句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-GROUP-BY-时注意的地方"><span class="nav-number">2.</span> <span class="nav-text">使用 GROUP BY 时注意的地方</span></a></li></ol></div>
             
 
           </div>

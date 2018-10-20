@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="彭涧, blog, Hexo, NexT" />
+  <meta name="keywords" content="数据库,SQL," />
 
 
 
@@ -94,13 +94,14 @@
 
 
 <meta name="description" content="GROUP BY 子句 在 GUROUP BY 子句中指定的列称为聚合键或者分组列 和 SELECT 结合使用，子句的顺序（不能改变也不能替换）：   SELECT – FROM – WHRER – GROUP BY1SELECT paramter FROM &amp;lt;table_name&amp;gt; WHERE &amp;lt;condition&amp;gt; GROUP BY &amp;lt;聚合键&amp;gt;    分组会">
+<meta name="keywords" content="数据库,SQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL - 聚合：对表进行分组">
 <meta property="og:url" content="https://www.pengjiandry.com/2018/10/18/SQL - 聚合：对表进行分组/index.html">
 <meta property="og:site_name" content="彭涧">
 <meta property="og:description" content="GROUP BY 子句 在 GUROUP BY 子句中指定的列称为聚合键或者分组列 和 SELECT 结合使用，子句的顺序（不能改变也不能替换）：   SELECT – FROM – WHRER – GROUP BY1SELECT paramter FROM &amp;lt;table_name&amp;gt; WHERE &amp;lt;condition&amp;gt; GROUP BY &amp;lt;聚合键&amp;gt;    分组会">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-18T05:46:21.517Z">
+<meta property="og:updated_time" content="2018-10-20T13:17:28.512Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL - 聚合：对表进行分组">
 <meta name="twitter:description" content="GROUP BY 子句 在 GUROUP BY 子句中指定的列称为聚合键或者分组列 和 SELECT 结合使用，子句的顺序（不能改变也不能替换）：   SELECT – FROM – WHRER – GROUP BY1SELECT paramter FROM &amp;lt;table_name&amp;gt; WHERE &amp;lt;condition&amp;gt; GROUP BY &amp;lt;聚合键&amp;gt;    分组会">
@@ -330,6 +331,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
+                    <span itemprop="name">《SQL基础教程》第二版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -351,7 +385,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  310
+                  320
                 </span>
               
 
@@ -415,12 +449,16 @@
 <blockquote>
 <p>有 WHERE 子句先过滤掉对应的数据<br>在将 purchase_price 作为 聚合键（分组列），展示出它们的 product_type 和 COUNT 的结果</p>
 </blockquote>
-<h3 id="使用-GROUP-BY-时注意的地方"><a href="#使用-GROUP-BY-时注意的地方" class="headerlink" title="使用 GROUP BY 时注意的地方"></a>使用 GROUP BY 时注意的地方</h3></li>
+</li>
+</ul>
+<h3 id="使用-GROUP-BY-时注意的地方"><a href="#使用-GROUP-BY-时注意的地方" class="headerlink" title="使用 GROUP BY 时注意的地方"></a>使用 GROUP BY 时注意的地方</h3><ul>
 <li>使用 GROUP BY 子句时，SELECT 子句中不能出现聚合键（分组列）之外的列名</li>
 <li>不能使用 alias（别名）</li>
 <li>在 SELECT 子句中没有指明排序的方式，数据的展示时无序的</li>
 <li>在 WHERE 子句中使用 聚合函数</li>
 </ul>
+<hr>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
 
       
     </div>
@@ -435,6 +473,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
+          
+            <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i> SQL</a>
+          
+        </div>
       
 
       
@@ -538,7 +584,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -609,7 +655,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GROUP-BY-子句"><span class="nav-number">1.</span> <span class="nav-text">GROUP BY 子句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-GROUP-BY-时注意的地方"><span class="nav-number">2.</span> <span class="nav-text">使用 GROUP BY 时注意的地方</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GROUP-BY-子句"><span class="nav-number">1.</span> <span class="nav-text">GROUP BY 子句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-GROUP-BY-时注意的地方"><span class="nav-number">2.</span> <span class="nav-text">使用 GROUP BY 时注意的地方</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">2.1.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -644,7 +690,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">23k</span>
+    <span title="Site words total count">23.5k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

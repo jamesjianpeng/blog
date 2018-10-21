@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="彭涧, blog, Hexo, NexT" />
+  <meta name="keywords" content="数据库,SQL," />
 
 
 
@@ -93,13 +93,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="彭涧">
-<meta property="og:url" content="https://www.pengjiandry.com/archives/2018/page/5/index.html">
+<meta name="description" content="删除数据 DELETE 语句 删除全部数据 1mysql&amp;gt; DELETE FROM &amp;lt;table_name&amp;gt;  删除指定行（搜索型DELETE） 12mysql&amp;gt; DELETE FROM &amp;lt;tabel_name&amp;gt;  -&amp;gt; WHERE &amp;lt;codition&amp;gt;    删除全部数据，例子： 12345mysql&amp;gt; DELETE FROM Prod">
+<meta name="keywords" content="数据库,SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL - 数据更新：数据的删除和更新">
+<meta property="og:url" content="https://www.pengjiandry.com/2018/10/21/SQL - 数据更新：数据的删除和更新/index.html">
 <meta property="og:site_name" content="彭涧">
+<meta property="og:description" content="删除数据 DELETE 语句 删除全部数据 1mysql&amp;gt; DELETE FROM &amp;lt;table_name&amp;gt;  删除指定行（搜索型DELETE） 12mysql&amp;gt; DELETE FROM &amp;lt;tabel_name&amp;gt;  -&amp;gt; WHERE &amp;lt;codition&amp;gt;    删除全部数据，例子： 12345mysql&amp;gt; DELETE FROM Prod">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-21T14:29:02.010Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="彭涧">
+<meta name="twitter:title" content="SQL - 数据更新：数据的删除和更新">
+<meta name="twitter:description" content="删除数据 DELETE 语句 删除全部数据 1mysql&amp;gt; DELETE FROM &amp;lt;table_name&amp;gt;  删除指定行（搜索型DELETE） 12mysql&amp;gt; DELETE FROM &amp;lt;tabel_name&amp;gt;  -&amp;gt; WHERE &amp;lt;codition&amp;gt;    删除全部数据，例子： 12345mysql&amp;gt; DELETE FROM Prod">
 
 
 
@@ -129,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://www.pengjiandry.com/archives/2018/page/5/"/>
+  <link rel="canonical" href="https://www.pengjiandry.com/2018/10/21/SQL - 数据更新：数据的删除和更新/"/>
 
 
 
 
 
-  <title>Archive | 彭涧</title>
+  <title>SQL - 数据更新：数据的删除和更新 | 彭涧</title>
   
 
 
@@ -154,7 +159,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <!-- 左边 <a href="https://github.com/jamesjianpeng" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a> -->
@@ -272,225 +277,261 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/21/SQL - 数据更新：数据的删除和更新/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h1 class="post-title" itemprop="name headline">SQL - 数据更新：数据的删除和更新</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-21T21:57:03+08:00">
+                2018-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        Nice! 52 posts in total. Keep on posting.
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
 
-      
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
+                    <span itemprop="name">《SQL基础教程》第二版</span>
+                  </a>
+                </span>
 
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/04/JavaScript 的使用 script 标签/" itemprop="url">
+          
+
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">JavaScript 的使用 script 标签</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  353
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-04T18:01:21+08:00"
-              content="2018-03-04" >
-          03-04
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/02/23/C 语言学习 - hello world/" itemprop="url">
-              
-                <span itemprop="name">C 语言学习 - hello world</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-23T17:42:27+08:00"
-              content="2018-02-23" >
-          02-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/02/01/JavaScript 中 Object 的数据属性和访问属性/" itemprop="url">
-              
-                <span itemprop="name">JavaScript Object 的数据属性和访问属性</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-01T13:41:42+08:00"
-              content="2018-02-01" >
-          02-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h2 id="删除数据-DELETE-语句"><a href="#删除数据-DELETE-语句" class="headerlink" title="删除数据 DELETE 语句"></a>删除数据 DELETE 语句</h2><ul>
+<li><p>删除全部数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DELETE FROM &lt;table_name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除指定行（搜索型DELETE）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DELETE FROM &lt;tabel_name&gt;</span><br><span class="line">  -&gt; WHERE &lt;codition&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>删除全部数据，例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DELETE FROM ProductCopy;</span><br><span class="line">Query OK, 10 rows affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM ProductCopy;</span><br><span class="line">Empty set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除指定行（搜索型DELETE）例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DELETE FROM ProductCopy</span><br><span class="line">    -&gt; WHERE purchase_price = 0;</span><br><span class="line">Query OK, 1 row affected (0.08 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>删除 purchase_price 为 0 的一行</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="更新数据-UPDATE-语句"><a href="#更新数据-UPDATE-语句" class="headerlink" title="更新数据 UPDATE 语句"></a>更新数据 UPDATE 语句</h2><ul>
+<li><p>全部行，指定的列更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; UPDATE &lt;tabel_name&gt;</span><br><span class="line">  -&gt; SET &lt;column_1&gt; = &lt;表达式&gt;[, ... &lt;column_n&gt; = &lt;表达式&gt;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选择行，指定列更新（搜索型 UPDATE）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; UPDATE &lt;tabel_name&gt;</span><br><span class="line">  -&gt; SET &lt;column_1&gt; = &lt;表达式&gt;[, ... &lt;column_n&gt; = &lt;表达式&gt;]</span><br><span class="line">  -&gt; WHERE &lt;condition&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多列更行</p>
+<pre>
+mysql> UPDATE <tabel_name>
+-> SET <column_1> = <表达式>, ... <column_n> = <表达式>
+-> WHERE <condition>
+</condition></表达式></column_n></表达式></column_1></tabel_name></pre>
+</li>
+<li><p>全部行，指定的列更新，例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; UPDATE ProductCopy</span><br><span class="line">  -&gt; SET regist_data = &apos;2018-10-21&apos;;</span><br><span class="line">Query OK, 9 rows affected (0.10 sec)</span><br><span class="line">Rows matched: 9  Changed: 9  Warnings: 0</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把 ProductCopy 表中 regist_data 都更新为 2018-10-21</p>
+</blockquote>
+</li>
+<li><p>选择行，指定列更新（搜索型 UPDATE），例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; UPDATE ProductCopy </span><br><span class="line">  -&gt; SET sale_price = 0 </span><br><span class="line">  -&gt; WHERE product_type = &quot;文具&quot;;</span><br><span class="line">Query OK, 2 rows affected (0.06 sec)</span><br><span class="line">Rows matched: 2  Changed: 2  Warnings: 0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多列更新，例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; UPDATE ProductCopy</span><br><span class="line">  -&gt; SET sale_price = sale_price + 100,</span><br><span class="line">  -&gt; purchase_price = 50</span><br><span class="line">  -&gt; WHERE product_type = &quot;文具&quot;;</span><br><span class="line">Query OK, 2 rows affected (0.07 sec)</span><br><span class="line">Rows matched: 2  Changed: 2  Warnings: 0</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在 ProductCopy 表中找出 product_type 为 文具 的行<br>并 设置 sale_price 为 sale_price + 100, purchase_price 为 50</p>
+</blockquote>
+</li>
+</ul>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/24/git 分支最佳实践/" itemprop="url">
-              
-                <span itemprop="name">git 分支最佳实践</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-24T13:14:48+08:00"
-              content="2018-01-24" >
-          01-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/20/git 提交和追加提交/" itemprop="url">
-              
-                <span itemprop="name">git 提交和追加提交</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-20T08:50:00+08:00"
-              content="2018-01-20" >
-          01-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
+          
+            <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i> SQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/21/SQL - 数据更新：数据插入/" rel="next" title="SQL - 数据更新：数据插入">
+                <i class="fa fa-chevron-left"></i> SQL - 数据更新：数据插入
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2018/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2018/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/4/">4</a><span class="page-number current">5</span>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -498,6 +539,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -518,8 +563,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -599,6 +653,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#删除数据-DELETE-语句"><span class="nav-number">1.</span> <span class="nav-text">删除数据 DELETE 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新数据-UPDATE-语句"><span class="nav-number">2.</span> <span class="nav-text">更新数据 UPDATE 语句</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -754,6 +824,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

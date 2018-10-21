@@ -287,6 +287,237 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/13/高级排序-希尔排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/13/高级排序-希尔排序/" itemprop="url">高级排序-希尔排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-13T10:57:16+08:00">
+                2018-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据和算法-JavaScript-描述》/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据和算法 JavaScript 描述》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  982
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p><a href="https://www.pengjiandry.com/2018/10/07/%E5%86%92%E6%B3%A1%EF%BC%8C%E9%80%89%E6%8B%A9%EF%BC%8C%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/">关于 冒泡，选择，插入排序</a></p>
+<hr>
+<p><a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/e3ae6bb1b963760cc615c382dc423742242c060c" target="_blank" rel="noopener">git commit history</a></p>
+<h3 id="希尔排序："><a href="#希尔排序：" class="headerlink" title="希尔排序："></a>希尔排序：</h3><ul>
+<li>为什么希尔排序会选择插入排序进行优化？？(暂时没有领悟到😂)</li>
+<li><p>特点：</p>
+<ul>
+<li>这是属于插入排序的升级版</li>
+<li>插入排序和希尔排序的最大区别：对比的间隔有区别<ul>
+<li>插入排序的间隔是不变的：都是1，每一与相邻的元素进行比较</li>
+<li>希尔排序则不同：每次对比的间隔是可能不会相同，往往先对比远距离的元素，然后对比的距离慢慢缩小</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>排序效率：(使用执行时间对比，和最深层循环的计数器比较的，<a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/e3ae6bb1b963760cc615c382dc423742242c060c" target="_blank" rel="noopener">dome 地址</a>)</p>
+<ul>
+<li>选择排序 ~= 冒泡排序 &lt; 插入排序 &lt; 希尔排序</li>
+</ul>
+</li>
+<li><p>在上述几种排序中希尔排序效率高？（我的理解不透彻，具体原因不知，待更新）</p>
+<ul>
+<li>影响排序效率的因素<ol>
+<li>最深层循环的总次数</li>
+<li>每次循环做的事情</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>我做了一个简陋的测试 5w 长度的数组的排序的时间对比，以及最深层次循环次数的对比（我的测试）<a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/46678ddcda54bf8969d8dfc08391711d3490ee4e" target="_blank" rel="noopener">git commit color</a></li>
+</ul>
+<p><img src="http://tc-html5dw-com.b0.upaiyun.com/6adde/6addecc3c2da82908be9374d5c226d8f.png" alt="img"></p>
+<blockquote>
+<p>细心的你会发现选择排序是冒泡排序的差不多 2 倍，我在实现选择排序的时候做了升降序判断，所以数据量大的时候差距会越来越明显可以去看一下 <a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/blob/init-webpack/src/app/sort/helper/selection-sort.js" target="_blank" rel="noopener">git commit</a></p>
+</blockquote>
+<h4 id="固定间隔的希尔排序"><a href="#固定间隔的希尔排序" class="headerlink" title="固定间隔的希尔排序"></a>固定间隔的希尔排序</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> interval = [<span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 希尔排序</span></span><br><span class="line"><span class="comment"> * @function</span></span><br><span class="line"><span class="comment"> * @returns &#123;Object&#125; &#123;time&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> shellSort = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> list = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 间隔列表循环的索引 */</span></span><br><span class="line">    <span class="keyword">var</span> intervalIndex;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 第一层循环的索引 */</span></span><br><span class="line">    <span class="keyword">var</span> outer;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 第二层循环的索引 */</span></span><br><span class="line">    <span class="keyword">var</span> inner;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 临时储存固定对比的元素 */</span></span><br><span class="line">    <span class="keyword">var</span> temp;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 根据间隔动态计算的索引 */</span></span><br><span class="line">    <span class="keyword">var</span> intervalD;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 最深层的计数器 */</span></span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 函数执行时间 */</span></span><br><span class="line">    <span class="keyword">var</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(list) !== <span class="string">'[object Array]'</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'list not array'</span>);</span><br><span class="line"></span><br><span class="line">    intervalIndex = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (intervalIndex &lt; interval.length) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** 获得对比元素之间的间隔： interval[intervalIndex]，并指定的间隔初始化起点：outer */</span></span><br><span class="line">        outer = interval[intervalIndex];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (outer &lt; list.length) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/** 缓存一次对比的元素 */</span></span><br><span class="line">            temp = list[outer];</span><br><span class="line"></span><br><span class="line">            <span class="comment">/** 第二层循环索引的初始化 */</span></span><br><span class="line">            inner = outer;</span><br><span class="line">            intervalD = inner - interval[intervalIndex];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (inner &gt;= interval[intervalIndex] &amp;&amp; list[intervalD] &gt; temp) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="comment">/** 以指定的间隔循环数组 */</span></span><br><span class="line">                list[inner] = list[inner - interval[intervalIndex]];</span><br><span class="line">                inner -= interval[intervalIndex];</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            list[inner] = temp;</span><br><span class="line">            outer++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        intervalIndex++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    time = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime() - time;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        time,</span><br><span class="line">        count,</span><br><span class="line">        list</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; shellSort &#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="动态间隔的希尔排序"><a href="#动态间隔的希尔排序" class="headerlink" title="动态间隔的希尔排序"></a>动态间隔的希尔排序</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 动态间隔的希尔排序</span></span><br><span class="line"><span class="comment"> * @function</span></span><br><span class="line"><span class="comment"> * @returns &#123;Object&#125; &#123;time&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dynamicShellSort = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> list = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 数组的长度 */</span></span><br><span class="line">    <span class="keyword">var</span> len = list.length;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 动态的间隔 */</span></span><br><span class="line">    <span class="keyword">var</span> dynamicInterval;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 第一层循环的索引 */</span></span><br><span class="line">    <span class="keyword">var</span> outer;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 第二层循环的索引 */</span></span><br><span class="line">    <span class="keyword">var</span> inner;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 临时储存固定对比的元素 */</span></span><br><span class="line">    <span class="keyword">var</span> temp;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 最深层的计数器 */</span></span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 函数执行时间 */</span></span><br><span class="line">    <span class="keyword">var</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(list) !== <span class="string">'[object Array]'</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'list not array'</span>);</span><br><span class="line"></span><br><span class="line">    dynamicInterval = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** #region 动态生成间隔 */</span></span><br><span class="line">    <span class="keyword">while</span> (dynamicInterval &lt; (len / <span class="number">3</span>)) &#123;</span><br><span class="line">        dynamicInterval = len * <span class="number">3</span> + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** #endregion 动态生成间隔 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (dynamicInterval &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">/** 并指定的间隔初始化起点：outer */</span></span><br><span class="line">        outer = dynamicInterval;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (outer &lt; len) &#123;</span><br><span class="line">            <span class="comment">/** 缓存一次对比的元素 */</span></span><br><span class="line">            temp = list[outer];</span><br><span class="line"></span><br><span class="line">            <span class="comment">/** 第二层循环索引的初始化 */</span></span><br><span class="line">            inner = outer;</span><br><span class="line">            <span class="keyword">while</span> (inner &gt;= dynamicInterval &amp;&amp; <span class="comment">/** 关键点 1：inner - dynamicInterval */</span> list[inner - dynamicInterval] &gt; temp) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="comment">/** 以指定的间隔循环数组 */</span></span><br><span class="line">                list[inner] = list[inner - dynamicInterval];</span><br><span class="line">                inner -= dynamicInterval;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">            list[inner] = temp;</span><br><span class="line">            outer++;</span><br><span class="line">        &#125;</span><br><span class="line">        dynamicInterval = <span class="built_in">Math</span>.ceil((dynamicInterval - <span class="number">1</span>) / <span class="number">3</span>); <span class="comment">/** 关键点 2: 必须使用向上取整，使用 parseInt 和 Math.floor 之后排序不准确 */</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    time = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime() - time;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        time,</span><br><span class="line">        count,</span><br><span class="line">        list</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>参考文献</p>
+<ul>
+<li>《数据和算法 JavaScript 描述》<ul>
+<li>错误记录：动态间隔是要进行向上取整，不然排序不准确</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/07/冒泡，选择，插入排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2023,196 +2254,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/20/快速启动本地服务/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/20/快速启动本地服务/" itemprop="url">快速启动本地服务和本地域名代理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-20T18:16:49+08:00">
-                2018-09-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  276
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="一-Unix-Linux-Mac-系统下，先-cd-到指定目录下"><a href="#一-Unix-Linux-Mac-系统下，先-cd-到指定目录下" class="headerlink" title="一. Unix/Linux/Mac 系统下，先 cd 到指定目录下"></a>一. Unix/Linux/Mac 系统下，先 cd 到指定目录下</h3><p>特点：</p>
-<ol>
-<li>简单的场景可以使用</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m SimpleHTTPServer</span><br></pre></td></tr></table></figure>
-<h3 id="二-使用-Node-js-先-cd-到指定目录下"><a href="#二-使用-Node-js-先-cd-到指定目录下" class="headerlink" title="二. 使用 Node.js,先 cd 到指定目录下"></a>二. 使用 Node.js,先 cd 到指定目录下</h3><p>特点：</p>
-<ol>
-<li>在任何一个支持 Node.js 的平台就可以使用这个方法。</li>
-<li>简单的场景可以使用</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g http-server</span><br><span class="line">http-server</span><br></pre></td></tr></table></figure>
-<h3 id="三-使用-nginx"><a href="#三-使用-nginx" class="headerlink" title="三. 使用 nginx"></a>三. 使用 nginx</h3><p>特点：</p>
-<ol>
-<li>在任何一个支持 nginx 的平台就可以使用这个方法。</li>
-<li>一开始有点复杂，需要了解一下 nginx 的配置的语法，复杂的场景可以推荐使用</li>
-</ol>
-<p>在 mac 上安装 nginx 还比较方便</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew search nginx</span><br><span class="line">bre install nginx</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装之后 nginx 的配置文件夹：/usr/local/etc/nginx</li>
-<li>其中默认是使用的配置文件： /usr/local/etc/nginx/nginx.conf</li>
-</ul>
-<p>在进程中查找 nginx 服务的情况</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep nginx</span><br></pre></td></tr></table></figure>
-<p>启动 nginx</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx</span><br></pre></td></tr></table></figure>
-<p>关闭 nginx 服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -QUIT pid</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s stop</span><br></pre></td></tr></table></figure>
-<p>重启 nginx 服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s reload</span><br></pre></td></tr></table></figure>
-<p>检查 nginx 配置语法正确性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -t</span><br></pre></td></tr></table></figure>
-<h3 id="四-本地域名代理访问"><a href="#四-本地域名代理访问" class="headerlink" title="四. 本地域名代理访问"></a>四. 本地域名代理访问</h3><p>通过配置 localhost 可指向任意域名：</p>
-<ol>
-<li>使用 <a href="https://github.com/oldj/SwitchHosts" target="_blank" rel="noopener">SwitchHosts</a></li>
-<li>Mac 环境下修改 host: sudo vi /etc/hosts</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2267,7 +2308,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2357,7 +2398,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">24.4k</span>
+    <span title="Site words total count">24.8k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

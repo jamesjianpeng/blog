@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="彭涧">
 <meta property="og:description" content="ORDER BY 子句123mysql&amp;gt; SELECT &amp;lt;column_1&amp;gt;[..., &amp;lt;column_n&amp;gt;]  -&amp;gt; FROM &amp;lt;table_name&amp;gt;  -&amp;gt; ORDER BY [column_n, DESC(降序)，ASC(升序 默认)]  查询书写顺序(不然会报错)  SELECT -&amp;gt; FORM -&amp;gt; WHERE -&amp;g">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-20T13:52:38.398Z">
+<meta property="og:updated_time" content="2018-10-22T05:58:52.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL - 排序：对查询结果排序">
 <meta name="twitter:description" content="ORDER BY 子句123mysql&amp;gt; SELECT &amp;lt;column_1&amp;gt;[..., &amp;lt;column_n&amp;gt;]  -&amp;gt; FROM &amp;lt;table_name&amp;gt;  -&amp;gt; ORDER BY [column_n, DESC(降序)，ASC(升序 默认)]  查询书写顺序(不然会报错)  SELECT -&amp;gt; FORM -&amp;gt; WHERE -&amp;g">
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  225
+                  235
                 </span>
               
 
@@ -437,6 +437,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  mysql&gt; select product_id, product_name, product_type, sale_price AS &quot;价格&quot;, purchase_price,   regist_data </span><br><span class="line">    -&gt;from Products </span><br><span class="line">    -&gt; WHERE sale_price IS NOT NULL </span><br><span class="line">    -&gt; order by &quot;价格&quot;;</span><br><span class="line">  +------------+------------------+--------------+--------+----------------+-------------+</span><br><span class="line">  | product_id | product_name     | product_type | 价格   | purchase_price | regist_data |</span><br><span class="line">  +------------+------------------+--------------+--------+----------------+-------------+</span><br><span class="line">  | 001        | T恤👕              | 衣服         |    100 |             20 | 2018-10-16  |</span><br><span class="line">  | 002        | T恤🌈              | 衣服         |    200 |             80 | 2018-10-16  |</span><br><span class="line">  | 003        | T恤🐟              | 衣服         |    170 |             10 | 2018-10-16  |</span><br><span class="line">  | 004        | 牛仔裤子👖         | 裤子         |     90 |              5 | 2018-10-16  |</span><br><span class="line">  | 005        | 衬衫👔             | 衣服         |   2900 |           1000 | 2018-10-16  |</span><br><span class="line">  | 006        | T恤👕              | 衣服         |  10000 |           1000 | 2018-10-14  |</span><br><span class="line">  | 007        | 橡皮             | 文具         |     40 |              0 | 2018-10-17  |</span><br><span class="line">  | 010        | 文具             | 中性笔       |     90 |             10 | 2018-10-17  |</span><br><span class="line">  +------------+------------------+--------------+--------+----------------+-------------+</span><br><span class="line">8 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<hr>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
 
       
     </div>
@@ -562,7 +564,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -633,7 +635,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ORDER-BY-子句"><span class="nav-number">1.</span> <span class="nav-text">ORDER BY 子句</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ORDER-BY-子句"><span class="nav-number">1.</span> <span class="nav-text">ORDER BY 子句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">1.0.1.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -668,7 +670,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.4k</span>
+    <span title="Site words total count">26.4k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

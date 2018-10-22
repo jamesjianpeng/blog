@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="数据库,SQL," />
 
 
 
@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="String（待更新）Number（待更新）Boolean（待更新）undefined（待更新）null（null 也属于 Object）（待更新）object es6: * （待更新） Array Date RegExp NodeList       –&amp;gt;  document.querySelectorAll(‘div’) HTMLCollection –&amp;gt;  getElement">
-<meta name="keywords" content="JavaScript">
+<meta name="description" content="创建视图，例子： 1234567891011121314151617181920mysql&amp;gt; CREATE VIEW ProductGROUP    -&amp;gt; AS    -&amp;gt; SELECT product_type, SUM(sale_price), SUM(purchase_price), COUNT(*), AVG(sale_price), AVG(purchase_pri">
+<meta name="keywords" content="数据库,SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript 的数据类型">
-<meta property="og:url" content="https://www.pengjiandry.com/2017/08/03/JavaScript 的数据类型/index.html">
+<meta property="og:title" content="SQL - 复杂查询：视图">
+<meta property="og:url" content="https://www.pengjiandry.com/2018/10/22/SQL - 复杂查询：视图/index.html">
 <meta property="og:site_name" content="彭涧">
-<meta property="og:description" content="String（待更新）Number（待更新）Boolean（待更新）undefined（待更新）null（null 也属于 Object）（待更新）object es6: * （待更新） Array Date RegExp NodeList       –&amp;gt;  document.querySelectorAll(‘div’) HTMLCollection –&amp;gt;  getElement">
+<meta property="og:description" content="创建视图，例子： 1234567891011121314151617181920mysql&amp;gt; CREATE VIEW ProductGROUP    -&amp;gt; AS    -&amp;gt; SELECT product_type, SUM(sale_price), SUM(purchase_price), COUNT(*), AVG(sale_price), AVG(purchase_pri">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-26T07:20:05.378Z">
+<meta property="og:updated_time" content="2018-10-22T06:05:04.901Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript 的数据类型">
-<meta name="twitter:description" content="String（待更新）Number（待更新）Boolean（待更新）undefined（待更新）null（null 也属于 Object）（待更新）object es6: * （待更新） Array Date RegExp NodeList       –&amp;gt;  document.querySelectorAll(‘div’) HTMLCollection –&amp;gt;  getElement">
+<meta name="twitter:title" content="SQL - 复杂查询：视图">
+<meta name="twitter:description" content="创建视图，例子： 1234567891011121314151617181920mysql&amp;gt; CREATE VIEW ProductGROUP    -&amp;gt; AS    -&amp;gt; SELECT product_type, SUM(sale_price), SUM(purchase_price), COUNT(*), AVG(sale_price), AVG(purchase_pri">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://www.pengjiandry.com/2017/08/03/JavaScript 的数据类型/"/>
+  <link rel="canonical" href="https://www.pengjiandry.com/2018/10/22/SQL - 复杂查询：视图/"/>
 
 
 
 
 
-  <title>JavaScript 的数据类型 | 彭涧</title>
+  <title>SQL - 复杂查询：视图 | 彭涧</title>
   
 
 
@@ -291,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2017/08/03/JavaScript 的数据类型/">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/22/SQL - 复杂查询：视图/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="james">
@@ -308,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript 的数据类型</h1>
+          <h1 class="post-title" itemprop="name headline">SQL - 复杂查询：视图</h1>
         
 
         <div class="post-meta">
@@ -320,8 +320,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-03T18:27:28+08:00">
-                2017-08-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-22T12:48:42+08:00">
+                2018-10-22
               </time>
             
 
@@ -354,8 +354,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《JavaScript-高级程序设计》-第三版/" itemprop="url" rel="index">
-                    <span itemprop="name">《JavaScript 高级程序设计》 第三版</span>
+                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
+                    <span itemprop="name">《SQL基础教程》第二版</span>
                   </a>
                 </span>
 
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.2k
+                  977
                 </span>
               
 
@@ -423,77 +423,61 @@
 
       
         <hr>
-<h3 id="String（待更新）"><a href="#String（待更新）" class="headerlink" title="String（待更新）"></a>String（待更新）</h3><h3 id="Number（待更新）"><a href="#Number（待更新）" class="headerlink" title="Number（待更新）"></a>Number（待更新）</h3><h3 id="Boolean（待更新）"><a href="#Boolean（待更新）" class="headerlink" title="Boolean（待更新）"></a>Boolean（待更新）</h3><h3 id="undefined（待更新）"><a href="#undefined（待更新）" class="headerlink" title="undefined（待更新）"></a>undefined（待更新）</h3><h3 id="null（null-也属于-Object）（待更新）"><a href="#null（null-也属于-Object）（待更新）" class="headerlink" title="null（null 也属于 Object）（待更新）"></a>null（null 也属于 Object）（待更新）</h3><h3 id="object-es6-（待更新）"><a href="#object-es6-（待更新）" class="headerlink" title="object es6: * （待更新）"></a>object es6: * （待更新）</h3><ol>
-<li>Array</li>
-<li>Date</li>
-<li>RegExp</li>
-<li>NodeList       –&gt;  document.querySelectorAll(‘div’)</li>
-<li>HTMLCollection –&gt;  getElementsByTagName(‘div’)</li>
-<li>Set(WeakSet)*</li>
-<li>Map(WeakMap)*</li>
-<li>Symbol*</li>
-</ol>
-<h3 id="判断类型有这几种方法："><a href="#判断类型有这几种方法：" class="headerlink" title="判断类型有这几种方法："></a>判断类型有这几种方法：</h3><ul>
-<li>typeof           可以检测原始类型和函数，局限：用typeof 去判断一个没有声明的变量会报错</li>
-<li>instanceof       根据构造函数来区别对象</li>
-<li>Object.prototype.toString.call()  可以判断任何一个数据</li>
-<li>isNaN            检测 NaN</li>
-</ul>
-<h3 id="基本类型和引用类型"><a href="#基本类型和引用类型" class="headerlink" title="基本类型和引用类型"></a>基本类型和引用类型</h3><ol>
-<li>根据数据在栈中存储的类型</li>
-<li><p>数据的表现形式</p>
-</li>
-<li><p>在栈中存储的类型：<br>a. 数据的值实际存储在栈中的则是引用类型<br>b. 数据的值实际存储在堆中，而在栈中只是保留了堆物理空间的引用</p>
-<p>这种划分的手法是抽象的<br>基本类型，值存在内存的栈中，相互对立，没有直接的联系<br>引用类性：值存在内存的栈中，内部有联系（我们可以通过其他方法，切断联系，重新使用一块内存空间，JSON.parse(JSON.stringify)）</p>
-</li>
-<li><p>具体的划分 (数据表现的形式)<br>5 种基本类型：string, boolean, number, null, undefined<br>1 引用类型： 对象</p>
-<p>访问变量的方式：按值和按引用访问</p>
-<p>变量与实际数据的关系<br>变量与变量之间的关系</p>
-<p>变量的赋值</p>
-</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">9</span>; <span class="comment">// 变量和基本类型值的关系</span></span><br><span class="line"><span class="keyword">var</span> b = a; <span class="comment">// 变量和变量之间的关系</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>在 JavaScript 的语法层面：</p>
 <ul>
-<li>首先使用  var 申明的变量，是被提前到作用域的顶部，并初始化为 undefined， 当 JavaScript 的执行到赋值的位置就把对应的值分配给指定的变量，遇到变量之间的赋值首先是先访问赋值的变量的值，然后再把该值赋给指定的变量。</li>
-</ul>
+<li><p>创建视图，例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE VIEW ProductGROUP</span><br><span class="line">    -&gt; AS</span><br><span class="line">    -&gt; SELECT product_type, SUM(sale_price), SUM(purchase_price), COUNT(*), AVG(sale_price), AVG(purchase_price)</span><br><span class="line">    -&gt; FROM Products</span><br><span class="line">    -&gt; GROUP BY product_type;</span><br><span class="line">Query OK, 0 rows affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM ProductGROUP;</span><br><span class="line">+--------------+-----------------+---------------------+----------+-----------------+---------------------+</span><br><span class="line">| product_type | SUM(sale_price) | SUM(purchase_price) | COUNT(*) | AVG(sale_price) | AVG(purchase_price) |</span><br><span class="line">+--------------+-----------------+---------------------+----------+-----------------+---------------------+</span><br><span class="line">| 衣服         |           13370 |                2110 |        5 |       2674.0000 |            422.0000 |</span><br><span class="line">| 裤子         |              90 |                   5 |        1 |         90.0000 |              5.0000 |</span><br><span class="line">| 文具         |              40 |                   0 |        3 |         40.0000 |              0.0000 |</span><br><span class="line">| 中性笔       |              90 |                  10 |        1 |         90.0000 |             10.0000 |</span><br><span class="line">+--------------+-----------------+---------------------+----------+-----------------+---------------------+</span><br><span class="line">4 rows in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; DROP VIEW ProudctGROUP;</span><br><span class="line">Query OK, 0 rows affected (0.05 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意 AS 语句<br>查询视图的方式和查询表的语句无差别<br>在最后又把这个视图删除掉</p>
+</blockquote>
 </li>
-<li><p>在浏览操作内存的层面：</p>
-<ul>
-<li>首先是在栈中创建两个变量 a 和 b，一开始初始化为 undefined ，遇到值的时候就直接把这个值分配给变量，a 的值 为 9；JavaScript 继续执行下一条语句，先在栈中访问 a 变量的值，并把 a 的值进行复制一份，栈中找到 b 的位置，并把该值分配给 b。刚才的操作我们值说的在栈中的操作过程。</li>
 </ul>
-</li>
+<h3 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h3><h3 id="CREATE-VIEW-语句"><a href="#CREATE-VIEW-语句" class="headerlink" title="CREATE VIEW 语句"></a>CREATE VIEW 语句</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE VIEW &lt;view_name&gt; </span><br><span class="line">  -&gt; AS </span><br><span class="line">  -&gt; SELECT &lt;column_1&gt;[..., &lt;column_n&gt;]</span><br><span class="line">  -&gt; FROM &lt;table_nam&gt;</span><br><span class="line">  [-&gt; WHERE &lt;condition&gt;(非聚合条件)</span><br><span class="line">  -&gt; GROUP BY &lt;column_1&gt;</span><br><span class="line">  -&gt; HAVING &lt;condition&gt;(聚合条件)]</span><br></pre></td></tr></table></figure>
+<h3 id="创建视图的特点"><a href="#创建视图的特点" class="headerlink" title="创建视图的特点"></a>创建视图的特点</h3><ul>
+<li>视图就是保存好的 SELECT 语句，这一点可以通过创建的时候可以看出来</li>
+<li>视图的限制1：不能使用 ORDER BY 子句（和 SELECT 语句区别）</li>
+<li>试图的限制2：更新视图是有条件的<ol>
+<li>SELECT 子句中未使用 DISTINCT</li>
+<li>FROM 子句中只有一张表</li>
+<li>未使用 GROUP BY 子句</li>
+<li>未使用 HAVING 子句（使用了 HAVING 自然就要使用 GROUP BY 子句，HAVING 子句是写在 GROUP BY 子句后面）</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>若是我们创建一个引用类型的值的时候情况会稍稍不同：具体的值存储的位置有改变。引用的值的类型实际是存在堆中，在栈中分配个变量的只是堆中的一个地址的指针。语法的层面和基本类型的赋值的过程相差无几。</p>
 </li>
-<li><p>在浏览器内存的层面：</p>
-<ul>
-<li>首先是在栈中创建 2 个变量 a 和 b，并一开始初始化为 undefined, 遇到引用类型的值，首先是在堆一个物理空间中创建并存储，赋值的时候就把这个物理空间的指针分配给栈中 a 变量。当 JavaScript 执行到下一句的时候，先是访问栈中 a 变量的值，这个值是一个指针，指向存储在堆中实际的值，把这个指针复制一个并分配给在栈中的 b 变量</li>
+<li><p>创建视图的列的顺序就是实际列的顺序</p>
+</li>
+<li><p>向使用 GROUP BY 子句的视图插入数据，例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO ProductGROUP VALUES (&apos;书籍📚&apos;, 1000, 200, 10, 100, 20);</span><br><span class="line">ERROR 1471 (HY000): The target table ProductGROUP of the INSERT is not insertable-into</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以通过更新视图的方式更新表，例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE VIEW NewProducts (product_id, product_name, product_type, sale_price, purchase_price, regist_data)</span><br><span class="line">  -&gt; AS</span><br><span class="line">  -&gt; SELECT *</span><br><span class="line">  -&gt; FROM Products;</span><br><span class="line">Query OK, 0 rows affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM NewProducts;</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| product_id | product_name     | product_type | sale_price | purchase_price | regist_data |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| 001        | T恤👕              | 衣服         |        100 |             20 | 2018-10-16  |</span><br><span class="line">| 002        | T恤🌈              | 衣服         |        200 |             80 | 2018-10-16  |</span><br><span class="line">| 003        | T恤🐟              | 衣服         |        170 |             10 | 2018-10-16  |</span><br><span class="line">| 004        | 牛仔裤子👖         | 裤子         |         90 |              5 | 2018-10-16  |</span><br><span class="line">| 005        | 衬衫👔             | 衣服         |       2900 |           1000 | 2018-10-16  |</span><br><span class="line">| 006        | T恤👕              | 衣服         |      10000 |           1000 | 2018-10-14  |</span><br><span class="line">| 007        | 橡皮             | 文具         |         40 |              0 | 2018-10-17  |</span><br><span class="line">| 008        | 小刀             | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">| 009        | 铅笔✏️           | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">| 010        | 文具             | 中性笔       |         90 |             10 | 2018-10-17  |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">10 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br><span class="line">mysql&gt; INSERT INTO NewProducts VALUES (&apos;011&apos;, &apos;直尺📏&apos;, &apos;文具&apos;, 70, 5, &apos;2018-10-22&apos;);</span><br><span class="line">Query OK, 1 row affected (0.05 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM Products;</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| product_id | product_name     | product_type | sale_price | purchase_price | regist_data |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| 001        | T恤👕              | 衣服         |        100 |             20 | 2018-10-16  |</span><br><span class="line">| 002        | T恤🌈              | 衣服         |        200 |             80 | 2018-10-16  |</span><br><span class="line">| 003        | T恤🐟              | 衣服         |        170 |             10 | 2018-10-16  |</span><br><span class="line">| 004        | 牛仔裤子👖         | 裤子         |         90 |              5 | 2018-10-16  |</span><br><span class="line">| 005        | 衬衫👔             | 衣服         |       2900 |           1000 | 2018-10-16  |</span><br><span class="line">| 006        | T恤👕              | 衣服         |      10000 |           1000 | 2018-10-14  |</span><br><span class="line">| 007        | 橡皮             | 文具         |         40 |              0 | 2018-10-17  |</span><br><span class="line">| 008        | 小刀             | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">| 009        | 铅笔✏️           | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">| 010        | 文具             | 中性笔       |         90 |             10 | 2018-10-17  |</span><br><span class="line">| 011        | 直尺📏             | 文具         |         70 |              5 | 2018-10-22  |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">11 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我创建了一个新的视图，但是这个视图，该视图的列和原表中的列一一对应，只使用了 SELECT FROM 子句，其他都没有使用</p>
+</blockquote>
+</li>
 </ul>
-</li>
-</ol>
-<p>值的传递：<br>    在函数中参数中按值传递， 函数的接受的参数所发生的事情</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span> (<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2</span><br><span class="line">&#125;;</span><br><span class="line">add(<span class="number">10</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>首先在 JavaScript 语法层面：</p>
-<ul>
-<li>Js 的解析器解析之后，会把 add 这个函数声明提到该作用域的最顶层。当执行到调用的时候就会把创建好的两个值，传递给 add 这个函数两个内部变量（依次皴法在 arguments 这个类数组中）</li>
+<h3 id="使用视图的查询"><a href="#使用视图的查询" class="headerlink" title="使用视图的查询"></a>使用视图的查询</h3><ul>
+<li>先执行视图定义的查询</li>
+<li>然后再执行外层的查询</li>
 </ul>
-</li>
-<li><p>在浏览器内存的层面：</p>
-<ul>
-<li>首先 Js 的解析器解析之后，并在内存的栈中创建一个 add 的变量，并且他的值就是一个指针，这个指针指向堆中的一个物理地址，这个物理地址所在的空间就存储这个 function, 这个 function 声明了两个局部变量 num1 和 num2，没有调用的时候并不会占有内存空间。当 Js 执行到 add(10, 100) 的时候会临时创建两个数据，并在栈中创建并存放 2 个变量 num1 和 num2 ，在调用这个函数的同时临时产生的数据会依次分配到栈中对应变量的位置。同时函数有自己的隐藏的变量 arguments 这个类数组中。</li>
+<h3 id="视图删除"><a href="#视图删除" class="headerlink" title="视图删除"></a>视图删除</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DROP VIEW &lt;view_name&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="关于多重视图"><a href="#关于多重视图" class="headerlink" title="关于多重视图"></a>关于多重视图</h3><ul>
+<li>在视图上再建立视图，这个视图就是多重视图</li>
+<li>多重视图尽量避免，因为他会降低 SQL 的性能</li>
 </ul>
-</li>
-</ol>
 <hr>
-<p>参考文献：</p>
-<ul>
-<li>《JavaScript 高级程序设计》 第三版</li>
+<h3 id="视图和表的关系"><a href="#视图和表的关系" class="headerlink" title="视图和表的关系"></a>视图和表的关系</h3><ul>
+<li>从 SQL 的角度上看，一个视图就是张表</li>
+<li>视图和表的区别只有一个：是否保存实际的数据<ol>
+<li>表是上的数据实际上保存到计算机中的硬盘中（通常）</li>
+<li>视图则不同，它不会将数据保存到其他任何地方</li>
+</ol>
+</li>
+<li>使用视图的优点：<ol>
+<li>可以节省存储设备的空间</li>
+<li>将频繁使用的复杂的 SELECT 语句保存成视图，操作方便</li>
+</ol>
+</li>
 </ul>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
 
       
     </div>
@@ -511,7 +495,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+            <a href="/tags/数据库/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
+          
+            <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i> SQL</a>
           
         </div>
       
@@ -524,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/05/JavaScript 的语法/" rel="next" title="JavaScript 的语法">
-                <i class="fa fa-chevron-left"></i> JavaScript 的语法
+              <a href="/2018/10/22/SQL - 数据更新：事务/" rel="next" title="SQL - 数据更新：事务">
+                <i class="fa fa-chevron-left"></i> SQL - 数据更新：事务
               </a>
             
           </div>
@@ -533,10 +519,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/08/git 初始仓库/" rel="prev" title="git 初始仓库">
-                git 初始仓库 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -688,7 +670,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#String（待更新）"><span class="nav-number">1.</span> <span class="nav-text">String（待更新）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number（待更新）"><span class="nav-number">2.</span> <span class="nav-text">Number（待更新）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean（待更新）"><span class="nav-number">3.</span> <span class="nav-text">Boolean（待更新）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined（待更新）"><span class="nav-number">4.</span> <span class="nav-text">undefined（待更新）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null（null-也属于-Object）（待更新）"><span class="nav-number">5.</span> <span class="nav-text">null（null 也属于 Object）（待更新）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#object-es6-（待更新）"><span class="nav-number">6.</span> <span class="nav-text">object es6: * （待更新）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断类型有这几种方法："><span class="nav-number">7.</span> <span class="nav-text">判断类型有这几种方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本类型和引用类型"><span class="nav-number">8.</span> <span class="nav-text">基本类型和引用类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建视图"><span class="nav-number">1.</span> <span class="nav-text">创建视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CREATE-VIEW-语句"><span class="nav-number">2.</span> <span class="nav-text">CREATE VIEW 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建视图的特点"><span class="nav-number">3.</span> <span class="nav-text">创建视图的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用视图的查询"><span class="nav-number">4.</span> <span class="nav-text">使用视图的查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视图删除"><span class="nav-number">5.</span> <span class="nav-text">视图删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于多重视图"><span class="nav-number">6.</span> <span class="nav-text">关于多重视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视图和表的关系"><span class="nav-number">7.</span> <span class="nav-text">视图和表的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">7.1.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
             
 
           </div>

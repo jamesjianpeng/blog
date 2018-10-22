@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="创建视图，例子： 1234567891011121314151617181920mysql&amp;gt; CREATE VIEW ProductGROUP    -&amp;gt; AS    -&amp;gt; SELECT product_type, SUM(sale_price), SUM(purchase_price), COUNT(*), AVG(sale_price), AVG(purchase_pri">
+<meta name="description" content="创建视图，例子： 1234567891011121314151617181920mysql&amp;gt; CREATE VIEW ProductGROUP     -&amp;gt; AS    -&amp;gt; SELECT product_type, SUM(sale_price), SUM(purchase_price), COUNT(*), AVG(sale_price), AVG(purchase_pr">
 <meta name="keywords" content="数据库,SQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL - 复杂查询：视图">
 <meta property="og:url" content="https://www.pengjiandry.com/2018/10/22/SQL - 复杂查询：视图/index.html">
 <meta property="og:site_name" content="彭涧">
-<meta property="og:description" content="创建视图，例子： 1234567891011121314151617181920mysql&amp;gt; CREATE VIEW ProductGROUP    -&amp;gt; AS    -&amp;gt; SELECT product_type, SUM(sale_price), SUM(purchase_price), COUNT(*), AVG(sale_price), AVG(purchase_pri">
+<meta property="og:description" content="创建视图，例子： 1234567891011121314151617181920mysql&amp;gt; CREATE VIEW ProductGROUP     -&amp;gt; AS    -&amp;gt; SELECT product_type, SUM(sale_price), SUM(purchase_price), COUNT(*), AVG(sale_price), AVG(purchase_pr">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-22T06:05:04.901Z">
+<meta property="og:updated_time" content="2018-10-22T11:36:24.890Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL - 复杂查询：视图">
-<meta name="twitter:description" content="创建视图，例子： 1234567891011121314151617181920mysql&amp;gt; CREATE VIEW ProductGROUP    -&amp;gt; AS    -&amp;gt; SELECT product_type, SUM(sale_price), SUM(purchase_price), COUNT(*), AVG(sale_price), AVG(purchase_pri">
+<meta name="twitter:description" content="创建视图，例子： 1234567891011121314151617181920mysql&amp;gt; CREATE VIEW ProductGROUP     -&amp;gt; AS    -&amp;gt; SELECT product_type, SUM(sale_price), SUM(purchase_price), COUNT(*), AVG(sale_price), AVG(purchase_pr">
 
 
 
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  977
+                  1k
                 </span>
               
 
@@ -425,13 +425,16 @@
         <hr>
 <ul>
 <li><p>创建视图，例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE VIEW ProductGROUP</span><br><span class="line">    -&gt; AS</span><br><span class="line">    -&gt; SELECT product_type, SUM(sale_price), SUM(purchase_price), COUNT(*), AVG(sale_price), AVG(purchase_price)</span><br><span class="line">    -&gt; FROM Products</span><br><span class="line">    -&gt; GROUP BY product_type;</span><br><span class="line">Query OK, 0 rows affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM ProductGROUP;</span><br><span class="line">+--------------+-----------------+---------------------+----------+-----------------+---------------------+</span><br><span class="line">| product_type | SUM(sale_price) | SUM(purchase_price) | COUNT(*) | AVG(sale_price) | AVG(purchase_price) |</span><br><span class="line">+--------------+-----------------+---------------------+----------+-----------------+---------------------+</span><br><span class="line">| 衣服         |           13370 |                2110 |        5 |       2674.0000 |            422.0000 |</span><br><span class="line">| 裤子         |              90 |                   5 |        1 |         90.0000 |              5.0000 |</span><br><span class="line">| 文具         |              40 |                   0 |        3 |         40.0000 |              0.0000 |</span><br><span class="line">| 中性笔       |              90 |                  10 |        1 |         90.0000 |             10.0000 |</span><br><span class="line">+--------------+-----------------+---------------------+----------+-----------------+---------------------+</span><br><span class="line">4 rows in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; DROP VIEW ProudctGROUP;</span><br><span class="line">Query OK, 0 rows affected (0.05 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE VIEW ProductGROUP </span><br><span class="line">    -&gt; AS</span><br><span class="line">    -&gt; SELECT product_type, SUM(sale_price), SUM(purchase_price), COUNT(*), AVG(sale_price), AVG(purchase_price)</span><br><span class="line">    -&gt; FROM Products</span><br><span class="line">    -&gt; GROUP BY product_type;</span><br><span class="line">Query OK, 0 rows affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM ProductGROUP;</span><br><span class="line">+--------------+-----------------+---------------------+----------+-----------------+---------------------+</span><br><span class="line">| product_type | SUM(sale_price) | SUM(purchase_price) | COUNT(*) | AVG(sale_price) | AVG(purchase_price) |</span><br><span class="line">+--------------+-----------------+---------------------+----------+-----------------+---------------------+</span><br><span class="line">| 衣服         |           13370 |                2110 |        5 |       2674.0000 |            422.0000 |</span><br><span class="line">| 裤子         |              90 |                   5 |        1 |         90.0000 |              5.0000 |</span><br><span class="line">| 文具         |              40 |                   0 |        3 |         40.0000 |              0.0000 |</span><br><span class="line">| 中性笔       |              90 |                  10 |        1 |         90.0000 |             10.0000 |</span><br><span class="line">+--------------+-----------------+---------------------+----------+-----------------+---------------------+</span><br><span class="line">4 rows in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; DROP VIEW ProudctGROUP;</span><br><span class="line">Query OK, 0 rows affected (0.05 sec)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注意 AS 语句<br>查询视图的方式和查询表的语句无差别<br>在最后又把这个视图删除掉</p>
 </blockquote>
 </li>
 </ul>
-<h3 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h3><h3 id="CREATE-VIEW-语句"><a href="#CREATE-VIEW-语句" class="headerlink" title="CREATE VIEW 语句"></a>CREATE VIEW 语句</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE VIEW &lt;view_name&gt; </span><br><span class="line">  -&gt; AS </span><br><span class="line">  -&gt; SELECT &lt;column_1&gt;[..., &lt;column_n&gt;]</span><br><span class="line">  -&gt; FROM &lt;table_nam&gt;</span><br><span class="line">  [-&gt; WHERE &lt;condition&gt;(非聚合条件)</span><br><span class="line">  -&gt; GROUP BY &lt;column_1&gt;</span><br><span class="line">  -&gt; HAVING &lt;condition&gt;(聚合条件)]</span><br></pre></td></tr></table></figure>
+<h3 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h3><h3 id="CREATE-VIEW-语句"><a href="#CREATE-VIEW-语句" class="headerlink" title="CREATE VIEW 语句"></a>CREATE VIEW 语句</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE VIEW &lt;view_name&gt; [&lt;column_1&gt;[..., &lt;column_n&gt;]]</span><br><span class="line">  -&gt; AS </span><br><span class="line">  -&gt; SELECT &lt;column_1&gt;[..., &lt;column_n&gt;]</span><br><span class="line">  -&gt; FROM &lt;table_nam&gt;</span><br><span class="line">  [-&gt; WHERE &lt;condition&gt;(非聚合条件)</span><br><span class="line">  -&gt; GROUP BY &lt;column_1&gt;</span><br><span class="line">  -&gt; HAVING &lt;condition&gt;(聚合条件)]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>view_name 后面的列名可以省略以及和 SELECT 后面列名一一对应</p>
+</blockquote>
 <h3 id="创建视图的特点"><a href="#创建视图的特点" class="headerlink" title="创建视图的特点"></a>创建视图的特点</h3><ul>
 <li>视图就是保存好的 SELECT 语句，这一点可以通过创建的时候可以看出来</li>
 <li>视图的限制1：不能使用 ORDER BY 子句（和 SELECT 语句区别）</li>
@@ -477,6 +480,7 @@
 </ol>
 </li>
 </ul>
+<hr>
 <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
 
       
@@ -519,6 +523,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/22/SQL - 复杂查询：子查询/" rel="prev" title="SQL - 复杂查询：子查询">
+                SQL - 复杂查询：子查询 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -599,7 +607,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -705,7 +713,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">26.4k</span>
+    <span title="Site words total count">27.1k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

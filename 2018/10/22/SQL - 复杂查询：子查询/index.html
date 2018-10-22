@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript,ECMAScript6,module," />
+  <meta name="keywords" content="数据库,SQL," />
 
 
 
@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="ES6之前的代码模块封装 使用闭包，产生一个作用域去封装数据和代码，并挂载到 window 对象  模块 模块是是什么：模块是自动运行在严格模式下并且没有办法退出运行的 JavaScript 代码。  模块化的特点： 与作用域的关系：在模块顶部创建的变量不会自动添加到全局共享作用域，只会在该模块的顶级作用域中存在 在模块的顶部，；this 的值是 undefined 模块不支持 HTML 风格的">
-<meta name="keywords" content="JavaScript,ECMAScript6,module">
+<meta name="description" content="子查询子查询的特点 执行子查询时:  首先执行的内查询 然后再执行外层查询 注意：查询必须要设定名称  1234mysql&amp;gt; SELECT *[&amp;lt;column_1&amp;gt;, ..., &amp;lt;column_n&amp;gt;] FROM  -&amp;gt; (&amp;#123;  -&amp;gt;    内查询   -&amp;gt; &amp;#125;) AS &amp;lt;view_name&amp;gt;  子查询，例子： 1234">
+<meta name="keywords" content="数据库,SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6 模块">
-<meta property="og:url" content="https://www.pengjiandry.com/2018/07/20/ES6 模块/index.html">
+<meta property="og:title" content="SQL - 复杂查询：子查询">
+<meta property="og:url" content="https://www.pengjiandry.com/2018/10/22/SQL - 复杂查询：子查询/index.html">
 <meta property="og:site_name" content="彭涧">
-<meta property="og:description" content="ES6之前的代码模块封装 使用闭包，产生一个作用域去封装数据和代码，并挂载到 window 对象  模块 模块是是什么：模块是自动运行在严格模式下并且没有办法退出运行的 JavaScript 代码。  模块化的特点： 与作用域的关系：在模块顶部创建的变量不会自动添加到全局共享作用域，只会在该模块的顶级作用域中存在 在模块的顶部，；this 的值是 undefined 模块不支持 HTML 风格的">
+<meta property="og:description" content="子查询子查询的特点 执行子查询时:  首先执行的内查询 然后再执行外层查询 注意：查询必须要设定名称  1234mysql&amp;gt; SELECT *[&amp;lt;column_1&amp;gt;, ..., &amp;lt;column_n&amp;gt;] FROM  -&amp;gt; (&amp;#123;  -&amp;gt;    内查询   -&amp;gt; &amp;#125;) AS &amp;lt;view_name&amp;gt;  子查询，例子： 1234">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-26T07:18:13.288Z">
+<meta property="og:updated_time" content="2018-10-22T11:36:21.077Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6 模块">
-<meta name="twitter:description" content="ES6之前的代码模块封装 使用闭包，产生一个作用域去封装数据和代码，并挂载到 window 对象  模块 模块是是什么：模块是自动运行在严格模式下并且没有办法退出运行的 JavaScript 代码。  模块化的特点： 与作用域的关系：在模块顶部创建的变量不会自动添加到全局共享作用域，只会在该模块的顶级作用域中存在 在模块的顶部，；this 的值是 undefined 模块不支持 HTML 风格的">
+<meta name="twitter:title" content="SQL - 复杂查询：子查询">
+<meta name="twitter:description" content="子查询子查询的特点 执行子查询时:  首先执行的内查询 然后再执行外层查询 注意：查询必须要设定名称  1234mysql&amp;gt; SELECT *[&amp;lt;column_1&amp;gt;, ..., &amp;lt;column_n&amp;gt;] FROM  -&amp;gt; (&amp;#123;  -&amp;gt;    内查询   -&amp;gt; &amp;#125;) AS &amp;lt;view_name&amp;gt;  子查询，例子： 1234">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://www.pengjiandry.com/2018/07/20/ES6 模块/"/>
+  <link rel="canonical" href="https://www.pengjiandry.com/2018/10/22/SQL - 复杂查询：子查询/"/>
 
 
 
 
 
-  <title>ES6 模块 | 彭涧</title>
+  <title>SQL - 复杂查询：子查询 | 彭涧</title>
   
 
 
@@ -291,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/20/ES6 模块/">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/22/SQL - 复杂查询：子查询/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="james">
@@ -308,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ES6 模块</h1>
+          <h1 class="post-title" itemprop="name headline">SQL - 复杂查询：子查询</h1>
         
 
         <div class="post-meta">
@@ -320,8 +320,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-20T12:48:44+08:00">
-                2018-07-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-22T16:41:39+08:00">
+                2018-10-22
               </time>
             
 
@@ -354,8 +354,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《深入理解-ES6》/" itemprop="url" rel="index">
-                    <span itemprop="name">《深入理解 ES6》</span>
+                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
+                    <span itemprop="name">《SQL基础教程》第二版</span>
                   </a>
                 </span>
 
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  382
+                  676
                 </span>
               
 
@@ -401,7 +401,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  3
                 </span>
               
             </div>
@@ -422,53 +422,73 @@
       
 
       
-        <hr>
-<h3 id="ES6之前的代码模块封装"><a href="#ES6之前的代码模块封装" class="headerlink" title="ES6之前的代码模块封装"></a>ES6之前的代码模块封装</h3><ol>
-<li>使用闭包，产生一个作用域去封装数据和代码，并挂载到 window 对象</li>
-</ol>
-<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><ol>
-<li>模块是是什么：模块是自动运行在严格模式下并且没有办法退出运行的 JavaScript 代码。</li>
-</ol>
-<h3 id="模块化的特点："><a href="#模块化的特点：" class="headerlink" title="模块化的特点："></a>模块化的特点：</h3><ol>
-<li>与作用域的关系：在模块顶部创建的变量不会自动添加到全局共享作用域，只会在该模块的顶级作用域中存在</li>
-<li>在模块的顶部，；this 的值是 undefined</li>
-<li>模块不支持 HTML 风格的代码注释</li>
-</ol>
-<h3 id="模块和脚本的区别"><a href="#模块和脚本的区别" class="headerlink" title="模块和脚本的区别"></a>模块和脚本的区别</h3><ol>
-<li>脚本：任何不是模块的 JavaScript 代码</li>
-</ol>
-<h3 id="模块的-导入和导出"><a href="#模块的-导入和导出" class="headerlink" title="模块的 导入和导出"></a>模块的 导入和导出</h3><ul>
-<li><p>导出：导出声明和导出引用</p>
-</li>
-<li><p>导入：导入单个绑定，导入多个绑定，命名空间导入, 无绑定导入</p>
-</li>
-<li><p>注意：不管 import 语句把一个模块写了多少次，该模块将只执行一次</p>
-</li>
-<li><p>as 可以用于改变导入或导出的名字</p>
-</li>
-<li><p>导入和导出默认值这个语法被优化过，尽量使用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; name <span class="keyword">as</span> <span class="keyword">default</span> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重新导出一个绑定</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">'./path'</span></span><br><span class="line"><span class="keyword">export</span> &#123; name <span class="keyword">as</span> newName &#125; <span class="string">'./path'</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>模块语法的限制</p>
+        <h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><h3 id="子查询的特点"><a href="#子查询的特点" class="headerlink" title="子查询的特点"></a>子查询的特点</h3><ul>
+<li><p>执行子查询时:</p>
 <ol>
-<li><p>export 和 import 一个重要的限制是：它们必须在其他语句和函数之外使用，否则会出现语法的错误</p>
-<ul>
-<li>原因： 其中一个原因： 是要让 JavaScript 引擎静态地确定哪些可以导出</li>
-</ul>
-</li>
-<li><p>import 只能在顶部使用</p>
-</li>
+<li>首先执行的内查询</li>
+<li>然后再执行外层查询</li>
+<li>注意：查询必须要设定名称</li>
 </ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT *[&lt;column_1&gt;, ..., &lt;column_n&gt;] FROM</span><br><span class="line">  -&gt; (&#123;</span><br><span class="line">  -&gt;    内查询 </span><br><span class="line">  -&gt; &#125;) AS &lt;view_name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子查询，例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM (</span><br><span class="line">    -&gt;   SELECT </span><br><span class="line">    -&gt;     product_type,</span><br><span class="line">    -&gt;     SUM(sale_price) AS sum_sale_price,</span><br><span class="line">    -&gt;     SUM(purchase_price) AS sum_purchase_price,</span><br><span class="line">    -&gt;     COUNT(*) AS count_all FROM Products GROUP BY product_type</span><br><span class="line">    -&gt; ) AS ProuductSUM;</span><br><span class="line"></span><br><span class="line">+--------------+----------------+--------------------+-----------+</span><br><span class="line">| product_type | sum_sale_price | sum_purchase_price | count_all |</span><br><span class="line">+--------------+----------------+--------------------+-----------+</span><br><span class="line">| 衣服         |          13370 |               2110 |         5 |</span><br><span class="line">| 裤子         |             90 |                  5 |         1 |</span><br><span class="line">| 文具         |            110 |                  5 |         4 |</span><br><span class="line">| 中性笔       |             90 |                 10 |         1 |</span><br><span class="line">+--------------+----------------+--------------------+-----------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这种模式的子查询需要设置 AS 语句</p>
+</blockquote>
+</li>
+<li><p>子查询可以多层嵌套</p>
+<ol>
+<li>执行时也是从内层开始查询</li>
+<li>然后逐渐向外层查询</li>
+<li>注意：查询必须要设定名称</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT *[&lt;column_1&gt;, ..., &lt;column_n&gt;] FROM (&#123;</span><br><span class="line">  -&gt;    内查询 </span><br><span class="line">  -&gt;    (&#123;</span><br><span class="line">  -&gt;      .....</span><br><span class="line">  -&gt;      最内层</span><br><span class="line">  -&gt;    &#125;) AS &lt;view_name&gt;</span><br><span class="line">  -&gt; &#125;) AS &lt;view_name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="多层嵌套子查询"><a href="#多层嵌套子查询" class="headerlink" title="多层嵌套子查询"></a>多层嵌套子查询</h3><ul>
+<li><p>多层嵌套子查询，例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT product_type, sum_sale_price, count_all FROM (</span><br><span class="line">  -&gt;   SELECT * FROM (</span><br><span class="line">  -&gt;     SELECT product_type,</span><br><span class="line">  -&gt;     SUM(sale_price) AS sum_sale_price,</span><br><span class="line">  -&gt;     SUM(purchase_price) AS sum_purchase_price,</span><br><span class="line">  -&gt;     COUNT(*) AS count_all FROM Products GROUP BY product_type</span><br><span class="line">  -&gt;   ) AS ProductsFun</span><br><span class="line">  -&gt; ) AS ProductsAll;</span><br><span class="line">+--------------+----------------+-----------+</span><br><span class="line">| product_type | sum_sale_price | count_all |</span><br><span class="line">+--------------+----------------+-----------+</span><br><span class="line">| 衣服         |          13370 |         5 |</span><br><span class="line">| 裤子         |             90 |         1 |</span><br><span class="line">| 文具         |            110 |         4 |</span><br><span class="line">| 中性笔       |             90 |         1 |</span><br><span class="line">+--------------+----------------+-----------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这个子查询：</p>
+<ol>
+<li>先执行最内层的分组查询</li>
+<li>然后查询分组之后所有数据</li>
+<li>最后查询 product_type, sum_sale_price, count_all 3 列<br>注意：嵌套的层数太多，阅读性很差，不推荐</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h3 id="标量子查询"><a href="#标量子查询" class="headerlink" title="标量子查询"></a>标量子查询</h3><ul>
+<li><p>标量</p>
+<ol>
+<li>标量：单一的意思</li>
+</ol>
+</li>
+<li><p>标量子查询和子查询的区别</p>
+<ol>
+<li>一般的子查询都是返回多行（多条记录）</li>
+<li>标量子查询，只返回一行（一条记录）</li>
+</ol>
+</li>
+<li><p>标量子查询作用：</p>
+<ol>
+<li>可以在 WHERE 子句中使用标量子查询，可以摆脱在 WHERE后面不能使用聚合函数的限制</li>
+<li>可以紧接着 SELECT 后面</li>
+</ol>
+</li>
+<li><p>在 WHERE 子句中使用标量子查询，例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM Products WHERE sale_price &gt; </span><br><span class="line">  -&gt; (SELECT AVG(sale_price) FROM Products);</span><br><span class="line">+------------+--------------+--------------+------------+----------------+-------------+</span><br><span class="line">| product_id | product_name | product_type | sale_price | purchase_price | regist_data |</span><br><span class="line">+------------+--------------+--------------+------------+----------------+-------------+</span><br><span class="line">| 005        | 衬衫👔         | 衣服         |       2900 |           1000 | 2018-10-16    |</span><br><span class="line">| 006        | T恤👕          | 衣服         |      10000 |           1000 | 2018-10-14    |</span><br><span class="line">+------------+--------------+--------------+------------+----------------+-------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT AVG(sale_price) FROM Products;</span><br><span class="line">+-----------------+</span><br><span class="line">| AVG(sale_price) |</span><br><span class="line">+-----------------+</span><br><span class="line">|       1517.7778 |</span><br><span class="line">+-----------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>首先执行 “&gt;” 后面的子查询；这个查询就是子查询，后面单独查询，只有一个平均数<br>然后再执行外层的查询</p>
+</blockquote>
+</li>
+<li><p>上面的例子整合之后，例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT product_id,</span><br><span class="line">  -&gt;  product_name,</span><br><span class="line">  -&gt;  product_type,</span><br><span class="line">  -&gt;  sale_price,</span><br><span class="line">  -&gt;  purchase_price,</span><br><span class="line">  -&gt;  regist_data,</span><br><span class="line">  -&gt;  (SELECT AVG(sale_price) FROM Products) AS avg_sale_price</span><br><span class="line">  -&gt; FROM Products</span><br><span class="line">  -&gt; WHERE sale_price &gt; (SELECT AVG(sale_price) FROM Products);</span><br><span class="line">+------------+--------------+--------------+------------+----------------+-------------+----------------+</span><br><span class="line">| product_id | product_name | product_type | sale_price | purchase_price | regist_data | avg_sale_price |</span><br><span class="line">+------------+--------------+--------------+------------+----------------+-------------+----------------+</span><br><span class="line">| 005        | 衬衫👔         | 衣服         |       2900 |           1000 | 2018-10-16  |      1517.7778 |</span><br><span class="line">| 006        | T恤👕          | 衣服         |      10000 |           1000 | 2018-10-14  |      1517.7778 |</span><br><span class="line">+------------+--------------+--------------+------------+----------------+-------------+----------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <hr>
-<p>参考文献：</p>
-<ul>
-<li>《深入理解 ES6》</li>
-</ul>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
 
       
     </div>
@@ -486,11 +506,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+            <a href="/tags/数据库/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
           
-            <a href="/tags/ECMAScript6/" rel="tag"><i class="fa fa-tag"></i> ECMAScript6</a>
-          
-            <a href="/tags/module/" rel="tag"><i class="fa fa-tag"></i> module</a>
+            <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i> SQL</a>
           
         </div>
       
@@ -503,8 +521,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/10/Array 之 ES5 map/" rel="next" title="Array 之 ES5 map">
-                <i class="fa fa-chevron-left"></i> Array 之 ES5 map
+              <a href="/2018/10/22/SQL - 复杂查询：视图/" rel="next" title="SQL - 复杂查询：视图">
+                <i class="fa fa-chevron-left"></i> SQL - 复杂查询：视图
               </a>
             
           </div>
@@ -512,10 +530,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/03/ES6 对象的扩展/" rel="prev" title="ES6 对象的扩展">
-                ES6 对象的扩展 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -667,7 +681,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6之前的代码模块封装"><span class="nav-number">1.</span> <span class="nav-text">ES6之前的代码模块封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块"><span class="nav-number">2.</span> <span class="nav-text">模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块化的特点："><span class="nav-number">3.</span> <span class="nav-text">模块化的特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块和脚本的区别"><span class="nav-number">4.</span> <span class="nav-text">模块和脚本的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块的-导入和导出"><span class="nav-number">5.</span> <span class="nav-text">模块的 导入和导出</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#子查询"><span class="nav-number">1.</span> <span class="nav-text">子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#子查询的特点"><span class="nav-number">1.1.</span> <span class="nav-text">子查询的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多层嵌套子查询"><span class="nav-number">1.2.</span> <span class="nav-text">多层嵌套子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标量子查询"><span class="nav-number">1.3.</span> <span class="nav-text">标量子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">1.3.1.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

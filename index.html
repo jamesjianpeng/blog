@@ -287,6 +287,210 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/22/SQL - 复杂查询：关联子查询/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/22/SQL - 复杂查询：关联子查询/" itemprop="url">SQL - 复杂查询：关联子查询</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-22T20:09:09+08:00">
+                2018-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
+                    <span itemprop="name">《SQL基础教程》第二版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  324
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="关联子查询"><a href="#关联子查询" class="headerlink" title="关联子查询"></a>关联子查询</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
+<li><p>请看下面的一个例子：</p>
+<ol>
+<li>实现的功能：实现查询大于每组商品类型销售价格平均值的记录</li>
+</ol>
+</li>
+<li><p>用于连接子查询之间的关联</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT product_type, product_name, product_id, sale_price FROM Products </span><br><span class="line">  -&gt; AS P1 </span><br><span class="line">  -&gt; WHERE sale_price &gt; </span><br><span class="line">  -&gt; (SELECT AVG(sale_price) FROM Products </span><br><span class="line">  -&gt;   AS P2 </span><br><span class="line">  -&gt;   WHERE P1.product_type = P2.product_type </span><br><span class="line">  -&gt;   GROUP BY product_type);</span><br><span class="line">+--------------+--------------+------------+------------+</span><br><span class="line">| product_type | product_name | product_id | sale_price |</span><br><span class="line">+--------------+--------------+------------+------------+</span><br><span class="line">| 衣服         | 衬衫👔         | 005        |       2900 |</span><br><span class="line">| 衣服         | T恤👕          | 006        |      10000 |</span><br><span class="line">| 文具         | 直尺📏         | 011        |         70 |</span><br><span class="line">+--------------+--------------+------------+------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意 AS 设置别名<br>这个使用了子查询的方式：</p>
+<ol>
+<li>首先查询一个种类的销售价格的平均值（获得是一个单元格的值）</li>
+<li>然后再执行外层查询</li>
+</ol>
+<p>可以去掉 AS 语句 和 WHERE P1.product_type = P2.product_type 去查询会出错，这样查询的内层的子查询得到多个单元格，外层的查询 WHERE 语句无法正确判断<br>值得注意的是：关联的条件是要写在内层的子查询，否则会报错<br>关联子查询的名称的范围：内层的子查询才能拿到外层的名称，所以关联的条件是要写在内层的子查询，如下图：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------------------------+</span><br><span class="line">|               内层子查询                 |</span><br><span class="line">|           P1 = xxx, P2 = ??             |</span><br><span class="line">|     +----------------------------+      |</span><br><span class="line">|     |                            |      |</span><br><span class="line">|     |         内层子查询          |      |</span><br><span class="line">|     |     P2 = xxx, P1 = xxx     |      |</span><br><span class="line">|     |                            |      |</span><br><span class="line">|     +----------------------------+      |</span><br><span class="line">+-----------------------------------------+</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/22/SQL - 复杂查询：子查询/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -383,7 +587,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  896
+                  898
                 </span>
               
 
@@ -467,8 +671,8 @@
 </li>
 <li><p>标量子查询和子查询的区别</p>
 <ol>
-<li>一般的子查询都是返回多行（多条记录）</li>
-<li>标量子查询，只返回一行（一条记录）</li>
+<li>一般的子查询都是返回多个单元格数据</li>
+<li>标量子查询，只返回一个单元格数据</li>
 </ol>
 </li>
 <li><p>标量子查询作用：</p>
@@ -2321,265 +2525,6 @@ mysql> UPDATE <tabel_name>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/17/SQL - 运算/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/17/SQL - 运算/" itemprop="url">SQL - 运算</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-17T14:00:34+08:00">
-                2018-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
-                    <span itemprop="name">《SQL基础教程》第二版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  178
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="SQL-中常见的运算符"><a href="#SQL-中常见的运算符" class="headerlink" title="SQL 中常见的运算符"></a>SQL 中常见的运算符</h2><h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><ul>
-<li>+</li>
-<li>-</li>
-<li>*</li>
-<li><p>/</p>
-</li>
-<li><p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select Product_id, product_name, sale_price, sale_price * 2 AS sale_price_2 from Products;</span><br><span class="line">+------------+------------------+------------+--------------+</span><br><span class="line">| Product_id | product_name     | sale_price | sale_price_2 |</span><br><span class="line">+------------+------------------+------------+--------------+</span><br><span class="line">| 001        | T恤👕              |        100 |          200 |</span><br><span class="line">| 002        | T恤🌈              |        200 |          400 |</span><br><span class="line">| 003        | T恤🐟              |        170 |          340 |</span><br><span class="line">| 004        | 牛仔裤子👖         |         90 |          180 |</span><br><span class="line">| 005        | 衬衫👔             |       2900 |         5800 |</span><br><span class="line">| 006        | T恤👕              |      10000 |        20000 |</span><br><span class="line">+------------+------------------+------------+--------------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>可以使用 （） 提升计算的优先程度</p>
-</blockquote>
-</li>
-<li><p>NULL - 1</p>
-</li>
-<li>NULL + 1</li>
-<li>NULL * 1</li>
-<li>NULL / 1</li>
-<li>1 - NULL</li>
-<li>1 + NULL</li>
-<li>1 * NULL</li>
-<li><p>1 / NULL</p>
-</li>
-<li><p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select Product_id, product_name, sale_price, NULL * 2 AS sale_price_2 from Products;</span><br><span class="line">+------------+------------------+------------+--------------+</span><br><span class="line">| Product_id | product_name     | sale_price | sale_price_2 |</span><br><span class="line">+------------+------------------+------------+--------------+</span><br><span class="line">| 001        | T恤👕              |        100 |         NULL |</span><br><span class="line">| 002        | T恤🌈              |        200 |         NULL |</span><br><span class="line">| 003        | T恤🐟              |        170 |         NULL |</span><br><span class="line">| 004        | 牛仔裤子👖         |         90 |         NULL |</span><br><span class="line">| 005        | 衬衫👔             |       2900 |         NULL |</span><br><span class="line">| 006        | T恤👕              |      10000 |         NULL |</span><br><span class="line">+------------+------------------+------------+--------------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>和 NULL 的运算的结构都是 NULL</p>
-</blockquote>
-</li>
-</ul>
-<hr>
-<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><ul>
-<li><pre>=</pre></li>
-<li><pre><> 作用：= 的取反</pre></li>
-<li><pre>>=</pre></li>
-<li><pre>></pre></li>
-<li>&lt;= </li>
-<li><pre><</pre>
-</li>
-<li><p>例子：<br><pre><br>mysql&gt; select product_id, product_name, sale_price from Products where sale_price &gt;= 200;<br>+————+————–+————+<br>| product_id | product_name | sale_price |<br>+————+————–+————+<br>| 002        | T恤🌈          |        200 |<br>| 005        | 衬衫👔         |       2900 |<br>| 006        | T恤👕          |      10000 |<br>+————+————–+————+<br>3 rows in set (0.01 sec)<br></pre></p>
-<blockquote>
-<p>注意：&gt;= 和 &lt;= 字符的方向</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="字符的比较-这个要注意"><a href="#字符的比较-这个要注意" class="headerlink" title="字符的比较(这个要注意)"></a>字符的比较(这个要注意)</h4><ul>
-<li><p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from Chars;</span><br><span class="line">+------------+</span><br><span class="line">| char_value |</span><br><span class="line">+------------+</span><br><span class="line">| 14         |</span><br><span class="line">| 21         |</span><br><span class="line">| 33         |</span><br><span class="line">| 38         |</span><br><span class="line">| 43         |</span><br><span class="line">| 9          |</span><br><span class="line">+------------+</span><br><span class="line">6 rows in set (0.01 sec)</span><br><span class="line">mysql&gt; select char_value from Chars where char_value &gt; &apos;21&apos;;</span><br><span class="line">+------------+</span><br><span class="line">| char_value |</span><br><span class="line">+------------+</span><br><span class="line">| 33         |</span><br><span class="line">| 38         |</span><br><span class="line">| 43         |</span><br><span class="line">| 9          |</span><br><span class="line">+------------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>字符中的排序就是 select * from Chars 的默认排序</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="查询值为-NULL-和-NOT-NULL-的记录（运算符号对-NULL-是不产生效果）"><a href="#查询值为-NULL-和-NOT-NULL-的记录（运算符号对-NULL-是不产生效果）" class="headerlink" title="查询值为 NULL 和 NOT NULL 的记录（运算符号对 NULL 是不产生效果）"></a>查询值为 NULL 和 NOT NULL 的记录（运算符号对 NULL 是不产生效果）</h4><ul>
-<li><p>使用 IS NULL （找出是 NULL 的列）:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select &lt;columns_name_1&gt;[, ..., &lt;columns_name_n&gt;]  from &lt;table_name&gt; WHERE sale_price IS NULL</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用 IS NOT NULL（找出不是 NULL 的列）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select &lt;columns_name_1&gt;[, ..., &lt;columns_name_n&gt;]  from &lt;table_name&gt; WHERE sale_price IS NOT NULL</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from Products;</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| product_id | product_name     | product_type | sale_price | purchase_price | regist_data |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| 001        | T恤👕              | 衣服         |        100 |             20 | 2018-10-16  |</span><br><span class="line">| 002        | T恤🌈              | 衣服         |        200 |             80 | 2018-10-16  |</span><br><span class="line">| 003        | T恤🐟              | 衣服         |        170 |             10 | 2018-10-16  |</span><br><span class="line">| 004        | 牛仔裤子👖         | 裤子         |         90 |              5 | 2018-10-16  |</span><br><span class="line">| 005        | 衬衫👔             | 衣服         |       2900 |           1000 | 2018-10-16  |</span><br><span class="line">| 006        | T恤👕              | 衣服         |      10000 |           1000 | 2018-10-14  |</span><br><span class="line">| 007        | 橡皮             | 文具         |         40 |              0 | 2018-10-17  |</span><br><span class="line">| 008        | 小刀             | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">| 009        | 铅笔✏️           | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">9 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select product_id, product_name, sale_price from Proudcts WHERE sale_price IS NULL;</span><br><span class="line">ERROR 1146 (42S02): Table &apos;shop.proudcts&apos; doesn&apos;t exist</span><br><span class="line">mysql&gt; select product_id, product_name, sale_price from Products WHERE sale_price IS NULL;</span><br><span class="line">+------------+--------------+------------+</span><br><span class="line">| product_id | product_name | sale_price |</span><br><span class="line">+------------+--------------+------------+</span><br><span class="line">| 008        | 小刀         |       NULL |</span><br><span class="line">| 009        | 铅笔✏️       |       NULL |</span><br><span class="line">+------------+--------------+------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><ul>
-<li>NOT (取反)</li>
-<li>AND（同时成立）</li>
-<li><p>OR（其中一个条件成立）</p>
-<blockquote>
-<p>在没有使用 () 时，AND 和 OR 同时存在，AND 的优先级最高<br>使用真假表在多个条件判断时可以辅助判断</p>
-</blockquote>
-</li>
-<li><p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select product_id, product_type, product_name, sale_price from Products WHERE (product_type = &quot;文具&quot; OR sale_price IS NOT NULL) AND product_name = &quot;橡皮&quot;;</span><br><span class="line">+------------+--------------+--------------+------------+</span><br><span class="line">| product_id | product_type | product_name | sale_price |</span><br><span class="line">+------------+--------------+--------------+------------+</span><br><span class="line">| 007        | 文具         | 橡皮         |         40 |</span><br><span class="line">+------------+--------------+--------------+------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line">mysql&gt; select product_id, product_type, product_name, sale_price from Products WHERE product_type = &quot;文具&quot; OR sale_price IS NOT NULL AND product_name = &quot;橡皮&quot;;</span><br><span class="line">+------------+--------------+--------------+------------+</span><br><span class="line">| product_id | product_type | product_name | sale_price |</span><br><span class="line">+------------+--------------+--------------+------------+</span><br><span class="line">| 007        | 文具         | 橡皮         |         40 |</span><br><span class="line">| 008        | 文具         | 小刀         |       NULL |</span><br><span class="line">| 009        | 文具         | 铅笔✏️       |       NULL |</span><br><span class="line">+------------+--------------+--------------+------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2634,7 +2579,7 @@ mysql> UPDATE <tabel_name>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2724,7 +2669,7 @@ mysql> UPDATE <tabel_name>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.3k</span>
+    <span title="Site words total count">27.6k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

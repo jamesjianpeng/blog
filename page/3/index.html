@@ -287,6 +287,196 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/24/Nodejs - 通过命令传参数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/24/Nodejs - 通过命令传参数/" itemprop="url">Nodejs - 通过命令传参数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-24T12:48:37+08:00">
+                2018-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  557
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><ul>
+<li>作为一个 fecoder，在前端工程方面遇到了一些需要优化的方面，比如：<ol>
+<li>如何使用 nodejs 命令行，去传递一些参数</li>
+<li>把服务启动的脚本 和 配置（数据）处理的内容分离</li>
+</ol>
+</li>
+</ul>
+<h3 id="为什么需要从命令行中传参数"><a href="#为什么需要从命令行中传参数" class="headerlink" title="为什么需要从命令行中传参数"></a>为什么需要从命令行中传参数</h3><ol>
+<li><p>首先传参数启动的脚本可能是同一个脚本，使用参数去区分配置，比如</p>
+<ul>
+<li><p>执行脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node ./build/prod-build.js</span><br><span class="line">node ./build/prod-build.js ts</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上面启动的脚本都是 ./build/prod-build.js 这个文件，如下<a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/f982faa7cf5dc2165b0fb501b5548247dca4367e" target="_blank" rel="noopener">（ github commit ）</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file 本地开发环境下的 node 脚本，这种方式是通过命令行传参数</span></span><br><span class="line"><span class="comment"> * @author jamesjianpeng</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">'webpack-merge'</span>);</span><br><span class="line"><span class="keyword">const</span> webpackDevServer = <span class="built_in">require</span>(<span class="string">'webpack-dev-server'</span>);</span><br><span class="line"><span class="keyword">let</span> devConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.dev.conf'</span>);</span><br><span class="line"><span class="keyword">const</span> tsConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.ts.conf'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**  #region only compiler ts */</span></span><br><span class="line"><span class="keyword">const</span> argv = <span class="built_in">Array</span>.from(process.argv)</span><br><span class="line"><span class="keyword">if</span> (argv.includes(<span class="string">'ts'</span>)) &#123;</span><br><span class="line">    devConf = merge(devConf, tsConf)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**  #endregion */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** #region 启动一个 http服务 公用的逻辑 */</span></span><br><span class="line">webpackDevServer.addDevServerEntrypoints(devConf, devConf.devServer);</span><br><span class="line"><span class="keyword">const</span> compiler = webpack(devConf);</span><br><span class="line"><span class="keyword">new</span> webpackDevServer(compiler, devConf.devServer)</span><br><span class="line">  .listen(devConf.devServer.port);</span><br><span class="line"><span class="comment">/** #endregion */</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="把服务启动的脚本-和-配置（数据）处理的内容分离："><a href="#把服务启动的脚本-和-配置（数据）处理的内容分离：" class="headerlink" title="把服务启动的脚本 和 配置（数据）处理的内容分离："></a>把服务启动的脚本 和 配置（数据）处理的内容分离：</h3><ol>
+<li><p><a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/bd1cba1cd4f0890626f6d9c20770e9a6a4bc9b2a" target="_blank" rel="noopener">把启动 http 服务的内容从引入和合并的文件抽离</a></p>
+<ul>
+<li><p>./build/base-dev.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file 本地开发环境下的 node 脚本，这种方式是通过命令行传参数</span></span><br><span class="line"><span class="comment"> * @author jamesjianpeng</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> webpackDevServer = <span class="built_in">require</span>(<span class="string">'webpack-dev-server'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 为热更新， 启动一个 本地 http 服务</span></span><br><span class="line"><span class="comment"> * @param &#123;object&#125; devConf</span></span><br><span class="line"><span class="comment"> * @returns void</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">exports.devScript = <span class="function"><span class="keyword">function</span>(<span class="params">devConf</span>) </span>&#123;</span><br><span class="line">    webpackDevServer.addDevServerEntrypoints(devConf, devConf.devServer);</span><br><span class="line">    <span class="keyword">const</span> compiler = webpack(devConf);</span><br><span class="line">    <span class="keyword">new</span> webpackDevServer(compiler, devConf.devServer)</span><br><span class="line">      .listen(devConf.devServer.port);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>./build/local-dev.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file 把需要用到的 configuration 都引进来，根据命令行的传参数去区分启动的服务是为某个项目服务</span></span><br><span class="line"><span class="comment"> * @author jamesjianpeng</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">'webpack-merge'</span>);</span><br><span class="line"><span class="keyword">let</span> devConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.dev.conf'</span>);</span><br><span class="line"><span class="keyword">const</span> tsConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.ts.conf'</span>);</span><br><span class="line"><span class="keyword">const</span> vueConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.vue.conf'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; devScript &#125; = <span class="built_in">require</span>(<span class="string">'./base-dev.js'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**  #region only compiler ts */</span></span><br><span class="line"><span class="keyword">const</span> argv = <span class="built_in">Array</span>.from(process.argv)</span><br><span class="line"><span class="keyword">if</span> (argv.includes(<span class="string">'ts'</span>)) &#123;</span><br><span class="line">    devConf = merge(devConf, tsConf)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**  #endregion */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**  #region only compiler vue */</span></span><br><span class="line"><span class="keyword">if</span> (argv.includes(<span class="string">'vue'</span>)) &#123;</span><br><span class="line">    devConf = merge(devConf, vueConf)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**  #endregion */</span></span><br><span class="line"></span><br><span class="line">devScript(devConf)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上面的方式可以减少 copy 的几率，在一定程度上重用部分逻辑</p>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>还有一种偏门的方式，后续更新，<a href="https://github.com/jamesjianpeng/vue-sunduan-ui-play/blob/master/package.json" target="_blank" rel="noopener"> git commit </a></li>
+</ul>
+<hr>
+<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><ul>
+<li>2018-9-25 <a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/bd1cba1cd4f0890626f6d9c20770e9a6a4bc9b2a" target="_blank" rel="noopener">把启动 http 服务的内容从引入和合并的文件抽离</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/24/TypeScript and Vue ( 二 ) - webpack 初始化抽离 base conf 和 use TypeScript/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2175,282 +2365,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/08/06/ES6 函数特性/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/06/ES6 函数特性/" itemprop="url">ES6 函数特性</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-06T18:29:22+08:00">
-                2018-08-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《深入理解-ES6》/" itemprop="url" rel="index">
-                    <span itemprop="name">《深入理解 ES6》</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  796
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="设置默认参数"><a href="#设置默认参数" class="headerlink" title="设置默认参数"></a>设置默认参数</h3><ol>
-<li>形参为 undefined 或不传则使用默认值</li>
-<li>默认参数对 arguments 的影响<ul>
-<li>使用默认参数 arguments 对象不会跟随参数的改变而改变，只保留初始的值</li>
-<li>这个种表现和 在使用 “use strict” 的表现一样</li>
-</ul>
-</li>
-<li>默认参数的临时死区</li>
-</ol>
-<hr>
-<h3 id="使用不定参数"><a href="#使用不定参数" class="headerlink" title="使用不定参数"></a>使用不定参数</h3><ol>
-<li><p>function (obj, …arg) {}<br>特点：</p>
-<ol>
-<li>每个函数只能声明一个不定参数</li>
-<li>而且一定要放在所有参数的末尾</li>
-<li>不能用于对象字面量 setter 之中</li>
-</ol>
-<p>值得注意的地方，不定参数设计的目的：代替 arguments 对象</p>
-</li>
-</ol>
-<hr>
-<h3 id="展开运算符"><a href="#展开运算符" class="headerlink" title="展开运算符"></a>展开运算符</h3><ol>
-<li>[…arg]</li>
-</ol>
-<hr>
-<h3 id="函数-name-属性-调试作用"><a href="#函数-name-属性-调试作用" class="headerlink" title="函数 name 属性(调试作用)"></a>函数 name 属性(调试作用)</h3><hr>
-<h3 id="明确函数的多重用途"><a href="#明确函数的多重用途" class="headerlink" title="明确函数的多重用途"></a>明确函数的多重用途</h3><p>函数的调用有两种方式：</p>
-<ul>
-<li>第一种：func()</li>
-<li>第二种：new Func()</li>
-</ul>
-<p>这两种调用方式的区别：</p>
-<ul>
-<li>使用 第一种方式的时候实际调用是函数内部的 [[Call]] 方法</li>
-<li>使用 第二种方式的时候实际调用是函数内部的 [[Construct]] 方法，这个方法会创建一个该构造函数的新实例，并将 this 绑定到新实例上。</li>
-</ul>
-<hr>
-<h3 id="ECMAScript5-中判断函数被调用的方法"><a href="#ECMAScript5-中判断函数被调用的方法" class="headerlink" title="ECMAScript5 中判断函数被调用的方法"></a>ECMAScript5 中判断函数被调用的方法</h3><ol>
-<li>使用 instanceof</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> <span class="keyword">instanceof</span> Person) &#123;</span><br><span class="line">      <span class="keyword">this</span>.name = name</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'必须通过 new 关键词调用 Person'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">'99'</span>) <span class="comment">// 使用 new 关键字 有效</span></span><br><span class="line"><span class="keyword">var</span> person = Person(<span class="string">'69'</span>) <span class="comment">// 抛出错误</span></span><br><span class="line"><span class="keyword">var</span> person = Person.call(person, <span class="string">'66'</span>) <span class="comment">// 主动改变 construct 中的 this 绑定 有效</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>使用 call 或者 applly 来调用 construct</li>
-</ol>
-<hr>
-<h3 id="ECMAScript6-中判断函数被调用的方法"><a href="#ECMAScript6-中判断函数被调用的方法" class="headerlink" title="ECMAScript6 中判断函数被调用的方法"></a>ECMAScript6 中判断函数被调用的方法</h3><ol>
-<li><p>使用 new.traget 元属性，是指非对象的属性，可以提供非对象目标的补充信息（例如： new）</p>
-</li>
-<li><p>调用 [[call]] 方法也会报错，必须使用 new 关键字 new.traget === ‘undefined’</p>
-</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="keyword">new</span>.target !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.name = name</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'必须通过 new 关键词调用 Person'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  注意：在函数外使用 new.traget 是一个语法错误</p>
-<hr>
-<h3 id="块级函数（有利于提升声明声明的能力）"><a href="#块级函数（有利于提升声明声明的能力）" class="headerlink" title="块级函数（有利于提升声明声明的能力）"></a>块级函数（有利于提升声明声明的能力）</h3><p>在作用域的顶部使用 ‘use strict’</p>
-<p>和使用 let 表达式比较相似，执行过程流出流代码块，函数定义立即被销毁</p>
-<p>在该代码块中，块级函数会被提升至块的顶部，但是 let 定义的函数表达式不会被提升</p>
-<p>非严格模式下</p>
-<ol>
-<li>块级函数被提升到全局作用域中</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> add)</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">add</span> (<span class="params">a, ...b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b[<span class="number">0</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="箭头函数的目标"><a href="#箭头函数的目标" class="headerlink" title="箭头函数的目标"></a>箭头函数的目标</h3><ol>
-<li><p>即用即弃</p>
-<h4 id="箭头函数的特点："><a href="#箭头函数的特点：" class="headerlink" title="箭头函数的特点："></a>箭头函数的特点：</h4><ol>
-<li><p>没有 this, super, arguments, new.target 绑定</p>
-</li>
-<li><p>不能通过 new 关键字调用</p>
-</li>
-<li><p>没有原型<br>原因：不能通过 new 关键字调用 =&gt; 箭头函数是没有 construct 方法 （没有原型）</p>
-</li>
-<li><p>不可以改变 this 的绑定<br>表现：不能通过 bind，call，apply 来改变 this 的指向</p>
-</li>
-<li><p>不支持 arguments 对象</p>
-</li>
-<li><p>不支持重复的命名参数</p>
-</li>
-</ol>
-</li>
-</ol>
-<hr>
-<h3 id="尾调用优化"><a href="#尾调用优化" class="headerlink" title="尾调用优化"></a>尾调用优化</h3><p>  自动开启尾调用优化的三个条件：</p>
-<ol>
-<li>尾调用不访问当前栈帧的变量</li>
-<li>在函数内部，尾调用是最后一条语句</li>
-<li>尾调用的结果作为函数值返回</li>
-</ol>
-<hr>
-<p>参考文献：</p>
-<ul>
-<li>《深入理解 ES6》</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2505,7 +2419,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2595,7 +2509,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.3k</span>
+    <span title="Site words total count">27.6k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

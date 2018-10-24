@@ -287,6 +287,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/08/11/Array 之 ES6 includes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/11/Array 之 ES6 includes/" itemprop="url">Array 之 ES6 includes</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-11T10:20:04+08:00">
+                2018-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  321
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="Array-prototype-includes"><a href="#Array-prototype-includes" class="headerlink" title="Array.prototype.includes"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank" rel="noopener">Array.prototype.includes</a></h3><ul>
+<li>Grammar: arr.includes(searchElement[, searchIndex])</li>
+<li>Description: 遍历 arr 去寻找我们想要的元素，找到则返回 true，没有找到则返回 false</li>
+<li>Return: 数据类型：Boolean</li>
+<li><p>特点：满足该条件的时候就立即返回，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个，中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError；</p>
+</li>
+<li><p>Compared with Array.prototype.indexOf</p>
+<ol>
+<li><p>不同点（返回值）</p>
+<ul>
+<li>返回值有区别，includes 的返回值是：Boolean，indexOf 则是 Number 类型</li>
+<li>Array.prototype.indexOf 是属于 ES3 的规范，Array.prototype.findIndex 是属于 ES6 的规范</li>
+</ul>
+</li>
+<li><p>相同点</p>
+<ul>
+<li>接受的参数一致</li>
+<li>不改变数组本身</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._includes) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据 searchElement 按顺序在数组中元素的对比，=== 则是 true 否则为 false</span></span><br><span class="line"><span class="comment">     * @param &#123;*&#125; searchElement</span></span><br><span class="line"><span class="comment">     * @param &#123;Number&#125; searchIndex</span></span><br><span class="line"><span class="comment">     * @returns &#123;Boolean&#125; result</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_includes'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">searchElement, searchIndex</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                result = <span class="literal">false</span>,</span><br><span class="line">                len = <span class="keyword">this</span>.length;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断数组长度</span></span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断 searchIndex</span></span><br><span class="line">            <span class="keyword">if</span> (!searchIndex || <span class="keyword">typeof</span> searchIndex !== <span class="string">'number'</span>) searchIndex = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// #region 3. 获取遍历的起点</span></span><br><span class="line">            i = searchIndex;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (searchIndex &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                searchIndex += len;</span><br><span class="line">                i = searchIndex &lt; <span class="number">0</span> ? <span class="number">0</span> : searchIndex;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (searchIndex &gt;= len) &#123;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// #endregion 3. 获取遍历的起点</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>[i] === searchElement) &#123; <span class="comment">// 必须是 ===</span></span><br><span class="line">                  result = <span class="literal">true</span>;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/08/06/ES6 函数特性/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1772,6 +1951,218 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/06/26/我的 HTML 基础知识（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/26/我的 HTML 基础知识（一）/" itemprop="url">我的 HTML 基础知识（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-26T17:21:01+08:00">
+                2018-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《HTML5-权威指南》/" itemprop="url" rel="index">
+                    <span itemprop="name">《HTML5 权威指南》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  178
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="文档的"><a href="#文档的" class="headerlink" title="文档的"></a>文档的</h3><h3 id="文档的基本组成"><a href="#文档的基本组成" class="headerlink" title="文档的基本组成"></a>文档的基本组成</h3><ol>
+<li><p>元素（口头的标签）</p>
+<ul>
+<li>文档是由元素组成</li>
+<li>可以使用属性配置标签：* 代表 HTML5 新增<ol>
+<li>全局属性：accesskey,id, class, <em>contenteditable, </em>draggable, <em>dropzone, </em>hidden, lang, style, tabindex, title, contextmenu, dir …</li>
+<li>局部属性：src, href…</li>
+<li>布尔属性：<input disabled></li>
+<li>自定义属性(扩展属性)：<div data-index="0"></div></li>
+</ol>
+</li>
+<li>元素的类型：元数据元素（metadata element），流元素(flow element)，短语元素(phrasing element)</li>
+</ul>
+</li>
+<li><p>外层结构</p>
+<ul>
+<li>DOCTYPE 标签</li>
+<li>html 标签 </li>
+<li><p>body 标签</p>
+</li>
+<li><p>html 标签 </p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">DOCTYPE</span> <span class="attr">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<pre><code>- 元数据：可以用来向浏览器提供文档的信息，是包含在 head 元素内部
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">DOCTYPE</span> <span class="attr">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>hello html<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/06/26/http 概述/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2013,411 +2404,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/06/26/我的 HTML 基础知识（一）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/26/我的 HTML 基础知识（一）/" itemprop="url">我的 HTML 基础知识（一）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-26T17:21:01+08:00">
-                2018-06-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《HTML5-权威指南》/" itemprop="url" rel="index">
-                    <span itemprop="name">《HTML5 权威指南》</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  178
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="文档的"><a href="#文档的" class="headerlink" title="文档的"></a>文档的</h3><h3 id="文档的基本组成"><a href="#文档的基本组成" class="headerlink" title="文档的基本组成"></a>文档的基本组成</h3><ol>
-<li><p>元素（口头的标签）</p>
-<ul>
-<li>文档是由元素组成</li>
-<li>可以使用属性配置标签：* 代表 HTML5 新增<ol>
-<li>全局属性：accesskey,id, class, <em>contenteditable, </em>draggable, <em>dropzone, </em>hidden, lang, style, tabindex, title, contextmenu, dir …</li>
-<li>局部属性：src, href…</li>
-<li>布尔属性：<input disabled></li>
-<li>自定义属性(扩展属性)：<div data-index="0"></div></li>
-</ol>
-</li>
-<li>元素的类型：元数据元素（metadata element），流元素(flow element)，短语元素(phrasing element)</li>
-</ul>
-</li>
-<li><p>外层结构</p>
-<ul>
-<li>DOCTYPE 标签</li>
-<li>html 标签 </li>
-<li><p>body 标签</p>
-</li>
-<li><p>html 标签 </p>
-</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">DOCTYPE</span> <span class="attr">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<pre><code>- 元数据：可以用来向浏览器提供文档的信息，是包含在 head 元素内部
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">DOCTYPE</span> <span class="attr">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>hello html<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/05/03/浏览器中的 BOM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/03/浏览器中的 BOM/" itemprop="url">浏览器中的 BOM</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-03T10:20:43+08:00">
-                2018-05-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《JavaScript-高级程序设计》-第三版/" itemprop="url" rel="index">
-                    <span itemprop="name">《JavaScript 高级程序设计》 第三版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  150
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="HTML5-把很多-BOM-相关功能都纳入-HTML5-规范"><a href="#HTML5-把很多-BOM-相关功能都纳入-HTML5-规范" class="headerlink" title="HTML5 把很多 BOM 相关功能都纳入 HTML5 规范"></a>HTML5 把很多 BOM 相关功能都纳入 HTML5 规范</h3><p>  根本上：BOM 只处理浏览器窗口和框架（人们习惯把针对浏览器的 JavaScript 的扩展算作 BOM 的一部分）<br>  比如：</p>
-<ul>
-<li>弹出新浏览器窗口的功能</li>
-<li>移动，缩放和关闭浏览器窗口的功能</li>
-<li>提供浏览器详细信息的 navigator 对象</li>
-<li>提供浏览器所加载页面的详细信息的 location 对象</li>
-<li>提供用户显示器分辨率详细信息的 screen 对象</li>
-<li>对 cookies 的支持</li>
-<li>像 XMLHttpRequest 和 IE 的 ActiveObject 这样的自定义的对象</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2472,7 +2458,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2562,7 +2548,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.6k</span>
+    <span title="Site words total count">28.5k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

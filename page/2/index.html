@@ -287,6 +287,226 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/18/SQL - 聚合：对表进行分组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/18/SQL - 聚合：对表进行分组/" itemprop="url">SQL - 聚合：对表进行分组</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T12:52:41+08:00">
+                2018-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
+                    <span itemprop="name">《SQL基础教程》第二版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  320
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="GROUP-BY-子句"><a href="#GROUP-BY-子句" class="headerlink" title="GROUP BY 子句"></a>GROUP BY 子句</h3><ul>
+<li>在 GUROUP BY 子句中指定的列称为聚合键或者分组列</li>
+<li><p>和 SELECT 结合使用，子句的顺序（不能改变也不能替换）：</p>
+<ul>
+<li><ol>
+<li>SELECT – FROM – WHRER – GROUP BY<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT paramter FROM &lt;table_name&gt; WHERE &lt;condition&gt; GROUP BY &lt;聚合键&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>分组会也会把 NULL 挑选出来为一新列</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>####</p>
+<ul>
+<li><p>SELECT – FROM – GROUP BY 例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT purchase_price, COUNT(*) </span><br><span class="line">  -&gt; FROM Products </span><br><span class="line">  -&gt; GROUP BY purchase_price;</span><br><span class="line">+----------------+----------+</span><br><span class="line">| purchase_price | COUNT(*) |</span><br><span class="line">+----------------+----------+</span><br><span class="line">|             20 |        1 |</span><br><span class="line">|             80 |        1 |</span><br><span class="line">|             10 |        2 |</span><br><span class="line">|              5 |        1 |</span><br><span class="line">|           1000 |        2 |</span><br><span class="line">|              0 |        1 |</span><br><span class="line">|           NULL |        2 |</span><br><span class="line">+----------------+----------+</span><br><span class="line">7 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>将 purchase_price 作为 聚合键（分组列），展示出它们的总数</p>
+</blockquote>
+</li>
+<li><p>SELECT – FROM – WHRER – GROUP BY 例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT purchase_price, product_type, COUNT(*)</span><br><span class="line">  -&gt; FROM Products</span><br><span class="line">  -&gt; WHERE product_type = &apos;衣服&apos; AND purchase_price IS NOT NULL </span><br><span class="line">  -&gt; GROUP BY purchase_price;</span><br><span class="line">+----------------+--------------+----------+</span><br><span class="line">| purchase_price | product_type | COUNT(*) |</span><br><span class="line">+----------------+--------------+----------+</span><br><span class="line">|             20 | 衣服         |        1 |</span><br><span class="line">|             80 | 衣服         |        1 |</span><br><span class="line">|             10 | 衣服         |        1 |</span><br><span class="line">|           1000 | 衣服         |        2 |</span><br><span class="line">+----------------+--------------+----------+</span><br><span class="line">4 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>有 WHERE 子句先过滤掉对应的数据<br>在将 purchase_price 作为 聚合键（分组列），展示出它们的 product_type 和 COUNT 的结果</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="使用-GROUP-BY-时注意的地方"><a href="#使用-GROUP-BY-时注意的地方" class="headerlink" title="使用 GROUP BY 时注意的地方"></a>使用 GROUP BY 时注意的地方</h3><ul>
+<li>使用 GROUP BY 子句时，SELECT 子句中不能出现聚合键（分组列）之外的列名</li>
+<li>不能使用 alias（别名）</li>
+<li>在 SELECT 子句中没有指明排序的方式，数据的展示时无序的</li>
+<li>在 WHERE 子句中使用 聚合函数</li>
+</ul>
+<hr>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/17/SQL - 运算/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2303,178 +2523,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/24/TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/24/TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js/" itemprop="url">TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-24T20:41:20+08:00">
-                2018-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  284
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p><a href="https://www.pengjiandry.com/2018/09/24/TypeScript%20and%20Vue%20%28%20%E4%BA%8C%20%29%20-%20webpack%20%E5%88%9D%E5%A7%8B%E5%8C%96%E6%8A%BD%E7%A6%BB%20base%20conf%20%E5%92%8C%20use%20TypeScript/">上一篇：TypeScript and Vue ( 二 ) - webpack 初始化抽离 base conf 和 use TypeScript</a></p>
-<h3 id="五，配置只解析和编译的-js"><a href="#五，配置只解析和编译的-js" class="headerlink" title="五，配置只解析和编译的.js"></a>五，<a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/76fdea91282a337829b059ef24898274e1603398" target="_blank" rel="noopener">配置只解析和编译的.js</a></h3><ul>
-<li><p>modify webpack.dev.conf.js，其他的配置不变</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @file 本地开发环境下的关键配置</span><br><span class="line"> * @author jamesjianpeng</span><br><span class="line"> */</span><br><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line">const webpack = require(&apos;webpack&apos;);</span><br><span class="line">const merge = require(&apos;webpack-merge&apos;);</span><br><span class="line">const baseConf = require(&apos;./webpack.base.conf&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = (baseConf, &#123;</span><br><span class="line">    mode: &apos;development&apos;,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        contentBase: path.resolve(__dirname, &apos;../dist&apos;), // 使用相对于 dev.conf 配置的绝对路径</span><br><span class="line">        // contentBase: &apos;./dist&apos;, // 第二种方式 相对于 package.json 这一层</span><br><span class="line">        hot: true,</span><br><span class="line">        host: &apos;0.0.0.0&apos;,</span><br><span class="line">        open: true,</span><br><span class="line">        port: 8099,</span><br><span class="line">        overlay: true // 在浏览器端展示错误</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: /\.js/,</span><br><span class="line">                use: &apos;babel-loader&apos;,</span><br><span class="line">                exclude: /node_modules/</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        new webpack.HotModuleReplacementPlugin()</span><br><span class="line">    ]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>add .babelrc</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;plugins&quot;: [&quot;@babel/plugin-syntax-dynamic-import&quot;],</span><br><span class="line">    &quot;presets&quot;: [</span><br><span class="line">        [</span><br><span class="line">            &quot;@babel/preset-env&quot;, &#123;</span><br><span class="line">                &quot;modules&quot;: false,</span><br><span class="line">                &quot;useBuiltIns&quot;: &quot;usage&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>add webpack plugins，使用 <a href="https://babeljs.io/docs/en/v7-migration" target="_blank" rel="noopener">babel 7</a></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm i -D @babel-core</span><br><span class="line">npm i -D @babel/preset-env</span><br><span class="line">npm i -D @babel/plugin-syntax-dynamic-import</span><br><span class="line">npm i -D @babel-loader</span><br></pre></td></tr></table></figure>
-<ul>
-<li>add <a href="https://github.com/browserslist/browserslist#queries" target="_blank" rel="noopener">.browserslistrc</a></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[production staging]</span><br><span class="line">&gt; 1%</span><br><span class="line">ie 10</span><br><span class="line">Android &gt;= 4.4</span><br><span class="line">iOS 8</span><br><span class="line"></span><br><span class="line">[development]</span><br><span class="line">last 1 chrome version</span><br><span class="line">last 1 firefox version</span><br></pre></td></tr></table></figure>
-<ul>
-<li>.browserslistrc 的作用就是告诉浏览器项目兼容的情况 查询 <a href="https://browserl.ist/" target="_blank" rel="noopener">https://browserl.ist/</a></li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2529,7 +2577,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2619,7 +2667,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.6k</span>
+    <span title="Site words total count">28.5k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

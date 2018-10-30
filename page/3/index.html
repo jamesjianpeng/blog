@@ -297,6 +297,505 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/14/SQL - 初识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/14/SQL - 初识/" itemprop="url">SQL 初识</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-14T10:36:58+08:00">
+                2018-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
+                    <span itemprop="name">《SQL基础教程》第二版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  788
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="mac-下载并使用-MySql"><a href="#mac-下载并使用-MySql" class="headerlink" title="mac 下载并使用 MySql"></a>mac 下载并使用 MySql</h3><h4 id="社区版下载"><a href="#社区版下载" class="headerlink" title="社区版下载"></a>社区版下载</h4><ol>
+<li><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a></li>
+<li>下载后直接双击安装，可以设置密码，或者随机分配密码，user 都是 root</li>
+</ol>
+<h4 id="开启-MySql-服务"><a href="#开启-MySql-服务" class="headerlink" title="开启 MySql 服务"></a>开启 MySql 服务</h4><ol>
+<li>知道软件位置 系统偏好设置 &gt; MySql(小海豚标识)</li>
+<li>安装好之后默认是 Start MySql Server</li>
+<li>在任何地方使用 mysql 命令，在终端中输入：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATH=&quot;$PATH&quot;:/usr/local/mysql/bin</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="连接和退出"><a href="#连接和退出" class="headerlink" title="连接和退出"></a>连接和退出</h4><ol>
+<li><p>第一种链接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输入密码之后，链接成功；终端可以输入的位置是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第二种链接方式：(前提是有 data-base-name 这个数据库)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u &lt;user-name&gt; -p -h &lt;data-base-name&gt; -P 9000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>退出 mysql 连接( mysql&gt; 是终端中 mysql 服务的标识)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; quit</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; exit</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><h4 id="什么是数据库"><a href="#什么是数据库" class="headerlink" title="什么是数据库"></a>什么是数据库</h4><ul>
+<li>是一个以某种有组织的方式存储的数据集合</li>
+</ul>
+<h4 id="数据库其他的要素"><a href="#数据库其他的要素" class="headerlink" title="数据库其他的要素"></a>数据库其他的要素</h4><ul>
+<li>表（table）：一个数据库中可以存在多个表，比如：图书馆中的书籍分类：人文历史 和 青春文学 应该是不同的表</li>
+<li>列（column）-&gt; 数据类型：表中的一个字段</li>
+<li>行（row）：表中的一条记录</li>
+<li>单元格：列和行的交汇处；一个单元格只能输出一个数据</li>
+<li>主键（primary key）：用于区分一行的标识，可以通过主键把该条数据找出来</li>
+</ul>
+<h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><h4 id="什么是-SQL"><a href="#什么是-SQL" class="headerlink" title="什么是 SQL"></a>什么是 SQL</h4><ul>
+<li>是结构化查询语言（Structured Query Language）</li>
+<li>是一种专门用来与数据库通信的语言 </li>
+<li>用 关键字，表名，列名等组合而成的一条语句（ SQL 语句）来描述操作内容</li>
+</ul>
+<h4 id="SQL-的基本书写规则"><a href="#SQL-的基本书写规则" class="headerlink" title="SQL 的基本书写规则"></a>SQL 的基本书写规则</h4><ul>
+<li>语句要以分号（ ; ）或者 /g 结尾</li>
+<li>关键字，不区分大小写</li>
+<li>命名规则：只能使用半角英文字母，数字，下划线（_）,作为数据库，表和列的名字</li>
+<li>表名和列名不能重复</li>
+<li>使用中文的时候请用双引号包裹</li>
+<li><p>关于注释：/<em> xxx </em>/（多行注释） 或者 –（一行注释）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT product_name, product_type FROM Products /* Product 表 */ WHERE product_type = &apos;衣服&apos; /* 查询的条件 */;</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT product_name, product_type FROM Products WHERE product_type = &apos;衣服&apos;</span><br><span class="line">  -&gt; -- 查询条件</span><br><span class="line">  -&gt; ;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用 – 注释的时候注意需要换行</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="SQL-语句的种类（90-都是-DML）"><a href="#SQL-语句的种类（90-都是-DML）" class="headerlink" title="SQL 语句的种类（90% 都是 DML）"></a>SQL 语句的种类（90% 都是 DML）</h4><ul>
+<li><p>DDL (Data Definition Language，数据定义语言)</p>
+<blockquote>
+<p>CREATE: 创建数据库和表等对象<br>DROP:   删除数据库和表等对象<br>ALTER:  修改数据库和表等对象的结构</p>
+</blockquote>
+</li>
+<li><p>DML (Data Manipulation Language，数据操纵语言)</p>
+<blockquote>
+<p>SELECT: 查询表中的数据<br>INSERT: 向表中插入新数据<br>UPDATE: 更新表中的数据<br>DELETE: 删除表中的数据</p>
+</blockquote>
+</li>
+<li><p>DCL (Data Control Language, 数据控制语言)</p>
+<blockquote>
+<p>COMMITL:  确认对数据库中的数据进行的变更<br>ROLLBACK: 取消对数据库中的数据进行的变更<br>GRANT:    赋予用户操作权限<br>REVOKE:   取消用户的操作权限</p>
+</blockquote>
+</li>
+<li><p>事务控制语言</p>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/SQL" target="_blank" rel="noopener">SQL维基百科</a></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="SQL-的标准"><a href="#SQL-的标准" class="headerlink" title="SQL 的标准"></a>SQL 的标准</h4><ul>
+<li>《SQL基础教程》第二版 使用的 SQL:2011 的标准</li>
+<li>最新的版本是 SQL:2016 <a href="https://zh.wikipedia.org/wiki/SQL" target="_blank" rel="noopener">SQL维基百科</a></li>
+</ul>
+<hr>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版<br>  -《MySQL必知必会》<br>  - <a href="https://www.jianshu.com/p/07a9826898c0" target="_blank" rel="noopener">展菲的简书</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/13/高级排序-希尔排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/13/高级排序-希尔排序/" itemprop="url">高级排序-希尔排序</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-13T10:57:16+08:00">
+                2018-10-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据和算法-JavaScript-描述》/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据和算法 JavaScript 描述》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  982
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p><a href="https://www.pengjiandry.com/2018/10/07/%E5%86%92%E6%B3%A1%EF%BC%8C%E9%80%89%E6%8B%A9%EF%BC%8C%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/">关于 冒泡，选择，插入排序</a></p>
+<hr>
+<p><a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/e3ae6bb1b963760cc615c382dc423742242c060c" target="_blank" rel="noopener">git commit history</a></p>
+<h3 id="希尔排序："><a href="#希尔排序：" class="headerlink" title="希尔排序："></a>希尔排序：</h3><ul>
+<li>为什么希尔排序会选择插入排序进行优化？？(暂时没有领悟到😂)</li>
+<li><p>特点：</p>
+<ul>
+<li>这是属于插入排序的升级版</li>
+<li>插入排序和希尔排序的最大区别：对比的间隔有区别<ul>
+<li>插入排序的间隔是不变的：都是1，每一与相邻的元素进行比较</li>
+<li>希尔排序则不同：每次对比的间隔是可能不会相同，往往先对比远距离的元素，然后对比的距离慢慢缩小</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>排序效率：(使用执行时间对比，和最深层循环的计数器比较的，<a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/e3ae6bb1b963760cc615c382dc423742242c060c" target="_blank" rel="noopener">dome 地址</a>)</p>
+<ul>
+<li>选择排序 ~= 冒泡排序 &lt; 插入排序 &lt; 希尔排序</li>
+</ul>
+</li>
+<li><p>在上述几种排序中希尔排序效率高？（我的理解不透彻，具体原因不知，待更新）</p>
+<ul>
+<li>影响排序效率的因素<ol>
+<li>最深层循环的总次数</li>
+<li>每次循环做的事情</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>我做了一个简陋的测试 5w 长度的数组的排序的时间对比，以及最深层次循环次数的对比（我的测试）<a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/46678ddcda54bf8969d8dfc08391711d3490ee4e" target="_blank" rel="noopener">git commit color</a></li>
+</ul>
+<p><img src="http://tc-html5dw-com.b0.upaiyun.com/6adde/6addecc3c2da82908be9374d5c226d8f.png" alt="img"></p>
+<blockquote>
+<p>细心的你会发现选择排序是冒泡排序的差不多 2 倍，我在实现选择排序的时候做了升降序判断，所以数据量大的时候差距会越来越明显可以去看一下 <a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/blob/init-webpack/src/app/sort/helper/selection-sort.js" target="_blank" rel="noopener">git commit</a></p>
+</blockquote>
+<h4 id="固定间隔的希尔排序"><a href="#固定间隔的希尔排序" class="headerlink" title="固定间隔的希尔排序"></a>固定间隔的希尔排序</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> interval = [<span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 希尔排序</span></span><br><span class="line"><span class="comment"> * @function</span></span><br><span class="line"><span class="comment"> * @returns &#123;Object&#125; &#123;time&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> shellSort = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> list = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 间隔列表循环的索引 */</span></span><br><span class="line">    <span class="keyword">var</span> intervalIndex;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 第一层循环的索引 */</span></span><br><span class="line">    <span class="keyword">var</span> outer;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 第二层循环的索引 */</span></span><br><span class="line">    <span class="keyword">var</span> inner;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 临时储存固定对比的元素 */</span></span><br><span class="line">    <span class="keyword">var</span> temp;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 根据间隔动态计算的索引 */</span></span><br><span class="line">    <span class="keyword">var</span> intervalD;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 最深层的计数器 */</span></span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 函数执行时间 */</span></span><br><span class="line">    <span class="keyword">var</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(list) !== <span class="string">'[object Array]'</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'list not array'</span>);</span><br><span class="line"></span><br><span class="line">    intervalIndex = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (intervalIndex &lt; interval.length) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** 获得对比元素之间的间隔： interval[intervalIndex]，并指定的间隔初始化起点：outer */</span></span><br><span class="line">        outer = interval[intervalIndex];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (outer &lt; list.length) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/** 缓存一次对比的元素 */</span></span><br><span class="line">            temp = list[outer];</span><br><span class="line"></span><br><span class="line">            <span class="comment">/** 第二层循环索引的初始化 */</span></span><br><span class="line">            inner = outer;</span><br><span class="line">            intervalD = inner - interval[intervalIndex];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (inner &gt;= interval[intervalIndex] &amp;&amp; list[intervalD] &gt; temp) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="comment">/** 以指定的间隔循环数组 */</span></span><br><span class="line">                list[inner] = list[inner - interval[intervalIndex]];</span><br><span class="line">                inner -= interval[intervalIndex];</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            list[inner] = temp;</span><br><span class="line">            outer++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        intervalIndex++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    time = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime() - time;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        time,</span><br><span class="line">        count,</span><br><span class="line">        list</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; shellSort &#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="动态间隔的希尔排序"><a href="#动态间隔的希尔排序" class="headerlink" title="动态间隔的希尔排序"></a>动态间隔的希尔排序</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 动态间隔的希尔排序</span></span><br><span class="line"><span class="comment"> * @function</span></span><br><span class="line"><span class="comment"> * @returns &#123;Object&#125; &#123;time&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dynamicShellSort = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> list = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 数组的长度 */</span></span><br><span class="line">    <span class="keyword">var</span> len = list.length;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 动态的间隔 */</span></span><br><span class="line">    <span class="keyword">var</span> dynamicInterval;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 第一层循环的索引 */</span></span><br><span class="line">    <span class="keyword">var</span> outer;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 第二层循环的索引 */</span></span><br><span class="line">    <span class="keyword">var</span> inner;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 临时储存固定对比的元素 */</span></span><br><span class="line">    <span class="keyword">var</span> temp;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 最深层的计数器 */</span></span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** @type &#123;number&#125; 函数执行时间 */</span></span><br><span class="line">    <span class="keyword">var</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(list) !== <span class="string">'[object Array]'</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'list not array'</span>);</span><br><span class="line"></span><br><span class="line">    dynamicInterval = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** #region 动态生成间隔 */</span></span><br><span class="line">    <span class="keyword">while</span> (dynamicInterval &lt; (len / <span class="number">3</span>)) &#123;</span><br><span class="line">        dynamicInterval = len * <span class="number">3</span> + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** #endregion 动态生成间隔 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (dynamicInterval &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">/** 并指定的间隔初始化起点：outer */</span></span><br><span class="line">        outer = dynamicInterval;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (outer &lt; len) &#123;</span><br><span class="line">            <span class="comment">/** 缓存一次对比的元素 */</span></span><br><span class="line">            temp = list[outer];</span><br><span class="line"></span><br><span class="line">            <span class="comment">/** 第二层循环索引的初始化 */</span></span><br><span class="line">            inner = outer;</span><br><span class="line">            <span class="keyword">while</span> (inner &gt;= dynamicInterval &amp;&amp; <span class="comment">/** 关键点 1：inner - dynamicInterval */</span> list[inner - dynamicInterval] &gt; temp) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="comment">/** 以指定的间隔循环数组 */</span></span><br><span class="line">                list[inner] = list[inner - dynamicInterval];</span><br><span class="line">                inner -= dynamicInterval;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">            list[inner] = temp;</span><br><span class="line">            outer++;</span><br><span class="line">        &#125;</span><br><span class="line">        dynamicInterval = <span class="built_in">Math</span>.ceil((dynamicInterval - <span class="number">1</span>) / <span class="number">3</span>); <span class="comment">/** 关键点 2: 必须使用向上取整，使用 parseInt 和 Math.floor 之后排序不准确 */</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    time = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime() - time;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        time,</span><br><span class="line">        count,</span><br><span class="line">        list</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>参考文献</p>
+<ul>
+<li>《数据和算法 JavaScript 描述》<ul>
+<li>错误记录：动态间隔是要进行向上取整，不然排序不准确</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/07/冒泡，选择，插入排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1816,413 +2315,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/23/TypeScript and Vue ( 一 ) - git 和 webpack 打包初始化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/23/TypeScript and Vue ( 一 ) - git 和 webpack 打包初始化/" itemprop="url">TypeScript and Vue ( 一 ) - git 和 webpack 打包初始化</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-23T14:10:11+08:00">
-                2018-09-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  617
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一，初始化仓库和项目元数据"><a href="#一，初始化仓库和项目元数据" class="headerlink" title="一，初始化仓库和项目元数据"></a>一，初始化仓库和项目元数据</h3><ul>
-<li>init git</li>
-<li>init package</li>
-<li>add <a href="https://github.com/commitizen/cz-cli" target="_blank" rel="noopener">commitizen</a></li>
-<li>add <a href="https://gist.github.com/andreasonny83/b24e38b7772a3ea362d8e8d238d5a7bc" target="_blank" rel="noopener">.gitignore</a></li>
-</ul>
-<h3 id="二，初步工程化，git-commit-history"><a href="#二，初步工程化，git-commit-history" class="headerlink" title="二，初步工程化，git commit history"></a>二，初步工程化，<a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/fbba9afe608747ee18c00d9362f3d1d70e5cf445" target="_blank" rel="noopener">git commit history</a></h3><ul>
-<li><p>add package scripts</p>
-<ol>
-<li>package 配置文件：package.json</li>
-</ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "build:prod": "node ./build/prod-build.js",  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>脚本文件： /build/prod-build.js</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> webpackConfig = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.prod.conf'</span>);</span><br><span class="line"></span><br><span class="line">webpack(webpackConfig, <span class="function"><span class="keyword">function</span>(<span class="params">err, stats</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">    <span class="keyword">if</span> (stats.hasErrors()) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(stats, <span class="string">'has errors end'</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'webpack TypeScript and Threejs project finish!'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>生产环境打包</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build:prod</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>add webpack plugin</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i -D clean-webpack-plugin</span><br><span class="line">npm i -D  html-webpack-plugin</span><br></pre></td></tr></table></figure>
-<ol>
-<li>在 /webpack/webpack.prod.conf.js 中配置如下：</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> CleanWebpackPlugin = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    mode: <span class="string">"production"</span>, <span class="comment">// "production" | "development" | "none"</span></span><br><span class="line">    entry: &#123;</span><br><span class="line">      main: path.resolve(__dirname, <span class="string">'../src/index.js'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, <span class="string">'../dist'</span>),</span><br><span class="line">        publicPath: <span class="string">'./'</span>,</span><br><span class="line">        filename: <span class="string">'[name].js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> CleanWebpackPlugin(<span class="string">'dist'</span>, &#123;</span><br><span class="line">            root: process.cwd(),</span><br><span class="line">            verbose: <span class="literal">true</span>,</span><br><span class="line">            dry: <span class="literal">false</span></span><br><span class="line">        &#125;),</span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            title: <span class="string">'TypeScript and Threejs project'</span>,</span><br><span class="line">            meta: &#123;</span><br><span class="line">                viewport: <span class="string">'width=device-width, initial-scale=1, shrink-to-fit=no'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="遇到的问题："><a href="#遇到的问题：" class="headerlink" title="遇到的问题："></a>遇到的问题：</h3><ul>
-<li><a href="https://github.com/johnagan/clean-webpack-plugin/issues/10" target="_blank" rel="noopener">使用 clean-webpack-plugin dist 文件无法清除</a></li>
-<li><p>解决之后的配置：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">  <span class="keyword">new</span> CleanWebpackPlugin(<span class="string">'dist'</span>, &#123;</span><br><span class="line">      root: process.cwd(), <span class="comment">// 关键点</span></span><br><span class="line">      verbose: <span class="literal">true</span>,</span><br><span class="line">      dry: <span class="literal">false</span></span><br><span class="line">  &#125;),</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>root 这个配置必须要，除了这种方法外还可以通过 在终端输入 pwd 获得 webpack 对应配置的路径，然后 copy 到 root 的位置，但是这个这个方法不够灵活每个人项目存放的路径对于工程搭建者是未知的，使用 process.cwd() 是最优的方法</p>
-</li>
-</ul>
-<h3 id="三，初始化本地开发环境-git-commit-history"><a href="#三，初始化本地开发环境-git-commit-history" class="headerlink" title="三，初始化本地开发环境 git commit history"></a>三，初始化本地开发环境 <a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/bebc37ab2df7cba3abdc99c38abbee728332540d" target="_blank" rel="noopener">git commit history</a></h3><ul>
-<li><p>add package scripts</p>
-<ol>
-<li>package 配置文件：package.json</li>
-</ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "build:local": "node ./build/local-dev.js",</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>脚本文件： /build/local-dev.js</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> webpackDevServer = <span class="built_in">require</span>(<span class="string">'webpack-dev-server'</span>);</span><br><span class="line"><span class="keyword">const</span> devConfig = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.dev.conf'</span>);</span><br><span class="line"></span><br><span class="line">webpackDevServer.addDevServerEntrypoints(devConfig, devConfig.devServer);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> compiler = webpack(devConfig);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> webpackDevServer(compiler, devConfig.devServer)</span><br><span class="line">  .listen(devConfig.devServer.port);</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>本地开发环境</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build:local</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>add webpack plugin</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D webpack-dev-server</span><br></pre></td></tr></table></figure>
-<ol>
-<li>在 /webpack/webpack.prod.conf.js 中配置如下：</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> CleanWebpackPlugin = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    mode: <span class="string">'development'</span>,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        contentBase: path.resolve(__dirname, <span class="string">'../dist'</span>), <span class="comment">// 使用相对于 dev.conf 配置的绝对路径</span></span><br><span class="line">        <span class="comment">// contentBase: './dist', // 第二种方式 相对于 package.json 这一层</span></span><br><span class="line">        hot: <span class="literal">true</span>,</span><br><span class="line">        host: <span class="string">'0.0.0.0'</span>,</span><br><span class="line">        open: <span class="literal">true</span>,</span><br><span class="line">        port: <span class="number">8099</span></span><br><span class="line">    &#125;,</span><br><span class="line">    entry: &#123;</span><br><span class="line">      main: path.resolve(__dirname, <span class="string">'../src/index.js'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, <span class="string">'../dist'</span>),</span><br><span class="line">        publicPath: <span class="string">'./'</span>,</span><br><span class="line">        filename: <span class="string">'[name].js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.HotModuleReplacementPlugin(),</span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            title: <span class="string">'TypeScript and Threejs project'</span>,</span><br><span class="line">            meta: &#123;</span><br><span class="line">                viewport: <span class="string">'width=device-width, initial-scale=1, shrink-to-fit=no'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>值得注意的是：<ol>
-<li>webpack.HotModuleReplacementPlugin() 这个插件需要在 plugins 中使用，热替换才会生效</li>
-<li>devServer.contentBase 使用绝对路径最好</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/20/快速启动本地服务/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/20/快速启动本地服务/" itemprop="url">快速启动本地服务和本地域名代理</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-20T18:16:49+08:00">
-                2018-09-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  276
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="一-Unix-Linux-Mac-系统下，先-cd-到指定目录下"><a href="#一-Unix-Linux-Mac-系统下，先-cd-到指定目录下" class="headerlink" title="一. Unix/Linux/Mac 系统下，先 cd 到指定目录下"></a>一. Unix/Linux/Mac 系统下，先 cd 到指定目录下</h3><p>特点：</p>
-<ol>
-<li>简单的场景可以使用</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m SimpleHTTPServer</span><br></pre></td></tr></table></figure>
-<h3 id="二-使用-Node-js-先-cd-到指定目录下"><a href="#二-使用-Node-js-先-cd-到指定目录下" class="headerlink" title="二. 使用 Node.js,先 cd 到指定目录下"></a>二. 使用 Node.js,先 cd 到指定目录下</h3><p>特点：</p>
-<ol>
-<li>在任何一个支持 Node.js 的平台就可以使用这个方法。</li>
-<li>简单的场景可以使用</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g http-server</span><br><span class="line">http-server</span><br></pre></td></tr></table></figure>
-<h3 id="三-使用-nginx"><a href="#三-使用-nginx" class="headerlink" title="三. 使用 nginx"></a>三. 使用 nginx</h3><p>特点：</p>
-<ol>
-<li>在任何一个支持 nginx 的平台就可以使用这个方法。</li>
-<li>一开始有点复杂，需要了解一下 nginx 的配置的语法，复杂的场景可以推荐使用</li>
-</ol>
-<p>在 mac 上安装 nginx 还比较方便</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew search nginx</span><br><span class="line">bre install nginx</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装之后 nginx 的配置文件夹：/usr/local/etc/nginx</li>
-<li>其中默认是使用的配置文件： /usr/local/etc/nginx/nginx.conf</li>
-</ul>
-<p>在进程中查找 nginx 服务的情况</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep nginx</span><br></pre></td></tr></table></figure>
-<p>启动 nginx</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx</span><br></pre></td></tr></table></figure>
-<p>关闭 nginx 服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -QUIT pid</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s stop</span><br></pre></td></tr></table></figure>
-<p>重启 nginx 服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s reload</span><br></pre></td></tr></table></figure>
-<p>检查 nginx 配置语法正确性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -t</span><br></pre></td></tr></table></figure>
-<h3 id="四-本地域名代理访问"><a href="#四-本地域名代理访问" class="headerlink" title="四. 本地域名代理访问"></a>四. 本地域名代理访问</h3><p>通过配置 localhost 可指向任意域名：</p>
-<ol>
-<li>使用 <a href="https://github.com/oldj/SwitchHosts" target="_blank" rel="noopener">SwitchHosts</a></li>
-<li>Mac 环境下修改 host: sudo vi /etc/hosts</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2277,7 +2369,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2367,7 +2459,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">34k</span>
+    <span title="博客总字数">34.8k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

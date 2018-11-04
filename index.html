@@ -297,6 +297,906 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（一）关系数据库的特点和关系数据模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/04/数据库 - 关系型数据库（一）关系数据库的特点和关系数据模型/" itemprop="url">数据库 - 关系型数据库（一）关系数据库的特点和关系数据模型</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T23:09:44+08:00">
+                2018-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  943
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="关系型数据库的特点"><a href="#关系型数据库的特点" class="headerlink" title="关系型数据库的特点"></a>关系型数据库的特点</h2><ul>
+<li>基本特征： 是使用关系数据模型组织数据，这种思想源于数学</li>
+<li>发展：<ul>
+<li>20世纪 70 年代： RDBMS 问世</li>
+<li>20世纪 80 年代： 关系型数据库逐步取代早期的网状数据模型和层次模型，成为主流数据模型</li>
+</ul>
+</li>
+</ul>
+<h2 id="关系型数据模型"><a href="#关系型数据模型" class="headerlink" title="关系型数据模型"></a>关系型数据模型</h2><ul>
+<li><p>关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束</p>
+<h3 id="关系数据结构"><a href="#关系数据结构" class="headerlink" title="关系数据结构"></a>关系数据结构</h3><ul>
+<li>数据结构：（单一的数据结构），关系。<ul>
+<li>在关系模型中，现实世界的实体以及实体间的各种联系，均是使用关系来表示</li>
+<li>在用户看来，关系模型是把数据库表示为关系的集合，且关系数据库是以二维表格的形式组织数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="基本术语"><a href="#基本术语" class="headerlink" title="基本术语"></a>基本术语</h4><ul>
+<li>表（table）<blockquote>
+<p>又称作关系，是一个二维的数据结构，它由表名，构成表的各个列和若干行数据组成</p>
+<p>每个表有唯一的一个表名</p>
+<p>表中每一行数据都描述一条具体的记录值</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>关系（Relation）</p>
+<blockquote>
+<p>一个关系对应一张二维表，每个关系取一个名称进行标识</p>
+<p>关系的类型：基本关系，查询表和视图表</p>
+<ul>
+<li>基本关系通常又称为基本表或基表，是实际存在的表（世纪存储数据的逻辑表示）</li>
+<li>查询表是查询结果对应的表</li>
+<li>视图表是由基本表或其他视图表导出的表，是虚表，不对应实际储存的数据</li>
+</ul>
+</blockquote>
+</li>
+<li><p>列（Column）</p>
+<blockquote>
+<p>表中的列，也称为字段（field）或属性（Attribute）,</p>
+<p>表中每一列有一个名称，称为列名，字段名或属性名</p>
+<p>每一列表示实体的一个属性，具有相同的数据类型</p>
+</blockquote>
+</li>
+<li><p>属性（Attribute）</p>
+<blockquote>
+<p>与之同义的术语是列，一列即为一个属性</p>
+<p>列的值称为属性值</p>
+<p>属性的取值范围称作值域 </p>
+<p>表中的属性的个数称为关系的元或度</p>
+</blockquote>
+</li>
+<li><p>行（Row）</p>
+<blockquote>
+<p>表中的行，也成元组（Tuple）或记录（Record）</p>
+<p>表中的数据按行存储的，一行数据即为一个元组或一条记录</p>
+<p>每个字段值描述该对象的一个属性或特征</p>
+</blockquote>
+</li>
+<li><p>元组（Tuple）</p>
+<blockquote>
+<p>一行即为一个元组</p>
+</blockquote>
+</li>
+<li><p>分量（Component）</p>
+<blockquote>
+<p>元组中的一个属性值，称为分量</p>
+</blockquote>
+</li>
+<li><p>码或键（Key）</p>
+<blockquote>
+</blockquote>
+</li>
+<li>超码或超键（Super Key）</li>
+<li>候选码或候选键（Canditate Key）</li>
+<li>主码或主键（Primary Key）</li>
+<li>全码或全键（All Key）</li>
+<li>主属性（Primary Attribute）</li>
+<li><p>外码或外键（Foreign Key）</p>
+<blockquote>
+<p>关系中的某个属性（或属性组）不是这个关系的主码或候选码，而是另外一个关系的主码时，称该属性（或属性组）为这个关系的外码或外键</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">一个表中码或键 ，超码或超键，候选码或候选键，主码或主键，全码或全键 之间的关系</span><br><span class="line">+----------------------------------------------------------------+</span><br><span class="line">|  A表                       码或键                               |     </span><br><span class="line">|                                                                |</span><br><span class="line">|      +-----------------------------------------------+         |         </span><br><span class="line">|      |                   超码或超键                    |         | </span><br><span class="line">|      |                                               |         |</span><br><span class="line">|      |      +---------------------------------+      |         |</span><br><span class="line">|      |      |          候选码或候选键          |      |         |      +--------------------------------+</span><br><span class="line">|      |      |                                 |      |         |      | B 表                           |</span><br><span class="line">|      |      |     +------------------———+     |      |         |      |                               |</span><br><span class="line">|      |      |     |     主码或主键 +------------------------------------+  这个码在 A 表中是主码或主键，  |</span><br><span class="line">|      |      |     |                     |     |      |         |      | 同时不是B表关系中的主码或主键，  |</span><br><span class="line">|      |      |     |    +---------——+    |     |      |         |      | 则这个码称为是B表中的外码或外键  |</span><br><span class="line">|      |      |     |    | 全码或全键 |    |     |      |         |      |                               |</span><br><span class="line">+------+------+-----+----+-----------+--—-+-----+------+---------+      +-------------------------------+</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参照关系（Referencing）和被参照关系（Referenced Relation）</p>
+<blockquote>
+<p>参照关系也称为从关系<br>参照关系也称为主关系</p>
+</blockquote>
+</li>
+<li><p>域（Domain）</p>
+<blockquote>
+<p>表示属性的取值范围</p>
+</blockquote>
+</li>
+<li><p>数据类型（Data Type）</p>
+<blockquote>
+<p>每个列都有对应的数据类型</p>
+<p>它用于限制（或容许）该列中存储的数据</p>
+</blockquote>
+</li>
+<li><p>关系模型（Relation Databa）</p>
+<blockquote>
+<p>是对关系的描述<br>关系模式是静态的，稳定的，而关系是动态的，随时间不断变化的（关系操作在不断地更新着数据库中的数据）</p>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（二）关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束,后两/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/04/数据库 - 关系型数据库（二）关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束,后两/" itemprop="url">数据库 - 关系型数据库（二）关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束,后两个</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T23:07:23+08:00">
+                2018-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  1.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="关系操作集合（待更新）"><a href="#关系操作集合（待更新）" class="headerlink" title="关系操作集合（待更新）"></a>关系操作集合（待更新）</h3><ul>
+<li><p>基本的关系操作（两大部分）</p>
+<ol>
+<li><p>查询（Query）操作</p>
+<ul>
+<li>查询操作是基本关系操作中的主要部分<ol>
+<li>5 种基本操作：选择，投影，并，差，交，笛卡尔积</li>
+<li>2 复杂操作：连接，除</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>插入（Insert）, 删除（Delete）, 修改（Update）操作</p>
+</li>
+</ol>
+</li>
+<li><p>关系数据语言的分类 </p>
+<ol>
+<li>关系操作是通过关系语言来实现，</li>
+<li><p>关系语言的优点：高度非过程化</p>
+<blockquote>
+<p>用户不需要请求数据库管理员为其建立特殊的存取路径，</p>
+<p>存取路径是由 DBMS 的优化机制来完成；</p>
+</blockquote>
+</li>
+<li><p>关系操作的能力可以通过两种方式来表示</p>
+<ul>
+<li><p>代数方式：主要有关系代数</p>
+<blockquote>
+<p>它是通过对关系的操作来表达查询要求的方式</p>
+</blockquote>
+</li>
+<li><p>逻辑方式：主要是关系演算（他是用谓词来表达查询要求的方式）</p>
+<ul>
+<li>关系演算按谓词的变元的基本对象又分为：<ol>
+<li>元组关系演算（变元的基本对象是元组变量）</li>
+<li>域关系演算（变元的基本对象是域变量 ）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>关系代数，元组关系演算，域关系演算三种语言在表达能力上是等价的，并且他们都是抽象的查询语言</p>
+</li>
+<li><p>结构化查询语言（介于代数方式和逻辑方式之间, Structured Query Language, SQL）</p>
+<ul>
+<li><p>功能：</p>
+<ol>
+<li>数据定义功能（DDL）</li>
+<li>数据操作功能（DML）</li>
+<li>数据控制功能（DCL）</li>
+</ol>
+</li>
+<li><p>是关系数据库的标准语言</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>总结：</li>
+</ol>
+<ul>
+<li>关系数据语言分为三类：关系代数语言，关系演算语言和兼容两者双重特点的语言（SQL）</li>
+<li>它们功能的特点：语言具有完备的表达能力，和非过程化的集合操作语言，功能强，能够独立使用也可以嵌入高级语言中使用<h4 id="关系代数"><a href="#关系代数" class="headerlink" title="关系代数"></a>关系代数</h4></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>关系代数是关系操作语言的一种传统表示方式，他是以集合代数为基础发展起来的。</li>
+<li><p>关系代数的三大要素：<br>1.操作对象<br>2.操作符<br>3.操作结果</p>
+<blockquote>
+<p>特点：操作对象和操作结果均为关系<br>直接应用关系的运算来表达操作的目的</p>
+</blockquote>
+</li>
+<li><p>运算符的种类：</p>
+<ol>
+<li>传统的集合运算符：并，差，交，笛卡尔积</li>
+<li>专门的运算符：选择，投影，连接，除，其中下面两种运算符是辅助专门运算符用的<ul>
+<li>比较运算符：大于，大于等于，等于，小于，小于等于，不等于</li>
+<li>逻辑操作符： 与，或非</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>关系代数表达式（关系代数操作表达式）</p>
+<ol>
+<li>概念： 代数关系操作经过有限次复合的式子 <blockquote>
+<p>可以使用关系代数表达式所需要执行的各种数据库查询和修改处理，例如：IBM 研制的一个纯代数数据操作语言（ISBL）</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>按照运算符的不同，代数操作分为</p>
+<ol>
+<li>传统的集合运算</li>
+<li>专门的关系运算</li>
+</ol>
+</li>
+<li><p>传统的集合运算</p>
+<ol>
+<li>传统的集合运算是二目运算<blockquote>
+<p>特点：</p>
+<ol>
+<li><p>把关系看成元组（行）的集合</p>
+</li>
+<li><p>运算是从关系的 “水平”方向进行，即行的角度进行</p>
+</li>
+<li><p>具体有 并，差，交，笛卡尔积 4 种运算</p>
+<p>值得注意的笛卡尔积是针对列进行操作的</p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>专门的关系运算符</p>
+<ul>
+<li><p>范围：不仅涉及行，还涉及列</p>
+</li>
+<li><p>可分为一元专门关系操作和二元关系操作</p>
+<ul>
+<li>一元关系操作包括<ol>
+<li>对单个进行垂直分解的投影运算</li>
+<li>对水平分解选择运算</li>
+</ol>
+</li>
+<li>二元专门关系操作则是对两个进行操作<ol>
+<li>连接运算</li>
+<li>除运算</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>选择（SELECT）</p>
+<ol>
+<li>概念：选择运算是从指定关系中选取满足给定条件的若干元组组成一个新关系，其形式：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 关系名 WHERE 条件</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>其中：条件是由常数，属性名或列名，比较操作符以及逻辑操作符组成的条件表达式子</p>
+<p>对应 SQL 中的 SELECT 语句的实现</p>
+</blockquote>
+</li>
+<li><p>投影（PROJECTION）</p>
+<ol>
+<li>概念：投影运算是从指定的关系中选取指定的若干属性值组成一个新的关系<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PROJECTION 关系名（属性1， 属性2 ... 属性3）</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>其中：经过投影运算所形成的新关系中不含重复元组，其属性按语句中给出的顺序排列</p>
+<p>SQL 中的 GROUP BY（分组）子句的实现</p>
+</blockquote>
+</li>
+<li><p>连接（JSON）</p>
+<ol>
+<li>选取两个指定关系中国呢的属性满足给定条件的元组连接在一起组成一个新关系<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JOIN 关系名1 AND 关系名2 WHERE 条件</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>条件是由比较操作符和属性名或列名组成的条件表达式</p>
+</blockquote>
+<ol>
+<li>连接分为：等值连接和自然连接</li>
+</ol>
+</li>
+<li><p>除（DIVISION）</p>
+<ol>
+<li>M - N 元关系</li>
+</ol>
+</li>
+</ul>
+<h3 id="关系的完整型约束"><a href="#关系的完整型约束" class="headerlink" title="关系的完整型约束"></a>关系的完整型约束</h3></li>
+<li><p>概念：数据库的数据完整性：是指数据库中数据的正确性，相容性和一致性</p>
+<ol>
+<li>现实世界角度:现实世界应用需求的数据的正确性，相容性和一致性</li>
+<li>数据库数据角度：数据库数据之间的正确性，相容性和一致性</li>
+<li>数据库中数据是否具备完备性，直接关系到数据库系统是否真实地反映现实世界，故数据的数据完整性十分重要</li>
+</ol>
+</li>
+<li><p>完整性约束</p>
+<ol>
+<li>概念：数据的完整性是由完整性规则来定义，关系模型的完整性规则是对关系的某种约束</li>
+<li>目的：用来保证当用户对数据库进行插入，删除，更新操作时不会破坏数据库的正确性，相容性和一致性</li>
+</ol>
+</li>
+<li><p>关系数据库中的三种完整性约束类型</p>
+<ol>
+<li><p>实体完整性约束（Entity Integrity Constraint）</p>
+<ol>
+<li>概念：指关系的主属性（主码）的组成不能为空（NULL）<blockquote>
+<p>关系对应现实世界中的实体集，而实现世界中的实体是可以区分的，即说明每个实体具有唯一性标识</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>参照完整性约束（Referential Integrity Constraint）</p>
+<ol>
+<li>概念：是定义外码和主码之间的引用关系，它是对关系间引用数据的一种限制<blockquote>
+<p>实现世界中的实体之间往往存在着某种联系，在关系模型中实体以及实体之间的联系都是用关系来描述的，这样就自然存在着关系与关系间的引用</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>用户定义完整性约束(User-defined Integrity Constraint)</p>
+<ol>
+<li>概念：是针对某一应用环境的完整性约束条件，它反映了某一具体应用所涉及的数据应满足的要求 </li>
+</ol>
+</li>
+<li><p>实体完整性和参照完整性约束是由系统自动支持的</p>
+</li>
+</ol>
+</li>
+<li><p>关系模型完整性约束检验</p>
+<ol>
+<li>插入操作</li>
+<li>删除操作</li>
+<li>更新操作</li>
+</ol>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（三）关系数据库的规范化理论/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/04/数据库 - 关系型数据库（三）关系数据库的规范化理论/" itemprop="url">数据库 - 关系型数据库（三）关系数据库的规范化理论</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T22:31:50+08:00">
+                2018-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  262
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="为什么要规范化（抄不动了😢）"><a href="#为什么要规范化（抄不动了😢）" class="headerlink" title="为什么要规范化（抄不动了😢）"></a>为什么要规范化（抄不动了😢）</h3><h4 id="关系模型中可能存在冗余和异常问题（抄不动了😢）"><a href="#关系模型中可能存在冗余和异常问题（抄不动了😢）" class="headerlink" title="关系模型中可能存在冗余和异常问题（抄不动了😢）"></a>关系模型中可能存在冗余和异常问题（抄不动了😢）</h4><ol>
+<li>数据冗余</li>
+<li>更新异常</li>
+<li>插入异常</li>
+<li>删除异常</li>
+</ol>
+<h3 id="函数依赖和关键字（抄不动了😢）"><a href="#函数依赖和关键字（抄不动了😢）" class="headerlink" title="函数依赖和关键字（抄不动了😢）"></a>函数依赖和关键字（抄不动了😢）</h3><ol>
+<li>函数依赖：指关系中属性间的对应关系</li>
+<li>定义：设 R 为任一给定关系，如果对于 R 中属性 X 的每一个值，R 中的属性 Y 只用唯一值与之对应，则称 X 函数决定 Y 或称 Y 函数依赖于 X,记住 X -&gt; Y。其中，X 称为决定因素</li>
+</ol>
+<h4 id="函数依赖根据不同性质的分类（抄不动了😢）"><a href="#函数依赖根据不同性质的分类（抄不动了😢）" class="headerlink" title="函数依赖根据不同性质的分类（抄不动了😢）"></a>函数依赖根据不同性质的分类（抄不动了😢）</h4><ol>
+<li>完全函数依赖</li>
+<li>部分函数依赖</li>
+<li>传递函数依赖</li>
+</ol>
+<h3 id="范式与关系规范化（抄不动了😢）"><a href="#范式与关系规范化（抄不动了😢）" class="headerlink" title="范式与关系规范化（抄不动了😢）"></a>范式与关系规范化（抄不动了😢）</h3><ol>
+<li>规范化：一个低一级范式的关系模式通过模式分解（Schema Decomposition）可以转换为若干个高一级范式的关系模式的集合的过程</li>
+</ol>
+<h4 id="范式（抄不动了😢）"><a href="#范式（抄不动了😢）" class="headerlink" title="范式（抄不动了😢）"></a>范式（抄不动了😢）</h4><ol>
+<li>第一范式(1NF)</li>
+<li>第二范式(2NF)</li>
+<li>第三范式(3NF)</li>
+<li>BCNF</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/PHP - 基础知识（二）变量，数据类型以及作用域/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -393,7 +1293,7 @@
                   <span class="post-meta-item-text">文章总字数&#58;</span>
                 
                 <span title="文章总字数">
-                  1k
+                  1.1k
                 </span>
               
 
@@ -433,6 +1333,8 @@
         
           
             <hr>
+<p><a href="http://localhost:4034/2018/11/04/PHP%20-%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%88%E4%BA%8C%EF%BC%89%E5%8F%98%E9%87%8F%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%BB%A5%E5%8F%8A%E4%BD%9C%E7%94%A8%E5%9F%9F/" target="_blank" rel="noopener">PHP - 基础知识（二）变量，数据类型以及作用域</a></p>
+<hr>
 <h3 id="变量和字面量"><a href="#变量和字面量" class="headerlink" title="变量和字面量"></a>变量和字面量</h3><ul>
 <li>变量：是表示数据的符号</li>
 <li>字面量：是原始数据，例如： 字符串是数据本身<blockquote>
@@ -1067,299 +1969,6 @@
 <li><a href="https://wizardforcel.gitbooks.io/nginx-doc/content/Text/6.5_nginx_php_fpm.html" target="_blank" rel="noopener">https://wizardforcel.gitbooks.io/nginx-doc/content/Text/6.5_nginx_php_fpm.html</a></li>
 <li><a href="http://blog.51cto.com/phpervip/1905673" target="_blank" rel="noopener">http://blog.51cto.com/phpervip/1905673</a></li>
 <li><a href="https://www.zybuluo.com/phper/note/89081" target="_blank" rel="noopener">https://www.zybuluo.com/phper/note/89081</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/02/数据库 - 关系型数据库/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/02/数据库 - 关系型数据库/" itemprop="url">数据库 - 关系型数据库</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-02T13:11:52+08:00">
-                2018-11-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  910
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="关系型数据库的特点"><a href="#关系型数据库的特点" class="headerlink" title="关系型数据库的特点"></a>关系型数据库的特点</h2><ul>
-<li>基本特征： 是使用关系数据模型组织数据，这种思想源于数学</li>
-<li>发展：<ul>
-<li>20世纪 70 年代： RDBMS 问世</li>
-<li>20世纪 80 年代： 关系型数据库逐步取代早期的网状数据模型和层次模型，成为主流数据模型</li>
-</ul>
-</li>
-</ul>
-<h2 id="关系型数据模型"><a href="#关系型数据模型" class="headerlink" title="关系型数据模型"></a>关系型数据模型</h2><ul>
-<li><p>关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束</p>
-<h3 id="关系数据结构"><a href="#关系数据结构" class="headerlink" title="关系数据结构"></a>关系数据结构</h3><ul>
-<li>数据结构：（单一的数据结构），关系。<ul>
-<li>在关系模型中，现实世界的实体以及实体间的各种联系，均是使用关系来表示</li>
-<li>在用户看来，关系模型是把数据库表示为关系的集合，且关系数据库是以二维表格的形式组织数据</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="基本术语"><a href="#基本术语" class="headerlink" title="基本术语"></a>基本术语</h4><ul>
-<li>表（table）<blockquote>
-<p>又称作关系，是一个二维的数据结构，它由表名，构成表的各个列和若干行数据组成</p>
-<p>每个表有唯一的一个表名</p>
-<p>表中每一行数据都描述一条具体的记录值</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>关系（Relation）</p>
-<blockquote>
-<p>一个关系对应一张二维表，每个关系取一个名称进行标识</p>
-<p>关系的类型：基本关系，查询表和视图表</p>
-<ul>
-<li>基本关系通常又称为基本表或基表，是实际存在的表（世纪存储数据的逻辑表示）</li>
-<li>查询表是查询结果对应的表</li>
-<li>视图表是由基本表或其他视图表导出的表，是虚表，不对应实际储存的数据</li>
-</ul>
-</blockquote>
-</li>
-<li><p>列（Column）</p>
-<blockquote>
-<p>表中的列，也称为字段（field）或属性（Attribute）,</p>
-<p>表中每一列有一个名称，称为列名，字段名或属性名</p>
-<p>每一列表示实体的一个属性，具有相同的数据类型</p>
-</blockquote>
-</li>
-<li><p>属性（Attribute）</p>
-</li>
-<li>行（Row）</li>
-<li>元组（Tuple）</li>
-<li>分量（Component）</li>
-<li>码或键（Key）</li>
-<li>超码或超键（Super Key）</li>
-<li>候选码或候选键（Canditate Key）</li>
-<li>主码或主键（Primary Key）</li>
-<li>全码或全键（All Key）</li>
-<li>主属性（Primary Attribute）</li>
-<li>外码或外键（Foreign Key）</li>
-<li>参照关系（Referencing）和被参照关系（Referenced Relation）</li>
-<li>域（Domain）</li>
-<li>数据类型（Data Type）</li>
-<li>关系模型（Relation Databa</li>
-<li>表（table）<blockquote>
-<p>又称作关系，是一个二维的数据结构，它由表名，构成表的各个列和若干行数据组成</p>
-<p>每个表有唯一的一个表名</p>
-<p>表中每一行数据都描述一条具体的记录值</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>关系（Relation）</p>
-<blockquote>
-<p>一个关系对应一张二维表，每个关系取一个名称进行标识</p>
-<p>关系的类型：基本关系，查询表和视图表</p>
-<ul>
-<li>基本关系通常又称为基本表或基表，是实际存在的表（世纪存储数据的逻辑表示）</li>
-<li>查询表是查询结果对应的表</li>
-<li>视图表是由基本表或其他视图表导出的表，是虚表，不对应实际储存的数据</li>
-</ul>
-</blockquote>
-</li>
-<li><p>列（Column）</p>
-<blockquote>
-<p>表中的列，也称为字段（field）或属性（Attribute）,</p>
-<p>表中每一列有一个名称，称为列名，字段名或属性名</p>
-<p>每一列表示实体的一个属性，具有相同的数据类型</p>
-</blockquote>
-</li>
-<li><p>属性（Attribute）</p>
-</li>
-<li>行（Row）</li>
-<li>元组（Tuple）</li>
-<li>分量（Component）</li>
-<li>码或键（Key）</li>
-<li>超码或超键（Super Key）</li>
-<li>候选码或候选键（Canditate Key）</li>
-<li>主码或主键（Primary Key）</li>
-<li>全码或全键（All Key）</li>
-<li>主属性（Primary Attribute）</li>
-<li>外码或外键（Foreign Key）</li>
-<li>参照关系（Referencing）和被参照关系（Referenced Relation）</li>
-<li>域（Domain）</li>
-<li>数据类型（Data Type）</li>
-<li><p>关系模型（Relation Database）</p>
-<h3 id="关系操作集合（待更新）"><a href="#关系操作集合（待更新）" class="headerlink" title="关系操作集合（待更新）"></a>关系操作集合（待更新）</h3><h3 id="关系的完整型约束（待更新）"><a href="#关系的完整型约束（待更新）" class="headerlink" title="关系的完整型约束（待更新）"></a>关系的完整型约束（待更新）</h3></li>
-</ul>
-<h2 id="关系的完整型约束（待更新）-1"><a href="#关系的完整型约束（待更新）-1" class="headerlink" title="关系的完整型约束（待更新）"></a>关系的完整型约束（待更新）</h2><ul>
-<li>关系数据库的规范化理论</li>
 </ul>
 
           
@@ -2240,766 +2849,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/27/数据库 - 数据库系统（三）数据模型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/27/数据库 - 数据库系统（三）数据模型/" itemprop="url">数据库 - 数据库系统（三）数据模型</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-27T14:29:57+08:00">
-                2018-10-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  3.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  10
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="模型（P37）"><a href="#模型（P37）" class="headerlink" title="模型（P37）"></a>模型（P37）</h2><p>  1.（是什么？）是现实世界特征的模拟和抽象表达<br>  2.（作用：）它有助于人们更好地认识和理解客观世界中的事物，对象，过程等感兴趣的内容</p>
-<h2 id="数据模型（P37）"><a href="#数据模型（P37）" class="headerlink" title="数据模型（P37）"></a>数据模型（P37）</h2><ol>
-<li>数据模型用来模拟和抽象现实世界中的数据特征</li>
-<li>数据模型也是一种模型，它是对现实世界数据特征的抽象，描述的是数据的共性内容</li>
-</ol>
-<h3 id="数据特征（P37）"><a href="#数据特征（P37）" class="headerlink" title="数据特征（P37）"></a>数据特征（P37）</h3><ol>
-<li><p>数据特征：静态和动态</p>
-<blockquote>
-<p>静态特征：包括数据的基本结构，数据间的联系以及对数据取值范围的约束<br>动态特征：指对数据可以进行符合一定规则的操作。</p>
-<p>所以，对现实世界的数据特征进行抽象的数据模型，需要描述数据的静态特征和动态行为，并为数据的表示和操作提供框架</p>
-</blockquote>
-</li>
-<li><p>终于要回答数据模型是什么了：<br>数据模型是用来描述数据的结构（静态特征），定义在结构上的操纵（动态行为）以及数据间的约束的一组概念和定义</p>
-</li>
-</ol>
-<h3 id="数据模型组成要素（P37）"><a href="#数据模型组成要素（P37）" class="headerlink" title="数据模型组成要素（P37）"></a>数据模型组成要素（P37）</h3><ol>
-<li>数据模型三个要素：<ul>
-<li>数据结构</li>
-<li>数据操纵</li>
-<li>数据约束</li>
-</ul>
-</li>
-</ol>
-<ol start="2">
-<li><p>数据结构<br>数据结构描述的是系统的静态特性，即数据对象的数据类型，内容，属性以及数据对象之间的联系。</p>
-<p>数据结构反映了数据模型最基本的特征，因此人们常常按照数据结构的类型来命名数据模型：</p>
-<ul>
-<li>层次结构 -&gt; 层次模型</li>
-<li>网状结构 -&gt; 网状模型</li>
-<li>关系结构 -&gt; 关系模型</li>
-</ul>
-</li>
-</ol>
-<ol start="3">
-<li><p>数据操作<br>数据操作描述的是系统的动态特性，是对各种对象的实例允许执行的操作的集合</p>
-<ul>
-<li>数据操作分类：更新和检索<blockquote>
-<p>其中更新：插入，删除和修改</p>
-<p>数据模型必须定义这些操作的确切含义，操作符号，操作规则（如优先级）以及实现操作的语言</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>数据约束</p>
-<ul>
-<li><p>数据约束（是什么？）是描述数据结构中数据间的语法和语义关联，包括互相制约与依存关系以及数据动态变化规则，以保证数据的正确性，有效性与相容性</p>
-</li>
-<li><p>数据约束包括：</p>
-<ol>
-<li>数据完整性约束</li>
-<li>数据安全性约束</li>
-<li>并发控制约束</li>
-</ol>
-</li>
-<li><p>数据约束既刻画了数据静态特征，也表示了数据动态行为规则</p>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="数据模型的分类（P38）"><a href="#数据模型的分类（P38）" class="headerlink" title="数据模型的分类（P38）"></a>数据模型的分类（P38）</h3><ul>
-<li><p>数据模型满足的三个条件：</p>
-<ol>
-<li>能比较真实地模拟现实世界</li>
-<li>容易为人们所理解</li>
-<li>便于在计算机上实现</li>
-</ol>
-</li>
-<li><p>为了把现实世界中的对象转化为数据管理系统中所支持的数据结构采用的方法： 逐步抽象的方法：</p>
-<ol>
-<li><p>在不同的抽象层使用不同的数据模型，从而将实现世界中的具体事物逐步抽象，转换，组织成机器世界（计算机）中某一具体数据库管理系统所支持的数据类型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">从上向下逐层抽象</span><br><span class="line">+------------------------+</span><br><span class="line">|         现实世界        |</span><br><span class="line">+-----------+------------+</span><br><span class="line">            |</span><br><span class="line">+-----------+---------——-+</span><br><span class="line">|    概念模型（信息世界）   |</span><br><span class="line">+-----------+------------+</span><br><span class="line">            |</span><br><span class="line">+-----------+------------+</span><br><span class="line">| 具体 DBMS 支持的逻辑模型 |</span><br><span class="line">|  和物理模型（机器世界）   | </span><br><span class="line">+------------------------+</span><br></pre></td></tr></table></figure>
-<blockquote>
-<ol>
-<li>首先，将实现世界中的客观对象抽象为信息世界汇总的某一种信息结构，这种信息结构并不依赖于具体的计算机系统，也不与具体的数据库管理系统相关，是一种概念性的模型</li>
-<li>再将概念级的模型转换为机器世界中某以具体的数据库管理系统支持的数据模型</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-</li>
-</ul>
-<h4 id="数据模型：概念层数据模型"><a href="#数据模型：概念层数据模型" class="headerlink" title="数据模型：概念层数据模型"></a>数据模型：概念层数据模型</h4><ol>
-<li><p>概念层是数据抽象级别的最高层，</p>
-<blockquote>
-<p>其目的是按用户的观点来对世界建模</p>
-</blockquote>
-</li>
-<li><p>概念层数据模型，也称为数据的概念模型（Conceptual Model）或信息模型</p>
-<blockquote>
-<p>它是描述现实世界的事物，与具体的计算机系统无关，且独立于任何 DBMS，但容易向 DBMS 所支持的逻辑数据模型转换<br>这类数据模型主要用于数据库的设计阶段，即在设计数据库时，通常用概念模型来抽象，表示现实世界的各种事物及其联系</p>
-</blockquote>
-</li>
-</ol>
-<h4 id="信息世界的基本概念"><a href="#信息世界的基本概念" class="headerlink" title="信息世界的基本概念"></a>信息世界的基本概念</h4><ol>
-<li>关于概念模型：<ul>
-<li>概念模型用于信息世界的建模</li>
-<li>是实现世界到信息世界的第一层抽象</li>
-<li>是数据库设计人员进行数据库设计的得力工具</li>
-<li>也是数据库设计人员和用户之间进行交流的语言</li>
-</ul>
-</li>
-</ol>
-<ol start="2">
-<li>概念模型特点：<ul>
-<li>一方面，概念模型具有较强的语义表达能力，能够方便，直接地表达应用中的各种语义知识</li>
-<li>另一方面，它简单，清晰，易于用户理解</li>
-</ul>
-</li>
-</ol>
-<ol start="3">
-<li>基本概念：<ul>
-<li>实体（Entity）: 客观存在并可相互区别的事物称为实体。<blockquote>
-<p>例如，商品，学生，课程，班级</p>
-</blockquote>
-</li>
-<li>属性（Attribute）: 实体所具有的某种特性称为实体的属性。<blockquote>
-<p>例如，实体可以拥有多个属性，如商品的名称，商品的介绍，商品的价格</p>
-</blockquote>
-</li>
-<li>码或键（Key）：可唯一标识实体的属性集。<blockquote>
-<p>例如，商品的名称是商品的码或键</p>
-</blockquote>
-</li>
-<li>域（Domain）：属性的取值范围。<blockquote>
-<p>例如，商品的名称的域，为字符集合，也有长度限制</p>
-</blockquote>
-</li>
-<li>实体型（Entity Type）：类似的实体可能拥有共同的特质和性质，用实体名和属性名集合来抽象和刻画同类实体，称为实体型，<blockquote>
-<p>例如，商品（名称，编号，价格，成本，生产日期）就是一个实体型</p>
-</blockquote>
-</li>
-<li>实体集（Entity Set）：同型实体的集合称为实体集。每个商品是一个实体，所有的商品构成一个实体集</li>
-<li>联系（Relationship）：在现实世界中，事物内部以及事物之间是有联系的，这些联系在信息世界中反映为实体（型）内部的联系和实体（型）之间的联系<blockquote>
-<p>实体内部的联系通常是指视图各属性之间的联系。<br>例子1，每个商品生产的时候会产生一个唯一的编号，只要知道这个编号就可以找到对应的商品，获得商品的其他属性<br>例子2，每40个学生组成一个班级，学生这个实体型和班级这个实体型之间存在联系</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ol>
-<h4 id="概念模型的表示方法（E-R-图）"><a href="#概念模型的表示方法（E-R-图）" class="headerlink" title="概念模型的表示方法（E-R 图）"></a>概念模型的表示方法（E-R 图）</h4><ol>
-<li>实体-联系方法（Entity-Relationship approach）该方法用 E-R 图（E-R diagram）（用来描述现实世界的概念模型）<blockquote>
-<p>E-R 图：提供了表示信息世界中实体，属性和联系的方法，其中实体，属性，联系的图形含义分别如下</p>
-<ol>
-<li>实体型，其用矩形表示，矩形框内写明实体的名称</li>
-<li>属性，其用椭圆形表示，并用无向边将其与相应的实体连接起来</li>
-<li>联系，其用菱形表示，菱形框内写明联系的名称，并用无向边分别与有关实体联系起来</li>
-</ol>
-<p>E-R 图的特点：</p>
-<ol>
-<li>实体-联系方法是抽象和描述实现世界的有力工具。</li>
-<li>用 E-R 图表示的概念逻辑模型独立与具体的 DBMS 所支持的逻辑模型，它是各种逻辑模型的共同基础，比逻辑模型更一般，更抽象，更接近实现世界</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-<h4 id="逻辑层数据模型（数据的逻辑模型）"><a href="#逻辑层数据模型（数据的逻辑模型）" class="headerlink" title="逻辑层数据模型（数据的逻辑模型）"></a>逻辑层数据模型（数据的逻辑模型）</h4><ol>
-<li><p>逻辑层是数据抽象的中间层，描述数据整体的逻辑结构。 </p>
-<blockquote>
-<p>它是用户通过数据库管理系统看到的现实世界，是基于计算机的观点对数据进行建模和表示<br>它既要考虑用户容易理解，又要考虑便于 DBMS 实现<br>任何 DBMS 都是基于某种逻辑数据模型<br>主要的逻辑数据模型：</p>
-<ol>
-<li>层次模型</li>
-<li>网状模型</li>
-<li>关系模型（重点）</li>
-<li>面向对象模型</li>
-</ol>
-</blockquote>
-</li>
-<li><p>层次模型</p>
-<ol>
-<li><p>层次模型是数据库管理系统最早使用的一种数据模型，它的数据结构是一棵 “有向树”，树的每个结点对应一个记录集，也就是现实世界的实体集。</p>
-</li>
-<li><p>特点（优点）:</p>
-<ul>
-<li>有且仅有一个结点没有父节点，它被称作根节点，其他的节点有且仅有一个父结点。例如，组织机构的图谱就是典型的层次结构</li>
-</ul>
-</li>
-<li><p>缺点：</p>
-<ul>
-<li>现实世界中的关系是多样的，层次模型难以表达实体之间这个复杂的联系</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>网状模型</p>
-<ol>
-<li>网状结构以网状结构表示实体与实体之间的联系。</li>
-<li>特点（优点）：<ul>
-<li>网状模型和层次模型之间的关系：网状模型是层次模型的扩展，允许节点有多于一个父结点</li>
-<li>现实世界的关系很复杂，网状模型可以方便地表示各种类型之间的联系，即可以表示从属的关系，也可以表示数据间的交叉关系</li>
-</ul>
-</li>
-<li>缺点：<ul>
-<li>结构复杂，实现的算法难以规范化</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>关系模型</p>
-<ol>
-<li>关系模型是用二维表结构来表示实体以及实体间联系的模型，并以二维表格的形式组织数据库中额数据</li>
-<li>特点（优点）：<ul>
-<li>关系模型是建立在严格的数学概念的基础上</li>
-<li>关系模型的概念单一，统一用关系来表示实体以及实体之间的联系，对数据的检索和更新结果同样也是用关系（即表）来表示，<blockquote>
-<p>关系模型的数据结构简单，清晰，用户易懂，易用</p>
-</blockquote>
-</li>
-<li>关系模型的存取路径对用透明，从而具有更高的数据独立性，更好的安全保密性，也简化了程序元的工作和数据库建立的工作<blockquote>
-<p>目前商用数据库多是关系型数据库，例如：MySQL 就是一个关系数据库管理系统</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>面向对象模型</p>
-<ol>
-<li>面向对象方法与数据库结合所构成的数据模型称为面向对象模型（面向对象模型既是概念模型又是逻辑模型），面向对象数据模型用面向对象观点来描述现实世界实体的逻辑组织，对象间的联系</li>
-<li>特点：<ul>
-<li>其表达能力丰富，具有对象可复用，维护方便的优点</li>
-<li>是正在发展的数据模型，也是数据库的发展方向之一</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<h4 id="物理层数据模型"><a href="#物理层数据模型" class="headerlink" title="物理层数据模型"></a>物理层数据模型</h4><ol>
-<li>物理层数据模型，也称为数据的物理模型（Physical Model）<blockquote>
-<p>其描述数据在存储介质上的组织结构<br>是逻辑模型的物理实现，即每一种逻辑模型在实现时都有与其相对应的物理模型</p>
-</blockquote>
-</li>
-<li>物理模型是数据库最底层的抽象，它确定数据的物理存储结构，数据存取路径以及调整，优化数据库的性能，</li>
-<li>物理模型的设计目标，是提高数据库性能和有效利用存储空间。</li>
-<li>影响物理层数据模型的因素：<ul>
-<li>不但由 DBMS 的设计决定，而且与操作系统，计算机硬件密切相关。<blockquote>
-<p>物理数据结构一般都向用户屏蔽，用户不必了解其细节</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ol>
-<h4 id="概念模型，逻辑层数据模型以及物理层数据模型之间的关系"><a href="#概念模型，逻辑层数据模型以及物理层数据模型之间的关系" class="headerlink" title="概念模型，逻辑层数据模型以及物理层数据模型之间的关系"></a>概念模型，逻辑层数据模型以及物理层数据模型之间的关系</h4><ol>
-<li>这三个不同的数据模型既相互独立，而又存在着关联<blockquote>
-<ol>
-<li>从现实世界到概念模型的转换是由数据库设计人员完成</li>
-<li>从概念模型到逻辑模型的转换可以由数据库设计人员完成，也可以用数据库设计工具协助设计人员完成</li>
-<li>从逻辑模型到物理模型的转换主要是由数据库管理系统完成</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-<hr>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《数据库系统原理》（04735）</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/25/数据库 - 数据库系统（二）数据库的结构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/25/数据库 - 数据库系统（二）数据库的结构/" itemprop="url">数据库 - 数据库系统（二）数据库的结构</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-25T13:00:12+08:00">
-                2018-10-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  1.5k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="数据库系统的结构"><a href="#数据库系统的结构" class="headerlink" title="数据库系统的结构"></a>数据库系统的结构</h2><h3 id="数据库系统的分类（P33）"><a href="#数据库系统的分类（P33）" class="headerlink" title="数据库系统的分类（P33）"></a>数据库系统的分类（P33）</h3><ol>
-<li><p>数据库管理员（DBA）的角度</p>
-<blockquote>
-<ol>
-<li>内部系统<ul>
-<li>通常采用三级模式结构</li>
-</ul>
-</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="2">
-<li>外部系统<ul>
-<li>通常采用集中式结构，分布式结构和并行结构等</li>
-</ul>
-</li>
-</ol>
-</blockquote>
-</li>
-<li><p>从用户的角度</p>
-<blockquote>
-<ol>
-<li>客户/服务器结构</li>
-<li>浏览器/服务器结构</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-<h3 id="数据库系统的三级模式结构"><a href="#数据库系统的三级模式结构" class="headerlink" title="数据库系统的三级模式结构"></a>数据库系统的三级模式结构</h3><ul>
-<li><p>三级模式结构（采用三级模式结构，并提供两层映像功能）：</p>
-<ol>
-<li>用户级</li>
-<li>概念级</li>
-<li>物理级</li>
-</ol>
-</li>
-<li><p>具体：</p>
-<ol>
-<li>模式</li>
-<li>外模式</li>
-<li>内模式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">                    </span><br><span class="line">应用1     应用2      应用1    应用2       应用1    应用2    </span><br><span class="line">|         |         |        |          |        |</span><br><span class="line">+---------+         +--------+          +--------+ </span><br><span class="line">|         |         |        |          |        |   </span><br><span class="line">| 外模式1  |         |外模式...|          | 外模式n |   </span><br><span class="line">|         |         |        |          |        |</span><br><span class="line">+----+---+          +----+---+          +----+---+ </span><br><span class="line">     |                   |                   |</span><br><span class="line">     +-------------------+-------------------+</span><br><span class="line">                         |</span><br><span class="line">                    +----+----+ </span><br><span class="line">                    |         | </span><br><span class="line">                    |   模式  |</span><br><span class="line">                    |         | </span><br><span class="line">                    +---+-----+ </span><br><span class="line">                        |</span><br><span class="line">                    +---+-----+</span><br><span class="line">                    |         |</span><br><span class="line">                    |  内模式  |</span><br><span class="line">                    |         |</span><br><span class="line">                    +---+-----+ </span><br><span class="line">                        |</span><br><span class="line">                    +---+-----+</span><br><span class="line">                    |         |</span><br><span class="line">                    |  数据库  |</span><br><span class="line">                    |         |</span><br><span class="line">                    +---------+</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="模式（P34）"><a href="#模式（P34）" class="headerlink" title="模式（P34）"></a>模式（P34）</h3><ul>
-<li><p>模式也称为概念模式或逻辑模式</p>
-<blockquote>
-<p>它是数据库中全体数据的逻辑结构和特征的描述，是所有用户的功能数据视图</p>
-</blockquote>
-</li>
-<li><p>模式实际上市数据库在逻辑级上的视图，概念视图</p>
-<blockquote>
-<p>特点：</p>
-<ol>
-<li>其形式要比数据的物理存储方式抽象</li>
-<li><p>不包含任何数据库的实现细节，而是定义数据的逻辑结构，数据之间的联系，以及数据相关的安全性，完整性(DBA 必须考虑整个数据库的这种全局概念视图)</p>
-</li>
-<li><p>处于数据库外模式和内模式的中间，一个数据库只有一个模式</p>
-</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h3 id="外模式（P34）"><a href="#外模式（P34）" class="headerlink" title="外模式（P34）"></a>外模式（P34）</h3><ul>
-<li>三级模式结构中，外模式也称为子模式（Subschema）或用户模式</li>
-<li>是数据库用户（包括应用程序员和最终用户）能够看见和使用的局部数据和逻辑结构和特征的描述</li>
-<li>是某一应用有关的数据的逻辑表示 </li>
-<li>实际上：用于满足不同数据库用户需求的数据视图，即用户视图。通常是模式的子集，是对数据整体数据结构的局部重构</li>
-<li>一个数据库可以有多个不同的外模式，允许它们有一定的重叠、<blockquote>
-<p>DBMS 提供子模式描述语言（Subschema DDL）来严格定义子模式</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="内模式（P35）"><a href="#内模式（P35）" class="headerlink" title="内模式（P35）"></a>内模式（P35）</h3><ul>
-<li>在三级模式结构中，内模式也称为存储模式（Storage Schema）</li>
-<li>它是对数据库中数据物理结构和存储方式的描述，是数据在数据库内部的表示形式</li>
-<li>实际上：是整个数据库的最底层表示，它不同于物理层，是 DBA 所见的，特定的 DBMS 所处理的数据库的内部结构，即内部视图或存储视图</li>
-<li>一个数据库只用一个內模式<blockquote>
-<p>內模式不是存储设备上的物理记录或物理块，也不涉及具体设备限制，内模式还不是最底层的物理层，比内模式更接近物理存储和访问的那些软件机制是操作系统的一部分</p>
-<p>DBMS 提供內模式描述语言（內模式 DDL, 或存储模式 DDL）来严格定义内模式</p>
-<ol>
-<li>定义内部记录类型，索引和文件的组织方式</li>
-<li>以及所有数据控制方面的细节（例如：记录存储方式是按照顺序结构存储还是按照 B 树结构存储）</li>
-<li>数据是否压缩，加密等</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h4 id="三级模式结构的两层映像与数据独立性（P35）"><a href="#三级模式结构的两层映像与数据独立性（P35）" class="headerlink" title="三级模式结构的两层映像与数据独立性（P35）"></a>三级模式结构的两层映像与数据独立性（P35）</h4><ul>
-<li>数据库系统三级模式结构的三个模式分别是对数据的三级抽象，它们之间的关系<blockquote>
-<p>特点：</p>
-<ol>
-<li>一个数据库的整体逻辑结构和特征的描述（概念模式）是独立于数据库其他层次结构（内/外模式）的描述，是数据库的核心，也是数据库设计的核心</li>
-<li>一个数据库的内部存储模式依赖于概念模式，但存储模式独立于外部模式，也独立于具体的存储设备</li>
-<li>用户逻辑结构（外模式）是在全局逻辑结构描述的基础上定义的，它面向具体的应用程序，独立于内部模式和存储设备</li>
-<li>特定的应用程序是在外模式的逻辑结构上编写，它依赖于特定的外模式，与数据库的模式和存储结构独立</li>
-</ol>
-</blockquote>
-</li>
-<li>为了有效支持数据的三级抽象以及他们相互间的联系和转换，DBMS 通过在内部提供三级模式之间的两层映像来实:<ol>
-<li>外模式/模式映像</li>
-<li>模式/内模式映像</li>
-</ol>
-</li>
-</ul>
-<h5 id="外模式-模式映像（P35）"><a href="#外模式-模式映像（P35）" class="headerlink" title="外模式/模式映像（P35）"></a>外模式/模式映像（P35）</h5><ol>
-<li>同一个模式可以有任意多个外模式</li>
-</ol>
-<h5 id="模式-内模式映像（P36）"><a href="#模式-内模式映像（P36）" class="headerlink" title="模式/内模式映像（P36）"></a>模式/内模式映像（P36）</h5><ol>
-<li>模式/内模式映像是唯一的</li>
-</ol>
-<h3 id="客户-服务器结构（Client-Server-C-S）（P36）"><a href="#客户-服务器结构（Client-Server-C-S）（P36）" class="headerlink" title="客户/服务器结构（Client/Server, C/S）（P36）"></a>客户/服务器结构（Client/Server, C/S）（P36）</h3><ol>
-<li><p>客户端（前台， 表示层）</p>
-<p>数据库的使用者与命令行客户端，图形化界面管理工具，应用程序等直接交互，而不与数据库直接联系，这种结构中，命令行客户端，图行化界面管理工具，应用程序等称为 “客户端”(“前台” 或 “表示层”)</p>
-<blockquote>
-<p>主要完成与数据库使用者的交互任务</p>
-</blockquote>
-</li>
-<li><p>服务器（后台，数据层）</p>
-<p>数据库管理系统则称为”服务器”，”后台”，”数据层”</p>
-<blockquote>
-<p>主要负责数据管理</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="浏览器-服务器结构（Browser-Server-B-S）（P37）"><a href="#浏览器-服务器结构（Browser-Server-B-S）（P37）" class="headerlink" title="浏览器/服务器结构（Browser/Server, B/S）（P37）"></a>浏览器/服务器结构（Browser/Server, B/S）（P37）</h3><ol>
-<li>浏览器/服务器结构是一种基于 Web 应用的 客户/服务器结构，也称三层客户/服务器结构<blockquote>
-<p>在数据库系统中，它将数据库管理系统交互的客户端进一步细分为 “表示层” 和 “处理层”</p>
-<ol>
-<li>“表示层”：是数据库使用者的操作和展示界面，通常由浏览器构成</li>
-<li>“处理层”：也称为 “中间层”，主要负责处理服务器使用者的具体应用逻辑</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-<hr>
-<p>  参考：</p>
-<blockquote>
-<p>《数据库系统原理》(04735)</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3054,7 +2903,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -3144,7 +2993,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">38.1k</span>
+    <span title="博客总字数">40.1k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

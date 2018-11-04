@@ -297,6 +297,521 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/03/PHP - 初识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/03/PHP - 初识/" itemprop="url">PHP - 初识</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-03T22:17:37+08:00">
+                2018-11-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《PHP-and-MySQL-Web-Development》》第五版/" itemprop="url" rel="index">
+                    <span itemprop="name">《PHP and MySQL Web Development》》第五版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  639
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="什么是-PHP"><a href="#什么是-PHP" class="headerlink" title="什么是 PHP"></a>什么是 PHP</h2><ul>
+<li>PHP 是一种专门为 WEB 设计的服务器脚本语言</li>
+</ul>
+<h3 id="PHP-的诞生和发展"><a href="#PHP-的诞生和发展" class="headerlink" title="PHP 的诞生和发展"></a>PHP 的诞生和发展</h3><ul>
+<li>1994年出现 Rasmus Lerdorf </li>
+<li>PHP 最初的含义：Personal Home Page(个人主页)，后来使用 GNU 命名规则（GNU = Gnu’s Not UNIX）如今是 PHP 超文本预处理程序（PHP, Hypertext Preprocessor）的缩写</li>
+<li>PHP 如今的版本：7，主页：<a href="http://www.php.net。PHP" target="_blank" rel="noopener">http://www.php.net。PHP</a> 7 的引擎 Zend 经过完全重写，其主页：<a href="http://www.zend.com" target="_blank" rel="noopener">http://www.zend.com</a></li>
+</ul>
+<h3 id="PHP-的优点（待完善）"><a href="#PHP-的优点（待完善）" class="headerlink" title="PHP 的优点（待完善）"></a>PHP 的优点（待完善）</h3><ul>
+<li>高性能</li>
+<li>扩展性</li>
+<li>数据库集成</li>
+<li>内置函数</li>
+<li>容易学习</li>
+</ul>
+<h3 id="Mac-搭建-PHP-环境"><a href="#Mac-搭建-PHP-环境" class="headerlink" title="Mac 搭建 PHP 环境"></a>Mac 搭建 PHP 环境</h3><ul>
+<li><p>nginx 1.12.0<a href="https://www.pengjiandry.com/2018/09/20/%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1/">nginx 的安装和基本操作</a></p>
+</li>
+<li><p>PHP 7.1.6</p>
+</li>
+<li><p>brew install php72</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">==&gt; php</span><br><span class="line">To <span class="built_in">enable</span> PHP <span class="keyword">in</span> Apache add the following to httpd.conf and restart Apache:</span><br><span class="line">    LoadModule php7_module /usr/<span class="built_in">local</span>/opt/php/lib/httpd/modules/libphp7.so</span><br><span class="line"></span><br><span class="line">    &lt;FilesMatch \.php$&gt;</span><br><span class="line">        SetHandler application/x-httpd-php</span><br><span class="line">    &lt;/FilesMatch&gt;</span><br><span class="line"></span><br><span class="line">Finally, check DirectoryIndex includes index.php</span><br><span class="line">    DirectoryIndex index.php index.html</span><br><span class="line"></span><br><span class="line">The php.ini and php-fpm.ini file can be found <span class="keyword">in</span>:</span><br><span class="line">    /usr/<span class="built_in">local</span>/etc/php/7.2/</span><br><span class="line"></span><br><span class="line">To have launchd start php now and restart at login:</span><br><span class="line">  brew services start php</span><br><span class="line">Or, <span class="keyword">if</span> you don<span class="string">'t want/need a background service you can just run:</span></span><br><span class="line"><span class="string">  php-fpm</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>安装成功以后就是上面这种状态</p>
+</blockquote>
+</li>
+<li><p>使用 php-fpm <a href="https://github.com/musicode/test/issues/5" target="_blank" rel="noopener">参考这篇文章</a></p>
+</li>
+<li><p>php-fpm 的配置是在 </p>
+<pre>/private/etc/php-fpm.d/*.conf</pre> <pre>/private/etc/php-fpm.conf </pre>
+</li>
+<li><p>/private/etc/php-fpm.conf 细节</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">global</span>]</span><br><span class="line">pid = /usr/local/<span class="keyword">var</span>/run/php-fpm.pid</span><br><span class="line">error_log = /usr/local/<span class="keyword">var</span>/log/php-fpm/php-fpm.log</span><br><span class="line"><span class="keyword">include</span>=/<span class="keyword">private</span>/etc/php-fpm.d<span class="comment">/*.conf</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注释都删除掉</p>
+</blockquote>
+</li>
+<li><p>/private/etc/php-fpm.d/<a href="http://www.conf" target="_blank" rel="noopener">www.conf</a> 细节</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[www]</span><br><span class="line">user = nobody</span><br><span class="line">group = nobody</span><br><span class="line"></span><br><span class="line">listen = <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9997</span></span><br><span class="line"></span><br><span class="line">pm = dynamic</span><br><span class="line">pm.max_children = <span class="number">5</span></span><br><span class="line">pm.start_servers = <span class="number">2</span></span><br><span class="line">pm.min_spare_servers = <span class="number">1</span></span><br><span class="line">pm.max_spare_servers = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注释都删除掉</p>
+</blockquote>
+</li>
+<li><p>nginx 的配置</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name _;</span><br><span class="line"></span><br><span class="line">    root /Users/pengjian/Personal/web-BE/PHP/nginx_entry;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.php<span class="variable">$is_args</span><span class="variable">$args</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        try_files <span class="variable">$uri</span> =404;</span><br><span class="line"></span><br><span class="line">        include fastcgi.conf;</span><br><span class="line">        fastcgi_pass 127.0.0.1:9997;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意的地方：</p>
+<ol>
+<li><p>nginx 配置的位置是在： /usr/local/etc/nginx/nginx.conf</p>
+</li>
+<li><p>root /Users/pengjian/Personal/web-BE/PHP/nginx_entry ,需要在对应目录新建一个 index.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">echo</span> phpinfo();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>启动 php-fpm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo php-fpm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看 php-fpm 进程数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep -c php-fpm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看 php-fpm 的内存的使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/php  -i|grep mem</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Q1 ：nginx 配置 server_name 的配置不管是哪一个，我在浏览中访问的都只能是使用 <code>http://localhost/</code> 或 <code>http://127.0.0.1/</code></p>
+<ol>
+<li>关掉 nginx 服务之后，就不能访问到对应的资源</li>
+</ol>
+</li>
+<li>Q2 ：nginx 和 PHP 服务的原理暂时不清楚😂，<a href="https://segmentfault.com/a/1190000007322358" target="_blank" rel="noopener">Nginx+Php-fpm原理详解</a></li>
+<li><p>Q3 ：php-fpm 进程无法退出</p>
+</li>
+<li><p>启动成功页面的输出：<br><img src="http://tc-html5dw-com.b0.upaiyun.com/bb80f/bb80f92a05935cfd53efaaa87729a767.png" alt="img"></p>
+</li>
+</ul>
+<hr>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://github.com/musicode/test/issues/5" target="_blank" rel="noopener">https://github.com/musicode/test/issues/5</a></li>
+<li><a href="https://segmentfault.com/a/1190000007322358" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007322358</a></li>
+<li><a href="https://wizardforcel.gitbooks.io/nginx-doc/content/Text/6.5_nginx_php_fpm.html" target="_blank" rel="noopener">https://wizardforcel.gitbooks.io/nginx-doc/content/Text/6.5_nginx_php_fpm.html</a></li>
+<li><a href="http://blog.51cto.com/phpervip/1905673" target="_blank" rel="noopener">http://blog.51cto.com/phpervip/1905673</a></li>
+<li><a href="https://www.zybuluo.com/phper/note/89081" target="_blank" rel="noopener">https://www.zybuluo.com/phper/note/89081</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/02/数据库 - 关系型数据库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/02/数据库 - 关系型数据库/" itemprop="url">数据库 - 关系型数据库</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-02T13:11:52+08:00">
+                2018-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  596
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="关系型数据库的特点"><a href="#关系型数据库的特点" class="headerlink" title="关系型数据库的特点"></a>关系型数据库的特点</h2><ul>
+<li>基本特征： 是使用关系数据模型组织数据，这种思想源于数学</li>
+<li>发展：<ul>
+<li>20世纪 70 年代： RDBMS 问世</li>
+<li>20世纪 80 年代： 关系型数据库逐步取代早期的网状数据模型和层次模型，成为主流数据模型</li>
+</ul>
+</li>
+</ul>
+<h2 id="关系型数据模型"><a href="#关系型数据模型" class="headerlink" title="关系型数据模型"></a>关系型数据模型</h2><ul>
+<li><p>关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束</p>
+<h3 id="关系数据结构"><a href="#关系数据结构" class="headerlink" title="关系数据结构"></a>关系数据结构</h3><ul>
+<li><p>数据结构：（单一的数据结构），关系。</p>
+<ul>
+<li>在关系模型中，现实世界的实体以及实体间的各种联系，均是使用关系来表示</li>
+<li>在用户看来，关系模型是把数据库表示为关系的集合，且关系数据库是以二维表格的形式组织数据</li>
+</ul>
+</li>
+<li><p>基本术语</p>
+<ul>
+<li>表（table）<blockquote>
+<p>又称作关系，是一个二维的数据结构，它由表名，构成表的各个列和若干行数据组成</p>
+<p>每个表有唯一的一个表名</p>
+<p>表中每一行数据都描述一条具体的记录值</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- 关系（Relation）
+  &gt; 一个关系对应一张二维表，每个关系取一个名称进行标识
+  &gt;
+  &gt; 关系的类型：基本关系，查询表和视图表
+  &gt;   - 基本关系通常又称为基本表或基表，是实际存在的表（世纪存储数据的逻辑表示）
+  &gt;   - 查询表是查询结果对应的表
+  &gt;   - 视图表是由基本表或其他视图表导出的表，是虚表，不对应实际储存的数据
+  &gt;
+
+- 列（Column）
+  &gt; 表中的列，也称为字段（field）或属性（Attribute）,
+  &gt;
+  &gt; 表中每一列有一个名称，称为列名，字段名或属性名
+  &gt;
+  &gt; 每一列表示实体的一个属性，具有相同的数据类型
+
+- 属性（Attribute）
+- 行（Row）
+- 元组（Tuple）
+- 分量（Component）
+- 码或键（Key）
+- 超码或超键（Super Key）
+- 候选码或候选键（Canditate Key）
+- 主码或主键（Primary Key）
+- 全码或全键（All Key）
+- 主属性（Primary Attribute）
+- 外码或外键（Foreign Key）
+- 参照关系（Referencing）和被参照关系（Referenced Relation）
+- 域（Domain）
+- 数据类型（Data Type）
+- 关系模型（Relation Database）
+</code></pre><h3 id="关系操作集合（待更新）"><a href="#关系操作集合（待更新）" class="headerlink" title="关系操作集合（待更新）"></a>关系操作集合（待更新）</h3><h3 id="关系的完整型约束（待更新）"><a href="#关系的完整型约束（待更新）" class="headerlink" title="关系的完整型约束（待更新）"></a>关系的完整型约束（待更新）</h3><h2 id="关系的完整型约束（待更新）-1"><a href="#关系的完整型约束（待更新）-1" class="headerlink" title="关系的完整型约束（待更新）"></a>关系的完整型约束（待更新）</h2><ul>
+<li>关系数据库的规范化理论</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/30/SQL - 函数：日期函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2425,507 +2940,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/22/SQL - 复杂查询：子查询/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/22/SQL - 复杂查询：子查询/" itemprop="url">SQL - 复杂查询：子查询</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-22T16:41:39+08:00">
-                2018-10-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
-                    <span itemprop="name">《SQL基础教程》第二版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  898
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><h3 id="子查询的特点"><a href="#子查询的特点" class="headerlink" title="子查询的特点"></a>子查询的特点</h3><ul>
-<li><p>执行子查询时:</p>
-<ol>
-<li>首先执行的内查询</li>
-<li>然后再执行外层查询</li>
-<li>注意：查询必须要设定名称</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT *[&lt;column_1&gt;, ..., &lt;column_n&gt;] FROM</span><br><span class="line">  -&gt; (&#123;</span><br><span class="line">  -&gt;    内查询 </span><br><span class="line">  -&gt; &#125;) AS &lt;view_name&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>子查询，例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM (</span><br><span class="line">    -&gt;   SELECT </span><br><span class="line">    -&gt;     product_type,</span><br><span class="line">    -&gt;     SUM(sale_price) AS sum_sale_price,</span><br><span class="line">    -&gt;     SUM(purchase_price) AS sum_purchase_price,</span><br><span class="line">    -&gt;     COUNT(*) AS count_all FROM Products GROUP BY product_type</span><br><span class="line">    -&gt; ) AS ProuductSUM;</span><br><span class="line"></span><br><span class="line">+--------------+----------------+--------------------+-----------+</span><br><span class="line">| product_type | sum_sale_price | sum_purchase_price | count_all |</span><br><span class="line">+--------------+----------------+--------------------+-----------+</span><br><span class="line">| 衣服         |          13370 |               2110 |         5 |</span><br><span class="line">| 裤子         |             90 |                  5 |         1 |</span><br><span class="line">| 文具         |            110 |                  5 |         4 |</span><br><span class="line">| 中性笔       |             90 |                 10 |         1 |</span><br><span class="line">+--------------+----------------+--------------------+-----------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这种模式的子查询需要设置 AS 语句</p>
-</blockquote>
-</li>
-<li><p>子查询可以多层嵌套</p>
-<ol>
-<li>执行时也是从内层开始查询</li>
-<li>然后逐渐向外层查询</li>
-<li>注意：查询必须要设定名称</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT *[&lt;column_1&gt;, ..., &lt;column_n&gt;] FROM (&#123;</span><br><span class="line">  -&gt;    内查询 </span><br><span class="line">  -&gt;    (&#123;</span><br><span class="line">  -&gt;      .....</span><br><span class="line">  -&gt;      最内层</span><br><span class="line">  -&gt;    &#125;) AS &lt;view_name&gt;</span><br><span class="line">  -&gt; &#125;) AS &lt;view_name&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="多层嵌套子查询"><a href="#多层嵌套子查询" class="headerlink" title="多层嵌套子查询"></a>多层嵌套子查询</h3><ul>
-<li><p>多层嵌套子查询，例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT product_type, sum_sale_price, count_all FROM (</span><br><span class="line">  -&gt;   SELECT * FROM (</span><br><span class="line">  -&gt;     SELECT product_type,</span><br><span class="line">  -&gt;     SUM(sale_price) AS sum_sale_price,</span><br><span class="line">  -&gt;     SUM(purchase_price) AS sum_purchase_price,</span><br><span class="line">  -&gt;     COUNT(*) AS count_all FROM Products GROUP BY product_type</span><br><span class="line">  -&gt;   ) AS ProductsFun</span><br><span class="line">  -&gt; ) AS ProductsAll;</span><br><span class="line">+--------------+----------------+-----------+</span><br><span class="line">| product_type | sum_sale_price | count_all |</span><br><span class="line">+--------------+----------------+-----------+</span><br><span class="line">| 衣服         |          13370 |         5 |</span><br><span class="line">| 裤子         |             90 |         1 |</span><br><span class="line">| 文具         |            110 |         4 |</span><br><span class="line">| 中性笔       |             90 |         1 |</span><br><span class="line">+--------------+----------------+-----------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这个子查询：</p>
-<ol>
-<li>先执行最内层的分组查询</li>
-<li>然后查询分组之后所有数据</li>
-<li>最后查询 product_type, sum_sale_price, count_all 3 列<br>注意：嵌套的层数太多，阅读性很差，不推荐</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h3 id="标量子查询"><a href="#标量子查询" class="headerlink" title="标量子查询"></a>标量子查询</h3><ul>
-<li><p>标量</p>
-<ol>
-<li>标量：单一的意思</li>
-</ol>
-</li>
-<li><p>标量子查询和子查询的区别</p>
-<ol>
-<li>一般的子查询都是返回多个单元格数据</li>
-<li>标量子查询，只返回一个单元格数据</li>
-</ol>
-</li>
-<li><p>标量子查询作用：</p>
-<ol>
-<li>可以在 WHERE 子句中使用标量子查询，可以摆脱在 WHERE后面不能使用聚合函数的限制</li>
-<li>可以紧接着 SELECT 后面</li>
-</ol>
-</li>
-<li><p>在 WHERE 子句中使用标量子查询，例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM Products WHERE sale_price &gt; </span><br><span class="line">  -&gt; (SELECT AVG(sale_price) FROM Products);</span><br><span class="line">+------------+--------------+--------------+------------+----------------+-------------+</span><br><span class="line">| product_id | product_name | product_type | sale_price | purchase_price | regist_data |</span><br><span class="line">+------------+--------------+--------------+------------+----------------+-------------+</span><br><span class="line">| 005        | 衬衫👔         | 衣服         |       2900 |           1000 | 2018-10-16    |</span><br><span class="line">| 006        | T恤👕          | 衣服         |      10000 |           1000 | 2018-10-14    |</span><br><span class="line">+------------+--------------+--------------+------------+----------------+-------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT AVG(sale_price) FROM Products;</span><br><span class="line">+-----------------+</span><br><span class="line">| AVG(sale_price) |</span><br><span class="line">+-----------------+</span><br><span class="line">|       1517.7778 |</span><br><span class="line">+-----------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>首先执行 “&gt;” 后面的子查询；这个查询就是子查询，后面单独查询，只有一个平均数<br>然后再执行外层的查询</p>
-</blockquote>
-</li>
-<li><p>上面的例子整合之后，例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT product_id,</span><br><span class="line">  -&gt;  product_name,</span><br><span class="line">  -&gt;  product_type,</span><br><span class="line">  -&gt;  sale_price,</span><br><span class="line">  -&gt;  purchase_price,</span><br><span class="line">  -&gt;  regist_data,</span><br><span class="line">  -&gt;  (SELECT AVG(sale_price) FROM Products) AS avg_sale_price</span><br><span class="line">  -&gt; FROM Products</span><br><span class="line">  -&gt; WHERE sale_price &gt; (SELECT AVG(sale_price) FROM Products);</span><br><span class="line">+------------+--------------+--------------+------------+----------------+-------------+----------------+</span><br><span class="line">| product_id | product_name | product_type | sale_price | purchase_price | regist_data | avg_sale_price |</span><br><span class="line">+------------+--------------+--------------+------------+----------------+-------------+----------------+</span><br><span class="line">| 005        | 衬衫👔         | 衣服         |       2900 |           1000 | 2018-10-16  |      1517.7778 |</span><br><span class="line">| 006        | T恤👕          | 衣服         |      10000 |           1000 | 2018-10-14  |      1517.7778 |</span><br><span class="line">+------------+--------------+--------------+------------+----------------+-------------+----------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="子查询和视图的关系"><a href="#子查询和视图的关系" class="headerlink" title="子查询和视图的关系"></a>子查询和视图的关系</h3><ul>
-<li>子查询和视图本质上都是 SELECT 语句的扩展，并且不会创建一张实际的表</li>
-<li><p>但是视图的语句是被保存起来，方便第二次使用；但是子查询书写一次查询一次，并且视图是可以嵌套在子查询中</p>
-</li>
-<li><p>子查询和视图的嵌套使用，顺便复习一下视图的知识：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE VIEW ProductsView (product_type,sum_sale_price, sum_purchase_price, count_all, avg_sale_price) AS SELECT product_type,   SUM(sale_price), SUM(purchase_price), COUNT(*), AVG(sale_price) FROM Products GROUP BY product_type;</span><br><span class="line">Query OK, 0 rows affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM ProductsView;</span><br><span class="line">+--------------+----------------+--------------------+-----------+----------------+</span><br><span class="line">| product_type | sum_sale_price | sum_purchase_price | count_all | avg_sale_price |</span><br><span class="line">+--------------+----------------+--------------------+-----------+----------------+</span><br><span class="line">| 衣服         |          13370 |               2110 |         5 |      2674.0000 |</span><br><span class="line">| 裤子         |             90 |                  5 |         1 |        90.0000 |</span><br><span class="line">| 文具         |            110 |                  5 |         4 |        55.0000 |</span><br><span class="line">| 中性笔       |             90 |                 10 |         1 |        90.0000 |</span><br><span class="line">+--------------+----------------+--------------------+-----------+----------------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT product_type, count_all FROM</span><br><span class="line">    -&gt; (SELECT * FROM ProductsView) AS ProductsViewSub;</span><br><span class="line">+--------------+-----------+</span><br><span class="line">| product_type | count_all |</span><br><span class="line">+--------------+-----------+</span><br><span class="line">| 衣服         |         5 |</span><br><span class="line">| 裤子         |         1 |</span><br><span class="line">| 文具         |         4 |</span><br><span class="line">| 中性笔       |         1 |</span><br><span class="line">+--------------+-----------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/22/SQL - 复杂查询：视图/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/22/SQL - 复杂查询：视图/" itemprop="url">SQL - 复杂查询：视图</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-22T12:48:42+08:00">
-                2018-10-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
-                    <span itemprop="name">《SQL基础教程》第二版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li><p>创建视图，例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE VIEW ProductGROUP </span><br><span class="line">    -&gt; AS</span><br><span class="line">    -&gt; SELECT product_type, SUM(sale_price), SUM(purchase_price), COUNT(*), AVG(sale_price), AVG(purchase_price)</span><br><span class="line">    -&gt; FROM Products</span><br><span class="line">    -&gt; GROUP BY product_type;</span><br><span class="line">Query OK, 0 rows affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM ProductGROUP;</span><br><span class="line">+--------------+-----------------+---------------------+----------+-----------------+---------------------+</span><br><span class="line">| product_type | SUM(sale_price) | SUM(purchase_price) | COUNT(*) | AVG(sale_price) | AVG(purchase_price) |</span><br><span class="line">+--------------+-----------------+---------------------+----------+-----------------+---------------------+</span><br><span class="line">| 衣服         |           13370 |                2110 |        5 |       2674.0000 |            422.0000 |</span><br><span class="line">| 裤子         |              90 |                   5 |        1 |         90.0000 |              5.0000 |</span><br><span class="line">| 文具         |              40 |                   0 |        3 |         40.0000 |              0.0000 |</span><br><span class="line">| 中性笔       |              90 |                  10 |        1 |         90.0000 |             10.0000 |</span><br><span class="line">+--------------+-----------------+---------------------+----------+-----------------+---------------------+</span><br><span class="line">4 rows in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; DROP VIEW ProudctGROUP;</span><br><span class="line">Query OK, 0 rows affected (0.05 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意 AS 语句<br>查询视图的方式和查询表的语句无差别<br>在最后又把这个视图删除掉</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h3><h3 id="CREATE-VIEW-语句"><a href="#CREATE-VIEW-语句" class="headerlink" title="CREATE VIEW 语句"></a>CREATE VIEW 语句</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE VIEW &lt;view_name&gt; [&lt;column_1&gt;[..., &lt;column_n&gt;]]</span><br><span class="line">  -&gt; AS </span><br><span class="line">  -&gt; SELECT &lt;column_1&gt;[..., &lt;column_n&gt;]</span><br><span class="line">  -&gt; FROM &lt;table_nam&gt;</span><br><span class="line">  [-&gt; WHERE &lt;condition&gt;(非聚合条件)</span><br><span class="line">  -&gt; GROUP BY &lt;column_1&gt;</span><br><span class="line">  -&gt; HAVING &lt;condition&gt;(聚合条件)]</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>view_name 后面的列名可以省略以及和 SELECT 后面列名一一对应</p>
-</blockquote>
-<h3 id="创建视图的特点"><a href="#创建视图的特点" class="headerlink" title="创建视图的特点"></a>创建视图的特点</h3><ul>
-<li>视图就是保存好的 SELECT 语句，这一点可以通过创建的时候可以看出来</li>
-<li>视图的限制1：不能使用 ORDER BY 子句（和 SELECT 语句区别）</li>
-<li>试图的限制2：更新视图是有条件的<ol>
-<li>SELECT 子句中未使用 DISTINCT</li>
-<li>FROM 子句中只有一张表</li>
-<li>未使用 GROUP BY 子句</li>
-<li>未使用 HAVING 子句（使用了 HAVING 自然就要使用 GROUP BY 子句，HAVING 子句是写在 GROUP BY 子句后面）</li>
-</ol>
-</li>
-<li><p>创建视图的列的顺序就是实际列的顺序</p>
-</li>
-<li><p>向使用 GROUP BY 子句的视图插入数据，例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO ProductGROUP VALUES (&apos;书籍📚&apos;, 1000, 200, 10, 100, 20);</span><br><span class="line">ERROR 1471 (HY000): The target table ProductGROUP of the INSERT is not insertable-into</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>可以通过更新视图的方式更新表，例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE VIEW NewProducts (product_id, product_name, product_type, sale_price, purchase_price, regist_data)</span><br><span class="line">  -&gt; AS</span><br><span class="line">  -&gt; SELECT *</span><br><span class="line">  -&gt; FROM Products;</span><br><span class="line">Query OK, 0 rows affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM NewProducts;</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| product_id | product_name     | product_type | sale_price | purchase_price | regist_data |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| 001        | T恤👕              | 衣服         |        100 |             20 | 2018-10-16  |</span><br><span class="line">| 002        | T恤🌈              | 衣服         |        200 |             80 | 2018-10-16  |</span><br><span class="line">| 003        | T恤🐟              | 衣服         |        170 |             10 | 2018-10-16  |</span><br><span class="line">| 004        | 牛仔裤子👖         | 裤子         |         90 |              5 | 2018-10-16  |</span><br><span class="line">| 005        | 衬衫👔             | 衣服         |       2900 |           1000 | 2018-10-16  |</span><br><span class="line">| 006        | T恤👕              | 衣服         |      10000 |           1000 | 2018-10-14  |</span><br><span class="line">| 007        | 橡皮             | 文具         |         40 |              0 | 2018-10-17  |</span><br><span class="line">| 008        | 小刀             | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">| 009        | 铅笔✏️           | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">| 010        | 文具             | 中性笔       |         90 |             10 | 2018-10-17  |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">10 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br><span class="line">mysql&gt; INSERT INTO NewProducts VALUES (&apos;011&apos;, &apos;直尺📏&apos;, &apos;文具&apos;, 70, 5, &apos;2018-10-22&apos;);</span><br><span class="line">Query OK, 1 row affected (0.05 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM Products;</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| product_id | product_name     | product_type | sale_price | purchase_price | regist_data |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| 001        | T恤👕              | 衣服         |        100 |             20 | 2018-10-16  |</span><br><span class="line">| 002        | T恤🌈              | 衣服         |        200 |             80 | 2018-10-16  |</span><br><span class="line">| 003        | T恤🐟              | 衣服         |        170 |             10 | 2018-10-16  |</span><br><span class="line">| 004        | 牛仔裤子👖         | 裤子         |         90 |              5 | 2018-10-16  |</span><br><span class="line">| 005        | 衬衫👔             | 衣服         |       2900 |           1000 | 2018-10-16  |</span><br><span class="line">| 006        | T恤👕              | 衣服         |      10000 |           1000 | 2018-10-14  |</span><br><span class="line">| 007        | 橡皮             | 文具         |         40 |              0 | 2018-10-17  |</span><br><span class="line">| 008        | 小刀             | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">| 009        | 铅笔✏️           | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">| 010        | 文具             | 中性笔       |         90 |             10 | 2018-10-17  |</span><br><span class="line">| 011        | 直尺📏             | 文具         |         70 |              5 | 2018-10-22  |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">11 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>我创建了一个新的视图，但是这个视图，该视图的列和原表中的列一一对应，只使用了 SELECT FROM 子句，其他都没有使用</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="使用视图的查询"><a href="#使用视图的查询" class="headerlink" title="使用视图的查询"></a>使用视图的查询</h3><ul>
-<li>先执行视图定义的查询</li>
-<li>然后再执行外层的查询</li>
-</ul>
-<h3 id="视图删除"><a href="#视图删除" class="headerlink" title="视图删除"></a>视图删除</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DROP VIEW &lt;view_name&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="关于多重视图"><a href="#关于多重视图" class="headerlink" title="关于多重视图"></a>关于多重视图</h3><ul>
-<li>在视图上再建立视图，这个视图就是多重视图</li>
-<li>多重视图尽量避免，因为他会降低 SQL 的性能</li>
-</ul>
-<hr>
-<h3 id="视图和表的关系"><a href="#视图和表的关系" class="headerlink" title="视图和表的关系"></a>视图和表的关系</h3><ul>
-<li>从 SQL 的角度上看，一个视图就是张表</li>
-<li>视图和表的区别只有一个：是否保存实际的数据<ol>
-<li>表是上的数据实际上保存到计算机中的硬盘中（通常）</li>
-<li>视图则不同，它不会将数据保存到其他任何地方</li>
-</ol>
-</li>
-<li>使用视图的优点：<ol>
-<li>可以节省存储设备的空间</li>
-<li>将频繁使用的复杂的 SELECT 语句保存成视图，操作方便</li>
-</ol>
-</li>
-</ul>
-<hr>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2980,7 +2994,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2991,7 +3005,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -3002,7 +3016,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3070,7 +3084,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">34.8k</span>
+    <span title="博客总字数">36.1k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

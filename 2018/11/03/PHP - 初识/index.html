@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #9E9E9E; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #9E9E9E, 0 0 5px #9E9E9E; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #9E9E9E;    /*上边框颜色*/
+        border-left-color: #9E9E9E;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="服务端,PHP," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="什么是 PHP PHP 是一种专门为 WEB 设计的服务器脚本语言  PHP 的诞生和发展 1994年出现 Rasmus Lerdorf  PHP 最初的含义：Personal Home Page(个人主页)，后来使用 GNU 命名规则（GNU = Gnu’s Not UNIX）如今是 PHP 超文本预处理程序（PHP, Hypertext Preprocessor）的缩写 PHP 如今的版本：">
+<meta name="keywords" content="服务端,PHP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP - 初识">
+<meta property="og:url" content="https://www.pengjiandry.com/2018/11/03/PHP - 初识/index.html">
+<meta property="og:site_name" content="彭涧">
+<meta property="og:description" content="什么是 PHP PHP 是一种专门为 WEB 设计的服务器脚本语言  PHP 的诞生和发展 1994年出现 Rasmus Lerdorf  PHP 最初的含义：Personal Home Page(个人主页)，后来使用 GNU 命名规则（GNU = Gnu’s Not UNIX）如今是 PHP 超文本预处理程序（PHP, Hypertext Preprocessor）的缩写 PHP 如今的版本：">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://tc-html5dw-com.b0.upaiyun.com/bb80f/bb80f92a05935cfd53efaaa87729a767.png">
+<meta property="og:updated_time" content="2018-11-04T03:51:36.584Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP - 初识">
+<meta name="twitter:description" content="什么是 PHP PHP 是一种专门为 WEB 设计的服务器脚本语言  PHP 的诞生和发展 1994年出现 Rasmus Lerdorf  PHP 最初的含义：Personal Home Page(个人主页)，后来使用 GNU 命名规则（GNU = Gnu’s Not UNIX）如今是 PHP 超文本预处理程序（PHP, Hypertext Preprocessor）的缩写 PHP 如今的版本：">
+<meta name="twitter:image" content="http://tc-html5dw-com.b0.upaiyun.com/bb80f/bb80f92a05935cfd53efaaa87729a767.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.pengjiandry.com/2018/11/03/PHP - 初识/"/>
+
+
+
+
+
+  <title>PHP - 初识 | 彭涧</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <!-- 左边 <a href="https://github.com/jamesjianpeng" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a> -->
+
+    <a href="https://github.com/jamesjianpeng" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">彭涧</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">fecoder</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-阅读">
+          <a href="/read/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            阅读
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-风格">
+          <a href="/style/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            风格
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/03/PHP - 初识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">PHP - 初识</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-03T22:17:37+08:00">
+                2018-11-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《PHP-and-MySQL-Web-Development》》第五版/" itemprop="url" rel="index">
+                    <span itemprop="name">《PHP and MySQL Web Development》》第五版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  639
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h2 id="什么是-PHP"><a href="#什么是-PHP" class="headerlink" title="什么是 PHP"></a>什么是 PHP</h2><ul>
+<li>PHP 是一种专门为 WEB 设计的服务器脚本语言</li>
+</ul>
+<h3 id="PHP-的诞生和发展"><a href="#PHP-的诞生和发展" class="headerlink" title="PHP 的诞生和发展"></a>PHP 的诞生和发展</h3><ul>
+<li>1994年出现 Rasmus Lerdorf </li>
+<li>PHP 最初的含义：Personal Home Page(个人主页)，后来使用 GNU 命名规则（GNU = Gnu’s Not UNIX）如今是 PHP 超文本预处理程序（PHP, Hypertext Preprocessor）的缩写</li>
+<li>PHP 如今的版本：7，主页：<a href="http://www.php.net。PHP" target="_blank" rel="noopener">http://www.php.net。PHP</a> 7 的引擎 Zend 经过完全重写，其主页：<a href="http://www.zend.com" target="_blank" rel="noopener">http://www.zend.com</a></li>
+</ul>
+<h3 id="PHP-的优点（待完善）"><a href="#PHP-的优点（待完善）" class="headerlink" title="PHP 的优点（待完善）"></a>PHP 的优点（待完善）</h3><ul>
+<li>高性能</li>
+<li>扩展性</li>
+<li>数据库集成</li>
+<li>内置函数</li>
+<li>容易学习</li>
+</ul>
+<h3 id="Mac-搭建-PHP-环境"><a href="#Mac-搭建-PHP-环境" class="headerlink" title="Mac 搭建 PHP 环境"></a>Mac 搭建 PHP 环境</h3><ul>
+<li><p>nginx 1.12.0<a href="https://www.pengjiandry.com/2018/09/20/%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1/">nginx 的安装和基本操作</a></p>
+</li>
+<li><p>PHP 7.1.6</p>
+</li>
+<li><p>brew install php72</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">==&gt; php</span><br><span class="line">To <span class="built_in">enable</span> PHP <span class="keyword">in</span> Apache add the following to httpd.conf and restart Apache:</span><br><span class="line">    LoadModule php7_module /usr/<span class="built_in">local</span>/opt/php/lib/httpd/modules/libphp7.so</span><br><span class="line"></span><br><span class="line">    &lt;FilesMatch \.php$&gt;</span><br><span class="line">        SetHandler application/x-httpd-php</span><br><span class="line">    &lt;/FilesMatch&gt;</span><br><span class="line"></span><br><span class="line">Finally, check DirectoryIndex includes index.php</span><br><span class="line">    DirectoryIndex index.php index.html</span><br><span class="line"></span><br><span class="line">The php.ini and php-fpm.ini file can be found <span class="keyword">in</span>:</span><br><span class="line">    /usr/<span class="built_in">local</span>/etc/php/7.2/</span><br><span class="line"></span><br><span class="line">To have launchd start php now and restart at login:</span><br><span class="line">  brew services start php</span><br><span class="line">Or, <span class="keyword">if</span> you don<span class="string">'t want/need a background service you can just run:</span></span><br><span class="line"><span class="string">  php-fpm</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>安装成功以后就是上面这种状态</p>
+</blockquote>
+</li>
+<li><p>使用 php-fpm <a href="https://github.com/musicode/test/issues/5" target="_blank" rel="noopener">参考这篇文章</a></p>
+</li>
+<li><p>php-fpm 的配置是在 </p>
+<pre>/private/etc/php-fpm.d/*.conf</pre> <pre>/private/etc/php-fpm.conf </pre>
+</li>
+<li><p>/private/etc/php-fpm.conf 细节</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">global</span>]</span><br><span class="line">pid = /usr/local/<span class="keyword">var</span>/run/php-fpm.pid</span><br><span class="line">error_log = /usr/local/<span class="keyword">var</span>/log/php-fpm/php-fpm.log</span><br><span class="line"><span class="keyword">include</span>=/<span class="keyword">private</span>/etc/php-fpm.d<span class="comment">/*.conf</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注释都删除掉</p>
+</blockquote>
+</li>
+<li><p>/private/etc/php-fpm.d/<a href="http://www.conf" target="_blank" rel="noopener">www.conf</a> 细节</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[www]</span><br><span class="line">user = nobody</span><br><span class="line">group = nobody</span><br><span class="line"></span><br><span class="line">listen = <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9997</span></span><br><span class="line"></span><br><span class="line">pm = dynamic</span><br><span class="line">pm.max_children = <span class="number">5</span></span><br><span class="line">pm.start_servers = <span class="number">2</span></span><br><span class="line">pm.min_spare_servers = <span class="number">1</span></span><br><span class="line">pm.max_spare_servers = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注释都删除掉</p>
+</blockquote>
+</li>
+<li><p>nginx 的配置</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name _;</span><br><span class="line"></span><br><span class="line">    root /Users/pengjian/Personal/web-BE/PHP/nginx_entry;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.php<span class="variable">$is_args</span><span class="variable">$args</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        try_files <span class="variable">$uri</span> =404;</span><br><span class="line"></span><br><span class="line">        include fastcgi.conf;</span><br><span class="line">        fastcgi_pass 127.0.0.1:9997;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意的地方：</p>
+<ol>
+<li><p>nginx 配置的位置是在： /usr/local/etc/nginx/nginx.conf</p>
+</li>
+<li><p>root /Users/pengjian/Personal/web-BE/PHP/nginx_entry ,需要在对应目录新建一个 index.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">echo</span> phpinfo();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>启动 php-fpm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo php-fpm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看 php-fpm 进程数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep -c php-fpm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看 php-fpm 的内存的使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/php  -i|grep mem</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Q1 ：nginx 配置 server_name 的配置不管是哪一个，我在浏览中访问的都只能是使用 <code>http://localhost/</code> 或 <code>http://127.0.0.1/</code></p>
+<ol>
+<li>关掉 nginx 服务之后，就不能访问到对应的资源</li>
+</ol>
+</li>
+<li>Q2 ：nginx 和 PHP 服务的原理暂时不清楚😂，<a href="https://segmentfault.com/a/1190000007322358" target="_blank" rel="noopener">Nginx+Php-fpm原理详解</a></li>
+<li><p>Q3 ：php-fpm 进程无法退出</p>
+</li>
+<li><p>启动成功页面的输出：<br><img src="http://tc-html5dw-com.b0.upaiyun.com/bb80f/bb80f92a05935cfd53efaaa87729a767.png" alt="img"></p>
+</li>
+</ul>
+<hr>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://github.com/musicode/test/issues/5" target="_blank" rel="noopener">https://github.com/musicode/test/issues/5</a></li>
+<li><a href="https://segmentfault.com/a/1190000007322358" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007322358</a></li>
+<li><a href="https://wizardforcel.gitbooks.io/nginx-doc/content/Text/6.5_nginx_php_fpm.html" target="_blank" rel="noopener">https://wizardforcel.gitbooks.io/nginx-doc/content/Text/6.5_nginx_php_fpm.html</a></li>
+<li><a href="http://blog.51cto.com/phpervip/1905673" target="_blank" rel="noopener">http://blog.51cto.com/phpervip/1905673</a></li>
+<li><a href="https://www.zybuluo.com/phper/note/89081" target="_blank" rel="noopener">https://www.zybuluo.com/phper/note/89081</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/服务端/" rel="tag"><i class="fa fa-tag"></i> 服务端</a>
+          
+            <a href="/tags/PHP/" rel="tag"><i class="fa fa-tag"></i> PHP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/02/数据库 - 关系型数据库/" rel="next" title="数据库 - 关系型数据库">
+                <i class="fa fa-chevron-left"></i> 数据库 - 关系型数据库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章概览
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            博客概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="james" />
+            
+              <p class="site-author-name" itemprop="name">james</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jamesjianpeng" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.npmjs.com/settings/dajianjian/packages" target="_blank" title="Npm">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Npm</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-PHP"><span class="nav-number">1.</span> <span class="nav-text">什么是 PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP-的诞生和发展"><span class="nav-number">1.1.</span> <span class="nav-text">PHP 的诞生和发展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP-的优点（待完善）"><span class="nav-number">1.2.</span> <span class="nav-text">PHP 的优点（待完善）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mac-搭建-PHP-环境"><span class="nav-number">1.3.</span> <span class="nav-text">Mac 搭建 PHP 环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">1.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">james</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">博客总字数&#58;</span>
+    
+    <span title="博客总字数">36.1k</span>
+  
+</div>
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+
+<!--
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+-->
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

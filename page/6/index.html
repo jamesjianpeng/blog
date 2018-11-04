@@ -297,6 +297,439 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/06/26/http 概述/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/26/http 概述/" itemprop="url">http 概述</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-26T17:21:01+08:00">
+                2018-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《HTTP-权威指南》/" itemprop="url" rel="index">
+                    <span itemprop="name">《HTTP 权威指南》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  746
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="HTTP-是什么，作用是什么"><a href="#HTTP-是什么，作用是什么" class="headerlink" title="HTTP 是什么，作用是什么"></a>HTTP 是什么，作用是什么</h3><ul>
+<li>HTTP 是一种数据传输协议，作用是：确保数据在传输过程中不会被损坏或产生混乱。是应用层协议</li>
+<li>HTTP 在网络中所处的层次：应用层</li>
+</ul>
+<h4 id="web客户端"><a href="#web客户端" class="headerlink" title="web客户端"></a>web客户端</h4><ul>
+<li>什么是web客户端：用户使用的终端</li>
+<li>客户端的作用是什么：发送 HTTP 请求，展示 HTTP 服务器返回的数据</li>
+</ul>
+<h4 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h4><ul>
+<li>什么是服务器</li>
+<li>客户端的作用是什么： HTTP服务器是存储着因特网的资源</li>
+</ul>
+<h4 id="资源的种类"><a href="#资源的种类" class="headerlink" title="资源的种类"></a>资源的种类</h4><ol>
+<li><p>媒体标签 MIME type</p>
+<ul>
+<li>json格式的文本文档: Content-Type: application/json</li>
+<li>HTML 格式的文本文档：Content-Type: text/html</li>
+<li>ASCII 文本文档：Content-Type: text/plain</li>
+<li>JPEG格式的图片：Content-Type: image/jpeg</li>
+<li>GIF格式的图片：Content-Type: image/gif</li>
+<li>Apple 的 QuickTime 电影格式：Content-Type: vdeo/quicktime</li>
+<li>微软的 PowerPoint 演示文件：Content-Type: application/vnd.ms-powerpoint</li>
+</ul>
+</li>
+<li><p>URI<br>服务器资源名被称为统一资源标识符，（ Uniform Resource Identifier, URI ）具有唯一性</p>
+<ul>
+<li>两种形式：URL 和 URN<br>URL ：统一资源定位符，描述一台特定服务器上某资源的特定位置.例如： <a href="http://www.joes-hardware.com/specials/saw-blade.gif，URL" target="_blank" rel="noopener">http://www.joes-hardware.com/specials/saw-blade.gif，URL</a> 指明了协议，服务器，本地资源<br>URN ：统一资源名，作为特定内容的唯一名称使用的，与目前的资源所在地无关。通过 URN 可以用同一个名字通过多种网络访问协议来访问资源。例如：urn:ierf:rfc:2141。在使用阶段，尚未大范围使用</li>
+</ul>
+</li>
+</ol>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><ul>
+<li>一个 HTTP 事务由一条（从客户端发往服务器的）请求命令和 一个（从服务器发回客户端的）响应结果组成。这种通信是通过名为 HTTP 报文 （ HTTP message ）的格式化数据进行的</li>
+</ul>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
+<li>GET</li>
+<li>PUT</li>
+<li>DELETE</li>
+<li>POST</li>
+<li>HEAD<h4 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h4></li>
+<li>必要性：每个 HTTP 响应报文返回时都会携带一个状态码</li>
+<li>形式：三位数字，伴随着么个数字状态码，HTTP 还会发送一条解释性的 ‘ 原因短语 ’</li>
+<li>作用：告知客户端请求是否成功，或者是否需要采取其他动作</li>
+</ul>
+<h4 id="Web页面中可以包含多个对象"><a href="#Web页面中可以包含多个对象" class="headerlink" title="Web页面中可以包含多个对象"></a>Web页面中可以包含多个对象</h4><ul>
+<li>一个首页，首先获取 HTML ，然后获取每个嵌入式的图片，其他的程序。</li>
+</ul>
+<h4 id="报文"><a href="#报文" class="headerlink" title="报文"></a>报文</h4><ul>
+<li>形式：<ul>
+<li>HTTP 报文由一行一行的简单字符串组成的，HTTP 报文是纯文本，不是二进制代码。</li>
+<li>HTTP 报文包括三部分：<ul>
+<li>起始行：<br>作用：在请求报文中用来说明做些什么，在响应报文中说明出现来什么情况</li>
+<li>首部字段</li>
+<li>主体<br>作用：在请求主体中包括来要发送给 Web 服务器的数据，响应主体中装载来要返回给客户端的数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>种类：请求报文 （ request message ）, 响应报文 （ response message ）</li>
+</ul>
+<h3 id="连接-（TCP）"><a href="#连接-（TCP）" class="headerlink" title="连接 （TCP）"></a>连接 （TCP）</h3><ol>
+<li>TCP 什么是TCP 作用是什么<ul>
+<li>TCP ( Transmission Control Protocol ), 是一种传输控制协议</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>参考资料</p>
+<ul>
+<li>《HTTP 权威指南》</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/05/08/git 初始仓库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/08/git 初始仓库/" itemprop="url">git 初始仓库</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-08T14:00:06+08:00">
+                2018-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  313
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">$ git add &lt;file&gt;</span><br><span class="line">$ git commit -m <span class="string">"xxx"</span></span><br></pre></td></tr></table></figure>
+<h3 id="首次强制拉取"><a href="#首次强制拉取" class="headerlink" title="首次强制拉取"></a>首次强制拉取</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master ----allow-unrelated-histories</span><br></pre></td></tr></table></figure>
+<h3 id="首次推送"><a href="#首次推送" class="headerlink" title="首次推送"></a>首次推送</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h3 id="config-用户名和邮箱"><a href="#config-用户名和邮箱" class="headerlink" title="config 用户名和邮箱"></a>config 用户名和邮箱</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name &quot;xxx&quot;</span><br><span class="line">$ git config user.email &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="查看配置文件"><a href="#查看配置文件" class="headerlink" title="查看配置文件"></a>查看配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list</span><br></pre></td></tr></table></figure>
+<h3 id="拉去其他分支，并切换到该分支"><a href="#拉去其他分支，并切换到该分支" class="headerlink" title="拉去其他分支，并切换到该分支"></a>拉去其他分支，并切换到该分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch orign &lt;branch_name&gt;</span><br><span class="line">$ git checout &lt;fetch_branch_name&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="代码-clone-的方式"><a href="#代码-clone-的方式" class="headerlink" title="代码 clone 的方式"></a>代码 clone 的方式</h3><p>  代码库的链接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ https: https://gitlab.pengjiandry.com/root/cnodeNews.git</span><br><span class="line">$ ssh: git@gitlab.pengjiandry.com:root/cnodeNews.git</span><br></pre></td></tr></table></figure>
+<p>  第一种方式：使用默认的用户和密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://gitlab.pengjiandry.com/root/cnodeNews.git</span><br></pre></td></tr></table></figure>
+<p>第二种方式：显示的指定用户和密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone http://username:password@gitlab.pengjiandry.com/root/cnodeNews.git</span><br></pre></td></tr></table></figure>
+<p>第三种方式：使用 ssh, 在 clone 之前请先检查一下 ssh 密钥设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@gitlab.pengjiandry.com:root/cnodeNews.git</span><br></pre></td></tr></table></figure>
+<p>  ssh密钥的生成：</p>
+<ol>
+<li>需要的操作：先生成一个在 ~ (/User/pengjian) ~/.ssh 下</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;your.email@example.com&quot; -b 4096</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第一个交互是输入名字，默认是：id_rsa</li>
+<li>完成后会生成两个文件： id_rsa.pub / id_rsa</li>
+<li>在服务端就是需要 id_rsa.pub 的内容</li>
+</ul>
+<ol start="2">
+<li>~/.ssh/config 其中一个 ssh 密钥的配置</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host git.coding.net # git的访问地址</span><br><span class="line">User 2393375953@qq.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/coding_rsa</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/05/03/浏览器中的 BOM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1850,388 +2283,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/02/01/JavaScript 中 Object 的数据属性和访问属性/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/01/JavaScript 中 Object 的数据属性和访问属性/" itemprop="url">JavaScript Object 的数据属性和访问属性</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-01T13:41:42+08:00">
-                2018-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《JavaScript-高级程序设计》-第三版/" itemprop="url" rel="index">
-                    <span itemprop="name">《JavaScript 高级程序设计》 第三版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  444
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="Object-的数据属性"><a href="#Object-的数据属性" class="headerlink" title="Object 的数据属性"></a>Object 的数据属性</h3><ol>
-<li><p>Object 有四个数据属性</p>
-<ul>
-<li>configurable：默认是 false，不可以进行 delete 等操作</li>
-<li>enumerable：默认是 false，不可枚举，不可使用 for in 或者 Object,keys 获取 key</li>
-<li>writable：默认是 false，不可编辑，不可重新赋值</li>
-<li>value：默认是 undefined</li>
-</ul>
-</li>
-<li><p>Object 有两个访问器属性</p>
-<ul>
-<li>get</li>
-<li>set</li>
-</ul>
-</li>
-<li><p>当使用访问器属性的时候， writable 和 value 属性不能存在（它们之间的关系是互斥）</p>
-<ul>
-<li>使用 set 就表示这个属性可写</li>
-<li>使用 get 就是获取到 value 的值</li>
-</ul>
-</li>
-</ol>
-<h3 id="configurable：默认是-false，不可以进行-delete-等操作"><a href="#configurable：默认是-false，不可以进行-delete-等操作" class="headerlink" title="configurable：默认是 false，不可以进行 delete 等操作"></a>configurable：默认是 false，不可以进行 delete 等操作</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">'name'</span>, &#123;</span><br><span class="line">    value: <span class="string">'james'</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">delete</span> person.name;</span><br><span class="line"><span class="built_in">console</span>.log(person.name); <span class="comment">// james</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> animal = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(animal, <span class="string">'name'</span>, &#123;</span><br><span class="line">    configurable: <span class="literal">false</span>, <span class="comment">// 默认就是 false，不可删除</span></span><br><span class="line">    value: <span class="string">'dog'</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">delete</span> animal.name;</span><br><span class="line"><span class="built_in">console</span>.log(animal.name); <span class="comment">// dog</span></span><br></pre></td></tr></table></figure>
-<h3 id="enumerable：默认是-false，不可枚举，不可使用-for-in-或者-Object-keys-获取-key"><a href="#enumerable：默认是-false，不可枚举，不可使用-for-in-或者-Object-keys-获取-key" class="headerlink" title="enumerable：默认是 false，不可枚举，不可使用 for in 或者 Object,keys 获取 key"></a>enumerable：默认是 false，不可枚举，不可使用 for in 或者 Object,keys 获取 key</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">'name'</span>, &#123;</span><br><span class="line">    value: <span class="string">'james'</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(person)) <span class="comment">// []</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> animal = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(animal, <span class="string">'name'</span>, &#123;</span><br><span class="line">    enumerable: <span class="literal">false</span>, <span class="comment">// 默认就是  false，不可以枚举</span></span><br><span class="line">    value: <span class="string">'dog'</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.keys(animal)) <span class="comment">// []</span></span><br></pre></td></tr></table></figure>
-<h3 id="writable：默认是-false，不可编辑，不可重新赋值"><a href="#writable：默认是-false，不可编辑，不可重新赋值" class="headerlink" title="writable：默认是 false，不可编辑，不可重新赋值"></a>writable：默认是 false，不可编辑，不可重新赋值</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">'name'</span>, &#123;</span><br><span class="line">    value: <span class="string">'james'</span></span><br><span class="line">&#125;);</span><br><span class="line">person.name = <span class="string">'Lili'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(person.name); <span class="comment">// james</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> animal = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(animal, <span class="string">'name'</span>, &#123;</span><br><span class="line">    writable: <span class="literal">false</span>, <span class="comment">// 默认就是 false，不可编辑</span></span><br><span class="line">    value: <span class="string">'dog'</span></span><br><span class="line">&#125;);</span><br><span class="line">animal.name = <span class="string">'cat'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(animal.name); <span class="comment">// dog</span></span><br></pre></td></tr></table></figure>
-<h3 id="value：默认是-undefined"><a href="#value：默认是-undefined" class="headerlink" title="value：默认是 undefined"></a>value：默认是 undefined</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">'name'</span>, &#123;&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(person.name); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> animal = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(animal, <span class="string">'name'</span>, &#123;</span><br><span class="line">    value: <span class="literal">undefined</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(animal.name); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-<h3 id="访问器属性：get-和-set"><a href="#访问器属性：get-和-set" class="headerlink" title="访问器属性：get 和 set"></a>访问器属性：get 和 set</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> logo = &#123;&#125;, outState, num = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(logo, <span class="string">'state'</span>, &#123;</span><br><span class="line">    get() &#123;</span><br><span class="line">        num++;</span><br><span class="line">        <span class="keyword">return</span> outState</span><br><span class="line">    &#125;,</span><br><span class="line">    set(value) &#123;</span><br><span class="line">        outState = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(logo.state); <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(outState); <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(num); <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">logo.state = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'logo.state = true'</span>, logo.state); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'logo.state = true'</span>, outState); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'logo.state = true'</span>, num); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
-<p>参考文献：</p>
-<ul>
-<li>《JavaScript 高级程序设计》 第三版</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/01/24/git 分支最佳实践/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/24/git 分支最佳实践/" itemprop="url">git 分支最佳实践</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-24T13:14:48+08:00">
-                2018-01-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  76
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li><p>测试在 experience，用测试域名</p>
-</li>
-<li><p>测试完，服务端发布，合并到 preview，使用正式域名自测下</p>
-</li>
-<li><p>没什么问题就提交审核合并 master，打上 tag</p>
-</li>
-</ul>
-<h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><ul>
-<li>development （自测）</li>
-<li>experience （服务端发布，提测）</li>
-</ul>
-<h3 id="正式环境"><a href="#正式环境" class="headerlink" title="正式环境"></a>正式环境</h3><ul>
-<li>preview （服务端发布，自测）</li>
-<li>master （线上）</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2286,7 +2337,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2297,7 +2348,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2308,7 +2359,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2376,7 +2427,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">34.8k</span>
+    <span title="博客总字数">36.1k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

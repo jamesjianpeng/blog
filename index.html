@@ -297,6 +297,558 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/PHP - 基础知识（二）变量，数据类型以及作用域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/04/PHP - 基础知识（二）变量，数据类型以及作用域/" itemprop="url">PHP - 基础知识（二）变量，数据类型以及作用域</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T16:39:56+08:00">
+                2018-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《PHP-and-MySQL-Web-Development》》第五版/" itemprop="url" rel="index">
+                    <span itemprop="name">《PHP and MySQL Web Development》》第五版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="变量和字面量"><a href="#变量和字面量" class="headerlink" title="变量和字面量"></a>变量和字面量</h3><ul>
+<li>变量：是表示数据的符号</li>
+<li>字面量：是原始数据，例如： 字符串是数据本身<blockquote>
+<p>单引号中的数据就是字面量，表示原始的数据</p>
+<p>双引号中的数据是要经过 PHP 解释器进行计算的，所以可以在双引号之间插入变量，在输入的时候就会把变量使用对应的字面量进行替换</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="PHP中的标识符"><a href="#PHP中的标识符" class="headerlink" title="PHP中的标识符"></a>PHP中的标识符</h3><ul>
+<li>标识符包括，变量名，函数名，类名</li>
+<li>标识符的长度不限</li>
+<li>不能以数字开头</li>
+<li><p>区分大小写(值得注意的是函数名称是不区分大小写)</p>
+<blockquote>
+<p>在 JavaScript 中函数的名字是区分大小写😜，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const GetColor = (color) =&gt; color;</span><br><span class="line">getColor(&apos;red&apos;) // Uncaught ReferenceError: red is not defined</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>变量名和函数名是可以重名</p>
+</li>
+<li>申明，和使用变量没有先后顺序的规定</li>
+</ul>
+<h3 id="PHP-中的数据类型"><a href="#PHP-中的数据类型" class="headerlink" title="PHP 中的数据类型"></a>PHP 中的数据类型</h3><ul>
+<li>Integer（整数）</li>
+<li>Float（浮点数，也叫 Double，双精度）</li>
+<li>String（字符串）：用来表示字符串</li>
+<li>Boolean（布尔）：用来表示 true 或者 false</li>
+<li>Array（数组）：用来保存具有相同类型的多个数据项</li>
+<li>Object（对象）：用来保存类的实例</li>
+<li><p>三种特殊的类型：</p>
+<ol>
+<li>NULL（空）<blockquote>
+<p>没有被赋值，已经被重置或者被赋值的特殊值 NULL 的变量就是 NULL 类型变量</p>
+</blockquote>
+</li>
+<li><p>resource（资源）：特定的内置函数（例如数据库函数）将返回 resource 类型的变量 </p>
+<blockquote>
+<p>基本上不能直接操作一个 resource 变量，但是通常他们都将被函数返回，而且必须作为参数传递给其他函数</p>
+</blockquote>
+</li>
+<li><p>callable</p>
+<blockquote>
+<p>通常都是可以传递给其他函数的函数</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>JavaScript 则不太一样😁<br>分为两大类：1. 原始类型，2. 引用类型</p>
+<ol>
+<li>原始类型（6种）：Boolean，Null，Undefined，Number，String，Symbol (ECMAScript 6 新定义)</li>
+<li>引用类型（object）: Object, Array，Map, Set, Date, RegExp, Math, HTMLBodyElement,HTMLElement, Element, Node, EventTarget，等等各种 Element Object</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h3 id="类型强度"><a href="#类型强度" class="headerlink" title="类型强度"></a>类型强度</h3><ul>
+<li>PHP 是一种弱类型的语言，或者动态类型语言（这个和 JavaScript 基本一致）<blockquote>
+<p>变量的类型是由赋给变量的值确定的，自动地获取输入的数据类型</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="类型转化"><a href="#类型转化" class="headerlink" title="类型转化"></a>类型转化</h3><ul>
+<li>使用类型转化，可以将一个变量或值转换成另一种类型（和 C 语言的类型转换是相同的）<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    $totalqty = <span class="number">0</span></span><br><span class="line">    $totalamount = (float)$totalqty <span class="comment">// 由 Integer ==&gt; Float</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="可变变量-🐂"><a href="#可变变量-🐂" class="headerlink" title="可变变量(🐂)"></a>可变变量(🐂)</h3><ul>
+<li>PHP 中还有其他类型的变量：可变变量<blockquote>
+<p>允许我们动态地改变一个变量的名称</p>
+  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $varname = <span class="string">'tirepty'</span>;</span><br><span class="line">  $$varname = <span class="number">5</span>;</span><br><span class="line">  <span class="comment">// $tirepty = 5 这种方式和上面的方式等价</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<h3 id="声明和使用常量"><a href="#声明和使用常量" class="headerlink" title="声明和使用常量"></a>声明和使用常量</h3><ul>
+<li><p>常量：一旦设定之后，在脚本的其他地方就不能再更改(常量名称通常由大写的字母组成)</p>
+<blockquote>
+<p>使用的时候直接不需要在常量名前添加 $</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    define(<span class="string">'TIREPEICE'</span>, <span class="number">100</span>);</span><br><span class="line">    <span class="keyword">echo</span> TIREPEICE;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="理解变量作用域-待完善"><a href="#理解变量作用域-待完善" class="headerlink" title="理解变量作用域(待完善)"></a>理解变量作用域(待完善)</h3><ul>
+<li>作用域：是指在一个脚本中某个变量在那些地方可以使用或可见</li>
+<li><p>PHP 定义了 6 条规则：</p>
+<ol>
+<li><p>内置超级全局变量可以在脚本的任何地方使用和可见（和 JavaScript 类似）,例如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $_GET[<span class="string">'varname'</span>]</span><br><span class="line">  $_POST[<span class="string">'varname'</span>]</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>$GLOBALS</p>
+<p>$_SERVER 服务器环境变量数组</p>
+<p>$_GET</p>
+<p>$_POST</p>
+<p>$_COOKIE</p>
+<p>$_FILES</p>
+<p>$_ENV</p>
+<p>$_REQUEST</p>
+</blockquote>
+</li>
+<li><p>常量，一旦被声明，将在全局可见；也就是说，它们可以在函数内外使用</p>
+</li>
+<li><p>在一个脚本中声明的全军变量在整个脚本中是可见的，但不是在函数内部（和 JavaScript 类似）</p>
+</li>
+<li><p>函数内部使用的变量声明为全局变量时，其名称要与全局变量名称一致（和 JavaScript 类似）</p>
+</li>
+<li><p>在函数内部创建并声明为静态的变量无法在函数外部可见，但是可以在函数的多次执行过程中保持该值</p>
+<blockquote>
+<p>什么是静态变量？<br>前半句明白，后半句感觉和闭包类似</p>
+</blockquote>
+</li>
+<li><p>在函数内部创建的变量对函数来说是本地的，而当函数终止时，该变量也就不存在了（和 JavaScript 类似，函数运行结束之后，变量也随即被销毁）</p>
+</li>
+</ol>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/PHP - 基础知识（一）在 HTML 中嵌入 PHP 以及 PHP 语句和标识符/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/04/PHP - 基础知识（一）在 HTML 中嵌入 PHP 以及 PHP 语句和标识符/" itemprop="url">PHP - 基础知识（一）在 HTML 中嵌入 PHP 以及 PHP 语句和标识符</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T13:17:09+08:00">
+                2018-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《PHP-and-MySQL-Web-Development》》第五版/" itemprop="url" rel="index">
+                    <span itemprop="name">《PHP and MySQL Web Development》》第五版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  636
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>Mac 环境下 PHP 环境搭建 <a href="https://www.pengjiandry.com/2018/11/03/PHP%20-%20%E5%88%9D%E8%AF%86/">PHP - 初识</a></p>
+<hr>
+<h3 id="在-HTML-文档中嵌入-PHP"><a href="#在-HTML-文档中嵌入-PHP" class="headerlink" title="在 HTML 文档中嵌入 PHP"></a>在 HTML 文档中嵌入 PHP</h3>  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"ie=edge"</span>&gt;</span><br><span class="line">    &lt;title&gt; processorder.html &lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt; james 😁 &lt;/h1&gt;</span><br><span class="line">    <span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="string">'&lt;p&gt; Hello world ... &lt;/p&gt;'</span>; <span class="meta">?&gt;</span></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>请注意：这个文件的后缀是 .php 请不要使用 .html 结尾，不然会把 PHP 中 ?&gt; 现在页面中</p>
+<p>为什么会这样呢？</p>
+<ol>
+<li><p>浏览器并不理解 PHP 代码，所以在以 .html 结尾的资源中嵌入 PHP 代码，浏览器会把 PHP 当作 HTML 文档来解释</p>
+</li>
+<li><p>若是采用 .php 为后缀的资源，我们在访问该资源的时候。PHP 代码已经在服务端被 PHP 的解释器处理过</p>
+</li>
+</ol>
+<p><a href="https://segmentfault.com/a/1190000007322358" target="_blank" rel="noopener"></a></p>
+</blockquote>
+<h3 id="PHP-标记"><a href="#PHP-标记" class="headerlink" title="PHP 标记"></a>PHP 标记</h3><p>  开始标记： &lt;?php</p>
+<p>  结束标记： ?&gt; </p>
+  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    php 语句</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>XML 风格</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="string">'hello'</span>; <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>简短风格</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span> <span class="keyword">echo</span> <span class="string">'hello'</span>; <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="PHP-语句"><a href="#PHP-语句" class="headerlink" title="PHP 语句"></a>PHP 语句</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">'hello'</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'world'</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意 语句后面的 ;</p>
+<p>php 的空行的处理和 HTML 文档中的处理类型，把 PHP 语句（HTML 的元素）之间的空格都合并掉</p>
+</blockquote>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ul>
+<li>PHP 解释器将忽略任何注释文本</li>
+<li><p>需要放在 PHP 标识之间</p>
+</li>
+<li><p>多行注释</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> php 多行注释</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>多行注释无法嵌套</p>
+</blockquote>
+<ul>
+<li><p>单行注释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// 单行注释</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>shell 脚本的风格注释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># shell 脚本风格注释</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="服务端语言-PHP-是可以提供动态的内容-这是和-静态的-HTML-文档之间一个区别"><a href="#服务端语言-PHP-是可以提供动态的内容-这是和-静态的-HTML-文档之间一个区别" class="headerlink" title="服务端语言 PHP 是可以提供动态的内容 这是和 静态的 HTML 文档之间一个区别"></a>服务端语言 PHP 是可以提供动态的内容 这是和 静态的 HTML 文档之间一个区别</h3><ul>
+<li><p>例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="meta">&lt;?php</span> </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 服务端语言 PHP 可以提供动态的内容</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;p&gt; time '</span>; </span><br><span class="line">        <span class="keyword">echo</span> date(<span class="string">'H:i, js F Y'</span>); </span><br><span class="line">        <span class="keyword">echo</span> <span class="string">' end... &lt;/p&gt;'</span>; </span><br><span class="line"></span><br><span class="line">    <span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">&lt;?php</span> </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 服务端语言 PHP 可以提供动态的内容</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;p&gt; time '</span>.date(<span class="string">'H:i, js F Y'</span>).<span class="string">' end... &lt;/p&gt;'</span>; </span><br><span class="line"></span><br><span class="line">    <span class="meta">?&gt;</span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>连接操作符号(.) 可以将 php 代码编写在一行</p>
+<p>上面的两句是等价的</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h3><ul>
+<li>functionName(params)</li>
+</ul>
+<h3 id="字符串链接"><a href="#字符串链接" class="headerlink" title="字符串链接"></a>字符串链接</h3><ul>
+<li>变量使用连接操作符号(.) 和 单引号 一起使用</li>
+<li><p>双引号包裹变量</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">&lt;?php</span></span><br><span class="line">    </span><br><span class="line">    $tireqty = htmlspecialchars($_POST[<span class="string">'tireqty'</span>]);</span><br><span class="line">    $oilqty = htmlspecialchars($_POST[<span class="string">'oilqty'</span>]);</span><br><span class="line">    $sparkqty = htmlspecialchars($_POST[<span class="string">'sparkqty'</span>]);</span><br><span class="line">    $fileqty = htmlspecialchars($_POST[<span class="string">'fileqty'</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"$tireqty - tireqty&lt;br /&gt;"</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"$oilqty - oilqty&lt;br /&gt;"</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"$sparkqty - sparkqty&lt;br /&gt;"</span>;</span><br><span class="line">    <span class="keyword">echo</span> $fileqty.<span class="string">' - fileqty&lt;br /&gt;'</span>;</span><br><span class="line"> </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在双引号中，变量名称将被变量值所代替</p>
+<p>单引号中，变量名称或者任何其他的文本都会不经修改而发送给浏览器</p>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/03/PHP - 初识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2448,543 +3000,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/23/数据库 - 数据库系统（一）四个基本概念以及数据管理技术的发展/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/23/数据库 - 数据库系统（一）四个基本概念以及数据管理技术的发展/" itemprop="url">数据库 - 数据库系统（一）四个基本概念以及数据管理技术的发展</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-23T07:02:44+08:00">
-                2018-10-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><ul>
-<li><p>数据是什么(待更新)</p>
-<ol>
-<li>数据（Data）是描述事物的符号记录，是指物理符号记录下来的，可以鉴别的信息，它的表现形式有多样，包括数字，字母，文字，特殊字符组成的文本数据，也可以是图形，图像，动画，影像，声音，语言等多媒体数据<blockquote>
-<p>数据库系统原理（04735）P28 </p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>信息</p>
-<ol>
-<li>数据的解释是对数据含义的说明，也称为数据的语义，即数据所蕴含的信息</li>
-<li>语义与其语义是密不可分，没有语义的数据是没有意义和不完整的</li>
-<li>数据是信息存在的一种形式，只有通过解释或处理的数据才能成为有用的信息 <blockquote>
-<p>数据库系统原理（04735）P28 </p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
-<li><p>数据库是什么</p>
-<ol>
-<li><p>将大量数据保存起来，通过计算机加工而成的可以进行高效访问的数据集合</p>
-<blockquote>
-<p>《SQL基础教程》第二版</p>
-</blockquote>
-</li>
-<li><p>可以称为存储数据的仓库，这个仓库是存储在计算机存储设备上，并且所存储的数据是按一定的格式进行存储的</p>
-<blockquote>
-<p>数据库系统原理（04735）P28 </p>
-</blockquote>
-</li>
-<li>严格意义上：数据库是指，长期储存在计算机中的有组织的，可共享的数据集合，且数据库中的数据按一定的数据模型组织，描述和存储，具有较小的冗余度，较高的数据独立性，系统易于扩展，并被多个用户共享<blockquote>
-<p>数据库系统原理（04735）P28 </p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>数据库的特点</p>
-<ol>
-<li>永久存储</li>
-<li>有组织</li>
-<li>可共享<blockquote>
-<p>数据库系统原理（04735）P28 </p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="数据库管理系统（Database-Management-System，DBMS）"><a href="#数据库管理系统（Database-Management-System，DBMS）" class="headerlink" title="数据库管理系统（Database Management System，DBMS）"></a>数据库管理系统（Database Management System，DBMS）</h3><ul>
-<li><p>数据库管理系统（DBMS）是什么</p>
-<ol>
-<li><p>用来管理数据库的计算机系统称为数据库管理系统（DBMS）</p>
-</li>
-<li><p>是专门用于建立和管理数据库的一套软件，介于应用程序和操作系统之间</p>
-<blockquote>
-<p>我们所用的 Dbeaver,Navicat Premium 是图形可视化管理工具，数据库管理系统就是存在它和操作系统之间的系统</p>
-</blockquote>
-</li>
-<li>功能：<ol>
-<li>数据定义功能</li>
-<li>数据操作功能</li>
-<li>数据库运行管理功能</li>
-<li>数据库的建立和维护功能</li>
-<li>数据组织，存储和管理功能</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-<blockquote>
-<p>数据库系统原理（04735）P29 </p>
-</blockquote>
-<h3 id="数据库系统"><a href="#数据库系统" class="headerlink" title="数据库系统"></a>数据库系统</h3><ul>
-<li>数据库系统是什么<ol>
-<li>是指在计算机中引入数据库技术之后的系统</li>
-<li>通常，一个完整的数据库系统包括数据库，数据库管理系统以及相关实用工具，应用程序，数据库管理员和用户</li>
-</ol>
-</li>
-<li>数据库管理员（Database Administratior, DBA）<ol>
-<li>专门对维护数据库进行维护，保证数据库正常，高效运作的人员</li>
-</ol>
-</li>
-<li><p>数据库系统的用户</p>
-<ol>
-<li>应用的用户</li>
-<li>开发应用的程序员</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">用户1 ...  用户n</span><br><span class="line"> |         |</span><br><span class="line"> +---------+    +---------+</span><br><span class="line"> |         |    |         |</span><br><span class="line"> | 应用程序 +----+   程序员 |</span><br><span class="line"> |         |    |         |</span><br><span class="line"> +---+-----+    +---------+  </span><br><span class="line">     |</span><br><span class="line"> +---+-----+    +---------+</span><br><span class="line"> |         |    |         |</span><br><span class="line"> |  DBMS   +----+  DBA    |</span><br><span class="line"> |         |    |         |</span><br><span class="line"> +---+-----+    +---------+  </span><br><span class="line">     |</span><br><span class="line"> +---+-----+</span><br><span class="line"> |         |</span><br><span class="line"> |   DB    |</span><br><span class="line"> |         |</span><br><span class="line"> +---------+</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>数据库系统原理（04735）P29 </p>
-</blockquote>
-<h3 id="DBMS-的种类"><a href="#DBMS-的种类" class="headerlink" title="DBMS 的种类"></a>DBMS 的种类</h3><ol>
-<li><p>层次数据库(Hierarchial Database, HDB)</p>
-</li>
-<li><p>关系数据库(Relational Database, RDB)</p>
-<ul>
-<li>这种类型的 DBMS 称为关系型数据库管理系统(Relational Database Management System, RDBMS)</li>
-<li>代表性的 RDBMS<ol>
-<li>Oracle Database: 甲骨文公司的 RDBMS</li>
-<li>SQL Server: 微软公司的 RDMBS</li>
-<li>DB2: IBM 公司的 RDBMS</li>
-<li>PostgreSQL: 开源的 RDBMS</li>
-<li>MySQL: 开源的 RDBMS</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-<ol start="3">
-<li><p>面向对象数据库(Object Oriented Database, OODB)</p>
-</li>
-<li><p>XML 数据库(XML Database, XMLDN)</p>
-</li>
-<li><p>键值存储系统（key-Value Store, KVS）</p>
-<blockquote>
-<p>《SQL基础教程》第二版</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="数据管理技术的发展"><a href="#数据管理技术的发展" class="headerlink" title="数据管理技术的发展"></a>数据管理技术的发展</h3><ol>
-<li><p>人工管理（待更新）</p>
-</li>
-<li><p>文件系统（待更新）</p>
-</li>
-<li><p>数据库系统阶段（待完善）</p>
-<ol>
-<li>数据库系统阶段和人工管理，文件系统相比的优点：<blockquote>
-<ol>
-<li>数据集成</li>
-<li>数据共享性高</li>
-<li>数据冗余小</li>
-<li>保持数据一致性</li>
-<li>数据独立性高</li>
-<li>实施统一管理与控制</li>
-<li>并发控制</li>
-<li>故障恢复</li>
-<li>减少应用程序开发与维护的工作量</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-</li>
-</ol>
-<hr>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版<br>  -《数据库系统原理》（04735）</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/22/SQL - 复杂查询：关联子查询/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/22/SQL - 复杂查询：关联子查询/" itemprop="url">SQL - 复杂查询：关联子查询</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-22T20:09:09+08:00">
-                2018-10-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
-                    <span itemprop="name">《SQL基础教程》第二版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  324
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="关联子查询"><a href="#关联子查询" class="headerlink" title="关联子查询"></a>关联子查询</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
-<li><p>请看下面的一个例子：</p>
-<ol>
-<li>实现的功能：实现查询大于每组商品类型销售价格平均值的记录</li>
-</ol>
-</li>
-<li><p>用于连接子查询之间的关联</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT product_type, product_name, product_id, sale_price FROM Products </span><br><span class="line">  -&gt; AS P1 </span><br><span class="line">  -&gt; WHERE sale_price &gt; </span><br><span class="line">  -&gt; (SELECT AVG(sale_price) FROM Products </span><br><span class="line">  -&gt;   AS P2 </span><br><span class="line">  -&gt;   WHERE P1.product_type = P2.product_type </span><br><span class="line">  -&gt;   GROUP BY product_type);</span><br><span class="line">+--------------+--------------+------------+------------+</span><br><span class="line">| product_type | product_name | product_id | sale_price |</span><br><span class="line">+--------------+--------------+------------+------------+</span><br><span class="line">| 衣服         | 衬衫👔         | 005        |       2900 |</span><br><span class="line">| 衣服         | T恤👕          | 006        |      10000 |</span><br><span class="line">| 文具         | 直尺📏         | 011        |         70 |</span><br><span class="line">+--------------+--------------+------------+------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意 AS 设置别名<br>这个使用了子查询的方式：</p>
-<ol>
-<li>首先查询一个种类的销售价格的平均值（获得是一个单元格的值）</li>
-<li>然后再执行外层查询</li>
-</ol>
-<p>可以去掉 AS 语句 和 WHERE P1.product_type = P2.product_type 去查询会出错，这样查询的内层的子查询得到多个单元格，外层的查询 WHERE 语句无法正确判断<br>值得注意的是：关联的条件是要写在内层的子查询，否则会报错<br>关联子查询的名称的范围：内层的子查询才能拿到外层的名称，所以关联的条件是要写在内层的子查询，如下图：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------------------------+</span><br><span class="line">|               内层子查询                 |</span><br><span class="line">|           P1 = xxx, P2 = ??             |</span><br><span class="line">|     +----------------------------+      |</span><br><span class="line">|     |                            |      |</span><br><span class="line">|     |         内层子查询          |      |</span><br><span class="line">|     |     P2 = xxx, P1 = xxx     |      |</span><br><span class="line">|     |                            |      |</span><br><span class="line">|     +----------------------------+      |</span><br><span class="line">+-----------------------------------------+</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ul>
-<hr>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3039,7 +3054,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -3129,7 +3144,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">36.4k</span>
+    <span title="博客总字数">38.1k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

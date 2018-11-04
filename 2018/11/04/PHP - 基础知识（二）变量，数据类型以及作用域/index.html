@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript,HTML," />
+  <meta name="keywords" content="PHP,服务端," />
 
 
 
@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="script 标签  在 HTML 4.01  属性  async   下载之后立刻执行，载下载期间不影响页面的其他操作（页面的解析和展示，后者执行后面的代码）[ HTML5 ] defer   需要等 页面中所有的 html 都解析完成，在 window.onload 之前，执行 defer charset 规定展示 JavaScript 代码哪一种字符集进行编码展示 scr     这个是需">
-<meta name="keywords" content="JavaScript,HTML">
+<meta name="description" content="变量和字面量 变量：是表示数据的符号 字面量：是原始数据，例如： 字符串是数据本身 单引号中的数据就是字面量，表示原始的数据 双引号中的数据是要经过 PHP 解释器进行计算的，所以可以在双引号之间插入变量，在输入的时候就会把变量使用对应的字面量进行替换    PHP中的标识符 标识符包括，变量名，函数名，类名 标识符的长度不限 不能以数字开头 区分大小写(值得注意的是函数名称是不区分大小写)">
+<meta name="keywords" content="PHP,服务端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript 的使用 script 标签">
-<meta property="og:url" content="https://www.pengjiandry.com/2018/03/04/JavaScript 的使用 script 标签/index.html">
+<meta property="og:title" content="PHP - 基础知识（二）变量，数据类型以及作用域">
+<meta property="og:url" content="https://www.pengjiandry.com/2018/11/04/PHP - 基础知识（二）变量，数据类型以及作用域/index.html">
 <meta property="og:site_name" content="彭涧">
-<meta property="og:description" content="script 标签  在 HTML 4.01  属性  async   下载之后立刻执行，载下载期间不影响页面的其他操作（页面的解析和展示，后者执行后面的代码）[ HTML5 ] defer   需要等 页面中所有的 html 都解析完成，在 window.onload 之前，执行 defer charset 规定展示 JavaScript 代码哪一种字符集进行编码展示 scr     这个是需">
+<meta property="og:description" content="变量和字面量 变量：是表示数据的符号 字面量：是原始数据，例如： 字符串是数据本身 单引号中的数据就是字面量，表示原始的数据 双引号中的数据是要经过 PHP 解释器进行计算的，所以可以在双引号之间插入变量，在输入的时候就会把变量使用对应的字面量进行替换    PHP中的标识符 标识符包括，变量名，函数名，类名 标识符的长度不限 不能以数字开头 区分大小写(值得注意的是函数名称是不区分大小写)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-23T04:02:26.011Z">
+<meta property="og:updated_time" content="2018-11-04T09:06:10.300Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript 的使用 script 标签">
-<meta name="twitter:description" content="script 标签  在 HTML 4.01  属性  async   下载之后立刻执行，载下载期间不影响页面的其他操作（页面的解析和展示，后者执行后面的代码）[ HTML5 ] defer   需要等 页面中所有的 html 都解析完成，在 window.onload 之前，执行 defer charset 规定展示 JavaScript 代码哪一种字符集进行编码展示 scr     这个是需">
+<meta name="twitter:title" content="PHP - 基础知识（二）变量，数据类型以及作用域">
+<meta name="twitter:description" content="变量和字面量 变量：是表示数据的符号 字面量：是原始数据，例如： 字符串是数据本身 单引号中的数据就是字面量，表示原始的数据 双引号中的数据是要经过 PHP 解释器进行计算的，所以可以在双引号之间插入变量，在输入的时候就会把变量使用对应的字面量进行替换    PHP中的标识符 标识符包括，变量名，函数名，类名 标识符的长度不限 不能以数字开头 区分大小写(值得注意的是函数名称是不区分大小写)">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://www.pengjiandry.com/2018/03/04/JavaScript 的使用 script 标签/"/>
+  <link rel="canonical" href="https://www.pengjiandry.com/2018/11/04/PHP - 基础知识（二）变量，数据类型以及作用域/"/>
 
 
 
 
 
-  <title>JavaScript 的使用 script 标签 | 彭涧</title>
+  <title>PHP - 基础知识（二）变量，数据类型以及作用域 | 彭涧</title>
   
 
 
@@ -301,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/03/04/JavaScript 的使用 script 标签/">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/PHP - 基础知识（二）变量，数据类型以及作用域/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="james">
@@ -318,7 +318,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">JavaScript 的使用 script 标签</h2>
+          <h2 class="post-title" itemprop="name headline">PHP - 基础知识（二）变量，数据类型以及作用域</h2>
         
 
         <div class="post-meta">
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">发布日期</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-04T18:01:21+08:00">
-                2018-03-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T16:39:56+08:00">
+                2018-11-04
               </time>
             
 
@@ -340,6 +340,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《PHP-and-MySQL-Web-Development》》第五版/" itemprop="url" rel="index">
+                    <span itemprop="name">《PHP and MySQL Web Development》》第五版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -362,7 +395,7 @@
                   <span class="post-meta-item-text">文章总字数&#58;</span>
                 
                 <span title="文章总字数">
-                  1.1k
+                  1k
                 </span>
               
 
@@ -378,7 +411,7 @@
                   <span class="post-meta-item-text">阅读时间 &asymp;</span>
                 
                 <span title="阅读时间">
-                  4
+                  3
                 </span>
               
             </div>
@@ -400,107 +433,118 @@
 
       
         <hr>
-<h3 id="script-标签"><a href="#script-标签" class="headerlink" title="script 标签"></a>script 标签</h3><p>  在 HTML 4.01</p>
+<h3 id="变量和字面量"><a href="#变量和字面量" class="headerlink" title="变量和字面量"></a>变量和字面量</h3><ul>
+<li>变量：是表示数据的符号</li>
+<li>字面量：是原始数据，例如： 字符串是数据本身<blockquote>
+<p>单引号中的数据就是字面量，表示原始的数据</p>
+<p>双引号中的数据是要经过 PHP 解释器进行计算的，所以可以在双引号之间插入变量，在输入的时候就会把变量使用对应的字面量进行替换</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="PHP中的标识符"><a href="#PHP中的标识符" class="headerlink" title="PHP中的标识符"></a>PHP中的标识符</h3><ul>
+<li>标识符包括，变量名，函数名，类名</li>
+<li>标识符的长度不限</li>
+<li>不能以数字开头</li>
+<li><p>区分大小写(值得注意的是函数名称是不区分大小写)</p>
+<blockquote>
+<p>在 JavaScript 中函数的名字是区分大小写😜，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const GetColor = (color) =&gt; color;</span><br><span class="line">getColor(&apos;red&apos;) // Uncaught ReferenceError: red is not defined</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>变量名和函数名是可以重名</p>
+</li>
+<li>申明，和使用变量没有先后顺序的规定</li>
+</ul>
+<h3 id="PHP-中的数据类型"><a href="#PHP-中的数据类型" class="headerlink" title="PHP 中的数据类型"></a>PHP 中的数据类型</h3><ul>
+<li>Integer（整数）</li>
+<li>Float（浮点数，也叫 Double，双精度）</li>
+<li>String（字符串）：用来表示字符串</li>
+<li>Boolean（布尔）：用来表示 true 或者 false</li>
+<li>Array（数组）：用来保存具有相同类型的多个数据项</li>
+<li>Object（对象）：用来保存类的实例</li>
+<li><p>三种特殊的类型：</p>
 <ol>
-<li><p>属性</p>
-<ul>
-<li>async   下载之后立刻执行，载下载期间不影响页面的其他操作（页面的解析和展示，后者执行后面的代码）[ HTML5 ]</li>
-<li>defer   需要等 页面中所有的 html 都解析完成，在 window.onload 之前，执行 defer</li>
-<li>charset 规定展示 JavaScript 代码哪一种字符集进行编码展示</li>
-<li>scr     这个是需要执行的代码的外部文件</li>
-<li>type    表示编写该脚本用到的语言：type=”text/javascript”</li>
-</ul>
+<li>NULL（空）<blockquote>
+<p>没有被赋值，已经被重置或者被赋值的特殊值 NULL 的变量就是 NULL 类型变量</p>
+</blockquote>
 </li>
-<li><p>script 标签的使用</p>
-<ul>
-<li><p>内嵌: 写在 <code>&lt;script&gt; &lt;/script&gt;</code> 标签之间的代码</p>
+<li><p>resource（资源）：特定的内置函数（例如数据库函数）将返回 resource 类型的变量 </p>
+<blockquote>
+<p>基本上不能直接操作一个 resource 变量，但是通常他们都将被函数返回，而且必须作为参数传递给其他函数</p>
+</blockquote>
 </li>
-<li><p>外链: 通过 src 属性链接的外部文件</p>
+<li><p>callable</p>
+<blockquote>
+<p>通常都是可以传递给其他函数的函数</p>
+</blockquote>
 </li>
-<li><p>这两种写法值得注意的地方：</p>
+</ol>
+<blockquote>
+<p>JavaScript 则不太一样😁<br>分为两大类：1. 原始类型，2. 引用类型</p>
 <ol>
-<li>在内嵌的写法中，’  ‘ 会报错（需要转义：’&lt;\/script&gt;’），但是在外部链接中就不会报错</li>
-<li><p>在代码解释和执行这块差不多：</p>
-<ul>
-<li>从上到下解释并执行</li>
-<li>遇到变量和函数进行解释，保存到当前的执行环境</li>
-<li>在 JavaScript 代码进行解释和执行完成之前，页面的处理会暂时停止</li>
-<li>使用 async 和 defer 则会改变该脚本文件的额处理方式</li>
+<li>原始类型（6种）：Boolean，Null，Undefined，Number，String，Symbol (ECMAScript 6 新定义)</li>
+<li>引用类型（object）: Object, Array，Map, Set, Date, RegExp, Math, HTMLBodyElement,HTMLElement, Element, Node, EventTarget，等等各种 Element Object</li>
+</ol>
+</blockquote>
+</li>
 </ul>
+<h3 id="类型强度"><a href="#类型强度" class="headerlink" title="类型强度"></a>类型强度</h3><ul>
+<li>PHP 是一种弱类型的语言，或者动态类型语言（这个和 JavaScript 基本一致）<blockquote>
+<p>变量的类型是由赋给变量的值确定的，自动地获取输入的数据类型</p>
+</blockquote>
 </li>
-<li><p>在 HTML 文档中必须使用 script 闭合标签</p>
+</ul>
+<h3 id="类型转化"><a href="#类型转化" class="headerlink" title="类型转化"></a>类型转化</h3><ul>
+<li>使用类型转化，可以将一个变量或值转换成另一种类型（和 C 语言的类型转换是相同的）<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    $totalqty = <span class="number">0</span></span><br><span class="line">    $totalamount = (float)$totalqty <span class="comment">// 由 Integer ==&gt; Float</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li>使用 src 链接外部文件必须要使用 .js 文件名</li>
-<li>在同一个 script 标签中，使用 外链 和 内嵌 同时使用，则外链的脚本会生效果，内嵌则不会生效</li>
-<li>script 标签中的 src 必须是一个以 .js 结尾资源的路径，否则显示资源加载失败</li>
-<li>script 中的 src 属性是支持跨域获取资源（和 img 中 src 效果一致）</li>
+</ul>
+<h3 id="可变变量-🐂"><a href="#可变变量-🐂" class="headerlink" title="可变变量(🐂)"></a>可变变量(🐂)</h3><ul>
+<li>PHP 中还有其他类型的变量：可变变量<blockquote>
+<p>允许我们动态地改变一个变量的名称</p>
+  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $varname = <span class="string">'tirepty'</span>;</span><br><span class="line">  $$varname = <span class="number">5</span>;</span><br><span class="line">  <span class="comment">// $tirepty = 5 这种方式和上面的方式等价</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<h3 id="声明和使用常量"><a href="#声明和使用常量" class="headerlink" title="声明和使用常量"></a>声明和使用常量</h3><ul>
+<li><p>常量：一旦设定之后，在脚本的其他地方就不能再更改(常量名称通常由大写的字母组成)</p>
+<blockquote>
+<p>使用的时候直接不需要在常量名前添加 $</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    define(<span class="string">'TIREPEICE'</span>, <span class="number">100</span>);</span><br><span class="line">    <span class="keyword">echo</span> TIREPEICE;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="理解变量作用域-待完善"><a href="#理解变量作用域-待完善" class="headerlink" title="理解变量作用域(待完善)"></a>理解变量作用域(待完善)</h3><ul>
+<li>作用域：是指在一个脚本中某个变量在那些地方可以使用或可见</li>
+<li><p>PHP 定义了 6 条规则：</p>
+<ol>
+<li><p>内置超级全局变量可以在脚本的任何地方使用和可见（和 JavaScript 类似）,例如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $_GET[<span class="string">'varname'</span>]</span><br><span class="line">  $_POST[<span class="string">'varname'</span>]</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>$GLOBALS</p>
+<p>$_SERVER 服务器环境变量数组</p>
+<p>$_GET</p>
+<p>$_POST</p>
+<p>$_COOKIE</p>
+<p>$_FILES</p>
+<p>$_ENV</p>
+<p>$_REQUEST</p>
+</blockquote>
+</li>
+<li><p>常量，一旦被声明，将在全局可见；也就是说，它们可以在函数内外使用</p>
+</li>
+<li><p>在一个脚本中声明的全军变量在整个脚本中是可见的，但不是在函数内部（和 JavaScript 类似）</p>
+</li>
+<li><p>函数内部使用的变量声明为全局变量时，其名称要与全局变量名称一致（和 JavaScript 类似）</p>
+</li>
+<li><p>在函数内部创建并声明为静态的变量无法在函数外部可见，但是可以在函数的多次执行过程中保持该值</p>
+<blockquote>
+<p>什么是静态变量？<br>前半句明白，后半句感觉和闭包类似</p>
+</blockquote>
+</li>
+<li><p>在函数内部创建的变量对函数来说是本地的，而当函数终止时，该变量也就不存在了（和 JavaScript 类似，函数运行结束之后，变量也随即被销毁）</p>
+</li>
 </ol>
 </li>
-</ul>
-</li>
-<li><p>script 的位置，延迟脚本 和 异步脚本</p>
-<ul>
-<li>传统的做法 script 标签和 link 标签放在一起：这样做会有问题，等多所有的 js 和 css 文件加载完之后才能才能去解析 HTML 渲染页面</li>
-<li>现在 web 应用程序的改进之后的做法：把 script 标签放在 body 的后面，等页面解析并渲染之后再下载，解析和执行脚本，这样减少 HTML 页面出现在用户的面前</li>
-<li>script 标签中 defer 和 async 的使用<ol>
-<li>script 支持 defer 属性，可是把 script 标签放在任何位置（这样可能不好管理脚本），多个外部文件通过 src 加载进来，若多使用 defer 会有问题，执行的顺序是无法控制的</li>
-<li>async 是去下载并执行，在下载期间不会组织其他的页面的行为，async 属性的脚本是一定会在 window.onload 事件之前，在 DOMContentLoaded 事件触发之前</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>XHTML 中使用</p>
-<ul>
-<li>一些字符必须使用 实体符号 代替。特殊字符 ‘&lt;’，使用 ‘&amp;lt’ 实体符号代替</li>
-<li>若想按照正常的方式写 JavaScript 则需要使用 CDATA 片段（为了不降低 JavaScript 代码的可读性，方便维护）</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &lt;! [CDATA[</span></span><br><span class="line"><span class="undefined">        ... javascript 代码片段 ...</span></span><br><span class="line"><span class="undefined">    ]] &gt;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>有些浏览器是不兼容 XHTML, 则需要使用注释的语法（为了兼容不支持 XHTML 的浏览器）</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// &lt;! [CDATA[</span></span></span><br><span class="line"><span class="undefined">        ... javascript 代码片段 ...</span></span><br><span class="line"><span class="javascript">    <span class="comment">// ]] &gt;</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>不推荐的语法<ul>
-<li>在 script 标签纸中使用 HTML <!-- --> 注释</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &lt;!--</span></span><br><span class="line"><span class="undefined">        ... javascript ...</span></span><br><span class="line"><span class="undefined">    --&gt;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>之前为什么浏览器会支持这种语法：最早引入 script 元素的时候，和传统解析 html 的规则有冲突，会把 script 中的脚本展示在页面中，所以需要这个方法兼容</p>
-<ol start="6">
-<li><p>推荐使用外部文件，原因：</p>
-<ul>
-<li>可维护性</li>
-<li>可缓存和提高脚本复用程度</li>
-<li>未来的趋势：使用外部文件则可以不使用兼容 XHTML 和不知 script 标签的处理，没有兼容性问题</li>
-</ul>
-</li>
-<li><p>文档模式</p>
-<ul>
-<li>混杂模式</li>
-<li>标准模式</li>
-<li><p>准标准模式（兼容 标准模式和混杂模式）</p>
-<p>文档模式的设置：使用 !DOCTYPE 来设置<br>标准模式设置如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br></pre></td></tr></table></figure>
-<p>不同的文档模式会导致浏览器对于 CSS 的内容呈现，在某些情况下也会影响 javascrit 的解析执行</p>
-</li>
-</ul>
-</li>
-<li><p>noscript 标签的使用</p>
-<ul>
-<li>浏览器不支持脚本的时候</li>
-<li><p>在 javascript 被禁止</p>
-</li>
-<li><p>其他正常情况下 noscript 内容会隐藏起来</p>
-</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">noscript</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>本页面需要浏览器支持（启用）JavaScript<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">noscript</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p>参考文献：</p>
-<ul>
-<li>《JavaScript 高级程序设计》 第三版</li>
 </ul>
 
       
@@ -519,9 +563,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+            <a href="/tags/PHP/" rel="tag"><i class="fa fa-tag"></i> PHP</a>
           
-            <a href="/tags/HTML/" rel="tag"><i class="fa fa-tag"></i> HTML</a>
+            <a href="/tags/服务端/" rel="tag"><i class="fa fa-tag"></i> 服务端</a>
           
         </div>
       
@@ -534,8 +578,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/23/C 语言学习 - hello world/" rel="next" title="C 语言学习 - hello world">
-                <i class="fa fa-chevron-left"></i> C 语言学习 - hello world
+              <a href="/2018/11/04/PHP - 基础知识（一）在 HTML 中嵌入 PHP 以及 PHP 语句和标识符/" rel="next" title="PHP - 基础知识（一）在 HTML 中嵌入 PHP 以及 PHP 语句和标识符">
+                <i class="fa fa-chevron-left"></i> PHP - 基础知识（一）在 HTML 中嵌入 PHP 以及 PHP 语句和标识符
               </a>
             
           </div>
@@ -543,10 +587,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/09/git 撤销 - 针对本地没有 push 的 commit/" rel="prev" title="git 撤销 - 针对本地没有 push 的 commit">
-                git 撤销 - 针对本地没有 push 的 commit <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -698,7 +738,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#script-标签"><span class="nav-number">1.</span> <span class="nav-text">script 标签</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量和字面量"><span class="nav-number">1.</span> <span class="nav-text">变量和字面量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP中的标识符"><span class="nav-number">2.</span> <span class="nav-text">PHP中的标识符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP-中的数据类型"><span class="nav-number">3.</span> <span class="nav-text">PHP 中的数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型强度"><span class="nav-number">4.</span> <span class="nav-text">类型强度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型转化"><span class="nav-number">5.</span> <span class="nav-text">类型转化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可变变量-🐂"><span class="nav-number">6.</span> <span class="nav-text">可变变量(🐂)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#声明和使用常量"><span class="nav-number">7.</span> <span class="nav-text">声明和使用常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解变量作用域-待完善"><span class="nav-number">8.</span> <span class="nav-text">理解变量作用域(待完善)</span></a></li></ol></div>
             
 
           </div>

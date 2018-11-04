@@ -660,7 +660,7 @@
                   <span class="post-meta-item-text">文章总字数&#58;</span>
                 
                 <span title="文章总字数">
-                  596
+                  910
                 </span>
               
 
@@ -676,7 +676,7 @@
                   <span class="post-meta-item-text">阅读时间 &asymp;</span>
                 
                 <span title="阅读时间">
-                  2
+                  3
                 </span>
               
             </div>
@@ -711,14 +711,15 @@
 <h2 id="关系型数据模型"><a href="#关系型数据模型" class="headerlink" title="关系型数据模型"></a>关系型数据模型</h2><ul>
 <li><p>关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束</p>
 <h3 id="关系数据结构"><a href="#关系数据结构" class="headerlink" title="关系数据结构"></a>关系数据结构</h3><ul>
-<li><p>数据结构：（单一的数据结构），关系。</p>
-<ul>
+<li>数据结构：（单一的数据结构），关系。<ul>
 <li>在关系模型中，现实世界的实体以及实体间的各种联系，均是使用关系来表示</li>
 <li>在用户看来，关系模型是把数据库表示为关系的集合，且关系数据库是以二维表格的形式组织数据</li>
 </ul>
 </li>
-<li><p>基本术语</p>
-<ul>
+</ul>
+</li>
+</ul>
+<h4 id="基本术语"><a href="#基本术语" class="headerlink" title="基本术语"></a>基本术语</h4><ul>
 <li>表（table）<blockquote>
 <p>又称作关系，是一个二维的数据结构，它由表名，构成表的各个列和若干行数据组成</p>
 <p>每个表有唯一的一个表名</p>
@@ -726,42 +727,86 @@
 </blockquote>
 </li>
 </ul>
+<ul>
+<li><p>关系（Relation）</p>
+<blockquote>
+<p>一个关系对应一张二维表，每个关系取一个名称进行标识</p>
+<p>关系的类型：基本关系，查询表和视图表</p>
+<ul>
+<li>基本关系通常又称为基本表或基表，是实际存在的表（世纪存储数据的逻辑表示）</li>
+<li>查询表是查询结果对应的表</li>
+<li>视图表是由基本表或其他视图表导出的表，是虚表，不对应实际储存的数据</li>
+</ul>
+</blockquote>
+</li>
+<li><p>列（Column）</p>
+<blockquote>
+<p>表中的列，也称为字段（field）或属性（Attribute）,</p>
+<p>表中每一列有一个名称，称为列名，字段名或属性名</p>
+<p>每一列表示实体的一个属性，具有相同的数据类型</p>
+</blockquote>
+</li>
+<li><p>属性（Attribute）</p>
+</li>
+<li>行（Row）</li>
+<li>元组（Tuple）</li>
+<li>分量（Component）</li>
+<li>码或键（Key）</li>
+<li>超码或超键（Super Key）</li>
+<li>候选码或候选键（Canditate Key）</li>
+<li>主码或主键（Primary Key）</li>
+<li>全码或全键（All Key）</li>
+<li>主属性（Primary Attribute）</li>
+<li>外码或外键（Foreign Key）</li>
+<li>参照关系（Referencing）和被参照关系（Referenced Relation）</li>
+<li>域（Domain）</li>
+<li>数据类型（Data Type）</li>
+<li>关系模型（Relation Databa</li>
+<li>表（table）<blockquote>
+<p>又称作关系，是一个二维的数据结构，它由表名，构成表的各个列和若干行数据组成</p>
+<p>每个表有唯一的一个表名</p>
+<p>表中每一行数据都描述一条具体的记录值</p>
+</blockquote>
 </li>
 </ul>
-</li>
+<ul>
+<li><p>关系（Relation）</p>
+<blockquote>
+<p>一个关系对应一张二维表，每个关系取一个名称进行标识</p>
+<p>关系的类型：基本关系，查询表和视图表</p>
+<ul>
+<li>基本关系通常又称为基本表或基表，是实际存在的表（世纪存储数据的逻辑表示）</li>
+<li>查询表是查询结果对应的表</li>
+<li>视图表是由基本表或其他视图表导出的表，是虚表，不对应实际储存的数据</li>
 </ul>
-<pre><code>- 关系（Relation）
-  &gt; 一个关系对应一张二维表，每个关系取一个名称进行标识
-  &gt;
-  &gt; 关系的类型：基本关系，查询表和视图表
-  &gt;   - 基本关系通常又称为基本表或基表，是实际存在的表（世纪存储数据的逻辑表示）
-  &gt;   - 查询表是查询结果对应的表
-  &gt;   - 视图表是由基本表或其他视图表导出的表，是虚表，不对应实际储存的数据
-  &gt;
-
-- 列（Column）
-  &gt; 表中的列，也称为字段（field）或属性（Attribute）,
-  &gt;
-  &gt; 表中每一列有一个名称，称为列名，字段名或属性名
-  &gt;
-  &gt; 每一列表示实体的一个属性，具有相同的数据类型
-
-- 属性（Attribute）
-- 行（Row）
-- 元组（Tuple）
-- 分量（Component）
-- 码或键（Key）
-- 超码或超键（Super Key）
-- 候选码或候选键（Canditate Key）
-- 主码或主键（Primary Key）
-- 全码或全键（All Key）
-- 主属性（Primary Attribute）
-- 外码或外键（Foreign Key）
-- 参照关系（Referencing）和被参照关系（Referenced Relation）
-- 域（Domain）
-- 数据类型（Data Type）
-- 关系模型（Relation Database）
-</code></pre><h3 id="关系操作集合（待更新）"><a href="#关系操作集合（待更新）" class="headerlink" title="关系操作集合（待更新）"></a>关系操作集合（待更新）</h3><h3 id="关系的完整型约束（待更新）"><a href="#关系的完整型约束（待更新）" class="headerlink" title="关系的完整型约束（待更新）"></a>关系的完整型约束（待更新）</h3><h2 id="关系的完整型约束（待更新）-1"><a href="#关系的完整型约束（待更新）-1" class="headerlink" title="关系的完整型约束（待更新）"></a>关系的完整型约束（待更新）</h2><ul>
+</blockquote>
+</li>
+<li><p>列（Column）</p>
+<blockquote>
+<p>表中的列，也称为字段（field）或属性（Attribute）,</p>
+<p>表中每一列有一个名称，称为列名，字段名或属性名</p>
+<p>每一列表示实体的一个属性，具有相同的数据类型</p>
+</blockquote>
+</li>
+<li><p>属性（Attribute）</p>
+</li>
+<li>行（Row）</li>
+<li>元组（Tuple）</li>
+<li>分量（Component）</li>
+<li>码或键（Key）</li>
+<li>超码或超键（Super Key）</li>
+<li>候选码或候选键（Canditate Key）</li>
+<li>主码或主键（Primary Key）</li>
+<li>全码或全键（All Key）</li>
+<li>主属性（Primary Attribute）</li>
+<li>外码或外键（Foreign Key）</li>
+<li>参照关系（Referencing）和被参照关系（Referenced Relation）</li>
+<li>域（Domain）</li>
+<li>数据类型（Data Type）</li>
+<li><p>关系模型（Relation Database）</p>
+<h3 id="关系操作集合（待更新）"><a href="#关系操作集合（待更新）" class="headerlink" title="关系操作集合（待更新）"></a>关系操作集合（待更新）</h3><h3 id="关系的完整型约束（待更新）"><a href="#关系的完整型约束（待更新）" class="headerlink" title="关系的完整型约束（待更新）"></a>关系的完整型约束（待更新）</h3></li>
+</ul>
+<h2 id="关系的完整型约束（待更新）-1"><a href="#关系的完整型约束（待更新）-1" class="headerlink" title="关系的完整型约束（待更新）"></a>关系的完整型约束（待更新）</h2><ul>
 <li>关系数据库的规范化理论</li>
 </ul>
 
@@ -3005,7 +3050,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -3016,7 +3061,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3084,7 +3129,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">36.1k</span>
+    <span title="博客总字数">36.4k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

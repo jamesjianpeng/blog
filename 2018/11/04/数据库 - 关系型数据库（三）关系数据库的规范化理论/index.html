@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="为什么要规范化（抄不动了😢）关系模型中可能存在冗余和异常问题（抄不动了😢） 数据冗余 更新异常 插入异常 删除异常  函数依赖和关键字（抄不动了😢） 函数依赖：指关系中属性间的对应关系 定义：设 R 为任一给定关系，如果对于 R 中属性 X 的每一个值，R 中的属性 Y 只用唯一值与之对应，则称 X 函数决定 Y 或称 Y 函数依赖于 X,记住 X -&amp;gt; Y。其中，X 称为决定因素">
+<meta name="description" content="为什么要规范化（理论） 关系模型中可能存在的一些问题， 规范化的作用 是关系数据库设计的理论依据   范围 是关系模式中各属性之间的依赖关系及其对关系性能的影响，为关系模式提供了优劣的理论标准    关系模型中可能存在冗余和异常问题 数据冗余：同一数据被反反复复存储的情况  更新异常：数据冗余将导致存储空间的浪费和潜在数据不一致修改麻烦等问题  插入异常：应该插入到数据库中的数据不能执行插入操作的">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库 - 关系型数据库（三）关系数据库的规范化理论">
 <meta property="og:url" content="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（三）关系数据库的规范化理论/index.html">
 <meta property="og:site_name" content="彭涧">
-<meta property="og:description" content="为什么要规范化（抄不动了😢）关系模型中可能存在冗余和异常问题（抄不动了😢） 数据冗余 更新异常 插入异常 删除异常  函数依赖和关键字（抄不动了😢） 函数依赖：指关系中属性间的对应关系 定义：设 R 为任一给定关系，如果对于 R 中属性 X 的每一个值，R 中的属性 Y 只用唯一值与之对应，则称 X 函数决定 Y 或称 Y 函数依赖于 X,记住 X -&amp;gt; Y。其中，X 称为决定因素">
+<meta property="og:description" content="为什么要规范化（理论） 关系模型中可能存在的一些问题， 规范化的作用 是关系数据库设计的理论依据   范围 是关系模式中各属性之间的依赖关系及其对关系性能的影响，为关系模式提供了优劣的理论标准    关系模型中可能存在冗余和异常问题 数据冗余：同一数据被反反复复存储的情况  更新异常：数据冗余将导致存储空间的浪费和潜在数据不一致修改麻烦等问题  插入异常：应该插入到数据库中的数据不能执行插入操作的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-04T15:24:57.929Z">
+<meta property="og:updated_time" content="2018-11-05T15:51:03.308Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库 - 关系型数据库（三）关系数据库的规范化理论">
-<meta name="twitter:description" content="为什么要规范化（抄不动了😢）关系模型中可能存在冗余和异常问题（抄不动了😢） 数据冗余 更新异常 插入异常 删除异常  函数依赖和关键字（抄不动了😢） 函数依赖：指关系中属性间的对应关系 定义：设 R 为任一给定关系，如果对于 R 中属性 X 的每一个值，R 中的属性 Y 只用唯一值与之对应，则称 X 函数决定 Y 或称 Y 函数依赖于 X,记住 X -&amp;gt; Y。其中，X 称为决定因素">
+<meta name="twitter:description" content="为什么要规范化（理论） 关系模型中可能存在的一些问题， 规范化的作用 是关系数据库设计的理论依据   范围 是关系模式中各属性之间的依赖关系及其对关系性能的影响，为关系模式提供了优劣的理论标准    关系模型中可能存在冗余和异常问题 数据冗余：同一数据被反反复复存储的情况  更新异常：数据冗余将导致存储空间的浪费和潜在数据不一致修改麻烦等问题  插入异常：应该插入到数据库中的数据不能执行插入操作的">
 
 
 
@@ -395,7 +395,7 @@
                   <span class="post-meta-item-text">文章总字数&#58;</span>
                 
                 <span title="文章总字数">
-                  262
+                  638
                 </span>
               
 
@@ -411,7 +411,7 @@
                   <span class="post-meta-item-text">阅读时间 &asymp;</span>
                 
                 <span title="阅读时间">
-                  1
+                  2
                 </span>
               
             </div>
@@ -432,11 +432,29 @@
       
 
       
-        <h3 id="为什么要规范化（抄不动了😢）"><a href="#为什么要规范化（抄不动了😢）" class="headerlink" title="为什么要规范化（抄不动了😢）"></a>为什么要规范化（抄不动了😢）</h3><h4 id="关系模型中可能存在冗余和异常问题（抄不动了😢）"><a href="#关系模型中可能存在冗余和异常问题（抄不动了😢）" class="headerlink" title="关系模型中可能存在冗余和异常问题（抄不动了😢）"></a>关系模型中可能存在冗余和异常问题（抄不动了😢）</h4><ol>
-<li>数据冗余</li>
-<li>更新异常</li>
-<li>插入异常</li>
-<li>删除异常</li>
+        <h3 id="为什么要规范化（理论）"><a href="#为什么要规范化（理论）" class="headerlink" title="为什么要规范化（理论）"></a>为什么要规范化（理论）</h3><ul>
+<li>关系模型中可能存在的一些问题，</li>
+<li>规范化的作用<ol>
+<li>是关系数据库设计的理论依据</li>
+</ol>
+</li>
+<li>范围<ol>
+<li>是关系模式中各属性之间的依赖关系及其对关系性能的影响，为关系模式提供了优劣的理论标准</li>
+</ol>
+</li>
+</ul>
+<h4 id="关系模型中可能存在冗余和异常问题"><a href="#关系模型中可能存在冗余和异常问题" class="headerlink" title="关系模型中可能存在冗余和异常问题"></a>关系模型中可能存在冗余和异常问题</h4><ol>
+<li><p>数据冗余：同一数据被反反复复存储的情况</p>
+</li>
+<li><p>更新异常：数据冗余将导致存储空间的浪费和潜在数据不一致修改麻烦等问题</p>
+</li>
+<li><p>插入异常：应该插入到数据库中的数据不能执行插入操作的情形</p>
+</li>
+<li><p>删除异常：不应该删去的数据被删去的情形</p>
+<blockquote>
+<p>上述的情况和数据依赖密切相关</p>
+</blockquote>
+</li>
 </ol>
 <h3 id="函数依赖和关键字（抄不动了😢）"><a href="#函数依赖和关键字（抄不动了😢）" class="headerlink" title="函数依赖和关键字（抄不动了😢）"></a>函数依赖和关键字（抄不动了😢）</h3><ol>
 <li>函数依赖：指关系中属性间的对应关系</li>
@@ -450,11 +468,31 @@
 <h3 id="范式与关系规范化（抄不动了😢）"><a href="#范式与关系规范化（抄不动了😢）" class="headerlink" title="范式与关系规范化（抄不动了😢）"></a>范式与关系规范化（抄不动了😢）</h3><ol>
 <li>规范化：一个低一级范式的关系模式通过模式分解（Schema Decomposition）可以转换为若干个高一级范式的关系模式的集合的过程</li>
 </ol>
-<h4 id="范式（抄不动了😢）"><a href="#范式（抄不动了😢）" class="headerlink" title="范式（抄不动了😢）"></a>范式（抄不动了😢）</h4><ol>
-<li>第一范式(1NF)</li>
-<li>第二范式(2NF)</li>
-<li>第三范式(3NF)</li>
-<li>BCNF</li>
+<h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><ol>
+<li><p>第一范式(1NF)</p>
+<ul>
+<li>不含重复组的关系，不存在嵌套结构</li>
+<li>不满足第一范式的关系称为非规范关系</li>
+</ul>
+</li>
+<li><p>第二范式(2NF)</p>
+<ul>
+<li>定义：设 R 为任一给定关系，若 R 为 1NF, 且所有非主属性都完全函数依赖于候选关键字，则 R 为第二范式 </li>
+</ul>
+</li>
+<li><p>第三范式(3NF)</p>
+<ul>
+<li>定义：设 R 为任一给定关系，若 R 为 2NF，且起每一个非主属性都不传递函数依赖于候选关键字，则 R 为第三范式<blockquote>
+<p>通常，第三范式的关系大多数都能解决插入和删除操作异常的情况，数据冗余也能得到有效的控制</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>BCNF（抄不动了😢）</p>
+<blockquote>
+<p>关系规范化理论主要应用于数据库设计中的概念设计阶段，用来分析其实体划分是否合适，判断属性具体分配到哪个实体中</p>
+</blockquote>
+</li>
 </ol>
 
       
@@ -650,7 +688,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要规范化（抄不动了😢）"><span class="nav-number">1.</span> <span class="nav-text">为什么要规范化（抄不动了😢）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关系模型中可能存在冗余和异常问题（抄不动了😢）"><span class="nav-number">1.1.</span> <span class="nav-text">关系模型中可能存在冗余和异常问题（抄不动了😢）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数依赖和关键字（抄不动了😢）"><span class="nav-number">2.</span> <span class="nav-text">函数依赖和关键字（抄不动了😢）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数依赖根据不同性质的分类（抄不动了😢）"><span class="nav-number">2.1.</span> <span class="nav-text">函数依赖根据不同性质的分类（抄不动了😢）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范式与关系规范化（抄不动了😢）"><span class="nav-number">3.</span> <span class="nav-text">范式与关系规范化（抄不动了😢）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#范式（抄不动了😢）"><span class="nav-number">3.1.</span> <span class="nav-text">范式（抄不动了😢）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要规范化（理论）"><span class="nav-number">1.</span> <span class="nav-text">为什么要规范化（理论）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关系模型中可能存在冗余和异常问题"><span class="nav-number">1.1.</span> <span class="nav-text">关系模型中可能存在冗余和异常问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数依赖和关键字（抄不动了😢）"><span class="nav-number">2.</span> <span class="nav-text">函数依赖和关键字（抄不动了😢）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数依赖根据不同性质的分类（抄不动了😢）"><span class="nav-number">2.1.</span> <span class="nav-text">函数依赖根据不同性质的分类（抄不动了😢）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范式与关系规范化（抄不动了😢）"><span class="nav-number">3.</span> <span class="nav-text">范式与关系规范化（抄不动了😢）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#范式"><span class="nav-number">3.1.</span> <span class="nav-text">范式</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -685,7 +723,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">40.6k</span>
+    <span title="博客总字数">41k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

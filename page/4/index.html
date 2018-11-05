@@ -297,6 +297,478 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/07/冒泡，选择，插入排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/07/冒泡，选择，插入排序/" itemprop="url">冒泡，选择，插入排序</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-07T11:08:03+08:00">
+                2018-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据和算法-JavaScript-描述》/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据和算法 JavaScript 描述》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p><a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/433e267c8f1f51a994cc8d36c7087741707f49f6" target="_blank" rel="noopener">git commit history</a></p>
+<h3 id="冒泡，选择，插入排序的对比："><a href="#冒泡，选择，插入排序的对比：" class="headerlink" title="冒泡，选择，插入排序的对比："></a>冒泡，选择，插入排序的对比：</h3><ul>
+<li>冒泡排序每次操作都是针对确定的位置（索引），交换的元素不是确定的；找出最大或者最小值并与确定位置元素的数据交换</li>
+<li>选择排序每次操作都是针对确定的位置（索引），交换的元素不是确定的；找出最大或者最小值并与确定位置元素的数据交换</li>
+<li>插入排序每次操作没有确定的位置（索引），每次插入的元素是确定的；伴随这我们的判断条件去移动元素的位置，或插入指定的元素</li>
+<li>相同点：<ol>
+<li>冒泡和选择排序都是排列组合思想的实现，都要采用两层循环</li>
+<li>冒泡，选择和插入排序都是要采用采用两层循环</li>
+</ol>
+</li>
+<li>不相同点<ol>
+<li>插入的效率会更高一些，在第二层循环中的次数是不确定的</li>
+<li>冒泡和选择排序在第二循环中会从都到尾去对比，不管是否排序好了</li>
+</ol>
+</li>
+</ul>
+<h3 id="运用的数学方法"><a href="#运用的数学方法" class="headerlink" title="运用的数学方法"></a>运用的数学方法</h3><ul>
+<li>冒泡和选择排列组合：并且内层循环的总次数 =（首项 + 尾项）* 项数 / 2</li>
+</ul>
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><ul>
+<li><p>例子：[2, 4, 3, 5, 0, 1]，升序：</p>
+<ul>
+<li>2, 4, 3, 5, 0, 1 =&gt; 2, 4, 3, 5, 0, 1; (2 和 4) 当前最大值 4，不右移</li>
+<li>2, 4, 3, 5, 0, 1 =&gt; 2, 3, 4, 5, 0, 1; (4 和 3) 当前最大值 4，右移</li>
+<li>2, 3, 4, 5, 0, 1 =&gt; 2, 3, 4, 5, 0, 1; (4 和 5) 当前最大值 5，不右移</li>
+<li>2, 3, 4, 5, 0, 1 =&gt; 2, 3, 4, 0, 5, 1; (5 和 0) 当前最大值 5，右移</li>
+<li>2, 3, 4, 0, 5, 1 =&gt; 2, 3, 4, 0, 1, 5; (5 和 1) 当前最大值 5，右移</li>
+<li>上面一轮该轮最大值（5）移动到最右边（倒数第一位）</li>
+<li>2, 3, 4, 0, 1, 5 =&gt; 2, 3, 4, 0, 1, 5; (2 和 3) 当前最大值 3，不右移</li>
+<li>2, 3, 4, 0, 1, 5 =&gt; 2, 3, 4, 0, 1, 5; (3 和 4) 当前最大值 4，不右移</li>
+<li>2, 3, 4, 0, 1, 5 =&gt; 2, 3, 0, 4, 1, 5; (4 和 0) 当前最大值 4，右移</li>
+<li>2, 3, 0, 4, 1, 5 =&gt; 2, 3, 0, 1, 4, 5; (4 和 1) 当前最大值 4，右移</li>
+<li>上面一轮该轮最大值（4）移动到最右边（倒数第二位）</li>
+<li>2, 3, 0, 1, 4, 5 =&gt; 2, 3, 0, 1, 4, 5; (2 和 3) 当前最大值 3，不右移</li>
+<li>2, 3, 0, 1, 4, 5 =&gt; 2, 0, 3, 1, 4, 5; (3 和 0) 当前最大值 3，右移</li>
+<li>2, 0, 3, 1, 4, 5 =&gt; 2, 0, 1, 3, 4, 5; (3 和 0) 当前最大值 3，右移</li>
+<li>上面一轮该轮最大值（3）移动到最右边（倒数第三位）</li>
+<li>2, 0, 1, 3, 4, 5 =&gt; 0, 2, 1, 3, 4, 5; (0 和 2) 当前最大值 2，右移</li>
+<li>0, 2, 1, 3, 4, 5 =&gt; 0, 1, 2, 3, 4, 5; (2 和 1) 当前最大值 2，右移</li>
+<li>上面一轮该轮最大值（2）移动到最右边（倒数第四位）</li>
+<li>数组长度为：6，执行的轮次是：4，随着轮次增加每一轮循环的次数递减，公差为 1，总次数；（5 + 2）* 4 / 2 = 14</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; swap &#125; <span class="keyword">from</span> <span class="string">'./CArray.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 冒泡排序</span></span><br><span class="line"><span class="comment">* @param &#123;*&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> bubbleSort = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> list = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">var</span> outer = list.length;</span><br><span class="line">    <span class="keyword">var</span> inner;</span><br><span class="line">    <span class="keyword">for</span> (; outer &gt; <span class="number">2</span>; --outer) &#123; <span class="comment">/** outer &gt; 2 和 outer &gt;= 2 是有区别循环的次数 */</span></span><br><span class="line">        <span class="keyword">for</span> (inner = <span class="number">0</span>; inner &lt;= (outer - <span class="number">2</span>); inner++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (list[inner] &gt; list[inner + <span class="number">1</span>]) &#123;</span><br><span class="line">                swap(list, inner, inner + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><ul>
+<li><p>例子：[2, 4, 3, 5, 0, 1]，升序：</p>
+<ul>
+<li>2, 4, 3, 5, 0, 1 =&gt; 2, 4, 3, 5, 0, 1; (2 和 4) 当前最小值2，不左移</li>
+<li>2, 4, 3, 5, 0, 1 =&gt; 2, 4, 3, 5, 0, 1; (2 和 3) 当前最小值2，不左移</li>
+<li>2, 4, 3, 5, 0, 1 =&gt; 2, 4, 3, 5, 0, 1; (2 和 5) 当前最小值2，不左移</li>
+<li>2, 4, 3, 5, 0, 1 =&gt; 0, 4, 3, 5, 2, 1; (2 和 0) 当前最小值0，0 和 2 的位置交换，其中 0 左移到第一位，</li>
+<li>0, 4, 3, 5, 2, 1 =&gt; 0, 4, 3, 5, 2, 1; (0 和 1) 当前最小值0，不左移</li>
+<li>上面一轮该轮最小值（0）移动到第一位</li>
+<li>0, 4, 3, 5, 2, 1 =&gt; 0, 3, 4, 5, 2, 1; (4 和 3) 当前最小值3，4 和 3 的位置交换，其中 3 左移到第二位</li>
+<li>0, 3, 4, 5, 2, 1 =&gt; 0, 3, 4, 5, 2, 1; (3 和 5) 当前最小值3，不左移</li>
+<li>0, 3, 4, 5, 2, 1 =&gt; 0, 2, 4, 5, 3, 1; (3 和 2) 当前最小值2，3 和 2 的位置交换，其中 2 左移到第二位</li>
+<li>0, 2, 4, 5, 3, 1 =&gt; 0, 1, 4, 5, 3, 2; (2 和 1) 当前最小值1，2 和 1 的位置交换，其中 1 左移到第二位</li>
+<li>上面一轮该轮最小值（1）移动到第二位</li>
+<li>0, 1, 4, 5, 3, 2 =&gt; 0, 1, 4, 5, 3, 2; (4 和 5) 当前最小值4，不左移</li>
+<li>0, 1, 4, 5, 3, 2 =&gt; 0, 1, 3, 5, 4, 2; (4 和 3) 当前最小值3，4 和 3 的位置交换，其中 3 左移到第三位</li>
+<li>0, 1, 3, 5, 4, 2 =&gt; 0, 1, 2, 5, 4, 3; (3 和 2) 当前最小值2，3 和 2 的位置交换，其中 2 左移到第三位</li>
+<li>上面一轮该轮最小值（2）移动到第三位</li>
+<li>0, 1, 2, 5, 4, 3 =&gt; 0, 1, 2, 4, 5, 3; (5 和 4) 当前最小值4，5 和 4 的位置交换，其中 4 左移到第四位</li>
+<li>0, 1, 2, 4, 5, 3 =&gt; 0, 1, 2, 3, 5, 4; (3 和 4) 当前最小值3，3 和 4 的位置交换，其中 2 左移到第四位</li>
+<li>上面一轮该轮最小值（3）移动到第四位</li>
+<li>0, 1, 2, 3, 5, 4 =&gt; 0, 1, 2, 3, 4, 5; (5 和 4) 当前最小值4，5 和 4 的位置交换，其中 4 左移到第五位</li>
+<li>上面一轮该轮最小值（4）移动到第五位</li>
+<li>数组长度为：6，执行的轮次是：5，随着轮次增加每一轮循环的次数递减，公差为 1，总次数；（5 + 1）* 5 / 2 = 15</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; swap &#125; <span class="keyword">from</span> <span class="string">'./CArray.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 选择排序</span></span><br><span class="line"><span class="comment">* @param &#123;string&#125; sortWay : access 升序 | descend 降序</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> selectionSort = <span class="function"><span class="keyword">function</span> (<span class="params">sortWay</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> list = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">var</span> len = list.length;</span><br><span class="line">    <span class="keyword">var</span> outer = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> inner;</span><br><span class="line">    <span class="keyword">for</span> (; outer &lt; (len - <span class="number">1</span>); outer++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (inner = outer + <span class="number">1</span>; inner &lt; len; inner++) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((!sortWay || sortWay === <span class="string">'access'</span>) &amp;&amp; list[inner] &lt; list[outer]) &#123;</span><br><span class="line">                <span class="comment">/** 升序 */</span></span><br><span class="line">                swap(list, outer, inner);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sortWay === <span class="string">'descend'</span> &amp;&amp; list[inner] &gt; list[outer]) &#123;</span><br><span class="line">                <span class="comment">/** 降序 */</span></span><br><span class="line">                swap(list, outer, inner);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><ul>
+<li>例子：[2, 4, 3, 5, 0, 1]，升序：</li>
+<li>2, 4, 3, 5, 0, 1 =&gt; 2, 4, 3, 5, 0, 1</li>
+<li>2, 4, 3, 5, 0, 1 =&gt; 2, 3, 4, 5, 0, 1</li>
+<li>2, 3, 4, 5, 0, 1 =&gt; 2, 3, 4, 5, 0, 1</li>
+<li>2, 3, 4, 5, 0, 1 =&gt; 0, 2, 3, 4, 5, 1</li>
+<li>0, 2, 3, 4, 5, 1 =&gt; 0, 1, 2, 3, 4, 5</li>
+<li><p>排序完成q@&gt;.&lt;@p</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 插入排序</span></span><br><span class="line"><span class="comment">  * @param &#123;string&#125; sortWay : access 升序 | descend 降序</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">const</span> insertionSort = <span class="function"><span class="keyword">function</span> (<span class="params">sortWay</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> list = <span class="keyword">this</span>;</span><br><span class="line">      <span class="keyword">var</span> len = list.length;</span><br><span class="line">      <span class="keyword">var</span> outer = <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">var</span> inner;</span><br><span class="line">      <span class="keyword">var</span> temp;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (; outer &lt; len; ++outer) &#123;</span><br><span class="line">          temp = list[outer];</span><br><span class="line">          inner = outer;</span><br><span class="line">          <span class="keyword">while</span> (inner &gt; <span class="number">0</span> &amp;&amp; (<span class="comment">/** 排序方式 */</span></span><br><span class="line">              sortWay === <span class="string">'access'</span> || !sortWay ? list[inner - <span class="number">1</span>] &gt; temp : list[inner - <span class="number">1</span>] &lt; temp)</span><br><span class="line">          ) &#123;</span><br><span class="line">              list[inner] = list[inner - <span class="number">1</span>];</span><br><span class="line">              inner--;</span><br><span class="line">          &#125;</span><br><span class="line">          list[inner] = temp;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="CArray-js"><a href="#CArray-js" class="headerlink" title="CArray.js"></a>CArray.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">CArray</span> (<span class="params">numElements</span>) </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * @constructor</span></span><br><span class="line"><span class="comment">    * @param &#123;Number&#125; numElements</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">this</span>.dataStore = [];</span><br><span class="line">    <span class="keyword">this</span>.numElements = numElements;</span><br><span class="line">    <span class="keyword">this</span>.toString = toString;</span><br><span class="line">    <span class="keyword">this</span>.setData = setData;</span><br><span class="line">    <span class="keyword">this</span>.swap = swap;</span><br><span class="line">    <span class="keyword">var</span> len = numElements;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (len--) &#123;</span><br><span class="line">        <span class="keyword">this</span>.dataStore[len] = len;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 生成随机元素的列表，元素的数量就是 numElements</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setData</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.numElements; i++) &#123;</span><br><span class="line">        <span class="keyword">this</span>.dataStore[i] = <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="keyword">this</span>.numElements + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 输出指定的数组中全部的元素，每 10 个自动换行</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toString</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = <span class="keyword">this</span>.numElements;</span><br><span class="line">    <span class="keyword">var</span> result = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">        result += <span class="keyword">this</span>.dataStore[i] + <span class="string">' '</span>;</span><br><span class="line">        <span class="keyword">if</span> (((i + <span class="number">1</span>) % <span class="number">10</span> === <span class="number">0</span>) &amp;&amp; i &gt; <span class="number">0</span>) result += <span class="string">'\n'</span>;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 把后一个数和前一个数进行交换</span></span><br><span class="line"><span class="comment">* @param &#123;array&#125; arr</span></span><br><span class="line"><span class="comment">* @param &#123;number&#125; firstIndex</span></span><br><span class="line"><span class="comment">* @param &#123;number&#125; secondIndex</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span> (<span class="params">arr, firstIndex, secondIndex</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp;</span><br><span class="line">    temp = arr[firstIndex];</span><br><span class="line">    arr[firstIndex] = arr[secondIndex];</span><br><span class="line">    arr[secondIndex] = temp;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** #region default */</span></span><br><span class="line"><span class="comment">// randomList = new CArray(100);</span></span><br><span class="line"><span class="comment">// console.log(randomList.dataStore);</span></span><br><span class="line"><span class="comment">// console.log(randomList.toString());</span></span><br><span class="line"><span class="comment">/** #endregion */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    swap</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>参考文献</p>
+<ul>
+<li>《数据和算法 JavaScript 描述》</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/26/TypeScript and Vue ( 五 ) - webpack 处理 TypeScript 和 Vue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/26/TypeScript and Vue ( 五 ) - webpack 处理 TypeScript 和 Vue/" itemprop="url">TypeScript and Vue ( 五 ) - webpack 处理 TypeScript 和 Vue</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-26T12:17:16+08:00">
+                2018-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  926
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p><a href="https://www.pengjiandry.com/2018/09/24/TypeScript%20and%20Vue%20%28%20%E5%9B%9B%20%29%20-%20webpack%20%E5%A4%84%E7%90%86%20Vue/">上一篇: TypeScript and Vue ( 四 ) - webpack 处理 Vue</a></p>
+<h3 id="七，使用-webpack-构建-TypeScript-and-Vue-应用"><a href="#七，使用-webpack-构建-TypeScript-and-Vue-应用" class="headerlink" title="七，使用 webpack 构建 TypeScript and Vue 应用"></a>七，<a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/635417def4d32d115d50a5fbc014034591373f0b" target="_blank" rel="noopener">使用 webpack 构建 TypeScript and Vue 应用</a></h3><ul>
+<li><p>为什么开始使用 TypeScript </p>
+<ol>
+<li>TypeScript 的静态检查可以起到一定避免出低级bug的问题，更好的集中在编码的逻辑上</li>
+<li>接口规范（后续更新）</li>
+</ol>
+</li>
+<li><p>add package.json scripts</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line">  "scripts": &#123;</span><br><span class="line">      "build:prod:onlytsvue": "npm run creareconf:onlytsvue &amp;&amp; node ./build/prod-build.js tsvue",</span><br><span class="line">      "build:local:onlytsvue": "npm run creareconf:onlytsvue &amp;&amp; node ./build/local-dev.js tsvue",</span><br><span class="line">      "creareconf:onlytsvue": "node ./build/helper/create-tsconf.js tsvue",</span><br><span class="line">  &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>add webpack.ts.vue.conf.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file 只构建 TypeScript and Vue</span></span><br><span class="line"><span class="comment"> * @author jamesjianpeng</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; VueLoaderPlugin &#125; = <span class="built_in">require</span>(<span class="string">'vue-loader'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    mode: <span class="string">'none'</span>,</span><br><span class="line">    entry: &#123;</span><br><span class="line">        mian: path.resolve(__dirname, <span class="string">'../src/app-ts-vue/index.ts'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, <span class="string">'../dist'</span>),</span><br><span class="line">        publicPath: <span class="string">'./'</span>,</span><br><span class="line">        filename: <span class="string">'[name].js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        alias: &#123;</span><br><span class="line">           <span class="comment">/**</span></span><br><span class="line"><span class="comment">            * @todo https://cn.vuejs.org/v2/guide/installation.html#%E8%BF%90%E8%A1%8C%E6%97%B6-%E7%BC%96%E8%AF%91%E5%99%A8-vs-%E5%8F%AA%E5%8C%85%E5%90%AB%E8%BF%90%E8%A1%8C%E6%97%B6</span></span><br><span class="line"><span class="comment">            * 需要编译</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">           <span class="string">'vue$'</span>: <span class="string">'vue/dist/vue.esm.js'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.vue$/</span>,</span><br><span class="line">                loader: <span class="string">'vue-loader'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.scss/</span>,</span><br><span class="line">                use: [</span><br><span class="line">                    <span class="string">'vue-style-loader'</span>,</span><br><span class="line">                    <span class="string">'css-loader'</span>,</span><br><span class="line">                    <span class="string">'sass-loader'</span></span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/.ts$/</span>,</span><br><span class="line">                loader: <span class="string">'ts-loader'</span>,</span><br><span class="line">                options: &#123;</span><br><span class="line">                    appendTsSuffixTo: [ <span class="regexp">/\.vue$/</span> ],</span><br><span class="line">                &#125;,</span><br><span class="line">                include: [ path.resolve(__dirname, <span class="string">'../src/app-ts-vue/**/*'</span>) ],</span><br><span class="line">                exclude: <span class="regexp">/node_module/</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> VueLoaderPlugin(),</span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            title: <span class="string">'TypeScript and Threejs project'</span>,</span><br><span class="line">            meta: &#123;</span><br><span class="line">                viewport: <span class="string">'width=device-width, initial-scale=1, shrink-to-fit=no'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>add src/app-ts-vue/**</p>
+<ul>
+<li><p>add src/app-ts-vue/index.ts</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> app <span class="keyword">from</span> <span class="string">'./app.vue'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 生成一个 id 为 app 的元素插入到 body 中，在最后一个元素的前面</span></span><br><span class="line"><span class="comment"> * @param none</span></span><br><span class="line"><span class="comment"> * @returns &#123;string&#125; id名字：'#app'</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> createAppId = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> scriptTag = <span class="built_in">document</span>.body.lastChild;</span><br><span class="line">    <span class="keyword">const</span> app = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">    app.id = <span class="string">'app'</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.insertBefore(app, scriptTag);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'#'</span> + app.id;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(createAppId())</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @todo https://cn.vuejs.org/v2/guide/installation.html#%E8%BF%90%E8%A1%8C%E6%97%B6-%E7%BC%96%E8%AF%91%E5%99%A8-vs-%E5%8F%AA%E5%8C%85%E5%90%AB%E8%BF%90%E8%A1%8C%E6%97%B6</span></span><br><span class="line"><span class="comment"> * 第二种方式需要编译</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 在 ./webpack/webapck.vue.conf.js 中的配置如下</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * ...</span></span><br><span class="line"><span class="comment"> *    resolve: &#123;</span></span><br><span class="line"><span class="comment"> *        alias: &#123;</span></span><br><span class="line"><span class="comment"> *           'vue$': 'vue/dist/vue.esm.js'</span></span><br><span class="line"><span class="comment"> *        &#125;</span></span><br><span class="line"><span class="comment"> *    &#125;</span></span><br><span class="line"><span class="comment"> * ...</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: createAppId(),</span><br><span class="line">    template: <span class="string">`&lt;div&gt;</span></span><br><span class="line"><span class="string">                    &lt;app /&gt;</span></span><br><span class="line"><span class="string">               &lt;/div&gt;`</span>,</span><br><span class="line">    components:&#123;</span><br><span class="line">        app</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @todo https://cn.vuejs.org/v2/guide/installation.html#%E8%BF%90%E8%A1%8C%E6%97%B6-%E7%BC%96%E8%AF%91%E5%99%A8-vs-%E5%8F%AA%E5%8C%85%E5%90%AB%E8%BF%90%E8%A1%8C%E6%97%B6</span></span><br><span class="line"><span class="comment"> * 第一种方式不需要编译</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// new Vue(&#123;</span></span><br><span class="line"><span class="comment">//     el: createAppId(),</span></span><br><span class="line"><span class="comment">//     render: (h) =&gt; h(app),</span></span><br><span class="line"><span class="comment">// &#125;);</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>add vue-shims.d.ts 文件，和入口文件在同一层或者在子层下,如：./src/app-ts-vue/typings/vue-shims.d.ts</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> '*.vue' &#123;</span><br><span class="line">    <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> Vue</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>作用：通过 import xx.vue 文件的时候不会有错误提示</p>
+<ul>
+<li>./src/app-ts-vue/app.vue<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">    &lt;template lang=&quot;html&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;app&quot;&gt;</span><br><span class="line">        app hello TypeScript and Vue cool !!!q@#_#@p~~</span><br><span class="line">        &lt;button type=&quot;button&quot; @click=&quot;increment&quot; name=&quot;button&quot;&gt;click&lt;/button&gt;</span><br><span class="line">        &#123;&#123; exclamationMarks &#125;&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script lang=&quot;ts&quot;&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        name: &apos;app&apos;,</span><br><span class="line">        data () &#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                number: 0</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        computed: &#123;</span><br><span class="line">            exclamationMarks():void &#123;</span><br><span class="line">                return Array(this.number + 1).join(&apos;10&apos;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            alertMsg(msg:string):void &#123;</span><br><span class="line">                alert(msg || &apos;default&apos;)</span><br><span class="line">            &#125;,</span><br><span class="line">            increment():void &#123;</span><br><span class="line">                this.number++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot;&gt;</span><br><span class="line">    .app &#123;</span><br><span class="line">        font-size: 80px;</span><br><span class="line">        color: #eee;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>modified tsconfig </p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">        ...</span><br><span class="line">        "moduleResolution": "node",</span><br><span class="line">        ...</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://typescript.bootcss.com/module-resolution.html" target="_blank" rel="noopener">node 的作用：解析策略试图在运行时模仿Node.js模块解析机制</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>注意：</p>
+<ol>
+<li>*.d.ts 文件中的字符必须使用 “” 否则，在项目文件中 我们指定的文件后缀的文件会提示：Can’t find this module</li>
+<li>在 Vue 项目使用了 TypeScript 之后 babel 不能使用，会出现 errror（我在测试的时候情况是这样-@.@-）</li>
+<li>在搭建工程时如果使用 html-webpack-plugin 这个插件记得在启动 dev 或 build 脚本中检查一下配置</li>
+</ol>
+</li>
+</ul>
+<hr>
+<p>想要查看其他的文件请点击上面 <a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/635417def4d32d115d50a5fbc014034591373f0b" target="_blank" rel="noopener">git commit history</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/26/Nodejs - 创建一个文件并写入内容/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1751,381 +2223,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/17/Array 之 ES5 reduce/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/17/Array 之 ES5 reduce/" itemprop="url">Array 之 ES5 reduce</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-17T12:25:34+08:00">
-                2018-09-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  505
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Array-prototype-reduce"><a href="#Array-prototype-reduce" class="headerlink" title="Array.prototype.reduce"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce" target="_blank" rel="noopener">Array.prototype.reduce</a></h3><ul>
-<li><p>Grammar:</p>
-<ol>
-<li>array.reduce(callback[, thisArg])</li>
-<li>array.reduce(callback(firstOrTotalNum, nextNum, index, array){ //do something }[, initNum])</li>
-</ol>
-</li>
-<li><p>Description:</p>
-<ol>
-<li>若 initNum 作为参数传入，则在 index 为 0 的时候 firstOrTotalNum 的值是为 initNum</li>
-<li>若 initNum 没有作为参数传入，则在 index 为 0 的时候 firstOrTotalNum 的值是为 数组中的第一个元素</li>
-<li>在 index 不为 0 的时候 firstOrTotalNum 值是在 callback function return 的值</li>
-</ol>
-</li>
-<li><p>Return: 任何数据类型</p>
-</li>
-<li>特点：<ol>
-<li>可以使用它进行累加，累乘或者拼接字符</li>
-<li>或者其他的功能</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._reduce) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Array.prototype._reduce</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @param &#123;*&#125; initNum</span></span><br><span class="line"><span class="comment">   * @returns &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._reduce = <span class="function"><span class="keyword">function</span>(<span class="params">callback, initNum</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            len,</span><br><span class="line">            result,</span><br><span class="line">            k,</span><br><span class="line">            callbackNum,</span><br><span class="line">            noInitNum;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1. 判断传入的参数</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Array.prototype._reduce params is not function'</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 判断数组长度</span></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line">        result = initNum || <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 合并之后，并不好读😢</span></span><br><span class="line">        <span class="comment">// noInitNum = initNum === undefined ? true : false;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">// len = noInitNum ? len - 1 : len; // 没有 初始值 的时候实际上是从数组的第二项开始的，所以循环的最大长度 - 1</span></span><br><span class="line">        <span class="comment">// while(i &lt; len) &#123;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     callbackNum = i === 0</span></span><br><span class="line">        <span class="comment">//         ? (noInitNum ? this[i] : Number(initNum)) // 没有 初始值 的时候实际上是从 callback 接受的第一个参数是数组的第一项元素，第二个参数是数组的二项元素</span></span><br><span class="line">        <span class="comment">//         : result;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     k = noInitNum ? i + 1 : i; // 没有 初始值 的时候实际上是从数组的第二项开始的</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     result = callback(callbackNum, this[k], i, this);</span></span><br><span class="line">        <span class="comment">//     i++;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// #endregion 合并之后</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 第一次写</span></span><br><span class="line">        <span class="keyword">if</span> (initNum === <span class="literal">undefined</span>) &#123; <span class="comment">// 关键点：1. 需要判断 初始化的值</span></span><br><span class="line">            len-- <span class="comment">// 关键点：2. 没有 初始值 的时候实际上是从 callback 接受的第一个参数是数组的第一项元素，第二个参数是数组的二项元素，实际上是从第二项开始</span></span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                callbackNum = i === <span class="number">0</span> ? <span class="keyword">this</span>[i] : result;</span><br><span class="line">                result = callback(callbackNum, <span class="keyword">this</span>[i + <span class="number">1</span>], i, <span class="keyword">this</span>);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                callbackNum = i === <span class="number">0</span> ? <span class="built_in">Number</span>(initNum) : result; <span class="comment">// 关键点：3. 使用 Number 会把值转化为 number 类型</span></span><br><span class="line">                result = callback(callbackNum, <span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// #endregion 第一次写</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>参考资料：</p>
-<ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/17/Array 之 ES5 some/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/17/Array 之 ES5 some/" itemprop="url">Array 之 ES5 some</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-17T11:33:31+08:00">
-                2018-09-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  309
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="Array-prototype-some"><a href="#Array-prototype-some" class="headerlink" title="Array.prototype.some"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some" target="_blank" rel="noopener">Array.prototype.some</a></h3><ul>
-<li><p>Grammar:</p>
-<ol>
-<li>array.some(callback[, thisArg])</li>
-<li>array.some(callback(currentValue, index, array){ //do something }, this)</li>
-</ol>
-</li>
-<li><p>Description: 循环数组，找到一个满足条件的元素，就返回 true，若所有元素都不满足条件就返回 false</p>
-</li>
-<li>Return: Boolean</li>
-<li><p>特点：</p>
-<ol>
-<li>中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError</li>
-<li>找到不满足条件的元素，直接结束循环，就返回 false</li>
-<li>空数组直接返回 false</li>
-</ol>
-</li>
-<li><p>Compared with Array.prototype.every</p>
-<ol>
-<li><p>不同点：</p>
-<ul>
-<li>some 是遇到满足条件时结束循环，并返回值 true；every 是遇到不满足条件时结束循环，并返回值 false</li>
-</ul>
-</li>
-<li><p>相同点</p>
-<ul>
-<li>返回的参数类型都是 Boolean</li>
-<li>参数一样，都是 callback function</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._some) &#123;</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_some'</span>, &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 只要数组中的任意一个元素满足条件就返回 true ，否则返回 false</span></span><br><span class="line"><span class="comment">         * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">         * @returns &#123;Boolean&#125; result</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                len,</span><br><span class="line">                callbackState,</span><br><span class="line">                result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断参数</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Array.prototype._some params is not callback'</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断数组的长度</span></span><br><span class="line">            result = <span class="literal">false</span></span><br><span class="line">            len = <span class="keyword">this</span>.length;</span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">                callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">                <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                  result = <span class="literal">true</span>;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">                &#125;;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
-</ul>
-<hr>
-<p>参考资料：</p>
-<ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2175,7 +2277,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2186,7 +2288,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2265,7 +2367,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">40.1k</span>
+    <span title="博客总字数">40.6k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

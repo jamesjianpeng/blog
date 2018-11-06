@@ -297,6 +297,256 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/06/数据库 - 数据库设计/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/06/数据库 - 数据库设计/" itemprop="url">数据库 - 数据库设计</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-06T23:55:18+08:00">
+                2018-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  315
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="数据库设计概述"><a href="#数据库设计概述" class="headerlink" title="数据库设计概述"></a>数据库设计概述</h2><h3 id="数据库的生命周期"><a href="#数据库的生命周期" class="headerlink" title="数据库的生命周期"></a>数据库的生命周期</h3><ul>
+<li><p>两个阶段：</p>
+<ol>
+<li><p>数据库分析与设计阶段</p>
+<ul>
+<li>需求分析</li>
+<li>概念设计</li>
+<li>逻辑设计</li>
+<li>物理设计</li>
+</ul>
+</li>
+<li><p>数据库实现与操作阶段 </p>
+<ul>
+<li>数据库的实现阶 </li>
+<li>数据库的操作和监督阶段</li>
+<li>数据库的修改与调整阶段</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="数据库设计的目标"><a href="#数据库设计的目标" class="headerlink" title="数据库设计的目标"></a>数据库设计的目标</h3><ul>
+<li>两个目标：1. 满足应用功能 2. 良好的数据库性能</li>
+</ul>
+<h3 id="数据库设计的内容"><a href="#数据库设计的内容" class="headerlink" title="数据库设计的内容"></a>数据库设计的内容</h3><ul>
+<li>从用户对数据的需求出发，研究并构造数据库的过程<ol>
+<li>数据库的结构设计</li>
+<li>数据库的行为设计</li>
+</ol>
+</li>
+</ul>
+<h3 id="数据库设计的方法"><a href="#数据库设计的方法" class="headerlink" title="数据库设计的方法"></a>数据库设计的方法</h3><ul>
+<li>直观设计法</li>
+<li>规范设计法<ol>
+<li>新奥尔良设计方法</li>
+<li>基于 E-R 模型的数据设计方法</li>
+<li>计算机辅助设计方法</li>
+</ol>
+</li>
+</ul>
+<h3 id="数据库设计过程"><a href="#数据库设计过程" class="headerlink" title="数据库设计过程"></a>数据库设计过程</h3><ol>
+<li><p>需求分析</p>
+</li>
+<li><p>结构设计</p>
+<ul>
+<li>概念结构设计</li>
+<li>逻辑结构设计</li>
+<li>物理结构设计</li>
+</ul>
+</li>
+<li><p>行为设计阶段</p>
+<ul>
+<li>功能设计</li>
+<li>事务设计</li>
+<li>程序设计</li>
+</ul>
+</li>
+<li><p>数据库实施阶段</p>
+<ul>
+<li>加载数据库数据</li>
+<li>调试运行应用程序</li>
+</ul>
+</li>
+<li><p>数据库运行和维护阶段</p>
+</li>
+</ol>
+<h2 id="数据库设计的基本步骤（待更新）"><a href="#数据库设计的基本步骤（待更新）" class="headerlink" title="数据库设计的基本步骤（待更新）"></a>数据库设计的基本步骤（待更新）</h2><h2 id="关系数据库的设计方法（待更新）"><a href="#关系数据库的设计方法（待更新）" class="headerlink" title="关系数据库的设计方法（待更新）"></a>关系数据库的设计方法（待更新）</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/05/git 对比/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2644,216 +2894,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/30/SQL - 函数：字符串函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/30/SQL - 函数：字符串函数/" itemprop="url">SQL - 函数：字符串函数</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T23:02:42+08:00">
-                2018-10-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
-                    <span itemprop="name">《SQL基础教程》第二版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  665
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="准备测试的表"><a href="#准备测试的表" class="headerlink" title="准备测试的表"></a>准备测试的表</h3>  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE SampleStr (str1 VARCHAR(40), str2 VARCHAR(40), str3 VARCHAR(40));</span><br><span class="line">Query OK, 0 rows affected (0.11 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; show columns from SampleStr;</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">| Field | Type        | Null | Key | Default | Extra |</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">| str1  | varchar(40) | YES  |     | NULL    |       |</span><br><span class="line">| str2  | varchar(40) | YES  |     | NULL    |       |</span><br><span class="line">| str3  | varchar(40) | YES  |     | NULL    |       |</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.03 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleStr (str1, str2, str3) VALUES (<span class="string">'opx'</span>, <span class="string">'def'</span>, NULL);</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleStr (str1, str2, str3) VALUES (<span class="string">'opx'</span>, <span class="string">'rt'</span>, NULL);</span><br><span class="line">Query OK, 1 row affected (0.02 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleStr (str1, str2, str3) VALUES (<span class="string">'香蕉'</span>, <span class="string">'电脑'</span>, <span class="string">'你好'</span>);</span><br><span class="line">Query OK, 1 row affected (0.03 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleStr (str1, str2, str3) VALUES (<span class="string">'aa'</span>, NULL, NULL);</span><br><span class="line">Query OK, 1 row affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleStr (str1, str2, str3) VALUES (NLL, <span class="string">'xyz'</span>, NULL);</span><br><span class="line">ERROR 1054 (42S22): Unknown column <span class="string">'NLL'</span> <span class="keyword">in</span> <span class="string">'field list'</span></span><br><span class="line">mysql&gt; INSERT INTO SampleStr (str1, str2, str3) VALUES (NULL, <span class="string">'xyz'</span>, NULL);</span><br><span class="line">Query OK, 1 row affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleStr (str1, str2, str3) VALUES (NULL, <span class="string">'xyz可'</span>, <span class="string">'P'</span>);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM SampleStr;</span><br><span class="line">+--------+--------+--------+</span><br><span class="line">| str1   | str2   | str3   |</span><br><span class="line">+--------+--------+--------+</span><br><span class="line">| opx    | def    | NULL   |</span><br><span class="line">| opx    | rt     | NULL   |</span><br><span class="line">| 香蕉   | 电脑   | 你好   |</span><br><span class="line">| aa     | NULL   | NULL   |</span><br><span class="line">| NULL   | xyz    | NULL   |</span><br><span class="line">| NULL   | xyz可  | P      |</span><br><span class="line">+--------+--------+--------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-<h3 id="函数-（CONCAT-函数，-）"><a href="#函数-（CONCAT-函数，-）" class="headerlink" title="|| 函数, （CONCAT 函数，+）"></a>|| 函数, （CONCAT 函数，+）</h3><ul>
-<li><p>功能：连接两个字符: ab + bc =&gt; abbc</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT str1, str2, str1 || str2 AS new_str FROM SampleStr;</span><br><span class="line">+--------+--------+---------+</span><br><span class="line">| str1   | str2   | new_str |</span><br><span class="line">+--------+--------+---------+</span><br><span class="line">| opx    | def    |       0 |</span><br><span class="line">| opx    | rt     |       0 |</span><br><span class="line">| 香蕉   | 电脑   |       0 |</span><br><span class="line">| aa     | NULL   |    NULL |</span><br><span class="line">| NULL   | xyz    |    NULL |</span><br><span class="line">| NULL   | xyz可  |    NULL |</span><br><span class="line">+--------+--------+---------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span>, 7 warnings (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>为啥是上面的结果, SQL Server 和 MySQL 无法使用</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT str1, str2, CONCAT(str1, str2) AS new_str FROM SampleStr;</span><br><span class="line">+--------+--------+--------------+</span><br><span class="line">| str1   | str2   | new_str      |</span><br><span class="line">+--------+--------+--------------+</span><br><span class="line">| opx    | def    | opxdef       |</span><br><span class="line">| opx    | rt     | opxrt        |</span><br><span class="line">| 香蕉   | 电脑   | 香蕉电脑     |</span><br><span class="line">| aa     | NULL   | NULL         |</span><br><span class="line">| NULL   | xyz    | NULL         |</span><br><span class="line">| NULL   | xyz可  | NULL         |</span><br><span class="line">+--------+--------+--------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="LENGTH-计算字符串长度"><a href="#LENGTH-计算字符串长度" class="headerlink" title="LENGTH 计算字符串长度"></a>LENGTH 计算字符串长度</h3>  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT str1, LENGTH(str1) AS new_str FROM SampleStr;</span><br><span class="line">+--------+---------+</span><br><span class="line">| str1   | new_str |</span><br><span class="line">+--------+---------+</span><br><span class="line">| opx    |       3 |</span><br><span class="line">| opx    |       3 |</span><br><span class="line">| 香蕉   |       6 |</span><br><span class="line">| aa     |       2 |</span><br><span class="line">| NULL   |    NULL |</span><br><span class="line">| NULL   |    NULL |</span><br><span class="line">+--------+---------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-<h3 id="LOWER-小写转换"><a href="#LOWER-小写转换" class="headerlink" title="LOWER 小写转换"></a>LOWER 小写转换</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT str3, LOWEr(str3) AS new_str FROM SampleStr;</span><br><span class="line">+--------+---------+</span><br><span class="line">| str3   | new_str |</span><br><span class="line">+--------+---------+</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| 你好   | 你好    |</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| P      | p       |</span><br><span class="line">| P      | p       |</span><br><span class="line">+--------+---------+</span><br><span class="line">7 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>不适用英文之外的字符串</p>
-</blockquote>
-<h3 id="UPPER-大写转换"><a href="#UPPER-大写转换" class="headerlink" title="UPPER 大写转换"></a>UPPER 大写转换</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT str2, UPPER(str2) AS new_str FROM SampleStr;</span><br><span class="line">+--------+---------+</span><br><span class="line">| str2   | new_str |</span><br><span class="line">+--------+---------+</span><br><span class="line">| def    | DEF     |</span><br><span class="line">| rt     | RT      |</span><br><span class="line">| 电脑   | 电脑    |</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| xyz    | XYZ     |</span><br><span class="line">| xyz可  | XYZ可   |</span><br><span class="line">| xyz可  | XYZ可   |</span><br><span class="line">+--------+---------+</span><br><span class="line">7 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>不适用英文之外的字符串</p>
-</blockquote>
-<h3 id="REPLACE-字符串的替换"><a href="#REPLACE-字符串的替换" class="headerlink" title="REPLACE 字符串的替换"></a>REPLACE 字符串的替换</h3><ul>
-<li>REPLACE(对象字符串，替换前的字符串，替换后的字符串)<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT str1, str2, str3, REPLACE(str1, str2, str3) AS new_str FROM SampleStr;</span><br><span class="line">+--------+--------+--------+---------+</span><br><span class="line">| str1   | str2   | str3   | new_str |</span><br><span class="line">+--------+--------+--------+---------+</span><br><span class="line">| opx    | def    | NULL   | NULL    |</span><br><span class="line">| opx    | rt     | NULL   | NULL    |</span><br><span class="line">| 香蕉   | 电脑   | 你好   | 香蕉    |</span><br><span class="line">| aa     | NULL   | NULL   | NULL    |</span><br><span class="line">| NULL   | xyz    | NULL   | NULL    |</span><br><span class="line">| NULL   | xyz可  | P      | NULL    |</span><br><span class="line">| NULL   | xyz可  | P      | NULL    |</span><br><span class="line">| --     | xyz可  | yP     | --      |</span><br><span class="line">+--------+--------+--------+---------+</span><br><span class="line">8 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="SUBSTRING-字符串的截取"><a href="#SUBSTRING-字符串的截取" class="headerlink" title="SUBSTRING 字符串的截取"></a>SUBSTRING 字符串的截取</h3><ul>
-<li>SUBSTRING(对象字符串 FROM 起始位置 FOR 截取的数量)<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT str1, SUBSTRING(str1 FROM 1 FOR 2) AS new_str FROM SampleStr;</span><br><span class="line">+--------+---------+</span><br><span class="line">| str1   | new_str |</span><br><span class="line">+--------+---------+</span><br><span class="line">| opx    | op      |</span><br><span class="line">| opx    | op      |</span><br><span class="line">| 香蕉   | 香蕉    |</span><br><span class="line">| aa     | aa      |</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| --     | --      |</span><br><span class="line">+--------+---------+</span><br><span class="line">8 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2908,7 +2948,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">72</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2998,7 +3038,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">41k</span>
+    <span title="博客总字数">41.3k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

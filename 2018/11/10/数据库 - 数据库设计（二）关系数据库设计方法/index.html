@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #9E9E9E; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #9E9E9E, 0 0 5px #9E9E9E; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #9E9E9E;    /*上边框颜色*/
+        border-left-color: #9E9E9E;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据库,自考," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关系数据库库设计的过程概述 关系数据库：一类采用关系模型作为逻辑数据模型的数据库系统 关系数据库设计的过程遵循数据库设计的基本步骤 需求分析 概念结构设计 逻辑结构设计 物理结构设计 数据库实施 数据库的运行和维护等阶段    关系数据库设计过程与各级模式 需求分析阶段：综合各个用户的应用需求 在概念结构设计阶段：形成独立于机器特点，独立于各个关系数据库管理系统产品（MySQL,Oracle,S">
+<meta name="keywords" content="数据库,自考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库 - 数据库设计（二）关系数据库设计方法">
+<meta property="og:url" content="https://www.pengjiandry.com/2018/11/10/数据库 - 数据库设计（二）关系数据库设计方法/index.html">
+<meta property="og:site_name" content="彭涧">
+<meta property="og:description" content="关系数据库库设计的过程概述 关系数据库：一类采用关系模型作为逻辑数据模型的数据库系统 关系数据库设计的过程遵循数据库设计的基本步骤 需求分析 概念结构设计 逻辑结构设计 物理结构设计 数据库实施 数据库的运行和维护等阶段    关系数据库设计过程与各级模式 需求分析阶段：综合各个用户的应用需求 在概念结构设计阶段：形成独立于机器特点，独立于各个关系数据库管理系统产品（MySQL,Oracle,S">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-10T08:10:43.220Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库 - 数据库设计（二）关系数据库设计方法">
+<meta name="twitter:description" content="关系数据库库设计的过程概述 关系数据库：一类采用关系模型作为逻辑数据模型的数据库系统 关系数据库设计的过程遵循数据库设计的基本步骤 需求分析 概念结构设计 逻辑结构设计 物理结构设计 数据库实施 数据库的运行和维护等阶段    关系数据库设计过程与各级模式 需求分析阶段：综合各个用户的应用需求 在概念结构设计阶段：形成独立于机器特点，独立于各个关系数据库管理系统产品（MySQL,Oracle,S">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.pengjiandry.com/2018/11/10/数据库 - 数据库设计（二）关系数据库设计方法/"/>
+
+
+
+
+
+  <title>数据库 - 数据库设计（二）关系数据库设计方法 | 彭涧</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <!-- 左边 <a href="https://github.com/jamesjianpeng" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a> -->
+
+    <a href="https://github.com/jamesjianpeng" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">彭涧</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">fecoder</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-阅读">
+          <a href="/read/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            阅读
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-风格">
+          <a href="/style/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            风格
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/10/数据库 - 数据库设计（二）关系数据库设计方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">数据库 - 数据库设计（二）关系数据库设计方法</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-10T11:17:51+08:00">
+                2018-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  3.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h3 id="关系数据库库设计的过程概述"><a href="#关系数据库库设计的过程概述" class="headerlink" title="关系数据库库设计的过程概述"></a>关系数据库库设计的过程概述</h3><ul>
+<li>关系数据库：一类采用关系模型作为逻辑数据模型的数据库系统</li>
+<li>关系数据库设计的过程遵循数据库设计的基本步骤<ol>
+<li>需求分析</li>
+<li>概念结构设计</li>
+<li>逻辑结构设计</li>
+<li>物理结构设计</li>
+<li>数据库实施</li>
+<li>数据库的运行和维护等阶段</li>
+</ol>
+</li>
+</ul>
+<h3 id="关系数据库设计过程与各级模式"><a href="#关系数据库设计过程与各级模式" class="headerlink" title="关系数据库设计过程与各级模式"></a>关系数据库设计过程与各级模式</h3><ol>
+<li>需求分析阶段：综合各个用户的应用需求</li>
+<li>在概念结构设计阶段：形成独立于机器特点，独立于各个关系数据库管理系统产品（MySQL,Oracle,SQL,Server 等）的概念模式，如使用 E - R 图</li>
+<li>在逻辑结构设计阶段，将 E - R 图转换成具体的数据库产品支持的关系数据模型，形成数据库逻辑模式，然后根据用户处理的要求，安全性考虑，在基本表的基础上再建立必要的视图，形成数据的外模式</li>
+<li>再物理结构的设计阶段中，根据关系数据库管理系统的特点和处理的需要，进行物理存储安排，建立索引，形成数据库内模式</li>
+</ol>
+<h3 id="概念结构设计方法"><a href="#概念结构设计方法" class="headerlink" title="概念结构设计方法"></a>概念结构设计方法</h3><ol>
+<li><p>关系数据库的概念结构设计方法通常是：自顶向下法</p>
+</li>
+<li><p>两个步骤</p>
+<ul>
+<li>建立局部信息结构</li>
+<li>然后将局部信息结构合成全局信息结构并优化</li>
+</ul>
+</li>
+<li>描述工具：<ul>
+<li>E - R 图</li>
+</ul>
+</li>
+</ol>
+<h4 id="概念结构设计方法常使用的描述工具：E-R-图的表示法"><a href="#概念结构设计方法常使用的描述工具：E-R-图的表示法" class="headerlink" title="概念结构设计方法常使用的描述工具：E - R 图的表示法"></a>概念结构设计方法常使用的描述工具：E - R 图的表示法</h4><ol>
+<li>概念结构设计：是将需求分析得到的用户需求抽象为信息结构（概念模型）的过程，它通常使用 E - R 图作为描述现实世界的建模工具</li>
+<li><p>E - R 图提供了表示信息世界中实体，属性和联系的方法，具体：</p>
+<ul>
+<li>实体型：其用矩形表示，矩形框内写明实体的名称</li>
+<li>属性：其用椭圆形表示，并用无向边将其与相应的实体链接起来</li>
+<li>联系：其用菱形表示，菱形框内写明联系的名称，并用无向边分别与有关实体连接起来，同时在无向边旁标上联系的类型（1:1,1:N, M:N），如果一个联系具有属性，则这些属性也要用无向边与该联系连接起来</li>
+</ul>
+</li>
+<li><p>两个实体型之间的联系：</p>
+<ul>
+<li>一对一（1:1）</li>
+<li>一对多（1:N）</li>
+<li>多对多（M:N）</li>
+</ul>
+</li>
+<li><p>两个以上的实体型之间的联系</p>
+<ul>
+<li>一对一（1:1）</li>
+<li>一对多（1:N）</li>
+<li>多对多（M:N）</li>
+</ul>
+</li>
+<li><p>单个实体型内的联系</p>
+<ul>
+<li>一对一（1:1）</li>
+<li>一对多（1:N）</li>
+<li>多对多（M:N）</li>
+</ul>
+</li>
+</ol>
+<h3 id="概念结构设计方法第一个步骤：局部信息结构设计"><a href="#概念结构设计方法第一个步骤：局部信息结构设计" class="headerlink" title="概念结构设计方法第一个步骤：局部信息结构设计"></a>概念结构设计方法第一个步骤：局部信息结构设计</h3><ul>
+<li><p>概念：根据需求分析报告中标明的用户视图范围所建立的满足该范围内用户需求的信息结构</p>
+</li>
+<li><p>局部信息结构设计的步骤分为：</p>
+<ol>
+<li>确定局部范围</li>
+<li>选择实体</li>
+<li>选择实体关键字</li>
+<li>确定实体间联系</li>
+<li>确定实体的属性</li>
+</ol>
+</li>
+</ul>
+<h4 id="局部信息结构设计第一个步骤：确定局部范围"><a href="#局部信息结构设计第一个步骤：确定局部范围" class="headerlink" title="局部信息结构设计第一个步骤：确定局部范围"></a>局部信息结构设计第一个步骤：确定局部范围</h4><ul>
+<li>局部范围主要依据需求分析报告后者难过标明的用户视图范围来确定<blockquote>
+<p>需求分析报告中标明的局部范围往往与子模式范围相对应</p>
+<p>范围确定的基本准则:</p>
+<ol>
+<li>部门和功能相对对立</li>
+<li>同其他局部范围相互影响较少，并且实体个数适量</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h4 id="局部信息结构设计第二个步骤：选择实体"><a href="#局部信息结构设计第二个步骤：选择实体" class="headerlink" title="局部信息结构设计第二个步骤：选择实体"></a>局部信息结构设计第二个步骤：选择实体</h4><ol>
+<li><p>选择实体的（目的）任务：是在确定的局部范围内选择一些合适的信息单位作为局部信息结构的基本实体</p>
+<blockquote>
+<p>这些实体应能满足该局部范围内的应用需求<br>通常，以实际工作中习惯使用的信息单位作为选择实体的基础，数据分类表是选择实体的直接依据</p>
+<p>再同一局部信息结构中的实体名称应具有唯一性</p>
+</blockquote>
+</li>
+<li><p>实体选择时的最大困难是如何区别实体与属性</p>
+</li>
+</ol>
+<h4 id="局部信息结构设计第三个步骤：选择实体的关键字属性"><a href="#局部信息结构设计第三个步骤：选择实体的关键字属性" class="headerlink" title="局部信息结构设计第三个步骤：选择实体的关键字属性"></a>局部信息结构设计第三个步骤：选择实体的关键字属性</h4><ul>
+<li>实体的存在依赖于其他关键字的存在<blockquote>
+<p>实体关键字属性确定之后，实体的非关键字属性也就容易确定了，因为他们之间存在某种应用上的联系和依赖性</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="局部信息结构设计第四个步骤：确定实体间的联系"><a href="#局部信息结构设计第四个步骤：确定实体间的联系" class="headerlink" title="局部信息结构设计第四个步骤：确定实体间的联系"></a>局部信息结构设计第四个步骤：确定实体间的联系</h4><ul>
+<li>数据间的联系必须在概念设计时确定<blockquote>
+<p>一种常用的分析实体间是否存在联系的方法是，将局部范围内的实体逐一取出来与该范围内的其他实体试行匹配（在任务表中）</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="局部信息结构设计第五个步骤：确定实体的属性"><a href="#局部信息结构设计第五个步骤：确定实体的属性" class="headerlink" title="局部信息结构设计第五个步骤：确定实体的属性"></a>局部信息结构设计第五个步骤：确定实体的属性</h4><ul>
+<li><p>属性分为两类</p>
+<ol>
+<li>标识属性</li>
+<li>说明属性</li>
+</ol>
+</li>
+<li><p>标识属性（实体关键字属性和非关键字属性）</p>
+<blockquote>
+<p>用作实体的关键字，说明属性用作描述实体的一般特征 </p>
+</blockquote>
+</li>
+<li><p>说明属性</p>
+<blockquote>
+<p>基本原则：说明属性的存在和使用通常依赖于标识属性<br>取决于：该属性是否可通过其所在实体的关键字找到，并且他们之间在应用中具有某种联系</p>
+<p>说明属性应是单值的，不允许嵌套属性和重复组的现象出现在实体中<br>会有这种情况：同一说明属性依赖于多个实体的标识属性的情况，此时可将该属性分配到其他使用频率最高的实体中去</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="概念结构设计方法第二个步骤：全局信息结构设计"><a href="#概念结构设计方法第二个步骤：全局信息结构设计" class="headerlink" title="概念结构设计方法第二个步骤：全局信息结构设计"></a>概念结构设计方法第二个步骤：全局信息结构设计</h3><ul>
+<li><p>概念：是将上述步骤中产生的所有局部信息结构合并成一个全局信息结构</p>
+</li>
+<li><p>全局信息结构必须是所有局部信息结构的全面准确的映像</p>
+<blockquote>
+<p>即合并前各局部信息结构能实现的应用需求，合并之后也能实现</p>
+</blockquote>
+</li>
+<li><p>需要避免的问题：消除不同局部信息结构中因用户观点的不同所可能导致的数据不一致，并尽可能地增强数据的共享性，控制数据的冗余</p>
+</li>
+<li><p>合并的前提：假设局部信息结构都是完全的，一致的前提下进行</p>
+<blockquote>
+<p>即假设各局部信息结构都能满足其对应局部范围的应用需求,且其内部不存在需要合并的成分</p>
+</blockquote>
+</li>
+<li><p>合并的方式</p>
+<ol>
+<li>可以一次性把所有的局部信息结构合并成全局的信息结构</li>
+<li>也可以采用逐步合并，进行累加的方式</li>
+</ol>
+</li>
+<li><p>合并的过程</p>
+<ol>
+<li>一个系统中有多个功能，可能有多个设计人员进行设计，合并的时候就会出现冲突，这个无法避免的，需要合理的解决</li>
+</ol>
+</li>
+<li><p>合并中出现的冲突</p>
+<ol>
+<li><p>属性冲突</p>
+<ul>
+<li><p>属性域冲突</p>
+<blockquote>
+<p>属性值的类型，取值范围，取值集合的不同</p>
+</blockquote>
+</li>
+<li><p>属性取值单位冲突</p>
+<blockquote>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>命名冲突，两类</p>
+<ul>
+<li>同名异义</li>
+<li>异名同义</li>
+</ul>
+</li>
+<li><p>结构冲突，三类</p>
+<ul>
+<li>同一对象在一局部 E - R 图中作为实体，而在另外一个局部 E - R 图中作为属性</li>
+<li>同义实体在不同的 E - R 图中属性个数和类型不同</li>
+<li>实体之间的联系在不同的 E - R 图中是不同的类型</li>
+</ul>
+</li>
+<li><p>好的全局信息结构设计</p>
+<ol>
+<li>能反应用户功能需求</li>
+<li>实体的类型数量尽可能少</li>
+<li>实体类型所含属性尽可能少</li>
+<li>实体类型间联系无冗余<blockquote>
+<p>后面三个内容，是全局 E - R 模型优化需要达到内容<br>优化步骤：</p>
+<ol>
+<li>相关实体类型的合并</li>
+<li>消除不必要的冗余属性</li>
+<li>消除不必要的冗余联系</li>
+<li>有时为了效率，可以适当的存在冗余（😂你懂的）</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="逻辑结构设计方法"><a href="#逻辑结构设计方法" class="headerlink" title="逻辑结构设计方法"></a>逻辑结构设计方法</h3><ul>
+<li><p>在数据库设计步骤中逻辑结构的设计</p>
+<ol>
+<li>目的（任务）：是把在概念结构设计产生的概念模型转换为具体的 DBMS 所支持的逻辑数据模型<blockquote>
+<p>导出特定的 DBMS 可以处理的数据逻辑结构（数据库的模式和外模式），这些模式在功能，性能，完整性和约束性方面满足应用要求</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>在关系型数据库的设计中逻辑结构的设计：</p>
+<ol>
+<li>目的（任务）：就是把概念结构设计阶段已设计好的 E - R 图转换为关系数据库管理系统所支持的关系模型</li>
+<li>工作内容：<ul>
+<li>将 E - R 图转换位关系模型</li>
+<li>对关系数据库模型进行优化</li>
+<li>设计面向用户的外模式</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="逻辑结构设计内容（一）：将-E-R-图转换位关系模型"><a href="#逻辑结构设计内容（一）：将-E-R-图转换位关系模型" class="headerlink" title="逻辑结构设计内容（一）：将 E - R 图转换位关系模型"></a>逻辑结构设计内容（一）：将 E - R 图转换位关系模型</h4><ul>
+<li><p>需要解决的问题：</p>
+<ol>
+<li>要如何将实体以及实体间的联系转换为关系模型</li>
+<li>如何确定这些关系模式的属性和主码<blockquote>
+<p>关系模式的逻辑结构是一组关系模式的集合，而 E - R 图则是由实体，实体的属性和实体间的联系转换为某种关系模式</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>原则：(待更新)</p>
+<ol>
+<li>一个实体转换为一个关系模式</li>
+<li>一个一对一（1:1）联系可以转换为一个独立的关系模式</li>
+<li>一个一对多（1:N）联系可以转换为一个独立的关系模式</li>
+<li>一个多对多（M:N）联系转换为一个关系模式</li>
+<li>三个或桑哥以上实体间的一个多元联系可以转换为一个关系模式</li>
+</ol>
+</li>
+</ul>
+<h4 id="逻辑结构设计内容（二）：对关系数据库模型进行优化"><a href="#逻辑结构设计内容（二）：对关系数据库模型进行优化" class="headerlink" title="逻辑结构设计内容（二）：对关系数据库模型进行优化"></a>逻辑结构设计内容（二）：对关系数据库模型进行优化</h4><ul>
+<li>数据库逻辑设计的结果不是唯一的</li>
+<li>数据模型的优化： 为了进一步提高数据库的要求，还应该根据应用需要适当修改地修改，调整数据模型额结构</li>
+<li>关系数据模型的优化通常以关系规范化理论为指导，<a href="">数据库 - 关系型数据库（三）关系数据库的规范化理论</a></li>
+</ul>
+<h4 id="逻辑结构设计内容（三）：设计面向用户的外模式"><a href="#逻辑结构设计内容（三）：设计面向用户的外模式" class="headerlink" title="逻辑结构设计内容（三）：设计面向用户的外模式"></a>逻辑结构设计内容（三）：设计面向用户的外模式</h4><ul>
+<li>将概念模式转化为全局逻辑模式之后，可根据局部应用需求，利用视图（View）设计更符合局部用户需要的用户外模式</li>
+<li>定义数据库的全局模式主要是从系统的时间效率，空间效率，易维护性等角度出发。由于用户外模式与模式是相对独立的，所以定义用户外模式时注意：<ol>
+<li>定义别名</li>
+<li>对应不同级别的用户定义不同的视图，以保证系统的安全性</li>
+<li>简化用户对系统的使用</li>
+</ol>
+</li>
+</ul>
+<h3 id="物理设计方法"><a href="#物理设计方法" class="headerlink" title="物理设计方法"></a>物理设计方法</h3><ul>
+<li><p>关系数据库系统的优点之一是用户通常不需要进行数据存储结构和存取方法的是设计</p>
+<blockquote>
+<p>这个是相对的，用户失去对数据库存取路径的控制而影响到数据库的存取效率</p>
+</blockquote>
+</li>
+<li><p>物理设计的（目的）任务：主要是通过对关系建立索引和聚集来实现与应用相关数据的逻辑连接和物理聚集，以改善对数据库的存取效率</p>
+</li>
+</ul>
+<h4 id="物理设计方法（一）：-建立索引"><a href="#物理设计方法（一）：-建立索引" class="headerlink" title="物理设计方法（一）： 建立索引"></a>物理设计方法（一）： 建立索引</h4><ul>
+<li>建立索引的方式通常有静态和动态</li>
+</ul>
+<h4 id="物理设计方法（二）：建立聚集"><a href="#物理设计方法（二）：建立聚集" class="headerlink" title="物理设计方法（二）：建立聚集"></a>物理设计方法（二）：建立聚集</h4><ul>
+<li><p>聚集：是将相关数据集中存放的物理存储技术</p>
+<blockquote>
+<p>以提高 I/O 的数据命中率而改善存取速度，其功能由具体的 DBMS 所提供</p>
+<p>所谓集中存放的概念：将相关数据尽可能地存放一个物理块中（或一个磁道中，或一个柱面中，或相邻区域块，磁道，柱面）</p>
+</blockquote>
+</li>
+<li><p>数据聚集结构的一种有效方式是块结构方式。</p>
+<blockquote>
+<p>块域块之间由指针连接，一个块对于一个物理分区</p>
+<p>数据聚集可在一个或多个关系上建立</p>
+</blockquote>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
+          
+            <a href="/tags/自考/" rel="tag"><i class="fa fa-tag"></i> 自考</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/06/数据库 - 数据库设计（一）数据库设计概述和数据库设计步骤/" rel="next" title="数据库 - 数据库设计（一）数据库设计概述和数据库设计步骤">
+                <i class="fa fa-chevron-left"></i> 数据库 - 数据库设计（一）数据库设计概述和数据库设计步骤
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章概览
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            博客概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="james" />
+            
+              <p class="site-author-name" itemprop="name">james</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jamesjianpeng" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.npmjs.com/settings/dajianjian/packages" target="_blank" title="Npm">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Npm</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关系数据库库设计的过程概述"><span class="nav-number">1.</span> <span class="nav-text">关系数据库库设计的过程概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系数据库设计过程与各级模式"><span class="nav-number">2.</span> <span class="nav-text">关系数据库设计过程与各级模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念结构设计方法"><span class="nav-number">3.</span> <span class="nav-text">概念结构设计方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念结构设计方法常使用的描述工具：E-R-图的表示法"><span class="nav-number">3.1.</span> <span class="nav-text">概念结构设计方法常使用的描述工具：E - R 图的表示法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念结构设计方法第一个步骤：局部信息结构设计"><span class="nav-number">4.</span> <span class="nav-text">概念结构设计方法第一个步骤：局部信息结构设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#局部信息结构设计第一个步骤：确定局部范围"><span class="nav-number">4.1.</span> <span class="nav-text">局部信息结构设计第一个步骤：确定局部范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局部信息结构设计第二个步骤：选择实体"><span class="nav-number">4.2.</span> <span class="nav-text">局部信息结构设计第二个步骤：选择实体</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局部信息结构设计第三个步骤：选择实体的关键字属性"><span class="nav-number">4.3.</span> <span class="nav-text">局部信息结构设计第三个步骤：选择实体的关键字属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局部信息结构设计第四个步骤：确定实体间的联系"><span class="nav-number">4.4.</span> <span class="nav-text">局部信息结构设计第四个步骤：确定实体间的联系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局部信息结构设计第五个步骤：确定实体的属性"><span class="nav-number">4.5.</span> <span class="nav-text">局部信息结构设计第五个步骤：确定实体的属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念结构设计方法第二个步骤：全局信息结构设计"><span class="nav-number">5.</span> <span class="nav-text">概念结构设计方法第二个步骤：全局信息结构设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑结构设计方法"><span class="nav-number">6.</span> <span class="nav-text">逻辑结构设计方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑结构设计内容（一）：将-E-R-图转换位关系模型"><span class="nav-number">6.1.</span> <span class="nav-text">逻辑结构设计内容（一）：将 E - R 图转换位关系模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑结构设计内容（二）：对关系数据库模型进行优化"><span class="nav-number">6.2.</span> <span class="nav-text">逻辑结构设计内容（二）：对关系数据库模型进行优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑结构设计内容（三）：设计面向用户的外模式"><span class="nav-number">6.3.</span> <span class="nav-text">逻辑结构设计内容（三）：设计面向用户的外模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理设计方法"><span class="nav-number">7.</span> <span class="nav-text">物理设计方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#物理设计方法（一）：-建立索引"><span class="nav-number">7.1.</span> <span class="nav-text">物理设计方法（一）： 建立索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物理设计方法（二）：建立聚集"><span class="nav-number">7.2.</span> <span class="nav-text">物理设计方法（二）：建立聚集</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">james</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">博客总字数&#58;</span>
+    
+    <span title="博客总字数">47.1k</span>
+  
+</div>
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+
+<!--
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+-->
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

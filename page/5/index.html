@@ -297,6 +297,223 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/23/TypeScript and Vue ( 一 ) - git 和 webpack 打包初始化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/23/TypeScript and Vue ( 一 ) - git 和 webpack 打包初始化/" itemprop="url">TypeScript and Vue ( 一 ) - git 和 webpack 打包初始化</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-23T14:10:11+08:00">
+                2018-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  617
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一，初始化仓库和项目元数据"><a href="#一，初始化仓库和项目元数据" class="headerlink" title="一，初始化仓库和项目元数据"></a>一，初始化仓库和项目元数据</h3><ul>
+<li>init git</li>
+<li>init package</li>
+<li>add <a href="https://github.com/commitizen/cz-cli" target="_blank" rel="noopener">commitizen</a></li>
+<li>add <a href="https://gist.github.com/andreasonny83/b24e38b7772a3ea362d8e8d238d5a7bc" target="_blank" rel="noopener">.gitignore</a></li>
+</ul>
+<h3 id="二，初步工程化，git-commit-history"><a href="#二，初步工程化，git-commit-history" class="headerlink" title="二，初步工程化，git commit history"></a>二，初步工程化，<a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/fbba9afe608747ee18c00d9362f3d1d70e5cf445" target="_blank" rel="noopener">git commit history</a></h3><ul>
+<li><p>add package scripts</p>
+<ol>
+<li>package 配置文件：package.json</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "build:prod": "node ./build/prod-build.js",  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>脚本文件： /build/prod-build.js</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> webpackConfig = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.prod.conf'</span>);</span><br><span class="line"></span><br><span class="line">webpack(webpackConfig, <span class="function"><span class="keyword">function</span>(<span class="params">err, stats</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">    <span class="keyword">if</span> (stats.hasErrors()) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(stats, <span class="string">'has errors end'</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'webpack TypeScript and Threejs project finish!'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>生产环境打包</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build:prod</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>add webpack plugin</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i -D clean-webpack-plugin</span><br><span class="line">npm i -D  html-webpack-plugin</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在 /webpack/webpack.prod.conf.js 中配置如下：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> CleanWebpackPlugin = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    mode: <span class="string">"production"</span>, <span class="comment">// "production" | "development" | "none"</span></span><br><span class="line">    entry: &#123;</span><br><span class="line">      main: path.resolve(__dirname, <span class="string">'../src/index.js'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, <span class="string">'../dist'</span>),</span><br><span class="line">        publicPath: <span class="string">'./'</span>,</span><br><span class="line">        filename: <span class="string">'[name].js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> CleanWebpackPlugin(<span class="string">'dist'</span>, &#123;</span><br><span class="line">            root: process.cwd(),</span><br><span class="line">            verbose: <span class="literal">true</span>,</span><br><span class="line">            dry: <span class="literal">false</span></span><br><span class="line">        &#125;),</span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            title: <span class="string">'TypeScript and Threejs project'</span>,</span><br><span class="line">            meta: &#123;</span><br><span class="line">                viewport: <span class="string">'width=device-width, initial-scale=1, shrink-to-fit=no'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="遇到的问题："><a href="#遇到的问题：" class="headerlink" title="遇到的问题："></a>遇到的问题：</h3><ul>
+<li><a href="https://github.com/johnagan/clean-webpack-plugin/issues/10" target="_blank" rel="noopener">使用 clean-webpack-plugin dist 文件无法清除</a></li>
+<li><p>解决之后的配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">  <span class="keyword">new</span> CleanWebpackPlugin(<span class="string">'dist'</span>, &#123;</span><br><span class="line">      root: process.cwd(), <span class="comment">// 关键点</span></span><br><span class="line">      verbose: <span class="literal">true</span>,</span><br><span class="line">      dry: <span class="literal">false</span></span><br><span class="line">  &#125;),</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>root 这个配置必须要，除了这种方法外还可以通过 在终端输入 pwd 获得 webpack 对应配置的路径，然后 copy 到 root 的位置，但是这个这个方法不够灵活每个人项目存放的路径对于工程搭建者是未知的，使用 process.cwd() 是最优的方法</p>
+</li>
+</ul>
+<h3 id="三，初始化本地开发环境-git-commit-history"><a href="#三，初始化本地开发环境-git-commit-history" class="headerlink" title="三，初始化本地开发环境 git commit history"></a>三，初始化本地开发环境 <a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/bebc37ab2df7cba3abdc99c38abbee728332540d" target="_blank" rel="noopener">git commit history</a></h3><ul>
+<li><p>add package scripts</p>
+<ol>
+<li>package 配置文件：package.json</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "build:local": "node ./build/local-dev.js",</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>脚本文件： /build/local-dev.js</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> webpackDevServer = <span class="built_in">require</span>(<span class="string">'webpack-dev-server'</span>);</span><br><span class="line"><span class="keyword">const</span> devConfig = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.dev.conf'</span>);</span><br><span class="line"></span><br><span class="line">webpackDevServer.addDevServerEntrypoints(devConfig, devConfig.devServer);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> compiler = webpack(devConfig);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> webpackDevServer(compiler, devConfig.devServer)</span><br><span class="line">  .listen(devConfig.devServer.port);</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>本地开发环境</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build:local</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>add webpack plugin</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D webpack-dev-server</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在 /webpack/webpack.prod.conf.js 中配置如下：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> CleanWebpackPlugin = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    mode: <span class="string">'development'</span>,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        contentBase: path.resolve(__dirname, <span class="string">'../dist'</span>), <span class="comment">// 使用相对于 dev.conf 配置的绝对路径</span></span><br><span class="line">        <span class="comment">// contentBase: './dist', // 第二种方式 相对于 package.json 这一层</span></span><br><span class="line">        hot: <span class="literal">true</span>,</span><br><span class="line">        host: <span class="string">'0.0.0.0'</span>,</span><br><span class="line">        open: <span class="literal">true</span>,</span><br><span class="line">        port: <span class="number">8099</span></span><br><span class="line">    &#125;,</span><br><span class="line">    entry: &#123;</span><br><span class="line">      main: path.resolve(__dirname, <span class="string">'../src/index.js'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, <span class="string">'../dist'</span>),</span><br><span class="line">        publicPath: <span class="string">'./'</span>,</span><br><span class="line">        filename: <span class="string">'[name].js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.HotModuleReplacementPlugin(),</span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            title: <span class="string">'TypeScript and Threejs project'</span>,</span><br><span class="line">            meta: &#123;</span><br><span class="line">                viewport: <span class="string">'width=device-width, initial-scale=1, shrink-to-fit=no'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>值得注意的是：<ol>
+<li>webpack.HotModuleReplacementPlugin() 这个插件需要在 plugins 中使用，热替换才会生效</li>
+<li>devServer.contentBase 使用绝对路径最好</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/20/快速启动本地服务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2374,274 +2591,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/21/JavaScript 的语法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/21/JavaScript 的语法/" itemprop="url">JavaScript 的语法</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-21T14:16:49+08:00">
-                2018-07-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《JavaScript-高级程序设计》-第三版/" itemprop="url" rel="index">
-                    <span itemprop="name">《JavaScript 高级程序设计》 第三版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  609
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><ul>
-<li>变量</li>
-<li>控制语句</li>
-<li>数据类型</li>
-<li>操作符</li>
-<li>内置功能</li>
-</ul>
-<ol>
-<li><p>第一个概念：区分大小写</p>
-</li>
-<li><p>第二个概念：标识符</p>
-<ul>
-<li><p>标识符：就是指变量，函数，属性的名字，或者是函数的参数</p>
-<ol>
-<li>第一个字符必须是一个字母， 下划线 <code>_</code> 或一个美元（$）</li>
-<li>其他字符可以是字母，下划线，美元符号或数字</li>
-</ol>
-</li>
-<li><p>推荐标识符采用小驼峰</p>
-</li>
-</ul>
-</li>
-<li><p>注释<br> a. 单行注释<br> b. 块级注释</p>
-</li>
-<li><p>语句</p>
-<ul>
-<li>写分号(推荐)</li>
-<li>不写分号：不写分号，解析器会自动插入分号，这样加重解析器的负担</li>
-</ul>
-</li>
-</ol>
-<h3 id="关键词和保留字"><a href="#关键词和保留字" class="headerlink" title="关键词和保留字"></a>关键词和保留字</h3><ol>
-<li><p>ECMA - 262 描述了一组具有特点含义的关键字：</p>
-<ul>
-<li>这些关键字的特点：表示控制语句的开始和结束，或者表示执行特定的操作</li>
-<li>关键字也是语言保留的，不能作为标识符</li>
-</ul>
-</li>
-<li><p>关键字：es5新增的使用 * （分类不正确可以指出）</p>
-<ol>
-<li>判断：if, else, break, switch, case, break, default, instanceof, typeof</li>
-<li>循环：for, in, while,</li>
-<li>调试：try, catch, finally, throw, debugger*</li>
-<li>申明方式：var, void, function</li>
-<li>扩充作用域: with</li>
-<li>对象：delete,</li>
-<li>函数：return，new, this</li>
-</ol>
-</li>
-<li><p>es3: 保留字（以 浏览器兼容的版本为准） （分类不正确可以指出）</p>
-<ol>
-<li>变量声明:  const, volatile, transient, synchronized,</li>
-<li>数据类型:  int, float, short, long, double, boolean, char</li>
-<li>导入导出:  export, import,</li>
-<li>类:       class, static, public, private, super, protected, extends</li>
-<li>其他:     package, native, interface, implements, enum, byte, abstract</li>
-<li>判断:     goto</li>
-<li><p>调试:     throws, debugger, final</p>
-</li>
-<li><p>解释：（分类不正确可以指出）</p>
-<ul>
-<li>volatile:     在程序设计中，尤其是在 C 语言、C++、C# 和 Java 语言中，使用 volatile 关键字声明的变量或对象通常具有与优化、多线程相关的特殊属性。</li>
-<li>transient:    Java 中 transient 关键字的作用，简单地说，就是让某些被修饰的成员属性变量不被序列化</li>
-<li>synchronized: Java 中 synchronized 同步方法</li>
-<li>protected:    Java 或 C中 protected 类成员的修饰属性</li>
-<li>enum:         枚举</li>
-<li>abstract:     抽象</li>
-</ul>
-</li>
-</ol>
-<p>保留字每个版本都是不一致的，es3 定义的大量的保留字，但是在 es5 中的保留字相对来说就很少，并且是有严格模式和非严格模式之间的区别</p>
-</li>
-<li><p>es5: 保留字</p>
-<ol>
-<li>非严格模式：    class, enum, extends, super, const, export, import</li>
-<li>“use strict”: 在非严格模式基础上增加了，后面的保留字：implements, package, public, interface, private, static, let, protected, yield, eval, arguments</li>
-</ol>
-</li>
-</ol>
-<hr>
-<p>参考文献：</p>
-<ul>
-<li>《JavaScript 高级程序设计》 第三版</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2696,7 +2645,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2786,7 +2735,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">41.3k</span>
+    <span title="博客总字数">47.1k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

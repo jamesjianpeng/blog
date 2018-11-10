@@ -297,6 +297,274 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/21/JavaScript 的语法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/21/JavaScript 的语法/" itemprop="url">JavaScript 的语法</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-21T14:16:49+08:00">
+                2018-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《JavaScript-高级程序设计》-第三版/" itemprop="url" rel="index">
+                    <span itemprop="name">《JavaScript 高级程序设计》 第三版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  609
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><ul>
+<li>变量</li>
+<li>控制语句</li>
+<li>数据类型</li>
+<li>操作符</li>
+<li>内置功能</li>
+</ul>
+<ol>
+<li><p>第一个概念：区分大小写</p>
+</li>
+<li><p>第二个概念：标识符</p>
+<ul>
+<li><p>标识符：就是指变量，函数，属性的名字，或者是函数的参数</p>
+<ol>
+<li>第一个字符必须是一个字母， 下划线 <code>_</code> 或一个美元（$）</li>
+<li>其他字符可以是字母，下划线，美元符号或数字</li>
+</ol>
+</li>
+<li><p>推荐标识符采用小驼峰</p>
+</li>
+</ul>
+</li>
+<li><p>注释<br> a. 单行注释<br> b. 块级注释</p>
+</li>
+<li><p>语句</p>
+<ul>
+<li>写分号(推荐)</li>
+<li>不写分号：不写分号，解析器会自动插入分号，这样加重解析器的负担</li>
+</ul>
+</li>
+</ol>
+<h3 id="关键词和保留字"><a href="#关键词和保留字" class="headerlink" title="关键词和保留字"></a>关键词和保留字</h3><ol>
+<li><p>ECMA - 262 描述了一组具有特点含义的关键字：</p>
+<ul>
+<li>这些关键字的特点：表示控制语句的开始和结束，或者表示执行特定的操作</li>
+<li>关键字也是语言保留的，不能作为标识符</li>
+</ul>
+</li>
+<li><p>关键字：es5新增的使用 * （分类不正确可以指出）</p>
+<ol>
+<li>判断：if, else, break, switch, case, break, default, instanceof, typeof</li>
+<li>循环：for, in, while,</li>
+<li>调试：try, catch, finally, throw, debugger*</li>
+<li>申明方式：var, void, function</li>
+<li>扩充作用域: with</li>
+<li>对象：delete,</li>
+<li>函数：return，new, this</li>
+</ol>
+</li>
+<li><p>es3: 保留字（以 浏览器兼容的版本为准） （分类不正确可以指出）</p>
+<ol>
+<li>变量声明:  const, volatile, transient, synchronized,</li>
+<li>数据类型:  int, float, short, long, double, boolean, char</li>
+<li>导入导出:  export, import,</li>
+<li>类:       class, static, public, private, super, protected, extends</li>
+<li>其他:     package, native, interface, implements, enum, byte, abstract</li>
+<li>判断:     goto</li>
+<li><p>调试:     throws, debugger, final</p>
+</li>
+<li><p>解释：（分类不正确可以指出）</p>
+<ul>
+<li>volatile:     在程序设计中，尤其是在 C 语言、C++、C# 和 Java 语言中，使用 volatile 关键字声明的变量或对象通常具有与优化、多线程相关的特殊属性。</li>
+<li>transient:    Java 中 transient 关键字的作用，简单地说，就是让某些被修饰的成员属性变量不被序列化</li>
+<li>synchronized: Java 中 synchronized 同步方法</li>
+<li>protected:    Java 或 C中 protected 类成员的修饰属性</li>
+<li>enum:         枚举</li>
+<li>abstract:     抽象</li>
+</ul>
+</li>
+</ol>
+<p>保留字每个版本都是不一致的，es3 定义的大量的保留字，但是在 es5 中的保留字相对来说就很少，并且是有严格模式和非严格模式之间的区别</p>
+</li>
+<li><p>es5: 保留字</p>
+<ol>
+<li>非严格模式：    class, enum, extends, super, const, export, import</li>
+<li>“use strict”: 在非严格模式基础上增加了，后面的保留字：implements, package, public, interface, private, static, let, protected, yield, eval, arguments</li>
+</ol>
+</li>
+</ol>
+<hr>
+<p>参考文献：</p>
+<ul>
+<li>《JavaScript 高级程序设计》 第三版</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/20/ES6 模块/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2068,199 +2336,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/05/03/浏览器中的 BOM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/03/浏览器中的 BOM/" itemprop="url">浏览器中的 BOM</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-03T10:20:43+08:00">
-                2018-05-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《JavaScript-高级程序设计》-第三版/" itemprop="url" rel="index">
-                    <span itemprop="name">《JavaScript 高级程序设计》 第三版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  150
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="HTML5-把很多-BOM-相关功能都纳入-HTML5-规范"><a href="#HTML5-把很多-BOM-相关功能都纳入-HTML5-规范" class="headerlink" title="HTML5 把很多 BOM 相关功能都纳入 HTML5 规范"></a>HTML5 把很多 BOM 相关功能都纳入 HTML5 规范</h3><p>  根本上：BOM 只处理浏览器窗口和框架（人们习惯把针对浏览器的 JavaScript 的扩展算作 BOM 的一部分）<br>  比如：</p>
-<ul>
-<li>弹出新浏览器窗口的功能</li>
-<li>移动，缩放和关闭浏览器窗口的功能</li>
-<li>提供浏览器详细信息的 navigator 对象</li>
-<li>提供浏览器所加载页面的详细信息的 location 对象</li>
-<li>提供用户显示器分辨率详细信息的 screen 对象</li>
-<li>对 cookies 的支持</li>
-<li>像 XMLHttpRequest 和 IE 的 ActiveObject 这样的自定义的对象</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2315,7 +2390,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2405,7 +2480,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">41.3k</span>
+    <span title="博客总字数">47.1k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

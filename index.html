@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/06/数据库 - 数据库设计/">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/10/数据库 - 数据库设计（二）关系数据库设计方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="james">
@@ -316,7 +316,474 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/06/数据库 - 数据库设计/" itemprop="url">数据库 - 数据库设计</a></h2>
+                <a class="post-title-link" href="/2018/11/10/数据库 - 数据库设计（二）关系数据库设计方法/" itemprop="url">数据库 - 数据库设计（二）关系数据库设计方法</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-10T11:17:51+08:00">
+                2018-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  3.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="关系数据库库设计的过程概述"><a href="#关系数据库库设计的过程概述" class="headerlink" title="关系数据库库设计的过程概述"></a>关系数据库库设计的过程概述</h3><ul>
+<li>关系数据库：一类采用关系模型作为逻辑数据模型的数据库系统</li>
+<li>关系数据库设计的过程遵循数据库设计的基本步骤<ol>
+<li>需求分析</li>
+<li>概念结构设计</li>
+<li>逻辑结构设计</li>
+<li>物理结构设计</li>
+<li>数据库实施</li>
+<li>数据库的运行和维护等阶段</li>
+</ol>
+</li>
+</ul>
+<h3 id="关系数据库设计过程与各级模式"><a href="#关系数据库设计过程与各级模式" class="headerlink" title="关系数据库设计过程与各级模式"></a>关系数据库设计过程与各级模式</h3><ol>
+<li>需求分析阶段：综合各个用户的应用需求</li>
+<li>在概念结构设计阶段：形成独立于机器特点，独立于各个关系数据库管理系统产品（MySQL,Oracle,SQL,Server 等）的概念模式，如使用 E - R 图</li>
+<li>在逻辑结构设计阶段，将 E - R 图转换成具体的数据库产品支持的关系数据模型，形成数据库逻辑模式，然后根据用户处理的要求，安全性考虑，在基本表的基础上再建立必要的视图，形成数据的外模式</li>
+<li>再物理结构的设计阶段中，根据关系数据库管理系统的特点和处理的需要，进行物理存储安排，建立索引，形成数据库内模式</li>
+</ol>
+<h3 id="概念结构设计方法"><a href="#概念结构设计方法" class="headerlink" title="概念结构设计方法"></a>概念结构设计方法</h3><ol>
+<li><p>关系数据库的概念结构设计方法通常是：自顶向下法</p>
+</li>
+<li><p>两个步骤</p>
+<ul>
+<li>建立局部信息结构</li>
+<li>然后将局部信息结构合成全局信息结构并优化</li>
+</ul>
+</li>
+<li>描述工具：<ul>
+<li>E - R 图</li>
+</ul>
+</li>
+</ol>
+<h4 id="概念结构设计方法常使用的描述工具：E-R-图的表示法"><a href="#概念结构设计方法常使用的描述工具：E-R-图的表示法" class="headerlink" title="概念结构设计方法常使用的描述工具：E - R 图的表示法"></a>概念结构设计方法常使用的描述工具：E - R 图的表示法</h4><ol>
+<li>概念结构设计：是将需求分析得到的用户需求抽象为信息结构（概念模型）的过程，它通常使用 E - R 图作为描述现实世界的建模工具</li>
+<li><p>E - R 图提供了表示信息世界中实体，属性和联系的方法，具体：</p>
+<ul>
+<li>实体型：其用矩形表示，矩形框内写明实体的名称</li>
+<li>属性：其用椭圆形表示，并用无向边将其与相应的实体链接起来</li>
+<li>联系：其用菱形表示，菱形框内写明联系的名称，并用无向边分别与有关实体连接起来，同时在无向边旁标上联系的类型（1:1,1:N, M:N），如果一个联系具有属性，则这些属性也要用无向边与该联系连接起来</li>
+</ul>
+</li>
+<li><p>两个实体型之间的联系：</p>
+<ul>
+<li>一对一（1:1）</li>
+<li>一对多（1:N）</li>
+<li>多对多（M:N）</li>
+</ul>
+</li>
+<li><p>两个以上的实体型之间的联系</p>
+<ul>
+<li>一对一（1:1）</li>
+<li>一对多（1:N）</li>
+<li>多对多（M:N）</li>
+</ul>
+</li>
+<li><p>单个实体型内的联系</p>
+<ul>
+<li>一对一（1:1）</li>
+<li>一对多（1:N）</li>
+<li>多对多（M:N）</li>
+</ul>
+</li>
+</ol>
+<h3 id="概念结构设计方法第一个步骤：局部信息结构设计"><a href="#概念结构设计方法第一个步骤：局部信息结构设计" class="headerlink" title="概念结构设计方法第一个步骤：局部信息结构设计"></a>概念结构设计方法第一个步骤：局部信息结构设计</h3><ul>
+<li><p>概念：根据需求分析报告中标明的用户视图范围所建立的满足该范围内用户需求的信息结构</p>
+</li>
+<li><p>局部信息结构设计的步骤分为：</p>
+<ol>
+<li>确定局部范围</li>
+<li>选择实体</li>
+<li>选择实体关键字</li>
+<li>确定实体间联系</li>
+<li>确定实体的属性</li>
+</ol>
+</li>
+</ul>
+<h4 id="局部信息结构设计第一个步骤：确定局部范围"><a href="#局部信息结构设计第一个步骤：确定局部范围" class="headerlink" title="局部信息结构设计第一个步骤：确定局部范围"></a>局部信息结构设计第一个步骤：确定局部范围</h4><ul>
+<li>局部范围主要依据需求分析报告后者难过标明的用户视图范围来确定<blockquote>
+<p>需求分析报告中标明的局部范围往往与子模式范围相对应</p>
+<p>范围确定的基本准则:</p>
+<ol>
+<li>部门和功能相对对立</li>
+<li>同其他局部范围相互影响较少，并且实体个数适量</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h4 id="局部信息结构设计第二个步骤：选择实体"><a href="#局部信息结构设计第二个步骤：选择实体" class="headerlink" title="局部信息结构设计第二个步骤：选择实体"></a>局部信息结构设计第二个步骤：选择实体</h4><ol>
+<li><p>选择实体的（目的）任务：是在确定的局部范围内选择一些合适的信息单位作为局部信息结构的基本实体</p>
+<blockquote>
+<p>这些实体应能满足该局部范围内的应用需求<br>通常，以实际工作中习惯使用的信息单位作为选择实体的基础，数据分类表是选择实体的直接依据</p>
+<p>再同一局部信息结构中的实体名称应具有唯一性</p>
+</blockquote>
+</li>
+<li><p>实体选择时的最大困难是如何区别实体与属性</p>
+</li>
+</ol>
+<h4 id="局部信息结构设计第三个步骤：选择实体的关键字属性"><a href="#局部信息结构设计第三个步骤：选择实体的关键字属性" class="headerlink" title="局部信息结构设计第三个步骤：选择实体的关键字属性"></a>局部信息结构设计第三个步骤：选择实体的关键字属性</h4><ul>
+<li>实体的存在依赖于其他关键字的存在<blockquote>
+<p>实体关键字属性确定之后，实体的非关键字属性也就容易确定了，因为他们之间存在某种应用上的联系和依赖性</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="局部信息结构设计第四个步骤：确定实体间的联系"><a href="#局部信息结构设计第四个步骤：确定实体间的联系" class="headerlink" title="局部信息结构设计第四个步骤：确定实体间的联系"></a>局部信息结构设计第四个步骤：确定实体间的联系</h4><ul>
+<li>数据间的联系必须在概念设计时确定<blockquote>
+<p>一种常用的分析实体间是否存在联系的方法是，将局部范围内的实体逐一取出来与该范围内的其他实体试行匹配（在任务表中）</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="局部信息结构设计第五个步骤：确定实体的属性"><a href="#局部信息结构设计第五个步骤：确定实体的属性" class="headerlink" title="局部信息结构设计第五个步骤：确定实体的属性"></a>局部信息结构设计第五个步骤：确定实体的属性</h4><ul>
+<li><p>属性分为两类</p>
+<ol>
+<li>标识属性</li>
+<li>说明属性</li>
+</ol>
+</li>
+<li><p>标识属性（实体关键字属性和非关键字属性）</p>
+<blockquote>
+<p>用作实体的关键字，说明属性用作描述实体的一般特征 </p>
+</blockquote>
+</li>
+<li><p>说明属性</p>
+<blockquote>
+<p>基本原则：说明属性的存在和使用通常依赖于标识属性<br>取决于：该属性是否可通过其所在实体的关键字找到，并且他们之间在应用中具有某种联系</p>
+<p>说明属性应是单值的，不允许嵌套属性和重复组的现象出现在实体中<br>会有这种情况：同一说明属性依赖于多个实体的标识属性的情况，此时可将该属性分配到其他使用频率最高的实体中去</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="概念结构设计方法第二个步骤：全局信息结构设计"><a href="#概念结构设计方法第二个步骤：全局信息结构设计" class="headerlink" title="概念结构设计方法第二个步骤：全局信息结构设计"></a>概念结构设计方法第二个步骤：全局信息结构设计</h3><ul>
+<li><p>概念：是将上述步骤中产生的所有局部信息结构合并成一个全局信息结构</p>
+</li>
+<li><p>全局信息结构必须是所有局部信息结构的全面准确的映像</p>
+<blockquote>
+<p>即合并前各局部信息结构能实现的应用需求，合并之后也能实现</p>
+</blockquote>
+</li>
+<li><p>需要避免的问题：消除不同局部信息结构中因用户观点的不同所可能导致的数据不一致，并尽可能地增强数据的共享性，控制数据的冗余</p>
+</li>
+<li><p>合并的前提：假设局部信息结构都是完全的，一致的前提下进行</p>
+<blockquote>
+<p>即假设各局部信息结构都能满足其对应局部范围的应用需求,且其内部不存在需要合并的成分</p>
+</blockquote>
+</li>
+<li><p>合并的方式</p>
+<ol>
+<li>可以一次性把所有的局部信息结构合并成全局的信息结构</li>
+<li>也可以采用逐步合并，进行累加的方式</li>
+</ol>
+</li>
+<li><p>合并的过程</p>
+<ol>
+<li>一个系统中有多个功能，可能有多个设计人员进行设计，合并的时候就会出现冲突，这个无法避免的，需要合理的解决</li>
+</ol>
+</li>
+<li><p>合并中出现的冲突</p>
+<ol>
+<li><p>属性冲突</p>
+<ul>
+<li><p>属性域冲突</p>
+<blockquote>
+<p>属性值的类型，取值范围，取值集合的不同</p>
+</blockquote>
+</li>
+<li><p>属性取值单位冲突</p>
+<blockquote>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>命名冲突，两类</p>
+<ul>
+<li>同名异义</li>
+<li>异名同义</li>
+</ul>
+</li>
+<li><p>结构冲突，三类</p>
+<ul>
+<li>同一对象在一局部 E - R 图中作为实体，而在另外一个局部 E - R 图中作为属性</li>
+<li>同义实体在不同的 E - R 图中属性个数和类型不同</li>
+<li>实体之间的联系在不同的 E - R 图中是不同的类型</li>
+</ul>
+</li>
+<li><p>好的全局信息结构设计</p>
+<ol>
+<li>能反应用户功能需求</li>
+<li>实体的类型数量尽可能少</li>
+<li>实体类型所含属性尽可能少</li>
+<li>实体类型间联系无冗余<blockquote>
+<p>后面三个内容，是全局 E - R 模型优化需要达到内容<br>优化步骤：</p>
+<ol>
+<li>相关实体类型的合并</li>
+<li>消除不必要的冗余属性</li>
+<li>消除不必要的冗余联系</li>
+<li>有时为了效率，可以适当的存在冗余（😂你懂的）</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="逻辑结构设计方法"><a href="#逻辑结构设计方法" class="headerlink" title="逻辑结构设计方法"></a>逻辑结构设计方法</h3><ul>
+<li><p>在数据库设计步骤中逻辑结构的设计</p>
+<ol>
+<li>目的（任务）：是把在概念结构设计产生的概念模型转换为具体的 DBMS 所支持的逻辑数据模型<blockquote>
+<p>导出特定的 DBMS 可以处理的数据逻辑结构（数据库的模式和外模式），这些模式在功能，性能，完整性和约束性方面满足应用要求</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>在关系型数据库的设计中逻辑结构的设计：</p>
+<ol>
+<li>目的（任务）：就是把概念结构设计阶段已设计好的 E - R 图转换为关系数据库管理系统所支持的关系模型</li>
+<li>工作内容：<ul>
+<li>将 E - R 图转换位关系模型</li>
+<li>对关系数据库模型进行优化</li>
+<li>设计面向用户的外模式</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="逻辑结构设计内容（一）：将-E-R-图转换位关系模型"><a href="#逻辑结构设计内容（一）：将-E-R-图转换位关系模型" class="headerlink" title="逻辑结构设计内容（一）：将 E - R 图转换位关系模型"></a>逻辑结构设计内容（一）：将 E - R 图转换位关系模型</h4><ul>
+<li><p>需要解决的问题：</p>
+<ol>
+<li>要如何将实体以及实体间的联系转换为关系模型</li>
+<li>如何确定这些关系模式的属性和主码<blockquote>
+<p>关系模式的逻辑结构是一组关系模式的集合，而 E - R 图则是由实体，实体的属性和实体间的联系转换为某种关系模式</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>原则：(待更新)</p>
+<ol>
+<li>一个实体转换为一个关系模式</li>
+<li>一个一对一（1:1）联系可以转换为一个独立的关系模式</li>
+<li>一个一对多（1:N）联系可以转换为一个独立的关系模式</li>
+<li>一个多对多（M:N）联系转换为一个关系模式</li>
+<li>三个或桑哥以上实体间的一个多元联系可以转换为一个关系模式</li>
+</ol>
+</li>
+</ul>
+<h4 id="逻辑结构设计内容（二）：对关系数据库模型进行优化"><a href="#逻辑结构设计内容（二）：对关系数据库模型进行优化" class="headerlink" title="逻辑结构设计内容（二）：对关系数据库模型进行优化"></a>逻辑结构设计内容（二）：对关系数据库模型进行优化</h4><ul>
+<li>数据库逻辑设计的结果不是唯一的</li>
+<li>数据模型的优化： 为了进一步提高数据库的要求，还应该根据应用需要适当修改地修改，调整数据模型额结构</li>
+<li>关系数据模型的优化通常以关系规范化理论为指导，<a href="">数据库 - 关系型数据库（三）关系数据库的规范化理论</a></li>
+</ul>
+<h4 id="逻辑结构设计内容（三）：设计面向用户的外模式"><a href="#逻辑结构设计内容（三）：设计面向用户的外模式" class="headerlink" title="逻辑结构设计内容（三）：设计面向用户的外模式"></a>逻辑结构设计内容（三）：设计面向用户的外模式</h4><ul>
+<li>将概念模式转化为全局逻辑模式之后，可根据局部应用需求，利用视图（View）设计更符合局部用户需要的用户外模式</li>
+<li>定义数据库的全局模式主要是从系统的时间效率，空间效率，易维护性等角度出发。由于用户外模式与模式是相对独立的，所以定义用户外模式时注意：<ol>
+<li>定义别名</li>
+<li>对应不同级别的用户定义不同的视图，以保证系统的安全性</li>
+<li>简化用户对系统的使用</li>
+</ol>
+</li>
+</ul>
+<h3 id="物理设计方法"><a href="#物理设计方法" class="headerlink" title="物理设计方法"></a>物理设计方法</h3><ul>
+<li><p>关系数据库系统的优点之一是用户通常不需要进行数据存储结构和存取方法的是设计</p>
+<blockquote>
+<p>这个是相对的，用户失去对数据库存取路径的控制而影响到数据库的存取效率</p>
+</blockquote>
+</li>
+<li><p>物理设计的（目的）任务：主要是通过对关系建立索引和聚集来实现与应用相关数据的逻辑连接和物理聚集，以改善对数据库的存取效率</p>
+</li>
+</ul>
+<h4 id="物理设计方法（一）：-建立索引"><a href="#物理设计方法（一）：-建立索引" class="headerlink" title="物理设计方法（一）： 建立索引"></a>物理设计方法（一）： 建立索引</h4><ul>
+<li>建立索引的方式通常有静态和动态</li>
+</ul>
+<h4 id="物理设计方法（二）：建立聚集"><a href="#物理设计方法（二）：建立聚集" class="headerlink" title="物理设计方法（二）：建立聚集"></a>物理设计方法（二）：建立聚集</h4><ul>
+<li><p>聚集：是将相关数据集中存放的物理存储技术</p>
+<blockquote>
+<p>以提高 I/O 的数据命中率而改善存取速度，其功能由具体的 DBMS 所提供</p>
+<p>所谓集中存放的概念：将相关数据尽可能地存放一个物理块中（或一个磁道中，或一个柱面中，或相邻区域块，磁道，柱面）</p>
+</blockquote>
+</li>
+<li><p>数据聚集结构的一种有效方式是块结构方式。</p>
+<blockquote>
+<p>块域块之间由指针连接，一个块对于一个物理分区</p>
+<p>数据聚集可在一个或多个关系上建立</p>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/06/数据库 - 数据库设计（一）数据库设计概述和数据库设计步骤/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/06/数据库 - 数据库设计（一）数据库设计概述和数据库设计步骤/" itemprop="url">数据库 - 数据库设计（一）数据库设计概述和数据库设计步骤</a></h2>
         
 
         <div class="post-meta">
@@ -393,7 +860,7 @@
                   <span class="post-meta-item-text">文章总字数&#58;</span>
                 
                 <span title="文章总字数">
-                  315
+                  3k
                 </span>
               
 
@@ -409,7 +876,7 @@
                   <span class="post-meta-item-text">阅读时间 &asymp;</span>
                 
                 <span title="阅读时间">
-                  1
+                  10
                 </span>
               
             </div>
@@ -465,10 +932,22 @@
 </li>
 </ul>
 <h3 id="数据库设计的方法"><a href="#数据库设计的方法" class="headerlink" title="数据库设计的方法"></a>数据库设计的方法</h3><ul>
-<li>直观设计法</li>
-<li>规范设计法<ol>
-<li>新奥尔良设计方法</li>
-<li>基于 E-R 模型的数据设计方法</li>
+<li><p>直观设计法</p>
+<blockquote>
+<p>特点：最原始的一类设计方法，利用设计者的经验和技巧设计数据库模式<br>缺点：缺乏科学理论的指导，设计质量难以保证</p>
+</blockquote>
+</li>
+<li><p>规范设计法</p>
+<ol>
+<li><p>新奥尔良设计方法</p>
+</li>
+<li><p>基于 E-R 模型的数据设计方法</p>
+</li>
+</ol>
+<blockquote>
+<p>基本思想：在需求分析的基础上用 E-R 图构造一个反映实现世界实体之间联系的企业模式，然后将此模式转换成某一特定DBMS 下的概念模式</p>
+</blockquote>
+<ol start="3">
 <li>计算机辅助设计方法</li>
 </ol>
 </li>
@@ -499,7 +978,313 @@
 <li><p>数据库运行和维护阶段</p>
 </li>
 </ol>
-<h2 id="数据库设计的基本步骤（待更新）"><a href="#数据库设计的基本步骤（待更新）" class="headerlink" title="数据库设计的基本步骤（待更新）"></a>数据库设计的基本步骤（待更新）</h2><h2 id="关系数据库的设计方法（待更新）"><a href="#关系数据库的设计方法（待更新）" class="headerlink" title="关系数据库的设计方法（待更新）"></a>关系数据库的设计方法（待更新）</h2>
+<h2 id="数据库设计的基本步骤"><a href="#数据库设计的基本步骤" class="headerlink" title="数据库设计的基本步骤"></a>数据库设计的基本步骤</h2><ol>
+<li><p>使用的方法：分阶段设计方法</p>
+</li>
+<li><p>原则：自顶向下，逐步求精的原则</p>
+<blockquote>
+<p>将数据库设计过程分解为若干个相互依存的阶段，每一阶段采用不同的技术与工具解决不同的问题</p>
+<p>目的：将问题局部化，减少 局部问题对整体设计的影响，便于多人合作</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="数据库设计的各个阶段，又称为数据库设计步骤"><a href="#数据库设计的各个阶段，又称为数据库设计步骤" class="headerlink" title="数据库设计的各个阶段，又称为数据库设计步骤"></a>数据库设计的各个阶段，又称为数据库设计步骤</h3><h4 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1. 需求分析"></a>1. 需求分析</h4><ul>
+<li><p>目标：了解与用户信息及应用处理的要求，并将结果按一定格式整理而形成需求分析报告</p>
+<blockquote>
+<p>该报告是后续概念设计，逻辑设计，物理设计，数据库建立与维护的依据</p>
+</blockquote>
+</li>
+<li><p>4 个步骤：</p>
+<ol>
+<li><p>确定数据库范围</p>
+<ul>
+<li><p>目的：确定数据库应支持哪些应用功能</p>
+</li>
+<li><p>首先要考虑得是支持用户工作需要所必须的应用要求</p>
+</li>
+</ul>
+</li>
+<li><p>分析数据应用过程</p>
+<ul>
+<li><p>目的：了解分析数据与数据处理间的关系</p>
+</li>
+<li><p>每个功能用到那些数据，数据使用顺序，对数据作如何处理以及处理的策略以及处理的结果</p>
+</li>
+<li><p>应用过程分析的结果是数据库结构设计的重要依据</p>
+<ol>
+<li>那些数据需要存入数据库中</li>
+<li>哪些数据可作为报告输出而不存入数据库中</li>
+<li>不同数据的不同使用权限（存，取，删，改） 和共享范围</li>
+</ol>
+</li>
+<li><p>数据应用过程也是数据库应用程序编写的依据</p>
+</li>
+<li><p>使用的工具</p>
+<ol>
+<li>借助数据流程图或其他信息及应用结构图形表示</li>
+<li>在构建数据流程图的时候需要注意：<ul>
+<li>应以局部应用部门或相对独立的应用功能为标识单位，从而将问题局部化，有利于分块设计</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>收集与分析数据</p>
+<ul>
+<li><p>目的：了解并分析数据的组成格式以及操作特征，每个数据元素的语义及关系等，并将他们收集起来整理归档。</p>
+<blockquote>
+<p>数据流程图中所涉及的 数据都是收集与分析的对象，主要包括报表，文件，单据以及各种原始资料</p>
+</blockquote>
+</li>
+<li><p>可以从三个方面入手：</p>
+<ol>
+<li><p>数据的静态结构</p>
+<ul>
+<li>概念：指不施加应用操作于其上时数据的原始状态，可以通过数据分类表和数据元素进行说明</li>
+</ul>
+<ol>
+<li>数据分类表： 用于数据的总体描述，对于每一客观存在的具有独立意义的单类数据单位（如一种报表，一种文件，一种收据）应给出其名称，用途，编制者以及使用者等说明</li>
+</ol>
+<ul>
+<li><p>数据分类表，其结构</p>
+</li>
+<li><p>数据ID</p>
+</li>
+<li>数据名</li>
+<li>用途</li>
+<li>主人</li>
+<li>用户</li>
+<li>来源</li>
+<li>去向</li>
+<li>存档时间</li>
+<li><p>数据量</p>
+</li>
+<li><p>数据元素表，其结构</p>
+</li>
+<li><p>数据ID</p>
+</li>
+<li>数据元素ID</li>
+<li>元素名</li>
+<li>意义</li>
+<li>类型</li>
+<li>长度</li>
+<li>算法</li>
+<li>备注</li>
+</ul>
+</li>
+<li><p>动态结构</p>
+<ul>
+<li>概念：指将应用操作施加于数据之上数据的状态，可通过任务分类表和数据操作特征表进行说明</li>
+<li>意义：</li>
+<li>任务分类表</li>
+<li>任务 ID</li>
+<li>名称</li>
+<li>功能</li>
+<li>类型</li>
+<li>主人</li>
+<li>用户</li>
+<li>执行日期</li>
+<li>频率</li>
+<li>操作过程</li>
+<li><p>备注</p>
+</li>
+<li><p>数据操作特征表</p>
+</li>
+<li>任务 ID</li>
+<li>数据 ID </li>
+<li>建立</li>
+<li>查询</li>
+<li>插入</li>
+<li>修改</li>
+<li>删除</li>
+<li>数据量</li>
+</ul>
+</li>
+<li><p>数据约束</p>
+<ul>
+<li>数据约束是指使用数据时的特殊要求，约束的类型：</li>
+</ul>
+<ol>
+<li><p>数据的安全保密性</p>
+<blockquote>
+<p>谁拥有操作，存，取，删，改的不同权限</p>
+</blockquote>
+</li>
+<li><p>数据的完整性</p>
+<blockquote>
+<p>数据正确性的约束范围和验证准则</p>
+</blockquote>
+</li>
+<li><p>响应时间</p>
+<blockquote>
+<p>指主要是指某些特定应用要求的数据存储时间限制</p>
+</blockquote>
+</li>
+<li><p>数据恢复</p>
+<blockquote>
+<p>其主要指转储及恢复的时机与范围等要求</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>编写需求分析报告</p>
+<ul>
+<li><p>作为需求分析阶段的一个总结，需求分析报告作为应用需求的业务人员和数据库设计人员的 “共同语言”</p>
+</li>
+<li><p>需求报告的内容：</p>
+<ol>
+<li><p>数据库的应用功能目标</p>
+<blockquote>
+<p>要求明确标明数据库的应用范围以及达到的应用处理功能</p>
+</blockquote>
+</li>
+<li><p>标明不同用户视图范围</p>
+<blockquote>
+<p>根据机构与职能关系图和数据流程图，并参考任务分类表等，确定不同部门或功能的局部视图范围</p>
+</blockquote>
+</li>
+<li><p>应用处理过程需求说明</p>
+<blockquote>
+<ol>
+<li>数据流程图，其主要反映应用部门原始业务处理的工作流程</li>
+<li>任务分类表，其标明不同任务的功能以及使用状况</li>
+<li>数据操作特征表，标明任务和数据间的联系以及不同数据的不同操作特征与执行效率</li>
+</ol>
+</blockquote>
+</li>
+<li><p>数据字典</p>
+<ul>
+<li><p>数据字典（Data Dictionary, DD）概念：数据库系统中存储三级结构定义的数据库</p>
+<blockquote>
+<p>通常指的是数据库系统中各类数据详细描述的集合</p>
+</blockquote>
+</li>
+<li><p>功能：存储和检索各种数据描述，即元数据</p>
+</li>
+<li><p>特点：在数据库设计中，它提供了对各类数据描述的集中管理，是一种数据分析，系统设计和管理的有力工具</p>
+<blockquote>
+<p>数组字典需要有专人进行管理，及时对数据字典进行更新，保证字典的安全，可靠</p>
+</blockquote>
+</li>
+<li><p>数据字典包括的内容：数据分类表，数据元素表和各类原始资料</p>
+<blockquote>
+<p>各类原始资料是指收集所有单据，报表，文件以及设计所需的原始资料，并根据数据分类表的数据 ID 统一分类标号</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="2-概念结构设计"><a href="#2-概念结构设计" class="headerlink" title="2. 概念结构设计"></a>2. 概念结构设计</h4><ul>
+<li><p>目的（任务）：是在需求分析中产生的需求分析报告的基础上，按照特定的方法设计满足应用需求的用户信息结构</p>
+<blockquote>
+<p>改信息结构通常称为概念模式</p>
+</blockquote>
+</li>
+<li><p>特点：概念模型独立于任何软件和硬件，</p>
+<blockquote>
+<p>主要目的：是最大限度地满足应用需求，可完全不顾及具体的硬件和软件的限制，因而它是一个符合用户需求的趋于理想化的信息结构</p>
+</blockquote>
+</li>
+<li><p>概念结构设计的常用方法：</p>
+<ol>
+<li>实体分析法（自顶向下法）</li>
+<li>属性综合法（自底向上法）<blockquote>
+<p>采用属性分析开始，高层实体以及联系通过底层属性组成的设计技术</p>
+<p>实际上，这是一种基于统计分析推导的方法，即通过对数据元素与应用任务联系的定性定量统计分析技术来推导的方法 </p>
+<p>统计分析推导的处理过程：可分为属性分类，实体构成，联系的确定等相对独立的步骤</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="3-逻辑结构设计"><a href="#3-逻辑结构设计" class="headerlink" title="3. 逻辑结构设计"></a>3. 逻辑结构设计</h4><ul>
+<li><p>目的（任务）：是将概念模型转化为等价的，并为特定 DBMS 所支持数据模型的结构</p>
+</li>
+<li><p>数据库逻辑模型表示方法：层次，网状，关系数据模型表示</p>
+</li>
+<li><p>逻辑结构设计的输入和输出信息</p>
+<blockquote>
+<p>逻辑结构设计是在需求分析以及概念结构设计的基础上进行的，通常要求提供如下输入信息</p>
+<ol>
+<li>独立于特定 DBMS 的概念模型</li>
+<li>有关响应时间，安全保密性，数据完整性及恢复方面的要求说明，包括保持数据一致性的规则说明</li>
+<li>数据量以及使用频率</li>
+<li>特定 DBMS 特性，包括 DBMS 支持的数据模型以及数据定义语言的说明</li>
+</ol>
+</blockquote>
+</li>
+<li><p>完成逻辑结构设计之后输出的信息</p>
+<blockquote>
+<ol>
+<li>一个特定 DBMS 支持的概念模式，或称为模式</li>
+<li>物理设计说明，主要包括存入数据库中的数据量，使用频率以及响应时间要求</li>
+<li>程序设计说明，其是在需求分析的基础上，根据已完成的逻辑模型编制各程序名，执行逻辑步，存取数据的名，顺序以及操作特征（读写删改）的说明</li>
+</ol>
+</blockquote>
+</li>
+<li><p>逻辑结构设计的步骤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">               +-----------------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    概念设计      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br><span class="line">                        |</span><br><span class="line">               +--------+--------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    模型转换      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br><span class="line">                        |</span><br><span class="line">        +---------------+---------------+</span><br><span class="line">        |                               |</span><br><span class="line">+-------+--------+          +-----------+----------+</span><br><span class="line">|                |          |                      |</span><br><span class="line">|    子模式       |          |  应用程序设计说明     |</span><br><span class="line">|                |          |                      |</span><br><span class="line">+-------+--------+          +-----------+----------+</span><br><span class="line">        |                               |</span><br><span class="line">        +---------------+---------------+</span><br><span class="line">                        |</span><br><span class="line">               +--------+--------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    设计评价      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br><span class="line">                        |</span><br><span class="line">               +--------+--------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    物理设计      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li><p>模型转换是指将概念模型等价地转换为特定 DBMS 支持的关系模式，网状模型或层次模型 </p>
+</li>
+<li><p>子模式设计的目标：是抽取或导出模式的子集，以构造不同用户使用的局部数据逻辑结构</p>
+</li>
+<li><p>编制应用程序设计说明的目的：为可实际运行的应用程序设计提供依据与指导，并作为设计评价的基础</p>
+</li>
+<li><p>设计评价的任务是分析并检验模式以及子模式的正确性合理性</p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h4 id="4-物理结构设计"><a href="#4-物理结构设计" class="headerlink" title="4. 物理结构设计"></a>4. 物理结构设计</h4><ul>
+<li>概念：是指对于一个给定的数据库逻辑结构，研究并构造物理结构的过程</li>
+<li>任务：是确定数据库在存储设备上的存储结构以及存储方法<blockquote>
+<p>因 DBMS 的不同还可能包括建立索引和聚集，以及物理块大小，缓冲区个数和大小，数据压缩的选择等</p>
+<p>对于物理结构设计的人员的要求</p>
+<ul>
+<li>掌握基本存储设备的特性</li>
+<li>充分了解操作系统以及 DBMS 所提供的支持环境</li>
+<li>并十分熟悉数据库的逻辑结构以及存取速度，频率以及数据量方面的要求</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h4 id="5-数据库实施"><a href="#5-数据库实施" class="headerlink" title="5. 数据库实施"></a>5. 数据库实施</h4><ul>
+<li><p>工作内容：加载数据，应用程序设计以及数据库运行</p>
+</li>
+<li><p>数据加载</p>
+<blockquote>
+<p>概念：将符号要求的数据装载到数据库中去，其具体过程包括数据的收集，分类，整理校验和输入等过程，经此就可将数据按数据库定义准确地存储到数据库中</p>
+</blockquote>
+</li>
+<li><p>应用程序设计</p>
+<blockquote>
+<p>严格说，应用程序设计不应是数据库设计的范畴，但它又必须且只能是随着数据库结构设计的进展而逐步地并行进行</p>
+</blockquote>
+</li>
+<li><p>数据库试运行 </p>
+<blockquote>
+<p>目的：为了避免对实际应用带来损害，数据库通常应经过一个试运行阶段</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="6-数据库的运行和维护"><a href="#6-数据库的运行和维护" class="headerlink" title="6. 数据库的运行和维护"></a>6. 数据库的运行和维护</h4><ul>
+<li>数据库系统投入实际运行标志着数据库设计和应用开发的基本完成，但绝不是意味着设计应用开发工作的终止</li>
+</ul>
+
           
         
       
@@ -2703,197 +3488,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/30/SQL - 函数：日期函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/30/SQL - 函数：日期函数/" itemprop="url">SQL - 函数：日期函数</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T23:57:25+08:00">
-                2018-10-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
-                    <span itemprop="name">《SQL基础教程》第二版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  163
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="CURRENT-DATE-当前日期（年月日）"><a href="#CURRENT-DATE-当前日期（年月日）" class="headerlink" title="CURRENT_DATE 当前日期（年月日）"></a>CURRENT_DATE 当前日期（年月日）</h3>  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT CURRENT_DATE;</span><br><span class="line">+--------------+</span><br><span class="line">| CURRENT_DATE |</span><br><span class="line">+--------------+</span><br><span class="line">| 2018-10-31   |</span><br><span class="line">+--------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
-<h3 id="CURRENT-TIME-当前时间（小时分）"><a href="#CURRENT-TIME-当前时间（小时分）" class="headerlink" title="CURRENT_TIME 当前时间（小时分）"></a>CURRENT_TIME 当前时间（小时分）</h3>   <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT CURRENT_TIME;</span><br><span class="line">+--------------+</span><br><span class="line">| CURRENT_TIME |</span><br><span class="line">+--------------+</span><br><span class="line">| 00:02:56     |</span><br><span class="line">+--------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-<h3 id="CURRENT-TIMESTAP-当前日期和时间"><a href="#CURRENT-TIMESTAP-当前日期和时间" class="headerlink" title="CURRENT_TIMESTAP 当前日期和时间"></a>CURRENT_TIMESTAP 当前日期和时间</h3>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT CURRENT_TIMESTAMP;;</span><br><span class="line">+---------------------+</span><br><span class="line">| CURRENT_TIMESTAMP   |</span><br><span class="line">+---------------------+</span><br><span class="line">| 2018-10-31 00:05:55 |</span><br><span class="line">+---------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">ERROR:</span><br><span class="line">No query specified</span><br></pre></td></tr></table></figure>
-<h3 id="EXTRACT-截取日期日期"><a href="#EXTRACT-截取日期日期" class="headerlink" title="EXTRACT 截取日期日期"></a>EXTRACT 截取日期日期</h3><ul>
-<li>EXTRACT(日期元素 FROM 日期)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT CURRENT_TIMESTAMP,    </span><br><span class="line">  -&gt; EXTRACT(YEAR FROM CURRENT_TIMESTAMP) AS year,    </span><br><span class="line">  -&gt; EXTRACT(MONTH FROM CURRENT_TIMESTAMP) AS month,    </span><br><span class="line">  -&gt; EXTRACT(DAY FROM CURRENT_TIMESTAMP) AS day,    </span><br><span class="line">  -&gt; EXTRACT(HOUR FROM CURRENT_TIMESTAMP) AS hour,    </span><br><span class="line">  -&gt; EXTRACT(minute FROM CURRENT_TIMESTAMP) AS minute,    </span><br><span class="line">  -&gt; EXTRACT(SECOND FROM CURRENT_TIMESTAMP) AS second;</span><br><span class="line">+---------------------+------+-------+------+------+--------+--------+</span><br><span class="line">| CURRENT_TIMESTAMP   | year | month | day  | hour | minute | second |</span><br><span class="line">+---------------------+------+-------+------+------+--------+--------+</span><br><span class="line">| 2018-10-31 00:14:09 | 2018 |    10 |   31 |    0 |     14 |      9 |</span><br><span class="line">+---------------------+------+-------+------+------+--------+--------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2948,7 +3542,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -3038,7 +3632,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">41.3k</span>
+    <span title="博客总字数">47.1k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

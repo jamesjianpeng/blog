@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="mac 下载并使用 MySql社区版下载 https://dev.mysql.com/downloads/mysql/ 下载后直接双击安装，可以设置密码，或者随机分配密码，user 都是 root  开启 MySql 服务 知道软件位置 系统偏好设置 &amp;gt; MySql(小海豚标识) 安装好之后默认是 Start MySql Server 在任何地方使用 mysql 命令，在终端中输入：1PA">
+<meta name="description" content="数据库什么是数据库 是一个以某种有组织的方式存储的数据集合  数据库其他的要素 表（table）：一个数据库中可以存在多个表，比如：图书馆中的书籍分类：人文历史 和 青春文学 应该是不同的表 列（column）-&amp;gt; 数据类型：表中的一个字段 行（row）：表中的一条记录 单元格：列和行的交汇处；一个单元格只能输出一个数据 主键（primary key）：用于区分一行的标识，可以通过主键把该">
 <meta name="keywords" content="数据库,SQL,MySql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL 初识">
 <meta property="og:url" content="https://www.pengjiandry.com/2018/10/14/SQL - 初识/index.html">
 <meta property="og:site_name" content="彭涧">
-<meta property="og:description" content="mac 下载并使用 MySql社区版下载 https://dev.mysql.com/downloads/mysql/ 下载后直接双击安装，可以设置密码，或者随机分配密码，user 都是 root  开启 MySql 服务 知道软件位置 系统偏好设置 &amp;gt; MySql(小海豚标识) 安装好之后默认是 Start MySql Server 在任何地方使用 mysql 命令，在终端中输入：1PA">
+<meta property="og:description" content="数据库什么是数据库 是一个以某种有组织的方式存储的数据集合  数据库其他的要素 表（table）：一个数据库中可以存在多个表，比如：图书馆中的书籍分类：人文历史 和 青春文学 应该是不同的表 列（column）-&amp;gt; 数据类型：表中的一个字段 行（row）：表中的一条记录 单元格：列和行的交汇处；一个单元格只能输出一个数据 主键（primary key）：用于区分一行的标识，可以通过主键把该">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-04T02:34:07.949Z">
+<meta property="og:updated_time" content="2018-11-10T11:56:33.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL 初识">
-<meta name="twitter:description" content="mac 下载并使用 MySql社区版下载 https://dev.mysql.com/downloads/mysql/ 下载后直接双击安装，可以设置密码，或者随机分配密码，user 都是 root  开启 MySql 服务 知道软件位置 系统偏好设置 &amp;gt; MySql(小海豚标识) 安装好之后默认是 Start MySql Server 在任何地方使用 mysql 命令，在终端中输入：1PA">
+<meta name="twitter:description" content="数据库什么是数据库 是一个以某种有组织的方式存储的数据集合  数据库其他的要素 表（table）：一个数据库中可以存在多个表，比如：图书馆中的书籍分类：人文历史 和 青春文学 应该是不同的表 列（column）-&amp;gt; 数据类型：表中的一个字段 行（row）：表中的一条记录 单元格：列和行的交汇处；一个单元格只能输出一个数据 主键（primary key）：用于区分一行的标识，可以通过主键把该">
 
 
 
@@ -405,7 +405,7 @@
                   <span class="post-meta-item-text">文章总字数&#58;</span>
                 
                 <span title="文章总字数">
-                  788
+                  586
                 </span>
               
 
@@ -421,7 +421,7 @@
                   <span class="post-meta-item-text">阅读时间 &asymp;</span>
                 
                 <span title="阅读时间">
-                  3
+                  2
                 </span>
               
             </div>
@@ -443,32 +443,6 @@
 
       
         <hr>
-<h3 id="mac-下载并使用-MySql"><a href="#mac-下载并使用-MySql" class="headerlink" title="mac 下载并使用 MySql"></a>mac 下载并使用 MySql</h3><h4 id="社区版下载"><a href="#社区版下载" class="headerlink" title="社区版下载"></a>社区版下载</h4><ol>
-<li><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a></li>
-<li>下载后直接双击安装，可以设置密码，或者随机分配密码，user 都是 root</li>
-</ol>
-<h4 id="开启-MySql-服务"><a href="#开启-MySql-服务" class="headerlink" title="开启 MySql 服务"></a>开启 MySql 服务</h4><ol>
-<li>知道软件位置 系统偏好设置 &gt; MySql(小海豚标识)</li>
-<li>安装好之后默认是 Start MySql Server</li>
-<li>在任何地方使用 mysql 命令，在终端中输入：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATH=&quot;$PATH&quot;:/usr/local/mysql/bin</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="连接和退出"><a href="#连接和退出" class="headerlink" title="连接和退出"></a>连接和退出</h4><ol>
-<li><p>第一种链接：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>输入密码之后，链接成功；终端可以输入的位置是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>第二种链接方式：(前提是有 data-base-name 这个数据库)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u &lt;user-name&gt; -p -h &lt;data-base-name&gt; -P 9000</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>退出 mysql 连接( mysql&gt; 是终端中 mysql 服务的标识)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; quit</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; exit</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
 <h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><h4 id="什么是数据库"><a href="#什么是数据库" class="headerlink" title="什么是数据库"></a>什么是数据库</h4><ul>
 <li>是一个以某种有组织的方式存储的数据集合</li>
 </ul>
@@ -654,7 +628,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -725,7 +699,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#mac-下载并使用-MySql"><span class="nav-number">1.</span> <span class="nav-text">mac 下载并使用 MySql</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#社区版下载"><span class="nav-number">1.1.</span> <span class="nav-text">社区版下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开启-MySql-服务"><span class="nav-number">1.2.</span> <span class="nav-text">开启 MySql 服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接和退出"><span class="nav-number">1.3.</span> <span class="nav-text">连接和退出</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库"><span class="nav-number">2.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是数据库"><span class="nav-number">2.1.</span> <span class="nav-text">什么是数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库其他的要素"><span class="nav-number">2.2.</span> <span class="nav-text">数据库其他的要素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL"><span class="nav-number">3.</span> <span class="nav-text">SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是-SQL"><span class="nav-number">3.1.</span> <span class="nav-text">什么是 SQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL-的基本书写规则"><span class="nav-number">3.2.</span> <span class="nav-text">SQL 的基本书写规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL-语句的种类（90-都是-DML）"><span class="nav-number">3.3.</span> <span class="nav-text">SQL 语句的种类（90% 都是 DML）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL-的标准"><span class="nav-number">3.4.</span> <span class="nav-text">SQL 的标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">3.5.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库"><span class="nav-number">1.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是数据库"><span class="nav-number">1.1.</span> <span class="nav-text">什么是数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库其他的要素"><span class="nav-number">1.2.</span> <span class="nav-text">数据库其他的要素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL"><span class="nav-number">2.</span> <span class="nav-text">SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是-SQL"><span class="nav-number">2.1.</span> <span class="nav-text">什么是 SQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL-的基本书写规则"><span class="nav-number">2.2.</span> <span class="nav-text">SQL 的基本书写规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL-语句的种类（90-都是-DML）"><span class="nav-number">2.3.</span> <span class="nav-text">SQL 语句的种类（90% 都是 DML）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL-的标准"><span class="nav-number">2.4.</span> <span class="nav-text">SQL 的标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">2.5.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -760,7 +734,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">47.1k</span>
+    <span title="博客总字数">47.3k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

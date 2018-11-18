@@ -307,6 +307,1079 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/18/数据库 - SQL 和关系型数据库的基本操作（三）数据定义（DDL）- 表的定义/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/18/数据库 - SQL 和关系型数据库的基本操作（三）数据定义（DDL）- 表的定义/" itemprop="url">数据库 - SQL 和关系型数据库的基本操作（三）数据定义（DDL）- 表的定义</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-18T15:57:19+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="二-表定义"><a href="#二-表定义" class="headerlink" title="二. 表定义"></a>二. 表定义</h4><h5 id="1-创建表"><a href="#1-创建表" class="headerlink" title="1. 创建表"></a>1. 创建表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysqk&gt; CREATE TABLE &lt;table_name&gt;</span><br><span class="line">  -&gt; ( &lt;column_1&gt; &lt;data_type&gt; &lt;该列的约束&gt;,</span><br><span class="line">  -&gt;  &lt;column_2&gt; &lt;data_type&gt; &lt;该列的约束&gt;,</span><br><span class="line">  -&gt; ...</span><br><span class="line">  -&gt; &lt;column_n&gt; &lt;data_type&gt; &lt;该列的约束&gt;,</span><br><span class="line">  -&gt; PRIMARY KEY (column_x)));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>👉<a href="https://www.pengjiandry.com/2018/10/14/SQL%20-%20%E8%AF%AD%E5%8F%A5%E5%AD%A6%E4%B9%A0/">SQL 语句学习 - 数据库，表的创建和删除</a></p>
+</blockquote>
+<h5 id="2-更新表"><a href="#2-更新表" class="headerlink" title="2. 更新表"></a>2. 更新表</h5><ul>
+<li>目的：为了实现数据中表规范化设计的目的，有时需要对之前已经创建的表做进一步的结构修改和调整。</li>
+<li>在 MySQL 中可以使用 ALTER TABLE 语句来更改原有表的结构，如：<ul>
+<li>增加或删减列</li>
+<li>创建或取消索引</li>
+<li>更改原有列的数据类型</li>
+<li>重新命名列或表</li>
+<li>更改表的评注和表的引擎类型等</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>ADD [ COLUMN ] 子句: 可添加新的一列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE &lt;table_name&gt;</span><br><span class="line">    -&gt; ADD COLUMN (&lt;column_name&gt; &lt;data_type&gt; &lt;value&gt;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE studentCourseSystem;</span><br><span class="line">Query OK, 1 row affected (0.10 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; USE studentCourseSystem;</span><br><span class="line">Database changed</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE TABLE students (</span><br><span class="line">    -&gt; no int(11) AUTO_INCREMENT,</span><br><span class="line">    -&gt; name VARCHAR(20) NOT NUll,</span><br><span class="line">    -&gt; gender int(1) NOT NULL,</span><br><span class="line">    -&gt; department VARCHAR(20) NOT NULL,</span><br><span class="line">    -&gt; create_date DATE NOT NULL,</span><br><span class="line">    -&gt; PRIMARY KEY (no));</span><br><span class="line">Query OK, 0 rows affected (0.08 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field       | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| no          | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name        | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| gender      | int(1)      | NO   |     | NULL    |                |</span><br><span class="line">| department  | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| create_date | date        | NO   |     | NULL    |                |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个表之后发现少了一个属性：年龄，下面是对 students 表的更新操作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students</span><br><span class="line">    -&gt; ADD COLUMN (age int(3) NOT NULL);</span><br><span class="line">Query OK, 0 rows affected (0.11 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field       | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| no          | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name        | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| gender      | int(1)      | NO   |     | NULL    |                |</span><br><span class="line">| department  | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| create_date | date        | NO   |     | NULL    |                |</span><br><span class="line">| age         | int(3)      | NO   |     | NULL    |                |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CHANGE [ COLUMN ] 子句：改变一列，需要严格按照书写顺序（也可以修改多列，他们之间使用 逗号隔开）</p>
+<ul>
+<li><p>⚠️请注意 CHANGE COLUMN 后面的顺序：旧的属性名 新的属性名 新的数据类型 新的约束 指定默认值等</p>
+</li>
+<li><p>单列修改</p>
+<pre>
+mysql> ALTER TABLE table_name
+  -> CHANGE COLUMN
+  -> old_column_name new_column_name data_type> value;
+</pre>
+</li>
+<li><p>多列修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE &lt;table_name&gt;</span><br><span class="line">    -&gt; CHANGE COLUMN</span><br><span class="line">    -&gt; (&lt;old_column_name&gt; &lt;new_column_name&gt; &lt;data_type&gt; &lt;value&gt;,</span><br><span class="line">    -&gt; &lt;old_column_name_1&gt; &lt;new_column_name_1&gt; &lt;data_type_1&gt; &lt;value_1&gt;</span><br><span class="line">    -&gt; &lt;old_column_name_2&gt; &lt;new_column_name_2&gt; &lt;data_type_2&gt; &lt;value_2&gt;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>实践，把 student 中的 reate_date 修改为 regist_date, 数据类型和值的设定都不变：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students </span><br><span class="line">    -&gt; CHANGE COLUMN create_date regist_date date NOT NULL;</span><br><span class="line">Query OK, 0 rows affected (0.06 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field       | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| no          | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name        | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| gender      | int(1)      | NO   |     | NULL    |                |</span><br><span class="line">| department  | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| regist_date | date        | NO   |     | NULL    |                |</span><br><span class="line">| age         | int(3)      | NO   |     | NULL    |                |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>⚠️请注意 CHANGE COLUMN 后面的顺序：旧的属性名 新的属性名 新的数据类型 新的约束 指定默认值等</p>
+<p>这个后面的顺序需要严格执行，否则会报错</p>
+<p>CHANGE COLUMN 的反例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students</span><br><span class="line">  -&gt; CHANGE COLUMN regist_date reate_date;</span><br><span class="line">ERROR 1064 (42000): You have an error <span class="keyword">in</span> your SQL syntax; check the manual that corresponds to your MySQL server version <span class="keyword">for</span> the    right syntax to use near <span class="string">''</span> at line 2</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+</blockquote>
+</li>
+<li><p>ALTER [COLUMN] 子句：可修改或删除表中指定列的默认值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE &lt;table_name&gt;</span><br><span class="line">    -&gt; ALTER COLUMN &lt;column_name&gt; SET DEFAULT &lt;default_value&gt;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students</span><br><span class="line">    -&gt; ALTER COLUMN department SET DEFAULT &apos;计算机系&apos;;</span><br><span class="line">Query OK, 0 rows affected (0.08 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+-------------+------+-----+--------------+----------------+</span><br><span class="line">| Field       | Type        | Null | Key | Default      | Extra          |</span><br><span class="line">+-------------+-------------+------+-----+--------------+----------------+</span><br><span class="line">| no          | int(11)     | NO   | PRI | NULL         | auto_increment |</span><br><span class="line">| name        | varchar(20) | NO   |     | NULL         |                |</span><br><span class="line">| gender      | int(1)      | NO   |     | NULL         |                |</span><br><span class="line">| department  | varchar(20) | NO   |     | 计算机系     |                |</span><br><span class="line">| regist_date | date        | NO   |     | NULL         |                |</span><br><span class="line">| age         | int(3)      | NO   |     | NULL         |                |</span><br><span class="line">+-------------+-------------+------+-----+--------------+----------------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MODIFY [ COLUMN ] 子句： </p>
+<ul>
+<li><del>只会修改指定列的数据类型，不会修改其他信息</del> </li>
+<li><p>MODIFY [ COLUMN ] 子句的用法和 CHANGER [ COLUMN ] 子句的用法相似，只是不能修改名称而已</p>
+<blockquote>
+<p>若是 修改的属性是「 主键 」则就不用严格按照 「 CHANGER [ COLUMN ] 子句 」 的顺序，反之则需要</p>
+</blockquote>
+</li>
+<li><p>还可以通过 FIRST / AFTER（AFTER 不生效） 修改指定列在表中的位置 </p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE &lt;table_name&gt;</span><br><span class="line">  -&gt; MODIFY COLUMN &lt;column_name&gt; &lt;data_type&gt; [ FIRST | AFTER ];</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>⚠️注意 AFTER 的这个用法并没有生效，并抛出错误， FIRST 是有效的</p>
+</blockquote>
+</li>
+<li><p>实践:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default      | Extra |</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">| department  | varchar(100) | NO   |     | 计算机系     |       |</span><br><span class="line">| no          | int(11)      | NO   | PRI | NULL         |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL         |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL         |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL         |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL         |       |</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>先把修改前的列的顺序列出来，下面的操作就是把 no 这个属性放到最前面</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students</span><br><span class="line">    -&gt; MODIFY COLUMN no int(8) FIRST;</span><br><span class="line">Query OK, 0 rows affected (0.07 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default      | Extra |</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">| no          | int(8)      | NO   | PRI | NULL         |       |</span><br><span class="line">| department  | varchar(100) | NO   |     | 计算机系     |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL         |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL         |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL         |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL         |       |</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>no 的数据类型从 int(11) -&gt; int(8),并且这一列排在所有列的最前面</p>
+</blockquote>
+</li>
+<li><p>把指定列放到最后一列的操作,会报下面的错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students </span><br><span class="line">     &gt; MODIFY COLUMN no int(11) AFTER;</span><br><span class="line">ERROR 1064 (42000): You have an error <span class="keyword">in</span> your SQL syntax; check the manual that corresponds to your MySQL server version <span class="keyword">for</span> the right syntax to use near <span class="string">''</span> at line 1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MODIFY CLOUMN 实践</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+--------------+------+-----+-----------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default   | Extra |</span><br><span class="line">+-------------+--------------+------+-----+-----------+-------+</span><br><span class="line">| no          | int(8)      | NO   | PRI | NULL      |       |</span><br><span class="line">| department  | varchar(200) | NO   |     | 金融系    |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL      |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL      |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL      |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL      |       |</span><br><span class="line">+-------------+--------------+------+-----+-----------+-------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; ALTER TABLE students MODIFY COLUMN department VARCHAR(100) NOT NULL DEFAULT &apos;计算机系&apos;;</span><br><span class="line">Query OK, 0 rows affected (0.11 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default      | Extra |</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">| no          | int(11)      | NO   | PRI | NULL         |       |</span><br><span class="line">| department  | varchar(100) | NO   |     | 计算机系     |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL         |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL         |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL         |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL         |       |</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">6 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>DROP COLUMN 子句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE &lt;table_name&gt;</span><br><span class="line">     &gt; DROP COLUMN &lt;column_name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students ADD COLUMN (department_test int(8) NOT NULL);</span><br><span class="line">Query OK, 0 rows affected (0.09 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-----------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field           | Type         | Null | Key | Default | Extra |</span><br><span class="line">+-----------------+--------------+------+-----+---------+-------+</span><br><span class="line">| no              | int(11)      | NO   | PRI | NULL    |       |</span><br><span class="line">| department      | varchar(200) | YES  |     | NULL    |       |</span><br><span class="line">| name            | varchar(20)  | NO   |     | NULL    |       |</span><br><span class="line">| gender          | int(1)       | NO   |     | NULL    |       |</span><br><span class="line">| regist_date     | date         | NO   |     | NULL    |       |</span><br><span class="line">| age             | int(3)       | NO   |     | NULL    |       |</span><br><span class="line">| department_test | int(8)       | NO   |     | NULL    |       |</span><br><span class="line">+-----------------+--------------+------+-----+---------+-------+</span><br><span class="line">7 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>先增加一列测试属性，并查看所有的列</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE stutents</span><br><span class="line">    -&gt; DROP COLUMN department_test;</span><br><span class="line">ERROR 1146 (42S02): Table &apos;studentcoursesystem.stutents&apos; doesn&apos;t exist</span><br><span class="line">mysql&gt; ALTER TABLE stutdents DROP COLUMN department_test;</span><br><span class="line">ERROR 1146 (42S02): Table &apos;studentcoursesystem.stutdents&apos; doesn&apos;t exist</span><br><span class="line">mysql&gt; ALTER TABLE students DROP COLUMN department_test;</span><br><span class="line">Query OK, 0 rows affected (0.07 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default | Extra |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| no          | int(11)      | NO   | PRI | NULL    |       |</span><br><span class="line">| department  | varchar(200) | YES  |     | NULL    |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL    |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL    |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL    |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL    |       |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重命名表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE &lt;table_name&gt;</span><br><span class="line">    -&gt; RENAME TO &lt;new_table_name&gt;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students</span><br><span class="line">    -&gt; RENAME TO students_table;</span><br><span class="line">Query OK, 0 rows affected (0.07 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students_table;</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default | Extra |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| no          | int(11)      | NO   | PRI | NULL    |       |</span><br><span class="line">| department  | varchar(200) | YES  |     | NULL    |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL    |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL    |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL    |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL    |       |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">ERROR 1146 (42S02): Table <span class="string">'studentcoursesystem.students'</span> doesn<span class="string">'t exist</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>students rename to students，之后查看列测试是否修改成功</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="3-重命名表"><a href="#3-重命名表" class="headerlink" title="3. 重命名表"></a>3. 重命名表</h5>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RENAME TABLE &lt;old_table_name&gt; TO &lt;new_table_name&gt;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; RENAME TABLE students_table TO students;</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default | Extra |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| no          | int(11)      | NO   | PRI | NULL    |       |</span><br><span class="line">| department  | varchar(200) | YES  |     | NULL    |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL    |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL    |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL    |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL    |       |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把使用 ALTER 的子句 RENAME TO 修改之后的 表名，直接使用 RENAME TABLE … to …. 句子修改</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="4-删除表"><a href="#4-删除表" class="headerlink" title="4. 删除表"></a>4. 删除表</h5>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE [ TEMPORARY ] TABLE [IF EXISTS] &lt;table_name&gt;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE students_test (</span><br><span class="line">    -&gt; no int(11) NOT NULL);</span><br><span class="line">Query OK, 0 rows affected (0.08 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students_test;</span><br><span class="line">+-------+---------+------+-----+---------+-------+</span><br><span class="line">| Field | Type    | Null | Key | Default | Extra |</span><br><span class="line">+-------+---------+------+-----+---------+-------+</span><br><span class="line">| no    | int(11) | NO   |     | NULL    |       |</span><br><span class="line">+-------+---------+------+-----+---------+-------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; DROP TABLE [IF EXISTS] students_test;</span><br><span class="line">ERROR 1064 (42000): You have an error <span class="keyword">in</span> your SQL syntax; check the manual that corresponds to your MySQL server version <span class="keyword">for</span> the right syntax to use near <span class="string">'[IF EXISTS] students_test'</span> at line 1</span><br><span class="line">mysql&gt; DROP TABLE IF EXISTS students_test;</span><br><span class="line">Query OK, 0 rows affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students_test;</span><br><span class="line">ERROR 1146 (42S02): Table <span class="string">'studentcoursesystem.students_test'</span> doesn<span class="string">'t exist</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建一个表之后，再把该表删除</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="4-查看表"><a href="#4-查看表" class="headerlink" title="4. 查看表"></a>4. 查看表</h5><ul>
+<li><p>查看表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW TABLES</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW DATABASES;</span><br><span class="line">+---------------------+</span><br><span class="line">| Database            |</span><br><span class="line">+---------------------+</span><br><span class="line">| information_schema  |</span><br><span class="line">| mysql               |</span><br><span class="line">| NodeTest1           |</span><br><span class="line">| performance_schema  |</span><br><span class="line">| studentCourseSystem |</span><br><span class="line">| sys                 |</span><br><span class="line">+---------------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; USE studentCourseSystem;</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; SHOW TABLES;</span><br><span class="line">+-------------------------------+</span><br><span class="line">| Tables_in_studentcoursesystem |</span><br><span class="line">+-------------------------------+</span><br><span class="line">| students                      |</span><br><span class="line">+-------------------------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>先查看所有的数据库 -&gt; 切换到 studentCourseSystem 数据库 -&gt; 查看该数据库下的所有的表</p>
+</blockquote>
+</li>
+<li><p>查看表结构</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW COLUMNS FROM &lt;table_name&gt;</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESC &lt;table_name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default | Extra |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| no          | int(11)      | NO   | PRI | NULL    |       |</span><br><span class="line">| department  | varchar(200) | YES  |     | NULL    |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL    |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL    |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL    |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL    |       |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; DESC students;</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default | Extra |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| no          | int(11)      | NO   | PRI | NULL    |       |</span><br><span class="line">| department  | varchar(200) | YES  |     | NULL    |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL    |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL    |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL    |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL    |       |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/18/数据库 - SQL 和关系型数据库的基本操作（二）数据定义（DDL）- 数据库的模式定义/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/18/数据库 - SQL 和关系型数据库的基本操作（二）数据定义（DDL）- 数据库的模式定义/" itemprop="url">数据库 - SQL 和关系型数据库的基本操作（二）数据定义（DDL）</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-18T13:23:25+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  351
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="数据的定义"><a href="#数据的定义" class="headerlink" title="数据的定义"></a>数据的定义</h3><h4 id="一-数据库模式定义"><a href="#一-数据库模式定义" class="headerlink" title="一. 数据库模式定义"></a>一. 数据库模式定义</h4><h5 id="1-创建数据库"><a href="#1-创建数据库" class="headerlink" title="1. 创建数据库"></a>1. 创建数据库</h5>  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; CREATE &#123; DATABASE | SCHEMA &#125; [ IF NOT EXISTS ] db_name</span><br><span class="line">    -&gt;[ DEFAULT ] CHARACTER SET [ = ] charset_name</span><br><span class="line">    -&gt;| [ DEFAULT ] COLLATE [ = ] collation_name</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; CREATE DATABASE NodeTest1;</span><br><span class="line">Query OK, 1 row affected (0.08 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; show DATABASES;</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| mysql              |</span><br><span class="line">| NodeTest           |</span><br><span class="line">| NodeTest1          |</span><br><span class="line">| performance_schema |</span><br><span class="line">| sys                |</span><br><span class="line">+--------------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE DATABASE NodeTest1;</span><br><span class="line">ERROR 1007 (HY000): Can<span class="string">'t create database '</span>NodeTest1<span class="string">'; database exists</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>再次创建的时候出现了错误</p>
+</blockquote>
+</li>
+</ul>
+<p>  需要使用：IF NOT EXISTS 可以防止上述的错误</p>
+<p>  实践：<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; CREATE DATABASE IF NOT EXISTS NodeTest1;</span><br><span class="line">Query OK, 1 row affected, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<h5 id="2-选择数据库"><a href="#2-选择数据库" class="headerlink" title="2. 选择数据库"></a>2. 选择数据库</h5>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; USE &lt;data_name&gt;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; USE NodeTest;</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="3-修改数据库-待更新"><a href="#3-修改数据库-待更新" class="headerlink" title="3. 修改数据库(待更新)"></a>3. 修改数据库(待更新)</h5><ul>
+<li>主要是修改数据库的字符集和字符校对规则</li>
+</ul>
+<h5 id="4-删除数据库"><a href="#4-删除数据库" class="headerlink" title="4. 删除数据库"></a>4. 删除数据库</h5>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DROP DATABASE [IF EXISTS] &lt;data_name&gt;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>实践 ：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW DATABASES;</span><br><span class="line">+---------------------+</span><br><span class="line">| Database            |</span><br><span class="line">+---------------------+</span><br><span class="line">| information_schema  |</span><br><span class="line">| mysql               |</span><br><span class="line">| NodeTest            |</span><br><span class="line">| NodeTest1           |</span><br><span class="line">| performance_schema  |</span><br><span class="line">| studentCourseSystem |</span><br><span class="line">| sys                 |</span><br><span class="line">+---------------------+</span><br><span class="line">7 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; DROP DATABASE NodeTest;</span><br><span class="line">Query OK, 1 row affected (0.10 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW DATABASES;</span><br><span class="line">+---------------------+</span><br><span class="line">| Database            |</span><br><span class="line">+---------------------+</span><br><span class="line">| information_schema  |</span><br><span class="line">| mysql               |</span><br><span class="line">| NodeTest1           |</span><br><span class="line">| performance_schema  |</span><br><span class="line">| studentCourseSystem |</span><br><span class="line">| sys                 |</span><br><span class="line">+---------------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="5-查看数据库"><a href="#5-查看数据库" class="headerlink" title="5. 查看数据库"></a>5. 查看数据库</h5>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW DATABASES;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这个操作只是针对当前用户，并不是所有的数据库都可以看，由于我们登陆的时候使用 ROOT 用户，所以所有数据库都能查看</p>
+</blockquote>
+<ul>
+<li>实践：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW DATABASES;</span><br><span class="line">+---------------------+</span><br><span class="line">| Database            |</span><br><span class="line">+---------------------+</span><br><span class="line">| information_schema  |</span><br><span class="line">| mysql               |</span><br><span class="line">| NodeTest1           |</span><br><span class="line">| performance_schema  |</span><br><span class="line">| studentCourseSystem |</span><br><span class="line">| sys                 |</span><br><span class="line">+---------------------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/18/Nodejs - Koa + KoaRouter + MySQL-实践（二）设计学生课程管理系统数据库并实施/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/18/Nodejs - Koa + KoaRouter + MySQL-实践（二）设计学生课程管理系统数据库并实施/" itemprop="url">Nodejs - Koa + KoaRouter + MySQL 实践（二）学生课程系统据库设计和实施</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-18T11:11:41+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  383
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="本地数据库设计和实施"><a href="#本地数据库设计和实施" class="headerlink" title="本地数据库设计和实施"></a>本地数据库设计和实施</h3><ul>
+<li><p>E - R 图</p>
+<ul>
+<li><p>实体信息：</p>
+<ul>
+<li>学生实体 / 课程实体 / 教师实体 / 院系实体<br><img src="http://tc-html5dw-com.b0.upaiyun.com/61e97/61e97036af41fc41fd453b0913bb5e90.png" alt="img"></li>
+</ul>
+</li>
+<li><p>局部信息结构设计</p>
+<ul>
+<li><p>学生课程信息结构设计：<br><img src="http://tc-html5dw-com.b0.upaiyun.com/0b1a0/0b1a0c1d676722d6e75aba6f450c6647.png" alt="img"></p>
+</li>
+<li><p>教师课程信息结构设计：<br><img src="http://tc-html5dw-com.b0.upaiyun.com/0b1a0/0b1a0c1d676722d6e75aba6f450c6647.png" alt="img"></p>
+</li>
+</ul>
+</li>
+<li><p>全局信息结构设计</p>
+<ul>
+<li>院系,学生，教师，课程信息结构设计<br><img src="http://tc-html5dw-com.b0.upaiyun.com/69a36/69a36cb9c8ba2610fdf8cc8f2f7c921b.png" alt="img"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>DataBaseName: studentCourseSystem<ul>
+<li>学生表：students</li>
+<li>课程表：courses</li>
+<li>教师表：teachers</li>
+<li>院系表：departments</li>
+<li><del>学生课程表：studentsCourses</del></li>
+<li><del>教师课程表: teachersCourses</del></li>
+<li><del>院系学生表: departmentsStudents</del></li>
+<li><del>院系课程表: departmentsCourses</del></li>
+<li><del>院系教师表: departmentsTeachers</del></li>
+<li>学生课程表：students_courses</li>
+<li>教师课程表: teachers_courses</li>
+<li>院系学生表: departments_students</li>
+<li>院系课程表: departments_courses</li>
+<li>院系教师表: departments_teachers</li>
+</ul>
+</li>
+</ul>
+<hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE studentCourseSystem;</span><br><span class="line">Query OK, 1 row affected (0.10 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; USE studentCourseSystem;</span><br><span class="line">Database changed</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE TABLE students (</span><br><span class="line">    -&gt; no int(11) AUTO_INCREMENT,</span><br><span class="line">    -&gt; name VARCHAR(20) NOT NUll,</span><br><span class="line">    -&gt; gender int(1) NOT NULL,</span><br><span class="line">    -&gt; department VARCHAR(20) NOT NULL,</span><br><span class="line">    -&gt; create_date DATE NOT NULL,</span><br><span class="line">    -&gt; PRIMARY KEY (no));</span><br><span class="line">Query OK, 0 rows affected (0.08 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field       | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| no          | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name        | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| gender      | int(1)      | NO   |     | NULL    |                |</span><br><span class="line">| department  | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| create_date | date        | NO   |     | NULL    |                |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建一个表之后发现少了一个属性：年龄，下面是对 students 表的更新操作</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students</span><br><span class="line">    -&gt; ADD COLUMN (age int(3) NOT NULL);</span><br><span class="line">Query OK, 0 rows affected (0.11 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field       | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| no          | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name        | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| gender      | int(1)      | NO   |     | NULL    |                |</span><br><span class="line">| department  | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| create_date | date        | NO   |     | NULL    |                |</span><br><span class="line">| age         | int(3)      | NO   |     | NULL    |                |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h2 id="今天写不动了，后续更新✌️"><a href="#今天写不动了，后续更新✌️" class="headerlink" title="今天写不动了，后续更新✌️"></a>今天写不动了，后续更新✌️</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/17/Nodejs - Koa + KoaRouter 实践（一）连接数据库并返回数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/17/Nodejs - Koa + KoaRouter 实践（一）连接数据库并返回数据/" itemprop="url">Nodejs - Koa + KoaRouter 实践（一）连接数据库并返回数据</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-17T14:42:02+08:00">
+                2018-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  316
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>接着上一节：<a href="https://www.pengjiandry.com/2018/11/11/Nodejs%20play%20-%20%E8%BF%9E%E6%8E%A5%20MySQL/">Nodejs play - 连接 MySQL</a></p>
+<h2 id="项目依赖"><a href="#项目依赖" class="headerlink" title="项目依赖"></a>项目依赖</h2> <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"koa": "^2.6.2",</span><br><span class="line">"koa-router": "^7.4.0",</span><br><span class="line">"mysql": "^2.16.0"</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/jamesjianpeng/nodejs-play/commit/3dc578b777d95065be8bc64e6588c897a77bf65d" target="_blank" rel="noopener">代码地址</a></p>
+<h2 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h2><h3 id="Q1-需要把-SQL-语句包装成-Promise-对象，不然访问指定的-api-会返回-404"><a href="#Q1-需要把-SQL-语句包装成-Promise-对象，不然访问指定的-api-会返回-404" class="headerlink" title="Q1: 需要把 SQL 语句包装成 Promise 对象，不然访问指定的 api 会返回 404"></a>Q1: 需要把 SQL 语句包装成 Promise 对象，不然访问指定的 api 会返回 404</h3><p>A: 在我们访问 指定的 API 的时候，会执行查询或更新等操作，这个操作是异步的，若不用包装成 Promise 对象，没有的等前面的操作完成 Koa 就直接响应客户端</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @description 获取 Product 的所有数据，主意需要 SQL 的语句函数装成一个 Promise 对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> getQueryData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">reslove,reject</span>) =&gt;</span> &#123;</span><br><span class="line">        connection.query(<span class="string">'SELECT * FROM Product'</span>, (error, results<span class="comment">/*, fields */</span>) =&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">            <span class="keyword">if</span> (results.length) &#123;</span><br><span class="line">                results.map(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(item)</span><br><span class="line">                &#125;)</span><br><span class="line">                reslove(<span class="built_in">JSON</span>.stringify(results));</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            reject([])</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> data = <span class="keyword">await</span> getQueryData() <span class="comment">// 必须使用 async await 包装一下 Promise 这样才能从服务端拿到数据</span></span><br><span class="line">    ctx.body = data</span><br><span class="line">&#125;);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="Q2-返回值乱码的问题，"><a href="#Q2-返回值乱码的问题，" class="headerlink" title="Q2: 返回值乱码的问题，"></a>Q2: 返回值乱码的问题，</h3><p>A: 需要在 content-type 后面加上 charset=utf-8</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> setHeader = <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> start = <span class="built_in">Date</span>.now();</span><br><span class="line">    <span class="keyword">await</span> next();</span><br><span class="line">    <span class="keyword">const</span> ms = <span class="built_in">Date</span>.now() - start;</span><br><span class="line">    ctx.set(<span class="string">'X-Response-Time'</span>, <span class="string">`<span class="subst">$&#123;ms&#125;</span>ms`</span>);</span><br><span class="line">    ctx.set(<span class="string">'content-type'</span>, <span class="string">`text/plain;charset=utf-8`</span>);</span><br><span class="line">    <span class="comment">// ctx.set('content-type', `text/plain`); 解决乱码的问题</span></span><br><span class="line">    ctx.set(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">`*`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">app</span><br><span class="line">.use(setHeader)</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/16/git remote-连接多个仓库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/16/git remote-连接多个仓库/" itemprop="url">git remote - 连接多个仓库</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-16T10:25:05+08:00">
+                2018-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  136
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<ul>
+<li><p>查看所有的远程仓库的信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br><span class="line">origin	root@cv.pengjiandry.com:/repo/nuxt.play.git (fetch)</span><br><span class="line">origin	root@cv.pengjiandry.com:/repo/nuxt.play.git (push)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加新的远程仓库信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url --add origin https://github.com/jamesjianpeng/nuxt-cv.git</span><br><span class="line">git remote -v</span><br><span class="line">origin	root@cv.pengjiandry.com:/repo/nuxt.play.git (fetch)</span><br><span class="line">origin	root@cv.pengjiandry.com:/repo/nuxt.play.git (push)</span><br><span class="line">origin	https://github.com/jamesjianpeng/nuxt-cv.git (push)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>后面有 push 的字样代表我们可以推送的到的远程仓库</p>
+</blockquote>
+<ul>
+<li>多仓库的时候的全部推送</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --all</span><br></pre></td></tr></table></figure>
+<h3 id="使用更多操作之后，再继续更新"><a href="#使用更多操作之后，再继续更新" class="headerlink" title="使用更多操作之后，再继续更新"></a>使用更多操作之后，再继续更新</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/15/CentOs 6.9 搭建 Nuxt 前端环境(一) nginx + node + pm2 + git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -479,6 +1552,255 @@
 </blockquote>
 <hr>
 <h2 id="其他的一些操作"><a href="#其他的一些操作" class="headerlink" title="其他的一些操作"></a>其他的一些操作</h2><p>下载指定的资源<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -v cv.pengjiandry.com</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/12/数据库 - SQL 和关系型数据库的基本操作  (一）SQL 概述和 MySQL 基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/12/数据库 - SQL 和关系型数据库的基本操作  (一）SQL 概述和 MySQL 基础/" itemprop="url">数据库 - SQL 和关系型数据库的基本操作</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-12T13:47:07+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  673
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="SQL-概述"><a href="#SQL-概述" class="headerlink" title="SQL 概述"></a>SQL 概述</h2><h3 id="SQL-发展"><a href="#SQL-发展" class="headerlink" title="SQL 发展"></a>SQL 发展</h3><ol>
+<li>SQL 是于 1974 年由 Boyce 和 Chamberlin 提出，并在System R（IBM 公司研制的RDMS）</li>
+<li>SQL 标准是 1986 年 美国国家标准局 (American National Standard Institute, ANSI)颁布</li>
+<li>1987 年 6 月 国际化标准组织（International Organization for Standardization, ISO）正式采纳它为国际标准</li>
+<li>目前 SQL 的标准是 SQL:2018</li>
+<li>数据库管理系统产品：MySQL, Oracle, SQL Sever 等</li>
+</ol>
+<h3 id="SQL-的特点"><a href="#SQL-的特点" class="headerlink" title="SQL 的特点"></a>SQL 的特点</h3><ol>
+<li>SQL 不是某个特定数据库供应商专有的语言</li>
+<li>SQL 简单易学（语句全部是具有很强的描述性的英语单词组成，而且数目不多）</li>
+<li>SQL 看上去很简单，灵活使用其语言元素，可以进行非常复杂和高级的数据库操作<blockquote>
+<p>SQL 语句不区分大小写</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="SQL-的组成"><a href="#SQL-的组成" class="headerlink" title="SQL 的组成"></a>SQL 的组成</h3><ul>
+<li><p>SQL 的主要功能：1. 数据定义，2. 数据操纵（数据查询），3. 数据控制</p>
+</li>
+<li><ol>
+<li>数据定义语言（Data Definition Language, DDL）</li>
+</ol>
+<ul>
+<li>主要功能：对数据库以及数据库中的各种对象进行创建，删除，修改等操作</li>
+<li>数据库对象：表，默认约束，规则，视图，触发器，存储过程等</li>
+<li>DDL 主要包括 SQL 语句以下三种：<ol>
+<li>CREATE: 用于创建数据库或数据库对象</li>
+<li>ALTER: 用于对数据库或数据库对象尽心修改</li>
+<li>DROP: 用于删除数据库或数据库对象</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><ol start="2">
+<li>数据操作语言（Data Manipulation Language, DML）</li>
+</ol>
+<ul>
+<li>主要功能: 主要用于操作数据库中各种对象，特别是检索和修改数据</li>
+<li>DML 主要包括 SQL 语句以下几种：<ol>
+<li>SELECT: 用于从表中或视图中检索数据，其是数据库中使用最为频繁的 SQL 语句</li>
+<li>INSERT: 用于将数据插入到表或视图中</li>
+<li>UPDATE: 用于修改表或视图中的数据，其既可修改表或视图中的一行数据，也可以同时修改多行或全部数据</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><ol start="3">
+<li>数据控制语言（Data Control Language, DCL）</li>
+</ol>
+<ul>
+<li>主要功能: 主要用于安全管理，例如确定哪些用户查看或修改数据库中的数据</li>
+<li>DCL 主要包括 SQL 语句以下几种<ol>
+<li>GRANT: 用于授予权限，可把语句许可或对象许可的权限授予其他用户和角色</li>
+<li>REVOKE: 用于收回权限，其功能与 GRANT 相反，但不影响该用户或角色从其他角色中作为成员继承许可权限</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="嵌入式和动态-SQL-规则-SQL-调用和会话规则"><a href="#嵌入式和动态-SQL-规则-SQL-调用和会话规则" class="headerlink" title="嵌入式和动态 SQL 规则 / SQL 调用和会话规则"></a>嵌入式和动态 SQL 规则 / SQL 调用和会话规则</h3><h2 id="MySQL-预备知识-待完善"><a href="#MySQL-预备知识-待完善" class="headerlink" title="MySQL 预备知识(待完善)"></a>MySQL 预备知识(待完善)</h2><h3 id="MySQL-中的-SQL"><a href="#MySQL-中的-SQL" class="headerlink" title="MySQL 中的 SQL"></a>MySQL 中的 SQL</h3><ul>
+<li>MySQL 在 SQL 标准的基础上增加联部分扩展的语言要素，包括：常量，变量，运算符，表达式，函数，流程控制语句或注解</li>
+</ul>
 
           
         
@@ -1064,2149 +2386,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/10/数据库 - 数据库设计（二）关系数据库设计方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/10/数据库 - 数据库设计（二）关系数据库设计方法/" itemprop="url">数据库 - 数据库设计（二）关系数据库设计方法</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-10T11:17:51+08:00">
-                2018-11-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  3.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  10
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="关系数据库库设计的过程概述"><a href="#关系数据库库设计的过程概述" class="headerlink" title="关系数据库库设计的过程概述"></a>关系数据库库设计的过程概述</h3><ul>
-<li>关系数据库：一类采用关系模型作为逻辑数据模型的数据库系统</li>
-<li>关系数据库设计的过程遵循数据库设计的基本步骤<ol>
-<li>需求分析</li>
-<li>概念结构设计</li>
-<li>逻辑结构设计</li>
-<li>物理结构设计</li>
-<li>数据库实施</li>
-<li>数据库的运行和维护等阶段</li>
-</ol>
-</li>
-</ul>
-<h3 id="关系数据库设计过程与各级模式"><a href="#关系数据库设计过程与各级模式" class="headerlink" title="关系数据库设计过程与各级模式"></a>关系数据库设计过程与各级模式</h3><ol>
-<li>需求分析阶段：综合各个用户的应用需求</li>
-<li>在概念结构设计阶段：形成独立于机器特点，独立于各个关系数据库管理系统产品（MySQL,Oracle,SQL,Server 等）的概念模式，如使用 E - R 图</li>
-<li>在逻辑结构设计阶段，将 E - R 图转换成具体的数据库产品支持的关系数据模型，形成数据库逻辑模式，然后根据用户处理的要求，安全性考虑，在基本表的基础上再建立必要的视图，形成数据的外模式</li>
-<li>再物理结构的设计阶段中，根据关系数据库管理系统的特点和处理的需要，进行物理存储安排，建立索引，形成数据库内模式</li>
-</ol>
-<h3 id="概念结构设计方法"><a href="#概念结构设计方法" class="headerlink" title="概念结构设计方法"></a>概念结构设计方法</h3><ol>
-<li><p>关系数据库的概念结构设计方法通常是：自顶向下法</p>
-</li>
-<li><p>两个步骤</p>
-<ul>
-<li>建立局部信息结构</li>
-<li>然后将局部信息结构合成全局信息结构并优化</li>
-</ul>
-</li>
-<li>描述工具：<ul>
-<li>E - R 图</li>
-</ul>
-</li>
-</ol>
-<h4 id="概念结构设计方法常使用的描述工具：E-R-图的表示法"><a href="#概念结构设计方法常使用的描述工具：E-R-图的表示法" class="headerlink" title="概念结构设计方法常使用的描述工具：E - R 图的表示法"></a>概念结构设计方法常使用的描述工具：E - R 图的表示法</h4><ol>
-<li>概念结构设计：是将需求分析得到的用户需求抽象为信息结构（概念模型）的过程，它通常使用 E - R 图作为描述现实世界的建模工具</li>
-<li><p>E - R 图提供了表示信息世界中实体，属性和联系的方法，具体：</p>
-<ul>
-<li>实体型：其用矩形表示，矩形框内写明实体的名称</li>
-<li>属性：其用椭圆形表示，并用无向边将其与相应的实体链接起来</li>
-<li>联系：其用菱形表示，菱形框内写明联系的名称，并用无向边分别与有关实体连接起来，同时在无向边旁标上联系的类型（1:1,1:N, M:N），如果一个联系具有属性，则这些属性也要用无向边与该联系连接起来</li>
-</ul>
-</li>
-<li><p>两个实体型之间的联系：</p>
-<ul>
-<li>一对一（1:1）</li>
-<li>一对多（1:N）</li>
-<li>多对多（M:N）</li>
-</ul>
-</li>
-<li><p>两个以上的实体型之间的联系</p>
-<ul>
-<li>一对一（1:1）</li>
-<li>一对多（1:N）</li>
-<li>多对多（M:N）</li>
-</ul>
-</li>
-<li><p>单个实体型内的联系</p>
-<ul>
-<li>一对一（1:1）</li>
-<li>一对多（1:N）</li>
-<li>多对多（M:N）</li>
-</ul>
-</li>
-</ol>
-<h3 id="概念结构设计方法第一个步骤：局部信息结构设计"><a href="#概念结构设计方法第一个步骤：局部信息结构设计" class="headerlink" title="概念结构设计方法第一个步骤：局部信息结构设计"></a>概念结构设计方法第一个步骤：局部信息结构设计</h3><ul>
-<li><p>概念：根据需求分析报告中标明的用户视图范围所建立的满足该范围内用户需求的信息结构</p>
-</li>
-<li><p>局部信息结构设计的步骤分为：</p>
-<ol>
-<li>确定局部范围</li>
-<li>选择实体</li>
-<li>选择实体关键字</li>
-<li>确定实体间联系</li>
-<li>确定实体的属性</li>
-</ol>
-</li>
-</ul>
-<h4 id="局部信息结构设计第一个步骤：确定局部范围"><a href="#局部信息结构设计第一个步骤：确定局部范围" class="headerlink" title="局部信息结构设计第一个步骤：确定局部范围"></a>局部信息结构设计第一个步骤：确定局部范围</h4><ul>
-<li>局部范围主要依据需求分析报告后者难过标明的用户视图范围来确定<blockquote>
-<p>需求分析报告中标明的局部范围往往与子模式范围相对应</p>
-<p>范围确定的基本准则:</p>
-<ol>
-<li>部门和功能相对对立</li>
-<li>同其他局部范围相互影响较少，并且实体个数适量</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h4 id="局部信息结构设计第二个步骤：选择实体"><a href="#局部信息结构设计第二个步骤：选择实体" class="headerlink" title="局部信息结构设计第二个步骤：选择实体"></a>局部信息结构设计第二个步骤：选择实体</h4><ol>
-<li><p>选择实体的（目的）任务：是在确定的局部范围内选择一些合适的信息单位作为局部信息结构的基本实体</p>
-<blockquote>
-<p>这些实体应能满足该局部范围内的应用需求<br>通常，以实际工作中习惯使用的信息单位作为选择实体的基础，数据分类表是选择实体的直接依据</p>
-<p>再同一局部信息结构中的实体名称应具有唯一性</p>
-</blockquote>
-</li>
-<li><p>实体选择时的最大困难是如何区别实体与属性</p>
-</li>
-</ol>
-<h4 id="局部信息结构设计第三个步骤：选择实体的关键字属性"><a href="#局部信息结构设计第三个步骤：选择实体的关键字属性" class="headerlink" title="局部信息结构设计第三个步骤：选择实体的关键字属性"></a>局部信息结构设计第三个步骤：选择实体的关键字属性</h4><ul>
-<li>实体的存在依赖于其他关键字的存在<blockquote>
-<p>实体关键字属性确定之后，实体的非关键字属性也就容易确定了，因为他们之间存在某种应用上的联系和依赖性</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="局部信息结构设计第四个步骤：确定实体间的联系"><a href="#局部信息结构设计第四个步骤：确定实体间的联系" class="headerlink" title="局部信息结构设计第四个步骤：确定实体间的联系"></a>局部信息结构设计第四个步骤：确定实体间的联系</h4><ul>
-<li>数据间的联系必须在概念设计时确定<blockquote>
-<p>一种常用的分析实体间是否存在联系的方法是，将局部范围内的实体逐一取出来与该范围内的其他实体试行匹配（在任务表中）</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="局部信息结构设计第五个步骤：确定实体的属性"><a href="#局部信息结构设计第五个步骤：确定实体的属性" class="headerlink" title="局部信息结构设计第五个步骤：确定实体的属性"></a>局部信息结构设计第五个步骤：确定实体的属性</h4><ul>
-<li><p>属性分为两类</p>
-<ol>
-<li>标识属性</li>
-<li>说明属性</li>
-</ol>
-</li>
-<li><p>标识属性（实体关键字属性和非关键字属性）</p>
-<blockquote>
-<p>用作实体的关键字，说明属性用作描述实体的一般特征 </p>
-</blockquote>
-</li>
-<li><p>说明属性</p>
-<blockquote>
-<p>基本原则：说明属性的存在和使用通常依赖于标识属性<br>取决于：该属性是否可通过其所在实体的关键字找到，并且他们之间在应用中具有某种联系</p>
-<p>说明属性应是单值的，不允许嵌套属性和重复组的现象出现在实体中<br>会有这种情况：同一说明属性依赖于多个实体的标识属性的情况，此时可将该属性分配到其他使用频率最高的实体中去</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="概念结构设计方法第二个步骤：全局信息结构设计"><a href="#概念结构设计方法第二个步骤：全局信息结构设计" class="headerlink" title="概念结构设计方法第二个步骤：全局信息结构设计"></a>概念结构设计方法第二个步骤：全局信息结构设计</h3><ul>
-<li><p>概念：是将上述步骤中产生的所有局部信息结构合并成一个全局信息结构</p>
-</li>
-<li><p>全局信息结构必须是所有局部信息结构的全面准确的映像</p>
-<blockquote>
-<p>即合并前各局部信息结构能实现的应用需求，合并之后也能实现</p>
-</blockquote>
-</li>
-<li><p>需要避免的问题：消除不同局部信息结构中因用户观点的不同所可能导致的数据不一致，并尽可能地增强数据的共享性，控制数据的冗余</p>
-</li>
-<li><p>合并的前提：假设局部信息结构都是完全的，一致的前提下进行</p>
-<blockquote>
-<p>即假设各局部信息结构都能满足其对应局部范围的应用需求,且其内部不存在需要合并的成分</p>
-</blockquote>
-</li>
-<li><p>合并的方式</p>
-<ol>
-<li>可以一次性把所有的局部信息结构合并成全局的信息结构</li>
-<li>也可以采用逐步合并，进行累加的方式</li>
-</ol>
-</li>
-<li><p>合并的过程</p>
-<ol>
-<li>一个系统中有多个功能，可能有多个设计人员进行设计，合并的时候就会出现冲突，这个无法避免的，需要合理的解决</li>
-</ol>
-</li>
-<li><p>合并中出现的冲突</p>
-<ol>
-<li><p>属性冲突</p>
-<ul>
-<li><p>属性域冲突</p>
-<blockquote>
-<p>属性值的类型，取值范围，取值集合的不同</p>
-</blockquote>
-</li>
-<li><p>属性取值单位冲突</p>
-<blockquote>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>命名冲突，两类</p>
-<ul>
-<li>同名异义</li>
-<li>异名同义</li>
-</ul>
-</li>
-<li><p>结构冲突，三类</p>
-<ul>
-<li>同一对象在一局部 E - R 图中作为实体，而在另外一个局部 E - R 图中作为属性</li>
-<li>同义实体在不同的 E - R 图中属性个数和类型不同</li>
-<li>实体之间的联系在不同的 E - R 图中是不同的类型</li>
-</ul>
-</li>
-<li><p>好的全局信息结构设计</p>
-<ol>
-<li>能反应用户功能需求</li>
-<li>实体的类型数量尽可能少</li>
-<li>实体类型所含属性尽可能少</li>
-<li>实体类型间联系无冗余<blockquote>
-<p>后面三个内容，是全局 E - R 模型优化需要达到内容<br>优化步骤：</p>
-<ol>
-<li>相关实体类型的合并</li>
-<li>消除不必要的冗余属性</li>
-<li>消除不必要的冗余联系</li>
-<li>有时为了效率，可以适当的存在冗余（😂你懂的）</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="逻辑结构设计方法"><a href="#逻辑结构设计方法" class="headerlink" title="逻辑结构设计方法"></a>逻辑结构设计方法</h3><ul>
-<li><p>在数据库设计步骤中逻辑结构的设计</p>
-<ol>
-<li>目的（任务）：是把在概念结构设计产生的概念模型转换为具体的 DBMS 所支持的逻辑数据模型<blockquote>
-<p>导出特定的 DBMS 可以处理的数据逻辑结构（数据库的模式和外模式），这些模式在功能，性能，完整性和约束性方面满足应用要求</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>在关系型数据库的设计中逻辑结构的设计：</p>
-<ol>
-<li>目的（任务）：就是把概念结构设计阶段已设计好的 E - R 图转换为关系数据库管理系统所支持的关系模型</li>
-<li>工作内容：<ul>
-<li>将 E - R 图转换位关系模型</li>
-<li>对关系数据库模型进行优化</li>
-<li>设计面向用户的外模式</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h4 id="逻辑结构设计内容（一）：将-E-R-图转换位关系模型"><a href="#逻辑结构设计内容（一）：将-E-R-图转换位关系模型" class="headerlink" title="逻辑结构设计内容（一）：将 E - R 图转换位关系模型"></a>逻辑结构设计内容（一）：将 E - R 图转换位关系模型</h4><ul>
-<li><p>需要解决的问题：</p>
-<ol>
-<li>要如何将实体以及实体间的联系转换为关系模型</li>
-<li>如何确定这些关系模式的属性和主码<blockquote>
-<p>关系模式的逻辑结构是一组关系模式的集合，而 E - R 图则是由实体，实体的属性和实体间的联系转换为某种关系模式</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>原则：(待更新)</p>
-<ol>
-<li>一个实体转换为一个关系模式</li>
-<li>一个一对一（1:1）联系可以转换为一个独立的关系模式</li>
-<li>一个一对多（1:N）联系可以转换为一个独立的关系模式</li>
-<li>一个多对多（M:N）联系转换为一个关系模式</li>
-<li>三个或桑哥以上实体间的一个多元联系可以转换为一个关系模式</li>
-</ol>
-</li>
-</ul>
-<h4 id="逻辑结构设计内容（二）：对关系数据库模型进行优化"><a href="#逻辑结构设计内容（二）：对关系数据库模型进行优化" class="headerlink" title="逻辑结构设计内容（二）：对关系数据库模型进行优化"></a>逻辑结构设计内容（二）：对关系数据库模型进行优化</h4><ul>
-<li>数据库逻辑设计的结果不是唯一的</li>
-<li>数据模型的优化： 为了进一步提高数据库的要求，还应该根据应用需要适当修改地修改，调整数据模型额结构</li>
-<li>关系数据模型的优化通常以关系规范化理论为指导，<a href="">数据库 - 关系型数据库（三）关系数据库的规范化理论</a></li>
-</ul>
-<h4 id="逻辑结构设计内容（三）：设计面向用户的外模式"><a href="#逻辑结构设计内容（三）：设计面向用户的外模式" class="headerlink" title="逻辑结构设计内容（三）：设计面向用户的外模式"></a>逻辑结构设计内容（三）：设计面向用户的外模式</h4><ul>
-<li>将概念模式转化为全局逻辑模式之后，可根据局部应用需求，利用视图（View）设计更符合局部用户需要的用户外模式</li>
-<li>定义数据库的全局模式主要是从系统的时间效率，空间效率，易维护性等角度出发。由于用户外模式与模式是相对独立的，所以定义用户外模式时注意：<ol>
-<li>定义别名</li>
-<li>对应不同级别的用户定义不同的视图，以保证系统的安全性</li>
-<li>简化用户对系统的使用</li>
-</ol>
-</li>
-</ul>
-<h3 id="物理设计方法"><a href="#物理设计方法" class="headerlink" title="物理设计方法"></a>物理设计方法</h3><ul>
-<li><p>关系数据库系统的优点之一是用户通常不需要进行数据存储结构和存取方法的是设计</p>
-<blockquote>
-<p>这个是相对的，用户失去对数据库存取路径的控制而影响到数据库的存取效率</p>
-</blockquote>
-</li>
-<li><p>物理设计的（目的）任务：主要是通过对关系建立索引和聚集来实现与应用相关数据的逻辑连接和物理聚集，以改善对数据库的存取效率</p>
-</li>
-</ul>
-<h4 id="物理设计方法（一）：-建立索引"><a href="#物理设计方法（一）：-建立索引" class="headerlink" title="物理设计方法（一）： 建立索引"></a>物理设计方法（一）： 建立索引</h4><ul>
-<li>建立索引的方式通常有静态和动态</li>
-</ul>
-<h4 id="物理设计方法（二）：建立聚集"><a href="#物理设计方法（二）：建立聚集" class="headerlink" title="物理设计方法（二）：建立聚集"></a>物理设计方法（二）：建立聚集</h4><ul>
-<li><p>聚集：是将相关数据集中存放的物理存储技术</p>
-<blockquote>
-<p>以提高 I/O 的数据命中率而改善存取速度，其功能由具体的 DBMS 所提供</p>
-<p>所谓集中存放的概念：将相关数据尽可能地存放一个物理块中（或一个磁道中，或一个柱面中，或相邻区域块，磁道，柱面）</p>
-</blockquote>
-</li>
-<li><p>数据聚集结构的一种有效方式是块结构方式。</p>
-<blockquote>
-<p>块域块之间由指针连接，一个块对于一个物理分区</p>
-<p>数据聚集可在一个或多个关系上建立</p>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/06/数据库 - 数据库设计（一）数据库设计概述和数据库设计步骤/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/06/数据库 - 数据库设计（一）数据库设计概述和数据库设计步骤/" itemprop="url">数据库 - 数据库设计（一）数据库设计概述和数据库设计步骤</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-06T23:55:18+08:00">
-                2018-11-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  10
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="数据库设计概述"><a href="#数据库设计概述" class="headerlink" title="数据库设计概述"></a>数据库设计概述</h2><h3 id="数据库的生命周期"><a href="#数据库的生命周期" class="headerlink" title="数据库的生命周期"></a>数据库的生命周期</h3><ul>
-<li><p>两个阶段：</p>
-<ol>
-<li><p>数据库分析与设计阶段</p>
-<ul>
-<li>需求分析</li>
-<li>概念设计</li>
-<li>逻辑设计</li>
-<li>物理设计</li>
-</ul>
-</li>
-<li><p>数据库实现与操作阶段 </p>
-<ul>
-<li>数据库的实现阶 </li>
-<li>数据库的操作和监督阶段</li>
-<li>数据库的修改与调整阶段</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="数据库设计的目标"><a href="#数据库设计的目标" class="headerlink" title="数据库设计的目标"></a>数据库设计的目标</h3><ul>
-<li>两个目标：1. 满足应用功能 2. 良好的数据库性能</li>
-</ul>
-<h3 id="数据库设计的内容"><a href="#数据库设计的内容" class="headerlink" title="数据库设计的内容"></a>数据库设计的内容</h3><ul>
-<li>从用户对数据的需求出发，研究并构造数据库的过程<ol>
-<li>数据库的结构设计</li>
-<li>数据库的行为设计</li>
-</ol>
-</li>
-</ul>
-<h3 id="数据库设计的方法"><a href="#数据库设计的方法" class="headerlink" title="数据库设计的方法"></a>数据库设计的方法</h3><ul>
-<li><p>直观设计法</p>
-<blockquote>
-<p>特点：最原始的一类设计方法，利用设计者的经验和技巧设计数据库模式<br>缺点：缺乏科学理论的指导，设计质量难以保证</p>
-</blockquote>
-</li>
-<li><p>规范设计法</p>
-<ol>
-<li><p>新奥尔良设计方法</p>
-</li>
-<li><p>基于 E-R 模型的数据设计方法</p>
-</li>
-</ol>
-<blockquote>
-<p>基本思想：在需求分析的基础上用 E-R 图构造一个反映实现世界实体之间联系的企业模式，然后将此模式转换成某一特定DBMS 下的概念模式</p>
-</blockquote>
-<ol start="3">
-<li>计算机辅助设计方法</li>
-</ol>
-</li>
-</ul>
-<h3 id="数据库设计过程"><a href="#数据库设计过程" class="headerlink" title="数据库设计过程"></a>数据库设计过程</h3><ol>
-<li><p>需求分析</p>
-</li>
-<li><p>结构设计</p>
-<ul>
-<li>概念结构设计</li>
-<li>逻辑结构设计</li>
-<li>物理结构设计</li>
-</ul>
-</li>
-<li><p>行为设计阶段</p>
-<ul>
-<li>功能设计</li>
-<li>事务设计</li>
-<li>程序设计</li>
-</ul>
-</li>
-<li><p>数据库实施阶段</p>
-<ul>
-<li>加载数据库数据</li>
-<li>调试运行应用程序</li>
-</ul>
-</li>
-<li><p>数据库运行和维护阶段</p>
-</li>
-</ol>
-<h2 id="数据库设计的基本步骤"><a href="#数据库设计的基本步骤" class="headerlink" title="数据库设计的基本步骤"></a>数据库设计的基本步骤</h2><ol>
-<li><p>使用的方法：分阶段设计方法</p>
-</li>
-<li><p>原则：自顶向下，逐步求精的原则</p>
-<blockquote>
-<p>将数据库设计过程分解为若干个相互依存的阶段，每一阶段采用不同的技术与工具解决不同的问题</p>
-<p>目的：将问题局部化，减少 局部问题对整体设计的影响，便于多人合作</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="数据库设计的各个阶段，又称为数据库设计步骤"><a href="#数据库设计的各个阶段，又称为数据库设计步骤" class="headerlink" title="数据库设计的各个阶段，又称为数据库设计步骤"></a>数据库设计的各个阶段，又称为数据库设计步骤</h3><h4 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1. 需求分析"></a>1. 需求分析</h4><ul>
-<li><p>目标：了解与用户信息及应用处理的要求，并将结果按一定格式整理而形成需求分析报告</p>
-<blockquote>
-<p>该报告是后续概念设计，逻辑设计，物理设计，数据库建立与维护的依据</p>
-</blockquote>
-</li>
-<li><p>4 个步骤：</p>
-<ol>
-<li><p>确定数据库范围</p>
-<ul>
-<li><p>目的：确定数据库应支持哪些应用功能</p>
-</li>
-<li><p>首先要考虑得是支持用户工作需要所必须的应用要求</p>
-</li>
-</ul>
-</li>
-<li><p>分析数据应用过程</p>
-<ul>
-<li><p>目的：了解分析数据与数据处理间的关系</p>
-</li>
-<li><p>每个功能用到那些数据，数据使用顺序，对数据作如何处理以及处理的策略以及处理的结果</p>
-</li>
-<li><p>应用过程分析的结果是数据库结构设计的重要依据</p>
-<ol>
-<li>那些数据需要存入数据库中</li>
-<li>哪些数据可作为报告输出而不存入数据库中</li>
-<li>不同数据的不同使用权限（存，取，删，改） 和共享范围</li>
-</ol>
-</li>
-<li><p>数据应用过程也是数据库应用程序编写的依据</p>
-</li>
-<li><p>使用的工具</p>
-<ol>
-<li>借助数据流程图或其他信息及应用结构图形表示</li>
-<li>在构建数据流程图的时候需要注意：<ul>
-<li>应以局部应用部门或相对独立的应用功能为标识单位，从而将问题局部化，有利于分块设计</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>收集与分析数据</p>
-<ul>
-<li><p>目的：了解并分析数据的组成格式以及操作特征，每个数据元素的语义及关系等，并将他们收集起来整理归档。</p>
-<blockquote>
-<p>数据流程图中所涉及的 数据都是收集与分析的对象，主要包括报表，文件，单据以及各种原始资料</p>
-</blockquote>
-</li>
-<li><p>可以从三个方面入手：</p>
-<ol>
-<li><p>数据的静态结构</p>
-<ul>
-<li>概念：指不施加应用操作于其上时数据的原始状态，可以通过数据分类表和数据元素进行说明</li>
-</ul>
-<ol>
-<li>数据分类表： 用于数据的总体描述，对于每一客观存在的具有独立意义的单类数据单位（如一种报表，一种文件，一种收据）应给出其名称，用途，编制者以及使用者等说明</li>
-</ol>
-<ul>
-<li><p>数据分类表，其结构</p>
-</li>
-<li><p>数据ID</p>
-</li>
-<li>数据名</li>
-<li>用途</li>
-<li>主人</li>
-<li>用户</li>
-<li>来源</li>
-<li>去向</li>
-<li>存档时间</li>
-<li><p>数据量</p>
-</li>
-<li><p>数据元素表，其结构</p>
-</li>
-<li><p>数据ID</p>
-</li>
-<li>数据元素ID</li>
-<li>元素名</li>
-<li>意义</li>
-<li>类型</li>
-<li>长度</li>
-<li>算法</li>
-<li>备注</li>
-</ul>
-</li>
-<li><p>动态结构</p>
-<ul>
-<li>概念：指将应用操作施加于数据之上数据的状态，可通过任务分类表和数据操作特征表进行说明</li>
-<li>意义：</li>
-<li>任务分类表</li>
-<li>任务 ID</li>
-<li>名称</li>
-<li>功能</li>
-<li>类型</li>
-<li>主人</li>
-<li>用户</li>
-<li>执行日期</li>
-<li>频率</li>
-<li>操作过程</li>
-<li><p>备注</p>
-</li>
-<li><p>数据操作特征表</p>
-</li>
-<li>任务 ID</li>
-<li>数据 ID </li>
-<li>建立</li>
-<li>查询</li>
-<li>插入</li>
-<li>修改</li>
-<li>删除</li>
-<li>数据量</li>
-</ul>
-</li>
-<li><p>数据约束</p>
-<ul>
-<li>数据约束是指使用数据时的特殊要求，约束的类型：</li>
-</ul>
-<ol>
-<li><p>数据的安全保密性</p>
-<blockquote>
-<p>谁拥有操作，存，取，删，改的不同权限</p>
-</blockquote>
-</li>
-<li><p>数据的完整性</p>
-<blockquote>
-<p>数据正确性的约束范围和验证准则</p>
-</blockquote>
-</li>
-<li><p>响应时间</p>
-<blockquote>
-<p>指主要是指某些特定应用要求的数据存储时间限制</p>
-</blockquote>
-</li>
-<li><p>数据恢复</p>
-<blockquote>
-<p>其主要指转储及恢复的时机与范围等要求</p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>编写需求分析报告</p>
-<ul>
-<li><p>作为需求分析阶段的一个总结，需求分析报告作为应用需求的业务人员和数据库设计人员的 “共同语言”</p>
-</li>
-<li><p>需求报告的内容：</p>
-<ol>
-<li><p>数据库的应用功能目标</p>
-<blockquote>
-<p>要求明确标明数据库的应用范围以及达到的应用处理功能</p>
-</blockquote>
-</li>
-<li><p>标明不同用户视图范围</p>
-<blockquote>
-<p>根据机构与职能关系图和数据流程图，并参考任务分类表等，确定不同部门或功能的局部视图范围</p>
-</blockquote>
-</li>
-<li><p>应用处理过程需求说明</p>
-<blockquote>
-<ol>
-<li>数据流程图，其主要反映应用部门原始业务处理的工作流程</li>
-<li>任务分类表，其标明不同任务的功能以及使用状况</li>
-<li>数据操作特征表，标明任务和数据间的联系以及不同数据的不同操作特征与执行效率</li>
-</ol>
-</blockquote>
-</li>
-<li><p>数据字典</p>
-<ul>
-<li><p>数据字典（Data Dictionary, DD）概念：数据库系统中存储三级结构定义的数据库</p>
-<blockquote>
-<p>通常指的是数据库系统中各类数据详细描述的集合</p>
-</blockquote>
-</li>
-<li><p>功能：存储和检索各种数据描述，即元数据</p>
-</li>
-<li><p>特点：在数据库设计中，它提供了对各类数据描述的集中管理，是一种数据分析，系统设计和管理的有力工具</p>
-<blockquote>
-<p>数组字典需要有专人进行管理，及时对数据字典进行更新，保证字典的安全，可靠</p>
-</blockquote>
-</li>
-<li><p>数据字典包括的内容：数据分类表，数据元素表和各类原始资料</p>
-<blockquote>
-<p>各类原始资料是指收集所有单据，报表，文件以及设计所需的原始资料，并根据数据分类表的数据 ID 统一分类标号</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h4 id="2-概念结构设计"><a href="#2-概念结构设计" class="headerlink" title="2. 概念结构设计"></a>2. 概念结构设计</h4><ul>
-<li><p>目的（任务）：是在需求分析中产生的需求分析报告的基础上，按照特定的方法设计满足应用需求的用户信息结构</p>
-<blockquote>
-<p>改信息结构通常称为概念模式</p>
-</blockquote>
-</li>
-<li><p>特点：概念模型独立于任何软件和硬件，</p>
-<blockquote>
-<p>主要目的：是最大限度地满足应用需求，可完全不顾及具体的硬件和软件的限制，因而它是一个符合用户需求的趋于理想化的信息结构</p>
-</blockquote>
-</li>
-<li><p>概念结构设计的常用方法：</p>
-<ol>
-<li>实体分析法（自顶向下法）</li>
-<li>属性综合法（自底向上法）<blockquote>
-<p>采用属性分析开始，高层实体以及联系通过底层属性组成的设计技术</p>
-<p>实际上，这是一种基于统计分析推导的方法，即通过对数据元素与应用任务联系的定性定量统计分析技术来推导的方法 </p>
-<p>统计分析推导的处理过程：可分为属性分类，实体构成，联系的确定等相对独立的步骤</p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ul>
-<h4 id="3-逻辑结构设计"><a href="#3-逻辑结构设计" class="headerlink" title="3. 逻辑结构设计"></a>3. 逻辑结构设计</h4><ul>
-<li><p>目的（任务）：是将概念模型转化为等价的，并为特定 DBMS 所支持数据模型的结构</p>
-</li>
-<li><p>数据库逻辑模型表示方法：层次，网状，关系数据模型表示</p>
-</li>
-<li><p>逻辑结构设计的输入和输出信息</p>
-<blockquote>
-<p>逻辑结构设计是在需求分析以及概念结构设计的基础上进行的，通常要求提供如下输入信息</p>
-<ol>
-<li>独立于特定 DBMS 的概念模型</li>
-<li>有关响应时间，安全保密性，数据完整性及恢复方面的要求说明，包括保持数据一致性的规则说明</li>
-<li>数据量以及使用频率</li>
-<li>特定 DBMS 特性，包括 DBMS 支持的数据模型以及数据定义语言的说明</li>
-</ol>
-</blockquote>
-</li>
-<li><p>完成逻辑结构设计之后输出的信息</p>
-<blockquote>
-<ol>
-<li>一个特定 DBMS 支持的概念模式，或称为模式</li>
-<li>物理设计说明，主要包括存入数据库中的数据量，使用频率以及响应时间要求</li>
-<li>程序设计说明，其是在需求分析的基础上，根据已完成的逻辑模型编制各程序名，执行逻辑步，存取数据的名，顺序以及操作特征（读写删改）的说明</li>
-</ol>
-</blockquote>
-</li>
-<li><p>逻辑结构设计的步骤</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">               +-----------------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    概念设计      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br><span class="line">                        |</span><br><span class="line">               +--------+--------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    模型转换      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br><span class="line">                        |</span><br><span class="line">        +---------------+---------------+</span><br><span class="line">        |                               |</span><br><span class="line">+-------+--------+          +-----------+----------+</span><br><span class="line">|                |          |                      |</span><br><span class="line">|    子模式       |          |  应用程序设计说明     |</span><br><span class="line">|                |          |                      |</span><br><span class="line">+-------+--------+          +-----------+----------+</span><br><span class="line">        |                               |</span><br><span class="line">        +---------------+---------------+</span><br><span class="line">                        |</span><br><span class="line">               +--------+--------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    设计评价      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br><span class="line">                        |</span><br><span class="line">               +--------+--------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    物理设计      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br></pre></td></tr></table></figure>
-<blockquote>
-<ol>
-<li><p>模型转换是指将概念模型等价地转换为特定 DBMS 支持的关系模式，网状模型或层次模型 </p>
-</li>
-<li><p>子模式设计的目标：是抽取或导出模式的子集，以构造不同用户使用的局部数据逻辑结构</p>
-</li>
-<li><p>编制应用程序设计说明的目的：为可实际运行的应用程序设计提供依据与指导，并作为设计评价的基础</p>
-</li>
-<li><p>设计评价的任务是分析并检验模式以及子模式的正确性合理性</p>
-</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h4 id="4-物理结构设计"><a href="#4-物理结构设计" class="headerlink" title="4. 物理结构设计"></a>4. 物理结构设计</h4><ul>
-<li>概念：是指对于一个给定的数据库逻辑结构，研究并构造物理结构的过程</li>
-<li>任务：是确定数据库在存储设备上的存储结构以及存储方法<blockquote>
-<p>因 DBMS 的不同还可能包括建立索引和聚集，以及物理块大小，缓冲区个数和大小，数据压缩的选择等</p>
-<p>对于物理结构设计的人员的要求</p>
-<ul>
-<li>掌握基本存储设备的特性</li>
-<li>充分了解操作系统以及 DBMS 所提供的支持环境</li>
-<li>并十分熟悉数据库的逻辑结构以及存取速度，频率以及数据量方面的要求</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<h4 id="5-数据库实施"><a href="#5-数据库实施" class="headerlink" title="5. 数据库实施"></a>5. 数据库实施</h4><ul>
-<li><p>工作内容：加载数据，应用程序设计以及数据库运行</p>
-</li>
-<li><p>数据加载</p>
-<blockquote>
-<p>概念：将符号要求的数据装载到数据库中去，其具体过程包括数据的收集，分类，整理校验和输入等过程，经此就可将数据按数据库定义准确地存储到数据库中</p>
-</blockquote>
-</li>
-<li><p>应用程序设计</p>
-<blockquote>
-<p>严格说，应用程序设计不应是数据库设计的范畴，但它又必须且只能是随着数据库结构设计的进展而逐步地并行进行</p>
-</blockquote>
-</li>
-<li><p>数据库试运行 </p>
-<blockquote>
-<p>目的：为了避免对实际应用带来损害，数据库通常应经过一个试运行阶段</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="6-数据库的运行和维护"><a href="#6-数据库的运行和维护" class="headerlink" title="6. 数据库的运行和维护"></a>6. 数据库的运行和维护</h4><ul>
-<li>数据库系统投入实际运行标志着数据库设计和应用开发的基本完成，但绝不是意味着设计应用开发工作的终止</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/05/git 对比/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/05/git 对比/" itemprop="url">git 对比</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T11:16:33+08:00">
-                2018-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  38
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="后续更新新内容"><a href="#后续更新新内容" class="headerlink" title="后续更新新内容"></a>后续更新新内容</h2><ul>
-<li><p>对比指定的文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff [&lt;file_name&gt;]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对比我们拉取得的代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff ORIG_HEAD</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><a href="https://stackoverflow.com/questions/964876/head-and-orig-head-in-git" target="_blank" rel="noopener">HEAD 和 ORIG_HEAD 的区别</a></p>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/05/PHP - 基础知识（三）使用操作符/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/05/PHP - 基础知识（三）使用操作符/" itemprop="url">PHP - 基础知识（三）使用操作符</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T09:13:59+08:00">
-                2018-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《PHP-and-MySQL-Web-Development》第五版/" itemprop="url" rel="index">
-                    <span itemprop="name">《PHP and MySQL Web Development》第五版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  474
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="操作符初步认识，后续继续更新（2018-11-05）"><a href="#操作符初步认识，后续继续更新（2018-11-05）" class="headerlink" title="操作符初步认识，后续继续更新（2018-11-05）"></a>操作符初步认识，后续继续更新（2018-11-05）</h2><h3 id="代数操作"><a href="#代数操作" class="headerlink" title="代数操作"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/e28bd04c7b25e215a397a60abcdd6172aa68196e" target="_blank" rel="noopener">代数操作</a></h3><ol>
-<li>通常是整型和双精度的数据操作</li>
-<li>如果应用于字符串，PHP 会试图将这些字符串转化为数字（和 JavaScript 的操作类似）</li>
-<li>如果包含 e 和 E 则会转化为科学计数法变成浮点数，否则会当作整数进行处理</li>
-</ol>
-<h3 id="赋值操作符"><a href="#赋值操作符" class="headerlink" title="赋值操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/4b9ceab540b27abbb988d9d91ffb73676dccbddd" target="_blank" rel="noopener">赋值操作符</a></h3><ol>
-<li>赋值操作符，不能简单的理解为等于</li>
-<li>规则是： 整个赋值语句的值将赋给左边的操作数</li>
-<li>使用圆括号来提供表达式的优先级（同数学中的计算法则类似）</li>
-</ol>
-<h3 id="复合赋值操作符"><a href="#复合赋值操作符" class="headerlink" title="复合赋值操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/1aed32d3f828dc45d90cdc82f164dc050cb5cb58" target="_blank" rel="noopener">复合赋值操作符</a></h3><ol>
-<li>+= 和 -=</li>
-<li>前置递增递减（–$varname，++$varname）</li>
-<li>后置递增递减（$varname–，$varname++）</li>
-</ol>
-<h3 id="位操作符"><a href="#位操作符" class="headerlink" title="位操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/38bdbe1420b07391bca65eb1b120c6133fafde48" target="_blank" rel="noopener">位操作符</a></h3><ol>
-<li>&amp; 按位与</li>
-<li>| 按位或</li>
-<li>~ 按位非</li>
-<li>^ 按位异或</li>
-<li>&lt;&lt; 左位移</li>
-<li><blockquote>
-<blockquote>
-<p>右位移</p>
-</blockquote>
-</blockquote>
-</li>
-</ol>
-<h3 id="比较操作符"><a href="#比较操作符" class="headerlink" title="比较操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/1a8b29c103ec114f67d9c377bcec5f1191863f97" target="_blank" rel="noopener">比较操作符</a></h3><ol>
-<li>等于操作符 == 值相等就行</li>
-<li>恒等于操作符 === 数据类型和值都要相等</li>
-<li>不等 != </li>
-<li>恒不等 != </li>
-<li>不等操作符 &lt;&gt; </li>
-<li>小于操作符 &lt;</li>
-<li>大于操作符 &gt;</li>
-<li>小于操作符 &lt;=</li>
-<li>大于操作符 &gt;=</li>
-</ol>
-<h3 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/127644efff1b72f8b6925ad0ee940b9e9b1adab9" target="_blank" rel="noopener">逻辑操作符</a></h3><ol>
-<li>!  (NOT)</li>
-<li>&amp;&amp; (AND)</li>
-<li>|| (OR)</li>
-<li>and (AND)</li>
-<li>or (OR)</li>
-<li>xor (XOR)<blockquote>
-<p>后三个逻辑操作符要比前三个逻辑操作符的优先程度要低</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="引用操作符"><a href="#引用操作符" class="headerlink" title="引用操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/62a9045b06d07e8778c53cf1c5f6d9e2e895e792" target="_blank" rel="noopener">引用操作符</a></h3><ol>
-<li>&amp; 操作符<blockquote>
-<p>区别非引用的情况</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="字符串操作符"><a href="#字符串操作符" class="headerlink" title="字符串操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/9a56df048a6fab968eb40163ea00c9c36f410baa" target="_blank" rel="noopener">字符串操作符</a></h3><ol>
-<li>字符串连接（.）：将两个字符串连接起来生成并保存到一个新字符串中</li>
-</ol>
-<h3 id="其他操作符"><a href="#其他操作符" class="headerlink" title="其他操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/67d72b4f619386b267a52c1570920639e239d96e" target="_blank" rel="noopener">其他操作符</a></h3><ol>
-<li>,  逗号操作符 ，用于分隔函数参数和其他列表项</li>
-<li>?: 三元操作符，类似于条件语句 if else</li>
-<li>@  错误抑制符，可以放在任何表达式前面使用</li>
-<li><code></code> 执行操作符，PHP 会试着将反向单引号中的值当作服务器端命令行命令来执行</li>
-<li>[]（=&gt;） 数组操作符，支持访问数组元素</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（一）关系数据库的特点和关系数据模型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/04/数据库 - 关系型数据库（一）关系数据库的特点和关系数据模型/" itemprop="url">数据库 - 关系型数据库（一）关系数据库的特点和关系数据模型</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T23:09:44+08:00">
-                2018-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  943
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="关系型数据库的特点"><a href="#关系型数据库的特点" class="headerlink" title="关系型数据库的特点"></a>关系型数据库的特点</h2><ul>
-<li>基本特征： 是使用关系数据模型组织数据，这种思想源于数学</li>
-<li>发展：<ul>
-<li>20世纪 70 年代： RDBMS 问世</li>
-<li>20世纪 80 年代： 关系型数据库逐步取代早期的网状数据模型和层次模型，成为主流数据模型</li>
-</ul>
-</li>
-</ul>
-<h2 id="关系型数据模型"><a href="#关系型数据模型" class="headerlink" title="关系型数据模型"></a>关系型数据模型</h2><ul>
-<li><p>关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束</p>
-<h3 id="关系数据结构"><a href="#关系数据结构" class="headerlink" title="关系数据结构"></a>关系数据结构</h3><ul>
-<li>数据结构：（单一的数据结构），关系。<ul>
-<li>在关系模型中，现实世界的实体以及实体间的各种联系，均是使用关系来表示</li>
-<li>在用户看来，关系模型是把数据库表示为关系的集合，且关系数据库是以二维表格的形式组织数据</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="基本术语"><a href="#基本术语" class="headerlink" title="基本术语"></a>基本术语</h4><ul>
-<li>表（table）<blockquote>
-<p>又称作关系，是一个二维的数据结构，它由表名，构成表的各个列和若干行数据组成</p>
-<p>每个表有唯一的一个表名</p>
-<p>表中每一行数据都描述一条具体的记录值</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>关系（Relation）</p>
-<blockquote>
-<p>一个关系对应一张二维表，每个关系取一个名称进行标识</p>
-<p>关系的类型：基本关系，查询表和视图表</p>
-<ul>
-<li>基本关系通常又称为基本表或基表，是实际存在的表（世纪存储数据的逻辑表示）</li>
-<li>查询表是查询结果对应的表</li>
-<li>视图表是由基本表或其他视图表导出的表，是虚表，不对应实际储存的数据</li>
-</ul>
-</blockquote>
-</li>
-<li><p>列（Column）</p>
-<blockquote>
-<p>表中的列，也称为字段（field）或属性（Attribute）,</p>
-<p>表中每一列有一个名称，称为列名，字段名或属性名</p>
-<p>每一列表示实体的一个属性，具有相同的数据类型</p>
-</blockquote>
-</li>
-<li><p>属性（Attribute）</p>
-<blockquote>
-<p>与之同义的术语是列，一列即为一个属性</p>
-<p>列的值称为属性值</p>
-<p>属性的取值范围称作值域 </p>
-<p>表中的属性的个数称为关系的元或度</p>
-</blockquote>
-</li>
-<li><p>行（Row）</p>
-<blockquote>
-<p>表中的行，也成元组（Tuple）或记录（Record）</p>
-<p>表中的数据按行存储的，一行数据即为一个元组或一条记录</p>
-<p>每个字段值描述该对象的一个属性或特征</p>
-</blockquote>
-</li>
-<li><p>元组（Tuple）</p>
-<blockquote>
-<p>一行即为一个元组</p>
-</blockquote>
-</li>
-<li><p>分量（Component）</p>
-<blockquote>
-<p>元组中的一个属性值，称为分量</p>
-</blockquote>
-</li>
-<li><p>码或键（Key）</p>
-<blockquote>
-</blockquote>
-</li>
-<li>超码或超键（Super Key）</li>
-<li>候选码或候选键（Canditate Key）</li>
-<li>主码或主键（Primary Key）</li>
-<li>全码或全键（All Key）</li>
-<li>主属性（Primary Attribute）</li>
-<li><p>外码或外键（Foreign Key）</p>
-<blockquote>
-<p>关系中的某个属性（或属性组）不是这个关系的主码或候选码，而是另外一个关系的主码时，称该属性（或属性组）为这个关系的外码或外键</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">一个表中码或键 ，超码或超键，候选码或候选键，主码或主键，全码或全键 之间的关系</span><br><span class="line">+----------------------------------------------------------------+</span><br><span class="line">|  A表                       码或键                               |     </span><br><span class="line">|                                                                |</span><br><span class="line">|      +-----------------------------------------------+         |         </span><br><span class="line">|      |                   超码或超键                    |         | </span><br><span class="line">|      |                                               |         |</span><br><span class="line">|      |      +---------------------------------+      |         |</span><br><span class="line">|      |      |          候选码或候选键          |      |         |      +--------------------------------+</span><br><span class="line">|      |      |                                 |      |         |      | B 表                           |</span><br><span class="line">|      |      |     +------------------———+     |      |         |      |                               |</span><br><span class="line">|      |      |     |     主码或主键 +------------------------------------+  这个码在 A 表中是主码或主键，  |</span><br><span class="line">|      |      |     |                     |     |      |         |      | 同时不是B表关系中的主码或主键，  |</span><br><span class="line">|      |      |     |    +---------——+    |     |      |         |      | 则这个码称为是B表中的外码或外键  |</span><br><span class="line">|      |      |     |    | 全码或全键 |    |     |      |         |      |                               |</span><br><span class="line">+------+------+-----+----+-----------+--—-+-----+------+---------+      +-------------------------------+</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>参照关系（Referencing）和被参照关系（Referenced Relation）</p>
-<blockquote>
-<p>参照关系也称为从关系<br>参照关系也称为主关系</p>
-</blockquote>
-</li>
-<li><p>域（Domain）</p>
-<blockquote>
-<p>表示属性的取值范围</p>
-</blockquote>
-</li>
-<li><p>数据类型（Data Type）</p>
-<blockquote>
-<p>每个列都有对应的数据类型</p>
-<p>它用于限制（或容许）该列中存储的数据</p>
-</blockquote>
-</li>
-<li><p>关系模型（Relation Databa）</p>
-<blockquote>
-<p>是对关系的描述<br>关系模式是静态的，稳定的，而关系是动态的，随时间不断变化的（关系操作在不断地更新着数据库中的数据）</p>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（二）关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束,后两/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/04/数据库 - 关系型数据库（二）关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束,后两/" itemprop="url">数据库 - 关系型数据库（二）关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束,后两个</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T23:07:23+08:00">
-                2018-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  1.7k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="关系操作集合（待更新）"><a href="#关系操作集合（待更新）" class="headerlink" title="关系操作集合（待更新）"></a>关系操作集合（待更新）</h3><ul>
-<li><p>基本的关系操作（两大部分）</p>
-<ol>
-<li><p>查询（Query）操作</p>
-<ul>
-<li>查询操作是基本关系操作中的主要部分<ol>
-<li>5 种基本操作：选择，投影，并，差，交，笛卡尔积</li>
-<li>2 复杂操作：连接，除</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>插入（Insert）, 删除（Delete）, 修改（Update）操作</p>
-</li>
-</ol>
-</li>
-<li><p>关系数据语言的分类 </p>
-<ol>
-<li>关系操作是通过关系语言来实现，</li>
-<li><p>关系语言的优点：高度非过程化</p>
-<blockquote>
-<p>用户不需要请求数据库管理员为其建立特殊的存取路径，</p>
-<p>存取路径是由 DBMS 的优化机制来完成；</p>
-</blockquote>
-</li>
-<li><p>关系操作的能力可以通过两种方式来表示</p>
-<ul>
-<li><p>代数方式：主要有关系代数</p>
-<blockquote>
-<p>它是通过对关系的操作来表达查询要求的方式</p>
-</blockquote>
-</li>
-<li><p>逻辑方式：主要是关系演算（他是用谓词来表达查询要求的方式）</p>
-<ul>
-<li>关系演算按谓词的变元的基本对象又分为：<ol>
-<li>元组关系演算（变元的基本对象是元组变量）</li>
-<li>域关系演算（变元的基本对象是域变量 ）</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>关系代数，元组关系演算，域关系演算三种语言在表达能力上是等价的，并且他们都是抽象的查询语言</p>
-</li>
-<li><p>结构化查询语言（介于代数方式和逻辑方式之间, Structured Query Language, SQL）</p>
-<ul>
-<li><p>功能：</p>
-<ol>
-<li>数据定义功能（DDL）</li>
-<li>数据操作功能（DML）</li>
-<li>数据控制功能（DCL）</li>
-</ol>
-</li>
-<li><p>是关系数据库的标准语言</p>
-</li>
-</ul>
-</li>
-</ul>
-<ol start="3">
-<li>总结：</li>
-</ol>
-<ul>
-<li>关系数据语言分为三类：关系代数语言，关系演算语言和兼容两者双重特点的语言（SQL）</li>
-<li>它们功能的特点：语言具有完备的表达能力，和非过程化的集合操作语言，功能强，能够独立使用也可以嵌入高级语言中使用<h4 id="关系代数"><a href="#关系代数" class="headerlink" title="关系代数"></a>关系代数</h4></li>
-</ul>
-</li>
-</ol>
-</li>
-<li>关系代数是关系操作语言的一种传统表示方式，他是以集合代数为基础发展起来的。</li>
-<li><p>关系代数的三大要素：<br>1.操作对象<br>2.操作符<br>3.操作结果</p>
-<blockquote>
-<p>特点：操作对象和操作结果均为关系<br>直接应用关系的运算来表达操作的目的</p>
-</blockquote>
-</li>
-<li><p>运算符的种类：</p>
-<ol>
-<li>传统的集合运算符：并，差，交，笛卡尔积</li>
-<li>专门的运算符：选择，投影，连接，除，其中下面两种运算符是辅助专门运算符用的<ul>
-<li>比较运算符：大于，大于等于，等于，小于，小于等于，不等于</li>
-<li>逻辑操作符： 与，或非</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>关系代数表达式（关系代数操作表达式）</p>
-<ol>
-<li>概念： 代数关系操作经过有限次复合的式子 <blockquote>
-<p>可以使用关系代数表达式所需要执行的各种数据库查询和修改处理，例如：IBM 研制的一个纯代数数据操作语言（ISBL）</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>按照运算符的不同，代数操作分为</p>
-<ol>
-<li>传统的集合运算</li>
-<li>专门的关系运算</li>
-</ol>
-</li>
-<li><p>传统的集合运算</p>
-<ol>
-<li>传统的集合运算是二目运算<blockquote>
-<p>特点：</p>
-<ol>
-<li><p>把关系看成元组（行）的集合</p>
-</li>
-<li><p>运算是从关系的 “水平”方向进行，即行的角度进行</p>
-</li>
-<li><p>具体有 并，差，交，笛卡尔积 4 种运算</p>
-<p>值得注意的笛卡尔积是针对列进行操作的</p>
-</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>专门的关系运算符</p>
-<ul>
-<li><p>范围：不仅涉及行，还涉及列</p>
-</li>
-<li><p>可分为一元专门关系操作和二元关系操作</p>
-<ul>
-<li>一元关系操作包括<ol>
-<li>对单个进行垂直分解的投影运算</li>
-<li>对水平分解选择运算</li>
-</ol>
-</li>
-<li>二元专门关系操作则是对两个进行操作<ol>
-<li>连接运算</li>
-<li>除运算</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>选择（SELECT）</p>
-<ol>
-<li>概念：选择运算是从指定关系中选取满足给定条件的若干元组组成一个新关系，其形式：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 关系名 WHERE 条件</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<p>其中：条件是由常数，属性名或列名，比较操作符以及逻辑操作符组成的条件表达式子</p>
-<p>对应 SQL 中的 SELECT 语句的实现</p>
-</blockquote>
-</li>
-<li><p>投影（PROJECTION）</p>
-<ol>
-<li>概念：投影运算是从指定的关系中选取指定的若干属性值组成一个新的关系<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PROJECTION 关系名（属性1， 属性2 ... 属性3）</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<p>其中：经过投影运算所形成的新关系中不含重复元组，其属性按语句中给出的顺序排列</p>
-<p>SQL 中的 GROUP BY（分组）子句的实现</p>
-</blockquote>
-</li>
-<li><p>连接（JSON）</p>
-<ol>
-<li>选取两个指定关系中国呢的属性满足给定条件的元组连接在一起组成一个新关系<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JOIN 关系名1 AND 关系名2 WHERE 条件</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<p>条件是由比较操作符和属性名或列名组成的条件表达式</p>
-</blockquote>
-<ol>
-<li>连接分为：等值连接和自然连接</li>
-</ol>
-</li>
-<li><p>除（DIVISION）</p>
-<ol>
-<li>M - N 元关系</li>
-</ol>
-</li>
-</ul>
-<h3 id="关系的完整型约束"><a href="#关系的完整型约束" class="headerlink" title="关系的完整型约束"></a>关系的完整型约束</h3></li>
-<li><p>概念：数据库的数据完整性：是指数据库中数据的正确性，相容性和一致性</p>
-<ol>
-<li>现实世界角度:现实世界应用需求的数据的正确性，相容性和一致性</li>
-<li>数据库数据角度：数据库数据之间的正确性，相容性和一致性</li>
-<li>数据库中数据是否具备完备性，直接关系到数据库系统是否真实地反映现实世界，故数据的数据完整性十分重要</li>
-</ol>
-</li>
-<li><p>完整性约束</p>
-<ol>
-<li>概念：数据的完整性是由完整性规则来定义，关系模型的完整性规则是对关系的某种约束</li>
-<li>目的：用来保证当用户对数据库进行插入，删除，更新操作时不会破坏数据库的正确性，相容性和一致性</li>
-</ol>
-</li>
-<li><p>关系数据库中的三种完整性约束类型</p>
-<ol>
-<li><p>实体完整性约束（Entity Integrity Constraint）</p>
-<ol>
-<li>概念：指关系的主属性（主码）的组成不能为空（NULL）<blockquote>
-<p>关系对应现实世界中的实体集，而实现世界中的实体是可以区分的，即说明每个实体具有唯一性标识</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>参照完整性约束（Referential Integrity Constraint）</p>
-<ol>
-<li>概念：是定义外码和主码之间的引用关系，它是对关系间引用数据的一种限制<blockquote>
-<p>实现世界中的实体之间往往存在着某种联系，在关系模型中实体以及实体之间的联系都是用关系来描述的，这样就自然存在着关系与关系间的引用</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>用户定义完整性约束(User-defined Integrity Constraint)</p>
-<ol>
-<li>概念：是针对某一应用环境的完整性约束条件，它反映了某一具体应用所涉及的数据应满足的要求 </li>
-</ol>
-</li>
-<li><p>实体完整性和参照完整性约束是由系统自动支持的</p>
-</li>
-</ol>
-</li>
-<li><p>关系模型完整性约束检验</p>
-<ol>
-<li>插入操作</li>
-<li>删除操作</li>
-<li>更新操作</li>
-</ol>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -3256,7 +2440,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -3346,7 +2530,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">49.4k</span>
+    <span title="博客总字数">53.5k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

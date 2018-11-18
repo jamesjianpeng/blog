@@ -307,6 +307,2144 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/10/数据库 - 数据库设计（二）关系数据库设计方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/10/数据库 - 数据库设计（二）关系数据库设计方法/" itemprop="url">数据库 - 数据库设计（二）关系数据库设计方法</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-10T11:17:51+08:00">
+                2018-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  3.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="关系数据库库设计的过程概述"><a href="#关系数据库库设计的过程概述" class="headerlink" title="关系数据库库设计的过程概述"></a>关系数据库库设计的过程概述</h3><ul>
+<li>关系数据库：一类采用关系模型作为逻辑数据模型的数据库系统</li>
+<li>关系数据库设计的过程遵循数据库设计的基本步骤<ol>
+<li>需求分析</li>
+<li>概念结构设计</li>
+<li>逻辑结构设计</li>
+<li>物理结构设计</li>
+<li>数据库实施</li>
+<li>数据库的运行和维护等阶段</li>
+</ol>
+</li>
+</ul>
+<h3 id="关系数据库设计过程与各级模式"><a href="#关系数据库设计过程与各级模式" class="headerlink" title="关系数据库设计过程与各级模式"></a>关系数据库设计过程与各级模式</h3><ol>
+<li>需求分析阶段：综合各个用户的应用需求</li>
+<li>在概念结构设计阶段：形成独立于机器特点，独立于各个关系数据库管理系统产品（MySQL,Oracle,SQL,Server 等）的概念模式，如使用 E - R 图</li>
+<li>在逻辑结构设计阶段，将 E - R 图转换成具体的数据库产品支持的关系数据模型，形成数据库逻辑模式，然后根据用户处理的要求，安全性考虑，在基本表的基础上再建立必要的视图，形成数据的外模式</li>
+<li>再物理结构的设计阶段中，根据关系数据库管理系统的特点和处理的需要，进行物理存储安排，建立索引，形成数据库内模式</li>
+</ol>
+<h3 id="概念结构设计方法"><a href="#概念结构设计方法" class="headerlink" title="概念结构设计方法"></a>概念结构设计方法</h3><ol>
+<li><p>关系数据库的概念结构设计方法通常是：自顶向下法</p>
+</li>
+<li><p>两个步骤</p>
+<ul>
+<li>建立局部信息结构</li>
+<li>然后将局部信息结构合成全局信息结构并优化</li>
+</ul>
+</li>
+<li>描述工具：<ul>
+<li>E - R 图</li>
+</ul>
+</li>
+</ol>
+<h4 id="概念结构设计方法常使用的描述工具：E-R-图的表示法"><a href="#概念结构设计方法常使用的描述工具：E-R-图的表示法" class="headerlink" title="概念结构设计方法常使用的描述工具：E - R 图的表示法"></a>概念结构设计方法常使用的描述工具：E - R 图的表示法</h4><ol>
+<li>概念结构设计：是将需求分析得到的用户需求抽象为信息结构（概念模型）的过程，它通常使用 E - R 图作为描述现实世界的建模工具</li>
+<li><p>E - R 图提供了表示信息世界中实体，属性和联系的方法，具体：</p>
+<ul>
+<li>实体型：其用矩形表示，矩形框内写明实体的名称</li>
+<li>属性：其用椭圆形表示，并用无向边将其与相应的实体链接起来</li>
+<li>联系：其用菱形表示，菱形框内写明联系的名称，并用无向边分别与有关实体连接起来，同时在无向边旁标上联系的类型（1:1,1:N, M:N），如果一个联系具有属性，则这些属性也要用无向边与该联系连接起来</li>
+</ul>
+</li>
+<li><p>两个实体型之间的联系：</p>
+<ul>
+<li>一对一（1:1）</li>
+<li>一对多（1:N）</li>
+<li>多对多（M:N）</li>
+</ul>
+</li>
+<li><p>两个以上的实体型之间的联系</p>
+<ul>
+<li>一对一（1:1）</li>
+<li>一对多（1:N）</li>
+<li>多对多（M:N）</li>
+</ul>
+</li>
+<li><p>单个实体型内的联系</p>
+<ul>
+<li>一对一（1:1）</li>
+<li>一对多（1:N）</li>
+<li>多对多（M:N）</li>
+</ul>
+</li>
+</ol>
+<h3 id="概念结构设计方法第一个步骤：局部信息结构设计"><a href="#概念结构设计方法第一个步骤：局部信息结构设计" class="headerlink" title="概念结构设计方法第一个步骤：局部信息结构设计"></a>概念结构设计方法第一个步骤：局部信息结构设计</h3><ul>
+<li><p>概念：根据需求分析报告中标明的用户视图范围所建立的满足该范围内用户需求的信息结构</p>
+</li>
+<li><p>局部信息结构设计的步骤分为：</p>
+<ol>
+<li>确定局部范围</li>
+<li>选择实体</li>
+<li>选择实体关键字</li>
+<li>确定实体间联系</li>
+<li>确定实体的属性</li>
+</ol>
+</li>
+</ul>
+<h4 id="局部信息结构设计第一个步骤：确定局部范围"><a href="#局部信息结构设计第一个步骤：确定局部范围" class="headerlink" title="局部信息结构设计第一个步骤：确定局部范围"></a>局部信息结构设计第一个步骤：确定局部范围</h4><ul>
+<li>局部范围主要依据需求分析报告后者难过标明的用户视图范围来确定<blockquote>
+<p>需求分析报告中标明的局部范围往往与子模式范围相对应</p>
+<p>范围确定的基本准则:</p>
+<ol>
+<li>部门和功能相对对立</li>
+<li>同其他局部范围相互影响较少，并且实体个数适量</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h4 id="局部信息结构设计第二个步骤：选择实体"><a href="#局部信息结构设计第二个步骤：选择实体" class="headerlink" title="局部信息结构设计第二个步骤：选择实体"></a>局部信息结构设计第二个步骤：选择实体</h4><ol>
+<li><p>选择实体的（目的）任务：是在确定的局部范围内选择一些合适的信息单位作为局部信息结构的基本实体</p>
+<blockquote>
+<p>这些实体应能满足该局部范围内的应用需求<br>通常，以实际工作中习惯使用的信息单位作为选择实体的基础，数据分类表是选择实体的直接依据</p>
+<p>再同一局部信息结构中的实体名称应具有唯一性</p>
+</blockquote>
+</li>
+<li><p>实体选择时的最大困难是如何区别实体与属性</p>
+</li>
+</ol>
+<h4 id="局部信息结构设计第三个步骤：选择实体的关键字属性"><a href="#局部信息结构设计第三个步骤：选择实体的关键字属性" class="headerlink" title="局部信息结构设计第三个步骤：选择实体的关键字属性"></a>局部信息结构设计第三个步骤：选择实体的关键字属性</h4><ul>
+<li>实体的存在依赖于其他关键字的存在<blockquote>
+<p>实体关键字属性确定之后，实体的非关键字属性也就容易确定了，因为他们之间存在某种应用上的联系和依赖性</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="局部信息结构设计第四个步骤：确定实体间的联系"><a href="#局部信息结构设计第四个步骤：确定实体间的联系" class="headerlink" title="局部信息结构设计第四个步骤：确定实体间的联系"></a>局部信息结构设计第四个步骤：确定实体间的联系</h4><ul>
+<li>数据间的联系必须在概念设计时确定<blockquote>
+<p>一种常用的分析实体间是否存在联系的方法是，将局部范围内的实体逐一取出来与该范围内的其他实体试行匹配（在任务表中）</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="局部信息结构设计第五个步骤：确定实体的属性"><a href="#局部信息结构设计第五个步骤：确定实体的属性" class="headerlink" title="局部信息结构设计第五个步骤：确定实体的属性"></a>局部信息结构设计第五个步骤：确定实体的属性</h4><ul>
+<li><p>属性分为两类</p>
+<ol>
+<li>标识属性</li>
+<li>说明属性</li>
+</ol>
+</li>
+<li><p>标识属性（实体关键字属性和非关键字属性）</p>
+<blockquote>
+<p>用作实体的关键字，说明属性用作描述实体的一般特征 </p>
+</blockquote>
+</li>
+<li><p>说明属性</p>
+<blockquote>
+<p>基本原则：说明属性的存在和使用通常依赖于标识属性<br>取决于：该属性是否可通过其所在实体的关键字找到，并且他们之间在应用中具有某种联系</p>
+<p>说明属性应是单值的，不允许嵌套属性和重复组的现象出现在实体中<br>会有这种情况：同一说明属性依赖于多个实体的标识属性的情况，此时可将该属性分配到其他使用频率最高的实体中去</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="概念结构设计方法第二个步骤：全局信息结构设计"><a href="#概念结构设计方法第二个步骤：全局信息结构设计" class="headerlink" title="概念结构设计方法第二个步骤：全局信息结构设计"></a>概念结构设计方法第二个步骤：全局信息结构设计</h3><ul>
+<li><p>概念：是将上述步骤中产生的所有局部信息结构合并成一个全局信息结构</p>
+</li>
+<li><p>全局信息结构必须是所有局部信息结构的全面准确的映像</p>
+<blockquote>
+<p>即合并前各局部信息结构能实现的应用需求，合并之后也能实现</p>
+</blockquote>
+</li>
+<li><p>需要避免的问题：消除不同局部信息结构中因用户观点的不同所可能导致的数据不一致，并尽可能地增强数据的共享性，控制数据的冗余</p>
+</li>
+<li><p>合并的前提：假设局部信息结构都是完全的，一致的前提下进行</p>
+<blockquote>
+<p>即假设各局部信息结构都能满足其对应局部范围的应用需求,且其内部不存在需要合并的成分</p>
+</blockquote>
+</li>
+<li><p>合并的方式</p>
+<ol>
+<li>可以一次性把所有的局部信息结构合并成全局的信息结构</li>
+<li>也可以采用逐步合并，进行累加的方式</li>
+</ol>
+</li>
+<li><p>合并的过程</p>
+<ol>
+<li>一个系统中有多个功能，可能有多个设计人员进行设计，合并的时候就会出现冲突，这个无法避免的，需要合理的解决</li>
+</ol>
+</li>
+<li><p>合并中出现的冲突</p>
+<ol>
+<li><p>属性冲突</p>
+<ul>
+<li><p>属性域冲突</p>
+<blockquote>
+<p>属性值的类型，取值范围，取值集合的不同</p>
+</blockquote>
+</li>
+<li><p>属性取值单位冲突</p>
+<blockquote>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>命名冲突，两类</p>
+<ul>
+<li>同名异义</li>
+<li>异名同义</li>
+</ul>
+</li>
+<li><p>结构冲突，三类</p>
+<ul>
+<li>同一对象在一局部 E - R 图中作为实体，而在另外一个局部 E - R 图中作为属性</li>
+<li>同义实体在不同的 E - R 图中属性个数和类型不同</li>
+<li>实体之间的联系在不同的 E - R 图中是不同的类型</li>
+</ul>
+</li>
+<li><p>好的全局信息结构设计</p>
+<ol>
+<li>能反应用户功能需求</li>
+<li>实体的类型数量尽可能少</li>
+<li>实体类型所含属性尽可能少</li>
+<li>实体类型间联系无冗余<blockquote>
+<p>后面三个内容，是全局 E - R 模型优化需要达到内容<br>优化步骤：</p>
+<ol>
+<li>相关实体类型的合并</li>
+<li>消除不必要的冗余属性</li>
+<li>消除不必要的冗余联系</li>
+<li>有时为了效率，可以适当的存在冗余（😂你懂的）</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="逻辑结构设计方法"><a href="#逻辑结构设计方法" class="headerlink" title="逻辑结构设计方法"></a>逻辑结构设计方法</h3><ul>
+<li><p>在数据库设计步骤中逻辑结构的设计</p>
+<ol>
+<li>目的（任务）：是把在概念结构设计产生的概念模型转换为具体的 DBMS 所支持的逻辑数据模型<blockquote>
+<p>导出特定的 DBMS 可以处理的数据逻辑结构（数据库的模式和外模式），这些模式在功能，性能，完整性和约束性方面满足应用要求</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>在关系型数据库的设计中逻辑结构的设计：</p>
+<ol>
+<li>目的（任务）：就是把概念结构设计阶段已设计好的 E - R 图转换为关系数据库管理系统所支持的关系模型</li>
+<li>工作内容：<ul>
+<li>将 E - R 图转换位关系模型</li>
+<li>对关系数据库模型进行优化</li>
+<li>设计面向用户的外模式</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="逻辑结构设计内容（一）：将-E-R-图转换位关系模型"><a href="#逻辑结构设计内容（一）：将-E-R-图转换位关系模型" class="headerlink" title="逻辑结构设计内容（一）：将 E - R 图转换位关系模型"></a>逻辑结构设计内容（一）：将 E - R 图转换位关系模型</h4><ul>
+<li><p>需要解决的问题：</p>
+<ol>
+<li>要如何将实体以及实体间的联系转换为关系模型</li>
+<li>如何确定这些关系模式的属性和主码<blockquote>
+<p>关系模式的逻辑结构是一组关系模式的集合，而 E - R 图则是由实体，实体的属性和实体间的联系转换为某种关系模式</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>原则：(待更新)</p>
+<ol>
+<li>一个实体转换为一个关系模式</li>
+<li>一个一对一（1:1）联系可以转换为一个独立的关系模式</li>
+<li>一个一对多（1:N）联系可以转换为一个独立的关系模式</li>
+<li>一个多对多（M:N）联系转换为一个关系模式</li>
+<li>三个或桑哥以上实体间的一个多元联系可以转换为一个关系模式</li>
+</ol>
+</li>
+</ul>
+<h4 id="逻辑结构设计内容（二）：对关系数据库模型进行优化"><a href="#逻辑结构设计内容（二）：对关系数据库模型进行优化" class="headerlink" title="逻辑结构设计内容（二）：对关系数据库模型进行优化"></a>逻辑结构设计内容（二）：对关系数据库模型进行优化</h4><ul>
+<li>数据库逻辑设计的结果不是唯一的</li>
+<li>数据模型的优化： 为了进一步提高数据库的要求，还应该根据应用需要适当修改地修改，调整数据模型额结构</li>
+<li>关系数据模型的优化通常以关系规范化理论为指导，<a href="">数据库 - 关系型数据库（三）关系数据库的规范化理论</a></li>
+</ul>
+<h4 id="逻辑结构设计内容（三）：设计面向用户的外模式"><a href="#逻辑结构设计内容（三）：设计面向用户的外模式" class="headerlink" title="逻辑结构设计内容（三）：设计面向用户的外模式"></a>逻辑结构设计内容（三）：设计面向用户的外模式</h4><ul>
+<li>将概念模式转化为全局逻辑模式之后，可根据局部应用需求，利用视图（View）设计更符合局部用户需要的用户外模式</li>
+<li>定义数据库的全局模式主要是从系统的时间效率，空间效率，易维护性等角度出发。由于用户外模式与模式是相对独立的，所以定义用户外模式时注意：<ol>
+<li>定义别名</li>
+<li>对应不同级别的用户定义不同的视图，以保证系统的安全性</li>
+<li>简化用户对系统的使用</li>
+</ol>
+</li>
+</ul>
+<h3 id="物理设计方法"><a href="#物理设计方法" class="headerlink" title="物理设计方法"></a>物理设计方法</h3><ul>
+<li><p>关系数据库系统的优点之一是用户通常不需要进行数据存储结构和存取方法的是设计</p>
+<blockquote>
+<p>这个是相对的，用户失去对数据库存取路径的控制而影响到数据库的存取效率</p>
+</blockquote>
+</li>
+<li><p>物理设计的（目的）任务：主要是通过对关系建立索引和聚集来实现与应用相关数据的逻辑连接和物理聚集，以改善对数据库的存取效率</p>
+</li>
+</ul>
+<h4 id="物理设计方法（一）：-建立索引"><a href="#物理设计方法（一）：-建立索引" class="headerlink" title="物理设计方法（一）： 建立索引"></a>物理设计方法（一）： 建立索引</h4><ul>
+<li>建立索引的方式通常有静态和动态</li>
+</ul>
+<h4 id="物理设计方法（二）：建立聚集"><a href="#物理设计方法（二）：建立聚集" class="headerlink" title="物理设计方法（二）：建立聚集"></a>物理设计方法（二）：建立聚集</h4><ul>
+<li><p>聚集：是将相关数据集中存放的物理存储技术</p>
+<blockquote>
+<p>以提高 I/O 的数据命中率而改善存取速度，其功能由具体的 DBMS 所提供</p>
+<p>所谓集中存放的概念：将相关数据尽可能地存放一个物理块中（或一个磁道中，或一个柱面中，或相邻区域块，磁道，柱面）</p>
+</blockquote>
+</li>
+<li><p>数据聚集结构的一种有效方式是块结构方式。</p>
+<blockquote>
+<p>块域块之间由指针连接，一个块对于一个物理分区</p>
+<p>数据聚集可在一个或多个关系上建立</p>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/06/数据库 - 数据库设计（一）数据库设计概述和数据库设计步骤/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/06/数据库 - 数据库设计（一）数据库设计概述和数据库设计步骤/" itemprop="url">数据库 - 数据库设计（一）数据库设计概述和数据库设计步骤</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-06T23:55:18+08:00">
+                2018-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="数据库设计概述"><a href="#数据库设计概述" class="headerlink" title="数据库设计概述"></a>数据库设计概述</h2><h3 id="数据库的生命周期"><a href="#数据库的生命周期" class="headerlink" title="数据库的生命周期"></a>数据库的生命周期</h3><ul>
+<li><p>两个阶段：</p>
+<ol>
+<li><p>数据库分析与设计阶段</p>
+<ul>
+<li>需求分析</li>
+<li>概念设计</li>
+<li>逻辑设计</li>
+<li>物理设计</li>
+</ul>
+</li>
+<li><p>数据库实现与操作阶段 </p>
+<ul>
+<li>数据库的实现阶 </li>
+<li>数据库的操作和监督阶段</li>
+<li>数据库的修改与调整阶段</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="数据库设计的目标"><a href="#数据库设计的目标" class="headerlink" title="数据库设计的目标"></a>数据库设计的目标</h3><ul>
+<li>两个目标：1. 满足应用功能 2. 良好的数据库性能</li>
+</ul>
+<h3 id="数据库设计的内容"><a href="#数据库设计的内容" class="headerlink" title="数据库设计的内容"></a>数据库设计的内容</h3><ul>
+<li>从用户对数据的需求出发，研究并构造数据库的过程<ol>
+<li>数据库的结构设计</li>
+<li>数据库的行为设计</li>
+</ol>
+</li>
+</ul>
+<h3 id="数据库设计的方法"><a href="#数据库设计的方法" class="headerlink" title="数据库设计的方法"></a>数据库设计的方法</h3><ul>
+<li><p>直观设计法</p>
+<blockquote>
+<p>特点：最原始的一类设计方法，利用设计者的经验和技巧设计数据库模式<br>缺点：缺乏科学理论的指导，设计质量难以保证</p>
+</blockquote>
+</li>
+<li><p>规范设计法</p>
+<ol>
+<li><p>新奥尔良设计方法</p>
+</li>
+<li><p>基于 E-R 模型的数据设计方法</p>
+</li>
+</ol>
+<blockquote>
+<p>基本思想：在需求分析的基础上用 E-R 图构造一个反映实现世界实体之间联系的企业模式，然后将此模式转换成某一特定DBMS 下的概念模式</p>
+</blockquote>
+<ol start="3">
+<li>计算机辅助设计方法</li>
+</ol>
+</li>
+</ul>
+<h3 id="数据库设计过程"><a href="#数据库设计过程" class="headerlink" title="数据库设计过程"></a>数据库设计过程</h3><ol>
+<li><p>需求分析</p>
+</li>
+<li><p>结构设计</p>
+<ul>
+<li>概念结构设计</li>
+<li>逻辑结构设计</li>
+<li>物理结构设计</li>
+</ul>
+</li>
+<li><p>行为设计阶段</p>
+<ul>
+<li>功能设计</li>
+<li>事务设计</li>
+<li>程序设计</li>
+</ul>
+</li>
+<li><p>数据库实施阶段</p>
+<ul>
+<li>加载数据库数据</li>
+<li>调试运行应用程序</li>
+</ul>
+</li>
+<li><p>数据库运行和维护阶段</p>
+</li>
+</ol>
+<h2 id="数据库设计的基本步骤"><a href="#数据库设计的基本步骤" class="headerlink" title="数据库设计的基本步骤"></a>数据库设计的基本步骤</h2><ol>
+<li><p>使用的方法：分阶段设计方法</p>
+</li>
+<li><p>原则：自顶向下，逐步求精的原则</p>
+<blockquote>
+<p>将数据库设计过程分解为若干个相互依存的阶段，每一阶段采用不同的技术与工具解决不同的问题</p>
+<p>目的：将问题局部化，减少 局部问题对整体设计的影响，便于多人合作</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="数据库设计的各个阶段，又称为数据库设计步骤"><a href="#数据库设计的各个阶段，又称为数据库设计步骤" class="headerlink" title="数据库设计的各个阶段，又称为数据库设计步骤"></a>数据库设计的各个阶段，又称为数据库设计步骤</h3><h4 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1. 需求分析"></a>1. 需求分析</h4><ul>
+<li><p>目标：了解与用户信息及应用处理的要求，并将结果按一定格式整理而形成需求分析报告</p>
+<blockquote>
+<p>该报告是后续概念设计，逻辑设计，物理设计，数据库建立与维护的依据</p>
+</blockquote>
+</li>
+<li><p>4 个步骤：</p>
+<ol>
+<li><p>确定数据库范围</p>
+<ul>
+<li><p>目的：确定数据库应支持哪些应用功能</p>
+</li>
+<li><p>首先要考虑得是支持用户工作需要所必须的应用要求</p>
+</li>
+</ul>
+</li>
+<li><p>分析数据应用过程</p>
+<ul>
+<li><p>目的：了解分析数据与数据处理间的关系</p>
+</li>
+<li><p>每个功能用到那些数据，数据使用顺序，对数据作如何处理以及处理的策略以及处理的结果</p>
+</li>
+<li><p>应用过程分析的结果是数据库结构设计的重要依据</p>
+<ol>
+<li>那些数据需要存入数据库中</li>
+<li>哪些数据可作为报告输出而不存入数据库中</li>
+<li>不同数据的不同使用权限（存，取，删，改） 和共享范围</li>
+</ol>
+</li>
+<li><p>数据应用过程也是数据库应用程序编写的依据</p>
+</li>
+<li><p>使用的工具</p>
+<ol>
+<li>借助数据流程图或其他信息及应用结构图形表示</li>
+<li>在构建数据流程图的时候需要注意：<ul>
+<li>应以局部应用部门或相对独立的应用功能为标识单位，从而将问题局部化，有利于分块设计</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>收集与分析数据</p>
+<ul>
+<li><p>目的：了解并分析数据的组成格式以及操作特征，每个数据元素的语义及关系等，并将他们收集起来整理归档。</p>
+<blockquote>
+<p>数据流程图中所涉及的 数据都是收集与分析的对象，主要包括报表，文件，单据以及各种原始资料</p>
+</blockquote>
+</li>
+<li><p>可以从三个方面入手：</p>
+<ol>
+<li><p>数据的静态结构</p>
+<ul>
+<li>概念：指不施加应用操作于其上时数据的原始状态，可以通过数据分类表和数据元素进行说明</li>
+</ul>
+<ol>
+<li>数据分类表： 用于数据的总体描述，对于每一客观存在的具有独立意义的单类数据单位（如一种报表，一种文件，一种收据）应给出其名称，用途，编制者以及使用者等说明</li>
+</ol>
+<ul>
+<li><p>数据分类表，其结构</p>
+</li>
+<li><p>数据ID</p>
+</li>
+<li>数据名</li>
+<li>用途</li>
+<li>主人</li>
+<li>用户</li>
+<li>来源</li>
+<li>去向</li>
+<li>存档时间</li>
+<li><p>数据量</p>
+</li>
+<li><p>数据元素表，其结构</p>
+</li>
+<li><p>数据ID</p>
+</li>
+<li>数据元素ID</li>
+<li>元素名</li>
+<li>意义</li>
+<li>类型</li>
+<li>长度</li>
+<li>算法</li>
+<li>备注</li>
+</ul>
+</li>
+<li><p>动态结构</p>
+<ul>
+<li>概念：指将应用操作施加于数据之上数据的状态，可通过任务分类表和数据操作特征表进行说明</li>
+<li>意义：</li>
+<li>任务分类表</li>
+<li>任务 ID</li>
+<li>名称</li>
+<li>功能</li>
+<li>类型</li>
+<li>主人</li>
+<li>用户</li>
+<li>执行日期</li>
+<li>频率</li>
+<li>操作过程</li>
+<li><p>备注</p>
+</li>
+<li><p>数据操作特征表</p>
+</li>
+<li>任务 ID</li>
+<li>数据 ID </li>
+<li>建立</li>
+<li>查询</li>
+<li>插入</li>
+<li>修改</li>
+<li>删除</li>
+<li>数据量</li>
+</ul>
+</li>
+<li><p>数据约束</p>
+<ul>
+<li>数据约束是指使用数据时的特殊要求，约束的类型：</li>
+</ul>
+<ol>
+<li><p>数据的安全保密性</p>
+<blockquote>
+<p>谁拥有操作，存，取，删，改的不同权限</p>
+</blockquote>
+</li>
+<li><p>数据的完整性</p>
+<blockquote>
+<p>数据正确性的约束范围和验证准则</p>
+</blockquote>
+</li>
+<li><p>响应时间</p>
+<blockquote>
+<p>指主要是指某些特定应用要求的数据存储时间限制</p>
+</blockquote>
+</li>
+<li><p>数据恢复</p>
+<blockquote>
+<p>其主要指转储及恢复的时机与范围等要求</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>编写需求分析报告</p>
+<ul>
+<li><p>作为需求分析阶段的一个总结，需求分析报告作为应用需求的业务人员和数据库设计人员的 “共同语言”</p>
+</li>
+<li><p>需求报告的内容：</p>
+<ol>
+<li><p>数据库的应用功能目标</p>
+<blockquote>
+<p>要求明确标明数据库的应用范围以及达到的应用处理功能</p>
+</blockquote>
+</li>
+<li><p>标明不同用户视图范围</p>
+<blockquote>
+<p>根据机构与职能关系图和数据流程图，并参考任务分类表等，确定不同部门或功能的局部视图范围</p>
+</blockquote>
+</li>
+<li><p>应用处理过程需求说明</p>
+<blockquote>
+<ol>
+<li>数据流程图，其主要反映应用部门原始业务处理的工作流程</li>
+<li>任务分类表，其标明不同任务的功能以及使用状况</li>
+<li>数据操作特征表，标明任务和数据间的联系以及不同数据的不同操作特征与执行效率</li>
+</ol>
+</blockquote>
+</li>
+<li><p>数据字典</p>
+<ul>
+<li><p>数据字典（Data Dictionary, DD）概念：数据库系统中存储三级结构定义的数据库</p>
+<blockquote>
+<p>通常指的是数据库系统中各类数据详细描述的集合</p>
+</blockquote>
+</li>
+<li><p>功能：存储和检索各种数据描述，即元数据</p>
+</li>
+<li><p>特点：在数据库设计中，它提供了对各类数据描述的集中管理，是一种数据分析，系统设计和管理的有力工具</p>
+<blockquote>
+<p>数组字典需要有专人进行管理，及时对数据字典进行更新，保证字典的安全，可靠</p>
+</blockquote>
+</li>
+<li><p>数据字典包括的内容：数据分类表，数据元素表和各类原始资料</p>
+<blockquote>
+<p>各类原始资料是指收集所有单据，报表，文件以及设计所需的原始资料，并根据数据分类表的数据 ID 统一分类标号</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="2-概念结构设计"><a href="#2-概念结构设计" class="headerlink" title="2. 概念结构设计"></a>2. 概念结构设计</h4><ul>
+<li><p>目的（任务）：是在需求分析中产生的需求分析报告的基础上，按照特定的方法设计满足应用需求的用户信息结构</p>
+<blockquote>
+<p>改信息结构通常称为概念模式</p>
+</blockquote>
+</li>
+<li><p>特点：概念模型独立于任何软件和硬件，</p>
+<blockquote>
+<p>主要目的：是最大限度地满足应用需求，可完全不顾及具体的硬件和软件的限制，因而它是一个符合用户需求的趋于理想化的信息结构</p>
+</blockquote>
+</li>
+<li><p>概念结构设计的常用方法：</p>
+<ol>
+<li>实体分析法（自顶向下法）</li>
+<li>属性综合法（自底向上法）<blockquote>
+<p>采用属性分析开始，高层实体以及联系通过底层属性组成的设计技术</p>
+<p>实际上，这是一种基于统计分析推导的方法，即通过对数据元素与应用任务联系的定性定量统计分析技术来推导的方法 </p>
+<p>统计分析推导的处理过程：可分为属性分类，实体构成，联系的确定等相对独立的步骤</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="3-逻辑结构设计"><a href="#3-逻辑结构设计" class="headerlink" title="3. 逻辑结构设计"></a>3. 逻辑结构设计</h4><ul>
+<li><p>目的（任务）：是将概念模型转化为等价的，并为特定 DBMS 所支持数据模型的结构</p>
+</li>
+<li><p>数据库逻辑模型表示方法：层次，网状，关系数据模型表示</p>
+</li>
+<li><p>逻辑结构设计的输入和输出信息</p>
+<blockquote>
+<p>逻辑结构设计是在需求分析以及概念结构设计的基础上进行的，通常要求提供如下输入信息</p>
+<ol>
+<li>独立于特定 DBMS 的概念模型</li>
+<li>有关响应时间，安全保密性，数据完整性及恢复方面的要求说明，包括保持数据一致性的规则说明</li>
+<li>数据量以及使用频率</li>
+<li>特定 DBMS 特性，包括 DBMS 支持的数据模型以及数据定义语言的说明</li>
+</ol>
+</blockquote>
+</li>
+<li><p>完成逻辑结构设计之后输出的信息</p>
+<blockquote>
+<ol>
+<li>一个特定 DBMS 支持的概念模式，或称为模式</li>
+<li>物理设计说明，主要包括存入数据库中的数据量，使用频率以及响应时间要求</li>
+<li>程序设计说明，其是在需求分析的基础上，根据已完成的逻辑模型编制各程序名，执行逻辑步，存取数据的名，顺序以及操作特征（读写删改）的说明</li>
+</ol>
+</blockquote>
+</li>
+<li><p>逻辑结构设计的步骤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">               +-----------------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    概念设计      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br><span class="line">                        |</span><br><span class="line">               +--------+--------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    模型转换      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br><span class="line">                        |</span><br><span class="line">        +---------------+---------------+</span><br><span class="line">        |                               |</span><br><span class="line">+-------+--------+          +-----------+----------+</span><br><span class="line">|                |          |                      |</span><br><span class="line">|    子模式       |          |  应用程序设计说明     |</span><br><span class="line">|                |          |                      |</span><br><span class="line">+-------+--------+          +-----------+----------+</span><br><span class="line">        |                               |</span><br><span class="line">        +---------------+---------------+</span><br><span class="line">                        |</span><br><span class="line">               +--------+--------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    设计评价      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br><span class="line">                        |</span><br><span class="line">               +--------+--------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    物理设计      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li><p>模型转换是指将概念模型等价地转换为特定 DBMS 支持的关系模式，网状模型或层次模型 </p>
+</li>
+<li><p>子模式设计的目标：是抽取或导出模式的子集，以构造不同用户使用的局部数据逻辑结构</p>
+</li>
+<li><p>编制应用程序设计说明的目的：为可实际运行的应用程序设计提供依据与指导，并作为设计评价的基础</p>
+</li>
+<li><p>设计评价的任务是分析并检验模式以及子模式的正确性合理性</p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h4 id="4-物理结构设计"><a href="#4-物理结构设计" class="headerlink" title="4. 物理结构设计"></a>4. 物理结构设计</h4><ul>
+<li>概念：是指对于一个给定的数据库逻辑结构，研究并构造物理结构的过程</li>
+<li>任务：是确定数据库在存储设备上的存储结构以及存储方法<blockquote>
+<p>因 DBMS 的不同还可能包括建立索引和聚集，以及物理块大小，缓冲区个数和大小，数据压缩的选择等</p>
+<p>对于物理结构设计的人员的要求</p>
+<ul>
+<li>掌握基本存储设备的特性</li>
+<li>充分了解操作系统以及 DBMS 所提供的支持环境</li>
+<li>并十分熟悉数据库的逻辑结构以及存取速度，频率以及数据量方面的要求</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h4 id="5-数据库实施"><a href="#5-数据库实施" class="headerlink" title="5. 数据库实施"></a>5. 数据库实施</h4><ul>
+<li><p>工作内容：加载数据，应用程序设计以及数据库运行</p>
+</li>
+<li><p>数据加载</p>
+<blockquote>
+<p>概念：将符号要求的数据装载到数据库中去，其具体过程包括数据的收集，分类，整理校验和输入等过程，经此就可将数据按数据库定义准确地存储到数据库中</p>
+</blockquote>
+</li>
+<li><p>应用程序设计</p>
+<blockquote>
+<p>严格说，应用程序设计不应是数据库设计的范畴，但它又必须且只能是随着数据库结构设计的进展而逐步地并行进行</p>
+</blockquote>
+</li>
+<li><p>数据库试运行 </p>
+<blockquote>
+<p>目的：为了避免对实际应用带来损害，数据库通常应经过一个试运行阶段</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="6-数据库的运行和维护"><a href="#6-数据库的运行和维护" class="headerlink" title="6. 数据库的运行和维护"></a>6. 数据库的运行和维护</h4><ul>
+<li>数据库系统投入实际运行标志着数据库设计和应用开发的基本完成，但绝不是意味着设计应用开发工作的终止</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/05/git 对比/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/05/git 对比/" itemprop="url">git 对比</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T11:16:33+08:00">
+                2018-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  38
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="后续更新新内容"><a href="#后续更新新内容" class="headerlink" title="后续更新新内容"></a>后续更新新内容</h2><ul>
+<li><p>对比指定的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff [&lt;file_name&gt;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对比我们拉取得的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff ORIG_HEAD</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/964876/head-and-orig-head-in-git" target="_blank" rel="noopener">HEAD 和 ORIG_HEAD 的区别</a></p>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/05/PHP - 基础知识（三）使用操作符/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/05/PHP - 基础知识（三）使用操作符/" itemprop="url">PHP - 基础知识（三）使用操作符</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T09:13:59+08:00">
+                2018-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《PHP-and-MySQL-Web-Development》第五版/" itemprop="url" rel="index">
+                    <span itemprop="name">《PHP and MySQL Web Development》第五版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  474
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="操作符初步认识，后续继续更新（2018-11-05）"><a href="#操作符初步认识，后续继续更新（2018-11-05）" class="headerlink" title="操作符初步认识，后续继续更新（2018-11-05）"></a>操作符初步认识，后续继续更新（2018-11-05）</h2><h3 id="代数操作"><a href="#代数操作" class="headerlink" title="代数操作"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/e28bd04c7b25e215a397a60abcdd6172aa68196e" target="_blank" rel="noopener">代数操作</a></h3><ol>
+<li>通常是整型和双精度的数据操作</li>
+<li>如果应用于字符串，PHP 会试图将这些字符串转化为数字（和 JavaScript 的操作类似）</li>
+<li>如果包含 e 和 E 则会转化为科学计数法变成浮点数，否则会当作整数进行处理</li>
+</ol>
+<h3 id="赋值操作符"><a href="#赋值操作符" class="headerlink" title="赋值操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/4b9ceab540b27abbb988d9d91ffb73676dccbddd" target="_blank" rel="noopener">赋值操作符</a></h3><ol>
+<li>赋值操作符，不能简单的理解为等于</li>
+<li>规则是： 整个赋值语句的值将赋给左边的操作数</li>
+<li>使用圆括号来提供表达式的优先级（同数学中的计算法则类似）</li>
+</ol>
+<h3 id="复合赋值操作符"><a href="#复合赋值操作符" class="headerlink" title="复合赋值操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/1aed32d3f828dc45d90cdc82f164dc050cb5cb58" target="_blank" rel="noopener">复合赋值操作符</a></h3><ol>
+<li>+= 和 -=</li>
+<li>前置递增递减（–$varname，++$varname）</li>
+<li>后置递增递减（$varname–，$varname++）</li>
+</ol>
+<h3 id="位操作符"><a href="#位操作符" class="headerlink" title="位操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/38bdbe1420b07391bca65eb1b120c6133fafde48" target="_blank" rel="noopener">位操作符</a></h3><ol>
+<li>&amp; 按位与</li>
+<li>| 按位或</li>
+<li>~ 按位非</li>
+<li>^ 按位异或</li>
+<li>&lt;&lt; 左位移</li>
+<li><blockquote>
+<blockquote>
+<p>右位移</p>
+</blockquote>
+</blockquote>
+</li>
+</ol>
+<h3 id="比较操作符"><a href="#比较操作符" class="headerlink" title="比较操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/1a8b29c103ec114f67d9c377bcec5f1191863f97" target="_blank" rel="noopener">比较操作符</a></h3><ol>
+<li>等于操作符 == 值相等就行</li>
+<li>恒等于操作符 === 数据类型和值都要相等</li>
+<li>不等 != </li>
+<li>恒不等 != </li>
+<li>不等操作符 &lt;&gt; </li>
+<li>小于操作符 &lt;</li>
+<li>大于操作符 &gt;</li>
+<li>小于操作符 &lt;=</li>
+<li>大于操作符 &gt;=</li>
+</ol>
+<h3 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/127644efff1b72f8b6925ad0ee940b9e9b1adab9" target="_blank" rel="noopener">逻辑操作符</a></h3><ol>
+<li>!  (NOT)</li>
+<li>&amp;&amp; (AND)</li>
+<li>|| (OR)</li>
+<li>and (AND)</li>
+<li>or (OR)</li>
+<li>xor (XOR)<blockquote>
+<p>后三个逻辑操作符要比前三个逻辑操作符的优先程度要低</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="引用操作符"><a href="#引用操作符" class="headerlink" title="引用操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/62a9045b06d07e8778c53cf1c5f6d9e2e895e792" target="_blank" rel="noopener">引用操作符</a></h3><ol>
+<li>&amp; 操作符<blockquote>
+<p>区别非引用的情况</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="字符串操作符"><a href="#字符串操作符" class="headerlink" title="字符串操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/9a56df048a6fab968eb40163ea00c9c36f410baa" target="_blank" rel="noopener">字符串操作符</a></h3><ol>
+<li>字符串连接（.）：将两个字符串连接起来生成并保存到一个新字符串中</li>
+</ol>
+<h3 id="其他操作符"><a href="#其他操作符" class="headerlink" title="其他操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/67d72b4f619386b267a52c1570920639e239d96e" target="_blank" rel="noopener">其他操作符</a></h3><ol>
+<li>,  逗号操作符 ，用于分隔函数参数和其他列表项</li>
+<li>?: 三元操作符，类似于条件语句 if else</li>
+<li>@  错误抑制符，可以放在任何表达式前面使用</li>
+<li><code></code> 执行操作符，PHP 会试着将反向单引号中的值当作服务器端命令行命令来执行</li>
+<li>[]（=&gt;） 数组操作符，支持访问数组元素</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（一）关系数据库的特点和关系数据模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/04/数据库 - 关系型数据库（一）关系数据库的特点和关系数据模型/" itemprop="url">数据库 - 关系型数据库（一）关系数据库的特点和关系数据模型</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T23:09:44+08:00">
+                2018-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  943
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="关系型数据库的特点"><a href="#关系型数据库的特点" class="headerlink" title="关系型数据库的特点"></a>关系型数据库的特点</h2><ul>
+<li>基本特征： 是使用关系数据模型组织数据，这种思想源于数学</li>
+<li>发展：<ul>
+<li>20世纪 70 年代： RDBMS 问世</li>
+<li>20世纪 80 年代： 关系型数据库逐步取代早期的网状数据模型和层次模型，成为主流数据模型</li>
+</ul>
+</li>
+</ul>
+<h2 id="关系型数据模型"><a href="#关系型数据模型" class="headerlink" title="关系型数据模型"></a>关系型数据模型</h2><ul>
+<li><p>关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束</p>
+<h3 id="关系数据结构"><a href="#关系数据结构" class="headerlink" title="关系数据结构"></a>关系数据结构</h3><ul>
+<li>数据结构：（单一的数据结构），关系。<ul>
+<li>在关系模型中，现实世界的实体以及实体间的各种联系，均是使用关系来表示</li>
+<li>在用户看来，关系模型是把数据库表示为关系的集合，且关系数据库是以二维表格的形式组织数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="基本术语"><a href="#基本术语" class="headerlink" title="基本术语"></a>基本术语</h4><ul>
+<li>表（table）<blockquote>
+<p>又称作关系，是一个二维的数据结构，它由表名，构成表的各个列和若干行数据组成</p>
+<p>每个表有唯一的一个表名</p>
+<p>表中每一行数据都描述一条具体的记录值</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>关系（Relation）</p>
+<blockquote>
+<p>一个关系对应一张二维表，每个关系取一个名称进行标识</p>
+<p>关系的类型：基本关系，查询表和视图表</p>
+<ul>
+<li>基本关系通常又称为基本表或基表，是实际存在的表（世纪存储数据的逻辑表示）</li>
+<li>查询表是查询结果对应的表</li>
+<li>视图表是由基本表或其他视图表导出的表，是虚表，不对应实际储存的数据</li>
+</ul>
+</blockquote>
+</li>
+<li><p>列（Column）</p>
+<blockquote>
+<p>表中的列，也称为字段（field）或属性（Attribute）,</p>
+<p>表中每一列有一个名称，称为列名，字段名或属性名</p>
+<p>每一列表示实体的一个属性，具有相同的数据类型</p>
+</blockquote>
+</li>
+<li><p>属性（Attribute）</p>
+<blockquote>
+<p>与之同义的术语是列，一列即为一个属性</p>
+<p>列的值称为属性值</p>
+<p>属性的取值范围称作值域 </p>
+<p>表中的属性的个数称为关系的元或度</p>
+</blockquote>
+</li>
+<li><p>行（Row）</p>
+<blockquote>
+<p>表中的行，也成元组（Tuple）或记录（Record）</p>
+<p>表中的数据按行存储的，一行数据即为一个元组或一条记录</p>
+<p>每个字段值描述该对象的一个属性或特征</p>
+</blockquote>
+</li>
+<li><p>元组（Tuple）</p>
+<blockquote>
+<p>一行即为一个元组</p>
+</blockquote>
+</li>
+<li><p>分量（Component）</p>
+<blockquote>
+<p>元组中的一个属性值，称为分量</p>
+</blockquote>
+</li>
+<li><p>码或键（Key）</p>
+<blockquote>
+</blockquote>
+</li>
+<li>超码或超键（Super Key）</li>
+<li>候选码或候选键（Canditate Key）</li>
+<li>主码或主键（Primary Key）</li>
+<li>全码或全键（All Key）</li>
+<li>主属性（Primary Attribute）</li>
+<li><p>外码或外键（Foreign Key）</p>
+<blockquote>
+<p>关系中的某个属性（或属性组）不是这个关系的主码或候选码，而是另外一个关系的主码时，称该属性（或属性组）为这个关系的外码或外键</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">一个表中码或键 ，超码或超键，候选码或候选键，主码或主键，全码或全键 之间的关系</span><br><span class="line">+----------------------------------------------------------------+</span><br><span class="line">|  A表                       码或键                               |     </span><br><span class="line">|                                                                |</span><br><span class="line">|      +-----------------------------------------------+         |         </span><br><span class="line">|      |                   超码或超键                    |         | </span><br><span class="line">|      |                                               |         |</span><br><span class="line">|      |      +---------------------------------+      |         |</span><br><span class="line">|      |      |          候选码或候选键          |      |         |      +--------------------------------+</span><br><span class="line">|      |      |                                 |      |         |      | B 表                           |</span><br><span class="line">|      |      |     +------------------———+     |      |         |      |                               |</span><br><span class="line">|      |      |     |     主码或主键 +------------------------------------+  这个码在 A 表中是主码或主键，  |</span><br><span class="line">|      |      |     |                     |     |      |         |      | 同时不是B表关系中的主码或主键，  |</span><br><span class="line">|      |      |     |    +---------——+    |     |      |         |      | 则这个码称为是B表中的外码或外键  |</span><br><span class="line">|      |      |     |    | 全码或全键 |    |     |      |         |      |                               |</span><br><span class="line">+------+------+-----+----+-----------+--—-+-----+------+---------+      +-------------------------------+</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参照关系（Referencing）和被参照关系（Referenced Relation）</p>
+<blockquote>
+<p>参照关系也称为从关系<br>参照关系也称为主关系</p>
+</blockquote>
+</li>
+<li><p>域（Domain）</p>
+<blockquote>
+<p>表示属性的取值范围</p>
+</blockquote>
+</li>
+<li><p>数据类型（Data Type）</p>
+<blockquote>
+<p>每个列都有对应的数据类型</p>
+<p>它用于限制（或容许）该列中存储的数据</p>
+</blockquote>
+</li>
+<li><p>关系模型（Relation Databa）</p>
+<blockquote>
+<p>是对关系的描述<br>关系模式是静态的，稳定的，而关系是动态的，随时间不断变化的（关系操作在不断地更新着数据库中的数据）</p>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（二）关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束,后两/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/04/数据库 - 关系型数据库（二）关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束,后两/" itemprop="url">数据库 - 关系型数据库（二）关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束,后两个</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T23:07:23+08:00">
+                2018-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  1.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="关系操作集合（待更新）"><a href="#关系操作集合（待更新）" class="headerlink" title="关系操作集合（待更新）"></a>关系操作集合（待更新）</h3><ul>
+<li><p>基本的关系操作（两大部分）</p>
+<ol>
+<li><p>查询（Query）操作</p>
+<ul>
+<li>查询操作是基本关系操作中的主要部分<ol>
+<li>5 种基本操作：选择，投影，并，差，交，笛卡尔积</li>
+<li>2 复杂操作：连接，除</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>插入（Insert）, 删除（Delete）, 修改（Update）操作</p>
+</li>
+</ol>
+</li>
+<li><p>关系数据语言的分类 </p>
+<ol>
+<li>关系操作是通过关系语言来实现，</li>
+<li><p>关系语言的优点：高度非过程化</p>
+<blockquote>
+<p>用户不需要请求数据库管理员为其建立特殊的存取路径，</p>
+<p>存取路径是由 DBMS 的优化机制来完成；</p>
+</blockquote>
+</li>
+<li><p>关系操作的能力可以通过两种方式来表示</p>
+<ul>
+<li><p>代数方式：主要有关系代数</p>
+<blockquote>
+<p>它是通过对关系的操作来表达查询要求的方式</p>
+</blockquote>
+</li>
+<li><p>逻辑方式：主要是关系演算（他是用谓词来表达查询要求的方式）</p>
+<ul>
+<li>关系演算按谓词的变元的基本对象又分为：<ol>
+<li>元组关系演算（变元的基本对象是元组变量）</li>
+<li>域关系演算（变元的基本对象是域变量 ）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>关系代数，元组关系演算，域关系演算三种语言在表达能力上是等价的，并且他们都是抽象的查询语言</p>
+</li>
+<li><p>结构化查询语言（介于代数方式和逻辑方式之间, Structured Query Language, SQL）</p>
+<ul>
+<li><p>功能：</p>
+<ol>
+<li>数据定义功能（DDL）</li>
+<li>数据操作功能（DML）</li>
+<li>数据控制功能（DCL）</li>
+</ol>
+</li>
+<li><p>是关系数据库的标准语言</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>总结：</li>
+</ol>
+<ul>
+<li>关系数据语言分为三类：关系代数语言，关系演算语言和兼容两者双重特点的语言（SQL）</li>
+<li>它们功能的特点：语言具有完备的表达能力，和非过程化的集合操作语言，功能强，能够独立使用也可以嵌入高级语言中使用<h4 id="关系代数"><a href="#关系代数" class="headerlink" title="关系代数"></a>关系代数</h4></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>关系代数是关系操作语言的一种传统表示方式，他是以集合代数为基础发展起来的。</li>
+<li><p>关系代数的三大要素：<br>1.操作对象<br>2.操作符<br>3.操作结果</p>
+<blockquote>
+<p>特点：操作对象和操作结果均为关系<br>直接应用关系的运算来表达操作的目的</p>
+</blockquote>
+</li>
+<li><p>运算符的种类：</p>
+<ol>
+<li>传统的集合运算符：并，差，交，笛卡尔积</li>
+<li>专门的运算符：选择，投影，连接，除，其中下面两种运算符是辅助专门运算符用的<ul>
+<li>比较运算符：大于，大于等于，等于，小于，小于等于，不等于</li>
+<li>逻辑操作符： 与，或非</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>关系代数表达式（关系代数操作表达式）</p>
+<ol>
+<li>概念： 代数关系操作经过有限次复合的式子 <blockquote>
+<p>可以使用关系代数表达式所需要执行的各种数据库查询和修改处理，例如：IBM 研制的一个纯代数数据操作语言（ISBL）</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>按照运算符的不同，代数操作分为</p>
+<ol>
+<li>传统的集合运算</li>
+<li>专门的关系运算</li>
+</ol>
+</li>
+<li><p>传统的集合运算</p>
+<ol>
+<li>传统的集合运算是二目运算<blockquote>
+<p>特点：</p>
+<ol>
+<li><p>把关系看成元组（行）的集合</p>
+</li>
+<li><p>运算是从关系的 “水平”方向进行，即行的角度进行</p>
+</li>
+<li><p>具体有 并，差，交，笛卡尔积 4 种运算</p>
+<p>值得注意的笛卡尔积是针对列进行操作的</p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>专门的关系运算符</p>
+<ul>
+<li><p>范围：不仅涉及行，还涉及列</p>
+</li>
+<li><p>可分为一元专门关系操作和二元关系操作</p>
+<ul>
+<li>一元关系操作包括<ol>
+<li>对单个进行垂直分解的投影运算</li>
+<li>对水平分解选择运算</li>
+</ol>
+</li>
+<li>二元专门关系操作则是对两个进行操作<ol>
+<li>连接运算</li>
+<li>除运算</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>选择（SELECT）</p>
+<ol>
+<li>概念：选择运算是从指定关系中选取满足给定条件的若干元组组成一个新关系，其形式：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 关系名 WHERE 条件</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>其中：条件是由常数，属性名或列名，比较操作符以及逻辑操作符组成的条件表达式子</p>
+<p>对应 SQL 中的 SELECT 语句的实现</p>
+</blockquote>
+</li>
+<li><p>投影（PROJECTION）</p>
+<ol>
+<li>概念：投影运算是从指定的关系中选取指定的若干属性值组成一个新的关系<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PROJECTION 关系名（属性1， 属性2 ... 属性3）</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>其中：经过投影运算所形成的新关系中不含重复元组，其属性按语句中给出的顺序排列</p>
+<p>SQL 中的 GROUP BY（分组）子句的实现</p>
+</blockquote>
+</li>
+<li><p>连接（JSON）</p>
+<ol>
+<li>选取两个指定关系中国呢的属性满足给定条件的元组连接在一起组成一个新关系<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JOIN 关系名1 AND 关系名2 WHERE 条件</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>条件是由比较操作符和属性名或列名组成的条件表达式</p>
+</blockquote>
+<ol>
+<li>连接分为：等值连接和自然连接</li>
+</ol>
+</li>
+<li><p>除（DIVISION）</p>
+<ol>
+<li>M - N 元关系</li>
+</ol>
+</li>
+</ul>
+<h3 id="关系的完整型约束"><a href="#关系的完整型约束" class="headerlink" title="关系的完整型约束"></a>关系的完整型约束</h3></li>
+<li><p>概念：数据库的数据完整性：是指数据库中数据的正确性，相容性和一致性</p>
+<ol>
+<li>现实世界角度:现实世界应用需求的数据的正确性，相容性和一致性</li>
+<li>数据库数据角度：数据库数据之间的正确性，相容性和一致性</li>
+<li>数据库中数据是否具备完备性，直接关系到数据库系统是否真实地反映现实世界，故数据的数据完整性十分重要</li>
+</ol>
+</li>
+<li><p>完整性约束</p>
+<ol>
+<li>概念：数据的完整性是由完整性规则来定义，关系模型的完整性规则是对关系的某种约束</li>
+<li>目的：用来保证当用户对数据库进行插入，删除，更新操作时不会破坏数据库的正确性，相容性和一致性</li>
+</ol>
+</li>
+<li><p>关系数据库中的三种完整性约束类型</p>
+<ol>
+<li><p>实体完整性约束（Entity Integrity Constraint）</p>
+<ol>
+<li>概念：指关系的主属性（主码）的组成不能为空（NULL）<blockquote>
+<p>关系对应现实世界中的实体集，而实现世界中的实体是可以区分的，即说明每个实体具有唯一性标识</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>参照完整性约束（Referential Integrity Constraint）</p>
+<ol>
+<li>概念：是定义外码和主码之间的引用关系，它是对关系间引用数据的一种限制<blockquote>
+<p>实现世界中的实体之间往往存在着某种联系，在关系模型中实体以及实体之间的联系都是用关系来描述的，这样就自然存在着关系与关系间的引用</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>用户定义完整性约束(User-defined Integrity Constraint)</p>
+<ol>
+<li>概念：是针对某一应用环境的完整性约束条件，它反映了某一具体应用所涉及的数据应满足的要求 </li>
+</ol>
+</li>
+<li><p>实体完整性和参照完整性约束是由系统自动支持的</p>
+</li>
+</ol>
+</li>
+<li><p>关系模型完整性约束检验</p>
+<ol>
+<li>插入操作</li>
+<li>删除操作</li>
+<li>更新操作</li>
+</ol>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（三）关系数据库的规范化理论/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1171,8 +3309,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《PHP-and-MySQL-Web-Development》》第五版/" itemprop="url" rel="index">
-                    <span itemprop="name">《PHP and MySQL Web Development》》第五版</span>
+                  <a href="/categories/书籍笔记/《PHP-and-MySQL-Web-Development》第五版/" itemprop="url" rel="index">
+                    <span itemprop="name">《PHP and MySQL Web Development》第五版</span>
                   </a>
                 </span>
 
@@ -1360,1615 +3498,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/30/SQL - 函数：日期函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/30/SQL - 函数：日期函数/" itemprop="url">SQL - 函数：日期函数</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T23:57:25+08:00">
-                2018-10-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
-                    <span itemprop="name">《SQL基础教程》第二版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  163
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="CURRENT-DATE-当前日期（年月日）"><a href="#CURRENT-DATE-当前日期（年月日）" class="headerlink" title="CURRENT_DATE 当前日期（年月日）"></a>CURRENT_DATE 当前日期（年月日）</h3>  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT CURRENT_DATE;</span><br><span class="line">+--------------+</span><br><span class="line">| CURRENT_DATE |</span><br><span class="line">+--------------+</span><br><span class="line">| 2018-10-31   |</span><br><span class="line">+--------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
-<h3 id="CURRENT-TIME-当前时间（小时分）"><a href="#CURRENT-TIME-当前时间（小时分）" class="headerlink" title="CURRENT_TIME 当前时间（小时分）"></a>CURRENT_TIME 当前时间（小时分）</h3>   <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT CURRENT_TIME;</span><br><span class="line">+--------------+</span><br><span class="line">| CURRENT_TIME |</span><br><span class="line">+--------------+</span><br><span class="line">| 00:02:56     |</span><br><span class="line">+--------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-<h3 id="CURRENT-TIMESTAP-当前日期和时间"><a href="#CURRENT-TIMESTAP-当前日期和时间" class="headerlink" title="CURRENT_TIMESTAP 当前日期和时间"></a>CURRENT_TIMESTAP 当前日期和时间</h3>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT CURRENT_TIMESTAMP;;</span><br><span class="line">+---------------------+</span><br><span class="line">| CURRENT_TIMESTAMP   |</span><br><span class="line">+---------------------+</span><br><span class="line">| 2018-10-31 00:05:55 |</span><br><span class="line">+---------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">ERROR:</span><br><span class="line">No query specified</span><br></pre></td></tr></table></figure>
-<h3 id="EXTRACT-截取日期日期"><a href="#EXTRACT-截取日期日期" class="headerlink" title="EXTRACT 截取日期日期"></a>EXTRACT 截取日期日期</h3><ul>
-<li>EXTRACT(日期元素 FROM 日期)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT CURRENT_TIMESTAMP,    </span><br><span class="line">  -&gt; EXTRACT(YEAR FROM CURRENT_TIMESTAMP) AS year,    </span><br><span class="line">  -&gt; EXTRACT(MONTH FROM CURRENT_TIMESTAMP) AS month,    </span><br><span class="line">  -&gt; EXTRACT(DAY FROM CURRENT_TIMESTAMP) AS day,    </span><br><span class="line">  -&gt; EXTRACT(HOUR FROM CURRENT_TIMESTAMP) AS hour,    </span><br><span class="line">  -&gt; EXTRACT(minute FROM CURRENT_TIMESTAMP) AS minute,    </span><br><span class="line">  -&gt; EXTRACT(SECOND FROM CURRENT_TIMESTAMP) AS second;</span><br><span class="line">+---------------------+------+-------+------+------+--------+--------+</span><br><span class="line">| CURRENT_TIMESTAMP   | year | month | day  | hour | minute | second |</span><br><span class="line">+---------------------+------+-------+------+------+--------+--------+</span><br><span class="line">| 2018-10-31 00:14:09 | 2018 |    10 |   31 |    0 |     14 |      9 |</span><br><span class="line">+---------------------+------+-------+------+------+--------+--------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/30/SQL - 函数：字符串函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/30/SQL - 函数：字符串函数/" itemprop="url">SQL - 函数：字符串函数</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T23:02:42+08:00">
-                2018-10-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
-                    <span itemprop="name">《SQL基础教程》第二版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  665
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="准备测试的表"><a href="#准备测试的表" class="headerlink" title="准备测试的表"></a>准备测试的表</h3>  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE SampleStr (str1 VARCHAR(40), str2 VARCHAR(40), str3 VARCHAR(40));</span><br><span class="line">Query OK, 0 rows affected (0.11 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; show columns from SampleStr;</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">| Field | Type        | Null | Key | Default | Extra |</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">| str1  | varchar(40) | YES  |     | NULL    |       |</span><br><span class="line">| str2  | varchar(40) | YES  |     | NULL    |       |</span><br><span class="line">| str3  | varchar(40) | YES  |     | NULL    |       |</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.03 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleStr (str1, str2, str3) VALUES (<span class="string">'opx'</span>, <span class="string">'def'</span>, NULL);</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleStr (str1, str2, str3) VALUES (<span class="string">'opx'</span>, <span class="string">'rt'</span>, NULL);</span><br><span class="line">Query OK, 1 row affected (0.02 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleStr (str1, str2, str3) VALUES (<span class="string">'香蕉'</span>, <span class="string">'电脑'</span>, <span class="string">'你好'</span>);</span><br><span class="line">Query OK, 1 row affected (0.03 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleStr (str1, str2, str3) VALUES (<span class="string">'aa'</span>, NULL, NULL);</span><br><span class="line">Query OK, 1 row affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleStr (str1, str2, str3) VALUES (NLL, <span class="string">'xyz'</span>, NULL);</span><br><span class="line">ERROR 1054 (42S22): Unknown column <span class="string">'NLL'</span> <span class="keyword">in</span> <span class="string">'field list'</span></span><br><span class="line">mysql&gt; INSERT INTO SampleStr (str1, str2, str3) VALUES (NULL, <span class="string">'xyz'</span>, NULL);</span><br><span class="line">Query OK, 1 row affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleStr (str1, str2, str3) VALUES (NULL, <span class="string">'xyz可'</span>, <span class="string">'P'</span>);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM SampleStr;</span><br><span class="line">+--------+--------+--------+</span><br><span class="line">| str1   | str2   | str3   |</span><br><span class="line">+--------+--------+--------+</span><br><span class="line">| opx    | def    | NULL   |</span><br><span class="line">| opx    | rt     | NULL   |</span><br><span class="line">| 香蕉   | 电脑   | 你好   |</span><br><span class="line">| aa     | NULL   | NULL   |</span><br><span class="line">| NULL   | xyz    | NULL   |</span><br><span class="line">| NULL   | xyz可  | P      |</span><br><span class="line">+--------+--------+--------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-<h3 id="函数-（CONCAT-函数，-）"><a href="#函数-（CONCAT-函数，-）" class="headerlink" title="|| 函数, （CONCAT 函数，+）"></a>|| 函数, （CONCAT 函数，+）</h3><ul>
-<li><p>功能：连接两个字符: ab + bc =&gt; abbc</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT str1, str2, str1 || str2 AS new_str FROM SampleStr;</span><br><span class="line">+--------+--------+---------+</span><br><span class="line">| str1   | str2   | new_str |</span><br><span class="line">+--------+--------+---------+</span><br><span class="line">| opx    | def    |       0 |</span><br><span class="line">| opx    | rt     |       0 |</span><br><span class="line">| 香蕉   | 电脑   |       0 |</span><br><span class="line">| aa     | NULL   |    NULL |</span><br><span class="line">| NULL   | xyz    |    NULL |</span><br><span class="line">| NULL   | xyz可  |    NULL |</span><br><span class="line">+--------+--------+---------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span>, 7 warnings (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>为啥是上面的结果, SQL Server 和 MySQL 无法使用</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT str1, str2, CONCAT(str1, str2) AS new_str FROM SampleStr;</span><br><span class="line">+--------+--------+--------------+</span><br><span class="line">| str1   | str2   | new_str      |</span><br><span class="line">+--------+--------+--------------+</span><br><span class="line">| opx    | def    | opxdef       |</span><br><span class="line">| opx    | rt     | opxrt        |</span><br><span class="line">| 香蕉   | 电脑   | 香蕉电脑     |</span><br><span class="line">| aa     | NULL   | NULL         |</span><br><span class="line">| NULL   | xyz    | NULL         |</span><br><span class="line">| NULL   | xyz可  | NULL         |</span><br><span class="line">+--------+--------+--------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="LENGTH-计算字符串长度"><a href="#LENGTH-计算字符串长度" class="headerlink" title="LENGTH 计算字符串长度"></a>LENGTH 计算字符串长度</h3>  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT str1, LENGTH(str1) AS new_str FROM SampleStr;</span><br><span class="line">+--------+---------+</span><br><span class="line">| str1   | new_str |</span><br><span class="line">+--------+---------+</span><br><span class="line">| opx    |       3 |</span><br><span class="line">| opx    |       3 |</span><br><span class="line">| 香蕉   |       6 |</span><br><span class="line">| aa     |       2 |</span><br><span class="line">| NULL   |    NULL |</span><br><span class="line">| NULL   |    NULL |</span><br><span class="line">+--------+---------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-<h3 id="LOWER-小写转换"><a href="#LOWER-小写转换" class="headerlink" title="LOWER 小写转换"></a>LOWER 小写转换</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT str3, LOWEr(str3) AS new_str FROM SampleStr;</span><br><span class="line">+--------+---------+</span><br><span class="line">| str3   | new_str |</span><br><span class="line">+--------+---------+</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| 你好   | 你好    |</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| P      | p       |</span><br><span class="line">| P      | p       |</span><br><span class="line">+--------+---------+</span><br><span class="line">7 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>不适用英文之外的字符串</p>
-</blockquote>
-<h3 id="UPPER-大写转换"><a href="#UPPER-大写转换" class="headerlink" title="UPPER 大写转换"></a>UPPER 大写转换</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT str2, UPPER(str2) AS new_str FROM SampleStr;</span><br><span class="line">+--------+---------+</span><br><span class="line">| str2   | new_str |</span><br><span class="line">+--------+---------+</span><br><span class="line">| def    | DEF     |</span><br><span class="line">| rt     | RT      |</span><br><span class="line">| 电脑   | 电脑    |</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| xyz    | XYZ     |</span><br><span class="line">| xyz可  | XYZ可   |</span><br><span class="line">| xyz可  | XYZ可   |</span><br><span class="line">+--------+---------+</span><br><span class="line">7 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>不适用英文之外的字符串</p>
-</blockquote>
-<h3 id="REPLACE-字符串的替换"><a href="#REPLACE-字符串的替换" class="headerlink" title="REPLACE 字符串的替换"></a>REPLACE 字符串的替换</h3><ul>
-<li>REPLACE(对象字符串，替换前的字符串，替换后的字符串)<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT str1, str2, str3, REPLACE(str1, str2, str3) AS new_str FROM SampleStr;</span><br><span class="line">+--------+--------+--------+---------+</span><br><span class="line">| str1   | str2   | str3   | new_str |</span><br><span class="line">+--------+--------+--------+---------+</span><br><span class="line">| opx    | def    | NULL   | NULL    |</span><br><span class="line">| opx    | rt     | NULL   | NULL    |</span><br><span class="line">| 香蕉   | 电脑   | 你好   | 香蕉    |</span><br><span class="line">| aa     | NULL   | NULL   | NULL    |</span><br><span class="line">| NULL   | xyz    | NULL   | NULL    |</span><br><span class="line">| NULL   | xyz可  | P      | NULL    |</span><br><span class="line">| NULL   | xyz可  | P      | NULL    |</span><br><span class="line">| --     | xyz可  | yP     | --      |</span><br><span class="line">+--------+--------+--------+---------+</span><br><span class="line">8 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="SUBSTRING-字符串的截取"><a href="#SUBSTRING-字符串的截取" class="headerlink" title="SUBSTRING 字符串的截取"></a>SUBSTRING 字符串的截取</h3><ul>
-<li>SUBSTRING(对象字符串 FROM 起始位置 FOR 截取的数量)<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT str1, SUBSTRING(str1 FROM 1 FOR 2) AS new_str FROM SampleStr;</span><br><span class="line">+--------+---------+</span><br><span class="line">| str1   | new_str |</span><br><span class="line">+--------+---------+</span><br><span class="line">| opx    | op      |</span><br><span class="line">| opx    | op      |</span><br><span class="line">| 香蕉   | 香蕉    |</span><br><span class="line">| aa     | aa      |</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| NULL   | NULL    |</span><br><span class="line">| --     | --      |</span><br><span class="line">+--------+---------+</span><br><span class="line">8 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/30/SQL - 数据类型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/30/SQL - 数据类型/" itemprop="url">SQL - 数据类型</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T09:05:39+08:00">
-                2018-10-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
-                    <span itemprop="name">《SQL基础教程》第二版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  256
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="数据类型-Data-Type"><a href="#数据类型-Data-Type" class="headerlink" title="数据类型 (Data Type)"></a>数据类型 (Data Type)</h2><ul>
-<li>INTEGER：存储整数的数据类型（无法存储小数）</li>
-</ul>
-<ul>
-<li>CHAR：（定长字符串）<ol>
-<li>在括号中指定该列可以存储的字符串的长度（最大长度），超过的部分无法输入到该列中</li>
-<li>若存储的长度没有到达指定的长度，剩余的长度使用 半角空格保存</li>
-<li>例子，Data Type: CHAR(6)，若数据写入只有 ‘james’，实际在数据库中的数据：’james ‘</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li>VARCHAR：（可变字符串）<ol>
-<li>在括号中指定该列可以存储的字符串的长度（最大长度, 超过的部分无法输入到该列中??）</li>
-<li>输入写入的长度就是实际存储的长度</li>
-<li>例子，Data Type: CHAR(6)，若数据写入只有 ‘james’，实际在数据库中的数据：’james’</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li>NUMERIC<ol>
-<li>用来存储（全体位数，小数位数）的形式来指定数值的大小</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li>DATE：用来指定存储日期（年月日）的列的数据类型（日期型）</li>
-</ul>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/30/SQL - 函数：聚合函数和算术函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/30/SQL - 函数：聚合函数和算术函数/" itemprop="url">SQL - 函数：聚合函数和算术函数</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T08:45:17+08:00">
-                2018-10-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
-                    <span itemprop="name">《SQL基础教程》第二版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  802
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>   函数：输入某一值得到相应输出结果的功能，输入值称为参数（parameter）,输入值称为 返回值</p>
-<h3 id="函数的种类"><a href="#函数的种类" class="headerlink" title="函数的种类"></a>函数的种类</h3><ul>
-<li>算术函数（进行数值计算的函数）</li>
-<li>字符串函数（进行字符串操作的函数）</li>
-<li>日期函数（进行日期操作的函数）</li>
-<li>转换函数（进行转换数据类型和值的函数）</li>
-<li>聚合函数（进行数据聚合的函数）</li>
-</ul>
-<h3 id="聚合函数（进行数据聚合的函数）"><a href="#聚合函数（进行数据聚合的函数）" class="headerlink" title="聚合函数（进行数据聚合的函数）"></a>聚合函数（进行数据聚合的函数）</h3><ul>
-<li>COUNT</li>
-<li>SUM</li>
-<li>AVG</li>
-<li>MAX</li>
-<li>MIN<blockquote>
-<p><a href="https://www.pengjiandry.com/2018/10/18/SQL%20-%20%E8%81%9A%E5%90%88%E5%92%8C%E6%8E%92%E5%BA%8F/">SQL - 聚合和排序</a></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="算术函数"><a href="#算术函数" class="headerlink" title="算术函数"></a>算术函数</h3><ul>
-<li><p>基础的四则运算</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ - * /</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>其他的算术运算函数</p>
-<ul>
-<li><p>ABS （求绝对值函数）</p>
-<blockquote>
-<p>什么是绝对值？不考虑数值的符号，表示一个数到原点的距离，0 和正数的绝对值就是它本身，负数的绝对值就是去掉符号</p>
-</blockquote>
-</li>
-<li><p>MOD （求余函数）</p>
-<blockquote>
-<p>什么是求余？获取除法余数的函数</p>
-</blockquote>
-</li>
-<li><p>ROUND （求四舍五入函数）</p>
-</li>
-</ul>
-</li>
-<li><p>例子，创建一个 SampleMath 数据库，插入对应的数据</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE SampleMath;</span><br><span class="line">ERROR 1113 (42000): A table must have at least 1 column</span><br><span class="line">mysql&gt; CREATE TABLE SampleMath(m NUMERIC (10, 3), n INTEGER , p INTEGER );</span><br><span class="line">Query OK, 0 rows affected (0.12 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM SampleMath;</span><br><span class="line">+-------+---------------+------+-----+---------+-------+</span><br><span class="line">| Field | Type          | Null | Key | Default | Extra |</span><br><span class="line">+-------+---------------+------+-----+---------+-------+</span><br><span class="line">| m     | decimal(10,3) | YES  |     | NULL    |       |</span><br><span class="line">| n     | int(11)       | YES  |     | NULL    |       |</span><br><span class="line">| p     | int(11)       | YES  |     | NULL    |       |</span><br><span class="line">+-------+---------------+------+-----+---------+-------+</span><br><span class="line">    3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (500, 0, NUll);</span><br><span class="line">Query OK, 1 row affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (-180, 0, NUll);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (NULL, NULL, NUll);</span><br><span class="line">Query OK, 1 row affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (NULL, 7, 3);</span><br><span class="line">Query OK, 1 row affected (0.08 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (NULL, 5, 2);</span><br><span class="line">Query OK, 1 row affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (NULL, 4, NULL);</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (8, NULL, 3);</span><br><span class="line">Query OK, 1 row affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (2.27, 1, NULL);</span><br><span class="line">Query OK, 1 row affected (0.02 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (5.55, 2, NULL);</span><br><span class="line">Query OK, 1 row affected (0.05 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (NULL, 1, NULL);</span><br><span class="line">Query OK, 1 row affected (0.08 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (8.76, NULL, NULL);</span><br><span class="line">Query OK, 1 row affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM SampleMath;</span><br><span class="line">+----------+------+------+</span><br><span class="line">| m        | n    | p    |</span><br><span class="line">+----------+------+------+</span><br><span class="line">|  500.000 |    0 | NULL |</span><br><span class="line">| -180.000 |    0 | NULL |</span><br><span class="line">|     NULL | NULL | NULL |</span><br><span class="line">|     NULL |    7 |    3 |</span><br><span class="line">|     NULL |    5 |    2 |</span><br><span class="line">|     NULL |    4 | NULL |</span><br><span class="line">|    8.000 | NULL |    3 |</span><br><span class="line">|    2.270 |    1 | NULL |</span><br><span class="line">|    5.550 |    2 | NULL |</span><br><span class="line">|     NULL |    1 | NULL |</span><br><span class="line">|    8.760 | NULL | NULL |</span><br><span class="line">+----------+------+------+</span><br><span class="line">11 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-<h4 id="ABS-函数"><a href="#ABS-函数" class="headerlink" title="ABS 函数"></a>ABS 函数</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">      mysql&gt; SELECT m, ABS(m) AS abs_col FROM SampleMath;</span><br><span class="line">      +----------+---------+</span><br><span class="line">      | m        | abs_col |</span><br><span class="line">      +----------+---------+</span><br><span class="line">      |  500.000 | 500.000 |</span><br><span class="line">      | -180.000 | 180.000 |</span><br><span class="line">      |     NULL |    NULL |</span><br><span class="line">      |     NULL |    NULL |</span><br><span class="line">      |     NULL |    NULL |</span><br><span class="line">      |     NULL |    NULL |</span><br><span class="line">      |    8.000 |   8.000 |</span><br><span class="line">      |    2.270 |   2.270 |</span><br><span class="line">      |    5.550 |   5.550 |</span><br><span class="line">      |     NULL |    NULL |</span><br><span class="line">      |    8.760 |   8.760 |</span><br><span class="line">      +----------+---------+</span><br><span class="line">  11 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line">  ```  </span><br><span class="line"></span><br><span class="line"><span class="comment">#### MOD 函数</span></span><br><span class="line">  ```sh</span><br><span class="line">    mysql&gt; SELECT m, n, MOD(m, n) AS mod_col FROM SampleMath;</span><br><span class="line">    +----------+------+---------+</span><br><span class="line">    | m        | n    | mod_col |</span><br><span class="line">    +----------+------+---------+</span><br><span class="line">    |  500.000 |    0 |    NULL |</span><br><span class="line">    | -180.000 |    0 |    NULL |</span><br><span class="line">    |     NULL | NULL |    NULL |</span><br><span class="line">    |     NULL |    7 |    NULL |</span><br><span class="line">    |     NULL |    5 |    NULL |</span><br><span class="line">    |     NULL |    4 |    NULL |</span><br><span class="line">    |    8.000 | NULL |    NULL |</span><br><span class="line">    |    2.270 |    1 |   0.270 |</span><br><span class="line">    |    5.550 |    2 |   1.550 |</span><br><span class="line">    |     NULL |    1 |    NULL |</span><br><span class="line">    |    8.760 | NULL |    NULL |</span><br><span class="line">    |    9.000 |    2 |   1.000 |</span><br><span class="line">    +----------+------+---------+</span><br><span class="line">    12 rows <span class="keyword">in</span> <span class="built_in">set</span>, 2 warnings (0.00 sec)</span><br></pre></td></tr></table></figure>
-<h4 id="ROUND-四舍五入"><a href="#ROUND-四舍五入" class="headerlink" title="ROUND 四舍五入"></a>ROUND 四舍五入</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT m, ROUND(m) AS mod_col FROM SampleMath;</span><br><span class="line">+----------+---------+</span><br><span class="line">| m        | mod_col |</span><br><span class="line">+----------+---------+</span><br><span class="line">|  500.000 |     500 |</span><br><span class="line">| -180.000 |    -180 |</span><br><span class="line">|     NULL |    NULL |</span><br><span class="line">|     NULL |    NULL |</span><br><span class="line">|     NULL |    NULL |</span><br><span class="line">|     NULL |    NULL |</span><br><span class="line">|    8.000 |       8 |</span><br><span class="line">|    2.270 |       2 |</span><br><span class="line">|    5.550 |       6 |</span><br><span class="line">|     NULL |    NULL |</span><br><span class="line">|    8.760 |       9 |</span><br><span class="line">|    9.000 |       9 |</span><br><span class="line">+----------+---------+</span><br><span class="line">12 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/27/数据库 - 数据库系统（三）数据模型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/27/数据库 - 数据库系统（三）数据模型/" itemprop="url">数据库 - 数据库系统（三）数据模型</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-27T14:29:57+08:00">
-                2018-10-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  3.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  10
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="模型（P37）"><a href="#模型（P37）" class="headerlink" title="模型（P37）"></a>模型（P37）</h2><p>  1.（是什么？）是现实世界特征的模拟和抽象表达<br>  2.（作用：）它有助于人们更好地认识和理解客观世界中的事物，对象，过程等感兴趣的内容</p>
-<h2 id="数据模型（P37）"><a href="#数据模型（P37）" class="headerlink" title="数据模型（P37）"></a>数据模型（P37）</h2><ol>
-<li>数据模型用来模拟和抽象现实世界中的数据特征</li>
-<li>数据模型也是一种模型，它是对现实世界数据特征的抽象，描述的是数据的共性内容</li>
-</ol>
-<h3 id="数据特征（P37）"><a href="#数据特征（P37）" class="headerlink" title="数据特征（P37）"></a>数据特征（P37）</h3><ol>
-<li><p>数据特征：静态和动态</p>
-<blockquote>
-<p>静态特征：包括数据的基本结构，数据间的联系以及对数据取值范围的约束<br>动态特征：指对数据可以进行符合一定规则的操作。</p>
-<p>所以，对现实世界的数据特征进行抽象的数据模型，需要描述数据的静态特征和动态行为，并为数据的表示和操作提供框架</p>
-</blockquote>
-</li>
-<li><p>终于要回答数据模型是什么了：<br>数据模型是用来描述数据的结构（静态特征），定义在结构上的操纵（动态行为）以及数据间的约束的一组概念和定义</p>
-</li>
-</ol>
-<h3 id="数据模型组成要素（P37）"><a href="#数据模型组成要素（P37）" class="headerlink" title="数据模型组成要素（P37）"></a>数据模型组成要素（P37）</h3><ol>
-<li>数据模型三个要素：<ul>
-<li>数据结构</li>
-<li>数据操纵</li>
-<li>数据约束</li>
-</ul>
-</li>
-</ol>
-<ol start="2">
-<li><p>数据结构<br>数据结构描述的是系统的静态特性，即数据对象的数据类型，内容，属性以及数据对象之间的联系。</p>
-<p>数据结构反映了数据模型最基本的特征，因此人们常常按照数据结构的类型来命名数据模型：</p>
-<ul>
-<li>层次结构 -&gt; 层次模型</li>
-<li>网状结构 -&gt; 网状模型</li>
-<li>关系结构 -&gt; 关系模型</li>
-</ul>
-</li>
-</ol>
-<ol start="3">
-<li><p>数据操作<br>数据操作描述的是系统的动态特性，是对各种对象的实例允许执行的操作的集合</p>
-<ul>
-<li>数据操作分类：更新和检索<blockquote>
-<p>其中更新：插入，删除和修改</p>
-<p>数据模型必须定义这些操作的确切含义，操作符号，操作规则（如优先级）以及实现操作的语言</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>数据约束</p>
-<ul>
-<li><p>数据约束（是什么？）是描述数据结构中数据间的语法和语义关联，包括互相制约与依存关系以及数据动态变化规则，以保证数据的正确性，有效性与相容性</p>
-</li>
-<li><p>数据约束包括：</p>
-<ol>
-<li>数据完整性约束</li>
-<li>数据安全性约束</li>
-<li>并发控制约束</li>
-</ol>
-</li>
-<li><p>数据约束既刻画了数据静态特征，也表示了数据动态行为规则</p>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="数据模型的分类（P38）"><a href="#数据模型的分类（P38）" class="headerlink" title="数据模型的分类（P38）"></a>数据模型的分类（P38）</h3><ul>
-<li><p>数据模型满足的三个条件：</p>
-<ol>
-<li>能比较真实地模拟现实世界</li>
-<li>容易为人们所理解</li>
-<li>便于在计算机上实现</li>
-</ol>
-</li>
-<li><p>为了把现实世界中的对象转化为数据管理系统中所支持的数据结构采用的方法： 逐步抽象的方法：</p>
-<ol>
-<li><p>在不同的抽象层使用不同的数据模型，从而将实现世界中的具体事物逐步抽象，转换，组织成机器世界（计算机）中某一具体数据库管理系统所支持的数据类型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">从上向下逐层抽象</span><br><span class="line">+------------------------+</span><br><span class="line">|         现实世界        |</span><br><span class="line">+-----------+------------+</span><br><span class="line">            |</span><br><span class="line">+-----------+---------——-+</span><br><span class="line">|    概念模型（信息世界）   |</span><br><span class="line">+-----------+------------+</span><br><span class="line">            |</span><br><span class="line">+-----------+------------+</span><br><span class="line">| 具体 DBMS 支持的逻辑模型 |</span><br><span class="line">|  和物理模型（机器世界）   | </span><br><span class="line">+------------------------+</span><br></pre></td></tr></table></figure>
-<blockquote>
-<ol>
-<li>首先，将实现世界中的客观对象抽象为信息世界汇总的某一种信息结构，这种信息结构并不依赖于具体的计算机系统，也不与具体的数据库管理系统相关，是一种概念性的模型</li>
-<li>再将概念级的模型转换为机器世界中某以具体的数据库管理系统支持的数据模型</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-</li>
-</ul>
-<h4 id="数据模型：概念层数据模型"><a href="#数据模型：概念层数据模型" class="headerlink" title="数据模型：概念层数据模型"></a>数据模型：概念层数据模型</h4><ol>
-<li><p>概念层是数据抽象级别的最高层，</p>
-<blockquote>
-<p>其目的是按用户的观点来对世界建模</p>
-</blockquote>
-</li>
-<li><p>概念层数据模型，也称为数据的概念模型（Conceptual Model）或信息模型</p>
-<blockquote>
-<p>它是描述现实世界的事物，与具体的计算机系统无关，且独立于任何 DBMS，但容易向 DBMS 所支持的逻辑数据模型转换<br>这类数据模型主要用于数据库的设计阶段，即在设计数据库时，通常用概念模型来抽象，表示现实世界的各种事物及其联系</p>
-</blockquote>
-</li>
-</ol>
-<h4 id="信息世界的基本概念"><a href="#信息世界的基本概念" class="headerlink" title="信息世界的基本概念"></a>信息世界的基本概念</h4><ol>
-<li>关于概念模型：<ul>
-<li>概念模型用于信息世界的建模</li>
-<li>是实现世界到信息世界的第一层抽象</li>
-<li>是数据库设计人员进行数据库设计的得力工具</li>
-<li>也是数据库设计人员和用户之间进行交流的语言</li>
-</ul>
-</li>
-</ol>
-<ol start="2">
-<li>概念模型特点：<ul>
-<li>一方面，概念模型具有较强的语义表达能力，能够方便，直接地表达应用中的各种语义知识</li>
-<li>另一方面，它简单，清晰，易于用户理解</li>
-</ul>
-</li>
-</ol>
-<ol start="3">
-<li>基本概念：<ul>
-<li>实体（Entity）: 客观存在并可相互区别的事物称为实体。<blockquote>
-<p>例如，商品，学生，课程，班级</p>
-</blockquote>
-</li>
-<li>属性（Attribute）: 实体所具有的某种特性称为实体的属性。<blockquote>
-<p>例如，实体可以拥有多个属性，如商品的名称，商品的介绍，商品的价格</p>
-</blockquote>
-</li>
-<li>码或键（Key）：可唯一标识实体的属性集。<blockquote>
-<p>例如，商品的名称是商品的码或键</p>
-</blockquote>
-</li>
-<li>域（Domain）：属性的取值范围。<blockquote>
-<p>例如，商品的名称的域，为字符集合，也有长度限制</p>
-</blockquote>
-</li>
-<li>实体型（Entity Type）：类似的实体可能拥有共同的特质和性质，用实体名和属性名集合来抽象和刻画同类实体，称为实体型，<blockquote>
-<p>例如，商品（名称，编号，价格，成本，生产日期）就是一个实体型</p>
-</blockquote>
-</li>
-<li>实体集（Entity Set）：同型实体的集合称为实体集。每个商品是一个实体，所有的商品构成一个实体集</li>
-<li>联系（Relationship）：在现实世界中，事物内部以及事物之间是有联系的，这些联系在信息世界中反映为实体（型）内部的联系和实体（型）之间的联系<blockquote>
-<p>实体内部的联系通常是指视图各属性之间的联系。<br>例子1，每个商品生产的时候会产生一个唯一的编号，只要知道这个编号就可以找到对应的商品，获得商品的其他属性<br>例子2，每40个学生组成一个班级，学生这个实体型和班级这个实体型之间存在联系</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ol>
-<h4 id="概念模型的表示方法（E-R-图）"><a href="#概念模型的表示方法（E-R-图）" class="headerlink" title="概念模型的表示方法（E-R 图）"></a>概念模型的表示方法（E-R 图）</h4><ol>
-<li>实体-联系方法（Entity-Relationship approach）该方法用 E-R 图（E-R diagram）（用来描述现实世界的概念模型）<blockquote>
-<p>E-R 图：提供了表示信息世界中实体，属性和联系的方法，其中实体，属性，联系的图形含义分别如下</p>
-<ol>
-<li>实体型，其用矩形表示，矩形框内写明实体的名称</li>
-<li>属性，其用椭圆形表示，并用无向边将其与相应的实体连接起来</li>
-<li>联系，其用菱形表示，菱形框内写明联系的名称，并用无向边分别与有关实体联系起来</li>
-</ol>
-<p>E-R 图的特点：</p>
-<ol>
-<li>实体-联系方法是抽象和描述实现世界的有力工具。</li>
-<li>用 E-R 图表示的概念逻辑模型独立与具体的 DBMS 所支持的逻辑模型，它是各种逻辑模型的共同基础，比逻辑模型更一般，更抽象，更接近实现世界</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-<h4 id="逻辑层数据模型（数据的逻辑模型）"><a href="#逻辑层数据模型（数据的逻辑模型）" class="headerlink" title="逻辑层数据模型（数据的逻辑模型）"></a>逻辑层数据模型（数据的逻辑模型）</h4><ol>
-<li><p>逻辑层是数据抽象的中间层，描述数据整体的逻辑结构。 </p>
-<blockquote>
-<p>它是用户通过数据库管理系统看到的现实世界，是基于计算机的观点对数据进行建模和表示<br>它既要考虑用户容易理解，又要考虑便于 DBMS 实现<br>任何 DBMS 都是基于某种逻辑数据模型<br>主要的逻辑数据模型：</p>
-<ol>
-<li>层次模型</li>
-<li>网状模型</li>
-<li>关系模型（重点）</li>
-<li>面向对象模型</li>
-</ol>
-</blockquote>
-</li>
-<li><p>层次模型</p>
-<ol>
-<li><p>层次模型是数据库管理系统最早使用的一种数据模型，它的数据结构是一棵 “有向树”，树的每个结点对应一个记录集，也就是现实世界的实体集。</p>
-</li>
-<li><p>特点（优点）:</p>
-<ul>
-<li>有且仅有一个结点没有父节点，它被称作根节点，其他的节点有且仅有一个父结点。例如，组织机构的图谱就是典型的层次结构</li>
-</ul>
-</li>
-<li><p>缺点：</p>
-<ul>
-<li>现实世界中的关系是多样的，层次模型难以表达实体之间这个复杂的联系</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>网状模型</p>
-<ol>
-<li>网状结构以网状结构表示实体与实体之间的联系。</li>
-<li>特点（优点）：<ul>
-<li>网状模型和层次模型之间的关系：网状模型是层次模型的扩展，允许节点有多于一个父结点</li>
-<li>现实世界的关系很复杂，网状模型可以方便地表示各种类型之间的联系，即可以表示从属的关系，也可以表示数据间的交叉关系</li>
-</ul>
-</li>
-<li>缺点：<ul>
-<li>结构复杂，实现的算法难以规范化</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>关系模型</p>
-<ol>
-<li>关系模型是用二维表结构来表示实体以及实体间联系的模型，并以二维表格的形式组织数据库中额数据</li>
-<li>特点（优点）：<ul>
-<li>关系模型是建立在严格的数学概念的基础上</li>
-<li>关系模型的概念单一，统一用关系来表示实体以及实体之间的联系，对数据的检索和更新结果同样也是用关系（即表）来表示，<blockquote>
-<p>关系模型的数据结构简单，清晰，用户易懂，易用</p>
-</blockquote>
-</li>
-<li>关系模型的存取路径对用透明，从而具有更高的数据独立性，更好的安全保密性，也简化了程序元的工作和数据库建立的工作<blockquote>
-<p>目前商用数据库多是关系型数据库，例如：MySQL 就是一个关系数据库管理系统</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>面向对象模型</p>
-<ol>
-<li>面向对象方法与数据库结合所构成的数据模型称为面向对象模型（面向对象模型既是概念模型又是逻辑模型），面向对象数据模型用面向对象观点来描述现实世界实体的逻辑组织，对象间的联系</li>
-<li>特点：<ul>
-<li>其表达能力丰富，具有对象可复用，维护方便的优点</li>
-<li>是正在发展的数据模型，也是数据库的发展方向之一</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<h4 id="物理层数据模型"><a href="#物理层数据模型" class="headerlink" title="物理层数据模型"></a>物理层数据模型</h4><ol>
-<li>物理层数据模型，也称为数据的物理模型（Physical Model）<blockquote>
-<p>其描述数据在存储介质上的组织结构<br>是逻辑模型的物理实现，即每一种逻辑模型在实现时都有与其相对应的物理模型</p>
-</blockquote>
-</li>
-<li>物理模型是数据库最底层的抽象，它确定数据的物理存储结构，数据存取路径以及调整，优化数据库的性能，</li>
-<li>物理模型的设计目标，是提高数据库性能和有效利用存储空间。</li>
-<li>影响物理层数据模型的因素：<ul>
-<li>不但由 DBMS 的设计决定，而且与操作系统，计算机硬件密切相关。<blockquote>
-<p>物理数据结构一般都向用户屏蔽，用户不必了解其细节</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ol>
-<h4 id="概念模型，逻辑层数据模型以及物理层数据模型之间的关系"><a href="#概念模型，逻辑层数据模型以及物理层数据模型之间的关系" class="headerlink" title="概念模型，逻辑层数据模型以及物理层数据模型之间的关系"></a>概念模型，逻辑层数据模型以及物理层数据模型之间的关系</h4><ol>
-<li>这三个不同的数据模型既相互独立，而又存在着关联<blockquote>
-<ol>
-<li>从现实世界到概念模型的转换是由数据库设计人员完成</li>
-<li>从概念模型到逻辑模型的转换可以由数据库设计人员完成，也可以用数据库设计工具协助设计人员完成</li>
-<li>从逻辑模型到物理模型的转换主要是由数据库管理系统完成</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-<hr>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《数据库系统原理》（04735）</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/25/数据库 - 数据库系统（二）数据库的结构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/25/数据库 - 数据库系统（二）数据库的结构/" itemprop="url">数据库 - 数据库系统（二）数据库的结构</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-25T13:00:12+08:00">
-                2018-10-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  1.5k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="数据库系统的结构"><a href="#数据库系统的结构" class="headerlink" title="数据库系统的结构"></a>数据库系统的结构</h2><h3 id="数据库系统的分类（P33）"><a href="#数据库系统的分类（P33）" class="headerlink" title="数据库系统的分类（P33）"></a>数据库系统的分类（P33）</h3><ol>
-<li><p>数据库管理员（DBA）的角度</p>
-<blockquote>
-<ol>
-<li>内部系统<ul>
-<li>通常采用三级模式结构</li>
-</ul>
-</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="2">
-<li>外部系统<ul>
-<li>通常采用集中式结构，分布式结构和并行结构等</li>
-</ul>
-</li>
-</ol>
-</blockquote>
-</li>
-<li><p>从用户的角度</p>
-<blockquote>
-<ol>
-<li>客户/服务器结构</li>
-<li>浏览器/服务器结构</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-<h3 id="数据库系统的三级模式结构"><a href="#数据库系统的三级模式结构" class="headerlink" title="数据库系统的三级模式结构"></a>数据库系统的三级模式结构</h3><ul>
-<li><p>三级模式结构（采用三级模式结构，并提供两层映像功能）：</p>
-<ol>
-<li>用户级</li>
-<li>概念级</li>
-<li>物理级</li>
-</ol>
-</li>
-<li><p>具体：</p>
-<ol>
-<li>模式</li>
-<li>外模式</li>
-<li>内模式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">                    </span><br><span class="line">应用1     应用2      应用1    应用2       应用1    应用2    </span><br><span class="line">|         |         |        |          |        |</span><br><span class="line">+---------+         +--------+          +--------+ </span><br><span class="line">|         |         |        |          |        |   </span><br><span class="line">| 外模式1  |         |外模式...|          | 外模式n |   </span><br><span class="line">|         |         |        |          |        |</span><br><span class="line">+----+---+          +----+---+          +----+---+ </span><br><span class="line">     |                   |                   |</span><br><span class="line">     +-------------------+-------------------+</span><br><span class="line">                         |</span><br><span class="line">                    +----+----+ </span><br><span class="line">                    |         | </span><br><span class="line">                    |   模式  |</span><br><span class="line">                    |         | </span><br><span class="line">                    +---+-----+ </span><br><span class="line">                        |</span><br><span class="line">                    +---+-----+</span><br><span class="line">                    |         |</span><br><span class="line">                    |  内模式  |</span><br><span class="line">                    |         |</span><br><span class="line">                    +---+-----+ </span><br><span class="line">                        |</span><br><span class="line">                    +---+-----+</span><br><span class="line">                    |         |</span><br><span class="line">                    |  数据库  |</span><br><span class="line">                    |         |</span><br><span class="line">                    +---------+</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="模式（P34）"><a href="#模式（P34）" class="headerlink" title="模式（P34）"></a>模式（P34）</h3><ul>
-<li><p>模式也称为概念模式或逻辑模式</p>
-<blockquote>
-<p>它是数据库中全体数据的逻辑结构和特征的描述，是所有用户的功能数据视图</p>
-</blockquote>
-</li>
-<li><p>模式实际上市数据库在逻辑级上的视图，概念视图</p>
-<blockquote>
-<p>特点：</p>
-<ol>
-<li>其形式要比数据的物理存储方式抽象</li>
-<li><p>不包含任何数据库的实现细节，而是定义数据的逻辑结构，数据之间的联系，以及数据相关的安全性，完整性(DBA 必须考虑整个数据库的这种全局概念视图)</p>
-</li>
-<li><p>处于数据库外模式和内模式的中间，一个数据库只有一个模式</p>
-</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h3 id="外模式（P34）"><a href="#外模式（P34）" class="headerlink" title="外模式（P34）"></a>外模式（P34）</h3><ul>
-<li>三级模式结构中，外模式也称为子模式（Subschema）或用户模式</li>
-<li>是数据库用户（包括应用程序员和最终用户）能够看见和使用的局部数据和逻辑结构和特征的描述</li>
-<li>是某一应用有关的数据的逻辑表示 </li>
-<li>实际上：用于满足不同数据库用户需求的数据视图，即用户视图。通常是模式的子集，是对数据整体数据结构的局部重构</li>
-<li>一个数据库可以有多个不同的外模式，允许它们有一定的重叠、<blockquote>
-<p>DBMS 提供子模式描述语言（Subschema DDL）来严格定义子模式</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="内模式（P35）"><a href="#内模式（P35）" class="headerlink" title="内模式（P35）"></a>内模式（P35）</h3><ul>
-<li>在三级模式结构中，内模式也称为存储模式（Storage Schema）</li>
-<li>它是对数据库中数据物理结构和存储方式的描述，是数据在数据库内部的表示形式</li>
-<li>实际上：是整个数据库的最底层表示，它不同于物理层，是 DBA 所见的，特定的 DBMS 所处理的数据库的内部结构，即内部视图或存储视图</li>
-<li>一个数据库只用一个內模式<blockquote>
-<p>內模式不是存储设备上的物理记录或物理块，也不涉及具体设备限制，内模式还不是最底层的物理层，比内模式更接近物理存储和访问的那些软件机制是操作系统的一部分</p>
-<p>DBMS 提供內模式描述语言（內模式 DDL, 或存储模式 DDL）来严格定义内模式</p>
-<ol>
-<li>定义内部记录类型，索引和文件的组织方式</li>
-<li>以及所有数据控制方面的细节（例如：记录存储方式是按照顺序结构存储还是按照 B 树结构存储）</li>
-<li>数据是否压缩，加密等</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h4 id="三级模式结构的两层映像与数据独立性（P35）"><a href="#三级模式结构的两层映像与数据独立性（P35）" class="headerlink" title="三级模式结构的两层映像与数据独立性（P35）"></a>三级模式结构的两层映像与数据独立性（P35）</h4><ul>
-<li>数据库系统三级模式结构的三个模式分别是对数据的三级抽象，它们之间的关系<blockquote>
-<p>特点：</p>
-<ol>
-<li>一个数据库的整体逻辑结构和特征的描述（概念模式）是独立于数据库其他层次结构（内/外模式）的描述，是数据库的核心，也是数据库设计的核心</li>
-<li>一个数据库的内部存储模式依赖于概念模式，但存储模式独立于外部模式，也独立于具体的存储设备</li>
-<li>用户逻辑结构（外模式）是在全局逻辑结构描述的基础上定义的，它面向具体的应用程序，独立于内部模式和存储设备</li>
-<li>特定的应用程序是在外模式的逻辑结构上编写，它依赖于特定的外模式，与数据库的模式和存储结构独立</li>
-</ol>
-</blockquote>
-</li>
-<li>为了有效支持数据的三级抽象以及他们相互间的联系和转换，DBMS 通过在内部提供三级模式之间的两层映像来实:<ol>
-<li>外模式/模式映像</li>
-<li>模式/内模式映像</li>
-</ol>
-</li>
-</ul>
-<h5 id="外模式-模式映像（P35）"><a href="#外模式-模式映像（P35）" class="headerlink" title="外模式/模式映像（P35）"></a>外模式/模式映像（P35）</h5><ol>
-<li>同一个模式可以有任意多个外模式</li>
-</ol>
-<h5 id="模式-内模式映像（P36）"><a href="#模式-内模式映像（P36）" class="headerlink" title="模式/内模式映像（P36）"></a>模式/内模式映像（P36）</h5><ol>
-<li>模式/内模式映像是唯一的</li>
-</ol>
-<h3 id="客户-服务器结构（Client-Server-C-S）（P36）"><a href="#客户-服务器结构（Client-Server-C-S）（P36）" class="headerlink" title="客户/服务器结构（Client/Server, C/S）（P36）"></a>客户/服务器结构（Client/Server, C/S）（P36）</h3><ol>
-<li><p>客户端（前台， 表示层）</p>
-<p>数据库的使用者与命令行客户端，图形化界面管理工具，应用程序等直接交互，而不与数据库直接联系，这种结构中，命令行客户端，图行化界面管理工具，应用程序等称为 “客户端”(“前台” 或 “表示层”)</p>
-<blockquote>
-<p>主要完成与数据库使用者的交互任务</p>
-</blockquote>
-</li>
-<li><p>服务器（后台，数据层）</p>
-<p>数据库管理系统则称为”服务器”，”后台”，”数据层”</p>
-<blockquote>
-<p>主要负责数据管理</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="浏览器-服务器结构（Browser-Server-B-S）（P37）"><a href="#浏览器-服务器结构（Browser-Server-B-S）（P37）" class="headerlink" title="浏览器/服务器结构（Browser/Server, B/S）（P37）"></a>浏览器/服务器结构（Browser/Server, B/S）（P37）</h3><ol>
-<li>浏览器/服务器结构是一种基于 Web 应用的 客户/服务器结构，也称三层客户/服务器结构<blockquote>
-<p>在数据库系统中，它将数据库管理系统交互的客户端进一步细分为 “表示层” 和 “处理层”</p>
-<ol>
-<li>“表示层”：是数据库使用者的操作和展示界面，通常由浏览器构成</li>
-<li>“处理层”：也称为 “中间层”，主要负责处理服务器使用者的具体应用逻辑</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-<hr>
-<p>  参考：</p>
-<blockquote>
-<p>《数据库系统原理》(04735)</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -3018,7 +3552,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -3108,7 +3642,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">49.4k</span>
+    <span title="博客总字数">53.5k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

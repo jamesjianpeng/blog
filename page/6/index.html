@@ -307,6 +307,1362 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/23/TypeScript and Vue ( 一 ) - git 和 webpack 打包初始化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/23/TypeScript and Vue ( 一 ) - git 和 webpack 打包初始化/" itemprop="url">TypeScript and Vue ( 一 ) - git 和 webpack 打包初始化</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-23T14:10:11+08:00">
+                2018-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  617
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一，初始化仓库和项目元数据"><a href="#一，初始化仓库和项目元数据" class="headerlink" title="一，初始化仓库和项目元数据"></a>一，初始化仓库和项目元数据</h3><ul>
+<li>init git</li>
+<li>init package</li>
+<li>add <a href="https://github.com/commitizen/cz-cli" target="_blank" rel="noopener">commitizen</a></li>
+<li>add <a href="https://gist.github.com/andreasonny83/b24e38b7772a3ea362d8e8d238d5a7bc" target="_blank" rel="noopener">.gitignore</a></li>
+</ul>
+<h3 id="二，初步工程化，git-commit-history"><a href="#二，初步工程化，git-commit-history" class="headerlink" title="二，初步工程化，git commit history"></a>二，初步工程化，<a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/fbba9afe608747ee18c00d9362f3d1d70e5cf445" target="_blank" rel="noopener">git commit history</a></h3><ul>
+<li><p>add package scripts</p>
+<ol>
+<li>package 配置文件：package.json</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "build:prod": "node ./build/prod-build.js",  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>脚本文件： /build/prod-build.js</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> webpackConfig = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.prod.conf'</span>);</span><br><span class="line"></span><br><span class="line">webpack(webpackConfig, <span class="function"><span class="keyword">function</span>(<span class="params">err, stats</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">    <span class="keyword">if</span> (stats.hasErrors()) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(stats, <span class="string">'has errors end'</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'webpack TypeScript and Threejs project finish!'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>生产环境打包</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build:prod</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>add webpack plugin</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i -D clean-webpack-plugin</span><br><span class="line">npm i -D  html-webpack-plugin</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在 /webpack/webpack.prod.conf.js 中配置如下：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> CleanWebpackPlugin = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    mode: <span class="string">"production"</span>, <span class="comment">// "production" | "development" | "none"</span></span><br><span class="line">    entry: &#123;</span><br><span class="line">      main: path.resolve(__dirname, <span class="string">'../src/index.js'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, <span class="string">'../dist'</span>),</span><br><span class="line">        publicPath: <span class="string">'./'</span>,</span><br><span class="line">        filename: <span class="string">'[name].js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> CleanWebpackPlugin(<span class="string">'dist'</span>, &#123;</span><br><span class="line">            root: process.cwd(),</span><br><span class="line">            verbose: <span class="literal">true</span>,</span><br><span class="line">            dry: <span class="literal">false</span></span><br><span class="line">        &#125;),</span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            title: <span class="string">'TypeScript and Threejs project'</span>,</span><br><span class="line">            meta: &#123;</span><br><span class="line">                viewport: <span class="string">'width=device-width, initial-scale=1, shrink-to-fit=no'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="遇到的问题："><a href="#遇到的问题：" class="headerlink" title="遇到的问题："></a>遇到的问题：</h3><ul>
+<li><a href="https://github.com/johnagan/clean-webpack-plugin/issues/10" target="_blank" rel="noopener">使用 clean-webpack-plugin dist 文件无法清除</a></li>
+<li><p>解决之后的配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">  <span class="keyword">new</span> CleanWebpackPlugin(<span class="string">'dist'</span>, &#123;</span><br><span class="line">      root: process.cwd(), <span class="comment">// 关键点</span></span><br><span class="line">      verbose: <span class="literal">true</span>,</span><br><span class="line">      dry: <span class="literal">false</span></span><br><span class="line">  &#125;),</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>root 这个配置必须要，除了这种方法外还可以通过 在终端输入 pwd 获得 webpack 对应配置的路径，然后 copy 到 root 的位置，但是这个这个方法不够灵活每个人项目存放的路径对于工程搭建者是未知的，使用 process.cwd() 是最优的方法</p>
+</li>
+</ul>
+<h3 id="三，初始化本地开发环境-git-commit-history"><a href="#三，初始化本地开发环境-git-commit-history" class="headerlink" title="三，初始化本地开发环境 git commit history"></a>三，初始化本地开发环境 <a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/bebc37ab2df7cba3abdc99c38abbee728332540d" target="_blank" rel="noopener">git commit history</a></h3><ul>
+<li><p>add package scripts</p>
+<ol>
+<li>package 配置文件：package.json</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">    "build:local": "node ./build/local-dev.js",</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>脚本文件： /build/local-dev.js</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> webpackDevServer = <span class="built_in">require</span>(<span class="string">'webpack-dev-server'</span>);</span><br><span class="line"><span class="keyword">const</span> devConfig = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.dev.conf'</span>);</span><br><span class="line"></span><br><span class="line">webpackDevServer.addDevServerEntrypoints(devConfig, devConfig.devServer);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> compiler = webpack(devConfig);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> webpackDevServer(compiler, devConfig.devServer)</span><br><span class="line">  .listen(devConfig.devServer.port);</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>本地开发环境</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build:local</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>add webpack plugin</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D webpack-dev-server</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在 /webpack/webpack.prod.conf.js 中配置如下：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> CleanWebpackPlugin = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    mode: <span class="string">'development'</span>,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        contentBase: path.resolve(__dirname, <span class="string">'../dist'</span>), <span class="comment">// 使用相对于 dev.conf 配置的绝对路径</span></span><br><span class="line">        <span class="comment">// contentBase: './dist', // 第二种方式 相对于 package.json 这一层</span></span><br><span class="line">        hot: <span class="literal">true</span>,</span><br><span class="line">        host: <span class="string">'0.0.0.0'</span>,</span><br><span class="line">        open: <span class="literal">true</span>,</span><br><span class="line">        port: <span class="number">8099</span></span><br><span class="line">    &#125;,</span><br><span class="line">    entry: &#123;</span><br><span class="line">      main: path.resolve(__dirname, <span class="string">'../src/index.js'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, <span class="string">'../dist'</span>),</span><br><span class="line">        publicPath: <span class="string">'./'</span>,</span><br><span class="line">        filename: <span class="string">'[name].js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.HotModuleReplacementPlugin(),</span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            title: <span class="string">'TypeScript and Threejs project'</span>,</span><br><span class="line">            meta: &#123;</span><br><span class="line">                viewport: <span class="string">'width=device-width, initial-scale=1, shrink-to-fit=no'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>值得注意的是：<ol>
+<li>webpack.HotModuleReplacementPlugin() 这个插件需要在 plugins 中使用，热替换才会生效</li>
+<li>devServer.contentBase 使用绝对路径最好</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/20/快速启动本地服务/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/20/快速启动本地服务/" itemprop="url">快速启动本地服务和本地域名代理</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-20T18:16:49+08:00">
+                2018-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  276
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="一-Unix-Linux-Mac-系统下，先-cd-到指定目录下"><a href="#一-Unix-Linux-Mac-系统下，先-cd-到指定目录下" class="headerlink" title="一. Unix/Linux/Mac 系统下，先 cd 到指定目录下"></a>一. Unix/Linux/Mac 系统下，先 cd 到指定目录下</h3><p>特点：</p>
+<ol>
+<li>简单的场景可以使用</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m SimpleHTTPServer</span><br></pre></td></tr></table></figure>
+<h3 id="二-使用-Node-js-先-cd-到指定目录下"><a href="#二-使用-Node-js-先-cd-到指定目录下" class="headerlink" title="二. 使用 Node.js,先 cd 到指定目录下"></a>二. 使用 Node.js,先 cd 到指定目录下</h3><p>特点：</p>
+<ol>
+<li>在任何一个支持 Node.js 的平台就可以使用这个方法。</li>
+<li>简单的场景可以使用</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g http-server</span><br><span class="line">http-server</span><br></pre></td></tr></table></figure>
+<h3 id="三-使用-nginx"><a href="#三-使用-nginx" class="headerlink" title="三. 使用 nginx"></a>三. 使用 nginx</h3><p>特点：</p>
+<ol>
+<li>在任何一个支持 nginx 的平台就可以使用这个方法。</li>
+<li>一开始有点复杂，需要了解一下 nginx 的配置的语法，复杂的场景可以推荐使用</li>
+</ol>
+<p>在 mac 上安装 nginx 还比较方便</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew search nginx</span><br><span class="line">bre install nginx</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装之后 nginx 的配置文件夹：/usr/local/etc/nginx</li>
+<li>其中默认是使用的配置文件： /usr/local/etc/nginx/nginx.conf</li>
+</ul>
+<p>在进程中查找 nginx 服务的情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep nginx</span><br></pre></td></tr></table></figure>
+<p>启动 nginx</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx</span><br></pre></td></tr></table></figure>
+<p>关闭 nginx 服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -QUIT pid</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s stop</span><br></pre></td></tr></table></figure>
+<p>重启 nginx 服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s reload</span><br></pre></td></tr></table></figure>
+<p>检查 nginx 配置语法正确性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -t</span><br></pre></td></tr></table></figure>
+<h3 id="四-本地域名代理访问"><a href="#四-本地域名代理访问" class="headerlink" title="四. 本地域名代理访问"></a>四. 本地域名代理访问</h3><p>通过配置 localhost 可指向任意域名：</p>
+<ol>
+<li>使用 <a href="https://github.com/oldj/SwitchHosts" target="_blank" rel="noopener">SwitchHosts</a></li>
+<li>Mac 环境下修改 host: sudo vi /etc/hosts</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/17/Array 之 ES5 reduce/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/17/Array 之 ES5 reduce/" itemprop="url">Array 之 ES5 reduce</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-17T12:25:34+08:00">
+                2018-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  505
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Array-prototype-reduce"><a href="#Array-prototype-reduce" class="headerlink" title="Array.prototype.reduce"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce" target="_blank" rel="noopener">Array.prototype.reduce</a></h3><ul>
+<li><p>Grammar:</p>
+<ol>
+<li>array.reduce(callback[, thisArg])</li>
+<li>array.reduce(callback(firstOrTotalNum, nextNum, index, array){ //do something }[, initNum])</li>
+</ol>
+</li>
+<li><p>Description:</p>
+<ol>
+<li>若 initNum 作为参数传入，则在 index 为 0 的时候 firstOrTotalNum 的值是为 initNum</li>
+<li>若 initNum 没有作为参数传入，则在 index 为 0 的时候 firstOrTotalNum 的值是为 数组中的第一个元素</li>
+<li>在 index 不为 0 的时候 firstOrTotalNum 值是在 callback function return 的值</li>
+</ol>
+</li>
+<li><p>Return: 任何数据类型</p>
+</li>
+<li>特点：<ol>
+<li>可以使用它进行累加，累乘或者拼接字符</li>
+<li>或者其他的功能</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._reduce) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Array.prototype._reduce</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @param &#123;*&#125; initNum</span></span><br><span class="line"><span class="comment">   * @returns &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._reduce = <span class="function"><span class="keyword">function</span>(<span class="params">callback, initNum</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            len,</span><br><span class="line">            result,</span><br><span class="line">            k,</span><br><span class="line">            callbackNum,</span><br><span class="line">            noInitNum;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1. 判断传入的参数</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Array.prototype._reduce params is not function'</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 判断数组长度</span></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line">        result = initNum || <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 合并之后，并不好读😢</span></span><br><span class="line">        <span class="comment">// noInitNum = initNum === undefined ? true : false;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">// len = noInitNum ? len - 1 : len; // 没有 初始值 的时候实际上是从数组的第二项开始的，所以循环的最大长度 - 1</span></span><br><span class="line">        <span class="comment">// while(i &lt; len) &#123;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     callbackNum = i === 0</span></span><br><span class="line">        <span class="comment">//         ? (noInitNum ? this[i] : Number(initNum)) // 没有 初始值 的时候实际上是从 callback 接受的第一个参数是数组的第一项元素，第二个参数是数组的二项元素</span></span><br><span class="line">        <span class="comment">//         : result;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     k = noInitNum ? i + 1 : i; // 没有 初始值 的时候实际上是从数组的第二项开始的</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     result = callback(callbackNum, this[k], i, this);</span></span><br><span class="line">        <span class="comment">//     i++;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// #endregion 合并之后</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 第一次写</span></span><br><span class="line">        <span class="keyword">if</span> (initNum === <span class="literal">undefined</span>) &#123; <span class="comment">// 关键点：1. 需要判断 初始化的值</span></span><br><span class="line">            len-- <span class="comment">// 关键点：2. 没有 初始值 的时候实际上是从 callback 接受的第一个参数是数组的第一项元素，第二个参数是数组的二项元素，实际上是从第二项开始</span></span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                callbackNum = i === <span class="number">0</span> ? <span class="keyword">this</span>[i] : result;</span><br><span class="line">                result = callback(callbackNum, <span class="keyword">this</span>[i + <span class="number">1</span>], i, <span class="keyword">this</span>);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">                callbackNum = i === <span class="number">0</span> ? <span class="built_in">Number</span>(initNum) : result; <span class="comment">// 关键点：3. 使用 Number 会把值转化为 number 类型</span></span><br><span class="line">                result = callback(callbackNum, <span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// #endregion 第一次写</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/17/Array 之 ES5 some/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/17/Array 之 ES5 some/" itemprop="url">Array 之 ES5 some</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-17T11:33:31+08:00">
+                2018-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  309
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="Array-prototype-some"><a href="#Array-prototype-some" class="headerlink" title="Array.prototype.some"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some" target="_blank" rel="noopener">Array.prototype.some</a></h3><ul>
+<li><p>Grammar:</p>
+<ol>
+<li>array.some(callback[, thisArg])</li>
+<li>array.some(callback(currentValue, index, array){ //do something }, this)</li>
+</ol>
+</li>
+<li><p>Description: 循环数组，找到一个满足条件的元素，就返回 true，若所有元素都不满足条件就返回 false</p>
+</li>
+<li>Return: Boolean</li>
+<li><p>特点：</p>
+<ol>
+<li>中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError</li>
+<li>找到不满足条件的元素，直接结束循环，就返回 false</li>
+<li>空数组直接返回 false</li>
+</ol>
+</li>
+<li><p>Compared with Array.prototype.every</p>
+<ol>
+<li><p>不同点：</p>
+<ul>
+<li>some 是遇到满足条件时结束循环，并返回值 true；every 是遇到不满足条件时结束循环，并返回值 false</li>
+</ul>
+</li>
+<li><p>相同点</p>
+<ul>
+<li>返回的参数类型都是 Boolean</li>
+<li>参数一样，都是 callback function</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._some) &#123;</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_some'</span>, &#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 只要数组中的任意一个元素满足条件就返回 true ，否则返回 false</span></span><br><span class="line"><span class="comment">         * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">         * @returns &#123;Boolean&#125; result</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                len,</span><br><span class="line">                callbackState,</span><br><span class="line">                result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断参数</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Array.prototype._some params is not callback'</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断数组的长度</span></span><br><span class="line">            result = <span class="literal">false</span></span><br><span class="line">            len = <span class="keyword">this</span>.length;</span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">                callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">                <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                  result = <span class="literal">true</span>;</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">                &#125;;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
+</ul>
+<hr>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/14/JavaScript 的历史/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/14/JavaScript 的历史/" itemprop="url">JavaScript 的历史</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T17:36:20+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《JavaScript-高级程序设计》-第三版/" itemprop="url" rel="index">
+                    <span itemprop="name">《JavaScript 高级程序设计》 第三版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  915
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="JavaScript-的历史概述"><a href="#JavaScript-的历史概述" class="headerlink" title="JavaScript 的历史概述"></a>JavaScript 的历史概述</h3><ol>
+<li><p>在 JavaScript 之前表单的验证是在服务端进行</p>
+<ul>
+<li>对于用户说体验不好</li>
+<li>对于服务端来说，会在一定程度上浪费服务端的资源</li>
+</ul>
+</li>
+<li><p>为了解决这样的提高 web 应用的性能和提高用户的体养验 JavaScript 便出现了</p>
+<ul>
+<li><p>1995年2月 JavaScript 1.0<br>  Netscape 公司开发的 Netscape Navigator 2 浏览器上支持名为 LiveScript 的脚本。为了按照预期的时间发布这个新的语言，该公司就和 Sun 公司合作一起研发。最终成功发布，是不过为了蹭 Java 的顺风车，临时改名为 JavaScript</p>
+</li>
+<li><p>199?年?月 JavaScript 1.1<br>  Netscape Navigator 3 发布，JavaScript 1.0 更新到 JavaScript 1.1</p>
+</li>
+<li><p>1996年8月 JScript 1.0<br>  Netscape 公司发布的 JavaScript 脚本为 Netscape Navigator 获得更多的用户，它的竞争对手 微软 为了不失去原来的地位，决定发布 Internet Explorer 3 浏览，并且支持自己研发的 JScript 脚本，浏览器市场份额大战开始了</p>
+</li>
+<li><p>1997年<br>  JavaScript 1.1 为了实现统一的规范，被作为蓝本送到欧洲计算机制造商协会(ECMA，European Computer Manufactu Association)，该协会指定 39号技术委员会（TC39, Technical Committee #39）去负责：“标准化一种通用，跨平台，供应商中立的脚本语言的语法和语意”，</p>
+<p>  TC39 是由 Netscape 微软 Sun 等其他关注浏览器脚本语言发的公司的程序员组成，经过几个月的努力：ECMA-262 – 定义一种名为 ECMAScript 的新脚本语言的标准</p>
+</li>
+<li><p>1998年<br>  ISO/IEC （国际标准化组织和国际电工委员会）也采用 了 ECMAScript 作为标准（ISO/IEC-16262）</p>
+<p>从这以后，各大浏览器开发商就开始致力于将 ECMAScript 作为各种的 JavaScript 实现的基础</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="JavaScript-的发展"><a href="#JavaScript-的发展" class="headerlink" title="JavaScript 的发展"></a>JavaScript 的发展</h3><ul>
+<li><p>JavaScript 的实现比 ECMAScript 实现要更多</p>
+<ul>
+<li>浏览器的 JavaScript 包括的部分：ECMAScript，DOM，BOM</li>
+</ul>
+</li>
+<li><p>JavaScript 除了可以在浏览器这个宿主环境中运行：</p>
+<ul>
+<li>服务端 使用 node.js</li>
+<li><p>Adobe 使用 ActionScript</p>
+<p>服务端的node.js Adobe的ActionScript 以及 浏览器中的JavaScript 都是 ECMAScript 的实现</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="ECMAScript-的版本"><a href="#ECMAScript-的版本" class="headerlink" title="ECMAScript 的版本"></a>ECMAScript 的版本</h3><ol>
+<li><p>ECMA-262第1版</p>
+<p> 这个版本是 Netscape Navigator 3 浏览器中的发布的 JavaScript 1.1 为基础，不过有些改动：</p>
+<ul>
+<li>支持 Unicode （支持多语言开发，为什么使用 Unicode 之后就支持多语言开发？）</li>
+<li>对象也变成和任何一个浏览器平台无关</li>
+</ul>
+</li>
+<li><p>ECMA-262第2版：这个版本就是编辑和加工，，没有新增，删除，修改任何内容</p>
+</li>
+<li><p>ECMA-262第3版：这个版本才是真正的修改，这个版本标志着 ECMAScript 成为一个真正的编程语言，修改的内容：</p>
+<ul>
+<li>支持正则表达式</li>
+<li>新控制语句</li>
+<li>try-catch 异常处理的支持</li>
+<li>适应国际化的标准的修改</li>
+</ul>
+</li>
+<li><p>ECMA-262第4版</p>
+<ul>
+<li>这个版本中新增的内容：强类型变量，新语句，新数据结构，真正的类，经典继承</li>
+<li>TC39 中的一个小组发现这个版本改动太大，于是建议较小的修改：ECMA-262第3.1版 代替 ECMA-262 第4版，但是 3.1 这个版本直到2009年12月3日，为了区别 第4版 于是作为 ECMA-262第5版 发布</li>
+</ul>
+</li>
+<li><p>ECMA-262第5版（2009年12月3日）</p>
+<p> 这个版本实际是 ECMA-262第3.1版</p>
+</li>
+</ol>
+<hr>
+<h3 id="兼容情况"><a href="#兼容情况" class="headerlink" title="兼容情况"></a>兼容情况</h3><p>2008年，五大主流 Web 浏览器(IE，Firefox，Safari，Chrome和Opera)全都做到与 ECMA-262 兼容</p>
+<ol>
+<li><p>ES3:<br> IE5.5 - IE7<br> Safari 3.x<br> Chrome 1+<br> Firefox 1 ~ 2 / 3.0x</p>
+</li>
+<li><p>ES5(不完全兼容):<br> IE8<br> Safari 4.x~5.x<br> Firefox 3.5 ~ 3.6</p>
+</li>
+<li><p>ES5:<br> IE9+<br> Firefox 4.0+</p>
+</li>
+</ol>
+<hr>
+<p>参考文献：</p>
+<ul>
+<li>《JavaScript 高级程序设计》 第三版</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/02/性能优化之 DOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/02/性能优化之 DOM/" itemprop="url">性能优化之 DOM</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-02T19:57:40+08:00">
+                2018-09-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《高性能的-JavaScript》/" itemprop="url" rel="index">
+                    <span itemprop="name">《高性能的 JavaScript》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<ol>
+<li>访问和修改 DOM 元素</li>
+<li>修改 DOM 元素的样式会导致重绘（repaint）和重排（reflow）</li>
+<li>通过 DOM 事件处理与用户的交互</li>
+</ol>
+<h3 id="什么是-DOM-他为什么慢"><a href="#什么是-DOM-他为什么慢" class="headerlink" title="什么是 DOM, 他为什么慢"></a>什么是 DOM, 他为什么慢</h3><ol>
+<li><p>文档对象模型（DOM）是一个独立于语言的，用于操作 XML 和 HTML 文档的程序接口（API）</p>
+</li>
+<li><p>浏览器中的 DOM :</p>
+<ol>
+<li>在 web 应用程序中获取 XML 文档，并使用 DOM API 用来访问文档中的数据，DOM 再浏览器中的接口却是用 JavaScript 实现的</li>
+<li>再浏览器中通常把 DOM 和 JavaScript 独立实现<ul>
+<li>IE 中 JavaScript 的实现名为 JScript 位于 jscript.dll 文件中， DOM 的实现则是在另外一个库中：mshtml.dll（内部称 Trident ）;分离的优点：允许使用其他技术和语言共享使用 DOM 和 Trident 提供的渲染函数</li>
+<li>Safari 中的 DOM 和渲染使用 Webkit 中的 WebCore 实现，JavaScript 部分是由独立的 JavaScriptCore 引擎（ 最新版本的名字为 SquirrelFish）</li>
+<li>Google Chrome 同样使用 Webkit 中的 WebCore 库来渲染页面，JavaScript 部分名为 V8 的引擎</li>
+<li>Firefox 是使用 名为 Gecko 的渲染引擎来渲染页面， JavaScript部分是引擎名为 SpiderMonkey （ 最新：TraceMonkey）的引擎</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>DOM 为什么慢</p>
+<ol>
+<li>天生就慢（简单理解：两个互相独立的功能只要通过接口彼此链接，就会产生消耗）<ul>
+<li>解决方案：尽量在 ES（ js 三大部分之一）中处理，尽可能减少 DOM 操作</li>
+</ul>
+</li>
+<li><p>天生慢的具体表现：</p>
+<ul>
+<li><p>DOM 的访问和修改 –&gt; 会导致浏览器重新计算页面的几何变化 –&gt; 通用法则：减少访问 DOM 的次数，把运算尽量留在 ECMAScript 这一端</p>
+<ul>
+<li>innerHTML 和 DOM 方法（document.createElement() 和 document.createTextNode()）</li>
+<li><p>节点克隆（element.cloneNode()）,比上面两种方式要快一点点</p>
+</li>
+<li><p>HTML 集合（类数组列表）底层文档对象更新时，他也自动更新<br>获取 HTML 集合</p>
+<ol>
+<li>document.getElementsByName() // 获取</li>
+<li>document.getElementsByClassName() // 获取以 class name 组成的集合</li>
+<li>document.getElementsByTagName()</li>
+<li>document.images // 页面所有的 img 元素</li>
+<li>document.links // 页面所有的 a 元素</li>
+<li>document.forms[0].element // 页面中第一个表单的所有字段</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="4">
+<li><p>重排和重绘</p>
+<p>什么是重排，影响因素</p>
+<ol>
+<li><p>重排：DOM 的变化影响来元素的几何属性（比如宽高等）其他的元素可能会因此受收到影响，浏览器会使渲染树中受到影响的部分失效，并重新构造渲染树，这个过程称为：重排</p>
+</li>
+<li><p>重排何时发生（如何避免重排重绘）</p>
+<ul>
+<li>添加和删除可见的 DOM 元素</li>
+<li>元素位置改变</li>
+<li>元素尺寸改变（包括：padding margin border height width）</li>
+<li>内容改变，例如：文本改变或图片被另外一个不同尺寸的图片代替</li>
+<li>页面渲染器初始化</li>
+<li>浏览器窗口尺寸变化</li>
+</ul>
+<ol>
+<li><p>如何避免减少重排：</p>
+<ul>
+<li>针对使用 js 修改样式： el.style.xxx 使用 el.style.cssText 合并，或者使用 el.className</li>
+<li><p>正对批量修改 DOM ：</p>
+<ol>
+<li><p>使用元素 脱离文档流（如何脱离文档流）</p>
+<ul>
+<li>隐藏元素</li>
+<li>使用文档片断（docuement fragment）在当前 DOM 之外构建一个子树，再把它拷贝回文档中</li>
+</ul>
+</li>
+<li><p>对其应用多重改变</p>
+</li>
+<li>把元素带回文档中</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>渲染树变化的排队与刷新</p>
+<ul>
+<li>获取布局信息的操作会导致队列刷新(为获取最新的布局信息，会强制页面进行重排以获取最新的尺寸)<ol>
+<li>offsetTop, offsetLeft, offsetRight, offsetBottom</li>
+<li>scrollTop, scrollLeft, scrollRight, scrollBottom</li>
+<li>clientTop, clentLeft, clientWidth, clientHeight</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="4">
+<li><p>什么是重绘，影响因素</p>
+<ol>
+<li>当 DOM 元素的改变不会影响元素的几何属性的时候，页面会在发生的区域进行重绘</li>
+</ol>
+</li>
+<li><p>重排和重绘的关系</p>
+<ol>
+<li>重排一定会引起重绘；重绘不一定会引起重排</li>
+</ol>
+</li>
+<li><p>其他的优化内容：</p>
+<ul>
+<li>缓存布局信息：避免多次获取元素的尺寸，他会强制页面进行重排，以快速获取页面的精确的尺寸</li>
+<li>动画优化：脱离文档流，减少对页面布局的影响</li>
+<li>事件委托：避免在每个需要触发的元素上绑定事件，只需要在我们指定的父级上绑定事件</li>
+<li>尽量少访问 HTML 集合，HTML 集合时类数组列表，但是访问数组比访问类数组要快</li>
+<li>使用访问局部变量去访问 DOM</li>
+<li>DOM 的方法去访问元素的改进</li>
+<li>选择 API 的使用</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>参考文献：</p>
+<ul>
+<li>《高性能的 JavaScript》</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/08/11/Array 之 ES6 includes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1245,1215 +2601,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/21/JavaScript 的语法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/21/JavaScript 的语法/" itemprop="url">JavaScript 的语法</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-21T14:16:49+08:00">
-                2018-07-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《JavaScript-高级程序设计》-第三版/" itemprop="url" rel="index">
-                    <span itemprop="name">《JavaScript 高级程序设计》 第三版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  609
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><ul>
-<li>变量</li>
-<li>控制语句</li>
-<li>数据类型</li>
-<li>操作符</li>
-<li>内置功能</li>
-</ul>
-<ol>
-<li><p>第一个概念：区分大小写</p>
-</li>
-<li><p>第二个概念：标识符</p>
-<ul>
-<li><p>标识符：就是指变量，函数，属性的名字，或者是函数的参数</p>
-<ol>
-<li>第一个字符必须是一个字母， 下划线 <code>_</code> 或一个美元（$）</li>
-<li>其他字符可以是字母，下划线，美元符号或数字</li>
-</ol>
-</li>
-<li><p>推荐标识符采用小驼峰</p>
-</li>
-</ul>
-</li>
-<li><p>注释<br> a. 单行注释<br> b. 块级注释</p>
-</li>
-<li><p>语句</p>
-<ul>
-<li>写分号(推荐)</li>
-<li>不写分号：不写分号，解析器会自动插入分号，这样加重解析器的负担</li>
-</ul>
-</li>
-</ol>
-<h3 id="关键词和保留字"><a href="#关键词和保留字" class="headerlink" title="关键词和保留字"></a>关键词和保留字</h3><ol>
-<li><p>ECMA - 262 描述了一组具有特点含义的关键字：</p>
-<ul>
-<li>这些关键字的特点：表示控制语句的开始和结束，或者表示执行特定的操作</li>
-<li>关键字也是语言保留的，不能作为标识符</li>
-</ul>
-</li>
-<li><p>关键字：es5新增的使用 * （分类不正确可以指出）</p>
-<ol>
-<li>判断：if, else, break, switch, case, break, default, instanceof, typeof</li>
-<li>循环：for, in, while,</li>
-<li>调试：try, catch, finally, throw, debugger*</li>
-<li>申明方式：var, void, function</li>
-<li>扩充作用域: with</li>
-<li>对象：delete,</li>
-<li>函数：return，new, this</li>
-</ol>
-</li>
-<li><p>es3: 保留字（以 浏览器兼容的版本为准） （分类不正确可以指出）</p>
-<ol>
-<li>变量声明:  const, volatile, transient, synchronized,</li>
-<li>数据类型:  int, float, short, long, double, boolean, char</li>
-<li>导入导出:  export, import,</li>
-<li>类:       class, static, public, private, super, protected, extends</li>
-<li>其他:     package, native, interface, implements, enum, byte, abstract</li>
-<li>判断:     goto</li>
-<li><p>调试:     throws, debugger, final</p>
-</li>
-<li><p>解释：（分类不正确可以指出）</p>
-<ul>
-<li>volatile:     在程序设计中，尤其是在 C 语言、C++、C# 和 Java 语言中，使用 volatile 关键字声明的变量或对象通常具有与优化、多线程相关的特殊属性。</li>
-<li>transient:    Java 中 transient 关键字的作用，简单地说，就是让某些被修饰的成员属性变量不被序列化</li>
-<li>synchronized: Java 中 synchronized 同步方法</li>
-<li>protected:    Java 或 C中 protected 类成员的修饰属性</li>
-<li>enum:         枚举</li>
-<li>abstract:     抽象</li>
-</ul>
-</li>
-</ol>
-<p>保留字每个版本都是不一致的，es3 定义的大量的保留字，但是在 es5 中的保留字相对来说就很少，并且是有严格模式和非严格模式之间的区别</p>
-</li>
-<li><p>es5: 保留字</p>
-<ol>
-<li>非严格模式：    class, enum, extends, super, const, export, import</li>
-<li>“use strict”: 在非严格模式基础上增加了，后面的保留字：implements, package, public, interface, private, static, let, protected, yield, eval, arguments</li>
-</ol>
-</li>
-</ol>
-<hr>
-<p>参考文献：</p>
-<ul>
-<li>《JavaScript 高级程序设计》 第三版</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/20/ES6 模块/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/20/ES6 模块/" itemprop="url">ES6 模块</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-20T12:48:44+08:00">
-                2018-07-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《深入理解-ES6》/" itemprop="url" rel="index">
-                    <span itemprop="name">《深入理解 ES6》</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  382
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="ES6之前的代码模块封装"><a href="#ES6之前的代码模块封装" class="headerlink" title="ES6之前的代码模块封装"></a>ES6之前的代码模块封装</h3><ol>
-<li>使用闭包，产生一个作用域去封装数据和代码，并挂载到 window 对象</li>
-</ol>
-<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><ol>
-<li>模块是是什么：模块是自动运行在严格模式下并且没有办法退出运行的 JavaScript 代码。</li>
-</ol>
-<h3 id="模块化的特点："><a href="#模块化的特点：" class="headerlink" title="模块化的特点："></a>模块化的特点：</h3><ol>
-<li>与作用域的关系：在模块顶部创建的变量不会自动添加到全局共享作用域，只会在该模块的顶级作用域中存在</li>
-<li>在模块的顶部，；this 的值是 undefined</li>
-<li>模块不支持 HTML 风格的代码注释</li>
-</ol>
-<h3 id="模块和脚本的区别"><a href="#模块和脚本的区别" class="headerlink" title="模块和脚本的区别"></a>模块和脚本的区别</h3><ol>
-<li>脚本：任何不是模块的 JavaScript 代码</li>
-</ol>
-<h3 id="模块的-导入和导出"><a href="#模块的-导入和导出" class="headerlink" title="模块的 导入和导出"></a>模块的 导入和导出</h3><ul>
-<li><p>导出：导出声明和导出引用</p>
-</li>
-<li><p>导入：导入单个绑定，导入多个绑定，命名空间导入, 无绑定导入</p>
-</li>
-<li><p>注意：不管 import 语句把一个模块写了多少次，该模块将只执行一次</p>
-</li>
-<li><p>as 可以用于改变导入或导出的名字</p>
-</li>
-<li><p>导入和导出默认值这个语法被优化过，尽量使用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; name <span class="keyword">as</span> <span class="keyword">default</span> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重新导出一个绑定</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">'./path'</span></span><br><span class="line"><span class="keyword">export</span> &#123; name <span class="keyword">as</span> newName &#125; <span class="string">'./path'</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>模块语法的限制</p>
-<ol>
-<li><p>export 和 import 一个重要的限制是：它们必须在其他语句和函数之外使用，否则会出现语法的错误</p>
-<ul>
-<li>原因： 其中一个原因： 是要让 JavaScript 引擎静态地确定哪些可以导出</li>
-</ul>
-</li>
-<li><p>import 只能在顶部使用</p>
-</li>
-</ol>
-</li>
-</ul>
-<hr>
-<p>参考文献：</p>
-<ul>
-<li>《深入理解 ES6》</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/12/git 删除远程 commit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/12/git 删除远程 commit/" itemprop="url">git 删除远程 commit</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-12T17:05:42+08:00">
-                2018-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  164
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="发现上一个-push-到远程分支的-commit-有问题，需要删除它，并工作区的代码不受到影响："><a href="#发现上一个-push-到远程分支的-commit-有问题，需要删除它，并工作区的代码不受到影响：" class="headerlink" title="发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响："></a>发现上一个 push  到远程分支的 commit 有问题，需要删除它，并工作区的代码不受到影响：</h3><ol>
-<li>是回到指定的 commit 版本，回到指定的版本的时候 stash 中的代码都会 pop</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset commit_id</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>把工作区的代码储藏，这一步是为了准备同步 本地和 远程的版本</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>为啥不用 git push 而是使用强制推送？，你试试就知道</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push --force</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>把储藏的文件释放到工作区中 为下一次提交做准本</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash pop</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>正常的 push 流程</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add &lt;file&gt;....</span><br><span class="line">$ git commit -m &quot;xxx&quot;</span><br><span class="line">$ git push</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/10/Array 之 ES5 map/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/10/Array 之 ES5 map/" itemprop="url">Array 之 ES5 map</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-10T11:45:31+08:00">
-                2018-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  260
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="Array-prototype-map"><a href="#Array-prototype-map" class="headerlink" title="Array.prototype.map"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank" rel="noopener">Array.prototype.map</a></h3><ul>
-<li><p>Grammar:</p>
-<ol>
-<li>array.map(callback[, thisArg])</li>
-<li>array.map(callback(currentValue, index, array){ //do something }, this)</li>
-</ol>
-</li>
-<li><p>Description: 迭代数组</p>
-</li>
-<li>Return: 迭代后的数组</li>
-<li><p>特点：</p>
-<ol>
-<li>中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError</li>
-<li>可在回调函数中使用 return 替换当前的元素</li>
-<li>不会改变原数组</li>
-</ol>
-</li>
-<li><p>Compared with forEach:</p>
-<ol>
-<li>不同点：<ul>
-<li>可在回调函数中使用 return 替换当前的元素</li>
-<li>返回值是迭代后的数组，支持链式调用</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._map) &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 循环数组中的元素，可以在 callback function 中使用 return 生成新的数组的元素</span></span><br><span class="line"><span class="comment">     * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">     * @returns &#123;Array&#125; 改变</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(<span class="built_in">Array</span>.prototype, <span class="string">'_map'</span>, &#123;</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> i,</span><br><span class="line">                len,</span><br><span class="line">                result;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 1. 判断参数</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 判断数组长度</span></span><br><span class="line">            len = <span class="keyword">this</span>.length;</span><br><span class="line">            <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 3. 初始化循环起点，并开始循环</span></span><br><span class="line">            result = [];</span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; len) &#123;</span><br><span class="line">              result = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>) <span class="comment">// 在 Array.prototype._forEach 中没有赋值这一步</span></span><br><span class="line">              i++</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
-</ul>
-<hr>
-<p>参考资料：</p>
-<ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/09/Array 之 ES6 find/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/09/Array 之 ES6 find/" itemprop="url">Array 之 ES6 find</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-09T09:57:01+08:00">
-                2018-07-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  269
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="Array-prototype-find"><a href="#Array-prototype-find" class="headerlink" title="Array.prototype.find"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/find" target="_blank" rel="noopener">Array.prototype.find</a></h3><ul>
-<li>Grammar: arr.find(callback[, thisArg])</li>
-<li>Description: 遍历 arr 每次调用 callback，并 callback 的值为 true，则返回对应的元素，否则返回 undefind;</li>
-<li>Return: 数据类型：*</li>
-<li><p>特点：满足该条件的时候就立即返回对应的值，不会遍历完所有的元素，除非我们要找到的元素在数组的最后一个, 中途不可跳出循环，使用 break 会导致：Uncaught SyntaxError；</p>
-</li>
-<li><p><a href="https://www.pengjiandry.com/2018/04/20/Array%20%E4%B9%8B%20ES6%20findIndex/">Compared with Array.prototype.findIndex</a></p>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Array</span>.prototype._find) &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 返回满足条件的第一个元素，若数组没有项元素满足条件则返回 undefined</span></span><br><span class="line"><span class="comment">   * @param &#123;Function&#125; callback</span></span><br><span class="line"><span class="comment">   * @returns &#123;*&#125; result</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    <span class="built_in">Array</span>.prototype._find = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i,</span><br><span class="line">            callbackState,</span><br><span class="line">            result,</span><br><span class="line">            len;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 1. 判断callback</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// #region 2. 判断数组长度</span></span><br><span class="line">        len = <span class="keyword">this</span>.length;</span><br><span class="line">        <span class="keyword">if</span> (!len) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">// #endregion 2. 判断数组长度</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            callbackState = callback(<span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">if</span> (callbackState) &#123;</span><br><span class="line">                result = <span class="keyword">this</span>[i]; <span class="comment">// 在 Array.prototype._findIndex 中 result =i</span></span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 是否使用 break，决定了获取到的值的顺序</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>thisArg 这个参数都很少使用，所以就没实现这个功能</li>
-</ul>
-<hr>
-<p>参考资料：</p>
-<ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Typed_arrays" target="_blank" rel="noopener">MDN</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/07/我的 CSS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/07/我的 CSS/" itemprop="url">我的 CSS</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-07T18:25:47+08:00">
-                2018-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  111
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="HTML5秘籍-第-6-章-美妙的-CSS3-字体和特效"><a href="#HTML5秘籍-第-6-章-美妙的-CSS3-字体和特效" class="headerlink" title="HTML5秘籍 第 6 章 - 美妙的 CSS3 字体和特效"></a>HTML5秘籍 第 6 章 - 美妙的 CSS3 字体和特效</h3><p>工具：</p>
-<ol>
-<li>使用 Can i use 去检查 CSS 的兼容</li>
-<li>-prefix-free 库自动为需要添加浏览器前缀的 CSS 样式</li>
-</ol>
-<hr>
-<h3 id="CSS-分类"><a href="#CSS-分类" class="headerlink" title="CSS 分类"></a>CSS 分类</h3><ol>
-<li><p>透明：<br> CSS3: opacity, rgba()</p>
-</li>
-<li><p>圆角：<br> CSS3: border-radius</p>
-</li>
-<li><p>背景：<br> CSS3: background-image, background-position, background-repeat</p>
-</li>
-<li><p>阴影(CSS3)</p>
-<ul>
-<li><p>盒子阴影<br> CSS3: box-shadow [IE 9]</p>
-</li>
-<li><p>文本阴影<br> CSS3: text-shadow [IE 10]</p>
-</li>
-</ul>
-</li>
-<li><p>渐变(CSS3)</p>
-<ul>
-<li>线性渐变: linear-gradient() [IE 10]</li>
-<li>放射性渐变: radial-gradient() [IE 10]</li>
-</ul>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2503,7 +2655,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2593,7 +2745,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">49.4k</span>
+    <span title="博客总字数">53.5k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

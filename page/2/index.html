@@ -307,6 +307,393 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/11/Nodejs play - 连接 MySQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/11/Nodejs play - 连接 MySQL/" itemprop="url">Nodejs play - 连接 MySQL</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-11T20:06:16+08:00">
+                2018-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  781
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>前面水了这多篇 SQL 和数据库基础的知识，今天终于进行大前端的技术栈的主题了😄</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
+<li><a href="mailto:MySQL@8.0.1" target="_blank" rel="noopener">MySQL@8.0.1</a> <blockquote>
+<p>下载，安装，出门 google 右转或者 👇<br><a href="https://www.pengjiandry.com/2018/11/10/%E6%95%B0%E6%8D%AE%E5%BA%93%20-%20MySQL-%E5%88%9D%E8%AF%86/">Mac 下载并使用 MySQL</a></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><a href="mailto:Nodejs@10.10.0" target="_blank" rel="noopener">Nodejs@10.10.0</a></p>
+</li>
+<li><p><a href="https://www.npmjs.com/package/mysql" target="_blank" rel="noopener">npm: mysql@2.16.0</a></p>
+</li>
+</ul>
+<h3 id="Nodejs-code-git-commit"><a href="#Nodejs-code-git-commit" class="headerlink" title="Nodejs code git commit"></a>Nodejs code <a href="https://github.com/jamesjianpeng/nodejs-play/commit/e444c963ed29f850f4f8ee50c7eb2b396050dfe4" target="_blank" rel="noopener">git commit</a></h3>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    host: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">    port: <span class="number">3306</span>,</span><br><span class="line">    user: <span class="string">'root'</span>,</span><br><span class="line">    password: <span class="string">'xxxxxx'</span>,</span><br><span class="line">    database: <span class="string">'NodeTest'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(options)</span><br><span class="line"></span><br><span class="line">connection.connect()</span><br><span class="line"></span><br><span class="line">connection.end()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>连接成功之后，立刻关闭</p>
+</blockquote>
+<h4 id="连接的时候遇到问题"><a href="#连接的时候遇到问题" class="headerlink" title="连接的时候遇到问题"></a>连接的时候遇到问题</h4><ul>
+<li>Q: Client does not support authentication protocol requested by server; consider upgrading MySQL client</li>
+<li><p>A: 登陆之后使用下面的操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use mysql;</span><br><span class="line">Reading table information for completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED WITH mysql_native_password BY &apos;xxxxxxx&apos;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server" target="_blank" rel="noopener">答案地址</a></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="MySQL-相关的准备"><a href="#MySQL-相关的准备" class="headerlink" title="MySQL 相关的准备"></a>MySQL 相关的准备</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root -p</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE DATABASE NodeTest;</span><br><span class="line">Query OK, 1 row affected (0.07 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; USE NodeTest;</span><br><span class="line">Database changed</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE TABLE Product</span><br><span class="line">  -&gt; (product_id CHAR(4) NOT NULL,</span><br><span class="line">  -&gt; product_name VARCHAR(100) NOT NULL,</span><br><span class="line">  -&gt; product_type VARCHAR(32),</span><br><span class="line">  -&gt; sale_price   INTEGER ,</span><br><span class="line">  -&gt; purchase_price INTEGER ,</span><br><span class="line">  -&gt; regist_data DATE ,</span><br><span class="line">  -&gt; PRIMARY KEY (product_id));</span><br><span class="line">Query OK, 0 rows affected (0.10 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; show columns from Product;</span><br><span class="line">+----------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field          | Type         | Null | Key | Default | Extra |</span><br><span class="line">+----------------+--------------+------+-----+---------+-------+</span><br><span class="line">| product_id     | char(4)      | NO   | PRI | NULL    |       |</span><br><span class="line">| product_name   | varchar(100) | NO   |     | NULL    |       |</span><br><span class="line">| product_type   | varchar(32)  | YES  |     | NULL    |       |</span><br><span class="line">| sale_price     | int(11)      | YES  |     | NULL    |       |</span><br><span class="line">| purchase_price | int(11)      | YES  |     | NULL    |       |</span><br><span class="line">| regist_data    | date         | YES  |     | NULL    |       |</span><br><span class="line">+----------------+--------------+------+-----+---------+-------+</span><br><span class="line">6 rows in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO Product VALUES (&apos;001&apos;, &apos;T恤👕&apos;, &apos;衣服&apos;, 100, 20, &apos;2018-10-16&apos;);</span><br><span class="line">Query OK, 1 row affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO Product VALUES (&apos;002&apos;, &apos;滑板鞋👟&apos;, &apos;鞋子&apos;, 100, 20, &apos;2018-11-11&apos;);</span><br><span class="line">Query OK, 1 row affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM Product;</span><br><span class="line">+------------+---------------+--------------+------------+----------------+-------------+</span><br><span class="line">| product_id | product_name  | product_type | sale_price | purchase_price | regist_data |</span><br><span class="line">+------------+---------------+--------------+------------+----------------+-------------+</span><br><span class="line">| 001        | T恤👕           | 衣服         |        100 |             20 | 2018-10-16  |</span><br><span class="line">| 002        | 滑板鞋👟        | 鞋子         |        100 |             20 | 2018-11-11  |</span><br><span class="line">+------------+---------------+--------------+------------+----------------+-------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>登陆，创建一个数据库，并切换到该数据库，创建一个表（指定列，和约束），插入两条数据</p>
+</blockquote>
+<h3 id="继续完善-Nodejs-code"><a href="#继续完善-Nodejs-code" class="headerlink" title="继续完善 Nodejs code"></a>继续完善 Nodejs code</h3>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">connection.connect()</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">'SELECT * FROM Product'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">    <span class="built_in">console</span>.log(results)</span><br><span class="line">    <span class="built_in">console</span>.log(fields)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.end()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>results 是查询的结果<br>fields 是查询字段的元信息</p>
+</blockquote>
+<ul>
+<li><p>在终端中出现的输出：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">[ RowDataPacket &#123;</span><br><span class="line">    product_id: '001',</span><br><span class="line">    product_name: 'T恤?',</span><br><span class="line">    product_type: '衣服',</span><br><span class="line">    sale_price: 100,</span><br><span class="line">    purchase_price: 20,</span><br><span class="line">    regist_data: 2018-10-15T16:00:00.000Z &#125;,</span><br><span class="line">  RowDataPacket &#123;</span><br><span class="line">    product_id: '002',</span><br><span class="line">    product_name: '滑板鞋?',</span><br><span class="line">    product_type: '鞋子',</span><br><span class="line">    sale_price: 100,</span><br><span class="line">    purchase_price: 20,</span><br><span class="line">    regist_data: 2018-11-10T16:00:00.000Z &#125; ]</span><br><span class="line">[ FieldPacket &#123;</span><br><span class="line">    catalog: 'def',</span><br><span class="line">    db: 'nodetest',</span><br><span class="line">    table: 'Product',</span><br><span class="line">    orgTable: 'product',</span><br><span class="line">    name: 'product_id',</span><br><span class="line">    orgName: 'product_id',</span><br><span class="line">    charsetNr: 33,</span><br><span class="line">    length: 12,</span><br><span class="line">    type: 254,</span><br><span class="line">    flags: 20483,</span><br><span class="line">    decimals: 0,</span><br><span class="line">    default: undefined,</span><br><span class="line">    zeroFill: false,</span><br><span class="line">    protocol41: true &#125;,</span><br><span class="line">  FieldPacket &#123;</span><br><span class="line">    catalog: 'def',</span><br><span class="line">    db: 'nodetest',</span><br><span class="line">    table: 'Product',</span><br><span class="line">    orgTable: 'product',</span><br><span class="line">    name: 'product_name',</span><br><span class="line">    orgName: 'product_name',</span><br><span class="line">    charsetNr: 33,</span><br><span class="line">    length: 300,</span><br><span class="line">    type: 253,</span><br><span class="line">    flags: 4097,</span><br><span class="line">    decimals: 0,</span><br><span class="line">    default: undefined,</span><br><span class="line">    zeroFill: false,</span><br><span class="line">    protocol41: true &#125;,</span><br><span class="line">  FieldPacket &#123;</span><br><span class="line">    catalog: 'def',</span><br><span class="line">    db: 'nodetest',</span><br><span class="line">    table: 'Product',</span><br><span class="line">    orgTable: 'product',</span><br><span class="line">    name: 'product_type',</span><br><span class="line">    orgName: 'product_type',</span><br><span class="line">    charsetNr: 33,</span><br><span class="line">    length: 96,</span><br><span class="line">    type: 253,</span><br><span class="line">    flags: 0,</span><br><span class="line">    decimals: 0,</span><br><span class="line">    default: undefined,</span><br><span class="line">    zeroFill: false,</span><br><span class="line">    protocol41: true &#125;,</span><br><span class="line">  FieldPacket &#123;</span><br><span class="line">    catalog: 'def',</span><br><span class="line">    db: 'nodetest',</span><br><span class="line">    table: 'Product',</span><br><span class="line">    orgTable: 'product',</span><br><span class="line">    name: 'sale_price',</span><br><span class="line">    orgName: 'sale_price',</span><br><span class="line">    charsetNr: 63,</span><br><span class="line">    length: 11,</span><br><span class="line">    type: 3,</span><br><span class="line">    flags: 0,</span><br><span class="line">    decimals: 0,</span><br><span class="line">    default: undefined,</span><br><span class="line">    zeroFill: false,</span><br><span class="line">    protocol41: true &#125;,</span><br><span class="line">  FieldPacket &#123;</span><br><span class="line">    catalog: 'def',</span><br><span class="line">    db: 'nodetest',</span><br><span class="line">    table: 'Product',</span><br><span class="line">    orgTable: 'product',</span><br><span class="line">    name: 'purchase_price',</span><br><span class="line">    orgName: 'purchase_price',</span><br><span class="line">    charsetNr: 63,</span><br><span class="line">    length: 11,</span><br><span class="line">    type: 3,</span><br><span class="line">    flags: 0,</span><br><span class="line">    decimals: 0,</span><br><span class="line">    default: undefined,</span><br><span class="line">    zeroFill: false,</span><br><span class="line">    protocol41: true &#125;,</span><br><span class="line">  FieldPacket &#123;</span><br><span class="line">    catalog: 'def',</span><br><span class="line">    db: 'nodetest',</span><br><span class="line">    table: 'Product',</span><br><span class="line">    orgTable: 'product',</span><br><span class="line">    name: 'regist_data',</span><br><span class="line">    orgName: 'regist_data',</span><br><span class="line">    charsetNr: 63,</span><br><span class="line">    length: 10,</span><br><span class="line">    type: 10,</span><br><span class="line">    flags: 128,</span><br><span class="line">    decimals: 0,</span><br><span class="line">    default: undefined,</span><br><span class="line">    zeroFill: false,</span><br><span class="line">    protocol41: true &#125; ]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>应该注意到 emoji 没有被解析出来，待更新</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="本地开发模式，还需要在服务器上安装-mysql-并连接（待更新）"><a href="#本地开发模式，还需要在服务器上安装-mysql-并连接（待更新）" class="headerlink" title="本地开发模式，还需要在服务器上安装 mysql 并连接（待更新）"></a>本地开发模式，还需要在服务器上安装 mysql 并连接（待更新）</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/10/数据库 - MySQL-初识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/10/数据库 - MySQL-初识/" itemprop="url">数据库 - MySQL 初识</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-10T19:31:00+08:00">
+                2018-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  346
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="mac-下载并使用-MySql"><a href="#mac-下载并使用-MySql" class="headerlink" title="mac 下载并使用 MySql"></a>mac 下载并使用 MySql</h3><h4 id="社区版下载"><a href="#社区版下载" class="headerlink" title="社区版下载"></a>社区版下载</h4><ol>
+<li><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a></li>
+<li>下载后直接双击安装，可以设置密码，或者随机分配密码，user 都是 root</li>
+</ol>
+<h4 id="开启-MySql-服务"><a href="#开启-MySql-服务" class="headerlink" title="开启 MySql 服务"></a>开启 MySql 服务</h4><ol>
+<li>知道软件位置 系统偏好设置 &gt; MySql(小海豚标识)</li>
+<li>安装好之后默认是 Start MySql Server</li>
+<li>在任何地方使用 mysql 命令，在终端中输入：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATH=&quot;$PATH&quot;:/usr/local/mysql/bin</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="连接和退出"><a href="#连接和退出" class="headerlink" title="连接和退出"></a>连接和退出</h4><ol>
+<li>第一种链接：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li>输入密码之后，链接成功；终端可以输入的位置是这样的：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="3">
+<li>第二种链接方式(缩写)：(前提是有 data_name 这个数据库)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h localhost -u root -p &lt;data_name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="4">
+<li><p>第三种链接方式(非缩写)：(前提是有 data_name 这个数据库)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql --host=127.0.0.1 --port=3306 --user=root --password &lt;data_name&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意这里 host 使用 127.0.0.1 而不是 localhost<br>若显式的指定 port 的话需要使用 MySQL 的默认端口 3306 （除非你自己修改过 my.cnf ）</p>
+</blockquote>
+</li>
+<li><p>查看 mysql 的配置，这个是登陆之后才能用的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables;</span><br></pre></td></tr></table></figure>
+<p>或者直接查看配置文件，配置文件的位置需要自己去找找</p>
+</li>
+<li><p>退出 mysql 连接( mysql&gt; 是终端中 mysql 服务的标识)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; quit</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; exit</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><a href="https://dev.mysql.com/doc/refman/8.0/en/connecting.html" target="_blank" rel="noopener">MySQL - 连接 MySQL 服务器</a></li>
+<li><a href="https://github.com/jaywcjlove/mysql-tutorial/blob/master/chapter2/2.5.md" target="_blank" rel="noopener">MySQL 配置修改</a></li>
+<li><a href="https://blog.csdn.net/jyongchong/article/details/77862819" target="_blank" rel="noopener">Mac 安装 MySQL my.cnf 配置文件</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/10/数据库 - 数据库设计（二）关系数据库设计方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2977,527 +3364,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/PHP - 基础知识（一）在 HTML 中嵌入 PHP 以及 PHP 语句和标识符/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/04/PHP - 基础知识（一）在 HTML 中嵌入 PHP 以及 PHP 语句和标识符/" itemprop="url">PHP - 基础知识（一）在 HTML 中嵌入 PHP 以及 PHP 语句和标识符</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T13:17:09+08:00">
-                2018-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《PHP-and-MySQL-Web-Development》第五版/" itemprop="url" rel="index">
-                    <span itemprop="name">《PHP and MySQL Web Development》第五版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  638
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>Mac 环境下 PHP 环境搭建 <a href="https://www.pengjiandry.com/2018/11/03/PHP%20-%20%E5%88%9D%E8%AF%86/">PHP - 初识</a></p>
-<h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/76a0e3ad6f2a655fdd43acb55bd90e4e577a0971" target="_blank" rel="noopener">git commit</a></h2><h3 id="在-HTML-文档中嵌入-PHP"><a href="#在-HTML-文档中嵌入-PHP" class="headerlink" title="在 HTML 文档中嵌入 PHP"></a>在 HTML 文档中嵌入 PHP</h3>  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"ie=edge"</span>&gt;</span><br><span class="line">    &lt;title&gt; processorder.html &lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt; james 😁 &lt;/h1&gt;</span><br><span class="line">    <span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="string">'&lt;p&gt; Hello world ... &lt;/p&gt;'</span>; <span class="meta">?&gt;</span></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>请注意：这个文件的后缀是 .php 请不要使用 .html 结尾，不然会把 PHP 中 ?&gt; 现在页面中</p>
-<p>为什么会这样呢？</p>
-<ol>
-<li><p>浏览器并不理解 PHP 代码，所以在以 .html 结尾的资源中嵌入 PHP 代码，浏览器会把 PHP 当作 HTML 文档来解释</p>
-</li>
-<li><p>若是采用 .php 为后缀的资源，我们在访问该资源的时候。PHP 代码已经在服务端被 PHP 的解释器处理过</p>
-</li>
-</ol>
-<p><a href="https://segmentfault.com/a/1190000007322358" target="_blank" rel="noopener"></a></p>
-</blockquote>
-<h3 id="PHP-标记"><a href="#PHP-标记" class="headerlink" title="PHP 标记"></a>PHP 标记</h3><p>  开始标记： &lt;?php</p>
-<p>  结束标记： ?&gt; </p>
-  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    php 语句</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>XML 风格</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="string">'hello'</span>; <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>简短风格</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span> <span class="keyword">echo</span> <span class="string">'hello'</span>; <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="PHP-语句"><a href="#PHP-语句" class="headerlink" title="PHP 语句"></a>PHP 语句</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">'hello'</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'world'</span>;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意 语句后面的 ;</p>
-<p>php 的空行的处理和 HTML 文档中的处理类型，把 PHP 语句（HTML 的元素）之间的空格都合并掉</p>
-</blockquote>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ul>
-<li>PHP 解释器将忽略任何注释文本</li>
-<li><p>需要放在 PHP 标识之间</p>
-</li>
-<li><p>多行注释</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> php 多行注释</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>多行注释无法嵌套</p>
-</blockquote>
-<ul>
-<li><p>单行注释</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// 单行注释</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>shell 脚本的风格注释</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># shell 脚本风格注释</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="服务端语言-PHP-是可以提供动态的内容-这是和-静态的-HTML-文档之间一个区别"><a href="#服务端语言-PHP-是可以提供动态的内容-这是和-静态的-HTML-文档之间一个区别" class="headerlink" title="服务端语言 PHP 是可以提供动态的内容 这是和 静态的 HTML 文档之间一个区别"></a>服务端语言 PHP 是可以提供动态的内容 这是和 静态的 HTML 文档之间一个区别</h3><ul>
-<li><p>例子：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="meta">&lt;?php</span> </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 服务端语言 PHP 可以提供动态的内容</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;p&gt; time '</span>; </span><br><span class="line">        <span class="keyword">echo</span> date(<span class="string">'H:i, js F Y'</span>); </span><br><span class="line">        <span class="keyword">echo</span> <span class="string">' end... &lt;/p&gt;'</span>; </span><br><span class="line"></span><br><span class="line">    <span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">&lt;?php</span> </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 服务端语言 PHP 可以提供动态的内容</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;p&gt; time '</span>.date(<span class="string">'H:i, js F Y'</span>).<span class="string">' end... &lt;/p&gt;'</span>; </span><br><span class="line"></span><br><span class="line">    <span class="meta">?&gt;</span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>连接操作符号(.) 可以将 php 代码编写在一行</p>
-<p>上面的两句是等价的</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h3><ul>
-<li>functionName(params)</li>
-</ul>
-<h3 id="字符串链接"><a href="#字符串链接" class="headerlink" title="字符串链接"></a>字符串链接</h3><ul>
-<li>变量使用连接操作符号(.) 和 单引号 一起使用</li>
-<li><p>双引号包裹变量</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">&lt;?php</span></span><br><span class="line">    </span><br><span class="line">    $tireqty = htmlspecialchars($_POST[<span class="string">'tireqty'</span>]);</span><br><span class="line">    $oilqty = htmlspecialchars($_POST[<span class="string">'oilqty'</span>]);</span><br><span class="line">    $sparkqty = htmlspecialchars($_POST[<span class="string">'sparkqty'</span>]);</span><br><span class="line">    $fileqty = htmlspecialchars($_POST[<span class="string">'fileqty'</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"$tireqty - tireqty&lt;br /&gt;"</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"$oilqty - oilqty&lt;br /&gt;"</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"$sparkqty - sparkqty&lt;br /&gt;"</span>;</span><br><span class="line">    <span class="keyword">echo</span> $fileqty.<span class="string">' - fileqty&lt;br /&gt;'</span>;</span><br><span class="line"> </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在双引号中，变量名称将被变量值所代替</p>
-<p>单引号中，变量名称或者任何其他的文本都会不经修改而发送给浏览器</p>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/03/PHP - 初识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/03/PHP - 初识/" itemprop="url">PHP - 初识</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-03T22:17:37+08:00">
-                2018-11-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《PHP-and-MySQL-Web-Development》第五版/" itemprop="url" rel="index">
-                    <span itemprop="name">《PHP and MySQL Web Development》第五版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  639
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="什么是-PHP"><a href="#什么是-PHP" class="headerlink" title="什么是 PHP"></a>什么是 PHP</h2><ul>
-<li>PHP 是一种专门为 WEB 设计的服务器脚本语言</li>
-</ul>
-<h3 id="PHP-的诞生和发展"><a href="#PHP-的诞生和发展" class="headerlink" title="PHP 的诞生和发展"></a>PHP 的诞生和发展</h3><ul>
-<li>1994年出现 Rasmus Lerdorf </li>
-<li>PHP 最初的含义：Personal Home Page(个人主页)，后来使用 GNU 命名规则（GNU = Gnu’s Not UNIX）如今是 PHP 超文本预处理程序（PHP, Hypertext Preprocessor）的缩写</li>
-<li>PHP 如今的版本：7，主页：<a href="http://www.php.net。PHP" target="_blank" rel="noopener">http://www.php.net。PHP</a> 7 的引擎 Zend 经过完全重写，其主页：<a href="http://www.zend.com" target="_blank" rel="noopener">http://www.zend.com</a></li>
-</ul>
-<h3 id="PHP-的优点（待完善）"><a href="#PHP-的优点（待完善）" class="headerlink" title="PHP 的优点（待完善）"></a>PHP 的优点（待完善）</h3><ul>
-<li>高性能</li>
-<li>扩展性</li>
-<li>数据库集成</li>
-<li>内置函数</li>
-<li>容易学习</li>
-</ul>
-<h3 id="Mac-搭建-PHP-环境"><a href="#Mac-搭建-PHP-环境" class="headerlink" title="Mac 搭建 PHP 环境"></a>Mac 搭建 PHP 环境</h3><ul>
-<li><p>nginx 1.12.0<a href="https://www.pengjiandry.com/2018/09/20/%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1/">nginx 的安装和基本操作</a></p>
-</li>
-<li><p>PHP 7.1.6</p>
-</li>
-<li><p>brew install php72</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">==&gt; php</span><br><span class="line">To <span class="built_in">enable</span> PHP <span class="keyword">in</span> Apache add the following to httpd.conf and restart Apache:</span><br><span class="line">    LoadModule php7_module /usr/<span class="built_in">local</span>/opt/php/lib/httpd/modules/libphp7.so</span><br><span class="line"></span><br><span class="line">    &lt;FilesMatch \.php$&gt;</span><br><span class="line">        SetHandler application/x-httpd-php</span><br><span class="line">    &lt;/FilesMatch&gt;</span><br><span class="line"></span><br><span class="line">Finally, check DirectoryIndex includes index.php</span><br><span class="line">    DirectoryIndex index.php index.html</span><br><span class="line"></span><br><span class="line">The php.ini and php-fpm.ini file can be found <span class="keyword">in</span>:</span><br><span class="line">    /usr/<span class="built_in">local</span>/etc/php/7.2/</span><br><span class="line"></span><br><span class="line">To have launchd start php now and restart at login:</span><br><span class="line">  brew services start php</span><br><span class="line">Or, <span class="keyword">if</span> you don<span class="string">'t want/need a background service you can just run:</span></span><br><span class="line"><span class="string">  php-fpm</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>安装成功以后就是上面这种状态</p>
-</blockquote>
-</li>
-<li><p>使用 php-fpm <a href="https://github.com/musicode/test/issues/5" target="_blank" rel="noopener">参考这篇文章</a></p>
-</li>
-<li><p>php-fpm 的配置是在 </p>
-<pre>/private/etc/php-fpm.d/*.conf</pre> <pre>/private/etc/php-fpm.conf </pre>
-</li>
-<li><p>/private/etc/php-fpm.conf 细节</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">global</span>]</span><br><span class="line">pid = /usr/local/<span class="keyword">var</span>/run/php-fpm.pid</span><br><span class="line">error_log = /usr/local/<span class="keyword">var</span>/log/php-fpm/php-fpm.log</span><br><span class="line"><span class="keyword">include</span>=/<span class="keyword">private</span>/etc/php-fpm.d<span class="comment">/*.conf</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注释都删除掉</p>
-</blockquote>
-</li>
-<li><p>/private/etc/php-fpm.d/<a href="http://www.conf" target="_blank" rel="noopener">www.conf</a> 细节</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[www]</span><br><span class="line">user = nobody</span><br><span class="line">group = nobody</span><br><span class="line"></span><br><span class="line">listen = <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9997</span></span><br><span class="line"></span><br><span class="line">pm = dynamic</span><br><span class="line">pm.max_children = <span class="number">5</span></span><br><span class="line">pm.start_servers = <span class="number">2</span></span><br><span class="line">pm.min_spare_servers = <span class="number">1</span></span><br><span class="line">pm.max_spare_servers = <span class="number">3</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注释都删除掉</p>
-</blockquote>
-</li>
-<li><p>nginx 的配置</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name _;</span><br><span class="line"></span><br><span class="line">    root /Users/pengjian/Personal/web-BE/PHP/nginx_entry;</span><br><span class="line">    index index.html index.htm index.php;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.php<span class="variable">$is_args</span><span class="variable">$args</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        try_files <span class="variable">$uri</span> =404;</span><br><span class="line"></span><br><span class="line">        include fastcgi.conf;</span><br><span class="line">        fastcgi_pass 127.0.0.1:9997;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>注意的地方：</p>
-<ol>
-<li><p>nginx 配置的位置是在： /usr/local/etc/nginx/nginx.conf</p>
-</li>
-<li><p>root /Users/pengjian/Personal/web-BE/PHP/nginx_entry ,需要在对应目录新建一个 index.php</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">echo</span> phpinfo();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>启动 php-fpm</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo php-fpm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看 php-fpm 进程数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep -c php-fpm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看 php-fpm 的内存的使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/php  -i|grep mem</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Q1 ：nginx 配置 server_name 的配置不管是哪一个，我在浏览中访问的都只能是使用 <code>http://localhost/</code> 或 <code>http://127.0.0.1/</code></p>
-<ol>
-<li>关掉 nginx 服务之后，就不能访问到对应的资源</li>
-</ol>
-</li>
-<li>Q2 ：nginx 和 PHP 服务的原理暂时不清楚😂，<a href="https://segmentfault.com/a/1190000007322358" target="_blank" rel="noopener">Nginx+Php-fpm原理详解</a></li>
-<li><p>Q3 ：php-fpm 进程无法退出</p>
-</li>
-<li><p>启动成功页面的输出：<br><img src="http://tc-html5dw-com.b0.upaiyun.com/bb80f/bb80f92a05935cfd53efaaa87729a767.png" alt="img"></p>
-</li>
-</ul>
-<hr>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
-<li><a href="https://github.com/musicode/test/issues/5" target="_blank" rel="noopener">https://github.com/musicode/test/issues/5</a></li>
-<li><a href="https://segmentfault.com/a/1190000007322358" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007322358</a></li>
-<li><a href="https://wizardforcel.gitbooks.io/nginx-doc/content/Text/6.5_nginx_php_fpm.html" target="_blank" rel="noopener">https://wizardforcel.gitbooks.io/nginx-doc/content/Text/6.5_nginx_php_fpm.html</a></li>
-<li><a href="http://blog.51cto.com/phpervip/1905673" target="_blank" rel="noopener">http://blog.51cto.com/phpervip/1905673</a></li>
-<li><a href="https://www.zybuluo.com/phper/note/89081" target="_blank" rel="noopener">https://www.zybuluo.com/phper/note/89081</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3552,7 +3418,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">83</span>
+                  <span class="site-state-item-count">85</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -3563,7 +3429,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -3642,7 +3508,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">53.5k</span>
+    <span title="博客总字数">54.7k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

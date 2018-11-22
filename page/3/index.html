@@ -307,6 +307,251 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（三）关系数据库的规范化理论/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/04/数据库 - 关系型数据库（三）关系数据库的规范化理论/" itemprop="url">数据库 - 关系型数据库（三）关系数据库的规范化理论</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T22:31:50+08:00">
+                2018-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  638
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="为什么要规范化（理论）"><a href="#为什么要规范化（理论）" class="headerlink" title="为什么要规范化（理论）"></a>为什么要规范化（理论）</h3><ul>
+<li>关系模型中可能存在的一些问题，</li>
+<li>规范化的作用<ol>
+<li>是关系数据库设计的理论依据</li>
+</ol>
+</li>
+<li>范围<ol>
+<li>是关系模式中各属性之间的依赖关系及其对关系性能的影响，为关系模式提供了优劣的理论标准</li>
+</ol>
+</li>
+</ul>
+<h4 id="关系模型中可能存在冗余和异常问题"><a href="#关系模型中可能存在冗余和异常问题" class="headerlink" title="关系模型中可能存在冗余和异常问题"></a>关系模型中可能存在冗余和异常问题</h4><ol>
+<li><p>数据冗余：同一数据被反反复复存储的情况</p>
+</li>
+<li><p>更新异常：数据冗余将导致存储空间的浪费和潜在数据不一致修改麻烦等问题</p>
+</li>
+<li><p>插入异常：应该插入到数据库中的数据不能执行插入操作的情形</p>
+</li>
+<li><p>删除异常：不应该删去的数据被删去的情形</p>
+<blockquote>
+<p>上述的情况和数据依赖密切相关</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="函数依赖和关键字（抄不动了😢）"><a href="#函数依赖和关键字（抄不动了😢）" class="headerlink" title="函数依赖和关键字（抄不动了😢）"></a>函数依赖和关键字（抄不动了😢）</h3><ol>
+<li>函数依赖：指关系中属性间的对应关系</li>
+<li>定义：设 R 为任一给定关系，如果对于 R 中属性 X 的每一个值，R 中的属性 Y 只用唯一值与之对应，则称 X 函数决定 Y 或称 Y 函数依赖于 X,记住 X -&gt; Y。其中，X 称为决定因素</li>
+</ol>
+<h4 id="函数依赖根据不同性质的分类（抄不动了😢）"><a href="#函数依赖根据不同性质的分类（抄不动了😢）" class="headerlink" title="函数依赖根据不同性质的分类（抄不动了😢）"></a>函数依赖根据不同性质的分类（抄不动了😢）</h4><ol>
+<li>完全函数依赖</li>
+<li>部分函数依赖</li>
+<li>传递函数依赖</li>
+</ol>
+<h3 id="范式与关系规范化（抄不动了😢）"><a href="#范式与关系规范化（抄不动了😢）" class="headerlink" title="范式与关系规范化（抄不动了😢）"></a>范式与关系规范化（抄不动了😢）</h3><ol>
+<li>规范化：一个低一级范式的关系模式通过模式分解（Schema Decomposition）可以转换为若干个高一级范式的关系模式的集合的过程</li>
+</ol>
+<h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><ol>
+<li><p>第一范式(1NF)</p>
+<ul>
+<li>不含重复组的关系，不存在嵌套结构</li>
+<li>不满足第一范式的关系称为非规范关系</li>
+</ul>
+</li>
+<li><p>第二范式(2NF)</p>
+<ul>
+<li>定义：设 R 为任一给定关系，若 R 为 1NF, 且所有非主属性都完全函数依赖于候选关键字，则 R 为第二范式 </li>
+</ul>
+</li>
+<li><p>第三范式(3NF)</p>
+<ul>
+<li>定义：设 R 为任一给定关系，若 R 为 2NF，且起每一个非主属性都不传递函数依赖于候选关键字，则 R 为第三范式<blockquote>
+<p>通常，第三范式的关系大多数都能解决插入和删除操作异常的情况，数据冗余也能得到有效的控制</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>BCNF（抄不动了😢）</p>
+<blockquote>
+<p>关系规范化理论主要应用于数据库设计中的概念设计阶段，用来分析其实体划分是否合适，判断属性具体分配到哪个实体中</p>
+</blockquote>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/PHP - 基础知识（二）变量，数据类型以及作用域/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2719,339 +2964,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/23/数据库 - 数据库系统（一）四个基本概念以及数据管理技术的发展/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/23/数据库 - 数据库系统（一）四个基本概念以及数据管理技术的发展/" itemprop="url">数据库 - 数据库系统（一）四个基本概念以及数据管理技术的发展</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-23T07:02:44+08:00">
-                2018-10-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><ul>
-<li><p>数据是什么(待更新)</p>
-<ol>
-<li>数据（Data）是描述事物的符号记录，是指物理符号记录下来的，可以鉴别的信息，它的表现形式有多样，包括数字，字母，文字，特殊字符组成的文本数据，也可以是图形，图像，动画，影像，声音，语言等多媒体数据<blockquote>
-<p>数据库系统原理（04735）P28 </p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>信息</p>
-<ol>
-<li>数据的解释是对数据含义的说明，也称为数据的语义，即数据所蕴含的信息</li>
-<li>语义与其语义是密不可分，没有语义的数据是没有意义和不完整的</li>
-<li>数据是信息存在的一种形式，只有通过解释或处理的数据才能成为有用的信息 <blockquote>
-<p>数据库系统原理（04735）P28 </p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
-<li><p>数据库是什么</p>
-<ol>
-<li><p>将大量数据保存起来，通过计算机加工而成的可以进行高效访问的数据集合</p>
-<blockquote>
-<p>《SQL基础教程》第二版</p>
-</blockquote>
-</li>
-<li><p>可以称为存储数据的仓库，这个仓库是存储在计算机存储设备上，并且所存储的数据是按一定的格式进行存储的</p>
-<blockquote>
-<p>数据库系统原理（04735）P28 </p>
-</blockquote>
-</li>
-<li>严格意义上：数据库是指，长期储存在计算机中的有组织的，可共享的数据集合，且数据库中的数据按一定的数据模型组织，描述和存储，具有较小的冗余度，较高的数据独立性，系统易于扩展，并被多个用户共享<blockquote>
-<p>数据库系统原理（04735）P28 </p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>数据库的特点</p>
-<ol>
-<li>永久存储</li>
-<li>有组织</li>
-<li>可共享<blockquote>
-<p>数据库系统原理（04735）P28 </p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="数据库管理系统（Database-Management-System，DBMS）"><a href="#数据库管理系统（Database-Management-System，DBMS）" class="headerlink" title="数据库管理系统（Database Management System，DBMS）"></a>数据库管理系统（Database Management System，DBMS）</h3><ul>
-<li><p>数据库管理系统（DBMS）是什么</p>
-<ol>
-<li><p>用来管理数据库的计算机系统称为数据库管理系统（DBMS）</p>
-</li>
-<li><p>是专门用于建立和管理数据库的一套软件，介于应用程序和操作系统之间</p>
-<blockquote>
-<p>我们所用的 Dbeaver,Navicat Premium 是图形可视化管理工具，数据库管理系统就是存在它和操作系统之间的系统</p>
-</blockquote>
-</li>
-<li>功能：<ol>
-<li>数据定义功能</li>
-<li>数据操作功能</li>
-<li>数据库运行管理功能</li>
-<li>数据库的建立和维护功能</li>
-<li>数据组织，存储和管理功能</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-<blockquote>
-<p>数据库系统原理（04735）P29 </p>
-</blockquote>
-<h3 id="数据库系统"><a href="#数据库系统" class="headerlink" title="数据库系统"></a>数据库系统</h3><ul>
-<li>数据库系统是什么<ol>
-<li>是指在计算机中引入数据库技术之后的系统</li>
-<li>通常，一个完整的数据库系统包括数据库，数据库管理系统以及相关实用工具，应用程序，数据库管理员和用户</li>
-</ol>
-</li>
-<li>数据库管理员（Database Administratior, DBA）<ol>
-<li>专门对维护数据库进行维护，保证数据库正常，高效运作的人员</li>
-</ol>
-</li>
-<li><p>数据库系统的用户</p>
-<ol>
-<li>应用的用户</li>
-<li>开发应用的程序员</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">用户1 ...  用户n</span><br><span class="line"> |         |</span><br><span class="line"> +---------+    +---------+</span><br><span class="line"> |         |    |         |</span><br><span class="line"> | 应用程序 +----+   程序员 |</span><br><span class="line"> |         |    |         |</span><br><span class="line"> +---+-----+    +---------+  </span><br><span class="line">     |</span><br><span class="line"> +---+-----+    +---------+</span><br><span class="line"> |         |    |         |</span><br><span class="line"> |  DBMS   +----+  DBA    |</span><br><span class="line"> |         |    |         |</span><br><span class="line"> +---+-----+    +---------+  </span><br><span class="line">     |</span><br><span class="line"> +---+-----+</span><br><span class="line"> |         |</span><br><span class="line"> |   DB    |</span><br><span class="line"> |         |</span><br><span class="line"> +---------+</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>数据库系统原理（04735）P29 </p>
-</blockquote>
-<h3 id="DBMS-的种类"><a href="#DBMS-的种类" class="headerlink" title="DBMS 的种类"></a>DBMS 的种类</h3><ol>
-<li><p>层次数据库(Hierarchial Database, HDB)</p>
-</li>
-<li><p>关系数据库(Relational Database, RDB)</p>
-<ul>
-<li>这种类型的 DBMS 称为关系型数据库管理系统(Relational Database Management System, RDBMS)</li>
-<li>代表性的 RDBMS<ol>
-<li>Oracle Database: 甲骨文公司的 RDBMS</li>
-<li>SQL Server: 微软公司的 RDMBS</li>
-<li>DB2: IBM 公司的 RDBMS</li>
-<li>PostgreSQL: 开源的 RDBMS</li>
-<li>MySQL: 开源的 RDBMS</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-<ol start="3">
-<li><p>面向对象数据库(Object Oriented Database, OODB)</p>
-</li>
-<li><p>XML 数据库(XML Database, XMLDN)</p>
-</li>
-<li><p>键值存储系统（key-Value Store, KVS）</p>
-<blockquote>
-<p>《SQL基础教程》第二版</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="数据管理技术的发展"><a href="#数据管理技术的发展" class="headerlink" title="数据管理技术的发展"></a>数据管理技术的发展</h3><ol>
-<li><p>人工管理（待更新）</p>
-</li>
-<li><p>文件系统（待更新）</p>
-</li>
-<li><p>数据库系统阶段（待完善）</p>
-<ol>
-<li>数据库系统阶段和人工管理，文件系统相比的优点：<blockquote>
-<ol>
-<li>数据集成</li>
-<li>数据共享性高</li>
-<li>数据冗余小</li>
-<li>保持数据一致性</li>
-<li>数据独立性高</li>
-<li>实施统一管理与控制</li>
-<li>并发控制</li>
-<li>故障恢复</li>
-<li>减少应用程序开发与维护的工作量</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-</li>
-</ol>
-<hr>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版<br>  -《数据库系统原理》（04735）</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3106,7 +3018,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">86</span>
+                  <span class="site-state-item-count">87</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -3196,7 +3108,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">54.7k</span>
+    <span title="博客总字数">54.8k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

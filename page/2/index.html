@@ -307,6 +307,255 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/12/数据库 - SQL 和关系型数据库的基本操作  (一）SQL 概述和 MySQL 基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/12/数据库 - SQL 和关系型数据库的基本操作  (一）SQL 概述和 MySQL 基础/" itemprop="url">数据库 - SQL 和关系型数据库的基本操作</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-12T13:47:07+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  673
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="SQL-概述"><a href="#SQL-概述" class="headerlink" title="SQL 概述"></a>SQL 概述</h2><h3 id="SQL-发展"><a href="#SQL-发展" class="headerlink" title="SQL 发展"></a>SQL 发展</h3><ol>
+<li>SQL 是于 1974 年由 Boyce 和 Chamberlin 提出，并在System R（IBM 公司研制的RDMS）</li>
+<li>SQL 标准是 1986 年 美国国家标准局 (American National Standard Institute, ANSI)颁布</li>
+<li>1987 年 6 月 国际化标准组织（International Organization for Standardization, ISO）正式采纳它为国际标准</li>
+<li>目前 SQL 的标准是 SQL:2018</li>
+<li>数据库管理系统产品：MySQL, Oracle, SQL Sever 等</li>
+</ol>
+<h3 id="SQL-的特点"><a href="#SQL-的特点" class="headerlink" title="SQL 的特点"></a>SQL 的特点</h3><ol>
+<li>SQL 不是某个特定数据库供应商专有的语言</li>
+<li>SQL 简单易学（语句全部是具有很强的描述性的英语单词组成，而且数目不多）</li>
+<li>SQL 看上去很简单，灵活使用其语言元素，可以进行非常复杂和高级的数据库操作<blockquote>
+<p>SQL 语句不区分大小写</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="SQL-的组成"><a href="#SQL-的组成" class="headerlink" title="SQL 的组成"></a>SQL 的组成</h3><ul>
+<li><p>SQL 的主要功能：1. 数据定义，2. 数据操纵（数据查询），3. 数据控制</p>
+</li>
+<li><ol>
+<li>数据定义语言（Data Definition Language, DDL）</li>
+</ol>
+<ul>
+<li>主要功能：对数据库以及数据库中的各种对象进行创建，删除，修改等操作</li>
+<li>数据库对象：表，默认约束，规则，视图，触发器，存储过程等</li>
+<li>DDL 主要包括 SQL 语句以下三种：<ol>
+<li>CREATE: 用于创建数据库或数据库对象</li>
+<li>ALTER: 用于对数据库或数据库对象尽心修改</li>
+<li>DROP: 用于删除数据库或数据库对象</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><ol start="2">
+<li>数据操作语言（Data Manipulation Language, DML）</li>
+</ol>
+<ul>
+<li>主要功能: 主要用于操作数据库中各种对象，特别是检索和修改数据</li>
+<li>DML 主要包括 SQL 语句以下几种：<ol>
+<li>SELECT: 用于从表中或视图中检索数据，其是数据库中使用最为频繁的 SQL 语句</li>
+<li>INSERT: 用于将数据插入到表或视图中</li>
+<li>UPDATE: 用于修改表或视图中的数据，其既可修改表或视图中的一行数据，也可以同时修改多行或全部数据</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><ol start="3">
+<li>数据控制语言（Data Control Language, DCL）</li>
+</ol>
+<ul>
+<li>主要功能: 主要用于安全管理，例如确定哪些用户查看或修改数据库中的数据</li>
+<li>DCL 主要包括 SQL 语句以下几种<ol>
+<li>GRANT: 用于授予权限，可把语句许可或对象许可的权限授予其他用户和角色</li>
+<li>REVOKE: 用于收回权限，其功能与 GRANT 相反，但不影响该用户或角色从其他角色中作为成员继承许可权限</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="嵌入式和动态-SQL-规则-SQL-调用和会话规则"><a href="#嵌入式和动态-SQL-规则-SQL-调用和会话规则" class="headerlink" title="嵌入式和动态 SQL 规则 / SQL 调用和会话规则"></a>嵌入式和动态 SQL 规则 / SQL 调用和会话规则</h3><h2 id="MySQL-预备知识-待完善"><a href="#MySQL-预备知识-待完善" class="headerlink" title="MySQL 预备知识(待完善)"></a>MySQL 预备知识(待完善)</h2><h3 id="MySQL-中的-SQL"><a href="#MySQL-中的-SQL" class="headerlink" title="MySQL 中的 SQL"></a>MySQL 中的 SQL</h3><ul>
+<li>MySQL 在 SQL 标准的基础上增加联部分扩展的语言要素，包括：常量，变量，运算符，表达式，函数，流程控制语句或注解</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/12/git 标签/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2982,251 +3231,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（三）关系数据库的规范化理论/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/04/数据库 - 关系型数据库（三）关系数据库的规范化理论/" itemprop="url">数据库 - 关系型数据库（三）关系数据库的规范化理论</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T22:31:50+08:00">
-                2018-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  638
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="为什么要规范化（理论）"><a href="#为什么要规范化（理论）" class="headerlink" title="为什么要规范化（理论）"></a>为什么要规范化（理论）</h3><ul>
-<li>关系模型中可能存在的一些问题，</li>
-<li>规范化的作用<ol>
-<li>是关系数据库设计的理论依据</li>
-</ol>
-</li>
-<li>范围<ol>
-<li>是关系模式中各属性之间的依赖关系及其对关系性能的影响，为关系模式提供了优劣的理论标准</li>
-</ol>
-</li>
-</ul>
-<h4 id="关系模型中可能存在冗余和异常问题"><a href="#关系模型中可能存在冗余和异常问题" class="headerlink" title="关系模型中可能存在冗余和异常问题"></a>关系模型中可能存在冗余和异常问题</h4><ol>
-<li><p>数据冗余：同一数据被反反复复存储的情况</p>
-</li>
-<li><p>更新异常：数据冗余将导致存储空间的浪费和潜在数据不一致修改麻烦等问题</p>
-</li>
-<li><p>插入异常：应该插入到数据库中的数据不能执行插入操作的情形</p>
-</li>
-<li><p>删除异常：不应该删去的数据被删去的情形</p>
-<blockquote>
-<p>上述的情况和数据依赖密切相关</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="函数依赖和关键字（抄不动了😢）"><a href="#函数依赖和关键字（抄不动了😢）" class="headerlink" title="函数依赖和关键字（抄不动了😢）"></a>函数依赖和关键字（抄不动了😢）</h3><ol>
-<li>函数依赖：指关系中属性间的对应关系</li>
-<li>定义：设 R 为任一给定关系，如果对于 R 中属性 X 的每一个值，R 中的属性 Y 只用唯一值与之对应，则称 X 函数决定 Y 或称 Y 函数依赖于 X,记住 X -&gt; Y。其中，X 称为决定因素</li>
-</ol>
-<h4 id="函数依赖根据不同性质的分类（抄不动了😢）"><a href="#函数依赖根据不同性质的分类（抄不动了😢）" class="headerlink" title="函数依赖根据不同性质的分类（抄不动了😢）"></a>函数依赖根据不同性质的分类（抄不动了😢）</h4><ol>
-<li>完全函数依赖</li>
-<li>部分函数依赖</li>
-<li>传递函数依赖</li>
-</ol>
-<h3 id="范式与关系规范化（抄不动了😢）"><a href="#范式与关系规范化（抄不动了😢）" class="headerlink" title="范式与关系规范化（抄不动了😢）"></a>范式与关系规范化（抄不动了😢）</h3><ol>
-<li>规范化：一个低一级范式的关系模式通过模式分解（Schema Decomposition）可以转换为若干个高一级范式的关系模式的集合的过程</li>
-</ol>
-<h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><ol>
-<li><p>第一范式(1NF)</p>
-<ul>
-<li>不含重复组的关系，不存在嵌套结构</li>
-<li>不满足第一范式的关系称为非规范关系</li>
-</ul>
-</li>
-<li><p>第二范式(2NF)</p>
-<ul>
-<li>定义：设 R 为任一给定关系，若 R 为 1NF, 且所有非主属性都完全函数依赖于候选关键字，则 R 为第二范式 </li>
-</ul>
-</li>
-<li><p>第三范式(3NF)</p>
-<ul>
-<li>定义：设 R 为任一给定关系，若 R 为 2NF，且起每一个非主属性都不传递函数依赖于候选关键字，则 R 为第三范式<blockquote>
-<p>通常，第三范式的关系大多数都能解决插入和删除操作异常的情况，数据冗余也能得到有效的控制</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>BCNF（抄不动了😢）</p>
-<blockquote>
-<p>关系规范化理论主要应用于数据库设计中的概念设计阶段，用来分析其实体划分是否合适，判断属性具体分配到哪个实体中</p>
-</blockquote>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3281,7 +3285,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">86</span>
+                  <span class="site-state-item-count">87</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -3371,7 +3375,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">54.7k</span>
+    <span title="博客总字数">54.8k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

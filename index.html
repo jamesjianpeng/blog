@@ -307,6 +307,414 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/24/数据库 - SQL 和关系型数据库的基本操作（六）数据操作（DML）- 数据查询：SELECT 子句和多表查询/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/24/数据库 - SQL 和关系型数据库的基本操作（六）数据操作（DML）- 数据查询：SELECT 子句和多表查询/" itemprop="url">数据库 - SQL 和关系型数据库的基本操作（六）数据操作（DML）- 数据查询：SELECT 子句和多表查询</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-24T17:21:40+08:00">
+                2018-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h3><p>地位：数据查询是 SQL 语言的核心功能，也是数据库中使用最多的操作<br>作用：是从数据库中的一张或多张表（或视图）中检索出满足条件的数据信息</p>
+<blockquote>
+<p>通常，查询的操作是由 0 行（没有满足条件的数据）或多行记录组成的一个记录集合，并允许选择一个或多个字段作为输出字段</p>
+<p>数据理论基础：是关系数据模型中对表对象的一组关系，即选择，投影和连接</p>
+</blockquote>
+<h3 id="SELECT-子句"><a href="#SELECT-子句" class="headerlink" title="SELECT 子句"></a>SELECT 子句</h3><ul>
+<li>SELECT 语法中子句的使用次序以及说明<ul>
+<li>SELECT 要返回的列或表达式（必须使用）</li>
+<li>FROM 从中检索数据的表（仅在表选择数据时使用）</li>
+<li>WHERE 行级过滤（不必须使用）</li>
+<li>GROUP BY 分组说明（不必须使用）</li>
+<li>HAVING 组级过滤（必须使用）</li>
+<li>ORDER BY 输出排序顺序（不必须使用）</li>
+<li>LIMIT 要检索的行数（不必须使用）</li>
+</ul>
+</li>
+</ul>
+<h4 id="列的选择和指定"><a href="#列的选择和指定" class="headerlink" title="列的选择和指定"></a>列的选择和指定</h4><ul>
+<li><p>选择指定列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM students;</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">| no | department   | name     | gender | regist_date | age |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">|  1 | 计算机系     | James    |      1 | 2018-11-20  |  23 |</span><br><span class="line">|  2 | 计算机系     | pengjian |      1 | 2018-11-20  |  22 |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">2 rows in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT no, department, name, gender FROM students;</span><br><span class="line">+----+--------------+----------+--------+</span><br><span class="line">| no | department   | name     | gender |</span><br><span class="line">+----+--------------+----------+--------+</span><br><span class="line">|  1 | 计算机系     | James    |      1 |</span><br><span class="line">|  2 | 计算机系     | pengjian |      1 |</span><br><span class="line">+----+--------------+----------+--------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义并使用列的别名</p>
+<p>使用 AS 关键字：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT no AS &apos;编号&apos;, department AS &apos;院系&apos;, name &apos;名字&apos;, gender FROM students;</span><br><span class="line">+--------+--------------+----------+--------+</span><br><span class="line">| 编号   | 院系         | 名字     | gender |</span><br><span class="line">+--------+--------------+----------+--------+</span><br><span class="line">|      1 | 计算机系     | James    |      1 |</span><br><span class="line">|      2 | 计算机系     | pengjian |      1 |</span><br><span class="line">+--------+--------------+----------+--------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>替换查询结果集中的数据</p>
+<p>语法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> &gt; CASE </span><br><span class="line">-&gt; WHEN 条件1 THEN 表达式1</span><br><span class="line">-&gt;   WHEN 条件1 THEN 表达式1</span><br><span class="line">-&gt;   ...</span><br><span class="line">-&gt; ELSE 表达式</span><br><span class="line">-&gt; END[AS] column_alias</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>  实践：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT no, department, name,</span><br><span class="line">    -&gt; CASE</span><br><span class="line">    -&gt; WHEN gender=1 THEN &apos;男&apos;</span><br><span class="line">    -&gt; ELSE &apos;女&apos;</span><br><span class="line">    -&gt; END AS &apos;性别&apos;</span><br><span class="line">    -&gt; FROM students;</span><br><span class="line">+----+--------------+----------+--------+</span><br><span class="line">| no | department   | name     | 性别   |</span><br><span class="line">+----+--------------+----------+--------+</span><br><span class="line">|  1 | 计算机系     | James    | 男     |</span><br><span class="line">|  2 | 计算机系     | pengjian | 男     |</span><br><span class="line">+----+--------------+----------+--------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>计算列值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT no + 100, department, name, gender FROM students;</span><br><span class="line">+----------+--------------+----------+--------+</span><br><span class="line">| no + 100 | department   | name     | gender |</span><br><span class="line">+----------+--------------+----------+--------+</span><br><span class="line">|      101 | 计算机系     | James    |      1 |</span><br><span class="line">|      102 | 计算机系     | pengjian |      1 |</span><br><span class="line">+----------+--------------+----------+--------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>集合函数 👉  GROUP BY</p>
+</li>
+</ul>
+<h4 id="FROM-字句与多个表连接查询"><a href="#FROM-字句与多个表连接查询" class="headerlink" title="FROM 字句与多个表连接查询"></a>FROM 字句与多个表连接查询</h4><ul>
+<li><p>交叉连接: 返回的查询结果集的记录行数，等于其所连接的两张表记录行数的乘机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table_1 CROSS JOIN table_2;</span><br><span class="line">SELECT * FROM table_1, table_2;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>tabel_1: 2 行，table_2: 3行，交叉连接之后总的行数 2 * 3 = 6 行<br>对于大量数据的表，避免使用交叉连接</p>
+</blockquote>
+<p>交叉连接（CROSS JOIN）实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM students CROSS JOIN course;</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+----+-----------------------+--------------+--------------+------------+</span><br><span class="line">| no | department   | name     | gender | regist_date | age | no | name                  | department   | teacher_name | teacher_no |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+----+-----------------------+--------------+--------------+------------+</span><br><span class="line">|  1 | 计算机系     | James    |      1 | 2018-11-20  |  23 |  1 | 数据库系统原理        | 计算机系     | NULL         |       NULL |</span><br><span class="line">|  2 | 计算机系     | pengjian |      1 | 2018-11-20  |  22 |  1 | 数据库系统原理        | 计算机系     | NULL         |       NULL |</span><br><span class="line">|  1 | 计算机系     | James    |      1 | 2018-11-20  |  23 |  2 | C++程序设计           | 计算机系     | NULL         |       NULL |</span><br><span class="line">|  2 | 计算机系     | pengjian |      1 | 2018-11-20  |  22 |  2 | C++程序设计           | 计算机系     | NULL         |       NULL |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+----+-----------------------+--------------+--------------+------------+</span><br><span class="line">4 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可以看到这个表有相同的部分：学生的 name 列和课程的 name 列已经重复：列名使用 tableName_columnName 可以解决这个问题</p>
+</blockquote>
+<p>交叉连接（ , ）的实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM students, course;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age | course_no | course_name           | department   | teacher_name | teacher_no |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |         1 | 数据库系统原理        | 计算机系     | NULL         |       NULL |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |         1 | 数据库系统原理        | 计算机系     | NULL         |       NULL |</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |         2 | C++程序设计           | 计算机系     | NULL         |       NULL |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |         2 | C++程序设计           | 计算机系     | NULL         |       NULL |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">4 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>内连接</p>
+<ul>
+<li>概念：内连接就是利用条件判断表达式中的比较运算符组合两张表中的记录，其目的是为了消除交叉连接中的某些数据行</li>
+<li>分类：（1）等值连接。（2）非等值连接。（3）自连接 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM course_score;</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| course_name           | course_no | student_name | student_no | course_score | course_score_no |</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| 数据库系统原理        |         1 | pengjian     |          2 |           88 |               2 |</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>内连接实践</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT *  </span><br><span class="line">    -&gt; FROM students INNER JOIN course_score </span><br><span class="line">    -&gt; ON students.student_no = course_score.student_no;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age | course_name           | course_no | student_name | student_no | course_score | course_score_no |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 | 数据库系统原理        |         1 | pengjian     |          2 |           88 |               2 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>外连接 (待更新)<ul>
+<li>左外连接</li>
+<li>右外连接</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/22/CSS - 布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/22/CSS - 布局/" itemprop="url">CSS - 布局</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-22T13:24:12+08:00">
+                2018-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  43
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中:"></a>水平居中:</h2><p>  <a href="https://cv.pengjiandry.com/css/layouts/centered/inline/horizontal" target="_blank" rel="noopener">内联元素</a><br>  <a href="https://cv.pengjiandry.com/css/layouts/centered/block/horizontal" target="_blank" rel="noopener">块元素</a></p>
+<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中:"></a>垂直居中:</h2><p>  <a href="https://cv.pengjiandry.com/css/layouts/centered/inline/vertical" target="_blank" rel="noopener">内联元素</a><br>  <a href="https://cv.pengjiandry.com/css/layouts/centered/block/vertical" target="_blank" rel="noopener">块元素</a></p>
+<h2 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h2><p>  <a href="https://cv.pengjiandry.com/css/layouts/centered/horizontalVerticalCentered" target="_blank" rel="noopener">水平居中</a></p>
+<h2 id="多栏布局"><a href="#多栏布局" class="headerlink" title="多栏布局"></a>多栏布局</h2><p>  <a href="https://cv.pengjiandry.com/css/layouts/columns/flexTwo" target="_blank" rel="noopener">flex 两栏布局</a><br>  <a href="https://github.com/jamesjianpeng/nuxt-cv/commit/97cf73bc001b0a7923017319b857516fc4c693fb" target="_blank" rel="noopener">代码</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/22/CSS - 选择器和特殊性/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -510,160 +918,6 @@
 <li>比较的时候从左向右进行对比</li>
 </ul>
 <h2 id="内嵌样式相关"><a href="#内嵌样式相关" class="headerlink" title="内嵌样式相关"></a><a href="https://cv.pengjiandry.com/css/priority/embeddedAndOuterChain" target="_blank" rel="noopener">内嵌样式相关</a></h2><h2 id="id-class"><a href="#id-class" class="headerlink" title="id + class"></a><a href="https://cv.pengjiandry.com/css/priority/idClass" target="_blank" rel="noopener">id + class</a></h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/22/CSS - 布局/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/22/CSS - 布局/" itemprop="url">CSS - 布局</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-22T13:24:12+08:00">
-                2018-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  43
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中:"></a>水平居中:</h2><p>  <a href="https://cv.pengjiandry.com/css/layouts/centered/inline/horizontal" target="_blank" rel="noopener">内联元素</a><br>  <a href="https://cv.pengjiandry.com/css/layouts/centered/block/horizontal" target="_blank" rel="noopener">块元素</a></p>
-<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中:"></a>垂直居中:</h2><p>  <a href="https://cv.pengjiandry.com/css/layouts/centered/inline/vertical" target="_blank" rel="noopener">内联元素</a><br>  <a href="https://cv.pengjiandry.com/css/layouts/centered/block/vertical" target="_blank" rel="noopener">块元素</a></p>
-<h2 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h2><p>  <a href="https://cv.pengjiandry.com/css/layouts/centered/horizontalVerticalCentered" target="_blank" rel="noopener">水平居中</a></p>
-<h2 id="多栏布局"><a href="#多栏布局" class="headerlink" title="多栏布局"></a>多栏布局</h2><p>  <a href="https://cv.pengjiandry.com/css/layouts/columns/flexTwo" target="_blank" rel="noopener">flex 两栏布局</a><br>  <a href="https://github.com/jamesjianpeng/nuxt-cv/commit/97cf73bc001b0a7923017319b857516fc4c693fb" target="_blank" rel="noopener">代码</a></p>
-
           
         
       
@@ -1891,7 +2145,7 @@ mysql> ALTER TABLE table_name
                   <span class="post-meta-item-text">文章总字数&#58;</span>
                 
                 <span title="文章总字数">
-                  383
+                  861
                 </span>
               
 
@@ -1907,7 +2161,7 @@ mysql> ALTER TABLE table_name
                   <span class="post-meta-item-text">阅读时间 &asymp;</span>
                 
                 <span title="阅读时间">
-                  1
+                  4
                 </span>
               
             </div>
@@ -1974,12 +2228,34 @@ mysql> ALTER TABLE table_name
 </li>
 </ul>
 <hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE studentCourseSystem;</span><br><span class="line">Query OK, 1 row affected (0.10 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; USE studentCourseSystem;</span><br><span class="line">Database changed</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE TABLE students (</span><br><span class="line">    -&gt; no int(11) AUTO_INCREMENT,</span><br><span class="line">    -&gt; name VARCHAR(20) NOT NUll,</span><br><span class="line">    -&gt; gender int(1) NOT NULL,</span><br><span class="line">    -&gt; department VARCHAR(20) NOT NULL,</span><br><span class="line">    -&gt; create_date DATE NOT NULL,</span><br><span class="line">    -&gt; PRIMARY KEY (no));</span><br><span class="line">Query OK, 0 rows affected (0.08 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field       | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| no          | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name        | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| gender      | int(1)      | NO   |     | NULL    |                |</span><br><span class="line">| department  | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| create_date | date        | NO   |     | NULL    |                |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
 <ul>
-<li>创建一个表之后发现少了一个属性：年龄，下面是对 students 表的更新操作</li>
+<li><p>创建学生表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE studentCourseSystem;</span><br><span class="line">Query OK, 1 row affected (0.10 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; USE studentCourseSystem;</span><br><span class="line">Database changed</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE TABLE students (</span><br><span class="line">    -&gt; no int(11) AUTO_INCREMENT,</span><br><span class="line">    -&gt; name VARCHAR(20) NOT NUll,</span><br><span class="line">    -&gt; gender int(1) NOT NULL,</span><br><span class="line">    -&gt; department VARCHAR(20) NOT NULL,</span><br><span class="line">    -&gt; create_date DATE NOT NULL,</span><br><span class="line">    -&gt; PRIMARY KEY (no));</span><br><span class="line">Query OK, 0 rows affected (0.08 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field       | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| no          | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name        | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| gender      | int(1)      | NO   |     | NULL    |                |</span><br><span class="line">| department  | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| create_date | date        | NO   |     | NULL    |                |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个表之后发现少了一个属性：年龄，下面是对 students 表的更新操作</p>
+</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students</span><br><span class="line">    -&gt; ADD COLUMN (age int(3) NOT NULL);</span><br><span class="line">Query OK, 0 rows affected (0.11 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field       | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| no          | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name        | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| gender      | int(1)      | NO   |     | NULL    |                |</span><br><span class="line">| department  | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| create_date | date        | NO   |     | NULL    |                |</span><br><span class="line">| age         | int(3)      | NO   |     | NULL    |                |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-<h2 id="今天写不动了，后续更新✌️"><a href="#今天写不动了，后续更新✌️" class="headerlink" title="今天写不动了，后续更新✌️"></a>今天写不动了，后续更新✌️</h2>
+<ul>
+<li><p>创建课程表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE course</span><br><span class="line">    -&gt; (no int(11) AUTO_INCREMENT,</span><br><span class="line">    -&gt; name VARCHAR(100) NOT NULL,</span><br><span class="line">    -&gt; department VARCHAR(100) NOT NULL,</span><br><span class="line">    -&gt; teacher_name VARCHAR(100) NULL,</span><br><span class="line">    -&gt; teacher_no int(11) NULL,</span><br><span class="line">    -&gt; PRIMARY KEY (no));</span><br><span class="line">Query OK, 0 rows affected (0.15 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW TABLE;</span><br><span class="line">ERROR 1064 (42000): You have an error <span class="keyword">in</span> your SQL syntax; check the manual that corresponds to your MySQL server version <span class="keyword">for</span> the right syntax to use near <span class="string">''</span> at line 1</span><br><span class="line">mysql&gt; SHOW TABLEs;</span><br><span class="line">+-------------------------------+</span><br><span class="line">| Tables_in_studentcoursesystem |</span><br><span class="line">+-------------------------------+</span><br><span class="line">| course                        |</span><br><span class="line">| students                      |</span><br><span class="line">+-------------------------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM course;</span><br><span class="line">+--------------+--------------+------+-----+---------+----------------+</span><br><span class="line">| Field        | Type         | Null | Key | Default | Extra          |</span><br><span class="line">+--------------+--------------+------+-----+---------+----------------+</span><br><span class="line">| no           | int(11)      | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name         | varchar(100) | NO   |     | NULL    |                |</span><br><span class="line">| department   | varchar(100) | NO   |     | NULL    |                |</span><br><span class="line">| teacher_name | varchar(100) | YES  |     | NULL    |                |</span><br><span class="line">| teacher_no   | int(11)      | YES  |     | NULL    |                |</span><br><span class="line">+--------------+--------------+------+-----+---------+----------------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM course;</span><br><span class="line">Empty <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>插入两条数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO course</span><br><span class="line">    -&gt; VALUES (NULL, <span class="string">'数据库系统原理'</span>, <span class="string">'计算机系'</span>, NULL, NULL);</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO course</span><br><span class="line">    -&gt; VALUES (NULL, <span class="string">'C++程序设计'</span>, <span class="string">'计算机系'</span>, <span class="string">'NULL'</span>, <span class="string">'NULL'</span>);</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM course;</span><br><span class="line">+----+-----------------------+--------------+--------------+------------+</span><br><span class="line">| no | name                  | department   | teacher_name | teacher_no |</span><br><span class="line">+----+-----------------------+--------------+--------------+------------+</span><br><span class="line">|  1 | 数据库系统原理        | 计算机系     | NULL         |       NULL |</span><br><span class="line">|  2 | C++程序设计           | 计算机系     | NULL         |       NULL |</span><br><span class="line">+----+-----------------------+--------------+--------------+------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>创建 课程分数表<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE course_score</span><br><span class="line">    -&gt; (course_name VARCHAR(100) NOT NULL,</span><br><span class="line">    -&gt; course_no int(11) NOT NULL,</span><br><span class="line">    -&gt; student_name VARCHAR(100) NOT NULL,</span><br><span class="line">    -&gt; student_no int(11) NOT NULL,</span><br><span class="line">    -&gt; course_score int(3) NULL,</span><br><span class="line">    -&gt; course_score_no int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">    -&gt; PRIMARY KEY (course_score_no));</span><br><span class="line">Query OK, 0 rows affected (0.05 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW TABLES;</span><br><span class="line">+-------------------------------+</span><br><span class="line">| Tables_in_studentcoursesystem |</span><br><span class="line">+-------------------------------+</span><br><span class="line">| course                        |</span><br><span class="line">| course_score                  |</span><br><span class="line">| students                      |</span><br><span class="line">+-------------------------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM course_score;</span><br><span class="line">+-----------------+--------------+------+-----+---------+----------------+</span><br><span class="line">| Field           | Type         | Null | Key | Default | Extra          |</span><br><span class="line">+-----------------+--------------+------+-----+---------+----------------+</span><br><span class="line">| course_name     | varchar(100) | NO   |     | NULL    |                |</span><br><span class="line">| course_no       | int(11)      | NO   |     | NULL    |                |</span><br><span class="line">| student_name    | varchar(100) | NO   |     | NULL    |                |</span><br><span class="line">| student_no      | int(11)      | NO   |     | NULL    |                |</span><br><span class="line">| course_score    | int(3)       | YES  |     | NULL    |                |</span><br><span class="line">| course_score_no | int(11)      | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">+-----------------+--------------+------+-----+---------+----------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>- 插入两条测试数据
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO course_score</span><br><span class="line">    -&gt; VALUES (&apos;数据库系统原理&apos;, 1, &apos;James&apos;, 1, 81, NULL);</span><br><span class="line">Query OK, 1 row affected (0.07 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO course_score VALUES (&apos;数据库系统原理&apos;, 1, &apos;pengjian&apos;, 2, 88, NULL);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM course_score;</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| course_name           | course_no | student_name | student_no | course_score | course_score_no |</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| 数据库系统原理        |         1 | James        |          1 |           81 |               1 |</span><br><span class="line">| 数据库系统原理        |         1 | pengjian     |          2 |           88 |               2 |</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+后续更新
+</code></pre><hr>
+
           
         
       
@@ -2171,172 +2447,6 @@ mysql> ALTER TABLE table_name
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/16/git remote-连接多个仓库/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/16/git remote-连接多个仓库/" itemprop="url">git remote - 连接多个仓库</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-16T10:25:05+08:00">
-                2018-11-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  136
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<ul>
-<li><p>查看所有的远程仓库的信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br><span class="line">origin	root@cv.pengjiandry.com:/repo/nuxt.play.git (fetch)</span><br><span class="line">origin	root@cv.pengjiandry.com:/repo/nuxt.play.git (push)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加新的远程仓库信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url --add origin https://github.com/jamesjianpeng/nuxt-cv.git</span><br><span class="line">git remote -v</span><br><span class="line">origin	root@cv.pengjiandry.com:/repo/nuxt.play.git (fetch)</span><br><span class="line">origin	root@cv.pengjiandry.com:/repo/nuxt.play.git (push)</span><br><span class="line">origin	https://github.com/jamesjianpeng/nuxt-cv.git (push)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>后面有 push 的字样代表我们可以推送的到的远程仓库</p>
-</blockquote>
-<ul>
-<li>多仓库的时候的全部推送</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --all</span><br></pre></td></tr></table></figure>
-<h3 id="使用更多操作之后，再继续更新"><a href="#使用更多操作之后，再继续更新" class="headerlink" title="使用更多操作之后，再继续更新"></a>使用更多操作之后，再继续更新</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2391,7 +2501,7 @@ mysql> ALTER TABLE table_name
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2481,7 +2591,7 @@ mysql> ALTER TABLE table_name
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">55.7k</span>
+    <span title="博客总字数">57.4k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

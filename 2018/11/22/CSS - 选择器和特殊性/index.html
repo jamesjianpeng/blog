@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #9E9E9E; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #9E9E9E, 0 0 5px #9E9E9E; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #9E9E9E;    /*上边框颜色*/
+        border-left-color: #9E9E9E;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CSS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="规则一个规则的组成：选择器和一个或多个声明(属性 + 值(可能有多个关键字))组成一个层叠样式表是由多个规则组成的规则集12345678选择器1 &amp;#123;  属性1：值；  属性2：值(可能有多个关键字，由「 空格 」分隔，font 中的关键字有些使用「 / 」分隔)&amp;#125;选择器2 &amp;#123;  属性1：值；  属性2：值&amp;#125; 选择器元素选择器和选择器/声明的分组 元素选择器">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS - 选择器和特殊性">
+<meta property="og:url" content="https://www.pengjiandry.com/2018/11/22/CSS - 选择器和特殊性/index.html">
+<meta property="og:site_name" content="彭涧">
+<meta property="og:description" content="规则一个规则的组成：选择器和一个或多个声明(属性 + 值(可能有多个关键字))组成一个层叠样式表是由多个规则组成的规则集12345678选择器1 &amp;#123;  属性1：值；  属性2：值(可能有多个关键字，由「 空格 」分隔，font 中的关键字有些使用「 / 」分隔)&amp;#125;选择器2 &amp;#123;  属性1：值；  属性2：值&amp;#125; 选择器元素选择器和选择器/声明的分组 元素选择器">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-24T04:25:27.458Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS - 选择器和特殊性">
+<meta name="twitter:description" content="规则一个规则的组成：选择器和一个或多个声明(属性 + 值(可能有多个关键字))组成一个层叠样式表是由多个规则组成的规则集12345678选择器1 &amp;#123;  属性1：值；  属性2：值(可能有多个关键字，由「 空格 」分隔，font 中的关键字有些使用「 / 」分隔)&amp;#125;选择器2 &amp;#123;  属性1：值；  属性2：值&amp;#125; 选择器元素选择器和选择器/声明的分组 元素选择器">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.pengjiandry.com/2018/11/22/CSS - 选择器和特殊性/"/>
+
+
+
+
+
+  <title>CSS - 选择器和特殊性 | 彭涧</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <!-- 左边 <a href="https://github.com/jamesjianpeng" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a> -->
+
+    <a href="https://github.com/jamesjianpeng" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">彭涧</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">fecoder</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-阅读">
+          <a href="/read/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            阅读
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-风格">
+          <a href="/style/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            风格
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-电影">
+          <a href="/film/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            电影
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/22/CSS - 选择器和特殊性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">CSS - 选择器和特殊性</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-22T13:24:12+08:00">
+                2018-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《CSS-权威指南》/" itemprop="url" rel="index">
+                    <span itemprop="name">《CSS 权威指南》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  932
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><p>一个规则的组成：选择器和一个或多个声明(属性 + 值(可能有多个关键字<br>))组成<br>一个层叠样式表是由多个规则组成的规则集<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">选择器1 &#123;</span><br><span class="line">  属性1：值；</span><br><span class="line">  属性2：值(可能有多个关键字，由「 空格 」分隔，font 中的关键字有些使用「 / 」分隔)</span><br><span class="line">&#125;</span><br><span class="line">选择器2 &#123;</span><br><span class="line">  属性1：值；</span><br><span class="line">  属性2：值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h3 id="元素选择器和选择器-声明的分组"><a href="#元素选择器和选择器-声明的分组" class="headerlink" title="元素选择器和选择器/声明的分组"></a>元素选择器和选择器/声明的分组</h3><ul>
+<li><p>元素选择器</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123;...&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选择器分组</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123; <span class="attribute">color</span>: <span class="number">#eee</span>; &#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123; <span class="attribute">color</span>: <span class="number">#eee</span>; &#125;</span><br><span class="line">👇</span><br><span class="line"><span class="selector-tag">ul</span>, <span class="selector-tag">div</span> &#123; <span class="attribute">color</span>: <span class="number">#eee</span>; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明分组</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123; <span class="attribute">color</span>: <span class="number">#eee</span>; &#125;</span><br><span class="line"><span class="selector-tag">h1</span> &#123; <span class="attribute">background</span>: <span class="number">#fff</span>; &#125;</span><br><span class="line">👇</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#eee</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="通配选择器：对于特殊性没有任何贡献"><a href="#通配选择器：对于特殊性没有任何贡献" class="headerlink" title="通配选择器：对于特殊性没有任何贡献"></a>通配选择器：对于特殊性没有任何贡献</h3><ul>
+<li>通配选择器(CSS2)<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* &#123;...&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="类选择器-多类选择器-ID-选择器"><a href="#类选择器-多类选择器-ID-选择器" class="headerlink" title="类选择器/多类选择器/ ID 选择器"></a>类选择器/多类选择器/ ID 选择器</h3><ul>
+<li><p>类选择器和 ID 选择器，他们允许以一种独立于文档元素的方式来指定样式</p>
+</li>
+<li><p>类选择</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.text &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多类选择器</p>
+<blockquote>
+<p>通过把两个或多个类选择器链接在一起，仅可以选择同时包含这些类名的元素（类名的顺序不限）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.text.new-text &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>ID 选择</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#text &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><ul>
+<li>属性选择器出现的背景：类选择器和 ID 选择器可以在 HTML / SVG / MathML 文档中使用，但是在 其他标记语言中是不能使用，所以 CSS2 就引入属性选择器</li>
+<li>作用：可以根据元素的属性以及属性值来选择元素，一共有 4 种类型的属性选择</li>
+<li><p>4 种分类：1. 简单属性选择。2. 根据具体属性值选择。3. 根据部分属性值选择。 4. 特定属性选择类型。</p>
+</li>
+<li><p>简单的属性选择器 <a href="https://cv.pengjiandry.com/css/priority/attributeSelector/simple" target="_blank" rel="noopener">例子</a>  <a href="https://github.com/jamesjianpeng/nuxt-cv/commit/d9e8433134c214650626ab9684a2829bdd463893" target="_blank" rel="noopener">代码</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">div[class] &#123; color: red; &#125; // 所有带有 class 的 div 的文字颜色变为红色</span><br><span class="line">a[href][title] &#123; color: red; &#125; // 所有带有 class 的 div 的文字颜色变为红色</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>根据具体属性值选择 <a href="https://cv.pengjiandry.com/css/priority/attributeSelector/specific" target="_blank" rel="noopener">例子</a>  <a href="https://github.com/jamesjianpeng/nuxt-cv/commit/003b0ed4ee3f155ed8fe8631f85bb1b324cb26f5" target="_blank" rel="noopener">代码</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input[type=&quot;text&quot;] &#123; ... &#125;</span><br><span class="line">a[href=&quot;wwww.pengjiandry.com&quot;] &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据部分属性值选择 <a href="https://cv.pengjiandry.com/css/priority/attributeSelector/noSpecific" target="_blank" rel="noopener">列子</a>  <a href="https://github.com/jamesjianpeng/nuxt-cv/commit/a13cc58496a68fdd865f0c78011b2f4cb43fbfe1" target="_blank" rel="noopener">代码</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[attribute~=&quot;value&quot;] &#123; ... &#125; // 匹配 attribute 以空格分隔的 value</span><br><span class="line">[attribute^=&quot;value&quot;] &#123; ... &#125; // 匹配 attribute 以该 value 开头的元素</span><br><span class="line">[attribute$=&quot;value&quot;] &#123; ... &#125; // 匹配 attribute 以该 value 结尾的元素</span><br><span class="line">[attribute*=&quot;value&quot;] &#123; ... &#125; // 匹配 attribute 中包含 value 的元素</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>特定属性选择类型 <a href="https://cv.pengjiandry.com/css/priority/attributeSelector/special" target="_blank" rel="noopener">例子</a>  <a href="https://github.com/jamesjianpeng/nuxt-cv/commit/364f3ae93a4ddecf5e542264cbe2452284d06c2f" target="_blank" rel="noopener">代码</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[attribute|=&quot;value&quot;] &#123; ... &#125; </span><br><span class="line">1. attribute 的 值 只有一个，这个值等于或者从头可以匹配 vaule 或者</span><br><span class="line">2. 有多个值的并且在这些值当中和选择器中定义的 value 没有相等的同时是第一个值从开头匹配的</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="和文档结构相关的选择器"><a href="#和文档结构相关的选择器" class="headerlink" title="和文档结构相关的选择器"></a>和文档结构相关的选择器</h3><h4 id="后代选择器"><a href="#后代选择器" class="headerlink" title="后代选择器"></a>后代选择器</h4><ul>
+<li>选择后代所有的指定元素</li>
+<li>选择第一层所有指定的元素</li>
+</ul>
+<h4 id="相邻兄弟选择器（待更新）"><a href="#相邻兄弟选择器（待更新）" class="headerlink" title="相邻兄弟选择器（待更新）"></a>相邻兄弟选择器（待更新）</h4><h3 id="伪类选择器（待更新）"><a href="#伪类选择器（待更新）" class="headerlink" title="伪类选择器（待更新）"></a>伪类选择器（待更新）</h3><h3 id="伪元素选择器（待更新）"><a href="#伪元素选择器（待更新）" class="headerlink" title="伪元素选择器（待更新）"></a>伪元素选择器（待更新）</h3><h2 id="特殊性"><a href="#特殊性" class="headerlink" title="特殊性"></a>特殊性</h2><h3 id="规则："><a href="#规则：" class="headerlink" title="规则："></a>规则：</h3><ul>
+<li>!important 的优先级最高（大于内嵌等其他的选择器组合）<a href="https://cv.pengjiandry.com/css/priority/embeddedAndOuterChain" target="_blank" rel="noopener">例子</a></li>
+<li>内嵌的样式优先级 &gt; style 包裹的 &gt; link 外链</li>
+<li>对于选择器中给定的各个 ID 属性值，加 0.1.0.0</li>
+<li>对于选择器中给定的各个类属性值，属性选择或伪类，加 0.0.1.0</li>
+<li>对于选择器给定的各个元素和伪元素，加 0.0.0.1</li>
+<li>结合符和通配选择器对特殊性没有任何贡献</li>
+<li>当优先级相同的时候，在相同区域内，后者覆盖前者的样式</li>
+<li>比较的时候从左向右进行对比</li>
+</ul>
+<h2 id="内嵌样式相关"><a href="#内嵌样式相关" class="headerlink" title="内嵌样式相关"></a><a href="https://cv.pengjiandry.com/css/priority/embeddedAndOuterChain" target="_blank" rel="noopener">内嵌样式相关</a></h2><h2 id="id-class"><a href="#id-class" class="headerlink" title="id + class"></a><a href="https://cv.pengjiandry.com/css/priority/idClass" target="_blank" rel="noopener">id + class</a></h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"><i class="fa fa-tag"></i> CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/22/CSS - 布局/" rel="next" title="CSS - 布局">
+                <i class="fa fa-chevron-left"></i> CSS - 布局
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章概览
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            博客概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="james" />
+            
+              <p class="site-author-name" itemprop="name">james</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jamesjianpeng" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.npmjs.com/settings/dajianjian/packages" target="_blank" title="Npm">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Npm</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#规则"><span class="nav-number">1.</span> <span class="nav-text">规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择器"><span class="nav-number">2.</span> <span class="nav-text">选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元素选择器和选择器-声明的分组"><span class="nav-number">2.1.</span> <span class="nav-text">元素选择器和选择器/声明的分组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通配选择器：对于特殊性没有任何贡献"><span class="nav-number">2.2.</span> <span class="nav-text">通配选择器：对于特殊性没有任何贡献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类选择器-多类选择器-ID-选择器"><span class="nav-number">2.3.</span> <span class="nav-text">类选择器/多类选择器/ ID 选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性选择器"><span class="nav-number">2.4.</span> <span class="nav-text">属性选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和文档结构相关的选择器"><span class="nav-number">2.5.</span> <span class="nav-text">和文档结构相关的选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#后代选择器"><span class="nav-number">2.5.1.</span> <span class="nav-text">后代选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相邻兄弟选择器（待更新）"><span class="nav-number">2.5.2.</span> <span class="nav-text">相邻兄弟选择器（待更新）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪类选择器（待更新）"><span class="nav-number">2.6.</span> <span class="nav-text">伪类选择器（待更新）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪元素选择器（待更新）"><span class="nav-number">2.7.</span> <span class="nav-text">伪元素选择器（待更新）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊性"><span class="nav-number">3.</span> <span class="nav-text">特殊性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#规则："><span class="nav-number">3.1.</span> <span class="nav-text">规则：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内嵌样式相关"><span class="nav-number">4.</span> <span class="nav-text">内嵌样式相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#id-class"><span class="nav-number">5.</span> <span class="nav-text">id + class</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">james</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">博客总字数&#58;</span>
+    
+    <span title="博客总字数">55.7k</span>
+  
+</div>
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+
+<!--
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+-->
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

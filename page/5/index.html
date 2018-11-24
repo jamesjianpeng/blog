@@ -307,6 +307,249 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/18/SQL - 聚合和排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/18/SQL - 聚合和排序/" itemprop="url">SQL - 聚合和排序</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T13:50:46+08:00">
+                2018-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
+                    <span itemprop="name">《SQL基础教程》第二版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  544
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h2><ul>
+<li>聚合：就是将多行汇总成一行</li>
+<li>聚合的方式：<ul>
+<li>使用聚合函数（COUNT, SUM, AVG …）</li>
+<li>使用分组子句（<a href="https://www.pengjiandry.com/2018/10/18/SQL%20-%20聚合：对表进行分组/">GROUP BY</a>）</li>
+<li>使用子句(<a href="">HAVING</a>)</li>
+</ul>
+</li>
+</ul>
+<h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><ul>
+<li>聚合函数（聚集函数）：用于汇总的函数<blockquote>
+<p>COUNT: 计算表中的记录条数（行数）<br>SUM: 计算表中数值列中数据的合计值<br>AVG: 计算表中数据的平均值<br>MAX: 求出表中任意列中数据的最大值<br>MIN: 求出表中任意列中数据的最小值</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT FUNCTION([parametet])[, ... , FUNCTION([parametet])] FROM &lt;table_name&gt;;</span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="COUNT-函数"><a href="#COUNT-函数" class="headerlink" title="COUNT 函数"></a>COUNT 函数</h4><ul>
+<li><p>计算出所有行数（使用 * 参数是 COUNT 函数特有的）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT COUNT(*) FROM &lt;table_name&gt;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>计算出 NOT NULL 之外的数据的行数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT COUNT(&lt;column_name&gt;) FROM &lt;tabel_name&gt;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select count(*) from Products;</span><br><span class="line">+----------+</span><br><span class="line">| count(*) |</span><br><span class="line">+----------+</span><br><span class="line">|       10 |</span><br><span class="line">+----------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line">mysql&gt; select count(purchase_price) from Products;</span><br><span class="line">+-----------------------+</span><br><span class="line">| count(purchase_price) |</span><br><span class="line">+-----------------------+</span><br><span class="line">|                     8 |</span><br><span class="line">+-----------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="SUM-函数"><a href="#SUM-函数" class="headerlink" title="SUM 函数"></a>SUM 函数</h4><ul>
+<li>计算指定列的和<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT SUM(&lt;column_name&gt;) FROM &lt;table_name&gt;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>例子<br><pre><br>mysql&gt; SELECT SUM(sale_price), SUM(purchase_price) FROM Products;<br>+—————–+———————+<br>| SUM(sale_price) | SUM(purchase_price) |<br>+—————–+———————+<br>|           13590 |                2125 |<br>+—————–+———————+<br>1 row in set (0.01 sec)<br></pre><blockquote>
+<p>NULL 不再计算之列中，在计算之前就把 NULL 的数据剔除了</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="AVG-函数"><a href="#AVG-函数" class="headerlink" title="AVG 函数"></a>AVG 函数</h4><ul>
+<li><p>例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT AVG(sale_price), AVG(purchase_price) FROM Products;</span><br><span class="line">+-----------------+---------------------+</span><br><span class="line">| AVG(sale_price) | AVG(purchase_price) |</span><br><span class="line">+-----------------+---------------------+</span><br><span class="line">|       1698.7500 |            265.6250 |</span><br><span class="line">+-----------------+---------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意 NULL 是不再计算的列中</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="MAX-MIN-函数"><a href="#MAX-MIN-函数" class="headerlink" title="MAX , MIN 函数"></a>MAX , MIN 函数</h4><ul>
+<li><p>例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT MAX(sale_price), MIN(purchase_price) FROM Products;</span><br><span class="line">+-----------------+---------------------+</span><br><span class="line">| MAX(sale_price) | MIN(purchase_price) |</span><br><span class="line">+-----------------+---------------------+</span><br><span class="line">|           10000 |                   0 |</span><br><span class="line">+-----------------+---------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意 NULL 是不再计算的列中</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="聚合函数结合使用关键字-DISTINCT-删除重复的值"><a href="#聚合函数结合使用关键字-DISTINCT-删除重复的值" class="headerlink" title="聚合函数结合使用关键字 DISTINCT 删除重复的值"></a>聚合函数结合使用关键字 DISTINCT 删除重复的值</h3><ul>
+<li>以 COUNT 函数为例子：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from Products;</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| product_id | product_name     | product_type | sale_price | purchase_price | regist_data |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| 001        | T恤👕              | 衣服         |        100 |             20 | 2018-10-16  |</span><br><span class="line">| 002        | T恤🌈              | 衣服         |        200 |             80 | 2018-10-16  |</span><br><span class="line">| 003        | T恤🐟              | 衣服         |        170 |             10 | 2018-10-16  |</span><br><span class="line">| 004        | 牛仔裤子👖         | 裤子         |         90 |              5 | 2018-10-16  |</span><br><span class="line">| 005        | 衬衫👔             | 衣服         |       2900 |           1000 | 2018-10-16  |</span><br><span class="line">| 006        | T恤👕              | 衣服         |      10000 |           1000 | 2018-10-14  |</span><br><span class="line">| 007        | 橡皮             | 文具         |         40 |              0 | 2018-10-17  |</span><br><span class="line">| 008        | 小刀             | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">| 009        | 铅笔✏️           | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">| 010        | 文具             | 中性笔       |         90 |             10 | 2018-10-17  |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">mysql&gt; SELECT COUNT(DISTINCT product_type) FROM Products;</span><br><span class="line">+------------------------------+</span><br><span class="line">| COUNT(DISTINCT product_type) |</span><br><span class="line">+------------------------------+</span><br><span class="line">|                            4 |</span><br><span class="line">+------------------------------+</span><br><span class="line">1 row in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/18/SQL - 聚合：对表进行分组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2330,175 +2573,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/09/24/TypeScript and Vue ( 四 ) - webpack 处理 Vue/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/24/TypeScript and Vue ( 四 ) - webpack 处理 Vue/" itemprop="url">TypeScript and Vue ( 四 ) - webpack 处理 Vue</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-24T22:00:32+08:00">
-                2018-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  435
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p><a href="https://www.pengjiandry.com/2018/09/24/TypeScript%20and%20Vue%20%28%20%E4%B8%89%20%29%20-%20webpack%20+%20babel%207%20%E5%8F%AA%E5%A4%84%E7%90%86%20.js/">上一篇: TypeScript and Vue ( 三 ) - webpack + babel 7 只处理 .js</a></p>
-<h3 id="六，使用-webpack-构建-Vue-应用"><a href="#六，使用-webpack-构建-Vue-应用" class="headerlink" title="六，使用 webpack 构建 Vue 应用"></a>六，<a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/7a9bbeccc7c6fe018ad543f4cc81173104a24d44" target="_blank" rel="noopener">使用 webpack 构建 Vue 应用</a></h3><ul>
-<li><p>dev 脚本文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file 本地开发环境下的 node 脚本，这种方式是通过命令行传参数</span></span><br><span class="line"><span class="comment"> * @author jamesjianpeng</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">'webpack-merge'</span>);</span><br><span class="line"><span class="keyword">const</span> webpackDevServer = <span class="built_in">require</span>(<span class="string">'webpack-dev-server'</span>);</span><br><span class="line"><span class="keyword">let</span> devConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.dev.conf'</span>);</span><br><span class="line"><span class="keyword">const</span> tsConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.ts.conf'</span>);</span><br><span class="line"><span class="keyword">const</span> vueConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.vue.conf'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> argv = <span class="built_in">Array</span>.from(process.argv)</span><br><span class="line"></span><br><span class="line"><span class="comment">/**  #region only compiler ts */</span></span><br><span class="line"><span class="keyword">if</span> (argv.includes(<span class="string">'ts'</span>)) &#123;</span><br><span class="line">    devConf = merge(devConf, tsConf)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**  #endregion */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**  #region only compiler vue */</span></span><br><span class="line"><span class="keyword">if</span> (argv.includes(<span class="string">'vue'</span>)) &#123;</span><br><span class="line">    devConf = merge(devConf, vueConf)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**  #endregion */</span></span><br><span class="line"></span><br><span class="line">webpackDevServer.addDevServerEntrypoints(devConf, devConf.devServer);</span><br><span class="line"><span class="keyword">const</span> compiler = webpack(devConf);</span><br><span class="line"><span class="keyword">new</span> webpackDevServer(compiler, devConf.devServer)</span><br><span class="line">  .listen(devConf.devServer.port);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>build 脚本文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file 生产环境下的配置</span></span><br><span class="line"><span class="comment"> * @author jamesjianpeng</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">'webpack-merge'</span>);</span><br><span class="line"><span class="keyword">const</span> tsConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.ts.conf'</span>);</span><br><span class="line"><span class="keyword">let</span> webpackConfig = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.prod.conf'</span>);</span><br><span class="line"><span class="keyword">let</span> vueConf = <span class="built_in">require</span>(<span class="string">'../webpack/webpack.vue.conf'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**  #region only compiler ts */</span></span><br><span class="line"><span class="keyword">const</span> argv = <span class="built_in">Array</span>.from(process.argv)</span><br><span class="line"><span class="keyword">if</span> (argv.includes(<span class="string">'ts'</span>)) &#123;</span><br><span class="line">    webpackConfig = merge(webpackConfig, tsConf)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**  #endregion */</span></span><br><span class="line"><span class="comment">/**  #region only compiler vue */</span></span><br><span class="line"><span class="keyword">if</span> (argv.includes(<span class="string">'vue'</span>)) &#123;</span><br><span class="line">    webpackConfig = merge(webpackConfig, vueConf)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**  #endregion */</span></span><br><span class="line"></span><br><span class="line">webpack(webpackConfig, <span class="function"><span class="keyword">function</span>(<span class="params">err, stats</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">    <span class="keyword">if</span> (stats.hasErrors()) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(stats, <span class="string">'has errors end'</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'webpack TypeScript and Threejs project finish!'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>add webpack.vue.conf.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file 构建 vue 应用 基础配置</span></span><br><span class="line"><span class="comment"> * @author jamesjianpeng</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> CleanWebpackPlugin = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> VueLoaderPlugin = <span class="built_in">require</span>(<span class="string">'vue-loader/lib/plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    mode: <span class="string">'none'</span>,</span><br><span class="line">    entry: &#123;</span><br><span class="line">        <span class="string">'main'</span>: path.resolve(__dirname, <span class="string">'../src/index-vue.js'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, <span class="string">'../dist'</span>),</span><br><span class="line">        publicPath: <span class="string">'./'</span>,</span><br><span class="line">        filename: <span class="string">'[name].js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.vue$/</span>,</span><br><span class="line">                loader: <span class="string">'vue-loader'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">                use: [</span><br><span class="line">                    <span class="string">'vue-style-loader'</span>,</span><br><span class="line">                    <span class="string">'css-loader'</span>,</span><br><span class="line">                    <span class="string">'sass-loader'</span></span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> VueLoaderPlugin()</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>add webpack plugin</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i vue-loader vue-loader vue-style-loader vue-template-compiler -D</span><br><span class="line">npm i css-loader node-sass sass-loader -D</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>add index-vue.js 入口文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> createAppId = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> scriptTag = <span class="built_in">document</span>.body.lastChild;</span><br><span class="line">    <span class="keyword">const</span> app = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">    app.id = <span class="string">'app'</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.insertBefore(app, scriptTag);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'#'</span> + app.id;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: createAppId(),</span><br><span class="line">    render: <span class="function">(<span class="params">h</span>) =&gt;</span> h(App),</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2553,7 +2627,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-count">88</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2564,7 +2638,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2575,7 +2649,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2643,7 +2717,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">54.8k</span>
+    <span title="博客总字数">55.7k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

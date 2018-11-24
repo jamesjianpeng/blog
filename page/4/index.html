@@ -307,6 +307,331 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/25/数据库 - 数据库系统（二）数据库的结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/25/数据库 - 数据库系统（二）数据库的结构/" itemprop="url">数据库 - 数据库系统（二）数据库的结构</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-25T13:00:12+08:00">
+                2018-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  1.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="数据库系统的结构"><a href="#数据库系统的结构" class="headerlink" title="数据库系统的结构"></a>数据库系统的结构</h2><h3 id="数据库系统的分类（P33）"><a href="#数据库系统的分类（P33）" class="headerlink" title="数据库系统的分类（P33）"></a>数据库系统的分类（P33）</h3><ol>
+<li><p>数据库管理员（DBA）的角度</p>
+<blockquote>
+<ol>
+<li>内部系统<ul>
+<li>通常采用三级模式结构</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>外部系统<ul>
+<li>通常采用集中式结构，分布式结构和并行结构等</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+</li>
+<li><p>从用户的角度</p>
+<blockquote>
+<ol>
+<li>客户/服务器结构</li>
+<li>浏览器/服务器结构</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<h3 id="数据库系统的三级模式结构"><a href="#数据库系统的三级模式结构" class="headerlink" title="数据库系统的三级模式结构"></a>数据库系统的三级模式结构</h3><ul>
+<li><p>三级模式结构（采用三级模式结构，并提供两层映像功能）：</p>
+<ol>
+<li>用户级</li>
+<li>概念级</li>
+<li>物理级</li>
+</ol>
+</li>
+<li><p>具体：</p>
+<ol>
+<li>模式</li>
+<li>外模式</li>
+<li>内模式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">                    </span><br><span class="line">应用1     应用2      应用1    应用2       应用1    应用2    </span><br><span class="line">|         |         |        |          |        |</span><br><span class="line">+---------+         +--------+          +--------+ </span><br><span class="line">|         |         |        |          |        |   </span><br><span class="line">| 外模式1  |         |外模式...|          | 外模式n |   </span><br><span class="line">|         |         |        |          |        |</span><br><span class="line">+----+---+          +----+---+          +----+---+ </span><br><span class="line">     |                   |                   |</span><br><span class="line">     +-------------------+-------------------+</span><br><span class="line">                         |</span><br><span class="line">                    +----+----+ </span><br><span class="line">                    |         | </span><br><span class="line">                    |   模式  |</span><br><span class="line">                    |         | </span><br><span class="line">                    +---+-----+ </span><br><span class="line">                        |</span><br><span class="line">                    +---+-----+</span><br><span class="line">                    |         |</span><br><span class="line">                    |  内模式  |</span><br><span class="line">                    |         |</span><br><span class="line">                    +---+-----+ </span><br><span class="line">                        |</span><br><span class="line">                    +---+-----+</span><br><span class="line">                    |         |</span><br><span class="line">                    |  数据库  |</span><br><span class="line">                    |         |</span><br><span class="line">                    +---------+</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="模式（P34）"><a href="#模式（P34）" class="headerlink" title="模式（P34）"></a>模式（P34）</h3><ul>
+<li><p>模式也称为概念模式或逻辑模式</p>
+<blockquote>
+<p>它是数据库中全体数据的逻辑结构和特征的描述，是所有用户的功能数据视图</p>
+</blockquote>
+</li>
+<li><p>模式实际上市数据库在逻辑级上的视图，概念视图</p>
+<blockquote>
+<p>特点：</p>
+<ol>
+<li>其形式要比数据的物理存储方式抽象</li>
+<li><p>不包含任何数据库的实现细节，而是定义数据的逻辑结构，数据之间的联系，以及数据相关的安全性，完整性(DBA 必须考虑整个数据库的这种全局概念视图)</p>
+</li>
+<li><p>处于数据库外模式和内模式的中间，一个数据库只有一个模式</p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h3 id="外模式（P34）"><a href="#外模式（P34）" class="headerlink" title="外模式（P34）"></a>外模式（P34）</h3><ul>
+<li>三级模式结构中，外模式也称为子模式（Subschema）或用户模式</li>
+<li>是数据库用户（包括应用程序员和最终用户）能够看见和使用的局部数据和逻辑结构和特征的描述</li>
+<li>是某一应用有关的数据的逻辑表示 </li>
+<li>实际上：用于满足不同数据库用户需求的数据视图，即用户视图。通常是模式的子集，是对数据整体数据结构的局部重构</li>
+<li>一个数据库可以有多个不同的外模式，允许它们有一定的重叠、<blockquote>
+<p>DBMS 提供子模式描述语言（Subschema DDL）来严格定义子模式</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="内模式（P35）"><a href="#内模式（P35）" class="headerlink" title="内模式（P35）"></a>内模式（P35）</h3><ul>
+<li>在三级模式结构中，内模式也称为存储模式（Storage Schema）</li>
+<li>它是对数据库中数据物理结构和存储方式的描述，是数据在数据库内部的表示形式</li>
+<li>实际上：是整个数据库的最底层表示，它不同于物理层，是 DBA 所见的，特定的 DBMS 所处理的数据库的内部结构，即内部视图或存储视图</li>
+<li>一个数据库只用一个內模式<blockquote>
+<p>內模式不是存储设备上的物理记录或物理块，也不涉及具体设备限制，内模式还不是最底层的物理层，比内模式更接近物理存储和访问的那些软件机制是操作系统的一部分</p>
+<p>DBMS 提供內模式描述语言（內模式 DDL, 或存储模式 DDL）来严格定义内模式</p>
+<ol>
+<li>定义内部记录类型，索引和文件的组织方式</li>
+<li>以及所有数据控制方面的细节（例如：记录存储方式是按照顺序结构存储还是按照 B 树结构存储）</li>
+<li>数据是否压缩，加密等</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h4 id="三级模式结构的两层映像与数据独立性（P35）"><a href="#三级模式结构的两层映像与数据独立性（P35）" class="headerlink" title="三级模式结构的两层映像与数据独立性（P35）"></a>三级模式结构的两层映像与数据独立性（P35）</h4><ul>
+<li>数据库系统三级模式结构的三个模式分别是对数据的三级抽象，它们之间的关系<blockquote>
+<p>特点：</p>
+<ol>
+<li>一个数据库的整体逻辑结构和特征的描述（概念模式）是独立于数据库其他层次结构（内/外模式）的描述，是数据库的核心，也是数据库设计的核心</li>
+<li>一个数据库的内部存储模式依赖于概念模式，但存储模式独立于外部模式，也独立于具体的存储设备</li>
+<li>用户逻辑结构（外模式）是在全局逻辑结构描述的基础上定义的，它面向具体的应用程序，独立于内部模式和存储设备</li>
+<li>特定的应用程序是在外模式的逻辑结构上编写，它依赖于特定的外模式，与数据库的模式和存储结构独立</li>
+</ol>
+</blockquote>
+</li>
+<li>为了有效支持数据的三级抽象以及他们相互间的联系和转换，DBMS 通过在内部提供三级模式之间的两层映像来实:<ol>
+<li>外模式/模式映像</li>
+<li>模式/内模式映像</li>
+</ol>
+</li>
+</ul>
+<h5 id="外模式-模式映像（P35）"><a href="#外模式-模式映像（P35）" class="headerlink" title="外模式/模式映像（P35）"></a>外模式/模式映像（P35）</h5><ol>
+<li>同一个模式可以有任意多个外模式</li>
+</ol>
+<h5 id="模式-内模式映像（P36）"><a href="#模式-内模式映像（P36）" class="headerlink" title="模式/内模式映像（P36）"></a>模式/内模式映像（P36）</h5><ol>
+<li>模式/内模式映像是唯一的</li>
+</ol>
+<h3 id="客户-服务器结构（Client-Server-C-S）（P36）"><a href="#客户-服务器结构（Client-Server-C-S）（P36）" class="headerlink" title="客户/服务器结构（Client/Server, C/S）（P36）"></a>客户/服务器结构（Client/Server, C/S）（P36）</h3><ol>
+<li><p>客户端（前台， 表示层）</p>
+<p>数据库的使用者与命令行客户端，图形化界面管理工具，应用程序等直接交互，而不与数据库直接联系，这种结构中，命令行客户端，图行化界面管理工具，应用程序等称为 “客户端”(“前台” 或 “表示层”)</p>
+<blockquote>
+<p>主要完成与数据库使用者的交互任务</p>
+</blockquote>
+</li>
+<li><p>服务器（后台，数据层）</p>
+<p>数据库管理系统则称为”服务器”，”后台”，”数据层”</p>
+<blockquote>
+<p>主要负责数据管理</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="浏览器-服务器结构（Browser-Server-B-S）（P37）"><a href="#浏览器-服务器结构（Browser-Server-B-S）（P37）" class="headerlink" title="浏览器/服务器结构（Browser/Server, B/S）（P37）"></a>浏览器/服务器结构（Browser/Server, B/S）（P37）</h3><ol>
+<li>浏览器/服务器结构是一种基于 Web 应用的 客户/服务器结构，也称三层客户/服务器结构<blockquote>
+<p>在数据库系统中，它将数据库管理系统交互的客户端进一步细分为 “表示层” 和 “处理层”</p>
+<ol>
+<li>“表示层”：是数据库使用者的操作和展示界面，通常由浏览器构成</li>
+<li>“处理层”：也称为 “中间层”，主要负责处理服务器使用者的具体应用逻辑</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<hr>
+<p>  参考：</p>
+<blockquote>
+<p>《数据库系统原理》(04735)</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/23/数据库 - 数据库系统（一）四个基本概念以及数据管理技术的发展/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2415,249 +2740,6 @@ mysql> UPDATE <tabel_name>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/18/SQL - 聚合和排序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/18/SQL - 聚合和排序/" itemprop="url">SQL - 聚合和排序</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T13:50:46+08:00">
-                2018-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
-                    <span itemprop="name">《SQL基础教程》第二版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  544
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h2><ul>
-<li>聚合：就是将多行汇总成一行</li>
-<li>聚合的方式：<ul>
-<li>使用聚合函数（COUNT, SUM, AVG …）</li>
-<li>使用分组子句（<a href="https://www.pengjiandry.com/2018/10/18/SQL%20-%20聚合：对表进行分组/">GROUP BY</a>）</li>
-<li>使用子句(<a href="">HAVING</a>)</li>
-</ul>
-</li>
-</ul>
-<h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><ul>
-<li>聚合函数（聚集函数）：用于汇总的函数<blockquote>
-<p>COUNT: 计算表中的记录条数（行数）<br>SUM: 计算表中数值列中数据的合计值<br>AVG: 计算表中数据的平均值<br>MAX: 求出表中任意列中数据的最大值<br>MIN: 求出表中任意列中数据的最小值</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT FUNCTION([parametet])[, ... , FUNCTION([parametet])] FROM &lt;table_name&gt;;</span><br></pre></td></tr></table></figure>
-</code></pre><h4 id="COUNT-函数"><a href="#COUNT-函数" class="headerlink" title="COUNT 函数"></a>COUNT 函数</h4><ul>
-<li><p>计算出所有行数（使用 * 参数是 COUNT 函数特有的）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT COUNT(*) FROM &lt;table_name&gt;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>计算出 NOT NULL 之外的数据的行数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT COUNT(&lt;column_name&gt;) FROM &lt;tabel_name&gt;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select count(*) from Products;</span><br><span class="line">+----------+</span><br><span class="line">| count(*) |</span><br><span class="line">+----------+</span><br><span class="line">|       10 |</span><br><span class="line">+----------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line">mysql&gt; select count(purchase_price) from Products;</span><br><span class="line">+-----------------------+</span><br><span class="line">| count(purchase_price) |</span><br><span class="line">+-----------------------+</span><br><span class="line">|                     8 |</span><br><span class="line">+-----------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="SUM-函数"><a href="#SUM-函数" class="headerlink" title="SUM 函数"></a>SUM 函数</h4><ul>
-<li>计算指定列的和<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT SUM(&lt;column_name&gt;) FROM &lt;table_name&gt;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>例子<br><pre><br>mysql&gt; SELECT SUM(sale_price), SUM(purchase_price) FROM Products;<br>+—————–+———————+<br>| SUM(sale_price) | SUM(purchase_price) |<br>+—————–+———————+<br>|           13590 |                2125 |<br>+—————–+———————+<br>1 row in set (0.01 sec)<br></pre><blockquote>
-<p>NULL 不再计算之列中，在计算之前就把 NULL 的数据剔除了</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="AVG-函数"><a href="#AVG-函数" class="headerlink" title="AVG 函数"></a>AVG 函数</h4><ul>
-<li><p>例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT AVG(sale_price), AVG(purchase_price) FROM Products;</span><br><span class="line">+-----------------+---------------------+</span><br><span class="line">| AVG(sale_price) | AVG(purchase_price) |</span><br><span class="line">+-----------------+---------------------+</span><br><span class="line">|       1698.7500 |            265.6250 |</span><br><span class="line">+-----------------+---------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意 NULL 是不再计算的列中</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="MAX-MIN-函数"><a href="#MAX-MIN-函数" class="headerlink" title="MAX , MIN 函数"></a>MAX , MIN 函数</h4><ul>
-<li><p>例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT MAX(sale_price), MIN(purchase_price) FROM Products;</span><br><span class="line">+-----------------+---------------------+</span><br><span class="line">| MAX(sale_price) | MIN(purchase_price) |</span><br><span class="line">+-----------------+---------------------+</span><br><span class="line">|           10000 |                   0 |</span><br><span class="line">+-----------------+---------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意 NULL 是不再计算的列中</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="聚合函数结合使用关键字-DISTINCT-删除重复的值"><a href="#聚合函数结合使用关键字-DISTINCT-删除重复的值" class="headerlink" title="聚合函数结合使用关键字 DISTINCT 删除重复的值"></a>聚合函数结合使用关键字 DISTINCT 删除重复的值</h3><ul>
-<li>以 COUNT 函数为例子：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from Products;</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| product_id | product_name     | product_type | sale_price | purchase_price | regist_data |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| 001        | T恤👕              | 衣服         |        100 |             20 | 2018-10-16  |</span><br><span class="line">| 002        | T恤🌈              | 衣服         |        200 |             80 | 2018-10-16  |</span><br><span class="line">| 003        | T恤🐟              | 衣服         |        170 |             10 | 2018-10-16  |</span><br><span class="line">| 004        | 牛仔裤子👖         | 裤子         |         90 |              5 | 2018-10-16  |</span><br><span class="line">| 005        | 衬衫👔             | 衣服         |       2900 |           1000 | 2018-10-16  |</span><br><span class="line">| 006        | T恤👕              | 衣服         |      10000 |           1000 | 2018-10-14  |</span><br><span class="line">| 007        | 橡皮             | 文具         |         40 |              0 | 2018-10-17  |</span><br><span class="line">| 008        | 小刀             | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">| 009        | 铅笔✏️           | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">| 010        | 文具             | 中性笔       |         90 |             10 | 2018-10-17  |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">mysql&gt; SELECT COUNT(DISTINCT product_type) FROM Products;</span><br><span class="line">+------------------------------+</span><br><span class="line">| COUNT(DISTINCT product_type) |</span><br><span class="line">+------------------------------+</span><br><span class="line">|                            4 |</span><br><span class="line">+------------------------------+</span><br><span class="line">1 row in set (0.01 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2712,7 +2794,7 @@ mysql> UPDATE <tabel_name>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-count">88</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2723,7 +2805,7 @@ mysql> UPDATE <tabel_name>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2734,7 +2816,7 @@ mysql> UPDATE <tabel_name>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2802,7 +2884,7 @@ mysql> UPDATE <tabel_name>
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">54.8k</span>
+    <span title="博客总字数">55.7k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

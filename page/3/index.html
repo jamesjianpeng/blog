@@ -307,6 +307,408 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（二）关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束,后两/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/04/数据库 - 关系型数据库（二）关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束,后两/" itemprop="url">数据库 - 关系型数据库（二）关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束,后两个</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T23:07:23+08:00">
+                2018-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  1.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="关系操作集合（待更新）"><a href="#关系操作集合（待更新）" class="headerlink" title="关系操作集合（待更新）"></a>关系操作集合（待更新）</h3><ul>
+<li><p>基本的关系操作（两大部分）</p>
+<ol>
+<li><p>查询（Query）操作</p>
+<ul>
+<li>查询操作是基本关系操作中的主要部分<ol>
+<li>5 种基本操作：选择，投影，并，差，交，笛卡尔积</li>
+<li>2 复杂操作：连接，除</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>插入（Insert）, 删除（Delete）, 修改（Update）操作</p>
+</li>
+</ol>
+</li>
+<li><p>关系数据语言的分类 </p>
+<ol>
+<li>关系操作是通过关系语言来实现，</li>
+<li><p>关系语言的优点：高度非过程化</p>
+<blockquote>
+<p>用户不需要请求数据库管理员为其建立特殊的存取路径，</p>
+<p>存取路径是由 DBMS 的优化机制来完成；</p>
+</blockquote>
+</li>
+<li><p>关系操作的能力可以通过两种方式来表示</p>
+<ul>
+<li><p>代数方式：主要有关系代数</p>
+<blockquote>
+<p>它是通过对关系的操作来表达查询要求的方式</p>
+</blockquote>
+</li>
+<li><p>逻辑方式：主要是关系演算（他是用谓词来表达查询要求的方式）</p>
+<ul>
+<li>关系演算按谓词的变元的基本对象又分为：<ol>
+<li>元组关系演算（变元的基本对象是元组变量）</li>
+<li>域关系演算（变元的基本对象是域变量 ）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>关系代数，元组关系演算，域关系演算三种语言在表达能力上是等价的，并且他们都是抽象的查询语言</p>
+</li>
+<li><p>结构化查询语言（介于代数方式和逻辑方式之间, Structured Query Language, SQL）</p>
+<ul>
+<li><p>功能：</p>
+<ol>
+<li>数据定义功能（DDL）</li>
+<li>数据操作功能（DML）</li>
+<li>数据控制功能（DCL）</li>
+</ol>
+</li>
+<li><p>是关系数据库的标准语言</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>总结：</li>
+</ol>
+<ul>
+<li>关系数据语言分为三类：关系代数语言，关系演算语言和兼容两者双重特点的语言（SQL）</li>
+<li>它们功能的特点：语言具有完备的表达能力，和非过程化的集合操作语言，功能强，能够独立使用也可以嵌入高级语言中使用<h4 id="关系代数"><a href="#关系代数" class="headerlink" title="关系代数"></a>关系代数</h4></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>关系代数是关系操作语言的一种传统表示方式，他是以集合代数为基础发展起来的。</li>
+<li><p>关系代数的三大要素：<br>1.操作对象<br>2.操作符<br>3.操作结果</p>
+<blockquote>
+<p>特点：操作对象和操作结果均为关系<br>直接应用关系的运算来表达操作的目的</p>
+</blockquote>
+</li>
+<li><p>运算符的种类：</p>
+<ol>
+<li>传统的集合运算符：并，差，交，笛卡尔积</li>
+<li>专门的运算符：选择，投影，连接，除，其中下面两种运算符是辅助专门运算符用的<ul>
+<li>比较运算符：大于，大于等于，等于，小于，小于等于，不等于</li>
+<li>逻辑操作符： 与，或非</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>关系代数表达式（关系代数操作表达式）</p>
+<ol>
+<li>概念： 代数关系操作经过有限次复合的式子 <blockquote>
+<p>可以使用关系代数表达式所需要执行的各种数据库查询和修改处理，例如：IBM 研制的一个纯代数数据操作语言（ISBL）</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>按照运算符的不同，代数操作分为</p>
+<ol>
+<li>传统的集合运算</li>
+<li>专门的关系运算</li>
+</ol>
+</li>
+<li><p>传统的集合运算</p>
+<ol>
+<li>传统的集合运算是二目运算<blockquote>
+<p>特点：</p>
+<ol>
+<li><p>把关系看成元组（行）的集合</p>
+</li>
+<li><p>运算是从关系的 “水平”方向进行，即行的角度进行</p>
+</li>
+<li><p>具体有 并，差，交，笛卡尔积 4 种运算</p>
+<p>值得注意的笛卡尔积是针对列进行操作的</p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>专门的关系运算符</p>
+<ul>
+<li><p>范围：不仅涉及行，还涉及列</p>
+</li>
+<li><p>可分为一元专门关系操作和二元关系操作</p>
+<ul>
+<li>一元关系操作包括<ol>
+<li>对单个进行垂直分解的投影运算</li>
+<li>对水平分解选择运算</li>
+</ol>
+</li>
+<li>二元专门关系操作则是对两个进行操作<ol>
+<li>连接运算</li>
+<li>除运算</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>选择（SELECT）</p>
+<ol>
+<li>概念：选择运算是从指定关系中选取满足给定条件的若干元组组成一个新关系，其形式：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 关系名 WHERE 条件</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>其中：条件是由常数，属性名或列名，比较操作符以及逻辑操作符组成的条件表达式子</p>
+<p>对应 SQL 中的 SELECT 语句的实现</p>
+</blockquote>
+</li>
+<li><p>投影（PROJECTION）</p>
+<ol>
+<li>概念：投影运算是从指定的关系中选取指定的若干属性值组成一个新的关系<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PROJECTION 关系名（属性1， 属性2 ... 属性3）</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>其中：经过投影运算所形成的新关系中不含重复元组，其属性按语句中给出的顺序排列</p>
+<p>SQL 中的 GROUP BY（分组）子句的实现</p>
+</blockquote>
+</li>
+<li><p>连接（JSON）</p>
+<ol>
+<li>选取两个指定关系中国呢的属性满足给定条件的元组连接在一起组成一个新关系<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JOIN 关系名1 AND 关系名2 WHERE 条件</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>条件是由比较操作符和属性名或列名组成的条件表达式</p>
+</blockquote>
+<ol>
+<li>连接分为：等值连接和自然连接</li>
+</ol>
+</li>
+<li><p>除（DIVISION）</p>
+<ol>
+<li>M - N 元关系</li>
+</ol>
+</li>
+</ul>
+<h3 id="关系的完整型约束"><a href="#关系的完整型约束" class="headerlink" title="关系的完整型约束"></a>关系的完整型约束</h3></li>
+<li><p>概念：数据库的数据完整性：是指数据库中数据的正确性，相容性和一致性</p>
+<ol>
+<li>现实世界角度:现实世界应用需求的数据的正确性，相容性和一致性</li>
+<li>数据库数据角度：数据库数据之间的正确性，相容性和一致性</li>
+<li>数据库中数据是否具备完备性，直接关系到数据库系统是否真实地反映现实世界，故数据的数据完整性十分重要</li>
+</ol>
+</li>
+<li><p>完整性约束</p>
+<ol>
+<li>概念：数据的完整性是由完整性规则来定义，关系模型的完整性规则是对关系的某种约束</li>
+<li>目的：用来保证当用户对数据库进行插入，删除，更新操作时不会破坏数据库的正确性，相容性和一致性</li>
+</ol>
+</li>
+<li><p>关系数据库中的三种完整性约束类型</p>
+<ol>
+<li><p>实体完整性约束（Entity Integrity Constraint）</p>
+<ol>
+<li>概念：指关系的主属性（主码）的组成不能为空（NULL）<blockquote>
+<p>关系对应现实世界中的实体集，而实现世界中的实体是可以区分的，即说明每个实体具有唯一性标识</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>参照完整性约束（Referential Integrity Constraint）</p>
+<ol>
+<li>概念：是定义外码和主码之间的引用关系，它是对关系间引用数据的一种限制<blockquote>
+<p>实现世界中的实体之间往往存在着某种联系，在关系模型中实体以及实体之间的联系都是用关系来描述的，这样就自然存在着关系与关系间的引用</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>用户定义完整性约束(User-defined Integrity Constraint)</p>
+<ol>
+<li>概念：是针对某一应用环境的完整性约束条件，它反映了某一具体应用所涉及的数据应满足的要求 </li>
+</ol>
+</li>
+<li><p>实体完整性和参照完整性约束是由系统自动支持的</p>
+</li>
+</ol>
+</li>
+<li><p>关系模型完整性约束检验</p>
+<ol>
+<li>插入操作</li>
+<li>删除操作</li>
+<li>更新操作</li>
+</ol>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（三）关系数据库的规范化理论/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2639,331 +3041,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/25/数据库 - 数据库系统（二）数据库的结构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/25/数据库 - 数据库系统（二）数据库的结构/" itemprop="url">数据库 - 数据库系统（二）数据库的结构</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-25T13:00:12+08:00">
-                2018-10-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  1.5k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="数据库系统的结构"><a href="#数据库系统的结构" class="headerlink" title="数据库系统的结构"></a>数据库系统的结构</h2><h3 id="数据库系统的分类（P33）"><a href="#数据库系统的分类（P33）" class="headerlink" title="数据库系统的分类（P33）"></a>数据库系统的分类（P33）</h3><ol>
-<li><p>数据库管理员（DBA）的角度</p>
-<blockquote>
-<ol>
-<li>内部系统<ul>
-<li>通常采用三级模式结构</li>
-</ul>
-</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="2">
-<li>外部系统<ul>
-<li>通常采用集中式结构，分布式结构和并行结构等</li>
-</ul>
-</li>
-</ol>
-</blockquote>
-</li>
-<li><p>从用户的角度</p>
-<blockquote>
-<ol>
-<li>客户/服务器结构</li>
-<li>浏览器/服务器结构</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-<h3 id="数据库系统的三级模式结构"><a href="#数据库系统的三级模式结构" class="headerlink" title="数据库系统的三级模式结构"></a>数据库系统的三级模式结构</h3><ul>
-<li><p>三级模式结构（采用三级模式结构，并提供两层映像功能）：</p>
-<ol>
-<li>用户级</li>
-<li>概念级</li>
-<li>物理级</li>
-</ol>
-</li>
-<li><p>具体：</p>
-<ol>
-<li>模式</li>
-<li>外模式</li>
-<li>内模式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">                    </span><br><span class="line">应用1     应用2      应用1    应用2       应用1    应用2    </span><br><span class="line">|         |         |        |          |        |</span><br><span class="line">+---------+         +--------+          +--------+ </span><br><span class="line">|         |         |        |          |        |   </span><br><span class="line">| 外模式1  |         |外模式...|          | 外模式n |   </span><br><span class="line">|         |         |        |          |        |</span><br><span class="line">+----+---+          +----+---+          +----+---+ </span><br><span class="line">     |                   |                   |</span><br><span class="line">     +-------------------+-------------------+</span><br><span class="line">                         |</span><br><span class="line">                    +----+----+ </span><br><span class="line">                    |         | </span><br><span class="line">                    |   模式  |</span><br><span class="line">                    |         | </span><br><span class="line">                    +---+-----+ </span><br><span class="line">                        |</span><br><span class="line">                    +---+-----+</span><br><span class="line">                    |         |</span><br><span class="line">                    |  内模式  |</span><br><span class="line">                    |         |</span><br><span class="line">                    +---+-----+ </span><br><span class="line">                        |</span><br><span class="line">                    +---+-----+</span><br><span class="line">                    |         |</span><br><span class="line">                    |  数据库  |</span><br><span class="line">                    |         |</span><br><span class="line">                    +---------+</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="模式（P34）"><a href="#模式（P34）" class="headerlink" title="模式（P34）"></a>模式（P34）</h3><ul>
-<li><p>模式也称为概念模式或逻辑模式</p>
-<blockquote>
-<p>它是数据库中全体数据的逻辑结构和特征的描述，是所有用户的功能数据视图</p>
-</blockquote>
-</li>
-<li><p>模式实际上市数据库在逻辑级上的视图，概念视图</p>
-<blockquote>
-<p>特点：</p>
-<ol>
-<li>其形式要比数据的物理存储方式抽象</li>
-<li><p>不包含任何数据库的实现细节，而是定义数据的逻辑结构，数据之间的联系，以及数据相关的安全性，完整性(DBA 必须考虑整个数据库的这种全局概念视图)</p>
-</li>
-<li><p>处于数据库外模式和内模式的中间，一个数据库只有一个模式</p>
-</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h3 id="外模式（P34）"><a href="#外模式（P34）" class="headerlink" title="外模式（P34）"></a>外模式（P34）</h3><ul>
-<li>三级模式结构中，外模式也称为子模式（Subschema）或用户模式</li>
-<li>是数据库用户（包括应用程序员和最终用户）能够看见和使用的局部数据和逻辑结构和特征的描述</li>
-<li>是某一应用有关的数据的逻辑表示 </li>
-<li>实际上：用于满足不同数据库用户需求的数据视图，即用户视图。通常是模式的子集，是对数据整体数据结构的局部重构</li>
-<li>一个数据库可以有多个不同的外模式，允许它们有一定的重叠、<blockquote>
-<p>DBMS 提供子模式描述语言（Subschema DDL）来严格定义子模式</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="内模式（P35）"><a href="#内模式（P35）" class="headerlink" title="内模式（P35）"></a>内模式（P35）</h3><ul>
-<li>在三级模式结构中，内模式也称为存储模式（Storage Schema）</li>
-<li>它是对数据库中数据物理结构和存储方式的描述，是数据在数据库内部的表示形式</li>
-<li>实际上：是整个数据库的最底层表示，它不同于物理层，是 DBA 所见的，特定的 DBMS 所处理的数据库的内部结构，即内部视图或存储视图</li>
-<li>一个数据库只用一个內模式<blockquote>
-<p>內模式不是存储设备上的物理记录或物理块，也不涉及具体设备限制，内模式还不是最底层的物理层，比内模式更接近物理存储和访问的那些软件机制是操作系统的一部分</p>
-<p>DBMS 提供內模式描述语言（內模式 DDL, 或存储模式 DDL）来严格定义内模式</p>
-<ol>
-<li>定义内部记录类型，索引和文件的组织方式</li>
-<li>以及所有数据控制方面的细节（例如：记录存储方式是按照顺序结构存储还是按照 B 树结构存储）</li>
-<li>数据是否压缩，加密等</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h4 id="三级模式结构的两层映像与数据独立性（P35）"><a href="#三级模式结构的两层映像与数据独立性（P35）" class="headerlink" title="三级模式结构的两层映像与数据独立性（P35）"></a>三级模式结构的两层映像与数据独立性（P35）</h4><ul>
-<li>数据库系统三级模式结构的三个模式分别是对数据的三级抽象，它们之间的关系<blockquote>
-<p>特点：</p>
-<ol>
-<li>一个数据库的整体逻辑结构和特征的描述（概念模式）是独立于数据库其他层次结构（内/外模式）的描述，是数据库的核心，也是数据库设计的核心</li>
-<li>一个数据库的内部存储模式依赖于概念模式，但存储模式独立于外部模式，也独立于具体的存储设备</li>
-<li>用户逻辑结构（外模式）是在全局逻辑结构描述的基础上定义的，它面向具体的应用程序，独立于内部模式和存储设备</li>
-<li>特定的应用程序是在外模式的逻辑结构上编写，它依赖于特定的外模式，与数据库的模式和存储结构独立</li>
-</ol>
-</blockquote>
-</li>
-<li>为了有效支持数据的三级抽象以及他们相互间的联系和转换，DBMS 通过在内部提供三级模式之间的两层映像来实:<ol>
-<li>外模式/模式映像</li>
-<li>模式/内模式映像</li>
-</ol>
-</li>
-</ul>
-<h5 id="外模式-模式映像（P35）"><a href="#外模式-模式映像（P35）" class="headerlink" title="外模式/模式映像（P35）"></a>外模式/模式映像（P35）</h5><ol>
-<li>同一个模式可以有任意多个外模式</li>
-</ol>
-<h5 id="模式-内模式映像（P36）"><a href="#模式-内模式映像（P36）" class="headerlink" title="模式/内模式映像（P36）"></a>模式/内模式映像（P36）</h5><ol>
-<li>模式/内模式映像是唯一的</li>
-</ol>
-<h3 id="客户-服务器结构（Client-Server-C-S）（P36）"><a href="#客户-服务器结构（Client-Server-C-S）（P36）" class="headerlink" title="客户/服务器结构（Client/Server, C/S）（P36）"></a>客户/服务器结构（Client/Server, C/S）（P36）</h3><ol>
-<li><p>客户端（前台， 表示层）</p>
-<p>数据库的使用者与命令行客户端，图形化界面管理工具，应用程序等直接交互，而不与数据库直接联系，这种结构中，命令行客户端，图行化界面管理工具，应用程序等称为 “客户端”(“前台” 或 “表示层”)</p>
-<blockquote>
-<p>主要完成与数据库使用者的交互任务</p>
-</blockquote>
-</li>
-<li><p>服务器（后台，数据层）</p>
-<p>数据库管理系统则称为”服务器”，”后台”，”数据层”</p>
-<blockquote>
-<p>主要负责数据管理</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="浏览器-服务器结构（Browser-Server-B-S）（P37）"><a href="#浏览器-服务器结构（Browser-Server-B-S）（P37）" class="headerlink" title="浏览器/服务器结构（Browser/Server, B/S）（P37）"></a>浏览器/服务器结构（Browser/Server, B/S）（P37）</h3><ol>
-<li>浏览器/服务器结构是一种基于 Web 应用的 客户/服务器结构，也称三层客户/服务器结构<blockquote>
-<p>在数据库系统中，它将数据库管理系统交互的客户端进一步细分为 “表示层” 和 “处理层”</p>
-<ol>
-<li>“表示层”：是数据库使用者的操作和展示界面，通常由浏览器构成</li>
-<li>“处理层”：也称为 “中间层”，主要负责处理服务器使用者的具体应用逻辑</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-<hr>
-<p>  参考：</p>
-<blockquote>
-<p>《数据库系统原理》(04735)</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3018,7 +3095,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-count">88</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -3029,7 +3106,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -3040,7 +3117,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3108,7 +3185,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">54.8k</span>
+    <span title="博客总字数">55.7k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

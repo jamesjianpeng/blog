@@ -307,6 +307,267 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/25/数据库 - SQL 和关系型数据库的基本操作（七）数据操作（DML）- 数据查询：WHERE 子句与条件查询/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/25/数据库 - SQL 和关系型数据库的基本操作（七）数据操作（DML）- 数据查询：WHERE 子句与条件查询/" itemprop="url">数据库 - SQL 和关系型数据库的基本操作（七）数据操作（DML）- 数据查询：WHERE 子句与条件查询</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-25T09:33:06+08:00">
+                2018-11-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="WHERE-子句"><a href="#WHERE-子句" class="headerlink" title="WHERE 子句"></a>WHERE 子句</h3><h4 id="1-比较运算符"><a href="#1-比较运算符" class="headerlink" title="1.比较运算符"></a>1.比较运算符</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">=   等于</span><br><span class="line">&lt;&gt;  不等于</span><br><span class="line">!=  不等于</span><br><span class="line">&lt;   小于</span><br><span class="line">&lt;=  小于等于</span><br><span class="line">&gt;   大于等于</span><br><span class="line">&gt;=  大于等于</span><br><span class="line">&lt;=&gt; 不会返回 UNKNOWN</span><br></pre></td></tr></table></figure>
+<p>  比较运算符的实践：<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM students WHERE student_age &lt;&gt; 22;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          4 | 金融系       | Emma         |      0 | 2018-11-25          |          21 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students WHERE student_age != 22;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          4 | 金融系       | Emma         |      0 | 2018-11-25          |          21 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students WHERE student_age &lt;=&gt; 22;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          5 | 金融系       | Aaron        |      1 | 2018-11-25          |          22 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students WHERE student_age &gt; 22;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students WHERE student_age &lt; 22;</span><br><span class="line">+------------+------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          4 | 金融系     | Emma         |      0 | 2018-11-25          |          21 |</span><br><span class="line">+------------+------------+--------------+--------+---------------------+-------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students WHERE student_age &lt;= 22;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          4 | 金融系       | Emma         |      0 | 2018-11-25          |          21 |</span><br><span class="line">|          5 | 金融系       | Aaron        |      1 | 2018-11-25          |          22 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students WHERE student_age &gt;= 22;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          5 | 金融系       | Aaron        |      1 | 2018-11-25          |          22 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students WHERE student_age = 22;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          5 | 金融系       | Aaron        |      1 | 2018-11-25          |          22 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-判断范围-WHERE-子句中使用-BETEWEEN…AND-或-IN"><a href="#2-判断范围-WHERE-子句中使用-BETEWEEN…AND-或-IN" class="headerlink" title="2.判断范围( WHERE 子句中使用 BETEWEEN…AND 或 IN)"></a>2.判断范围( WHERE 子句中使用 BETEWEEN…AND 或 IN)</h4><ol>
+<li><p>BETWEEN … AND</p>
+<ul>
+<li>作用：查询的过滤条件被限定在某个范围内</li>
+<li>语法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE expression [NOT] BETWEEN expression1 AND expression2</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>expression1 的值不能大于 expression2<br>使用 NOT 之后是没有使用 NOT 结果的取反</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM students</span><br><span class="line">    -&gt; WHERE student_no BETWEEN 1 AND 4;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          4 | 金融系       | Emma         |      0 | 2018-11-25          |          21 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students</span><br><span class="line">    -&gt; WHERE student_no NOT BETWEEN 1 AND 4;</span><br><span class="line">+------------+------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          5 | 金融系     | Aaron        |      1 | 2018-11-25          |          22 |</span><br><span class="line">+------------+------------+--------------+--------+---------------------+-------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>IN</p>
+<ul>
+<li>作用：关键词 IN 可以指定一个值的枚举表，该表中会列出所有可能性；也可以用于范围判定，但主要的作用是表达子查询</li>
+<li><p>语法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression IN (expression [, ...n])</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM students </span><br><span class="line">    -&gt; WHERE student_no IN (1, 2, 4);</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          4 | 金融系       | Emma         |      0 | 2018-11-25          |          21 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="3-判定空值-IS-NULL"><a href="#3-判定空值-IS-NULL" class="headerlink" title="3.判定空值 IS NULL"></a>3.判定空值 IS NULL</h4><ul>
+<li>作用：判定一个表达式的值是否为空值</li>
+<li><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE expression IS [NOT] NULL</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> mysql&gt; SELECT * FROM course;</span><br><span class="line">+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">| course_no | course_name           | department   | teacher_name | teacher_no |</span><br><span class="line">+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">|         1 | 数据库系统原理        | 计算机系     | NULL         |       NULL |</span><br><span class="line">|         2 | C++程序设计           | 计算机系     | NULL         |       NULL |</span><br><span class="line">|         3 | 操作系统原理          | 计算机系     | NULL         |       NULL |</span><br><span class="line">+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM course</span><br><span class="line">    -&gt; WHERE teacher_name IS NULL;</span><br><span class="line">+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">| course_no | course_name           | department   | teacher_name | teacher_no |</span><br><span class="line">+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">|         1 | 数据库系统原理        | 计算机系     | NULL         |       NULL |</span><br><span class="line">|         2 | C++程序设计           | 计算机系     | NULL         |       NULL |</span><br><span class="line">|         3 | 操作系统原理          | 计算机系     | NULL         |       NULL |</span><br><span class="line">+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM course</span><br><span class="line">    -&gt; WHERE teacher_name IS NOT NULL;</span><br><span class="line">Empty set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="4-子查询"><a href="#4-子查询" class="headerlink" title="4.子查询"></a>4.子查询</h4><ul>
+<li><p>分类：</p>
+<ul>
+<li>表子查询：即子查询返回的结果是一个表</li>
+<li>行子查询：即子查询返回的结果是一行或多行数据</li>
+<li>列子查询：即子查询返回的结果是是一列数据，该列可以有一行或多行数据</li>
+<li>标量字查询：即子查询返回的结果是一个值</li>
+</ul>
+</li>
+<li><p>使用的关键字或运算符</p>
+<ul>
+<li>结合 IN </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression [NOT] IN (subquery);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM course_score;</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| course_name           | course_no | student_name | student_no | course_score | course_score_no |</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| 数据库系统原理        |         1 | pengjian     |          2 |           88 |               2 |</span><br><span class="line">| 微观经济学            |         4 | Emma         |          4 |           76 |               3 |</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT student_no, student_name</span><br><span class="line">    -&gt; FROM students</span><br><span class="line">    -&gt; WHERE student_no</span><br><span class="line">    -&gt; IN (</span><br><span class="line">    -&gt;   SELECT student_no</span><br><span class="line">    -&gt;   FROM course_score</span><br><span class="line">    -&gt;   WHERE course_score &gt; 80);</span><br><span class="line">+------------+--------------+</span><br><span class="line">| student_no | student_name |</span><br><span class="line">+------------+--------------+</span><br><span class="line">|          2 | pengjian     |</span><br><span class="line">+------------+--------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的 SQL 语句的含义：这是使用了结合 IN 关键词的 子查询</p>
+<p>首先从子查询中开始：从 course_score 表中查询出分数到大于 80 分的学生编号<br>然后在外层查询中：从 students 表中查询出两列 student_no,student_name；需要过滤出分数大于 80 分的学号</p>
+</blockquote>
+<ul>
+<li><p>结合比较运算符</p>
+<ul>
+<li><p>语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression &#123;=|&gt;|&gt;=|&lt;|&lt;=|&lt;&gt;|!=|&lt;=&gt;&#125; &#123; ALL | SOME | ANY &#125; subquery;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践（待更新）</p>
+</li>
+</ul>
+</li>
+<li><p>结合 EXIST</p>
+<ul>
+<li>作用：主要用于判定子查询的结果集是否为空</li>
+<li><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXIST (subquery)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践（待更新）</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/24/数据库 - SQL 和关系型数据库的基本操作（六）数据操作（DML）- 数据查询：SELECT 子句和多表查询/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2290,163 +2551,6 @@ mysql> ALTER TABLE table_name
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/17/Nodejs - Koa + KoaRouter 实践（一）连接数据库并返回数据/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/17/Nodejs - Koa + KoaRouter 实践（一）连接数据库并返回数据/" itemprop="url">Nodejs - Koa + KoaRouter 实践（一）连接数据库并返回数据</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-17T14:42:02+08:00">
-                2018-11-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  316
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>接着上一节：<a href="https://www.pengjiandry.com/2018/11/11/Nodejs%20play%20-%20%E8%BF%9E%E6%8E%A5%20MySQL/">Nodejs play - 连接 MySQL</a></p>
-<h2 id="项目依赖"><a href="#项目依赖" class="headerlink" title="项目依赖"></a>项目依赖</h2> <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"koa": "^2.6.2",</span><br><span class="line">"koa-router": "^7.4.0",</span><br><span class="line">"mysql": "^2.16.0"</span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/jamesjianpeng/nodejs-play/commit/3dc578b777d95065be8bc64e6588c897a77bf65d" target="_blank" rel="noopener">代码地址</a></p>
-<h2 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h2><h3 id="Q1-需要把-SQL-语句包装成-Promise-对象，不然访问指定的-api-会返回-404"><a href="#Q1-需要把-SQL-语句包装成-Promise-对象，不然访问指定的-api-会返回-404" class="headerlink" title="Q1: 需要把 SQL 语句包装成 Promise 对象，不然访问指定的 api 会返回 404"></a>Q1: 需要把 SQL 语句包装成 Promise 对象，不然访问指定的 api 会返回 404</h3><p>A: 在我们访问 指定的 API 的时候，会执行查询或更新等操作，这个操作是异步的，若不用包装成 Promise 对象，没有的等前面的操作完成 Koa 就直接响应客户端</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @description 获取 Product 的所有数据，主意需要 SQL 的语句函数装成一个 Promise 对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> getQueryData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">reslove,reject</span>) =&gt;</span> &#123;</span><br><span class="line">        connection.query(<span class="string">'SELECT * FROM Product'</span>, (error, results<span class="comment">/*, fields */</span>) =&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">            <span class="keyword">if</span> (results.length) &#123;</span><br><span class="line">                results.map(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(item)</span><br><span class="line">                &#125;)</span><br><span class="line">                reslove(<span class="built_in">JSON</span>.stringify(results));</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            reject([])</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> data = <span class="keyword">await</span> getQueryData() <span class="comment">// 必须使用 async await 包装一下 Promise 这样才能从服务端拿到数据</span></span><br><span class="line">    ctx.body = data</span><br><span class="line">&#125;);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h3 id="Q2-返回值乱码的问题，"><a href="#Q2-返回值乱码的问题，" class="headerlink" title="Q2: 返回值乱码的问题，"></a>Q2: 返回值乱码的问题，</h3><p>A: 需要在 content-type 后面加上 charset=utf-8</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> setHeader = <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> start = <span class="built_in">Date</span>.now();</span><br><span class="line">    <span class="keyword">await</span> next();</span><br><span class="line">    <span class="keyword">const</span> ms = <span class="built_in">Date</span>.now() - start;</span><br><span class="line">    ctx.set(<span class="string">'X-Response-Time'</span>, <span class="string">`<span class="subst">$&#123;ms&#125;</span>ms`</span>);</span><br><span class="line">    ctx.set(<span class="string">'content-type'</span>, <span class="string">`text/plain;charset=utf-8`</span>);</span><br><span class="line">    <span class="comment">// ctx.set('content-type', `text/plain`); 解决乱码的问题</span></span><br><span class="line">    ctx.set(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">`*`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">app</span><br><span class="line">.use(setHeader)</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2501,7 +2605,7 @@ mysql> ALTER TABLE table_name
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2591,7 +2695,7 @@ mysql> ALTER TABLE table_name
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">57.4k</span>
+    <span title="博客总字数">58.5k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

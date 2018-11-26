@@ -307,6 +307,227 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/18/Nodejs - Koa + KoaRouter + MySQL-实践（二）设计学生课程管理系统数据库并实施/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/18/Nodejs - Koa + KoaRouter + MySQL-实践（二）设计学生课程管理系统数据库并实施/" itemprop="url">Nodejs - Koa + KoaRouter + MySQL 实践（二）学生课程系统据库设计和实施</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-18T11:11:41+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  861
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="本地数据库设计和实施"><a href="#本地数据库设计和实施" class="headerlink" title="本地数据库设计和实施"></a>本地数据库设计和实施</h3><ul>
+<li><p>E - R 图</p>
+<ul>
+<li><p>实体信息：</p>
+<ul>
+<li>学生实体 / 课程实体 / 教师实体 / 院系实体<br><img src="http://tc-html5dw-com.b0.upaiyun.com/61e97/61e97036af41fc41fd453b0913bb5e90.png" alt="img"></li>
+</ul>
+</li>
+<li><p>局部信息结构设计</p>
+<ul>
+<li><p>学生课程信息结构设计：<br><img src="http://tc-html5dw-com.b0.upaiyun.com/0b1a0/0b1a0c1d676722d6e75aba6f450c6647.png" alt="img"></p>
+</li>
+<li><p>教师课程信息结构设计：<br><img src="http://tc-html5dw-com.b0.upaiyun.com/0b1a0/0b1a0c1d676722d6e75aba6f450c6647.png" alt="img"></p>
+</li>
+</ul>
+</li>
+<li><p>全局信息结构设计</p>
+<ul>
+<li>院系,学生，教师，课程信息结构设计<br><img src="http://tc-html5dw-com.b0.upaiyun.com/69a36/69a36cb9c8ba2610fdf8cc8f2f7c921b.png" alt="img"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>DataBaseName: studentCourseSystem<ul>
+<li>学生表：students</li>
+<li>课程表：courses</li>
+<li>教师表：teachers</li>
+<li>院系表：departments</li>
+<li><del>学生课程表：studentsCourses</del></li>
+<li><del>教师课程表: teachersCourses</del></li>
+<li><del>院系学生表: departmentsStudents</del></li>
+<li><del>院系课程表: departmentsCourses</del></li>
+<li><del>院系教师表: departmentsTeachers</del></li>
+<li>学生课程表：students_courses</li>
+<li>教师课程表: teachers_courses</li>
+<li>院系学生表: departments_students</li>
+<li>院系课程表: departments_courses</li>
+<li>院系教师表: departments_teachers</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>创建学生表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE studentCourseSystem;</span><br><span class="line">Query OK, 1 row affected (0.10 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; USE studentCourseSystem;</span><br><span class="line">Database changed</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE TABLE students (</span><br><span class="line">    -&gt; no int(11) AUTO_INCREMENT,</span><br><span class="line">    -&gt; name VARCHAR(20) NOT NUll,</span><br><span class="line">    -&gt; gender int(1) NOT NULL,</span><br><span class="line">    -&gt; department VARCHAR(20) NOT NULL,</span><br><span class="line">    -&gt; create_date DATE NOT NULL,</span><br><span class="line">    -&gt; PRIMARY KEY (no));</span><br><span class="line">Query OK, 0 rows affected (0.08 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field       | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| no          | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name        | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| gender      | int(1)      | NO   |     | NULL    |                |</span><br><span class="line">| department  | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| create_date | date        | NO   |     | NULL    |                |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个表之后发现少了一个属性：年龄，下面是对 students 表的更新操作</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students</span><br><span class="line">    -&gt; ADD COLUMN (age int(3) NOT NULL);</span><br><span class="line">Query OK, 0 rows affected (0.11 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field       | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| no          | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name        | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| gender      | int(1)      | NO   |     | NULL    |                |</span><br><span class="line">| department  | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| create_date | date        | NO   |     | NULL    |                |</span><br><span class="line">| age         | int(3)      | NO   |     | NULL    |                |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>创建课程表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE course</span><br><span class="line">    -&gt; (no int(11) AUTO_INCREMENT,</span><br><span class="line">    -&gt; name VARCHAR(100) NOT NULL,</span><br><span class="line">    -&gt; department VARCHAR(100) NOT NULL,</span><br><span class="line">    -&gt; teacher_name VARCHAR(100) NULL,</span><br><span class="line">    -&gt; teacher_no int(11) NULL,</span><br><span class="line">    -&gt; PRIMARY KEY (no));</span><br><span class="line">Query OK, 0 rows affected (0.15 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW TABLE;</span><br><span class="line">ERROR 1064 (42000): You have an error <span class="keyword">in</span> your SQL syntax; check the manual that corresponds to your MySQL server version <span class="keyword">for</span> the right syntax to use near <span class="string">''</span> at line 1</span><br><span class="line">mysql&gt; SHOW TABLEs;</span><br><span class="line">+-------------------------------+</span><br><span class="line">| Tables_in_studentcoursesystem |</span><br><span class="line">+-------------------------------+</span><br><span class="line">| course                        |</span><br><span class="line">| students                      |</span><br><span class="line">+-------------------------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM course;</span><br><span class="line">+--------------+--------------+------+-----+---------+----------------+</span><br><span class="line">| Field        | Type         | Null | Key | Default | Extra          |</span><br><span class="line">+--------------+--------------+------+-----+---------+----------------+</span><br><span class="line">| no           | int(11)      | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name         | varchar(100) | NO   |     | NULL    |                |</span><br><span class="line">| department   | varchar(100) | NO   |     | NULL    |                |</span><br><span class="line">| teacher_name | varchar(100) | YES  |     | NULL    |                |</span><br><span class="line">| teacher_no   | int(11)      | YES  |     | NULL    |                |</span><br><span class="line">+--------------+--------------+------+-----+---------+----------------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM course;</span><br><span class="line">Empty <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>插入两条数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO course</span><br><span class="line">    -&gt; VALUES (NULL, <span class="string">'数据库系统原理'</span>, <span class="string">'计算机系'</span>, NULL, NULL);</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO course</span><br><span class="line">    -&gt; VALUES (NULL, <span class="string">'C++程序设计'</span>, <span class="string">'计算机系'</span>, <span class="string">'NULL'</span>, <span class="string">'NULL'</span>);</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM course;</span><br><span class="line">+----+-----------------------+--------------+--------------+------------+</span><br><span class="line">| no | name                  | department   | teacher_name | teacher_no |</span><br><span class="line">+----+-----------------------+--------------+--------------+------------+</span><br><span class="line">|  1 | 数据库系统原理        | 计算机系     | NULL         |       NULL |</span><br><span class="line">|  2 | C++程序设计           | 计算机系     | NULL         |       NULL |</span><br><span class="line">+----+-----------------------+--------------+--------------+------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>创建 课程分数表<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE course_score</span><br><span class="line">    -&gt; (course_name VARCHAR(100) NOT NULL,</span><br><span class="line">    -&gt; course_no int(11) NOT NULL,</span><br><span class="line">    -&gt; student_name VARCHAR(100) NOT NULL,</span><br><span class="line">    -&gt; student_no int(11) NOT NULL,</span><br><span class="line">    -&gt; course_score int(3) NULL,</span><br><span class="line">    -&gt; course_score_no int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">    -&gt; PRIMARY KEY (course_score_no));</span><br><span class="line">Query OK, 0 rows affected (0.05 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW TABLES;</span><br><span class="line">+-------------------------------+</span><br><span class="line">| Tables_in_studentcoursesystem |</span><br><span class="line">+-------------------------------+</span><br><span class="line">| course                        |</span><br><span class="line">| course_score                  |</span><br><span class="line">| students                      |</span><br><span class="line">+-------------------------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM course_score;</span><br><span class="line">+-----------------+--------------+------+-----+---------+----------------+</span><br><span class="line">| Field           | Type         | Null | Key | Default | Extra          |</span><br><span class="line">+-----------------+--------------+------+-----+---------+----------------+</span><br><span class="line">| course_name     | varchar(100) | NO   |     | NULL    |                |</span><br><span class="line">| course_no       | int(11)      | NO   |     | NULL    |                |</span><br><span class="line">| student_name    | varchar(100) | NO   |     | NULL    |                |</span><br><span class="line">| student_no      | int(11)      | NO   |     | NULL    |                |</span><br><span class="line">| course_score    | int(3)       | YES  |     | NULL    |                |</span><br><span class="line">| course_score_no | int(11)      | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">+-----------------+--------------+------+-----+---------+----------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>- 插入两条测试数据
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO course_score</span><br><span class="line">    -&gt; VALUES (&apos;数据库系统原理&apos;, 1, &apos;James&apos;, 1, 81, NULL);</span><br><span class="line">Query OK, 1 row affected (0.07 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO course_score VALUES (&apos;数据库系统原理&apos;, 1, &apos;pengjian&apos;, 2, 88, NULL);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM course_score;</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| course_name           | course_no | student_name | student_no | course_score | course_score_no |</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| 数据库系统原理        |         1 | James        |          1 |           81 |               1 |</span><br><span class="line">| 数据库系统原理        |         1 | pengjian     |          2 |           88 |               2 |</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+后续更新
+</code></pre><hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/17/Nodejs - Koa + KoaRouter 实践（一）连接数据库并返回数据/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2677,172 +2898,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/05/git 对比/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/05/git 对比/" itemprop="url">git 对比</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T11:16:33+08:00">
-                2018-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  38
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="后续更新新内容"><a href="#后续更新新内容" class="headerlink" title="后续更新新内容"></a>后续更新新内容</h2><ul>
-<li><p>对比指定的文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff [&lt;file_name&gt;]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对比我们拉取得的代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff ORIG_HEAD</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><a href="https://stackoverflow.com/questions/964876/head-and-orig-head-in-git" target="_blank" rel="noopener">HEAD 和 ORIG_HEAD 的区别</a></p>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2892,7 +2952,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-count">91</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2914,7 +2974,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

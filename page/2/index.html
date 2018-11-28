@@ -307,6 +307,222 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/18/数据库 - SQL 和关系型数据库的基本操作（二）数据定义（DDL）- 数据库的模式定义/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/18/数据库 - SQL 和关系型数据库的基本操作（二）数据定义（DDL）- 数据库的模式定义/" itemprop="url">数据库 - SQL 和关系型数据库的基本操作（二）数据定义（DDL）</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-18T13:23:25+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  351
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="数据的定义"><a href="#数据的定义" class="headerlink" title="数据的定义"></a>数据的定义</h3><h4 id="一-数据库模式定义"><a href="#一-数据库模式定义" class="headerlink" title="一. 数据库模式定义"></a>一. 数据库模式定义</h4><h5 id="1-创建数据库"><a href="#1-创建数据库" class="headerlink" title="1. 创建数据库"></a>1. 创建数据库</h5>  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; CREATE &#123; DATABASE | SCHEMA &#125; [ IF NOT EXISTS ] db_name</span><br><span class="line">    -&gt;[ DEFAULT ] CHARACTER SET [ = ] charset_name</span><br><span class="line">    -&gt;| [ DEFAULT ] COLLATE [ = ] collation_name</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; CREATE DATABASE NodeTest1;</span><br><span class="line">Query OK, 1 row affected (0.08 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; show DATABASES;</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| mysql              |</span><br><span class="line">| NodeTest           |</span><br><span class="line">| NodeTest1          |</span><br><span class="line">| performance_schema |</span><br><span class="line">| sys                |</span><br><span class="line">+--------------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE DATABASE NodeTest1;</span><br><span class="line">ERROR 1007 (HY000): Can<span class="string">'t create database '</span>NodeTest1<span class="string">'; database exists</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>再次创建的时候出现了错误</p>
+</blockquote>
+</li>
+</ul>
+<p>  需要使用：IF NOT EXISTS 可以防止上述的错误</p>
+<p>  实践：<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; CREATE DATABASE IF NOT EXISTS NodeTest1;</span><br><span class="line">Query OK, 1 row affected, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<h5 id="2-选择数据库"><a href="#2-选择数据库" class="headerlink" title="2. 选择数据库"></a>2. 选择数据库</h5>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; USE &lt;data_name&gt;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; USE NodeTest;</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="3-修改数据库-待更新"><a href="#3-修改数据库-待更新" class="headerlink" title="3. 修改数据库(待更新)"></a>3. 修改数据库(待更新)</h5><ul>
+<li>主要是修改数据库的字符集和字符校对规则</li>
+</ul>
+<h5 id="4-删除数据库"><a href="#4-删除数据库" class="headerlink" title="4. 删除数据库"></a>4. 删除数据库</h5>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DROP DATABASE [IF EXISTS] &lt;data_name&gt;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>实践 ：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW DATABASES;</span><br><span class="line">+---------------------+</span><br><span class="line">| Database            |</span><br><span class="line">+---------------------+</span><br><span class="line">| information_schema  |</span><br><span class="line">| mysql               |</span><br><span class="line">| NodeTest            |</span><br><span class="line">| NodeTest1           |</span><br><span class="line">| performance_schema  |</span><br><span class="line">| studentCourseSystem |</span><br><span class="line">| sys                 |</span><br><span class="line">+---------------------+</span><br><span class="line">7 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; DROP DATABASE NodeTest;</span><br><span class="line">Query OK, 1 row affected (0.10 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW DATABASES;</span><br><span class="line">+---------------------+</span><br><span class="line">| Database            |</span><br><span class="line">+---------------------+</span><br><span class="line">| information_schema  |</span><br><span class="line">| mysql               |</span><br><span class="line">| NodeTest1           |</span><br><span class="line">| performance_schema  |</span><br><span class="line">| studentCourseSystem |</span><br><span class="line">| sys                 |</span><br><span class="line">+---------------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="5-查看数据库"><a href="#5-查看数据库" class="headerlink" title="5. 查看数据库"></a>5. 查看数据库</h5>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW DATABASES;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这个操作只是针对当前用户，并不是所有的数据库都可以看，由于我们登陆的时候使用 ROOT 用户，所以所有数据库都能查看</p>
+</blockquote>
+<ul>
+<li>实践：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW DATABASES;</span><br><span class="line">+---------------------+</span><br><span class="line">| Database            |</span><br><span class="line">+---------------------+</span><br><span class="line">| information_schema  |</span><br><span class="line">| mysql               |</span><br><span class="line">| NodeTest1           |</span><br><span class="line">| performance_schema  |</span><br><span class="line">| studentCourseSystem |</span><br><span class="line">| sys                 |</span><br><span class="line">+---------------------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/18/Nodejs - Koa + KoaRouter + MySQL-实践（二）设计学生课程管理系统数据库并实施/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2330,574 +2546,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/06/数据库 - 数据库设计（一）数据库设计概述和数据库设计步骤/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/06/数据库 - 数据库设计（一）数据库设计概述和数据库设计步骤/" itemprop="url">数据库 - 数据库设计（一）数据库设计概述和数据库设计步骤</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-06T23:55:18+08:00">
-                2018-11-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  10
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="数据库设计概述"><a href="#数据库设计概述" class="headerlink" title="数据库设计概述"></a>数据库设计概述</h2><h3 id="数据库的生命周期"><a href="#数据库的生命周期" class="headerlink" title="数据库的生命周期"></a>数据库的生命周期</h3><ul>
-<li><p>两个阶段：</p>
-<ol>
-<li><p>数据库分析与设计阶段</p>
-<ul>
-<li>需求分析</li>
-<li>概念设计</li>
-<li>逻辑设计</li>
-<li>物理设计</li>
-</ul>
-</li>
-<li><p>数据库实现与操作阶段 </p>
-<ul>
-<li>数据库的实现阶 </li>
-<li>数据库的操作和监督阶段</li>
-<li>数据库的修改与调整阶段</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="数据库设计的目标"><a href="#数据库设计的目标" class="headerlink" title="数据库设计的目标"></a>数据库设计的目标</h3><ul>
-<li>两个目标：1. 满足应用功能 2. 良好的数据库性能</li>
-</ul>
-<h3 id="数据库设计的内容"><a href="#数据库设计的内容" class="headerlink" title="数据库设计的内容"></a>数据库设计的内容</h3><ul>
-<li>从用户对数据的需求出发，研究并构造数据库的过程<ol>
-<li>数据库的结构设计</li>
-<li>数据库的行为设计</li>
-</ol>
-</li>
-</ul>
-<h3 id="数据库设计的方法"><a href="#数据库设计的方法" class="headerlink" title="数据库设计的方法"></a>数据库设计的方法</h3><ul>
-<li><p>直观设计法</p>
-<blockquote>
-<p>特点：最原始的一类设计方法，利用设计者的经验和技巧设计数据库模式<br>缺点：缺乏科学理论的指导，设计质量难以保证</p>
-</blockquote>
-</li>
-<li><p>规范设计法</p>
-<ol>
-<li><p>新奥尔良设计方法</p>
-</li>
-<li><p>基于 E-R 模型的数据设计方法</p>
-</li>
-</ol>
-<blockquote>
-<p>基本思想：在需求分析的基础上用 E-R 图构造一个反映实现世界实体之间联系的企业模式，然后将此模式转换成某一特定DBMS 下的概念模式</p>
-</blockquote>
-<ol start="3">
-<li>计算机辅助设计方法</li>
-</ol>
-</li>
-</ul>
-<h3 id="数据库设计过程"><a href="#数据库设计过程" class="headerlink" title="数据库设计过程"></a>数据库设计过程</h3><ol>
-<li><p>需求分析</p>
-</li>
-<li><p>结构设计</p>
-<ul>
-<li>概念结构设计</li>
-<li>逻辑结构设计</li>
-<li>物理结构设计</li>
-</ul>
-</li>
-<li><p>行为设计阶段</p>
-<ul>
-<li>功能设计</li>
-<li>事务设计</li>
-<li>程序设计</li>
-</ul>
-</li>
-<li><p>数据库实施阶段</p>
-<ul>
-<li>加载数据库数据</li>
-<li>调试运行应用程序</li>
-</ul>
-</li>
-<li><p>数据库运行和维护阶段</p>
-</li>
-</ol>
-<h2 id="数据库设计的基本步骤"><a href="#数据库设计的基本步骤" class="headerlink" title="数据库设计的基本步骤"></a>数据库设计的基本步骤</h2><ol>
-<li><p>使用的方法：分阶段设计方法</p>
-</li>
-<li><p>原则：自顶向下，逐步求精的原则</p>
-<blockquote>
-<p>将数据库设计过程分解为若干个相互依存的阶段，每一阶段采用不同的技术与工具解决不同的问题</p>
-<p>目的：将问题局部化，减少 局部问题对整体设计的影响，便于多人合作</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="数据库设计的各个阶段，又称为数据库设计步骤"><a href="#数据库设计的各个阶段，又称为数据库设计步骤" class="headerlink" title="数据库设计的各个阶段，又称为数据库设计步骤"></a>数据库设计的各个阶段，又称为数据库设计步骤</h3><h4 id="1-需求分析"><a href="#1-需求分析" class="headerlink" title="1. 需求分析"></a>1. 需求分析</h4><ul>
-<li><p>目标：了解与用户信息及应用处理的要求，并将结果按一定格式整理而形成需求分析报告</p>
-<blockquote>
-<p>该报告是后续概念设计，逻辑设计，物理设计，数据库建立与维护的依据</p>
-</blockquote>
-</li>
-<li><p>4 个步骤：</p>
-<ol>
-<li><p>确定数据库范围</p>
-<ul>
-<li><p>目的：确定数据库应支持哪些应用功能</p>
-</li>
-<li><p>首先要考虑得是支持用户工作需要所必须的应用要求</p>
-</li>
-</ul>
-</li>
-<li><p>分析数据应用过程</p>
-<ul>
-<li><p>目的：了解分析数据与数据处理间的关系</p>
-</li>
-<li><p>每个功能用到那些数据，数据使用顺序，对数据作如何处理以及处理的策略以及处理的结果</p>
-</li>
-<li><p>应用过程分析的结果是数据库结构设计的重要依据</p>
-<ol>
-<li>那些数据需要存入数据库中</li>
-<li>哪些数据可作为报告输出而不存入数据库中</li>
-<li>不同数据的不同使用权限（存，取，删，改） 和共享范围</li>
-</ol>
-</li>
-<li><p>数据应用过程也是数据库应用程序编写的依据</p>
-</li>
-<li><p>使用的工具</p>
-<ol>
-<li>借助数据流程图或其他信息及应用结构图形表示</li>
-<li>在构建数据流程图的时候需要注意：<ul>
-<li>应以局部应用部门或相对独立的应用功能为标识单位，从而将问题局部化，有利于分块设计</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>收集与分析数据</p>
-<ul>
-<li><p>目的：了解并分析数据的组成格式以及操作特征，每个数据元素的语义及关系等，并将他们收集起来整理归档。</p>
-<blockquote>
-<p>数据流程图中所涉及的 数据都是收集与分析的对象，主要包括报表，文件，单据以及各种原始资料</p>
-</blockquote>
-</li>
-<li><p>可以从三个方面入手：</p>
-<ol>
-<li><p>数据的静态结构</p>
-<ul>
-<li>概念：指不施加应用操作于其上时数据的原始状态，可以通过数据分类表和数据元素进行说明</li>
-</ul>
-<ol>
-<li>数据分类表： 用于数据的总体描述，对于每一客观存在的具有独立意义的单类数据单位（如一种报表，一种文件，一种收据）应给出其名称，用途，编制者以及使用者等说明</li>
-</ol>
-<ul>
-<li><p>数据分类表，其结构</p>
-</li>
-<li><p>数据ID</p>
-</li>
-<li>数据名</li>
-<li>用途</li>
-<li>主人</li>
-<li>用户</li>
-<li>来源</li>
-<li>去向</li>
-<li>存档时间</li>
-<li><p>数据量</p>
-</li>
-<li><p>数据元素表，其结构</p>
-</li>
-<li><p>数据ID</p>
-</li>
-<li>数据元素ID</li>
-<li>元素名</li>
-<li>意义</li>
-<li>类型</li>
-<li>长度</li>
-<li>算法</li>
-<li>备注</li>
-</ul>
-</li>
-<li><p>动态结构</p>
-<ul>
-<li>概念：指将应用操作施加于数据之上数据的状态，可通过任务分类表和数据操作特征表进行说明</li>
-<li>意义：</li>
-<li>任务分类表</li>
-<li>任务 ID</li>
-<li>名称</li>
-<li>功能</li>
-<li>类型</li>
-<li>主人</li>
-<li>用户</li>
-<li>执行日期</li>
-<li>频率</li>
-<li>操作过程</li>
-<li><p>备注</p>
-</li>
-<li><p>数据操作特征表</p>
-</li>
-<li>任务 ID</li>
-<li>数据 ID </li>
-<li>建立</li>
-<li>查询</li>
-<li>插入</li>
-<li>修改</li>
-<li>删除</li>
-<li>数据量</li>
-</ul>
-</li>
-<li><p>数据约束</p>
-<ul>
-<li>数据约束是指使用数据时的特殊要求，约束的类型：</li>
-</ul>
-<ol>
-<li><p>数据的安全保密性</p>
-<blockquote>
-<p>谁拥有操作，存，取，删，改的不同权限</p>
-</blockquote>
-</li>
-<li><p>数据的完整性</p>
-<blockquote>
-<p>数据正确性的约束范围和验证准则</p>
-</blockquote>
-</li>
-<li><p>响应时间</p>
-<blockquote>
-<p>指主要是指某些特定应用要求的数据存储时间限制</p>
-</blockquote>
-</li>
-<li><p>数据恢复</p>
-<blockquote>
-<p>其主要指转储及恢复的时机与范围等要求</p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>编写需求分析报告</p>
-<ul>
-<li><p>作为需求分析阶段的一个总结，需求分析报告作为应用需求的业务人员和数据库设计人员的 “共同语言”</p>
-</li>
-<li><p>需求报告的内容：</p>
-<ol>
-<li><p>数据库的应用功能目标</p>
-<blockquote>
-<p>要求明确标明数据库的应用范围以及达到的应用处理功能</p>
-</blockquote>
-</li>
-<li><p>标明不同用户视图范围</p>
-<blockquote>
-<p>根据机构与职能关系图和数据流程图，并参考任务分类表等，确定不同部门或功能的局部视图范围</p>
-</blockquote>
-</li>
-<li><p>应用处理过程需求说明</p>
-<blockquote>
-<ol>
-<li>数据流程图，其主要反映应用部门原始业务处理的工作流程</li>
-<li>任务分类表，其标明不同任务的功能以及使用状况</li>
-<li>数据操作特征表，标明任务和数据间的联系以及不同数据的不同操作特征与执行效率</li>
-</ol>
-</blockquote>
-</li>
-<li><p>数据字典</p>
-<ul>
-<li><p>数据字典（Data Dictionary, DD）概念：数据库系统中存储三级结构定义的数据库</p>
-<blockquote>
-<p>通常指的是数据库系统中各类数据详细描述的集合</p>
-</blockquote>
-</li>
-<li><p>功能：存储和检索各种数据描述，即元数据</p>
-</li>
-<li><p>特点：在数据库设计中，它提供了对各类数据描述的集中管理，是一种数据分析，系统设计和管理的有力工具</p>
-<blockquote>
-<p>数组字典需要有专人进行管理，及时对数据字典进行更新，保证字典的安全，可靠</p>
-</blockquote>
-</li>
-<li><p>数据字典包括的内容：数据分类表，数据元素表和各类原始资料</p>
-<blockquote>
-<p>各类原始资料是指收集所有单据，报表，文件以及设计所需的原始资料，并根据数据分类表的数据 ID 统一分类标号</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h4 id="2-概念结构设计"><a href="#2-概念结构设计" class="headerlink" title="2. 概念结构设计"></a>2. 概念结构设计</h4><ul>
-<li><p>目的（任务）：是在需求分析中产生的需求分析报告的基础上，按照特定的方法设计满足应用需求的用户信息结构</p>
-<blockquote>
-<p>改信息结构通常称为概念模式</p>
-</blockquote>
-</li>
-<li><p>特点：概念模型独立于任何软件和硬件，</p>
-<blockquote>
-<p>主要目的：是最大限度地满足应用需求，可完全不顾及具体的硬件和软件的限制，因而它是一个符合用户需求的趋于理想化的信息结构</p>
-</blockquote>
-</li>
-<li><p>概念结构设计的常用方法：</p>
-<ol>
-<li>实体分析法（自顶向下法）</li>
-<li>属性综合法（自底向上法）<blockquote>
-<p>采用属性分析开始，高层实体以及联系通过底层属性组成的设计技术</p>
-<p>实际上，这是一种基于统计分析推导的方法，即通过对数据元素与应用任务联系的定性定量统计分析技术来推导的方法 </p>
-<p>统计分析推导的处理过程：可分为属性分类，实体构成，联系的确定等相对独立的步骤</p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ul>
-<h4 id="3-逻辑结构设计"><a href="#3-逻辑结构设计" class="headerlink" title="3. 逻辑结构设计"></a>3. 逻辑结构设计</h4><ul>
-<li><p>目的（任务）：是将概念模型转化为等价的，并为特定 DBMS 所支持数据模型的结构</p>
-</li>
-<li><p>数据库逻辑模型表示方法：层次，网状，关系数据模型表示</p>
-</li>
-<li><p>逻辑结构设计的输入和输出信息</p>
-<blockquote>
-<p>逻辑结构设计是在需求分析以及概念结构设计的基础上进行的，通常要求提供如下输入信息</p>
-<ol>
-<li>独立于特定 DBMS 的概念模型</li>
-<li>有关响应时间，安全保密性，数据完整性及恢复方面的要求说明，包括保持数据一致性的规则说明</li>
-<li>数据量以及使用频率</li>
-<li>特定 DBMS 特性，包括 DBMS 支持的数据模型以及数据定义语言的说明</li>
-</ol>
-</blockquote>
-</li>
-<li><p>完成逻辑结构设计之后输出的信息</p>
-<blockquote>
-<ol>
-<li>一个特定 DBMS 支持的概念模式，或称为模式</li>
-<li>物理设计说明，主要包括存入数据库中的数据量，使用频率以及响应时间要求</li>
-<li>程序设计说明，其是在需求分析的基础上，根据已完成的逻辑模型编制各程序名，执行逻辑步，存取数据的名，顺序以及操作特征（读写删改）的说明</li>
-</ol>
-</blockquote>
-</li>
-<li><p>逻辑结构设计的步骤</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">               +-----------------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    概念设计      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br><span class="line">                        |</span><br><span class="line">               +--------+--------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    模型转换      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br><span class="line">                        |</span><br><span class="line">        +---------------+---------------+</span><br><span class="line">        |                               |</span><br><span class="line">+-------+--------+          +-----------+----------+</span><br><span class="line">|                |          |                      |</span><br><span class="line">|    子模式       |          |  应用程序设计说明     |</span><br><span class="line">|                |          |                      |</span><br><span class="line">+-------+--------+          +-----------+----------+</span><br><span class="line">        |                               |</span><br><span class="line">        +---------------+---------------+</span><br><span class="line">                        |</span><br><span class="line">               +--------+--------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    设计评价      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br><span class="line">                        |</span><br><span class="line">               +--------+--------+</span><br><span class="line">               |                 |</span><br><span class="line">               |    物理设计      |</span><br><span class="line">               |                 |</span><br><span class="line">               +--------+--------+</span><br></pre></td></tr></table></figure>
-<blockquote>
-<ol>
-<li><p>模型转换是指将概念模型等价地转换为特定 DBMS 支持的关系模式，网状模型或层次模型 </p>
-</li>
-<li><p>子模式设计的目标：是抽取或导出模式的子集，以构造不同用户使用的局部数据逻辑结构</p>
-</li>
-<li><p>编制应用程序设计说明的目的：为可实际运行的应用程序设计提供依据与指导，并作为设计评价的基础</p>
-</li>
-<li><p>设计评价的任务是分析并检验模式以及子模式的正确性合理性</p>
-</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h4 id="4-物理结构设计"><a href="#4-物理结构设计" class="headerlink" title="4. 物理结构设计"></a>4. 物理结构设计</h4><ul>
-<li>概念：是指对于一个给定的数据库逻辑结构，研究并构造物理结构的过程</li>
-<li>任务：是确定数据库在存储设备上的存储结构以及存储方法<blockquote>
-<p>因 DBMS 的不同还可能包括建立索引和聚集，以及物理块大小，缓冲区个数和大小，数据压缩的选择等</p>
-<p>对于物理结构设计的人员的要求</p>
-<ul>
-<li>掌握基本存储设备的特性</li>
-<li>充分了解操作系统以及 DBMS 所提供的支持环境</li>
-<li>并十分熟悉数据库的逻辑结构以及存取速度，频率以及数据量方面的要求</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<h4 id="5-数据库实施"><a href="#5-数据库实施" class="headerlink" title="5. 数据库实施"></a>5. 数据库实施</h4><ul>
-<li><p>工作内容：加载数据，应用程序设计以及数据库运行</p>
-</li>
-<li><p>数据加载</p>
-<blockquote>
-<p>概念：将符号要求的数据装载到数据库中去，其具体过程包括数据的收集，分类，整理校验和输入等过程，经此就可将数据按数据库定义准确地存储到数据库中</p>
-</blockquote>
-</li>
-<li><p>应用程序设计</p>
-<blockquote>
-<p>严格说，应用程序设计不应是数据库设计的范畴，但它又必须且只能是随着数据库结构设计的进展而逐步地并行进行</p>
-</blockquote>
-</li>
-<li><p>数据库试运行 </p>
-<blockquote>
-<p>目的：为了避免对实际应用带来损害，数据库通常应经过一个试运行阶段</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="6-数据库的运行和维护"><a href="#6-数据库的运行和维护" class="headerlink" title="6. 数据库的运行和维护"></a>6. 数据库的运行和维护</h4><ul>
-<li>数据库系统投入实际运行标志着数据库设计和应用开发的基本完成，但绝不是意味着设计应用开发工作的终止</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2952,7 +2600,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-count">92</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2974,7 +2622,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3042,7 +2690,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">58.5k</span>
+    <span title="博客总字数">58.6k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

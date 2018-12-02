@@ -307,6 +307,752 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/20/数据库 - SQL 和关系型数据库的基本操作（五）数据操作（DML）- 数据插入 | 删除 | 修改-md/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/20/数据库 - SQL 和关系型数据库的基本操作（五）数据操作（DML）- 数据插入 | 删除 | 修改-md/" itemprop="url">数据库 - SQL 和关系型数据库的基本操作（五）数据操作（DML）-数据插入 | 删除 | 修改.md</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-20T22:25:55+08:00">
+                2018-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  461
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="数据插入"><a href="#数据插入" class="headerlink" title="数据插入"></a>数据插入</h2><h3 id="INSERT-语句"><a href="#INSERT-语句" class="headerlink" title="INSERT 语句"></a>INSERT 语句</h3><h4 id="INSERT-…-VALUES（插入完整的一行）"><a href="#INSERT-…-VALUES（插入完整的一行）" class="headerlink" title="INSERT … VALUES（插入完整的一行）"></a>INSERT … VALUES（插入完整的一行）</h4>  <pre>
+   > INSERT [ INTO ] <table_name> [column_name ... ]
+  -> {VALUES | VALUE}
+  </table_name></pre> 
+
+<p>  不省略列的实践：<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO students (no, department, name, gender, regist_date, age)</span><br><span class="line">    -&gt; VALUES (null, <span class="string">'计算机系'</span>, <span class="string">'pengjian'</span>, 1, <span class="string">'2018-11-20'</span>, 23);</span><br><span class="line">Query OK, 1 row affected (0.07 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students;</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">| no | department   | name     | gender | regist_date | age |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">|  1 | 计算机系     | James    |      1 | 2018-11-20  |  23 |</span><br><span class="line">|  2 | 计算机系     | pengjian |      1 | 2018-11-20  |  23 |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<p>  省略列的实践：<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO students VALUES (null, <span class="string">'计算机系'</span>, <span class="string">'James'</span>, 1, <span class="string">'2018-11-20'</span>, 23);</span><br><span class="line">Query OK, 1 row affected (0.07 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students;</span><br><span class="line">+----+--------------+-------+--------+-------------+-----+</span><br><span class="line">| no | department   | name  | gender | regist_date | age |</span><br><span class="line">+----+--------------+-------+--------+-------------+-----+</span><br><span class="line">|  1 | 计算机系     | James |      1 | 2018-11-20  |  23 |</span><br><span class="line">+----+--------------+-------+--------+-------------+-----+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<h4 id="INSERT-…-SET（插入指定的列对应的值）"><a href="#INSERT-…-SET（插入指定的列对应的值）" class="headerlink" title="INSERT … SET（插入指定的列对应的值）"></a>INSERT … SET（插入指定的列对应的值）</h4>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> &gt; INSERT INTO tabel_name</span><br><span class="line">-&gt; SET column_name = &lt;value&gt; ... column_name = &lt;value&gt;;</span><br></pre></td></tr></table></figure>
+<p>  实践：<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO students</span><br><span class="line">    -&gt; SET department = <span class="string">'金融系'</span>, name = <span class="string">'wihte'</span>, gender = 0, regist_date = <span class="string">'2018-11-20'</span>, age = 22;</span><br><span class="line">Query OK, 1 row affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students;</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">| no | department   | name     | gender | regist_date | age |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">|  1 | 计算机系     | James    |      1 | 2018-11-20  |  23 |</span><br><span class="line">|  2 | 计算机系     | pengjian |      1 | 2018-11-20  |  23 |</span><br><span class="line">|  3 | 金融系       | wihte    |      0 | 2018-11-20  |  22 |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<h4 id="INSERT-…-SELECT-待更新"><a href="#INSERT-…-SELECT-待更新" class="headerlink" title="INSERT … SELECT(待更新)"></a>INSERT … SELECT(待更新)</h4><h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> &gt; DELETE FROM &lt;table_name&gt;</span><br><span class="line">-&gt; [WHERE conditon]</span><br><span class="line">-&gt; [ORDER BY condition]</span><br><span class="line">-&gt; [LIMIT codition];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>DELETE FROM &lt;table_name&gt; [WHERE conditon] 实践：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DELETE FROM students WHERE no &gt;= 3;</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students;</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">| no | department   | name     | gender | regist_date | age |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">|  1 | 计算机系     | James    |      1 | 2018-11-20  |  23 |</span><br><span class="line">|  2 | 计算机系     | pengjian |      1 | 2018-11-20  |  23 |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> &gt; UPDATE table_name</span><br><span class="line">-&gt; SET column_name = value, ... column_name = value</span><br><span class="line">-&gt; [WHRER condition]</span><br><span class="line">-&gt; [ORDER BY condition]</span><br><span class="line">-&gt; [LIMIT condition];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>UPDATE table_name SET column_name = value, … column_name = value [WHRER condition]实践：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; UPDATE students</span><br><span class="line">    -&gt; SET age = 22</span><br><span class="line">    -&gt; WHERE name = <span class="string">'pengjian'</span>;</span><br><span class="line">Query OK, 1 row affected (0.06 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students;</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">| no | department   | name     | gender | regist_date | age |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">|  1 | 计算机系     | James    |      1 | 2018-11-20  |  23 |</span><br><span class="line">|  2 | 计算机系     | pengjian |      1 | 2018-11-20  |  22 |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/19/HTTP - 状态码总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/19/HTTP - 状态码总结/" itemprop="url">HTTP - HTTP 报文中的状态码</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-19T12:54:38+08:00">
+                2018-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《HTTP-权威指南》/" itemprop="url" rel="index">
+                    <span itemprop="name">《HTTP 权威指南》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  269
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="状态码存在的目的"><a href="#状态码存在的目的" class="headerlink" title="状态码存在的目的"></a>状态码存在的目的</h3><ul>
+<li>目的：为客户端提供了一种理解事务处理结果的便捷方式</li>
+</ul>
+<h3 id="状态码的分类（五大类）"><a href="#状态码的分类（五大类）" class="headerlink" title="状态码的分类（五大类）"></a>状态码的分类（五大类）</h3><ul>
+<li>100 ~ 199(信息提示状态码)</li>
+<li>200 ~ 299(成功状态码)</li>
+<li>300 ~ 399(重定向状态码)</li>
+<li>400 ~ 499(客户端错误状态码)</li>
+<li>500 ~ 599(服务端错误状态码)</li>
+</ul>
+<h3 id="常见的状态码"><a href="#常见的状态码" class="headerlink" title="常见的状态码"></a>常见的状态码</h3><ul>
+<li><p>200 (OK) 请求的数据都在响应体中</p>
+</li>
+<li><p>301 (Moved Permanently) 请求的 URL 已被移除，例子：http 重定向到 https</p>
+</li>
+<li><p>304 (Not Modified) 客户端发起 GET 去验证本地缓存的资源在服务端是否被修改，没有的话就是 304</p>
+</li>
+<li><p>401 (Unauthorized) 未授权，需要输入用户名和密码</p>
+</li>
+<li>403 (Forbidden) 请求被服务器拒绝  </li>
+<li>404 (Not Found) 服务器无法找到所请求 URL 对应的资源</li>
+<li>405 (Method Not Allowed) 发起的请求中带有所请求的 URL 不支持的方法时返回该状态码</li>
+<li>413 (Request Entity Too Large) 客户端发送的实体部分比服务器能够或者希望处理的要长时，使用该状态码</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/18/数据库 - SQL 和关系型数据库的基本操作（三）数据定义（DDL）- 表的定义/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/18/数据库 - SQL 和关系型数据库的基本操作（三）数据定义（DDL）- 表的定义/" itemprop="url">数据库 - SQL 和关系型数据库的基本操作（三）数据定义（DDL）- 表的定义</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-18T15:57:19+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="二-表定义"><a href="#二-表定义" class="headerlink" title="二. 表定义"></a>二. 表定义</h4><h5 id="1-创建表"><a href="#1-创建表" class="headerlink" title="1. 创建表"></a>1. 创建表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysqk&gt; CREATE TABLE &lt;table_name&gt;</span><br><span class="line">  -&gt; ( &lt;column_1&gt; &lt;data_type&gt; &lt;该列的约束&gt;,</span><br><span class="line">  -&gt;  &lt;column_2&gt; &lt;data_type&gt; &lt;该列的约束&gt;,</span><br><span class="line">  -&gt; ...</span><br><span class="line">  -&gt; &lt;column_n&gt; &lt;data_type&gt; &lt;该列的约束&gt;,</span><br><span class="line">  -&gt; PRIMARY KEY (column_x)));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>👉<a href="https://www.pengjiandry.com/2018/10/14/SQL%20-%20%E8%AF%AD%E5%8F%A5%E5%AD%A6%E4%B9%A0/">SQL 语句学习 - 数据库，表的创建和删除</a></p>
+</blockquote>
+<h5 id="2-更新表"><a href="#2-更新表" class="headerlink" title="2. 更新表"></a>2. 更新表</h5><ul>
+<li>目的：为了实现数据中表规范化设计的目的，有时需要对之前已经创建的表做进一步的结构修改和调整。</li>
+<li>在 MySQL 中可以使用 ALTER TABLE 语句来更改原有表的结构，如：<ul>
+<li>增加或删减列</li>
+<li>创建或取消索引</li>
+<li>更改原有列的数据类型</li>
+<li>重新命名列或表</li>
+<li>更改表的评注和表的引擎类型等</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>ADD [ COLUMN ] 子句: 可添加新的一列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE &lt;table_name&gt;</span><br><span class="line">    -&gt; ADD COLUMN (&lt;column_name&gt; &lt;data_type&gt; &lt;value&gt;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE studentCourseSystem;</span><br><span class="line">Query OK, 1 row affected (0.10 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; USE studentCourseSystem;</span><br><span class="line">Database changed</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE TABLE students (</span><br><span class="line">    -&gt; no int(11) AUTO_INCREMENT,</span><br><span class="line">    -&gt; name VARCHAR(20) NOT NUll,</span><br><span class="line">    -&gt; gender int(1) NOT NULL,</span><br><span class="line">    -&gt; department VARCHAR(20) NOT NULL,</span><br><span class="line">    -&gt; create_date DATE NOT NULL,</span><br><span class="line">    -&gt; PRIMARY KEY (no));</span><br><span class="line">Query OK, 0 rows affected (0.08 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field       | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| no          | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name        | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| gender      | int(1)      | NO   |     | NULL    |                |</span><br><span class="line">| department  | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| create_date | date        | NO   |     | NULL    |                |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个表之后发现少了一个属性：年龄，下面是对 students 表的更新操作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students</span><br><span class="line">    -&gt; ADD COLUMN (age int(3) NOT NULL);</span><br><span class="line">Query OK, 0 rows affected (0.11 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field       | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| no          | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name        | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| gender      | int(1)      | NO   |     | NULL    |                |</span><br><span class="line">| department  | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| create_date | date        | NO   |     | NULL    |                |</span><br><span class="line">| age         | int(3)      | NO   |     | NULL    |                |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CHANGE [ COLUMN ] 子句：改变一列，需要严格按照书写顺序（也可以修改多列，他们之间使用 逗号隔开）</p>
+<ul>
+<li><p>⚠️请注意 CHANGE COLUMN 后面的顺序：旧的属性名 新的属性名 新的数据类型 新的约束 指定默认值等</p>
+</li>
+<li><p>单列修改</p>
+<pre>
+mysql> ALTER TABLE table_name
+  -> CHANGE COLUMN
+  -> old_column_name new_column_name data_type> value;
+</pre>
+</li>
+<li><p>多列修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE &lt;table_name&gt;</span><br><span class="line">    -&gt; CHANGE COLUMN</span><br><span class="line">    -&gt; (&lt;old_column_name&gt; &lt;new_column_name&gt; &lt;data_type&gt; &lt;value&gt;,</span><br><span class="line">    -&gt; &lt;old_column_name_1&gt; &lt;new_column_name_1&gt; &lt;data_type_1&gt; &lt;value_1&gt;</span><br><span class="line">    -&gt; &lt;old_column_name_2&gt; &lt;new_column_name_2&gt; &lt;data_type_2&gt; &lt;value_2&gt;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>实践，把 student 中的 reate_date 修改为 regist_date, 数据类型和值的设定都不变：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students </span><br><span class="line">    -&gt; CHANGE COLUMN create_date regist_date date NOT NULL;</span><br><span class="line">Query OK, 0 rows affected (0.06 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field       | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">| no          | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| name        | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| gender      | int(1)      | NO   |     | NULL    |                |</span><br><span class="line">| department  | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| regist_date | date        | NO   |     | NULL    |                |</span><br><span class="line">| age         | int(3)      | NO   |     | NULL    |                |</span><br><span class="line">+-------------+-------------+------+-----+---------+----------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>⚠️请注意 CHANGE COLUMN 后面的顺序：旧的属性名 新的属性名 新的数据类型 新的约束 指定默认值等</p>
+<p>这个后面的顺序需要严格执行，否则会报错</p>
+<p>CHANGE COLUMN 的反例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students</span><br><span class="line">  -&gt; CHANGE COLUMN regist_date reate_date;</span><br><span class="line">ERROR 1064 (42000): You have an error <span class="keyword">in</span> your SQL syntax; check the manual that corresponds to your MySQL server version <span class="keyword">for</span> the    right syntax to use near <span class="string">''</span> at line 2</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+</blockquote>
+</li>
+<li><p>ALTER [COLUMN] 子句：可修改或删除表中指定列的默认值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE &lt;table_name&gt;</span><br><span class="line">    -&gt; ALTER COLUMN &lt;column_name&gt; SET DEFAULT &lt;default_value&gt;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students</span><br><span class="line">    -&gt; ALTER COLUMN department SET DEFAULT &apos;计算机系&apos;;</span><br><span class="line">Query OK, 0 rows affected (0.08 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+-------------+------+-----+--------------+----------------+</span><br><span class="line">| Field       | Type        | Null | Key | Default      | Extra          |</span><br><span class="line">+-------------+-------------+------+-----+--------------+----------------+</span><br><span class="line">| no          | int(11)     | NO   | PRI | NULL         | auto_increment |</span><br><span class="line">| name        | varchar(20) | NO   |     | NULL         |                |</span><br><span class="line">| gender      | int(1)      | NO   |     | NULL         |                |</span><br><span class="line">| department  | varchar(20) | NO   |     | 计算机系     |                |</span><br><span class="line">| regist_date | date        | NO   |     | NULL         |                |</span><br><span class="line">| age         | int(3)      | NO   |     | NULL         |                |</span><br><span class="line">+-------------+-------------+------+-----+--------------+----------------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MODIFY [ COLUMN ] 子句： </p>
+<ul>
+<li><del>只会修改指定列的数据类型，不会修改其他信息</del> </li>
+<li><p>MODIFY [ COLUMN ] 子句的用法和 CHANGER [ COLUMN ] 子句的用法相似，只是不能修改名称而已</p>
+<blockquote>
+<p>若是 修改的属性是「 主键 」则就不用严格按照 「 CHANGER [ COLUMN ] 子句 」 的顺序，反之则需要</p>
+</blockquote>
+</li>
+<li><p>还可以通过 FIRST / AFTER（AFTER 不生效） 修改指定列在表中的位置 </p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE &lt;table_name&gt;</span><br><span class="line">  -&gt; MODIFY COLUMN &lt;column_name&gt; &lt;data_type&gt; [ FIRST | AFTER ];</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>⚠️注意 AFTER 的这个用法并没有生效，并抛出错误， FIRST 是有效的</p>
+</blockquote>
+</li>
+<li><p>实践:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default      | Extra |</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">| department  | varchar(100) | NO   |     | 计算机系     |       |</span><br><span class="line">| no          | int(11)      | NO   | PRI | NULL         |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL         |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL         |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL         |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL         |       |</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>先把修改前的列的顺序列出来，下面的操作就是把 no 这个属性放到最前面</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students</span><br><span class="line">    -&gt; MODIFY COLUMN no int(8) FIRST;</span><br><span class="line">Query OK, 0 rows affected (0.07 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default      | Extra |</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">| no          | int(8)      | NO   | PRI | NULL         |       |</span><br><span class="line">| department  | varchar(100) | NO   |     | 计算机系     |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL         |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL         |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL         |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL         |       |</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>no 的数据类型从 int(11) -&gt; int(8),并且这一列排在所有列的最前面</p>
+</blockquote>
+</li>
+<li><p>把指定列放到最后一列的操作,会报下面的错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students </span><br><span class="line">     &gt; MODIFY COLUMN no int(11) AFTER;</span><br><span class="line">ERROR 1064 (42000): You have an error <span class="keyword">in</span> your SQL syntax; check the manual that corresponds to your MySQL server version <span class="keyword">for</span> the right syntax to use near <span class="string">''</span> at line 1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MODIFY CLOUMN 实践</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+--------------+------+-----+-----------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default   | Extra |</span><br><span class="line">+-------------+--------------+------+-----+-----------+-------+</span><br><span class="line">| no          | int(8)      | NO   | PRI | NULL      |       |</span><br><span class="line">| department  | varchar(200) | NO   |     | 金融系    |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL      |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL      |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL      |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL      |       |</span><br><span class="line">+-------------+--------------+------+-----+-----------+-------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; ALTER TABLE students MODIFY COLUMN department VARCHAR(100) NOT NULL DEFAULT &apos;计算机系&apos;;</span><br><span class="line">Query OK, 0 rows affected (0.11 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default      | Extra |</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">| no          | int(11)      | NO   | PRI | NULL         |       |</span><br><span class="line">| department  | varchar(100) | NO   |     | 计算机系     |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL         |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL         |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL         |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL         |       |</span><br><span class="line">+-------------+--------------+------+-----+--------------+-------+</span><br><span class="line">6 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>DROP COLUMN 子句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE &lt;table_name&gt;</span><br><span class="line">     &gt; DROP COLUMN &lt;column_name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students ADD COLUMN (department_test int(8) NOT NULL);</span><br><span class="line">Query OK, 0 rows affected (0.09 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-----------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field           | Type         | Null | Key | Default | Extra |</span><br><span class="line">+-----------------+--------------+------+-----+---------+-------+</span><br><span class="line">| no              | int(11)      | NO   | PRI | NULL    |       |</span><br><span class="line">| department      | varchar(200) | YES  |     | NULL    |       |</span><br><span class="line">| name            | varchar(20)  | NO   |     | NULL    |       |</span><br><span class="line">| gender          | int(1)       | NO   |     | NULL    |       |</span><br><span class="line">| regist_date     | date         | NO   |     | NULL    |       |</span><br><span class="line">| age             | int(3)       | NO   |     | NULL    |       |</span><br><span class="line">| department_test | int(8)       | NO   |     | NULL    |       |</span><br><span class="line">+-----------------+--------------+------+-----+---------+-------+</span><br><span class="line">7 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>先增加一列测试属性，并查看所有的列</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE stutents</span><br><span class="line">    -&gt; DROP COLUMN department_test;</span><br><span class="line">ERROR 1146 (42S02): Table &apos;studentcoursesystem.stutents&apos; doesn&apos;t exist</span><br><span class="line">mysql&gt; ALTER TABLE stutdents DROP COLUMN department_test;</span><br><span class="line">ERROR 1146 (42S02): Table &apos;studentcoursesystem.stutdents&apos; doesn&apos;t exist</span><br><span class="line">mysql&gt; ALTER TABLE students DROP COLUMN department_test;</span><br><span class="line">Query OK, 0 rows affected (0.07 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default | Extra |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| no          | int(11)      | NO   | PRI | NULL    |       |</span><br><span class="line">| department  | varchar(200) | YES  |     | NULL    |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL    |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL    |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL    |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL    |       |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重命名表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE &lt;table_name&gt;</span><br><span class="line">    -&gt; RENAME TO &lt;new_table_name&gt;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE students</span><br><span class="line">    -&gt; RENAME TO students_table;</span><br><span class="line">Query OK, 0 rows affected (0.07 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students_table;</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default | Extra |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| no          | int(11)      | NO   | PRI | NULL    |       |</span><br><span class="line">| department  | varchar(200) | YES  |     | NULL    |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL    |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL    |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL    |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL    |       |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">ERROR 1146 (42S02): Table <span class="string">'studentcoursesystem.students'</span> doesn<span class="string">'t exist</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>students rename to students，之后查看列测试是否修改成功</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="3-重命名表"><a href="#3-重命名表" class="headerlink" title="3. 重命名表"></a>3. 重命名表</h5>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RENAME TABLE &lt;old_table_name&gt; TO &lt;new_table_name&gt;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; RENAME TABLE students_table TO students;</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default | Extra |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| no          | int(11)      | NO   | PRI | NULL    |       |</span><br><span class="line">| department  | varchar(200) | YES  |     | NULL    |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL    |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL    |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL    |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL    |       |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把使用 ALTER 的子句 RENAME TO 修改之后的 表名，直接使用 RENAME TABLE … to …. 句子修改</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="4-删除表"><a href="#4-删除表" class="headerlink" title="4. 删除表"></a>4. 删除表</h5>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE [ TEMPORARY ] TABLE [IF EXISTS] &lt;table_name&gt;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE students_test (</span><br><span class="line">    -&gt; no int(11) NOT NULL);</span><br><span class="line">Query OK, 0 rows affected (0.08 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students_test;</span><br><span class="line">+-------+---------+------+-----+---------+-------+</span><br><span class="line">| Field | Type    | Null | Key | Default | Extra |</span><br><span class="line">+-------+---------+------+-----+---------+-------+</span><br><span class="line">| no    | int(11) | NO   |     | NULL    |       |</span><br><span class="line">+-------+---------+------+-----+---------+-------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; DROP TABLE [IF EXISTS] students_test;</span><br><span class="line">ERROR 1064 (42000): You have an error <span class="keyword">in</span> your SQL syntax; check the manual that corresponds to your MySQL server version <span class="keyword">for</span> the right syntax to use near <span class="string">'[IF EXISTS] students_test'</span> at line 1</span><br><span class="line">mysql&gt; DROP TABLE IF EXISTS students_test;</span><br><span class="line">Query OK, 0 rows affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM students_test;</span><br><span class="line">ERROR 1146 (42S02): Table <span class="string">'studentcoursesystem.students_test'</span> doesn<span class="string">'t exist</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建一个表之后，再把该表删除</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="4-查看表"><a href="#4-查看表" class="headerlink" title="4. 查看表"></a>4. 查看表</h5><ul>
+<li><p>查看表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW TABLES</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW DATABASES;</span><br><span class="line">+---------------------+</span><br><span class="line">| Database            |</span><br><span class="line">+---------------------+</span><br><span class="line">| information_schema  |</span><br><span class="line">| mysql               |</span><br><span class="line">| NodeTest1           |</span><br><span class="line">| performance_schema  |</span><br><span class="line">| studentCourseSystem |</span><br><span class="line">| sys                 |</span><br><span class="line">+---------------------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; USE studentCourseSystem;</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; SHOW TABLES;</span><br><span class="line">+-------------------------------+</span><br><span class="line">| Tables_in_studentcoursesystem |</span><br><span class="line">+-------------------------------+</span><br><span class="line">| students                      |</span><br><span class="line">+-------------------------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>先查看所有的数据库 -&gt; 切换到 studentCourseSystem 数据库 -&gt; 查看该数据库下的所有的表</p>
+</blockquote>
+</li>
+<li><p>查看表结构</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW COLUMNS FROM &lt;table_name&gt;</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESC &lt;table_name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW COLUMNS FROM students;</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default | Extra |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| no          | int(11)      | NO   | PRI | NULL    |       |</span><br><span class="line">| department  | varchar(200) | YES  |     | NULL    |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL    |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL    |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL    |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL    |       |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; DESC students;</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field       | Type         | Null | Key | Default | Extra |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">| no          | int(11)      | NO   | PRI | NULL    |       |</span><br><span class="line">| department  | varchar(200) | YES  |     | NULL    |       |</span><br><span class="line">| name        | varchar(20)  | NO   |     | NULL    |       |</span><br><span class="line">| gender      | int(1)       | NO   |     | NULL    |       |</span><br><span class="line">| regist_date | date         | NO   |     | NULL    |       |</span><br><span class="line">| age         | int(3)       | NO   |     | NULL    |       |</span><br><span class="line">+-------------+--------------+------+-----+---------+-------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/18/数据库 - SQL 和关系型数据库的基本操作（二）数据定义（DDL）- 数据库的模式定义/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1692,860 +2438,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/11/Nodejs play - 连接 MySQL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/11/Nodejs play - 连接 MySQL/" itemprop="url">Nodejs play - 连接 MySQL</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-11T20:06:16+08:00">
-                2018-11-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  781
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>前面水了这多篇 SQL 和数据库基础的知识，今天终于进行大前端的技术栈的主题了😄</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
-<li><a href="mailto:MySQL@8.0.1" target="_blank" rel="noopener">MySQL@8.0.1</a> <blockquote>
-<p>下载，安装，出门 google 右转或者 👇<br><a href="https://www.pengjiandry.com/2018/11/10/%E6%95%B0%E6%8D%AE%E5%BA%93%20-%20MySQL-%E5%88%9D%E8%AF%86/">Mac 下载并使用 MySQL</a></p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p><a href="mailto:Nodejs@10.10.0" target="_blank" rel="noopener">Nodejs@10.10.0</a></p>
-</li>
-<li><p><a href="https://www.npmjs.com/package/mysql" target="_blank" rel="noopener">npm: mysql@2.16.0</a></p>
-</li>
-</ul>
-<h3 id="Nodejs-code-git-commit"><a href="#Nodejs-code-git-commit" class="headerlink" title="Nodejs code git commit"></a>Nodejs code <a href="https://github.com/jamesjianpeng/nodejs-play/commit/e444c963ed29f850f4f8ee50c7eb2b396050dfe4" target="_blank" rel="noopener">git commit</a></h3>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    host: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">    port: <span class="number">3306</span>,</span><br><span class="line">    user: <span class="string">'root'</span>,</span><br><span class="line">    password: <span class="string">'xxxxxx'</span>,</span><br><span class="line">    database: <span class="string">'NodeTest'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(options)</span><br><span class="line"></span><br><span class="line">connection.connect()</span><br><span class="line"></span><br><span class="line">connection.end()</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>连接成功之后，立刻关闭</p>
-</blockquote>
-<h4 id="连接的时候遇到问题"><a href="#连接的时候遇到问题" class="headerlink" title="连接的时候遇到问题"></a>连接的时候遇到问题</h4><ul>
-<li>Q: Client does not support authentication protocol requested by server; consider upgrading MySQL client</li>
-<li><p>A: 登陆之后使用下面的操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use mysql;</span><br><span class="line">Reading table information for completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED WITH mysql_native_password BY &apos;xxxxxxx&apos;;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><a href="https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server" target="_blank" rel="noopener">答案地址</a></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="MySQL-相关的准备"><a href="#MySQL-相关的准备" class="headerlink" title="MySQL 相关的准备"></a>MySQL 相关的准备</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root -p</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE DATABASE NodeTest;</span><br><span class="line">Query OK, 1 row affected (0.07 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; USE NodeTest;</span><br><span class="line">Database changed</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE TABLE Product</span><br><span class="line">  -&gt; (product_id CHAR(4) NOT NULL,</span><br><span class="line">  -&gt; product_name VARCHAR(100) NOT NULL,</span><br><span class="line">  -&gt; product_type VARCHAR(32),</span><br><span class="line">  -&gt; sale_price   INTEGER ,</span><br><span class="line">  -&gt; purchase_price INTEGER ,</span><br><span class="line">  -&gt; regist_data DATE ,</span><br><span class="line">  -&gt; PRIMARY KEY (product_id));</span><br><span class="line">Query OK, 0 rows affected (0.10 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; show columns from Product;</span><br><span class="line">+----------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field          | Type         | Null | Key | Default | Extra |</span><br><span class="line">+----------------+--------------+------+-----+---------+-------+</span><br><span class="line">| product_id     | char(4)      | NO   | PRI | NULL    |       |</span><br><span class="line">| product_name   | varchar(100) | NO   |     | NULL    |       |</span><br><span class="line">| product_type   | varchar(32)  | YES  |     | NULL    |       |</span><br><span class="line">| sale_price     | int(11)      | YES  |     | NULL    |       |</span><br><span class="line">| purchase_price | int(11)      | YES  |     | NULL    |       |</span><br><span class="line">| regist_data    | date         | YES  |     | NULL    |       |</span><br><span class="line">+----------------+--------------+------+-----+---------+-------+</span><br><span class="line">6 rows in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO Product VALUES (&apos;001&apos;, &apos;T恤👕&apos;, &apos;衣服&apos;, 100, 20, &apos;2018-10-16&apos;);</span><br><span class="line">Query OK, 1 row affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO Product VALUES (&apos;002&apos;, &apos;滑板鞋👟&apos;, &apos;鞋子&apos;, 100, 20, &apos;2018-11-11&apos;);</span><br><span class="line">Query OK, 1 row affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM Product;</span><br><span class="line">+------------+---------------+--------------+------------+----------------+-------------+</span><br><span class="line">| product_id | product_name  | product_type | sale_price | purchase_price | regist_data |</span><br><span class="line">+------------+---------------+--------------+------------+----------------+-------------+</span><br><span class="line">| 001        | T恤👕           | 衣服         |        100 |             20 | 2018-10-16  |</span><br><span class="line">| 002        | 滑板鞋👟        | 鞋子         |        100 |             20 | 2018-11-11  |</span><br><span class="line">+------------+---------------+--------------+------------+----------------+-------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>登陆，创建一个数据库，并切换到该数据库，创建一个表（指定列，和约束），插入两条数据</p>
-</blockquote>
-<h3 id="继续完善-Nodejs-code"><a href="#继续完善-Nodejs-code" class="headerlink" title="继续完善 Nodejs code"></a>继续完善 Nodejs code</h3>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">connection.connect()</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">'SELECT * FROM Product'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">    <span class="built_in">console</span>.log(results)</span><br><span class="line">    <span class="built_in">console</span>.log(fields)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.end()</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>results 是查询的结果<br>fields 是查询字段的元信息</p>
-</blockquote>
-<ul>
-<li><p>在终端中出现的输出：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">[ RowDataPacket &#123;</span><br><span class="line">    product_id: '001',</span><br><span class="line">    product_name: 'T恤?',</span><br><span class="line">    product_type: '衣服',</span><br><span class="line">    sale_price: 100,</span><br><span class="line">    purchase_price: 20,</span><br><span class="line">    regist_data: 2018-10-15T16:00:00.000Z &#125;,</span><br><span class="line">  RowDataPacket &#123;</span><br><span class="line">    product_id: '002',</span><br><span class="line">    product_name: '滑板鞋?',</span><br><span class="line">    product_type: '鞋子',</span><br><span class="line">    sale_price: 100,</span><br><span class="line">    purchase_price: 20,</span><br><span class="line">    regist_data: 2018-11-10T16:00:00.000Z &#125; ]</span><br><span class="line">[ FieldPacket &#123;</span><br><span class="line">    catalog: 'def',</span><br><span class="line">    db: 'nodetest',</span><br><span class="line">    table: 'Product',</span><br><span class="line">    orgTable: 'product',</span><br><span class="line">    name: 'product_id',</span><br><span class="line">    orgName: 'product_id',</span><br><span class="line">    charsetNr: 33,</span><br><span class="line">    length: 12,</span><br><span class="line">    type: 254,</span><br><span class="line">    flags: 20483,</span><br><span class="line">    decimals: 0,</span><br><span class="line">    default: undefined,</span><br><span class="line">    zeroFill: false,</span><br><span class="line">    protocol41: true &#125;,</span><br><span class="line">  FieldPacket &#123;</span><br><span class="line">    catalog: 'def',</span><br><span class="line">    db: 'nodetest',</span><br><span class="line">    table: 'Product',</span><br><span class="line">    orgTable: 'product',</span><br><span class="line">    name: 'product_name',</span><br><span class="line">    orgName: 'product_name',</span><br><span class="line">    charsetNr: 33,</span><br><span class="line">    length: 300,</span><br><span class="line">    type: 253,</span><br><span class="line">    flags: 4097,</span><br><span class="line">    decimals: 0,</span><br><span class="line">    default: undefined,</span><br><span class="line">    zeroFill: false,</span><br><span class="line">    protocol41: true &#125;,</span><br><span class="line">  FieldPacket &#123;</span><br><span class="line">    catalog: 'def',</span><br><span class="line">    db: 'nodetest',</span><br><span class="line">    table: 'Product',</span><br><span class="line">    orgTable: 'product',</span><br><span class="line">    name: 'product_type',</span><br><span class="line">    orgName: 'product_type',</span><br><span class="line">    charsetNr: 33,</span><br><span class="line">    length: 96,</span><br><span class="line">    type: 253,</span><br><span class="line">    flags: 0,</span><br><span class="line">    decimals: 0,</span><br><span class="line">    default: undefined,</span><br><span class="line">    zeroFill: false,</span><br><span class="line">    protocol41: true &#125;,</span><br><span class="line">  FieldPacket &#123;</span><br><span class="line">    catalog: 'def',</span><br><span class="line">    db: 'nodetest',</span><br><span class="line">    table: 'Product',</span><br><span class="line">    orgTable: 'product',</span><br><span class="line">    name: 'sale_price',</span><br><span class="line">    orgName: 'sale_price',</span><br><span class="line">    charsetNr: 63,</span><br><span class="line">    length: 11,</span><br><span class="line">    type: 3,</span><br><span class="line">    flags: 0,</span><br><span class="line">    decimals: 0,</span><br><span class="line">    default: undefined,</span><br><span class="line">    zeroFill: false,</span><br><span class="line">    protocol41: true &#125;,</span><br><span class="line">  FieldPacket &#123;</span><br><span class="line">    catalog: 'def',</span><br><span class="line">    db: 'nodetest',</span><br><span class="line">    table: 'Product',</span><br><span class="line">    orgTable: 'product',</span><br><span class="line">    name: 'purchase_price',</span><br><span class="line">    orgName: 'purchase_price',</span><br><span class="line">    charsetNr: 63,</span><br><span class="line">    length: 11,</span><br><span class="line">    type: 3,</span><br><span class="line">    flags: 0,</span><br><span class="line">    decimals: 0,</span><br><span class="line">    default: undefined,</span><br><span class="line">    zeroFill: false,</span><br><span class="line">    protocol41: true &#125;,</span><br><span class="line">  FieldPacket &#123;</span><br><span class="line">    catalog: 'def',</span><br><span class="line">    db: 'nodetest',</span><br><span class="line">    table: 'Product',</span><br><span class="line">    orgTable: 'product',</span><br><span class="line">    name: 'regist_data',</span><br><span class="line">    orgName: 'regist_data',</span><br><span class="line">    charsetNr: 63,</span><br><span class="line">    length: 10,</span><br><span class="line">    type: 10,</span><br><span class="line">    flags: 128,</span><br><span class="line">    decimals: 0,</span><br><span class="line">    default: undefined,</span><br><span class="line">    zeroFill: false,</span><br><span class="line">    protocol41: true &#125; ]</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>应该注意到 emoji 没有被解析出来，待更新</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="本地开发模式，还需要在服务器上安装-mysql-并连接（待更新）"><a href="#本地开发模式，还需要在服务器上安装-mysql-并连接（待更新）" class="headerlink" title="本地开发模式，还需要在服务器上安装 mysql 并连接（待更新）"></a>本地开发模式，还需要在服务器上安装 mysql 并连接（待更新）</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/10/数据库 - MySQL-初识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/10/数据库 - MySQL-初识/" itemprop="url">数据库 - MySQL 初识</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-10T19:31:00+08:00">
-                2018-11-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  346
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="mac-下载并使用-MySql"><a href="#mac-下载并使用-MySql" class="headerlink" title="mac 下载并使用 MySql"></a>mac 下载并使用 MySql</h3><h4 id="社区版下载"><a href="#社区版下载" class="headerlink" title="社区版下载"></a>社区版下载</h4><ol>
-<li><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a></li>
-<li>下载后直接双击安装，可以设置密码，或者随机分配密码，user 都是 root</li>
-</ol>
-<h4 id="开启-MySql-服务"><a href="#开启-MySql-服务" class="headerlink" title="开启 MySql 服务"></a>开启 MySql 服务</h4><ol>
-<li>知道软件位置 系统偏好设置 &gt; MySql(小海豚标识)</li>
-<li>安装好之后默认是 Start MySql Server</li>
-<li>在任何地方使用 mysql 命令，在终端中输入：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATH=&quot;$PATH&quot;:/usr/local/mysql/bin</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="连接和退出"><a href="#连接和退出" class="headerlink" title="连接和退出"></a>连接和退出</h4><ol>
-<li>第一种链接：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol start="2">
-<li>输入密码之后，链接成功；终端可以输入的位置是这样的：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol start="3">
-<li>第二种链接方式(缩写)：(前提是有 data_name 这个数据库)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h localhost -u root -p &lt;data_name&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol start="4">
-<li><p>第三种链接方式(非缩写)：(前提是有 data_name 这个数据库)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql --host=127.0.0.1 --port=3306 --user=root --password &lt;data_name&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意这里 host 使用 127.0.0.1 而不是 localhost<br>若显式的指定 port 的话需要使用 MySQL 的默认端口 3306 （除非你自己修改过 my.cnf ）</p>
-</blockquote>
-</li>
-<li><p>查看 mysql 的配置，这个是登陆之后才能用的命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables;</span><br></pre></td></tr></table></figure>
-<p>或者直接查看配置文件，配置文件的位置需要自己去找找</p>
-</li>
-<li><p>退出 mysql 连接( mysql&gt; 是终端中 mysql 服务的标识)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; quit</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; exit</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
-<li><a href="https://dev.mysql.com/doc/refman/8.0/en/connecting.html" target="_blank" rel="noopener">MySQL - 连接 MySQL 服务器</a></li>
-<li><a href="https://github.com/jaywcjlove/mysql-tutorial/blob/master/chapter2/2.5.md" target="_blank" rel="noopener">MySQL 配置修改</a></li>
-<li><a href="https://blog.csdn.net/jyongchong/article/details/77862819" target="_blank" rel="noopener">Mac 安装 MySQL my.cnf 配置文件</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/10/数据库 - 数据库设计（二）关系数据库设计方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/10/数据库 - 数据库设计（二）关系数据库设计方法/" itemprop="url">数据库 - 数据库设计（二）关系数据库设计方法</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-10T11:17:51+08:00">
-                2018-11-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  3.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  10
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="关系数据库库设计的过程概述"><a href="#关系数据库库设计的过程概述" class="headerlink" title="关系数据库库设计的过程概述"></a>关系数据库库设计的过程概述</h3><ul>
-<li>关系数据库：一类采用关系模型作为逻辑数据模型的数据库系统</li>
-<li>关系数据库设计的过程遵循数据库设计的基本步骤<ol>
-<li>需求分析</li>
-<li>概念结构设计</li>
-<li>逻辑结构设计</li>
-<li>物理结构设计</li>
-<li>数据库实施</li>
-<li>数据库的运行和维护等阶段</li>
-</ol>
-</li>
-</ul>
-<h3 id="关系数据库设计过程与各级模式"><a href="#关系数据库设计过程与各级模式" class="headerlink" title="关系数据库设计过程与各级模式"></a>关系数据库设计过程与各级模式</h3><ol>
-<li>需求分析阶段：综合各个用户的应用需求</li>
-<li>在概念结构设计阶段：形成独立于机器特点，独立于各个关系数据库管理系统产品（MySQL,Oracle,SQL,Server 等）的概念模式，如使用 E - R 图</li>
-<li>在逻辑结构设计阶段，将 E - R 图转换成具体的数据库产品支持的关系数据模型，形成数据库逻辑模式，然后根据用户处理的要求，安全性考虑，在基本表的基础上再建立必要的视图，形成数据的外模式</li>
-<li>再物理结构的设计阶段中，根据关系数据库管理系统的特点和处理的需要，进行物理存储安排，建立索引，形成数据库内模式</li>
-</ol>
-<h3 id="概念结构设计方法"><a href="#概念结构设计方法" class="headerlink" title="概念结构设计方法"></a>概念结构设计方法</h3><ol>
-<li><p>关系数据库的概念结构设计方法通常是：自顶向下法</p>
-</li>
-<li><p>两个步骤</p>
-<ul>
-<li>建立局部信息结构</li>
-<li>然后将局部信息结构合成全局信息结构并优化</li>
-</ul>
-</li>
-<li>描述工具：<ul>
-<li>E - R 图</li>
-</ul>
-</li>
-</ol>
-<h4 id="概念结构设计方法常使用的描述工具：E-R-图的表示法"><a href="#概念结构设计方法常使用的描述工具：E-R-图的表示法" class="headerlink" title="概念结构设计方法常使用的描述工具：E - R 图的表示法"></a>概念结构设计方法常使用的描述工具：E - R 图的表示法</h4><ol>
-<li>概念结构设计：是将需求分析得到的用户需求抽象为信息结构（概念模型）的过程，它通常使用 E - R 图作为描述现实世界的建模工具</li>
-<li><p>E - R 图提供了表示信息世界中实体，属性和联系的方法，具体：</p>
-<ul>
-<li>实体型：其用矩形表示，矩形框内写明实体的名称</li>
-<li>属性：其用椭圆形表示，并用无向边将其与相应的实体链接起来</li>
-<li>联系：其用菱形表示，菱形框内写明联系的名称，并用无向边分别与有关实体连接起来，同时在无向边旁标上联系的类型（1:1,1:N, M:N），如果一个联系具有属性，则这些属性也要用无向边与该联系连接起来</li>
-</ul>
-</li>
-<li><p>两个实体型之间的联系：</p>
-<ul>
-<li>一对一（1:1）</li>
-<li>一对多（1:N）</li>
-<li>多对多（M:N）</li>
-</ul>
-</li>
-<li><p>两个以上的实体型之间的联系</p>
-<ul>
-<li>一对一（1:1）</li>
-<li>一对多（1:N）</li>
-<li>多对多（M:N）</li>
-</ul>
-</li>
-<li><p>单个实体型内的联系</p>
-<ul>
-<li>一对一（1:1）</li>
-<li>一对多（1:N）</li>
-<li>多对多（M:N）</li>
-</ul>
-</li>
-</ol>
-<h3 id="概念结构设计方法第一个步骤：局部信息结构设计"><a href="#概念结构设计方法第一个步骤：局部信息结构设计" class="headerlink" title="概念结构设计方法第一个步骤：局部信息结构设计"></a>概念结构设计方法第一个步骤：局部信息结构设计</h3><ul>
-<li><p>概念：根据需求分析报告中标明的用户视图范围所建立的满足该范围内用户需求的信息结构</p>
-</li>
-<li><p>局部信息结构设计的步骤分为：</p>
-<ol>
-<li>确定局部范围</li>
-<li>选择实体</li>
-<li>选择实体关键字</li>
-<li>确定实体间联系</li>
-<li>确定实体的属性</li>
-</ol>
-</li>
-</ul>
-<h4 id="局部信息结构设计第一个步骤：确定局部范围"><a href="#局部信息结构设计第一个步骤：确定局部范围" class="headerlink" title="局部信息结构设计第一个步骤：确定局部范围"></a>局部信息结构设计第一个步骤：确定局部范围</h4><ul>
-<li>局部范围主要依据需求分析报告后者难过标明的用户视图范围来确定<blockquote>
-<p>需求分析报告中标明的局部范围往往与子模式范围相对应</p>
-<p>范围确定的基本准则:</p>
-<ol>
-<li>部门和功能相对对立</li>
-<li>同其他局部范围相互影响较少，并且实体个数适量</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h4 id="局部信息结构设计第二个步骤：选择实体"><a href="#局部信息结构设计第二个步骤：选择实体" class="headerlink" title="局部信息结构设计第二个步骤：选择实体"></a>局部信息结构设计第二个步骤：选择实体</h4><ol>
-<li><p>选择实体的（目的）任务：是在确定的局部范围内选择一些合适的信息单位作为局部信息结构的基本实体</p>
-<blockquote>
-<p>这些实体应能满足该局部范围内的应用需求<br>通常，以实际工作中习惯使用的信息单位作为选择实体的基础，数据分类表是选择实体的直接依据</p>
-<p>再同一局部信息结构中的实体名称应具有唯一性</p>
-</blockquote>
-</li>
-<li><p>实体选择时的最大困难是如何区别实体与属性</p>
-</li>
-</ol>
-<h4 id="局部信息结构设计第三个步骤：选择实体的关键字属性"><a href="#局部信息结构设计第三个步骤：选择实体的关键字属性" class="headerlink" title="局部信息结构设计第三个步骤：选择实体的关键字属性"></a>局部信息结构设计第三个步骤：选择实体的关键字属性</h4><ul>
-<li>实体的存在依赖于其他关键字的存在<blockquote>
-<p>实体关键字属性确定之后，实体的非关键字属性也就容易确定了，因为他们之间存在某种应用上的联系和依赖性</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="局部信息结构设计第四个步骤：确定实体间的联系"><a href="#局部信息结构设计第四个步骤：确定实体间的联系" class="headerlink" title="局部信息结构设计第四个步骤：确定实体间的联系"></a>局部信息结构设计第四个步骤：确定实体间的联系</h4><ul>
-<li>数据间的联系必须在概念设计时确定<blockquote>
-<p>一种常用的分析实体间是否存在联系的方法是，将局部范围内的实体逐一取出来与该范围内的其他实体试行匹配（在任务表中）</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="局部信息结构设计第五个步骤：确定实体的属性"><a href="#局部信息结构设计第五个步骤：确定实体的属性" class="headerlink" title="局部信息结构设计第五个步骤：确定实体的属性"></a>局部信息结构设计第五个步骤：确定实体的属性</h4><ul>
-<li><p>属性分为两类</p>
-<ol>
-<li>标识属性</li>
-<li>说明属性</li>
-</ol>
-</li>
-<li><p>标识属性（实体关键字属性和非关键字属性）</p>
-<blockquote>
-<p>用作实体的关键字，说明属性用作描述实体的一般特征 </p>
-</blockquote>
-</li>
-<li><p>说明属性</p>
-<blockquote>
-<p>基本原则：说明属性的存在和使用通常依赖于标识属性<br>取决于：该属性是否可通过其所在实体的关键字找到，并且他们之间在应用中具有某种联系</p>
-<p>说明属性应是单值的，不允许嵌套属性和重复组的现象出现在实体中<br>会有这种情况：同一说明属性依赖于多个实体的标识属性的情况，此时可将该属性分配到其他使用频率最高的实体中去</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="概念结构设计方法第二个步骤：全局信息结构设计"><a href="#概念结构设计方法第二个步骤：全局信息结构设计" class="headerlink" title="概念结构设计方法第二个步骤：全局信息结构设计"></a>概念结构设计方法第二个步骤：全局信息结构设计</h3><ul>
-<li><p>概念：是将上述步骤中产生的所有局部信息结构合并成一个全局信息结构</p>
-</li>
-<li><p>全局信息结构必须是所有局部信息结构的全面准确的映像</p>
-<blockquote>
-<p>即合并前各局部信息结构能实现的应用需求，合并之后也能实现</p>
-</blockquote>
-</li>
-<li><p>需要避免的问题：消除不同局部信息结构中因用户观点的不同所可能导致的数据不一致，并尽可能地增强数据的共享性，控制数据的冗余</p>
-</li>
-<li><p>合并的前提：假设局部信息结构都是完全的，一致的前提下进行</p>
-<blockquote>
-<p>即假设各局部信息结构都能满足其对应局部范围的应用需求,且其内部不存在需要合并的成分</p>
-</blockquote>
-</li>
-<li><p>合并的方式</p>
-<ol>
-<li>可以一次性把所有的局部信息结构合并成全局的信息结构</li>
-<li>也可以采用逐步合并，进行累加的方式</li>
-</ol>
-</li>
-<li><p>合并的过程</p>
-<ol>
-<li>一个系统中有多个功能，可能有多个设计人员进行设计，合并的时候就会出现冲突，这个无法避免的，需要合理的解决</li>
-</ol>
-</li>
-<li><p>合并中出现的冲突</p>
-<ol>
-<li><p>属性冲突</p>
-<ul>
-<li><p>属性域冲突</p>
-<blockquote>
-<p>属性值的类型，取值范围，取值集合的不同</p>
-</blockquote>
-</li>
-<li><p>属性取值单位冲突</p>
-<blockquote>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>命名冲突，两类</p>
-<ul>
-<li>同名异义</li>
-<li>异名同义</li>
-</ul>
-</li>
-<li><p>结构冲突，三类</p>
-<ul>
-<li>同一对象在一局部 E - R 图中作为实体，而在另外一个局部 E - R 图中作为属性</li>
-<li>同义实体在不同的 E - R 图中属性个数和类型不同</li>
-<li>实体之间的联系在不同的 E - R 图中是不同的类型</li>
-</ul>
-</li>
-<li><p>好的全局信息结构设计</p>
-<ol>
-<li>能反应用户功能需求</li>
-<li>实体的类型数量尽可能少</li>
-<li>实体类型所含属性尽可能少</li>
-<li>实体类型间联系无冗余<blockquote>
-<p>后面三个内容，是全局 E - R 模型优化需要达到内容<br>优化步骤：</p>
-<ol>
-<li>相关实体类型的合并</li>
-<li>消除不必要的冗余属性</li>
-<li>消除不必要的冗余联系</li>
-<li>有时为了效率，可以适当的存在冗余（😂你懂的）</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="逻辑结构设计方法"><a href="#逻辑结构设计方法" class="headerlink" title="逻辑结构设计方法"></a>逻辑结构设计方法</h3><ul>
-<li><p>在数据库设计步骤中逻辑结构的设计</p>
-<ol>
-<li>目的（任务）：是把在概念结构设计产生的概念模型转换为具体的 DBMS 所支持的逻辑数据模型<blockquote>
-<p>导出特定的 DBMS 可以处理的数据逻辑结构（数据库的模式和外模式），这些模式在功能，性能，完整性和约束性方面满足应用要求</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>在关系型数据库的设计中逻辑结构的设计：</p>
-<ol>
-<li>目的（任务）：就是把概念结构设计阶段已设计好的 E - R 图转换为关系数据库管理系统所支持的关系模型</li>
-<li>工作内容：<ul>
-<li>将 E - R 图转换位关系模型</li>
-<li>对关系数据库模型进行优化</li>
-<li>设计面向用户的外模式</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h4 id="逻辑结构设计内容（一）：将-E-R-图转换位关系模型"><a href="#逻辑结构设计内容（一）：将-E-R-图转换位关系模型" class="headerlink" title="逻辑结构设计内容（一）：将 E - R 图转换位关系模型"></a>逻辑结构设计内容（一）：将 E - R 图转换位关系模型</h4><ul>
-<li><p>需要解决的问题：</p>
-<ol>
-<li>要如何将实体以及实体间的联系转换为关系模型</li>
-<li>如何确定这些关系模式的属性和主码<blockquote>
-<p>关系模式的逻辑结构是一组关系模式的集合，而 E - R 图则是由实体，实体的属性和实体间的联系转换为某种关系模式</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>原则：(待更新)</p>
-<ol>
-<li>一个实体转换为一个关系模式</li>
-<li>一个一对一（1:1）联系可以转换为一个独立的关系模式</li>
-<li>一个一对多（1:N）联系可以转换为一个独立的关系模式</li>
-<li>一个多对多（M:N）联系转换为一个关系模式</li>
-<li>三个或桑哥以上实体间的一个多元联系可以转换为一个关系模式</li>
-</ol>
-</li>
-</ul>
-<h4 id="逻辑结构设计内容（二）：对关系数据库模型进行优化"><a href="#逻辑结构设计内容（二）：对关系数据库模型进行优化" class="headerlink" title="逻辑结构设计内容（二）：对关系数据库模型进行优化"></a>逻辑结构设计内容（二）：对关系数据库模型进行优化</h4><ul>
-<li>数据库逻辑设计的结果不是唯一的</li>
-<li>数据模型的优化： 为了进一步提高数据库的要求，还应该根据应用需要适当修改地修改，调整数据模型额结构</li>
-<li>关系数据模型的优化通常以关系规范化理论为指导，<a href="">数据库 - 关系型数据库（三）关系数据库的规范化理论</a></li>
-</ul>
-<h4 id="逻辑结构设计内容（三）：设计面向用户的外模式"><a href="#逻辑结构设计内容（三）：设计面向用户的外模式" class="headerlink" title="逻辑结构设计内容（三）：设计面向用户的外模式"></a>逻辑结构设计内容（三）：设计面向用户的外模式</h4><ul>
-<li>将概念模式转化为全局逻辑模式之后，可根据局部应用需求，利用视图（View）设计更符合局部用户需要的用户外模式</li>
-<li>定义数据库的全局模式主要是从系统的时间效率，空间效率，易维护性等角度出发。由于用户外模式与模式是相对独立的，所以定义用户外模式时注意：<ol>
-<li>定义别名</li>
-<li>对应不同级别的用户定义不同的视图，以保证系统的安全性</li>
-<li>简化用户对系统的使用</li>
-</ol>
-</li>
-</ul>
-<h3 id="物理设计方法"><a href="#物理设计方法" class="headerlink" title="物理设计方法"></a>物理设计方法</h3><ul>
-<li><p>关系数据库系统的优点之一是用户通常不需要进行数据存储结构和存取方法的是设计</p>
-<blockquote>
-<p>这个是相对的，用户失去对数据库存取路径的控制而影响到数据库的存取效率</p>
-</blockquote>
-</li>
-<li><p>物理设计的（目的）任务：主要是通过对关系建立索引和聚集来实现与应用相关数据的逻辑连接和物理聚集，以改善对数据库的存取效率</p>
-</li>
-</ul>
-<h4 id="物理设计方法（一）：-建立索引"><a href="#物理设计方法（一）：-建立索引" class="headerlink" title="物理设计方法（一）： 建立索引"></a>物理设计方法（一）： 建立索引</h4><ul>
-<li>建立索引的方式通常有静态和动态</li>
-</ul>
-<h4 id="物理设计方法（二）：建立聚集"><a href="#物理设计方法（二）：建立聚集" class="headerlink" title="物理设计方法（二）：建立聚集"></a>物理设计方法（二）：建立聚集</h4><ul>
-<li><p>聚集：是将相关数据集中存放的物理存储技术</p>
-<blockquote>
-<p>以提高 I/O 的数据命中率而改善存取速度，其功能由具体的 DBMS 所提供</p>
-<p>所谓集中存放的概念：将相关数据尽可能地存放一个物理块中（或一个磁道中，或一个柱面中，或相邻区域块，磁道，柱面）</p>
-</blockquote>
-</li>
-<li><p>数据聚集结构的一种有效方式是块结构方式。</p>
-<blockquote>
-<p>块域块之间由指针连接，一个块对于一个物理分区</p>
-<p>数据聚集可在一个或多个关系上建立</p>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2600,7 +2492,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">92</span>
+                  <span class="site-state-item-count">95</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2622,7 +2514,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2690,7 +2582,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">58.6k</span>
+    <span title="博客总字数">61.9k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

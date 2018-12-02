@@ -274,16 +274,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-留言">
-          <a href="/guestbook" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            留言
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -303,6 +293,644 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/15/CentOs 6.9 搭建 Nuxt 前端环境(一) nginx + node + pm2 + git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/15/CentOs 6.9 搭建 Nuxt 前端环境(一) nginx + node + pm2 + git/" itemprop="url">CentOs 6.9 搭建 Nuxt 前端环境(一) nginx + node + pm2 + git</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-15T19:04:19+08:00">
+                2018-11-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  1.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>首先需要一台 CentOs 6.9 的操作系统的服务器</p>
+<h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><ul>
+<li><p>安装 nginx</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看 nginx 的版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>nginx 配置的位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/nginx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>启动 nginx 之后去访问我们的公网 ip 就可以看到👇<br><img src="http://tc-html5dw-com.b0.upaiyun.com/5d854/5d85452c76a7d09a1038400db5adbfab.png" alt="img"><br>找到 /etc/nginx/nginx.conf</p>
+</blockquote>
+</li>
+<li><p>启动，重启，关闭，检查 nginx</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">service nginx start</span><br><span class="line">service nginx restart</span><br><span class="line">service nginx stop</span><br><span class="line">nginx -t</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看 nginx 的状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加 nginx nuxt play 的配置<br>/etc/nginx/conf.d/nuxt.play.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name cv.pengjiandry.com;</span><br><span class="line"></span><br><span class="line">    return 301 https://$host$request_uri;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen       443 ssl http2;</span><br><span class="line">    #listen       [::]:443 ssl http2;</span><br><span class="line">    server_name  cv.pengjiandry.com;</span><br><span class="line"></span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate /home/nginx/ssl/pengjiandry.com/pengjiandry.com.crt;</span><br><span class="line">    ssl_certificate_key /home/nginx/ssl/pengjiandry.com/pengjiandry.com.key;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line">    ssl_session_cache shared:SSL:1m;</span><br><span class="line">    ssl_session_timeout  10m;</span><br><span class="line">    ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line"></span><br><span class="line">    access_log  /etc/nginx/log/cv.log main;</span><br><span class="line"></span><br><span class="line">    set $node_port 3000;</span><br><span class="line"></span><br><span class="line">    location  =/ &#123;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-NginX-Proxy true;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection &quot;upgrade&quot;;</span><br><span class="line">        proxy_pass http://127.0.0.1:$node_port$request_uri;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location  =/home &#123; # home</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-NginX-Proxy true;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection &quot;upgrade&quot;;</span><br><span class="line">        proxy_pass http://127.0.0.1:$node_port$request_uri;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location  /plugins &#123; # css plugins</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-NginX-Proxy true;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection &quot;upgrade&quot;;</span><br><span class="line">        proxy_pass http://127.0.0.1:$node_port$request_uri;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location  /css &#123;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-NginX-Proxy true;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection &quot;upgrade&quot;;</span><br><span class="line">        proxy_pass http://127.0.0.1:$node_port$request_uri;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location  /threejs &#123; # cube play</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-NginX-Proxy true;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection &quot;upgrade&quot;;</span><br><span class="line">        proxy_pass http://127.0.0.1:$node_port$request_uri;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location  /mysqlPractice &#123; # cube mysqlPractice</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-NginX-Proxy true;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection &quot;upgrade&quot;;</span><br><span class="line">        proxy_pass http://127.0.0.1:$node_port$request_uri;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /_nuxt &#123;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-NginX-Proxy true;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection &quot;upgrade&quot;;</span><br><span class="line">        proxy_pass http://127.0.0.1:$node_port$request_uri;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location  /blog &#123;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-NginX-Proxy true;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection &quot;upgrade&quot;;</span><br><span class="line">        proxy_pass http://127.0.0.1:$node_port$request_uri;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location  /mysql &#123;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-NginX-Proxy true;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection &quot;upgrade&quot;;</span><br><span class="line">        proxy_pass http://127.0.0.1:$node_port$request_uri;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ^~ /basename/ &#123;</span><br><span class="line">       try_files $uri /index.html;</span><br><span class="line">    &#125;</span><br><span class="line">    error_page 404 /404.html;</span><br><span class="line">       location = /40x.html &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page 500 502 503 504 /50x.html;</span><br><span class="line">       location = /50x.html &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2018.11.20 第一次修改<br>每次添加一个新路由就要配置一个 location<br><a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/" target="_blank" rel="noopener">mozilla ssl</a></p>
+</blockquote>
+</li>
+<li><p>添加 nginx nuxt play api 的配置，代理该服务器的 node api<br>/etc/nginx/conf.d/nuxt.play.api.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name cvapi.pengjiandry.com;</span><br><span class="line">    return 301 https://$host$request_uri;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">upstream cvapi.pengjiandry.com &#123;</span><br><span class="line">  server 127.0.0.1:3001;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen       443 ssl http2;</span><br><span class="line">  server_name  cvapi.pengjiandry.com;</span><br><span class="line"></span><br><span class="line">  ssl on;</span><br><span class="line">  ssl_certificate /home/nginx/ssl/pengjiandry.com/pengjiandry.com.crt;</span><br><span class="line">  ssl_certificate_key /home/nginx/ssl/pengjiandry.com/pengjiandry.com.key;</span><br><span class="line">  ssl_prefer_server_ciphers on;</span><br><span class="line">  ssl_session_cache shared:SSL:1m;</span><br><span class="line">  ssl_session_timeout  10m;</span><br><span class="line">  ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line"></span><br><span class="line">  access_log  /etc/nginx/log/cvapi.log main;</span><br><span class="line"></span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_set_header x-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header Host $http_host;</span><br><span class="line">    proxy_set_header X-Nginx-Proxy true;</span><br><span class="line"></span><br><span class="line">    proxy_pass http://cvapi.pengjiandry.com;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本地环境只需要修改对应的 host 就行</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="node"><a href="#node" class="headerlink" title="node"></a>node</h2><ul>
+<li><p>在服务器的根目录，安装 node <a href="https://github.com/nodesource/distributions" target="_blank" rel="noopener">资源地址</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -sL https://rpm.nodesource.com/setup_10.x | bash -</span><br><span class="line">yum install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看 node 和 npm 的版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="pm2"><a href="#pm2" class="headerlink" title="pm2"></a>pm2</h2><ul>
+<li>安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g pm2</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>pm2 是用来做 Nuxt 进程的守护</p>
+</blockquote>
+<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><ul>
+<li><p>安装 git</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在服务器上搭建一个 git 的服务主要是为了实现前端代码的自动化部署</p>
+</li>
+<li><p>首先创建一个存放 git 的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/repo/nuxt.play.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个 git 裸库（远程的仓库）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git init --bare</span><br><span class="line">ll -a</span><br><span class="line">总用量 32</span><br><span class="line">drwxr-xr-x  2 root root 4096 11月 15 09:26 branches</span><br><span class="line">-rw-r--r--  1 root root   66 11月 15 09:26 config</span><br><span class="line">-rw-r--r--  1 root root   73 11月 15 09:26 description</span><br><span class="line">-rw-r--r--  1 root root   23 11月 15 09:26 HEAD</span><br><span class="line">drwxr-xr-x  2 root root 4096 11月 15 09:26 hooks</span><br><span class="line">drwxr-xr-x  2 root root 4096 11月 15 09:26 info</span><br><span class="line">drwxr-xr-x 31 root root 4096 11月 15 09:42 objects</span><br><span class="line">drwxr-xr-x  4 root root 4096 11月 15 09:26 refs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 git hooks 实现自动化部署<br>/repo/nuxt.play.git/hooks/post-receive</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">GIT_REPO=/repo/nuxt.play.git</span><br><span class="line">TMP_GIT_CLONE=/tmp/nuxt.play.git</span><br><span class="line">PUBLIC_WWW=/var/www/nuxt-play</span><br><span class="line"></span><br><span class="line">rm -rf <span class="variable">$&#123;TMP_GIT_CLONE&#125;</span></span><br><span class="line">git <span class="built_in">clone</span> <span class="variable">$GIT_REPO</span> <span class="variable">$TMP_GIT_CLONE</span></span><br><span class="line">rm -rf <span class="variable">$&#123;PUBLIC_WWW&#125;</span>/*</span><br><span class="line">cp -rf <span class="variable">$&#123;TMP_GIT_CLONE&#125;</span>/* <span class="variable">$&#123;PUBLIC_WWW&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面是进入指定的文件并安装依赖使用 pm2 进行进程守护</span></span><br><span class="line"><span class="built_in">cd</span> /var/www/nuxt-play</span><br><span class="line">pm2 delete nuxt</span><br><span class="line">npm i</span><br><span class="line">npm run build</span><br><span class="line">pm2 start ./node_modules/nuxt/bin/nuxt -- start</span><br></pre></td></tr></table></figure>
+<h5 id="到这一步服务器前端需要的配置基本上齐全了，等前端的代码推送之后就可以验证，测试配置是否有问题"><a href="#到这一步服务器前端需要的配置基本上齐全了，等前端的代码推送之后就可以验证，测试配置是否有问题" class="headerlink" title="到这一步服务器前端需要的配置基本上齐全了，等前端的代码推送之后就可以验证，测试配置是否有问题"></a>到这一步服务器前端需要的配置基本上齐全了，等前端的代码推送之后就可以验证，测试配置是否有问题</h5><hr>
+<h2 id="本地前端代码"><a href="#本地前端代码" class="headerlink" title="本地前端代码"></a>本地前端代码</h2><p>把这个远程的仓库 clone 到本地<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone root@xxx.xxxxx.com:/repo/nuxt.play.git</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>暂时还没有使用 公钥和创建一个新 git 的用户，这个需要优化</p>
+</blockquote>
+<p>然后在本地的 nuxt.play 下创建一个新的 nuxt 的项目，并做一些修改推送到远程的仓库中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line">pengjian@pengjiandeMBP ⮀ ~/Personal/web-BE/nuxt-paly/nuxt.play ⮀ ⭠ master ⮀ git push</span><br><span class="line">root@cv.pengjiandry.com&apos;s password:</span><br><span class="line">Counting objects: 5, done.</span><br><span class="line">Delta compression using up to 8 threads.</span><br><span class="line">Compressing objects: 100% (5/5), done.</span><br><span class="line">Writing objects: 100% (5/5), 503 bytes | 0 bytes/s, done.</span><br><span class="line">Total 5 (delta 3), reused 0 (delta 0)</span><br><span class="line">remote: Initialized empty Git repository in /tmp/nuxt.play.git/.git/</span><br><span class="line">remote: [PM2] Applying action deleteProcessId on app [nuxt](ids: 0)</span><br><span class="line">remote: [PM2] [nuxt](0) ✓</span><br><span class="line">remote: ┌──────────┬────┬─────────┬──────┬─────┬────────┬─────────┬────────┬─────┬─────┬──────┬──────────┐</span><br><span class="line">remote: │ App name │ id │ version │ mode │ pid │ status │ restart │ uptime │ cpu │ mem │ user │ watching │</span><br><span class="line">remote: └──────────┴────┴─────────┴──────┴─────┴────────┴─────────┴────────┴─────┴─────┴──────┴──────────┘</span><br><span class="line">remote:  Use `pm2 show &lt;id|name&gt;` to get more details about an app</span><br><span class="line">remote:</span><br><span class="line">remote: &gt; nodemon@1.18.6 postinstall /var/www/nuxt-play/node_modules/nodemon</span><br><span class="line">remote: &gt; node bin/postinstall || exit 0</span><br><span class="line">remote:</span><br><span class="line">remote:</span><br><span class="line">remote: &gt; nuxt@2.2.0 postinstall /var/www/nuxt-play/node_modules/nuxt</span><br><span class="line">remote: &gt; opencollective || exit 0</span><br><span class="line">remote:</span><br><span class="line">remote:</span><br><span class="line">remote:                                      :=.</span><br><span class="line">remote:                                     -=+=:   :-</span><br><span class="line">remote:                                   .-=+++=: :++=.</span><br><span class="line">remote:                                  .-+++++++=++++=.</span><br><span class="line">remote:                                 .=+++++++****++++.</span><br><span class="line">remote:                                :=+++++++******++*+:</span><br><span class="line">remote:                               :=+++++++********++*+:</span><br><span class="line">remote:                              :=+++++++**********++*+-</span><br><span class="line">remote:                             -=+++++++*************+*+-.</span><br><span class="line">remote:                           .-=======+**************++++=.</span><br><span class="line">remote:                           .........::::::::::::::::::::.</span><br><span class="line">remote:</span><br><span class="line">remote:                           Thanks for installing nuxtjs</span><br><span class="line">remote:                  Please consider donating to our open collective</span><br><span class="line">remote:                         to help us maintain this package.</span><br><span class="line">remote:</span><br><span class="line">remote:                            Number of contributors: 153</span><br><span class="line">remote:                               Number of backers: 133</span><br><span class="line">remote:                             Annual budget: US$ 31,939</span><br><span class="line">remote:                             Current balance: US$ 7,018</span><br><span class="line">remote:</span><br><span class="line">remote:                  Donate: https://opencollective.com/nuxtjs/donate</span><br><span class="line">remote:</span><br><span class="line">remote: npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules/fsevents):</span><br><span class="line">remote: npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.4: wanted &#123;&quot;os&quot;:&quot;darwin&quot;,&quot;arch&quot;:&quot;any&quot;&#125; (current: &#123;&quot;os&quot;:&quot;linux&quot;,&quot;arch&quot;:&quot;x64&quot;&#125;)</span><br><span class="line">remote:</span><br><span class="line">remote: added 958 packages from 487 contributors and audited 13206 packages in 20.631s</span><br><span class="line">remote: found 0 vulnerabilities</span><br><span class="line">remote:</span><br><span class="line">remote:</span><br><span class="line">remote: &gt; nuxt-pay@1.0.0 build /var/www/nuxt-play</span><br><span class="line">remote: &gt; nuxt build</span><br><span class="line">remote:</span><br><span class="line">remote: [16:41:06] Building project</span><br><span class="line">remote: [16:41:06] Builder initialized</span><br><span class="line">remote: [16:41:06] Nuxt files generated</span><br><span class="line">remote: [16:41:07] Compiling client</span><br><span class="line">remote: [16:41:16] Compiled client in 10s</span><br><span class="line">remote:</span><br><span class="line">remote: Hash: c12af5351b26511512d1</span><br><span class="line">remote: Version: webpack 4.25.1</span><br><span class="line">remote: Time: 9542ms</span><br><span class="line">remote: Built at: 2018-11-15 16:41:16</span><br><span class="line">remote:                   Asset       Size  Chunks             Chunk Names</span><br><span class="line">remote: 771af8c28bd725d47228.js   2.18 KiB       3  [emitted]  runtime</span><br><span class="line">remote: 77c64fb21aea3a4078b7.js    134 KiB       1  [emitted]  commons.app</span><br><span class="line">remote: 9d464daf33a714b467e7.js   19.5 KiB       2  [emitted]  pages/index</span><br><span class="line">remote:                LICENSES  422 bytes          [emitted]</span><br><span class="line">remote: b1f85bf245e5b66482f2.js   31.1 KiB       0  [emitted]  app</span><br><span class="line">remote:  + 3 hidden assets</span><br><span class="line">remote: Entrypoint app = 771af8c28bd725d47228.js 77c64fb21aea3a4078b7.js b1f85bf245e5b66482f2.js</span><br><span class="line">remote: [16:41:16] Compiling server</span><br><span class="line">remote: [16:41:18] Compiled server in 2s</span><br><span class="line">remote:</span><br><span class="line">remote: Hash: 08bc33468857de94075a</span><br><span class="line">remote: Version: webpack 4.25.1</span><br><span class="line">remote: Time: 1860ms</span><br><span class="line">remote: Built at: 2018-11-15 16:41:18</span><br><span class="line">remote:              Asset     Size  Chunks             Chunk Names</span><br><span class="line">remote: server-bundle.json  241 KiB          [emitted]</span><br><span class="line">remote: Entrypoint app = server-bundle.js</span><br><span class="line">remote: [PM2] Starting /var/www/nuxt-play/node_modules/nuxt/bin/nuxt in fork_mode (1 instance)</span><br><span class="line">remote: [PM2] Done.</span><br><span class="line">remote: ┌──────────┬────┬─────────┬──────┬───────┬────────┬─────────┬────────┬─────┬──────────┬──────┬──────────┐</span><br><span class="line">remote: │ App name │ id │ version │ mode │ pid   │ status │ restart │ uptime │ cpu │ mem      │ user │ watching │</span><br><span class="line">remote: ├──────────┼────┼─────────┼──────┼───────┼────────┼─────────┼────────┼─────┼──────────┼──────┼──────────┤</span><br><span class="line">remote: │ nuxt     │ 0  │ 2.2.0   │ fork │ 28759 │ online │ 0       │ 0s     │ 0%  │ 8.2 MB   │ root │ disabled │</span><br><span class="line">remote: └──────────┴────┴─────────┴──────┴───────┴────────┴─────────┴────────┴─────┴──────────┴──────┴──────────┘</span><br><span class="line">remote:  Use `pm2 show &lt;id|name&gt;` to get more details about an app</span><br><span class="line">To cv.pengjiandry.com:/repo/nuxt.play.git</span><br><span class="line">   981b0e6..b55d75f  master -&gt; master</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>这个是部署之后的地址：<a href="//cv.pengjiandry.com">cv.pengjiandry.com</a></p>
+</blockquote>
+<hr>
+<h2 id="其他的一些操作"><a href="#其他的一些操作" class="headerlink" title="其他的一些操作"></a>其他的一些操作</h2><p>下载指定的资源<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -v cv.pengjiandry.com</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/12/数据库 - SQL 和关系型数据库的基本操作  (一）SQL 概述和 MySQL 基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/12/数据库 - SQL 和关系型数据库的基本操作  (一）SQL 概述和 MySQL 基础/" itemprop="url">数据库 - SQL 和关系型数据库的基本操作</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-12T13:47:07+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  673
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="SQL-概述"><a href="#SQL-概述" class="headerlink" title="SQL 概述"></a>SQL 概述</h2><h3 id="SQL-发展"><a href="#SQL-发展" class="headerlink" title="SQL 发展"></a>SQL 发展</h3><ol>
+<li>SQL 是于 1974 年由 Boyce 和 Chamberlin 提出，并在System R（IBM 公司研制的RDMS）</li>
+<li>SQL 标准是 1986 年 美国国家标准局 (American National Standard Institute, ANSI)颁布</li>
+<li>1987 年 6 月 国际化标准组织（International Organization for Standardization, ISO）正式采纳它为国际标准</li>
+<li>目前 SQL 的标准是 SQL:2018</li>
+<li>数据库管理系统产品：MySQL, Oracle, SQL Sever 等</li>
+</ol>
+<h3 id="SQL-的特点"><a href="#SQL-的特点" class="headerlink" title="SQL 的特点"></a>SQL 的特点</h3><ol>
+<li>SQL 不是某个特定数据库供应商专有的语言</li>
+<li>SQL 简单易学（语句全部是具有很强的描述性的英语单词组成，而且数目不多）</li>
+<li>SQL 看上去很简单，灵活使用其语言元素，可以进行非常复杂和高级的数据库操作<blockquote>
+<p>SQL 语句不区分大小写</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="SQL-的组成"><a href="#SQL-的组成" class="headerlink" title="SQL 的组成"></a>SQL 的组成</h3><ul>
+<li><p>SQL 的主要功能：1. 数据定义，2. 数据操纵（数据查询），3. 数据控制</p>
+</li>
+<li><ol>
+<li>数据定义语言（Data Definition Language, DDL）</li>
+</ol>
+<ul>
+<li>主要功能：对数据库以及数据库中的各种对象进行创建，删除，修改等操作</li>
+<li>数据库对象：表，默认约束，规则，视图，触发器，存储过程等</li>
+<li>DDL 主要包括 SQL 语句以下三种：<ol>
+<li>CREATE: 用于创建数据库或数据库对象</li>
+<li>ALTER: 用于对数据库或数据库对象尽心修改</li>
+<li>DROP: 用于删除数据库或数据库对象</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><ol start="2">
+<li>数据操作语言（Data Manipulation Language, DML）</li>
+</ol>
+<ul>
+<li>主要功能: 主要用于操作数据库中各种对象，特别是检索和修改数据</li>
+<li>DML 主要包括 SQL 语句以下几种：<ol>
+<li>SELECT: 用于从表中或视图中检索数据，其是数据库中使用最为频繁的 SQL 语句</li>
+<li>INSERT: 用于将数据插入到表或视图中</li>
+<li>UPDATE: 用于修改表或视图中的数据，其既可修改表或视图中的一行数据，也可以同时修改多行或全部数据</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><ol start="3">
+<li>数据控制语言（Data Control Language, DCL）</li>
+</ol>
+<ul>
+<li>主要功能: 主要用于安全管理，例如确定哪些用户查看或修改数据库中的数据</li>
+<li>DCL 主要包括 SQL 语句以下几种<ol>
+<li>GRANT: 用于授予权限，可把语句许可或对象许可的权限授予其他用户和角色</li>
+<li>REVOKE: 用于收回权限，其功能与 GRANT 相反，但不影响该用户或角色从其他角色中作为成员继承许可权限</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="嵌入式和动态-SQL-规则-SQL-调用和会话规则"><a href="#嵌入式和动态-SQL-规则-SQL-调用和会话规则" class="headerlink" title="嵌入式和动态 SQL 规则 / SQL 调用和会话规则"></a>嵌入式和动态 SQL 规则 / SQL 调用和会话规则</h3><h2 id="MySQL-预备知识-待完善"><a href="#MySQL-预备知识-待完善" class="headerlink" title="MySQL 预备知识(待完善)"></a>MySQL 预备知识(待完善)</h2><h3 id="MySQL-中的-SQL"><a href="#MySQL-中的-SQL" class="headerlink" title="MySQL 中的 SQL"></a>MySQL 中的 SQL</h3><ul>
+<li>MySQL 在 SQL 标准的基础上增加联部分扩展的语言要素，包括：常量，变量，运算符，表达式，函数，流程控制语句或注解</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/12/git 标签/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/12/git 标签/" itemprop="url">git 标签</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-12T09:16:11+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  40
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<ul>
+<li>查看本地仓库中的所有 tag</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -l</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建新的 tag</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag &lt;tag_name&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>把 tag 推送到远程仓库中</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push orgin &lt;tag_name&gt;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -2427,953 +3055,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（二）关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束,后两/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/04/数据库 - 关系型数据库（二）关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束,后两/" itemprop="url">数据库 - 关系型数据库（二）关系模型的三个组成要素：关系数据结构，关系操作集合，关系完整性约束,后两个</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T23:07:23+08:00">
-                2018-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  1.7k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="关系操作集合（待更新）"><a href="#关系操作集合（待更新）" class="headerlink" title="关系操作集合（待更新）"></a>关系操作集合（待更新）</h3><ul>
-<li><p>基本的关系操作（两大部分）</p>
-<ol>
-<li><p>查询（Query）操作</p>
-<ul>
-<li>查询操作是基本关系操作中的主要部分<ol>
-<li>5 种基本操作：选择，投影，并，差，交，笛卡尔积</li>
-<li>2 复杂操作：连接，除</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>插入（Insert）, 删除（Delete）, 修改（Update）操作</p>
-</li>
-</ol>
-</li>
-<li><p>关系数据语言的分类 </p>
-<ol>
-<li>关系操作是通过关系语言来实现，</li>
-<li><p>关系语言的优点：高度非过程化</p>
-<blockquote>
-<p>用户不需要请求数据库管理员为其建立特殊的存取路径，</p>
-<p>存取路径是由 DBMS 的优化机制来完成；</p>
-</blockquote>
-</li>
-<li><p>关系操作的能力可以通过两种方式来表示</p>
-<ul>
-<li><p>代数方式：主要有关系代数</p>
-<blockquote>
-<p>它是通过对关系的操作来表达查询要求的方式</p>
-</blockquote>
-</li>
-<li><p>逻辑方式：主要是关系演算（他是用谓词来表达查询要求的方式）</p>
-<ul>
-<li>关系演算按谓词的变元的基本对象又分为：<ol>
-<li>元组关系演算（变元的基本对象是元组变量）</li>
-<li>域关系演算（变元的基本对象是域变量 ）</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>关系代数，元组关系演算，域关系演算三种语言在表达能力上是等价的，并且他们都是抽象的查询语言</p>
-</li>
-<li><p>结构化查询语言（介于代数方式和逻辑方式之间, Structured Query Language, SQL）</p>
-<ul>
-<li><p>功能：</p>
-<ol>
-<li>数据定义功能（DDL）</li>
-<li>数据操作功能（DML）</li>
-<li>数据控制功能（DCL）</li>
-</ol>
-</li>
-<li><p>是关系数据库的标准语言</p>
-</li>
-</ul>
-</li>
-</ul>
-<ol start="3">
-<li>总结：</li>
-</ol>
-<ul>
-<li>关系数据语言分为三类：关系代数语言，关系演算语言和兼容两者双重特点的语言（SQL）</li>
-<li>它们功能的特点：语言具有完备的表达能力，和非过程化的集合操作语言，功能强，能够独立使用也可以嵌入高级语言中使用<h4 id="关系代数"><a href="#关系代数" class="headerlink" title="关系代数"></a>关系代数</h4></li>
-</ul>
-</li>
-</ol>
-</li>
-<li>关系代数是关系操作语言的一种传统表示方式，他是以集合代数为基础发展起来的。</li>
-<li><p>关系代数的三大要素：<br>1.操作对象<br>2.操作符<br>3.操作结果</p>
-<blockquote>
-<p>特点：操作对象和操作结果均为关系<br>直接应用关系的运算来表达操作的目的</p>
-</blockquote>
-</li>
-<li><p>运算符的种类：</p>
-<ol>
-<li>传统的集合运算符：并，差，交，笛卡尔积</li>
-<li>专门的运算符：选择，投影，连接，除，其中下面两种运算符是辅助专门运算符用的<ul>
-<li>比较运算符：大于，大于等于，等于，小于，小于等于，不等于</li>
-<li>逻辑操作符： 与，或非</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>关系代数表达式（关系代数操作表达式）</p>
-<ol>
-<li>概念： 代数关系操作经过有限次复合的式子 <blockquote>
-<p>可以使用关系代数表达式所需要执行的各种数据库查询和修改处理，例如：IBM 研制的一个纯代数数据操作语言（ISBL）</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>按照运算符的不同，代数操作分为</p>
-<ol>
-<li>传统的集合运算</li>
-<li>专门的关系运算</li>
-</ol>
-</li>
-<li><p>传统的集合运算</p>
-<ol>
-<li>传统的集合运算是二目运算<blockquote>
-<p>特点：</p>
-<ol>
-<li><p>把关系看成元组（行）的集合</p>
-</li>
-<li><p>运算是从关系的 “水平”方向进行，即行的角度进行</p>
-</li>
-<li><p>具体有 并，差，交，笛卡尔积 4 种运算</p>
-<p>值得注意的笛卡尔积是针对列进行操作的</p>
-</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>专门的关系运算符</p>
-<ul>
-<li><p>范围：不仅涉及行，还涉及列</p>
-</li>
-<li><p>可分为一元专门关系操作和二元关系操作</p>
-<ul>
-<li>一元关系操作包括<ol>
-<li>对单个进行垂直分解的投影运算</li>
-<li>对水平分解选择运算</li>
-</ol>
-</li>
-<li>二元专门关系操作则是对两个进行操作<ol>
-<li>连接运算</li>
-<li>除运算</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>选择（SELECT）</p>
-<ol>
-<li>概念：选择运算是从指定关系中选取满足给定条件的若干元组组成一个新关系，其形式：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 关系名 WHERE 条件</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<p>其中：条件是由常数，属性名或列名，比较操作符以及逻辑操作符组成的条件表达式子</p>
-<p>对应 SQL 中的 SELECT 语句的实现</p>
-</blockquote>
-</li>
-<li><p>投影（PROJECTION）</p>
-<ol>
-<li>概念：投影运算是从指定的关系中选取指定的若干属性值组成一个新的关系<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PROJECTION 关系名（属性1， 属性2 ... 属性3）</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<p>其中：经过投影运算所形成的新关系中不含重复元组，其属性按语句中给出的顺序排列</p>
-<p>SQL 中的 GROUP BY（分组）子句的实现</p>
-</blockquote>
-</li>
-<li><p>连接（JSON）</p>
-<ol>
-<li>选取两个指定关系中国呢的属性满足给定条件的元组连接在一起组成一个新关系<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JOIN 关系名1 AND 关系名2 WHERE 条件</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<p>条件是由比较操作符和属性名或列名组成的条件表达式</p>
-</blockquote>
-<ol>
-<li>连接分为：等值连接和自然连接</li>
-</ol>
-</li>
-<li><p>除（DIVISION）</p>
-<ol>
-<li>M - N 元关系</li>
-</ol>
-</li>
-</ul>
-<h3 id="关系的完整型约束"><a href="#关系的完整型约束" class="headerlink" title="关系的完整型约束"></a>关系的完整型约束</h3></li>
-<li><p>概念：数据库的数据完整性：是指数据库中数据的正确性，相容性和一致性</p>
-<ol>
-<li>现实世界角度:现实世界应用需求的数据的正确性，相容性和一致性</li>
-<li>数据库数据角度：数据库数据之间的正确性，相容性和一致性</li>
-<li>数据库中数据是否具备完备性，直接关系到数据库系统是否真实地反映现实世界，故数据的数据完整性十分重要</li>
-</ol>
-</li>
-<li><p>完整性约束</p>
-<ol>
-<li>概念：数据的完整性是由完整性规则来定义，关系模型的完整性规则是对关系的某种约束</li>
-<li>目的：用来保证当用户对数据库进行插入，删除，更新操作时不会破坏数据库的正确性，相容性和一致性</li>
-</ol>
-</li>
-<li><p>关系数据库中的三种完整性约束类型</p>
-<ol>
-<li><p>实体完整性约束（Entity Integrity Constraint）</p>
-<ol>
-<li>概念：指关系的主属性（主码）的组成不能为空（NULL）<blockquote>
-<p>关系对应现实世界中的实体集，而实现世界中的实体是可以区分的，即说明每个实体具有唯一性标识</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>参照完整性约束（Referential Integrity Constraint）</p>
-<ol>
-<li>概念：是定义外码和主码之间的引用关系，它是对关系间引用数据的一种限制<blockquote>
-<p>实现世界中的实体之间往往存在着某种联系，在关系模型中实体以及实体之间的联系都是用关系来描述的，这样就自然存在着关系与关系间的引用</p>
-</blockquote>
-</li>
-</ol>
-</li>
-<li><p>用户定义完整性约束(User-defined Integrity Constraint)</p>
-<ol>
-<li>概念：是针对某一应用环境的完整性约束条件，它反映了某一具体应用所涉及的数据应满足的要求 </li>
-</ol>
-</li>
-<li><p>实体完整性和参照完整性约束是由系统自动支持的</p>
-</li>
-</ol>
-</li>
-<li><p>关系模型完整性约束检验</p>
-<ol>
-<li>插入操作</li>
-<li>删除操作</li>
-<li>更新操作</li>
-</ol>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（三）关系数据库的规范化理论/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/04/数据库 - 关系型数据库（三）关系数据库的规范化理论/" itemprop="url">数据库 - 关系型数据库（三）关系数据库的规范化理论</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T22:31:50+08:00">
-                2018-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  638
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="为什么要规范化（理论）"><a href="#为什么要规范化（理论）" class="headerlink" title="为什么要规范化（理论）"></a>为什么要规范化（理论）</h3><ul>
-<li>关系模型中可能存在的一些问题，</li>
-<li>规范化的作用<ol>
-<li>是关系数据库设计的理论依据</li>
-</ol>
-</li>
-<li>范围<ol>
-<li>是关系模式中各属性之间的依赖关系及其对关系性能的影响，为关系模式提供了优劣的理论标准</li>
-</ol>
-</li>
-</ul>
-<h4 id="关系模型中可能存在冗余和异常问题"><a href="#关系模型中可能存在冗余和异常问题" class="headerlink" title="关系模型中可能存在冗余和异常问题"></a>关系模型中可能存在冗余和异常问题</h4><ol>
-<li><p>数据冗余：同一数据被反反复复存储的情况</p>
-</li>
-<li><p>更新异常：数据冗余将导致存储空间的浪费和潜在数据不一致修改麻烦等问题</p>
-</li>
-<li><p>插入异常：应该插入到数据库中的数据不能执行插入操作的情形</p>
-</li>
-<li><p>删除异常：不应该删去的数据被删去的情形</p>
-<blockquote>
-<p>上述的情况和数据依赖密切相关</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="函数依赖和关键字（抄不动了😢）"><a href="#函数依赖和关键字（抄不动了😢）" class="headerlink" title="函数依赖和关键字（抄不动了😢）"></a>函数依赖和关键字（抄不动了😢）</h3><ol>
-<li>函数依赖：指关系中属性间的对应关系</li>
-<li>定义：设 R 为任一给定关系，如果对于 R 中属性 X 的每一个值，R 中的属性 Y 只用唯一值与之对应，则称 X 函数决定 Y 或称 Y 函数依赖于 X,记住 X -&gt; Y。其中，X 称为决定因素</li>
-</ol>
-<h4 id="函数依赖根据不同性质的分类（抄不动了😢）"><a href="#函数依赖根据不同性质的分类（抄不动了😢）" class="headerlink" title="函数依赖根据不同性质的分类（抄不动了😢）"></a>函数依赖根据不同性质的分类（抄不动了😢）</h4><ol>
-<li>完全函数依赖</li>
-<li>部分函数依赖</li>
-<li>传递函数依赖</li>
-</ol>
-<h3 id="范式与关系规范化（抄不动了😢）"><a href="#范式与关系规范化（抄不动了😢）" class="headerlink" title="范式与关系规范化（抄不动了😢）"></a>范式与关系规范化（抄不动了😢）</h3><ol>
-<li>规范化：一个低一级范式的关系模式通过模式分解（Schema Decomposition）可以转换为若干个高一级范式的关系模式的集合的过程</li>
-</ol>
-<h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><ol>
-<li><p>第一范式(1NF)</p>
-<ul>
-<li>不含重复组的关系，不存在嵌套结构</li>
-<li>不满足第一范式的关系称为非规范关系</li>
-</ul>
-</li>
-<li><p>第二范式(2NF)</p>
-<ul>
-<li>定义：设 R 为任一给定关系，若 R 为 1NF, 且所有非主属性都完全函数依赖于候选关键字，则 R 为第二范式 </li>
-</ul>
-</li>
-<li><p>第三范式(3NF)</p>
-<ul>
-<li>定义：设 R 为任一给定关系，若 R 为 2NF，且起每一个非主属性都不传递函数依赖于候选关键字，则 R 为第三范式<blockquote>
-<p>通常，第三范式的关系大多数都能解决插入和删除操作异常的情况，数据冗余也能得到有效的控制</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>BCNF（抄不动了😢）</p>
-<blockquote>
-<p>关系规范化理论主要应用于数据库设计中的概念设计阶段，用来分析其实体划分是否合适，判断属性具体分配到哪个实体中</p>
-</blockquote>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/PHP - 基础知识（二）变量，数据类型以及作用域/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/04/PHP - 基础知识（二）变量，数据类型以及作用域/" itemprop="url">PHP - 基础知识（二）变量，数据类型以及作用域</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-04T16:39:56+08:00">
-                2018-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《PHP-and-MySQL-Web-Development》第五版/" itemprop="url" rel="index">
-                    <span itemprop="name">《PHP and MySQL Web Development》第五版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p><a href="http://localhost:4034/2018/11/04/PHP%20-%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%88%E4%BA%8C%EF%BC%89%E5%8F%98%E9%87%8F%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%BB%A5%E5%8F%8A%E4%BD%9C%E7%94%A8%E5%9F%9F/" target="_blank" rel="noopener">PHP - 基础知识（二）变量，数据类型以及作用域</a></p>
-<hr>
-<p><a href="https://github.com/jamesjianpeng/PHP-play/commit/76a0e3ad6f2a655fdd43acb55bd90e4e577a0971" target="_blank" rel="noopener">git commit</a></p>
-<h3 id="变量和字面量"><a href="#变量和字面量" class="headerlink" title="变量和字面量"></a>变量和字面量</h3><ul>
-<li>变量：是表示数据的符号</li>
-<li>字面量：是原始数据，例如： 字符串是数据本身<blockquote>
-<p>单引号中的数据就是字面量，表示原始的数据</p>
-<p>双引号中的数据是要经过 PHP 解释器进行计算的，所以可以在双引号之间插入变量，在输入的时候就会把变量使用对应的字面量进行替换</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="PHP中的标识符"><a href="#PHP中的标识符" class="headerlink" title="PHP中的标识符"></a>PHP中的标识符</h3><ul>
-<li>标识符包括，变量名，函数名，类名</li>
-<li>标识符的长度不限</li>
-<li>不能以数字开头</li>
-<li><p>区分大小写(值得注意的是函数名称是不区分大小写)</p>
-<blockquote>
-<p>在 JavaScript 中函数的名字是区分大小写😜，例如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const GetColor = (color) =&gt; color;</span><br><span class="line">getColor(&apos;red&apos;) // Uncaught ReferenceError: red is not defined</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>变量名和函数名是可以重名</p>
-</li>
-<li>申明，和使用变量没有先后顺序的规定</li>
-</ul>
-<h3 id="PHP-中的数据类型"><a href="#PHP-中的数据类型" class="headerlink" title="PHP 中的数据类型"></a>PHP 中的数据类型</h3><ul>
-<li>Integer（整数）</li>
-<li>Float（浮点数，也叫 Double，双精度）</li>
-<li>String（字符串）：用来表示字符串</li>
-<li>Boolean（布尔）：用来表示 true 或者 false</li>
-<li>Array（数组）：用来保存具有相同类型的多个数据项</li>
-<li>Object（对象）：用来保存类的实例</li>
-<li><p>三种特殊的类型：</p>
-<ol>
-<li>NULL（空）<blockquote>
-<p>没有被赋值，已经被重置或者被赋值的特殊值 NULL 的变量就是 NULL 类型变量</p>
-</blockquote>
-</li>
-<li><p>resource（资源）：特定的内置函数（例如数据库函数）将返回 resource 类型的变量 </p>
-<blockquote>
-<p>基本上不能直接操作一个 resource 变量，但是通常他们都将被函数返回，而且必须作为参数传递给其他函数</p>
-</blockquote>
-</li>
-<li><p>callable</p>
-<blockquote>
-<p>通常都是可以传递给其他函数的函数</p>
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<p>JavaScript 则不太一样😁<br>分为两大类：1. 原始类型，2. 引用类型</p>
-<ol>
-<li>原始类型（6种）：Boolean，Null，Undefined，Number，String，Symbol (ECMAScript 6 新定义)</li>
-<li>引用类型（object）: Object, Array，Map, Set, Date, RegExp, Math, HTMLBodyElement,HTMLElement, Element, Node, EventTarget，等等各种 Element Object</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-<h3 id="类型强度"><a href="#类型强度" class="headerlink" title="类型强度"></a>类型强度</h3><ul>
-<li>PHP 是一种弱类型的语言，或者动态类型语言（这个和 JavaScript 基本一致）<blockquote>
-<p>变量的类型是由赋给变量的值确定的，自动地获取输入的数据类型</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="类型转化"><a href="#类型转化" class="headerlink" title="类型转化"></a>类型转化</h3><ul>
-<li>使用类型转化，可以将一个变量或值转换成另一种类型（和 C 语言的类型转换是相同的）<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    $totalqty = <span class="number">0</span></span><br><span class="line">    $totalamount = (float)$totalqty <span class="comment">// 由 Integer ==&gt; Float</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="可变变量-🐂"><a href="#可变变量-🐂" class="headerlink" title="可变变量(🐂)"></a>可变变量(🐂)</h3><ul>
-<li>PHP 中还有其他类型的变量：可变变量<blockquote>
-<p>允许我们动态地改变一个变量的名称</p>
-  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $varname = <span class="string">'tirepty'</span>;</span><br><span class="line">  $$varname = <span class="number">5</span>;</span><br><span class="line">  <span class="comment">// $tirepty = 5 这种方式和上面的方式等价</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-</ul>
-<h3 id="声明和使用常量"><a href="#声明和使用常量" class="headerlink" title="声明和使用常量"></a>声明和使用常量</h3><ul>
-<li><p>常量：一旦设定之后，在脚本的其他地方就不能再更改(常量名称通常由大写的字母组成)</p>
-<blockquote>
-<p>使用的时候直接不需要在常量名前添加 $</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    define(<span class="string">'TIREPEICE'</span>, <span class="number">100</span>);</span><br><span class="line">    <span class="keyword">echo</span> TIREPEICE;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="理解变量作用域-待完善"><a href="#理解变量作用域-待完善" class="headerlink" title="理解变量作用域(待完善)"></a>理解变量作用域(待完善)</h3><ul>
-<li>作用域：是指在一个脚本中某个变量在那些地方可以使用或可见</li>
-<li><p>PHP 定义了 6 条规则：</p>
-<ol>
-<li><p>内置超级全局变量可以在脚本的任何地方使用和可见（和 JavaScript 类似）,例如：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $_GET[<span class="string">'varname'</span>]</span><br><span class="line">  $_POST[<span class="string">'varname'</span>]</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>$GLOBALS</p>
-<p>$_SERVER 服务器环境变量数组</p>
-<p>$_GET</p>
-<p>$_POST</p>
-<p>$_COOKIE</p>
-<p>$_FILES</p>
-<p>$_ENV</p>
-<p>$_REQUEST</p>
-</blockquote>
-</li>
-<li><p>常量，一旦被声明，将在全局可见；也就是说，它们可以在函数内外使用</p>
-</li>
-<li><p>在一个脚本中声明的全军变量在整个脚本中是可见的，但不是在函数内部（和 JavaScript 类似）</p>
-</li>
-<li><p>函数内部使用的变量声明为全局变量时，其名称要与全局变量名称一致（和 JavaScript 类似）</p>
-</li>
-<li><p>在函数内部创建并声明为静态的变量无法在函数外部可见，但是可以在函数的多次执行过程中保持该值</p>
-<blockquote>
-<p>什么是静态变量？<br>前半句明白，后半句感觉和闭包类似</p>
-</blockquote>
-</li>
-<li><p>在函数内部创建的变量对函数来说是本地的，而当函数终止时，该变量也就不存在了（和 JavaScript 类似，函数运行结束之后，变量也随即被销毁）</p>
-</li>
-</ol>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3428,7 +3109,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-count">98</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -3450,7 +3131,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3518,7 +3199,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">61.9k</span>
+    <span title="博客总字数">63.7k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

@@ -274,16 +274,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-留言">
-          <a href="/guestbook" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            留言
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -303,6 +293,702 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/12/02/数据库 - SQL 和关系型数据库的基本操作（十）数据操作（DML）- 视图：创建 | 删除 | 修改 | 查看 | 更新/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/02/数据库 - SQL 和关系型数据库的基本操作（十）数据操作（DML）- 视图：创建 | 删除 | 修改 | 查看 | 更新/" itemprop="url">数据库 - SQL 和关系型数据库的基本操作（十）数据操作（DML）- 数据查询：视图.md</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-02T12:52:26+08:00">
+                2018-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="复习：模式和外模式"><a href="#复习：模式和外模式" class="headerlink" title="复习：模式和外模式"></a>复习：模式和外模式</h2><ul>
+<li>在数据库的三级模式中，模式是数据库中全体数据的逻辑结构（对应关系数据库中的基本表）</li>
+<li>外模式：当不同的用户需要基本表中不同的数据时，可以为这些不同的用户建立不同的外模式（对应关系数据中的视图）</li>
+<li><p>模式和外模式之间关系之一：</p>
+<ul>
+<li>外模式的内容来源于模式，它是模式的部分数据或重构数据<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2></li>
+</ul>
+</li>
+<li><p>概念：</p>
+<ul>
+<li>视图是数据中的一个对象，它是数据库管理系统提供给用户的以多种角度观察数据库中数据的一种重要机制</li>
+<li>视图是一个或多个表或者其他视图中通过查询语句导出的表</li>
+<li>视图和表十分相似，他包括若干数据列和数据行，并有自己的视图名，可通过 SQL 语句对视图进行创建，查询，更改，删除操作</li>
+</ul>
+</li>
+<li><p>视图和表之间的区别</p>
+<ul>
+<li>视图不是数据库中真实的表，而是一张虚拟的表，其结构和数据是建立在对数据库中真实表的查询基础上</li>
+<li>视图的内容：是由存储在数据库中进行查询操作的 SQL 语句来定义</li>
+<li>视图本身不存储数据，它所对应的数据实际是储存在视图所引用的真实表（基础表）中</li>
+<li>作用：<ul>
+<li>集中分散数据，可以在一个或多个表的基础上建立视图</li>
+<li>简化查询语言</li>
+<li>重用 SQL 语句</li>
+<li>保护数据安全</li>
+<li>共享所需数据</li>
+<li>更改数据格式</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW TABLES;</span><br><span class="line">+-------------------------------+</span><br><span class="line">| Tables_in_studentcoursesystem |</span><br><span class="line">+-------------------------------+</span><br><span class="line">| course                        |</span><br><span class="line">| course_score                  |</span><br><span class="line">| students                      |</span><br><span class="line">+-------------------------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.02 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM course;</span><br><span class="line">+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">| course_no | course_name           | department   | teacher_name | teacher_no |</span><br><span class="line">+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">|         1 | 数据库系统原理        | 计算机系     | NULL         |       NULL |</span><br><span class="line">|         2 | C++程序设计           | 计算机系     | NULL         |       NULL |</span><br><span class="line">|         3 | 操作系统原理          | 计算机系     | NULL         |       NULL |</span><br><span class="line">|         4 | 微观经济学            | 金融系       | NULL         |       NULL |</span><br><span class="line">+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">4 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.02 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM course_score;</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| course_name           | course_no | student_name | student_no | course_score | course_score_no |</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| 数据库系统原理        |         1 | pengjian     |          2 |           88 |               2 |</span><br><span class="line">| 微观经济学            |         4 | Emma         |          4 |           76 |               3 |</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          4 | 金融系       | Emma         |      0 | 2018-11-25          |          21 |</span><br><span class="line">|          5 | 金融系       | Aaron        |      1 | 2018-11-25          |          22 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">4 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h3 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h3><ul>
+<li>语法<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; CREATE VIEW view_name [(columne_lsit)]</span><br><span class="line">&gt; AS select_statement</span><br><span class="line">&gt; [WITH [CASCADED | LOCAL] CHECK OPTION ];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>后面这一部分暂时没用到 [WITH [CASCADED | LOCAL] CHECK OPTION ]</p>
+</blockquote>
+<p>  实践<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE VIEW students_course AS SELECT * FROM students WHERE gender = 1;</span><br><span class="line">Query OK, 0 rows affected (0.12 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students_course;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          5 | 金融系       | Aaron        |      1 | 2018-11-25          |          22 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<h3 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h3><ul>
+<li><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; DROP VIEW [IF EXISTS] view_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DROP VIEW IF EXISTS students_course;</span><br><span class="line">Query OK, 0 rows affected (0.10 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students_course;</span><br><span class="line">ERROR 1146 (42S02): Table <span class="string">'studentcoursesystem.students_course'</span> doesn<span class="string">'t exist</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="修改视图定义-待完善"><a href="#修改视图定义-待完善" class="headerlink" title="修改视图定义(待完善)"></a>修改视图定义(待完善)</h3><ul>
+<li>另外一种方式：可以通过先删掉该视图，然后再重新创建一个</li>
+</ul>
+<h3 id="查看视图定义"><a href="#查看视图定义" class="headerlink" title="查看视图定义"></a>查看视图定义</h3><ul>
+<li><p>语法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; SHOW CREATE VIEW students_course;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW CREATE VIEW students_course;</span><br><span class="line">+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+</span><br><span class="line">| View            | Create View                                                                                                                                                                                                                                                                                                                                                                                                                 | character_set_client | collation_connection |</span><br><span class="line">+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+</span><br><span class="line">| students_course | CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `students_course` AS select `students`.`student_no` AS `student_no`,`students`.`department` AS `department`,`students`.`student_name` AS `student_name`,`students`.`gender` AS `gender`,`students`.`student_regist_date` AS `student_regist_date`,`students`.`student_age` AS `student_age` from `students` <span class="built_in">where</span> (`students`.`gender` = 1) | utf8mb4              | utf8mb4_0900_ai_ci   |</span><br><span class="line">+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="更新视图数据"><a href="#更新视图数据" class="headerlink" title="更新视图数据"></a>更新视图数据</h3><ul>
+<li>插入数据<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO students_course</span><br><span class="line">    -&gt; VALUES (NULL, &apos;金融系&apos;, &apos;Ben&apos;, 1, &apos;2018-12-2&apos;, 24);</span><br><span class="line">Query OK, 1 row affected (0.03 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          4 | 金融系       | Emma         |      0 | 2018-11-25          |          21 |</span><br><span class="line">|          5 | 金融系       | Aaron        |      1 | 2018-11-25          |          22 |</span><br><span class="line">|          6 | 金融系       | Ben          |      1 | 2018-12-02          |          24 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">5 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>在 view students_course 中插入一条数据，然后查询 students 中的数据发现这个实际表的数据也随之更新</p>
+</blockquote>
+<ul>
+<li><p>更新数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; UPDATE students_course</span><br><span class="line">    -&gt; SET student_age = 20;</span><br><span class="line">    Query OK, 4 rows affected (0.05 sec)</span><br><span class="line">    Rows matched: 4  Changed: 4  Warnings: 0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DELETE FROM students_course WHERE student_name = <span class="string">'Ben'</span>;</span><br><span class="line">Query OK, 1 row affected (0.08 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="查询视图数据"><a href="#查询视图数据" class="headerlink" title="查询视图数据"></a>查询视图数据</h3><p>同查询表的操作：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM students_course;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          20 |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          20 |</span><br><span class="line">|          5 | 金融系       | Aaron        |      1 | 2018-11-25          |          20 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>《数据库操作原理》(04735) 第四章初步完结，只用数据操作（DML）中的索引定义需要更新</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/12/02/数据库 - SQL 和关系型数据库的基本操作（九）数据操作（DML）- 数据查询：ORDER BY | LIMIT 子句/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/02/数据库 - SQL 和关系型数据库的基本操作（九）数据操作（DML）- 数据查询：ORDER BY | LIMIT 子句/" itemprop="url">数据库 - SQL 和关系型数据库的基本操作（九）数据操作（DML）- 数据查询：ORDER BY | LIMIT 子句</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-02T12:31:14+08:00">
+                2018-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  224
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h3><ul>
+<li>特点：<ul>
+<li>ORDER BY 子句中可以包含子查询</li>
+<li>当对空值进行排序时，ORDER BY 子句将该空值作为最小值来对待</li>
+<li>对多列排序的时候，以 SQL 语句中书写的列的顺序进行排序</li>
+</ul>
+</li>
+<li><a href="https://www.pengjiandry.com/2018/10/20/SQL%20-%20%E6%8E%92%E5%BA%8F%EF%BC%9A%E5%AF%B9%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E6%8E%92%E5%BA%8F/">👉🚪</a><h3 id="LIMIT-子句"><a href="#LIMIT-子句" class="headerlink" title="LIMIT 子句"></a>LIMIT 子句</h3></li>
+<li><p>语法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; LIMT start_index, nums</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>start_index 是表中起点的位置：0<br>nums 是表中需要截取的数量</p>
+</blockquote>
+</li>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM students ORDER BY student_regist_date ASC;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          4 | 金融系       | Emma         |      0 | 2018-11-25          |          21 |</span><br><span class="line">|          5 | 金融系       | Aaron        |      1 | 2018-11-25          |          22 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">4 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students ORDER BY student_regist_date ASC LIMIT 0, 2;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>LIMIT 的序号值是从 0 开始的，过滤出两条记录</p>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/12/02/数据库 - SQL 和关系型数据库的基本操作（八）数据操作（DML）- 数据查询：GROUP BY 子句和分组数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/02/数据库 - SQL 和关系型数据库的基本操作（八）数据操作（DML）- 数据查询：GROUP BY 子句和分组数据/" itemprop="url">数据库 - SQL 和关系型数据库的基本操作（八）数据操作（DML）- 数据查询：GROUP BY 子句/分组数据 和 HAVING 子句</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-02T12:03:55+08:00">
+                2018-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
+                    <span itemprop="name">《数据库系统原理》(04735)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  452
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="GROUP-BY-子句"><a href="#GROUP-BY-子句" class="headerlink" title="GROUP BY 子句"></a>GROUP BY 子句</h3><ul>
+<li>作用： 将结果集中的数据行根据列的值进行逻辑分组</li>
+<li><p>语法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; GROUP BY &#123; col_name | expr | position &#125; [ASC | DESC], ... [WITH ROLLUP];</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li>col_name 指定用于分组的选择列，可以指定多列，使用逗号分隔开，GROUP BY 子句中的各选择列必须也是 SELECT 语句的选择清单中的一项</li>
+<li>expr 指定用于分组的表达式</li>
+<li>position 指定用于分组的选择列在 SELECT 语句结果中的位置</li>
+<li>ASC | DESC：ASC 按升序分组，DESC（default） 按降序分组</li>
+</ol>
+</blockquote>
+</li>
+<li><p>实践：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT department, COUNT(*)  </span><br><span class="line">    -&gt; FROM students GROUP BY department;</span><br><span class="line">+--------------+----------+</span><br><span class="line">| department   | COUNT(*) |</span><br><span class="line">+--------------+----------+</span><br><span class="line">| 计算机系     |        2 |</span><br><span class="line">| 金融系       |        2 |</span><br><span class="line">+--------------+----------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT gender AS <span class="string">'性别'</span>, COUNT(*)  </span><br><span class="line">    -&gt; FROM students GROUP BY gender;</span><br><span class="line">+--------+----------+</span><br><span class="line">| 性别   | COUNT(*) |</span><br><span class="line">+--------+----------+</span><br><span class="line">|      1 |        3 |</span><br><span class="line">|      0 |        1 |</span><br><span class="line">+--------+----------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT gender AS <span class="string">'性别'</span>, COUNT(*)  </span><br><span class="line">    -&gt; FROM students GROUP BY gender DESC;</span><br><span class="line">+--------+----------+</span><br><span class="line">| 性别   | COUNT(*) |</span><br><span class="line">+--------+----------+</span><br><span class="line">|      1 |        3 |</span><br><span class="line">|      0 |        1 |</span><br><span class="line">+--------+----------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span>, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意</p>
+<ul>
+<li><p>使用 GROUP BY 子句的时候，列出的每一列必须是检索列或有效的表达式，但不能是聚合函数。如果在 SELECT 语句中使用列表达式，则必须在 GROUP BY 子句中指定相同的表达式</p>
+</li>
+<li><p>除聚合函数之外，SELECT 语句中的每一个列都必须在 GROUP BY 子句中给出</p>
+</li>
+<li><p>分组的列中包含 NULL 值，则 NULL 将作为一个单独的分组返回</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="HAVING-子句"><a href="#HAVING-子句" class="headerlink" title="HAVING 子句"></a>HAVING 子句</h3><ul>
+<li>作用：用于过滤分组数据</li>
+<li><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; HAVING where_condition;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HVAING 和 WHERE 的区别</p>
+<ul>
+<li>WHERE 子句主要用于过滤数据行，而 HAVING 子句主要用于过滤数据</li>
+<li>HAVING 子句中的条件可以包含聚合函数，而 WHERE 子句中就不可以</li>
+<li>WHERE 子句会在数据分组前进行过滤，HAVING 子句则会在数据分组后进行过滤</li>
+</ul>
+</li>
+<li><p>HVANIG 的实践</p>
+<ul>
+<li><a href="https://www.pengjiandry.com/2018/10/20/SQL%20-%20%E8%81%9A%E5%90%88%EF%BC%9A%E6%8C%87%E5%AE%9A%E6%9D%A1%E4%BB%B6/">👉🚪</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1631,565 +2317,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/22/CSS - 布局/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/22/CSS - 布局/" itemprop="url">CSS - 布局</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-22T13:24:12+08:00">
-                2018-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  43
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中:"></a>水平居中:</h2><p>  <a href="https://cv.pengjiandry.com/css/layouts/centered/inline/horizontal" target="_blank" rel="noopener">内联元素</a><br>  <a href="https://cv.pengjiandry.com/css/layouts/centered/block/horizontal" target="_blank" rel="noopener">块元素</a></p>
-<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中:"></a>垂直居中:</h2><p>  <a href="https://cv.pengjiandry.com/css/layouts/centered/inline/vertical" target="_blank" rel="noopener">内联元素</a><br>  <a href="https://cv.pengjiandry.com/css/layouts/centered/block/vertical" target="_blank" rel="noopener">块元素</a></p>
-<h2 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h2><p>  <a href="https://cv.pengjiandry.com/css/layouts/centered/horizontalVerticalCentered" target="_blank" rel="noopener">水平居中</a></p>
-<h2 id="多栏布局"><a href="#多栏布局" class="headerlink" title="多栏布局"></a>多栏布局</h2><p>  <a href="https://cv.pengjiandry.com/css/layouts/columns/flexTwo" target="_blank" rel="noopener">flex 两栏布局</a><br>  <a href="https://github.com/jamesjianpeng/nuxt-cv/commit/97cf73bc001b0a7923017319b857516fc4c693fb" target="_blank" rel="noopener">代码</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/22/CSS - 选择器和特殊性/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/22/CSS - 选择器和特殊性/" itemprop="url">CSS - 选择器和特殊性</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-22T13:24:12+08:00">
-                2018-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《CSS-权威指南》/" itemprop="url" rel="index">
-                    <span itemprop="name">《CSS 权威指南》</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  932
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><p>一个规则的组成：选择器和一个或多个声明(属性 + 值(可能有多个关键字<br>))组成<br>一个层叠样式表是由多个规则组成的规则集<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">选择器1 &#123;</span><br><span class="line">  属性1：值；</span><br><span class="line">  属性2：值(可能有多个关键字，由「 空格 」分隔，font 中的关键字有些使用「 / 」分隔)</span><br><span class="line">&#125;</span><br><span class="line">选择器2 &#123;</span><br><span class="line">  属性1：值；</span><br><span class="line">  属性2：值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h3 id="元素选择器和选择器-声明的分组"><a href="#元素选择器和选择器-声明的分组" class="headerlink" title="元素选择器和选择器/声明的分组"></a>元素选择器和选择器/声明的分组</h3><ul>
-<li><p>元素选择器</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123;...&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>选择器分组</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123; <span class="attribute">color</span>: <span class="number">#eee</span>; &#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123; <span class="attribute">color</span>: <span class="number">#eee</span>; &#125;</span><br><span class="line">👇</span><br><span class="line"><span class="selector-tag">ul</span>, <span class="selector-tag">div</span> &#123; <span class="attribute">color</span>: <span class="number">#eee</span>; &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>声明分组</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123; <span class="attribute">color</span>: <span class="number">#eee</span>; &#125;</span><br><span class="line"><span class="selector-tag">h1</span> &#123; <span class="attribute">background</span>: <span class="number">#fff</span>; &#125;</span><br><span class="line">👇</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#eee</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="通配选择器：对于特殊性没有任何贡献"><a href="#通配选择器：对于特殊性没有任何贡献" class="headerlink" title="通配选择器：对于特殊性没有任何贡献"></a>通配选择器：对于特殊性没有任何贡献</h3><ul>
-<li>通配选择器(CSS2)<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* &#123;...&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="类选择器-多类选择器-ID-选择器"><a href="#类选择器-多类选择器-ID-选择器" class="headerlink" title="类选择器/多类选择器/ ID 选择器"></a>类选择器/多类选择器/ ID 选择器</h3><ul>
-<li><p>类选择器和 ID 选择器，他们允许以一种独立于文档元素的方式来指定样式</p>
-</li>
-<li><p>类选择</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.text &#123; ... &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>多类选择器</p>
-<blockquote>
-<p>通过把两个或多个类选择器链接在一起，仅可以选择同时包含这些类名的元素（类名的顺序不限）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.text.new-text &#123; ... &#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>ID 选择</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#text &#123; ... &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><ul>
-<li>属性选择器出现的背景：类选择器和 ID 选择器可以在 HTML / SVG / MathML 文档中使用，但是在 其他标记语言中是不能使用，所以 CSS2 就引入属性选择器</li>
-<li>作用：可以根据元素的属性以及属性值来选择元素，一共有 4 种类型的属性选择</li>
-<li><p>4 种分类：1. 简单属性选择。2. 根据具体属性值选择。3. 根据部分属性值选择。 4. 特定属性选择类型。</p>
-</li>
-<li><p>简单的属性选择器 <a href="https://cv.pengjiandry.com/css/priority/attributeSelector/simple" target="_blank" rel="noopener">例子</a>  <a href="https://github.com/jamesjianpeng/nuxt-cv/commit/d9e8433134c214650626ab9684a2829bdd463893" target="_blank" rel="noopener">代码</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">div[class] &#123; color: red; &#125; // 所有带有 class 的 div 的文字颜色变为红色</span><br><span class="line">a[href][title] &#123; color: red; &#125; // 所有带有 class 的 div 的文字颜色变为红色</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>根据具体属性值选择 <a href="https://cv.pengjiandry.com/css/priority/attributeSelector/specific" target="_blank" rel="noopener">例子</a>  <a href="https://github.com/jamesjianpeng/nuxt-cv/commit/003b0ed4ee3f155ed8fe8631f85bb1b324cb26f5" target="_blank" rel="noopener">代码</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input[type=&quot;text&quot;] &#123; ... &#125;</span><br><span class="line">a[href=&quot;wwww.pengjiandry.com&quot;] &#123; ... &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据部分属性值选择 <a href="https://cv.pengjiandry.com/css/priority/attributeSelector/noSpecific" target="_blank" rel="noopener">列子</a>  <a href="https://github.com/jamesjianpeng/nuxt-cv/commit/a13cc58496a68fdd865f0c78011b2f4cb43fbfe1" target="_blank" rel="noopener">代码</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[attribute~=&quot;value&quot;] &#123; ... &#125; // 匹配 attribute 以空格分隔的 value</span><br><span class="line">[attribute^=&quot;value&quot;] &#123; ... &#125; // 匹配 attribute 以该 value 开头的元素</span><br><span class="line">[attribute$=&quot;value&quot;] &#123; ... &#125; // 匹配 attribute 以该 value 结尾的元素</span><br><span class="line">[attribute*=&quot;value&quot;] &#123; ... &#125; // 匹配 attribute 中包含 value 的元素</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>特定属性选择类型 <a href="https://cv.pengjiandry.com/css/priority/attributeSelector/special" target="_blank" rel="noopener">例子</a>  <a href="https://github.com/jamesjianpeng/nuxt-cv/commit/364f3ae93a4ddecf5e542264cbe2452284d06c2f" target="_blank" rel="noopener">代码</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[attribute|=&quot;value&quot;] &#123; ... &#125; </span><br><span class="line">1. attribute 的 值 只有一个，这个值等于或者从头可以匹配 vaule 或者</span><br><span class="line">2. 有多个值的并且在这些值当中和选择器中定义的 value 没有相等的同时是第一个值从开头匹配的</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="和文档结构相关的选择器"><a href="#和文档结构相关的选择器" class="headerlink" title="和文档结构相关的选择器"></a>和文档结构相关的选择器</h3><h4 id="后代选择器"><a href="#后代选择器" class="headerlink" title="后代选择器"></a>后代选择器</h4><ul>
-<li>选择后代所有的指定元素</li>
-<li>选择第一层所有指定的元素</li>
-</ul>
-<h4 id="相邻兄弟选择器（待更新）"><a href="#相邻兄弟选择器（待更新）" class="headerlink" title="相邻兄弟选择器（待更新）"></a>相邻兄弟选择器（待更新）</h4><h3 id="伪类选择器（待更新）"><a href="#伪类选择器（待更新）" class="headerlink" title="伪类选择器（待更新）"></a>伪类选择器（待更新）</h3><h3 id="伪元素选择器（待更新）"><a href="#伪元素选择器（待更新）" class="headerlink" title="伪元素选择器（待更新）"></a>伪元素选择器（待更新）</h3><h2 id="特殊性"><a href="#特殊性" class="headerlink" title="特殊性"></a>特殊性</h2><h3 id="规则："><a href="#规则：" class="headerlink" title="规则："></a>规则：</h3><ul>
-<li>!important 的优先级最高（大于内嵌等其他的选择器组合）<a href="https://cv.pengjiandry.com/css/priority/embeddedAndOuterChain" target="_blank" rel="noopener">例子</a></li>
-<li>内嵌的样式优先级 &gt; style 包裹的 &gt; link 外链</li>
-<li>对于选择器中给定的各个 ID 属性值，加 0.1.0.0</li>
-<li>对于选择器中给定的各个类属性值，属性选择或伪类，加 0.0.1.0</li>
-<li>对于选择器给定的各个元素和伪元素，加 0.0.0.1</li>
-<li>结合符和通配选择器对特殊性没有任何贡献</li>
-<li>当优先级相同的时候，在相同区域内，后者覆盖前者的样式</li>
-<li>比较的时候从左向右进行对比</li>
-</ul>
-<h2 id="内嵌样式相关"><a href="#内嵌样式相关" class="headerlink" title="内嵌样式相关"></a><a href="https://cv.pengjiandry.com/css/priority/embeddedAndOuterChain" target="_blank" rel="noopener">内嵌样式相关</a></h2><h2 id="id-class"><a href="#id-class" class="headerlink" title="id + class"></a><a href="https://cv.pengjiandry.com/css/priority/idClass" target="_blank" rel="noopener">id + class</a></h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/21/Vuex - 使用总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/21/Vuex - 使用总结/" itemprop="url">Vuex - 使用总结</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-21T16:55:02+08:00">
-                2018-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  60
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="Q1-当-store-root-和-modules-中的-state-有相同的时候，并且-mutations-下有相同的方法，并且-getters-下有相同的方法，并且不使用-namespaced-可能会出现的问题"><a href="#Q1-当-store-root-和-modules-中的-state-有相同的时候，并且-mutations-下有相同的方法，并且-getters-下有相同的方法，并且不使用-namespaced-可能会出现的问题" class="headerlink" title="Q1: 当 store root 和 modules 中的 state 有相同的时候，并且 mutations 下有相同的方法，并且 getters 下有相同的方法，并且不使用 namespaced 可能会出现的问题"></a>Q1: 当 store root 和 modules 中的 state 有相同的时候，并且 mutations 下有相同的方法，并且 getters 下有相同的方法，并且不使用 namespaced 可能会出现的问题</h3><ul>
-<li><a href="https://cv.pengjiandry.com/plugins/vuex/noNamespaced" target="_blank" rel="noopener">https://cv.pengjiandry.com/plugins/vuex/noNamespaced</a></li>
-<li><a href="https://github.com/jamesjianpeng/nuxt-cv/commit/68f54522bb71d2e0a21c9f5001184081434dcc04" target="_blank" rel="noopener">代码地址</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2244,7 +2371,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-count">98</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2266,7 +2393,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2334,7 +2461,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">61.9k</span>
+    <span title="博客总字数">63.7k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

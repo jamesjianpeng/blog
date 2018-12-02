@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="彭涧, blog, Hexo, NexT" />
+  <meta name="keywords" content="Nodjejs,数据库," />
 
 
 
@@ -94,13 +94,14 @@
 
 
 <meta name="description" content="接着上一节：Nodejs play - 连接 MySQL 项目依赖 123&quot;koa&quot;: &quot;^2.6.2&quot;,&quot;koa-router&quot;: &quot;^7.4.0&quot;,&quot;mysql&quot;: &quot;^2.16.0&quot; 代码地址 问题记录Q1: 需要把 SQL 语句包装成 Promise 对象，不然访问指定的 api 会返回 404A: 在我们访问 指定的 API 的时候，会执行查询或更新等操作，这个操作是异步的，若不用包装">
+<meta name="keywords" content="Nodjejs,数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nodejs - Koa + KoaRouter 实践（一）连接数据库并返回数据">
 <meta property="og:url" content="https://www.pengjiandry.com/2018/11/17/Nodejs - Koa + KoaRouter 实践（一）连接数据库并返回数据/index.html">
 <meta property="og:site_name" content="彭涧">
 <meta property="og:description" content="接着上一节：Nodejs play - 连接 MySQL 项目依赖 123&quot;koa&quot;: &quot;^2.6.2&quot;,&quot;koa-router&quot;: &quot;^7.4.0&quot;,&quot;mysql&quot;: &quot;^2.16.0&quot; 代码地址 问题记录Q1: 需要把 SQL 语句包装成 Promise 对象，不然访问指定的 api 会返回 404A: 在我们访问 指定的 API 的时候，会执行查询或更新等操作，这个操作是异步的，若不用包装">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-18T09:32:01.206Z">
+<meta property="og:updated_time" content="2018-12-02T06:21:39.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nodejs - Koa + KoaRouter 实践（一）连接数据库并返回数据">
 <meta name="twitter:description" content="接着上一节：Nodejs play - 连接 MySQL 项目依赖 123&quot;koa&quot;: &quot;^2.6.2&quot;,&quot;koa-router&quot;: &quot;^7.4.0&quot;,&quot;mysql&quot;: &quot;^2.16.0&quot; 代码地址 问题记录Q1: 需要把 SQL 语句包装成 Promise 对象，不然访问指定的 api 会返回 404A: 在我们访问 指定的 API 的时候，会执行查询或更新等操作，这个操作是异步的，若不用包装">
@@ -277,16 +278,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-留言">
-          <a href="/guestbook" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            留言
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -440,6 +431,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Nodjejs/" rel="tag"><i class="fa fa-tag"></i> Nodjejs</a>
+          
+            <a href="/tags/数据库/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
+          
+        </div>
+      
 
       
       
@@ -547,7 +546,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-count">98</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -569,7 +568,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -653,7 +652,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">61.9k</span>
+    <span title="博客总字数">63.7k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

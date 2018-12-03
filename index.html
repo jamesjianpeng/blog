@@ -307,6 +307,205 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/12/04/ssh - 免密操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/04/ssh - 免密操作/" itemprop="url">ssh - 免密操作</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-04T00:38:13+08:00">
+                2018-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  770
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="准备："><a href="#准备：" class="headerlink" title="准备："></a>准备：</h3><ul>
+<li><p>A 服务器（客户端/C）： 118.89.237.xxx</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_8_centos .ssh]# uname -a</span><br><span class="line">Linux VM_0_8_centos 2.6.32-696.el6.x86_64 #1 SMP Tue Mar 21 19:29:05 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>A 服务器实际版本 6.9</p>
+</blockquote>
+</li>
+<li><p>B 服务器（服务端/S）： 47.75.157.xxx</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_8_centos ~]# uname -a</span><br><span class="line">Linux VM_0_8_centos 2.6.32-696.el6.x86_64 #1 SMP Tue Mar 21 19:29:05 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>B 服务器实际版本 7.4</p>
+</blockquote>
+</li>
+<li><p>实现 A 服务器（客户端/C）向 B 服务器（服务端/S）免密操作</p>
+</li>
+</ul>
+<ul>
+<li><p>在 A 服务器(客户端/C)上的操作，创建好公钥和私钥：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_8_centos .ssh]<span class="comment"># ssh-keygen -t rsa -b 2048 -C "118.89.237.xxx"</span></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/root/.ssh/id_rsa): yes</span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved <span class="keyword">in</span> yes.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> yes.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">da:3a:23:9e:eb:37:d5:93:42:97:bf:b1:d5:ca:d8:24 118.89.237.xxx</span><br><span class="line">The key<span class="string">'s randomart image is:</span></span><br><span class="line"><span class="string">+--[ RSA 2048]----+</span></span><br><span class="line"><span class="string">|                 |</span></span><br><span class="line"><span class="string">|                 |</span></span><br><span class="line"><span class="string">|           .     |</span></span><br><span class="line"><span class="string">|        . o      |</span></span><br><span class="line"><span class="string">|       .So o   . |</span></span><br><span class="line"><span class="string">|       oo + E o .|</span></span><br><span class="line"><span class="string">|      .... . @ . |</span></span><br><span class="line"><span class="string">|    ..=.    + +  |</span></span><br><span class="line"><span class="string">|   o=+.+         |</span></span><br><span class="line"><span class="string">+-----------------+</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>继续在 A 服务器(客户端/C) 上的操作,查看并把公钥上传到 B 服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_8_centos .ssh]<span class="comment"># ll -a</span></span><br><span class="line">总用量 24</span><br><span class="line">drwx------  2 root root 4096 12月  4 00:26 .</span><br><span class="line">dr-xr-x---. 8 root root 4096 12月  3 23:36 ..</span><br><span class="line">-rw-------  1 root root  405 12月  3 23:03 authorized_keys</span><br><span class="line">-rw-r--r--  1 root root 1197 12月  3 23:13 known_hosts</span><br><span class="line">-rw-------  1 root root 1671 12月  4 00:26 yes</span><br><span class="line">-rw-r--r--  1 root root  396 12月  4 00:26 yes.pub</span><br><span class="line">[root@VM_0_8_centos .ssh]<span class="comment"># scp ./yes.pub root@47.75.157.xxx:/root/.ssh/</span></span><br><span class="line">root@47.75.157.180<span class="string">'s password:</span></span><br><span class="line"><span class="string">yes.pub                               100%  396     0.4KB/s   00:00</span></span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>B 服务（服务端/S）上的操作，<br>把从  A 服务器(客户端/C) 上的公钥复制到 authorized_keys<br>把文件的权限设置一下，并重启</p>
+<blockquote>
+<p>authorized_keys 的具体位置：～/.ssh/authorized_keys(/root/.ssh/authorized_keys)，没有的话需要自己创建</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@iZj6ci29kec2iw4qb4j3q1Z ~]<span class="comment"># cd .ssh/</span></span><br><span class="line">[root@iZj6ci29kec2iw4qb4j3q1Z .ssh]<span class="comment"># ll</span></span><br><span class="line">总用量 8</span><br><span class="line">-rw------- 1 root root 404 12月  4 00:20 authorized_keys</span><br><span class="line">-rw-r--r-- 1 root root 396 12月  4 00:27 yes.pub</span><br><span class="line">[root@iZj6ci29kec2iw4qb4j3q1Z .ssh]<span class="comment"># cat yes.pub &gt;&gt; authorized_keys</span></span><br><span class="line">[root@iZj6ci29kec2iw4qb4j3q1Z .ssh]<span class="comment"># cat authorized_keys</span></span><br><span class="line">sh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDeO8WRQ+m3Yzh+WUAhOkbXJtDTOEKKU7FOM93wmaQ1wo4mtX5+pJlvUMj6YW7CDn1Tk3n0QDPkiN09cDsNo+QzPBHxfg84fUUpQtVKOUgOqm/yr5NXVIbXiqykzXnCYJ33nqmbH9oLRSST+OLsJpG8E3scsDWJze4WQVbKJh0IOkIr9GB3yztittSwqjZruHTOCVFYBmBYvSDXddkw1gSvlexQtTgeESsBmUwSBkr0XYxbwY0pe0eDz49hCWD4vUOec6kxw8nEbOy5eh8WmawAhX1qlROowP/Lyax0JkVqqv9CWL9uGnfyJdbzJroXJw55yAwwgOVkJCKXpxyD/zjf xxxxxxxxx@xxxx.com</span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA1ssjW4SKNonVIOMd8s8dP7n6mgyP5ujLgICNMdNducqrcZoy8VvS0mPmAUSz/myAtzNy7DMNX6UX/q40JiCfphDyj8Mo3gI9K8MVU+NQAFEZxI4Jllb70b3ZE2n2JtqADB2tLzkG+CVIRUktH81DmCN/O/5GNFYzaM5nFq81ucgkl9OrpsHwmbI8Kvl/GSVOgjlux5BebH5Kl3BycsoyBJQtwVQsN8DmViRnc7hI/3KsDytKVNGZ8jzDjj0F03xDysUxOU1EQcEwCFsX23WLEQWDlNrbsujVz+8L5U/3hUjXH5y0k2Y629SfDZSwhqlnu1wntawQclHrwahwAQez0Q== 118.89.237.xxx</span><br><span class="line">[root@iZj6ci29kec2iw4qb4j3q1Z .ssh]<span class="comment"># chmod 700 /root/.ssh</span></span><br><span class="line">[root@iZj6ci29kec2iw4qb4j3q1Z .ssh]<span class="comment"># chmod 600 /root/.ssh/authorized_keys</span></span><br><span class="line">[root@iZj6ci29kec2iw4qb4j3q1Z .ssh]<span class="comment"># systemctl restart sshd.service</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>A 服务器(客户端/C) 上的再验证是否成功<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_8_centos .ssh]<span class="comment"># scp ./yes.pub root@47.75.157.xxx:/root/.ssh/</span></span><br><span class="line">root@47.75.157.180<span class="string">'s password:</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>还是要密码，继续找决解办法👇</p>
+</blockquote>
+<ul>
+<li><p>A 服务器(客户端/C) 上使用下面的操作 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> `ssh-agent -s`</span><br><span class="line">ssh-add ./yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>具体操作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_8_centos .ssh]<span class="comment"># ssh-add ./yes.pub</span></span><br><span class="line">Could not open a connection to your authentication agent.</span><br><span class="line">[root@VM_0_8_centos .ssh]<span class="comment"># ssh-add ./yes</span></span><br><span class="line">Could not open a connection to your authentication agent.</span><br><span class="line">[root@VM_0_8_centos .ssh]<span class="comment"># ll</span></span><br><span class="line">总用量 16</span><br><span class="line">-rw------- 1 root root  405 12月  3 23:03 authorized_keys</span><br><span class="line">-rw-r--r-- 1 root root 1197 12月  3 23:13 known_hosts</span><br><span class="line">-rw------- 1 root root 1671 12月  4 00:26 yes</span><br><span class="line">-rw-r--r-- 1 root root  396 12月  4 00:26 yes.pub</span><br><span class="line">[root@VM_0_8_centos .ssh]<span class="comment"># eval `ssh-agent -s`</span></span><br><span class="line">Agent pid 18869</span><br><span class="line">[root@VM_0_8_centos .ssh]<span class="comment"># ssh-add ./yes</span></span><br><span class="line">Identity added: ./yes (./yes)</span><br><span class="line">[root@VM_0_8_centos .ssh]<span class="comment"># scp ./yes.pub root@47.75.157.xxx:/root/.ssh/</span></span><br><span class="line">yes.pub                               100%  396     0.4KB/s   00:00</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>最后面的 scp 是没有输入密码的操作，直接上传成功</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/12/02/数据库 - SQL 和关系型数据库的基本操作（十）数据操作（DML）- 视图：创建 | 删除 | 修改 | 查看 | 更新/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2064,260 +2263,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/24/数据库 - SQL 和关系型数据库的基本操作（六）数据操作（DML）- 数据查询：SELECT 子句和多表查询/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/24/数据库 - SQL 和关系型数据库的基本操作（六）数据操作（DML）- 数据查询：SELECT 子句和多表查询/" itemprop="url">数据库 - SQL 和关系型数据库的基本操作（六）数据操作（DML）- 数据查询：SELECT 子句和多表查询</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-24T17:21:40+08:00">
-                2018-11-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  1.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h3><p>地位：数据查询是 SQL 语言的核心功能，也是数据库中使用最多的操作<br>作用：是从数据库中的一张或多张表（或视图）中检索出满足条件的数据信息</p>
-<blockquote>
-<p>通常，查询的操作是由 0 行（没有满足条件的数据）或多行记录组成的一个记录集合，并允许选择一个或多个字段作为输出字段</p>
-<p>数据理论基础：是关系数据模型中对表对象的一组关系，即选择，投影和连接</p>
-</blockquote>
-<h3 id="SELECT-子句"><a href="#SELECT-子句" class="headerlink" title="SELECT 子句"></a>SELECT 子句</h3><ul>
-<li>SELECT 语法中子句的使用次序以及说明<ul>
-<li>SELECT 要返回的列或表达式（必须使用）</li>
-<li>FROM 从中检索数据的表（仅在表选择数据时使用）</li>
-<li>WHERE 行级过滤（不必须使用）</li>
-<li>GROUP BY 分组说明（不必须使用）</li>
-<li>HAVING 组级过滤（必须使用）</li>
-<li>ORDER BY 输出排序顺序（不必须使用）</li>
-<li>LIMIT 要检索的行数（不必须使用）</li>
-</ul>
-</li>
-</ul>
-<h4 id="列的选择和指定"><a href="#列的选择和指定" class="headerlink" title="列的选择和指定"></a>列的选择和指定</h4><ul>
-<li><p>选择指定列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM students;</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">| no | department   | name     | gender | regist_date | age |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">|  1 | 计算机系     | James    |      1 | 2018-11-20  |  23 |</span><br><span class="line">|  2 | 计算机系     | pengjian |      1 | 2018-11-20  |  22 |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+</span><br><span class="line">2 rows in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT no, department, name, gender FROM students;</span><br><span class="line">+----+--------------+----------+--------+</span><br><span class="line">| no | department   | name     | gender |</span><br><span class="line">+----+--------------+----------+--------+</span><br><span class="line">|  1 | 计算机系     | James    |      1 |</span><br><span class="line">|  2 | 计算机系     | pengjian |      1 |</span><br><span class="line">+----+--------------+----------+--------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>定义并使用列的别名</p>
-<p>使用 AS 关键字：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT no AS &apos;编号&apos;, department AS &apos;院系&apos;, name &apos;名字&apos;, gender FROM students;</span><br><span class="line">+--------+--------------+----------+--------+</span><br><span class="line">| 编号   | 院系         | 名字     | gender |</span><br><span class="line">+--------+--------------+----------+--------+</span><br><span class="line">|      1 | 计算机系     | James    |      1 |</span><br><span class="line">|      2 | 计算机系     | pengjian |      1 |</span><br><span class="line">+--------+--------------+----------+--------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>替换查询结果集中的数据</p>
-<p>语法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> &gt; CASE </span><br><span class="line">-&gt; WHEN 条件1 THEN 表达式1</span><br><span class="line">-&gt;   WHEN 条件1 THEN 表达式1</span><br><span class="line">-&gt;   ...</span><br><span class="line">-&gt; ELSE 表达式</span><br><span class="line">-&gt; END[AS] column_alias</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>  实践：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT no, department, name,</span><br><span class="line">    -&gt; CASE</span><br><span class="line">    -&gt; WHEN gender=1 THEN &apos;男&apos;</span><br><span class="line">    -&gt; ELSE &apos;女&apos;</span><br><span class="line">    -&gt; END AS &apos;性别&apos;</span><br><span class="line">    -&gt; FROM students;</span><br><span class="line">+----+--------------+----------+--------+</span><br><span class="line">| no | department   | name     | 性别   |</span><br><span class="line">+----+--------------+----------+--------+</span><br><span class="line">|  1 | 计算机系     | James    | 男     |</span><br><span class="line">|  2 | 计算机系     | pengjian | 男     |</span><br><span class="line">+----+--------------+----------+--------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>计算列值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT no + 100, department, name, gender FROM students;</span><br><span class="line">+----------+--------------+----------+--------+</span><br><span class="line">| no + 100 | department   | name     | gender |</span><br><span class="line">+----------+--------------+----------+--------+</span><br><span class="line">|      101 | 计算机系     | James    |      1 |</span><br><span class="line">|      102 | 计算机系     | pengjian |      1 |</span><br><span class="line">+----------+--------------+----------+--------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>集合函数 👉  GROUP BY</p>
-</li>
-</ul>
-<h4 id="FROM-字句与多个表连接查询"><a href="#FROM-字句与多个表连接查询" class="headerlink" title="FROM 字句与多个表连接查询"></a>FROM 字句与多个表连接查询</h4><ul>
-<li><p>交叉连接: 返回的查询结果集的记录行数，等于其所连接的两张表记录行数的乘机</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table_1 CROSS JOIN table_2;</span><br><span class="line">SELECT * FROM table_1, table_2;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>tabel_1: 2 行，table_2: 3行，交叉连接之后总的行数 2 * 3 = 6 行<br>对于大量数据的表，避免使用交叉连接</p>
-</blockquote>
-<p>交叉连接（CROSS JOIN）实践：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM students CROSS JOIN course;</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+----+-----------------------+--------------+--------------+------------+</span><br><span class="line">| no | department   | name     | gender | regist_date | age | no | name                  | department   | teacher_name | teacher_no |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+----+-----------------------+--------------+--------------+------------+</span><br><span class="line">|  1 | 计算机系     | James    |      1 | 2018-11-20  |  23 |  1 | 数据库系统原理        | 计算机系     | NULL         |       NULL |</span><br><span class="line">|  2 | 计算机系     | pengjian |      1 | 2018-11-20  |  22 |  1 | 数据库系统原理        | 计算机系     | NULL         |       NULL |</span><br><span class="line">|  1 | 计算机系     | James    |      1 | 2018-11-20  |  23 |  2 | C++程序设计           | 计算机系     | NULL         |       NULL |</span><br><span class="line">|  2 | 计算机系     | pengjian |      1 | 2018-11-20  |  22 |  2 | C++程序设计           | 计算机系     | NULL         |       NULL |</span><br><span class="line">+----+--------------+----------+--------+-------------+-----+----+-----------------------+--------------+--------------+------------+</span><br><span class="line">4 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>可以看到这个表有相同的部分：学生的 name 列和课程的 name 列已经重复：列名使用 tableName_columnName 可以解决这个问题</p>
-</blockquote>
-<p>交叉连接（ , ）的实践：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM students, course;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age | course_no | course_name           | department   | teacher_name | teacher_no |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |         1 | 数据库系统原理        | 计算机系     | NULL         |       NULL |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |         1 | 数据库系统原理        | 计算机系     | NULL         |       NULL |</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |         2 | C++程序设计           | 计算机系     | NULL         |       NULL |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |         2 | C++程序设计           | 计算机系     | NULL         |       NULL |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">4 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>内连接</p>
-<ul>
-<li>概念：内连接就是利用条件判断表达式中的比较运算符组合两张表中的记录，其目的是为了消除交叉连接中的某些数据行</li>
-<li>分类：（1）等值连接。（2）非等值连接。（3）自连接 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM course_score;</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| course_name           | course_no | student_name | student_no | course_score | course_score_no |</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| 数据库系统原理        |         1 | pengjian     |          2 |           88 |               2 |</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>内连接实践</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT *  </span><br><span class="line">    -&gt; FROM students INNER JOIN course_score </span><br><span class="line">    -&gt; ON students.student_no = course_score.student_no;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age | course_name           | course_no | student_name | student_no | course_score | course_score_no |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 | 数据库系统原理        |         1 | pengjian     |          2 |           88 |               2 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>外连接 (待更新)<ul>
-<li>左外连接</li>
-<li>右外连接</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2372,7 +2317,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">98</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2394,7 +2339,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2462,7 +2407,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">63.7k</span>
+    <span title="博客总字数">64.5k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

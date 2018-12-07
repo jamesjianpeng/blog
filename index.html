@@ -307,6 +307,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/12/06/App - Flutter 初识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/06/App - Flutter 初识/" itemprop="url">App - Flutter 初识</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-06T15:01:34+08:00">
+                2018-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  529
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>  Mac<br>  android studio<br>  flutter</p>
+<h3 id="flutter-相关"><a href="#flutter-相关" class="headerlink" title="flutter 相关"></a>flutter 相关</h3><ul>
+<li>查看开发环境配置<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter doctor -v</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="模拟器"><a href="#模拟器" class="headerlink" title="模拟器"></a>模拟器</h3><ul>
+<li>IOS 模拟器<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open -a Simulator</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Mac-上开发-Flutter-的环境配置"><a href="#Mac-上开发-Flutter-的环境配置" class="headerlink" title="Mac 上开发 Flutter 的环境配置"></a>Mac 上开发 Flutter 的环境配置</h3><p>~/.bash_profile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># flutter sdk 变量和镜像</span><br><span class="line">export PUB_HOSTED_URL=https://pub.flutter-io.cn # 国内用户需要设置</span><br><span class="line">export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn # 国内用户需要设置</span><br><span class="line">export PATH=/Users/pengjian/flutter/bin:$PATH # flutter 变量导出</span><br><span class="line"></span><br><span class="line"># android_sdk</span><br><span class="line">export ANDROID_HOME=&quot;/Users/pengjian/Library/Android/sdk&quot; # android sdk目录，替换为你自己的即可</span><br><span class="line">export PATH=$&#123;PATH&#125;:$&#123;ANDROID_HOME&#125;/tools</span><br><span class="line">export PATH=$&#123;PATH&#125;:$&#123;ANDROID_HOME&#125;/platform-tools</span><br></pre></td></tr></table></figure></p>
+<p>apply 新的环境变量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure></p>
+<h3 id="Q1：在下面👇的路径下，突然缺少-tool-和-licenses-文件"><a href="#Q1：在下面👇的路径下，突然缺少-tool-和-licenses-文件" class="headerlink" title="Q1：在下面👇的路径下，突然缺少 tool 和 licenses 文件"></a>Q1：在下面👇的路径下，突然缺少 tool 和 licenses 文件</h3><p> /usr/local/Caskroom/android-platform-tools/28.0.0</p>
+<p>解决的过程：</p>
+<ol>
+<li><p>从 ～/.bash_profile 中找到下面的导出命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;PATH&#125;</span>:<span class="variable">$&#123;ANDROID_HOME&#125;</span>/tools</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入该文件夹，操作👇</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> pengjian@pengjiandeMacBook-Pro ⮀ ~/Library/Android/sdk ⮀ <span class="built_in">pwd</span></span><br><span class="line">/Users/pengjian/Library/Android/sdk</span><br><span class="line"> pengjian@pengjiandeMacBook-Pro ⮀ ~/Library/Android/sdk ⮀ ll</span><br><span class="line">total 0</span><br><span class="line">drwxr-xr-x   4 pengjian  staff   128B 12  5 13:24 build-tools</span><br><span class="line">drwxr-xr-x   2 pengjian  staff    64B 12  8 00:09 docs</span><br><span class="line">drwxr-xr-x  18 pengjian  staff   576B 12  3 11:57 emulator</span><br><span class="line">drwxr-xr-x   6 pengjian  staff   192B 12  5 13:32 extras</span><br><span class="line">drwxr-xr-x   8 pengjian  staff   256B 12  5 20:50 licenses</span><br><span class="line">drwxr-xr-x   3 pengjian  staff    96B  5 22  2017 patcher</span><br><span class="line">drwxr-xr-x  19 pengjian  staff   608B 12  7 23:14 platform-tools</span><br><span class="line">drwxr-xr-x  14 pengjian  staff   448B 12  7 23:44 platforms</span><br><span class="line">drwxr-xr-x  25 pengjian  staff   800B 12  6 12:34 skins</span><br><span class="line">drwxr-xr-x  14 pengjian  staff   448B 12  8 00:15 sources</span><br><span class="line">drwxr-xr-x   4 pengjian  staff   128B 12  6 15:23 system-images</span><br><span class="line">drwxr-xr-x  15 pengjian  staff   480B 12  8 00:31 tools</span><br><span class="line"> pengjian@pengjiandeMacBook-Pro ⮀ ~/Library/Android/sdk ⮀</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>会发现有 licenses 和 tools 这两个文件夹</p>
+</blockquote>
+<ol start="3">
+<li>将 licenses 和 tools 这两个文件夹 copy 到 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/Caskroom/android-platform-tools/28.0.0</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>目录下即可</p>
+<h3 id="Q2：使用-sdkmanager-命令行出现这个问题-Exception-in-thread-“main”-java-lang-NoClassDefFoundError-javax-xml-bind-annotation-XmlSchema"><a href="#Q2：使用-sdkmanager-命令行出现这个问题-Exception-in-thread-“main”-java-lang-NoClassDefFoundError-javax-xml-bind-annotation-XmlSchema" class="headerlink" title="Q2：使用 sdkmanager 命令行出现这个问题 Exception in thread “main” java.lang.NoClassDefFoundError: javax/xml/bind/annotation/XmlSchema"></a>Q2：使用 sdkmanager 命令行出现这个问题 Exception in thread “main” java.lang.NoClassDefFoundError: javax/xml/bind/annotation/XmlSchema</h3><p>在一个终端窗口任意路径下中使用👇的命令行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_OPTS=<span class="string">'-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdkmanager --list</span><br></pre></td></tr></table></figure>
+<h3 id="Q3：使用-sdkmanager-–update-命令的时候出现下面的问题-Warning-File-Users-pengjian-android-repositories-cfg-could-not-be-loaded"><a href="#Q3：使用-sdkmanager-–update-命令的时候出现下面的问题-Warning-File-Users-pengjian-android-repositories-cfg-could-not-be-loaded" class="headerlink" title="Q3：使用 sdkmanager –update 命令的时候出现下面的问题 Warning: File /Users/pengjian/.android/repositories.cfg could not be loaded."></a>Q3：使用 sdkmanager –update 命令的时候出现下面的问题 Warning: File /Users/pengjian/.android/repositories.cfg could not be loaded.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo touch ~/.android/repositories.cfg</span><br></pre></td></tr></table></figure>
+<h4 id="sdkmanager-文档"><a href="#sdkmanager-文档" class="headerlink" title="sdkmanager 文档"></a>sdkmanager <a href="https://developer.android.com/studio/command-line/sdkmanager" target="_blank" rel="noopener">文档</a></h4><h3 id="Q4-Android-Studio-如何安装，更新-sdk，切换模拟器"><a href="#Q4-Android-Studio-如何安装，更新-sdk，切换模拟器" class="headerlink" title="Q4: Android Studio 如何安装，更新 sdk，切换模拟器"></a>Q4: Android Studio 如何安装，更新 sdk，切换模拟器</h3><p>找到下面的菜单：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Tools &gt; SDK Manager</span><br></pre></td></tr></table></figure></p>
+<p>切换 android 模拟器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Tools &gt; AVD Manager</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/12/04/ssh - 免密操作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2002,267 +2186,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/25/数据库 - SQL 和关系型数据库的基本操作（七）数据操作（DML）- 数据查询：WHERE 子句与条件查询/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/25/数据库 - SQL 和关系型数据库的基本操作（七）数据操作（DML）- 数据查询：WHERE 子句与条件查询/" itemprop="url">数据库 - SQL 和关系型数据库的基本操作（七）数据操作（DML）- 数据查询：WHERE 子句与条件查询</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-25T09:33:06+08:00">
-                2018-11-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据库系统原理》-04735/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据库系统原理》(04735)</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  1.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="WHERE-子句"><a href="#WHERE-子句" class="headerlink" title="WHERE 子句"></a>WHERE 子句</h3><h4 id="1-比较运算符"><a href="#1-比较运算符" class="headerlink" title="1.比较运算符"></a>1.比较运算符</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">=   等于</span><br><span class="line">&lt;&gt;  不等于</span><br><span class="line">!=  不等于</span><br><span class="line">&lt;   小于</span><br><span class="line">&lt;=  小于等于</span><br><span class="line">&gt;   大于等于</span><br><span class="line">&gt;=  大于等于</span><br><span class="line">&lt;=&gt; 不会返回 UNKNOWN</span><br></pre></td></tr></table></figure>
-<p>  比较运算符的实践：<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM students WHERE student_age &lt;&gt; 22;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          4 | 金融系       | Emma         |      0 | 2018-11-25          |          21 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students WHERE student_age != 22;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          4 | 金融系       | Emma         |      0 | 2018-11-25          |          21 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students WHERE student_age &lt;=&gt; 22;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          5 | 金融系       | Aaron        |      1 | 2018-11-25          |          22 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students WHERE student_age &gt; 22;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students WHERE student_age &lt; 22;</span><br><span class="line">+------------+------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          4 | 金融系     | Emma         |      0 | 2018-11-25          |          21 |</span><br><span class="line">+------------+------------+--------------+--------+---------------------+-------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students WHERE student_age &lt;= 22;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          4 | 金融系       | Emma         |      0 | 2018-11-25          |          21 |</span><br><span class="line">|          5 | 金融系       | Aaron        |      1 | 2018-11-25          |          22 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students WHERE student_age &gt;= 22;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          5 | 金融系       | Aaron        |      1 | 2018-11-25          |          22 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students WHERE student_age = 22;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          5 | 金融系       | Aaron        |      1 | 2018-11-25          |          22 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></p>
-<h4 id="2-判断范围-WHERE-子句中使用-BETEWEEN…AND-或-IN"><a href="#2-判断范围-WHERE-子句中使用-BETEWEEN…AND-或-IN" class="headerlink" title="2.判断范围( WHERE 子句中使用 BETEWEEN…AND 或 IN)"></a>2.判断范围( WHERE 子句中使用 BETEWEEN…AND 或 IN)</h4><ol>
-<li><p>BETWEEN … AND</p>
-<ul>
-<li>作用：查询的过滤条件被限定在某个范围内</li>
-<li>语法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE expression [NOT] BETWEEN expression1 AND expression2</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>expression1 的值不能大于 expression2<br>使用 NOT 之后是没有使用 NOT 结果的取反</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM students</span><br><span class="line">    -&gt; WHERE student_no BETWEEN 1 AND 4;</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          4 | 金融系       | Emma         |      0 | 2018-11-25          |          21 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM students</span><br><span class="line">    -&gt; WHERE student_no NOT BETWEEN 1 AND 4;</span><br><span class="line">+------------+------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          5 | 金融系     | Aaron        |      1 | 2018-11-25          |          22 |</span><br><span class="line">+------------+------------+--------------+--------+---------------------+-------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>IN</p>
-<ul>
-<li>作用：关键词 IN 可以指定一个值的枚举表，该表中会列出所有可能性；也可以用于范围判定，但主要的作用是表达子查询</li>
-<li><p>语法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression IN (expression [, ...n])</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>实践：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM students </span><br><span class="line">    -&gt; WHERE student_no IN (1, 2, 4);</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">| student_no | department   | student_name | gender | student_regist_date | student_age |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">|          1 | 计算机系     | James        |      1 | 2018-11-20          |          23 |</span><br><span class="line">|          2 | 计算机系     | pengjian     |      1 | 2018-11-20          |          22 |</span><br><span class="line">|          4 | 金融系       | Emma         |      0 | 2018-11-25          |          21 |</span><br><span class="line">+------------+--------------+--------------+--------+---------------------+-------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="3-判定空值-IS-NULL"><a href="#3-判定空值-IS-NULL" class="headerlink" title="3.判定空值 IS NULL"></a>3.判定空值 IS NULL</h4><ul>
-<li>作用：判定一个表达式的值是否为空值</li>
-<li><p>语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE expression IS [NOT] NULL</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>实践：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> mysql&gt; SELECT * FROM course;</span><br><span class="line">+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">| course_no | course_name           | department   | teacher_name | teacher_no |</span><br><span class="line">+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">|         1 | 数据库系统原理        | 计算机系     | NULL         |       NULL |</span><br><span class="line">|         2 | C++程序设计           | 计算机系     | NULL         |       NULL |</span><br><span class="line">|         3 | 操作系统原理          | 计算机系     | NULL         |       NULL |</span><br><span class="line">+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM course</span><br><span class="line">    -&gt; WHERE teacher_name IS NULL;</span><br><span class="line">+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">| course_no | course_name           | department   | teacher_name | teacher_no |</span><br><span class="line">+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">|         1 | 数据库系统原理        | 计算机系     | NULL         |       NULL |</span><br><span class="line">|         2 | C++程序设计           | 计算机系     | NULL         |       NULL |</span><br><span class="line">|         3 | 操作系统原理          | 计算机系     | NULL         |       NULL |</span><br><span class="line">+-----------+-----------------------+--------------+--------------+------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM course</span><br><span class="line">    -&gt; WHERE teacher_name IS NOT NULL;</span><br><span class="line">Empty set (0.00 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<h4 id="4-子查询"><a href="#4-子查询" class="headerlink" title="4.子查询"></a>4.子查询</h4><ul>
-<li><p>分类：</p>
-<ul>
-<li>表子查询：即子查询返回的结果是一个表</li>
-<li>行子查询：即子查询返回的结果是一行或多行数据</li>
-<li>列子查询：即子查询返回的结果是是一列数据，该列可以有一行或多行数据</li>
-<li>标量字查询：即子查询返回的结果是一个值</li>
-</ul>
-</li>
-<li><p>使用的关键字或运算符</p>
-<ul>
-<li>结合 IN </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression [NOT] IN (subquery);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM course_score;</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| course_name           | course_no | student_name | student_no | course_score | course_score_no |</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">| 数据库系统原理        |         1 | pengjian     |          2 |           88 |               2 |</span><br><span class="line">| 微观经济学            |         4 | Emma         |          4 |           76 |               3 |</span><br><span class="line">+-----------------------+-----------+--------------+------------+--------------+-----------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT student_no, student_name</span><br><span class="line">    -&gt; FROM students</span><br><span class="line">    -&gt; WHERE student_no</span><br><span class="line">    -&gt; IN (</span><br><span class="line">    -&gt;   SELECT student_no</span><br><span class="line">    -&gt;   FROM course_score</span><br><span class="line">    -&gt;   WHERE course_score &gt; 80);</span><br><span class="line">+------------+--------------+</span><br><span class="line">| student_no | student_name |</span><br><span class="line">+------------+--------------+</span><br><span class="line">|          2 | pengjian     |</span><br><span class="line">+------------+--------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>上面的 SQL 语句的含义：这是使用了结合 IN 关键词的 子查询</p>
-<p>首先从子查询中开始：从 course_score 表中查询出分数到大于 80 分的学生编号<br>然后在外层查询中：从 students 表中查询出两列 student_no,student_name；需要过滤出分数大于 80 分的学号</p>
-</blockquote>
-<ul>
-<li><p>结合比较运算符</p>
-<ul>
-<li><p>语法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expression &#123;=|&gt;|&gt;=|&lt;|&lt;=|&lt;&gt;|!=|&lt;=&gt;&#125; &#123; ALL | SOME | ANY &#125; subquery;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>实践（待更新）</p>
-</li>
-</ul>
-</li>
-<li><p>结合 EXIST</p>
-<ul>
-<li>作用：主要用于判定子查询的结果集是否为空</li>
-<li><p>语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXIST (subquery)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>实践（待更新）</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2317,7 +2240,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-count">100</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2339,7 +2262,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2407,7 +2330,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">64.5k</span>
+    <span title="博客总字数">65k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

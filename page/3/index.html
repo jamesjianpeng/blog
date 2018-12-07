@@ -307,6 +307,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/17/Nodejs - Koa + KoaRouter 实践（一）连接数据库并返回数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/17/Nodejs - Koa + KoaRouter 实践（一）连接数据库并返回数据/" itemprop="url">Nodejs - Koa + KoaRouter 实践（一）连接数据库并返回数据</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-17T14:42:02+08:00">
+                2018-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  316
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>接着上一节：<a href="https://www.pengjiandry.com/2018/11/11/Nodejs%20play%20-%20%E8%BF%9E%E6%8E%A5%20MySQL/">Nodejs play - 连接 MySQL</a></p>
+<h2 id="项目依赖"><a href="#项目依赖" class="headerlink" title="项目依赖"></a>项目依赖</h2> <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"koa": "^2.6.2",</span><br><span class="line">"koa-router": "^7.4.0",</span><br><span class="line">"mysql": "^2.16.0"</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/jamesjianpeng/nodejs-play/commit/3dc578b777d95065be8bc64e6588c897a77bf65d" target="_blank" rel="noopener">代码地址</a></p>
+<h2 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h2><h3 id="Q1-需要把-SQL-语句包装成-Promise-对象，不然访问指定的-api-会返回-404"><a href="#Q1-需要把-SQL-语句包装成-Promise-对象，不然访问指定的-api-会返回-404" class="headerlink" title="Q1: 需要把 SQL 语句包装成 Promise 对象，不然访问指定的 api 会返回 404"></a>Q1: 需要把 SQL 语句包装成 Promise 对象，不然访问指定的 api 会返回 404</h3><p>A: 在我们访问 指定的 API 的时候，会执行查询或更新等操作，这个操作是异步的，若不用包装成 Promise 对象，没有的等前面的操作完成 Koa 就直接响应客户端</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @description 获取 Product 的所有数据，主意需要 SQL 的语句函数装成一个 Promise 对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> getQueryData = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">reslove,reject</span>) =&gt;</span> &#123;</span><br><span class="line">        connection.query(<span class="string">'SELECT * FROM Product'</span>, (error, results<span class="comment">/*, fields */</span>) =&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">            <span class="keyword">if</span> (results.length) &#123;</span><br><span class="line">                results.map(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(item)</span><br><span class="line">                &#125;)</span><br><span class="line">                reslove(<span class="built_in">JSON</span>.stringify(results));</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            reject([])</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> data = <span class="keyword">await</span> getQueryData() <span class="comment">// 必须使用 async await 包装一下 Promise 这样才能从服务端拿到数据</span></span><br><span class="line">    ctx.body = data</span><br><span class="line">&#125;);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="Q2-返回值乱码的问题，"><a href="#Q2-返回值乱码的问题，" class="headerlink" title="Q2: 返回值乱码的问题，"></a>Q2: 返回值乱码的问题，</h3><p>A: 需要在 content-type 后面加上 charset=utf-8</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> setHeader = <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> start = <span class="built_in">Date</span>.now();</span><br><span class="line">    <span class="keyword">await</span> next();</span><br><span class="line">    <span class="keyword">const</span> ms = <span class="built_in">Date</span>.now() - start;</span><br><span class="line">    ctx.set(<span class="string">'X-Response-Time'</span>, <span class="string">`<span class="subst">$&#123;ms&#125;</span>ms`</span>);</span><br><span class="line">    ctx.set(<span class="string">'content-type'</span>, <span class="string">`text/plain;charset=utf-8`</span>);</span><br><span class="line">    <span class="comment">// ctx.set('content-type', `text/plain`); 解决乱码的问题</span></span><br><span class="line">    ctx.set(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">`*`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">app</span><br><span class="line">.use(setHeader)</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/16/git remote-连接多个仓库/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2681,255 +2838,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/05/PHP - 基础知识（三）使用操作符/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/05/PHP - 基础知识（三）使用操作符/" itemprop="url">PHP - 基础知识（三）使用操作符</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T09:13:59+08:00">
-                2018-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《PHP-and-MySQL-Web-Development》第五版/" itemprop="url" rel="index">
-                    <span itemprop="name">《PHP and MySQL Web Development》第五版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  474
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="操作符初步认识，后续继续更新（2018-11-05）"><a href="#操作符初步认识，后续继续更新（2018-11-05）" class="headerlink" title="操作符初步认识，后续继续更新（2018-11-05）"></a>操作符初步认识，后续继续更新（2018-11-05）</h2><h3 id="代数操作"><a href="#代数操作" class="headerlink" title="代数操作"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/e28bd04c7b25e215a397a60abcdd6172aa68196e" target="_blank" rel="noopener">代数操作</a></h3><ol>
-<li>通常是整型和双精度的数据操作</li>
-<li>如果应用于字符串，PHP 会试图将这些字符串转化为数字（和 JavaScript 的操作类似）</li>
-<li>如果包含 e 和 E 则会转化为科学计数法变成浮点数，否则会当作整数进行处理</li>
-</ol>
-<h3 id="赋值操作符"><a href="#赋值操作符" class="headerlink" title="赋值操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/4b9ceab540b27abbb988d9d91ffb73676dccbddd" target="_blank" rel="noopener">赋值操作符</a></h3><ol>
-<li>赋值操作符，不能简单的理解为等于</li>
-<li>规则是： 整个赋值语句的值将赋给左边的操作数</li>
-<li>使用圆括号来提供表达式的优先级（同数学中的计算法则类似）</li>
-</ol>
-<h3 id="复合赋值操作符"><a href="#复合赋值操作符" class="headerlink" title="复合赋值操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/1aed32d3f828dc45d90cdc82f164dc050cb5cb58" target="_blank" rel="noopener">复合赋值操作符</a></h3><ol>
-<li>+= 和 -=</li>
-<li>前置递增递减（–$varname，++$varname）</li>
-<li>后置递增递减（$varname–，$varname++）</li>
-</ol>
-<h3 id="位操作符"><a href="#位操作符" class="headerlink" title="位操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/38bdbe1420b07391bca65eb1b120c6133fafde48" target="_blank" rel="noopener">位操作符</a></h3><ol>
-<li>&amp; 按位与</li>
-<li>| 按位或</li>
-<li>~ 按位非</li>
-<li>^ 按位异或</li>
-<li>&lt;&lt; 左位移</li>
-<li><blockquote>
-<blockquote>
-<p>右位移</p>
-</blockquote>
-</blockquote>
-</li>
-</ol>
-<h3 id="比较操作符"><a href="#比较操作符" class="headerlink" title="比较操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/1a8b29c103ec114f67d9c377bcec5f1191863f97" target="_blank" rel="noopener">比较操作符</a></h3><ol>
-<li>等于操作符 == 值相等就行</li>
-<li>恒等于操作符 === 数据类型和值都要相等</li>
-<li>不等 != </li>
-<li>恒不等 != </li>
-<li>不等操作符 &lt;&gt; </li>
-<li>小于操作符 &lt;</li>
-<li>大于操作符 &gt;</li>
-<li>小于操作符 &lt;=</li>
-<li>大于操作符 &gt;=</li>
-</ol>
-<h3 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/127644efff1b72f8b6925ad0ee940b9e9b1adab9" target="_blank" rel="noopener">逻辑操作符</a></h3><ol>
-<li>!  (NOT)</li>
-<li>&amp;&amp; (AND)</li>
-<li>|| (OR)</li>
-<li>and (AND)</li>
-<li>or (OR)</li>
-<li>xor (XOR)<blockquote>
-<p>后三个逻辑操作符要比前三个逻辑操作符的优先程度要低</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="引用操作符"><a href="#引用操作符" class="headerlink" title="引用操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/62a9045b06d07e8778c53cf1c5f6d9e2e895e792" target="_blank" rel="noopener">引用操作符</a></h3><ol>
-<li>&amp; 操作符<blockquote>
-<p>区别非引用的情况</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="字符串操作符"><a href="#字符串操作符" class="headerlink" title="字符串操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/9a56df048a6fab968eb40163ea00c9c36f410baa" target="_blank" rel="noopener">字符串操作符</a></h3><ol>
-<li>字符串连接（.）：将两个字符串连接起来生成并保存到一个新字符串中</li>
-</ol>
-<h3 id="其他操作符"><a href="#其他操作符" class="headerlink" title="其他操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/67d72b4f619386b267a52c1570920639e239d96e" target="_blank" rel="noopener">其他操作符</a></h3><ol>
-<li>,  逗号操作符 ，用于分隔函数参数和其他列表项</li>
-<li>?: 三元操作符，类似于条件语句 if else</li>
-<li>@  错误抑制符，可以放在任何表达式前面使用</li>
-<li><code></code> 执行操作符，PHP 会试着将反向单引号中的值当作服务器端命令行命令来执行</li>
-<li>[]（=&gt;） 数组操作符，支持访问数组元素</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2984,7 +2892,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-count">100</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -3006,7 +2914,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3074,7 +2982,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">64.5k</span>
+    <span title="博客总字数">65k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

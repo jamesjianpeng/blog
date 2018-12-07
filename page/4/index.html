@@ -307,6 +307,255 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/05/PHP - 基础知识（三）使用操作符/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/05/PHP - 基础知识（三）使用操作符/" itemprop="url">PHP - 基础知识（三）使用操作符</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T09:13:59+08:00">
+                2018-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《PHP-and-MySQL-Web-Development》第五版/" itemprop="url" rel="index">
+                    <span itemprop="name">《PHP and MySQL Web Development》第五版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  474
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="操作符初步认识，后续继续更新（2018-11-05）"><a href="#操作符初步认识，后续继续更新（2018-11-05）" class="headerlink" title="操作符初步认识，后续继续更新（2018-11-05）"></a>操作符初步认识，后续继续更新（2018-11-05）</h2><h3 id="代数操作"><a href="#代数操作" class="headerlink" title="代数操作"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/e28bd04c7b25e215a397a60abcdd6172aa68196e" target="_blank" rel="noopener">代数操作</a></h3><ol>
+<li>通常是整型和双精度的数据操作</li>
+<li>如果应用于字符串，PHP 会试图将这些字符串转化为数字（和 JavaScript 的操作类似）</li>
+<li>如果包含 e 和 E 则会转化为科学计数法变成浮点数，否则会当作整数进行处理</li>
+</ol>
+<h3 id="赋值操作符"><a href="#赋值操作符" class="headerlink" title="赋值操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/4b9ceab540b27abbb988d9d91ffb73676dccbddd" target="_blank" rel="noopener">赋值操作符</a></h3><ol>
+<li>赋值操作符，不能简单的理解为等于</li>
+<li>规则是： 整个赋值语句的值将赋给左边的操作数</li>
+<li>使用圆括号来提供表达式的优先级（同数学中的计算法则类似）</li>
+</ol>
+<h3 id="复合赋值操作符"><a href="#复合赋值操作符" class="headerlink" title="复合赋值操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/1aed32d3f828dc45d90cdc82f164dc050cb5cb58" target="_blank" rel="noopener">复合赋值操作符</a></h3><ol>
+<li>+= 和 -=</li>
+<li>前置递增递减（–$varname，++$varname）</li>
+<li>后置递增递减（$varname–，$varname++）</li>
+</ol>
+<h3 id="位操作符"><a href="#位操作符" class="headerlink" title="位操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/38bdbe1420b07391bca65eb1b120c6133fafde48" target="_blank" rel="noopener">位操作符</a></h3><ol>
+<li>&amp; 按位与</li>
+<li>| 按位或</li>
+<li>~ 按位非</li>
+<li>^ 按位异或</li>
+<li>&lt;&lt; 左位移</li>
+<li><blockquote>
+<blockquote>
+<p>右位移</p>
+</blockquote>
+</blockquote>
+</li>
+</ol>
+<h3 id="比较操作符"><a href="#比较操作符" class="headerlink" title="比较操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/1a8b29c103ec114f67d9c377bcec5f1191863f97" target="_blank" rel="noopener">比较操作符</a></h3><ol>
+<li>等于操作符 == 值相等就行</li>
+<li>恒等于操作符 === 数据类型和值都要相等</li>
+<li>不等 != </li>
+<li>恒不等 != </li>
+<li>不等操作符 &lt;&gt; </li>
+<li>小于操作符 &lt;</li>
+<li>大于操作符 &gt;</li>
+<li>小于操作符 &lt;=</li>
+<li>大于操作符 &gt;=</li>
+</ol>
+<h3 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/127644efff1b72f8b6925ad0ee940b9e9b1adab9" target="_blank" rel="noopener">逻辑操作符</a></h3><ol>
+<li>!  (NOT)</li>
+<li>&amp;&amp; (AND)</li>
+<li>|| (OR)</li>
+<li>and (AND)</li>
+<li>or (OR)</li>
+<li>xor (XOR)<blockquote>
+<p>后三个逻辑操作符要比前三个逻辑操作符的优先程度要低</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="引用操作符"><a href="#引用操作符" class="headerlink" title="引用操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/62a9045b06d07e8778c53cf1c5f6d9e2e895e792" target="_blank" rel="noopener">引用操作符</a></h3><ol>
+<li>&amp; 操作符<blockquote>
+<p>区别非引用的情况</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="字符串操作符"><a href="#字符串操作符" class="headerlink" title="字符串操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/9a56df048a6fab968eb40163ea00c9c36f410baa" target="_blank" rel="noopener">字符串操作符</a></h3><ol>
+<li>字符串连接（.）：将两个字符串连接起来生成并保存到一个新字符串中</li>
+</ol>
+<h3 id="其他操作符"><a href="#其他操作符" class="headerlink" title="其他操作符"></a><a href="https://github.com/jamesjianpeng/PHP-play/commit/67d72b4f619386b267a52c1570920639e239d96e" target="_blank" rel="noopener">其他操作符</a></h3><ol>
+<li>,  逗号操作符 ，用于分隔函数参数和其他列表项</li>
+<li>?: 三元操作符，类似于条件语句 if else</li>
+<li>@  错误抑制符，可以放在任何表达式前面使用</li>
+<li><code></code> 执行操作符，PHP 会试着将反向单引号中的值当作服务器端命令行命令来执行</li>
+<li>[]（=&gt;） 数组操作符，支持访问数组元素</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/11/04/数据库 - 关系型数据库（一）关系数据库的特点和关系数据模型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2666,237 +2915,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/30/SQL - 函数：聚合函数和算术函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/30/SQL - 函数：聚合函数和算术函数/" itemprop="url">SQL - 函数：聚合函数和算术函数</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T08:45:17+08:00">
-                2018-10-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
-                    <span itemprop="name">《SQL基础教程》第二版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  802
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>   函数：输入某一值得到相应输出结果的功能，输入值称为参数（parameter）,输入值称为 返回值</p>
-<h3 id="函数的种类"><a href="#函数的种类" class="headerlink" title="函数的种类"></a>函数的种类</h3><ul>
-<li>算术函数（进行数值计算的函数）</li>
-<li>字符串函数（进行字符串操作的函数）</li>
-<li>日期函数（进行日期操作的函数）</li>
-<li>转换函数（进行转换数据类型和值的函数）</li>
-<li>聚合函数（进行数据聚合的函数）</li>
-</ul>
-<h3 id="聚合函数（进行数据聚合的函数）"><a href="#聚合函数（进行数据聚合的函数）" class="headerlink" title="聚合函数（进行数据聚合的函数）"></a>聚合函数（进行数据聚合的函数）</h3><ul>
-<li>COUNT</li>
-<li>SUM</li>
-<li>AVG</li>
-<li>MAX</li>
-<li>MIN<blockquote>
-<p><a href="https://www.pengjiandry.com/2018/10/18/SQL%20-%20%E8%81%9A%E5%90%88%E5%92%8C%E6%8E%92%E5%BA%8F/">SQL - 聚合和排序</a></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="算术函数"><a href="#算术函数" class="headerlink" title="算术函数"></a>算术函数</h3><ul>
-<li><p>基础的四则运算</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ - * /</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>其他的算术运算函数</p>
-<ul>
-<li><p>ABS （求绝对值函数）</p>
-<blockquote>
-<p>什么是绝对值？不考虑数值的符号，表示一个数到原点的距离，0 和正数的绝对值就是它本身，负数的绝对值就是去掉符号</p>
-</blockquote>
-</li>
-<li><p>MOD （求余函数）</p>
-<blockquote>
-<p>什么是求余？获取除法余数的函数</p>
-</blockquote>
-</li>
-<li><p>ROUND （求四舍五入函数）</p>
-</li>
-</ul>
-</li>
-<li><p>例子，创建一个 SampleMath 数据库，插入对应的数据</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE SampleMath;</span><br><span class="line">ERROR 1113 (42000): A table must have at least 1 column</span><br><span class="line">mysql&gt; CREATE TABLE SampleMath(m NUMERIC (10, 3), n INTEGER , p INTEGER );</span><br><span class="line">Query OK, 0 rows affected (0.12 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM SampleMath;</span><br><span class="line">+-------+---------------+------+-----+---------+-------+</span><br><span class="line">| Field | Type          | Null | Key | Default | Extra |</span><br><span class="line">+-------+---------------+------+-----+---------+-------+</span><br><span class="line">| m     | decimal(10,3) | YES  |     | NULL    |       |</span><br><span class="line">| n     | int(11)       | YES  |     | NULL    |       |</span><br><span class="line">| p     | int(11)       | YES  |     | NULL    |       |</span><br><span class="line">+-------+---------------+------+-----+---------+-------+</span><br><span class="line">    3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (500, 0, NUll);</span><br><span class="line">Query OK, 1 row affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (-180, 0, NUll);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (NULL, NULL, NUll);</span><br><span class="line">Query OK, 1 row affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (NULL, 7, 3);</span><br><span class="line">Query OK, 1 row affected (0.08 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (NULL, 5, 2);</span><br><span class="line">Query OK, 1 row affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (NULL, 4, NULL);</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (8, NULL, 3);</span><br><span class="line">Query OK, 1 row affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (2.27, 1, NULL);</span><br><span class="line">Query OK, 1 row affected (0.02 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (5.55, 2, NULL);</span><br><span class="line">Query OK, 1 row affected (0.05 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (NULL, 1, NULL);</span><br><span class="line">Query OK, 1 row affected (0.08 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO SampleMath (m, n, p) VALUES (8.76, NULL, NULL);</span><br><span class="line">Query OK, 1 row affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM SampleMath;</span><br><span class="line">+----------+------+------+</span><br><span class="line">| m        | n    | p    |</span><br><span class="line">+----------+------+------+</span><br><span class="line">|  500.000 |    0 | NULL |</span><br><span class="line">| -180.000 |    0 | NULL |</span><br><span class="line">|     NULL | NULL | NULL |</span><br><span class="line">|     NULL |    7 |    3 |</span><br><span class="line">|     NULL |    5 |    2 |</span><br><span class="line">|     NULL |    4 | NULL |</span><br><span class="line">|    8.000 | NULL |    3 |</span><br><span class="line">|    2.270 |    1 | NULL |</span><br><span class="line">|    5.550 |    2 | NULL |</span><br><span class="line">|     NULL |    1 | NULL |</span><br><span class="line">|    8.760 | NULL | NULL |</span><br><span class="line">+----------+------+------+</span><br><span class="line">11 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-<h4 id="ABS-函数"><a href="#ABS-函数" class="headerlink" title="ABS 函数"></a>ABS 函数</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">      mysql&gt; SELECT m, ABS(m) AS abs_col FROM SampleMath;</span><br><span class="line">      +----------+---------+</span><br><span class="line">      | m        | abs_col |</span><br><span class="line">      +----------+---------+</span><br><span class="line">      |  500.000 | 500.000 |</span><br><span class="line">      | -180.000 | 180.000 |</span><br><span class="line">      |     NULL |    NULL |</span><br><span class="line">      |     NULL |    NULL |</span><br><span class="line">      |     NULL |    NULL |</span><br><span class="line">      |     NULL |    NULL |</span><br><span class="line">      |    8.000 |   8.000 |</span><br><span class="line">      |    2.270 |   2.270 |</span><br><span class="line">      |    5.550 |   5.550 |</span><br><span class="line">      |     NULL |    NULL |</span><br><span class="line">      |    8.760 |   8.760 |</span><br><span class="line">      +----------+---------+</span><br><span class="line">  11 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line">  ```  </span><br><span class="line"></span><br><span class="line"><span class="comment">#### MOD 函数</span></span><br><span class="line">  ```sh</span><br><span class="line">    mysql&gt; SELECT m, n, MOD(m, n) AS mod_col FROM SampleMath;</span><br><span class="line">    +----------+------+---------+</span><br><span class="line">    | m        | n    | mod_col |</span><br><span class="line">    +----------+------+---------+</span><br><span class="line">    |  500.000 |    0 |    NULL |</span><br><span class="line">    | -180.000 |    0 |    NULL |</span><br><span class="line">    |     NULL | NULL |    NULL |</span><br><span class="line">    |     NULL |    7 |    NULL |</span><br><span class="line">    |     NULL |    5 |    NULL |</span><br><span class="line">    |     NULL |    4 |    NULL |</span><br><span class="line">    |    8.000 | NULL |    NULL |</span><br><span class="line">    |    2.270 |    1 |   0.270 |</span><br><span class="line">    |    5.550 |    2 |   1.550 |</span><br><span class="line">    |     NULL |    1 |    NULL |</span><br><span class="line">    |    8.760 | NULL |    NULL |</span><br><span class="line">    |    9.000 |    2 |   1.000 |</span><br><span class="line">    +----------+------+---------+</span><br><span class="line">    12 rows <span class="keyword">in</span> <span class="built_in">set</span>, 2 warnings (0.00 sec)</span><br></pre></td></tr></table></figure>
-<h4 id="ROUND-四舍五入"><a href="#ROUND-四舍五入" class="headerlink" title="ROUND 四舍五入"></a>ROUND 四舍五入</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT m, ROUND(m) AS mod_col FROM SampleMath;</span><br><span class="line">+----------+---------+</span><br><span class="line">| m        | mod_col |</span><br><span class="line">+----------+---------+</span><br><span class="line">|  500.000 |     500 |</span><br><span class="line">| -180.000 |    -180 |</span><br><span class="line">|     NULL |    NULL |</span><br><span class="line">|     NULL |    NULL |</span><br><span class="line">|     NULL |    NULL |</span><br><span class="line">|     NULL |    NULL |</span><br><span class="line">|    8.000 |       8 |</span><br><span class="line">|    2.270 |       2 |</span><br><span class="line">|    5.550 |       6 |</span><br><span class="line">|     NULL |    NULL |</span><br><span class="line">|    8.760 |       9 |</span><br><span class="line">|    9.000 |       9 |</span><br><span class="line">+----------+---------+</span><br><span class="line">12 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.01 sec)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2951,7 +2969,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-count">100</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2973,7 +2991,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -3041,7 +3059,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">64.5k</span>
+    <span title="博客总字数">65k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

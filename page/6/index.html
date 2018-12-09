@@ -307,6 +307,219 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/21/SQL - 数据更新：数据插入/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/21/SQL - 数据更新：数据插入/" itemprop="url">SQL - 数据更新：数据插入</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-21T20:14:17+08:00">
+                2018-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《SQL基础教程》第二版/" itemprop="url" rel="index">
+                    <span itemprop="name">《SQL基础教程》第二版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  949
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="复习一下前面的知识："><a href="#复习一下前面的知识：" class="headerlink" title="复习一下前面的知识："></a>复习一下前面的知识：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&gt; mysql -u root -p</span><br><span class="line">&gt; xxxxx</span><br><span class="line"></span><br><span class="line">mysql&gt; USE shop;</span><br><span class="line">Reading table information for completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line"></span><br><span class="line">mysql&gt; CREATE TABLE ProductIns</span><br><span class="line">    -&gt; (product_id CHAR(4) NOT NULL,</span><br><span class="line">    -&gt; product_name VARCHAR(100) NOT NULL,</span><br><span class="line">    -&gt; product_type VARCHAR(32) NOT NULL,</span><br><span class="line">    -&gt; sale_price INTEGER DEFAULT 0,</span><br><span class="line">    -&gt; purchase_price INTEGER ,</span><br><span class="line">    -&gt; regist_data DATE ,</span><br><span class="line">    -&gt; PRIMARY KEY(product_id));</span><br><span class="line">Query OK, 0 rows affected (0.14 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SHOW COLUMNS FROM ProductIns;</span><br><span class="line">+----------------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field          | Type         | Null | Key | Default | Extra |</span><br><span class="line">+----------------+--------------+------+-----+---------+-------+</span><br><span class="line">| product_id     | char(4)      | NO   | PRI | NULL    |       |</span><br><span class="line">| product_name   | varchar(100) | NO   |     | NULL    |       |</span><br><span class="line">| product_type   | varchar(32)  | NO   |     | NULL    |       |</span><br><span class="line">| sale_price     | int(11)      | YES  |     | 0       |       |</span><br><span class="line">| purchase_price | int(11)      | YES  |     | NULL    |       |</span><br><span class="line">| regist_data    | date         | YES  |     | NULL    |       |</span><br><span class="line">+----------------+--------------+------+-----+---------+-------+</span><br><span class="line">6 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<h2 id="INSERT-语句的基本语法"><a href="#INSERT-语句的基本语法" class="headerlink" title="INSERT 语句的基本语法"></a>INSERT 语句的基本语法</h2>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO &lt;table_name&gt; [(&lt;column_1&gt;, ... &lt;column_n&gt;)]</span><br><span class="line">  -&gt; VALUES (&lt;value_1&gt;, ... &lt;value_n&gt;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>原则上执行一次 INSERT 语句只能插入一行数据<br>[] 里的代表可以省略</p>
+</blockquote>
+<ul>
+<li><p>列名字省略对比，例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO ProductIns (product_id, product_name, product_type, sale_price, purchase_price, regist_data)</span><br><span class="line">  -&gt; VALUES (&apos;001&apos;, &apos;《SQL 基础教程》第二版&apos;, &apos;书籍📚&apos;, &apos;100&apos;, &apos;40&apos;, &apos;2018-10-10&apos;);</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO ProductIns </span><br><span class="line">  -&gt; VALUES (&apos;002&apos;, &apos;《JavaScript 高级程序设计》第三版&apos;, &apos;书籍📚&apos;, &apos;120&apos;, &apos;50&apos;, &apos;2017-03-18&apos;);</span><br><span class="line">Query OK, 1 row affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM ProductIns;</span><br><span class="line">+------------+----------------------------------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| product_id | product_name                                 | product_type | sale_price | purchase_price | regist_data |</span><br><span class="line">+------------+----------------------------------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| 001        | 《SQL 基础教程》第二版                       | 书籍📚         |        100 |             40 | 2018-10-10  |</span><br><span class="line">| 002        | 《JavaScript 高级程序设计》第三版            | 书籍📚         |        120 |             50 | 2017-03-18  |</span><br><span class="line">+------------+----------------------------------------------+--------------+------------+----------------+-------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以插入 NULL, 前提是约束条件允许插入 NULL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO ProductIns (product_id, product_name, product_type, sale_price, purchase_price, regist_data)</span><br><span class="line">  -&gt; VALUES(&apos;003&apos;, &apos;《数据结构与算法 JavaScript 描述》&apos;, &apos;书籍📚&apos;, &apos;190&apos;, NULL, &apos;2017-05-09&apos;);</span><br><span class="line">Query OK, 1 row affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM ProductIns;</span><br><span class="line">+------------+-----------------------------------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| product_id | product_name                                  | product_type | sale_price | purchase_price | regist_data |</span><br><span class="line">+------------+-----------------------------------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| 001        | 《SQL 基础教程》第二版                        | 书籍📚         |        100 |             40 | 2018-10-10  |</span><br><span class="line">| 002        | 《JavaScript 高级程序设计》第三版             | 书籍📚         |        120 |             50 | 2017-03-18  |</span><br><span class="line">| 003        | 《数据结构与算法 JavaScript 描述》            | 书籍📚         |        190 |           NULL | 2017-05-09  |</span><br><span class="line">+------------+-----------------------------------------------+--------------+------------+----------------+-------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用默认值，前提是在创建表的时候 使用了 DEFAULT 设置默认值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO ProductIns (product_id, product_name, product_type, sale_price, purchase_price, regist_data)  VALUES(&apos;004&apos;, &apos;《C Primer Plus》&apos;, &apos;书籍📚&apos;, DEFAULT, NULL, &apos;2017-05-09&apos;);</span><br><span class="line">Query OK, 1 row affected (0.10 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM ProductIns;                                                                                                  +------------+-----------------------------------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| product_id | product_name                                  | product_type | sale_price | purchase_price | regist_data |</span><br><span class="line">+------------+-----------------------------------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| 001        | 《SQL 基础教程》第二版                        | 书籍📚         |        100 |             40 | 2018-10-10  |</span><br><span class="line">| 002        | 《JavaScript 高级程序设计》第三版             | 书籍📚         |        120 |             50 | 2017-03-18  |</span><br><span class="line">| 003        | 《数据结构与算法 JavaScript 描述》            | 书籍📚         |        190 |           NULL | 2017-05-09  |</span><br><span class="line">| 004        | 《C Primer Plus》                             | 书籍📚         |          0 |           NULL | 2017-05-09  |</span><br><span class="line">+------------+-----------------------------------------------+--------------+------------+----------------+-------------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>sale_price 使用默认值</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="INSERT-…-SELECT从其他表中复制数据"><a href="#INSERT-…-SELECT从其他表中复制数据" class="headerlink" title="INSERT … SELECT从其他表中复制数据"></a>INSERT … SELECT从其他表中复制数据</h3>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO &lt;table_name&gt; (&lt;column_1&gt;,... &lt;column_n&gt;)</span><br><span class="line">  -&gt; SELECT &lt;column_1&gt;,... &lt;column_n&gt;</span><br><span class="line">  -&gt; FROM &lt;table_name&gt;</span><br><span class="line"> [-&gt; WHERE &lt;condition 非聚合条件&gt;</span><br><span class="line">  -&gt; GROUP BY &lt;column_n&gt;</span><br><span class="line">  -&gt; HAVING &lt;codition 聚合条件&gt;</span><br><span class="line">  -&gt; ORDER BY &lt;column_n&gt;[ ASEC(降序)，ASC(升序 默认) ]]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>INSERT … SELECT 语法就是 INSERT 和 SELECT 语法的结合</p>
+</blockquote>
+<ul>
+<li>例子表名 Products 的数据拷贝数据到表名 ProductCopy ：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE ProductCopy</span><br><span class="line">  -&gt; (product_id CHAR(4) NOT NULL,</span><br><span class="line">  -&gt; product_name VARCHAR(100) NOT NULL,</span><br><span class="line">  -&gt; product_type VARCHAR(32) NOT NULL,</span><br><span class="line">  -&gt; sale_price INTEGER DEFAULT 0,</span><br><span class="line">  -&gt; purchase_price INTEGER ,</span><br><span class="line">  -&gt; regist_data DATE ,</span><br><span class="line">  -&gt; PRIMARY KEY(product_id));</span><br><span class="line">Query OK, 0 rows affected (0.05 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; INSERT INTO ProductCopy (product_id, product_name, product_type, sale_price, purchase_price, regist_data)</span><br><span class="line">  -&gt; SELECT product_id, product_name, product_type, sale_price, purchase_price, regist_data</span><br><span class="line">  -&gt; FROM Products;</span><br><span class="line">Query OK, 10 rows affected (0.06 sec)</span><br><span class="line">Records: 10  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT * FROM ProductCopy;</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| product_id | product_name     | product_type | sale_price | purchase_price | regist_data |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">| 001        | T恤👕              | 衣服         |        100 |             20 | 2018-10-16    |</span><br><span class="line">| 002        | T恤🌈              | 衣服         |        200 |             80 | 2018-10-16    |</span><br><span class="line">| 003        | T恤🐟              | 衣服         |        170 |             10 | 2018-10-16    |</span><br><span class="line">| 004        | 牛仔裤子👖         | 裤子         |         90 |              5 | 2018-10-16  |</span><br><span class="line">| 005        | 衬衫👔             | 衣服         |       2900 |           1000 | 2018-10-16    |</span><br><span class="line">| 006        | T恤👕              | 衣服         |      10000 |           1000 | 2018-10-14    |</span><br><span class="line">| 007        | 橡皮             | 文具         |         40 |              0 | 2018-10-17  |</span><br><span class="line">| 008        | 小刀             | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">| 009        | 铅笔✏️           | 文具         |       NULL |           NULL | 2018-10-17  |</span><br><span class="line">| 010        | 文具             | 中性笔       |         90 |             10 | 2018-10-17  |</span><br><span class="line">+------------+------------------+--------------+------------+----------------+-------------+</span><br><span class="line">10 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>  -《SQL基础教程》第二版</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/20/SQL - 排序：对查询结果排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2345,285 +2558,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/10/07/冒泡，选择，插入排序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/07/冒泡，选择，插入排序/" itemprop="url">冒泡，选择，插入排序</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-07T11:08:03+08:00">
-                2018-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《数据和算法-JavaScript-描述》/" itemprop="url" rel="index">
-                    <span itemprop="name">《数据和算法 JavaScript 描述》</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  9
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p><a href="https://github.com/jamesjianpeng/learing-TypeScript-and-Three.js/commit/433e267c8f1f51a994cc8d36c7087741707f49f6" target="_blank" rel="noopener">git commit history</a></p>
-<h3 id="冒泡，选择，插入排序的对比："><a href="#冒泡，选择，插入排序的对比：" class="headerlink" title="冒泡，选择，插入排序的对比："></a>冒泡，选择，插入排序的对比：</h3><ul>
-<li>冒泡排序每次操作都是针对确定的位置（索引），交换的元素不是确定的；找出最大或者最小值并与确定位置元素的数据交换</li>
-<li>选择排序每次操作都是针对确定的位置（索引），交换的元素不是确定的；找出最大或者最小值并与确定位置元素的数据交换</li>
-<li>插入排序每次操作没有确定的位置（索引），每次插入的元素是确定的；伴随这我们的判断条件去移动元素的位置，或插入指定的元素</li>
-<li>相同点：<ol>
-<li>冒泡和选择排序都是排列组合思想的实现，都要采用两层循环</li>
-<li>冒泡，选择和插入排序都是要采用采用两层循环</li>
-</ol>
-</li>
-<li>不相同点<ol>
-<li>插入的效率会更高一些，在第二层循环中的次数是不确定的</li>
-<li>冒泡和选择排序在第二循环中会从都到尾去对比，不管是否排序好了</li>
-</ol>
-</li>
-</ul>
-<h3 id="运用的数学方法"><a href="#运用的数学方法" class="headerlink" title="运用的数学方法"></a>运用的数学方法</h3><ul>
-<li>冒泡和选择排列组合：并且内层循环的总次数 =（首项 + 尾项）* 项数 / 2</li>
-</ul>
-<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><ul>
-<li><p>例子：[2, 4, 3, 5, 0, 1]，升序：</p>
-<ul>
-<li>2, 4, 3, 5, 0, 1 =&gt; 2, 4, 3, 5, 0, 1; (2 和 4) 当前最大值 4，不右移</li>
-<li>2, 4, 3, 5, 0, 1 =&gt; 2, 3, 4, 5, 0, 1; (4 和 3) 当前最大值 4，右移</li>
-<li>2, 3, 4, 5, 0, 1 =&gt; 2, 3, 4, 5, 0, 1; (4 和 5) 当前最大值 5，不右移</li>
-<li>2, 3, 4, 5, 0, 1 =&gt; 2, 3, 4, 0, 5, 1; (5 和 0) 当前最大值 5，右移</li>
-<li>2, 3, 4, 0, 5, 1 =&gt; 2, 3, 4, 0, 1, 5; (5 和 1) 当前最大值 5，右移</li>
-<li>上面一轮该轮最大值（5）移动到最右边（倒数第一位）</li>
-<li>2, 3, 4, 0, 1, 5 =&gt; 2, 3, 4, 0, 1, 5; (2 和 3) 当前最大值 3，不右移</li>
-<li>2, 3, 4, 0, 1, 5 =&gt; 2, 3, 4, 0, 1, 5; (3 和 4) 当前最大值 4，不右移</li>
-<li>2, 3, 4, 0, 1, 5 =&gt; 2, 3, 0, 4, 1, 5; (4 和 0) 当前最大值 4，右移</li>
-<li>2, 3, 0, 4, 1, 5 =&gt; 2, 3, 0, 1, 4, 5; (4 和 1) 当前最大值 4，右移</li>
-<li>上面一轮该轮最大值（4）移动到最右边（倒数第二位）</li>
-<li>2, 3, 0, 1, 4, 5 =&gt; 2, 3, 0, 1, 4, 5; (2 和 3) 当前最大值 3，不右移</li>
-<li>2, 3, 0, 1, 4, 5 =&gt; 2, 0, 3, 1, 4, 5; (3 和 0) 当前最大值 3，右移</li>
-<li>2, 0, 3, 1, 4, 5 =&gt; 2, 0, 1, 3, 4, 5; (3 和 0) 当前最大值 3，右移</li>
-<li>上面一轮该轮最大值（3）移动到最右边（倒数第三位）</li>
-<li>2, 0, 1, 3, 4, 5 =&gt; 0, 2, 1, 3, 4, 5; (0 和 2) 当前最大值 2，右移</li>
-<li>0, 2, 1, 3, 4, 5 =&gt; 0, 1, 2, 3, 4, 5; (2 和 1) 当前最大值 2，右移</li>
-<li>上面一轮该轮最大值（2）移动到最右边（倒数第四位）</li>
-<li>数组长度为：6，执行的轮次是：4，随着轮次增加每一轮循环的次数递减，公差为 1，总次数；（5 + 2）* 4 / 2 = 14</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; swap &#125; <span class="keyword">from</span> <span class="string">'./CArray.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 冒泡排序</span></span><br><span class="line"><span class="comment">* @param &#123;*&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> bubbleSort = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> list = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">var</span> outer = list.length;</span><br><span class="line">    <span class="keyword">var</span> inner;</span><br><span class="line">    <span class="keyword">for</span> (; outer &gt; <span class="number">2</span>; --outer) &#123; <span class="comment">/** outer &gt; 2 和 outer &gt;= 2 是有区别循环的次数 */</span></span><br><span class="line">        <span class="keyword">for</span> (inner = <span class="number">0</span>; inner &lt;= (outer - <span class="number">2</span>); inner++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (list[inner] &gt; list[inner + <span class="number">1</span>]) &#123;</span><br><span class="line">                swap(list, inner, inner + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><ul>
-<li><p>例子：[2, 4, 3, 5, 0, 1]，升序：</p>
-<ul>
-<li>2, 4, 3, 5, 0, 1 =&gt; 2, 4, 3, 5, 0, 1; (2 和 4) 当前最小值2，不左移</li>
-<li>2, 4, 3, 5, 0, 1 =&gt; 2, 4, 3, 5, 0, 1; (2 和 3) 当前最小值2，不左移</li>
-<li>2, 4, 3, 5, 0, 1 =&gt; 2, 4, 3, 5, 0, 1; (2 和 5) 当前最小值2，不左移</li>
-<li>2, 4, 3, 5, 0, 1 =&gt; 0, 4, 3, 5, 2, 1; (2 和 0) 当前最小值0，0 和 2 的位置交换，其中 0 左移到第一位，</li>
-<li>0, 4, 3, 5, 2, 1 =&gt; 0, 4, 3, 5, 2, 1; (0 和 1) 当前最小值0，不左移</li>
-<li>上面一轮该轮最小值（0）移动到第一位</li>
-<li>0, 4, 3, 5, 2, 1 =&gt; 0, 3, 4, 5, 2, 1; (4 和 3) 当前最小值3，4 和 3 的位置交换，其中 3 左移到第二位</li>
-<li>0, 3, 4, 5, 2, 1 =&gt; 0, 3, 4, 5, 2, 1; (3 和 5) 当前最小值3，不左移</li>
-<li>0, 3, 4, 5, 2, 1 =&gt; 0, 2, 4, 5, 3, 1; (3 和 2) 当前最小值2，3 和 2 的位置交换，其中 2 左移到第二位</li>
-<li>0, 2, 4, 5, 3, 1 =&gt; 0, 1, 4, 5, 3, 2; (2 和 1) 当前最小值1，2 和 1 的位置交换，其中 1 左移到第二位</li>
-<li>上面一轮该轮最小值（1）移动到第二位</li>
-<li>0, 1, 4, 5, 3, 2 =&gt; 0, 1, 4, 5, 3, 2; (4 和 5) 当前最小值4，不左移</li>
-<li>0, 1, 4, 5, 3, 2 =&gt; 0, 1, 3, 5, 4, 2; (4 和 3) 当前最小值3，4 和 3 的位置交换，其中 3 左移到第三位</li>
-<li>0, 1, 3, 5, 4, 2 =&gt; 0, 1, 2, 5, 4, 3; (3 和 2) 当前最小值2，3 和 2 的位置交换，其中 2 左移到第三位</li>
-<li>上面一轮该轮最小值（2）移动到第三位</li>
-<li>0, 1, 2, 5, 4, 3 =&gt; 0, 1, 2, 4, 5, 3; (5 和 4) 当前最小值4，5 和 4 的位置交换，其中 4 左移到第四位</li>
-<li>0, 1, 2, 4, 5, 3 =&gt; 0, 1, 2, 3, 5, 4; (3 和 4) 当前最小值3，3 和 4 的位置交换，其中 2 左移到第四位</li>
-<li>上面一轮该轮最小值（3）移动到第四位</li>
-<li>0, 1, 2, 3, 5, 4 =&gt; 0, 1, 2, 3, 4, 5; (5 和 4) 当前最小值4，5 和 4 的位置交换，其中 4 左移到第五位</li>
-<li>上面一轮该轮最小值（4）移动到第五位</li>
-<li>数组长度为：6，执行的轮次是：5，随着轮次增加每一轮循环的次数递减，公差为 1，总次数；（5 + 1）* 5 / 2 = 15</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; swap &#125; <span class="keyword">from</span> <span class="string">'./CArray.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 选择排序</span></span><br><span class="line"><span class="comment">* @param &#123;string&#125; sortWay : access 升序 | descend 降序</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> selectionSort = <span class="function"><span class="keyword">function</span> (<span class="params">sortWay</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> list = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">var</span> len = list.length;</span><br><span class="line">    <span class="keyword">var</span> outer = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> inner;</span><br><span class="line">    <span class="keyword">for</span> (; outer &lt; (len - <span class="number">1</span>); outer++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (inner = outer + <span class="number">1</span>; inner &lt; len; inner++) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((!sortWay || sortWay === <span class="string">'access'</span>) &amp;&amp; list[inner] &lt; list[outer]) &#123;</span><br><span class="line">                <span class="comment">/** 升序 */</span></span><br><span class="line">                swap(list, outer, inner);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sortWay === <span class="string">'descend'</span> &amp;&amp; list[inner] &gt; list[outer]) &#123;</span><br><span class="line">                <span class="comment">/** 降序 */</span></span><br><span class="line">                swap(list, outer, inner);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><ul>
-<li>例子：[2, 4, 3, 5, 0, 1]，升序：</li>
-<li>2, 4, 3, 5, 0, 1 =&gt; 2, 4, 3, 5, 0, 1</li>
-<li>2, 4, 3, 5, 0, 1 =&gt; 2, 3, 4, 5, 0, 1</li>
-<li>2, 3, 4, 5, 0, 1 =&gt; 2, 3, 4, 5, 0, 1</li>
-<li>2, 3, 4, 5, 0, 1 =&gt; 0, 2, 3, 4, 5, 1</li>
-<li>0, 2, 3, 4, 5, 1 =&gt; 0, 1, 2, 3, 4, 5</li>
-<li><p>排序完成q@&gt;.&lt;@p</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 插入排序</span></span><br><span class="line"><span class="comment">  * @param &#123;string&#125; sortWay : access 升序 | descend 降序</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">const</span> insertionSort = <span class="function"><span class="keyword">function</span> (<span class="params">sortWay</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> list = <span class="keyword">this</span>;</span><br><span class="line">      <span class="keyword">var</span> len = list.length;</span><br><span class="line">      <span class="keyword">var</span> outer = <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">var</span> inner;</span><br><span class="line">      <span class="keyword">var</span> temp;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (; outer &lt; len; ++outer) &#123;</span><br><span class="line">          temp = list[outer];</span><br><span class="line">          inner = outer;</span><br><span class="line">          <span class="keyword">while</span> (inner &gt; <span class="number">0</span> &amp;&amp; (<span class="comment">/** 排序方式 */</span></span><br><span class="line">              sortWay === <span class="string">'access'</span> || !sortWay ? list[inner - <span class="number">1</span>] &gt; temp : list[inner - <span class="number">1</span>] &lt; temp)</span><br><span class="line">          ) &#123;</span><br><span class="line">              list[inner] = list[inner - <span class="number">1</span>];</span><br><span class="line">              inner--;</span><br><span class="line">          &#125;</span><br><span class="line">          list[inner] = temp;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="CArray-js"><a href="#CArray-js" class="headerlink" title="CArray.js"></a>CArray.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">CArray</span> (<span class="params">numElements</span>) </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * @constructor</span></span><br><span class="line"><span class="comment">    * @param &#123;Number&#125; numElements</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">this</span>.dataStore = [];</span><br><span class="line">    <span class="keyword">this</span>.numElements = numElements;</span><br><span class="line">    <span class="keyword">this</span>.toString = toString;</span><br><span class="line">    <span class="keyword">this</span>.setData = setData;</span><br><span class="line">    <span class="keyword">this</span>.swap = swap;</span><br><span class="line">    <span class="keyword">var</span> len = numElements;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (len--) &#123;</span><br><span class="line">        <span class="keyword">this</span>.dataStore[len] = len;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 生成随机元素的列表，元素的数量就是 numElements</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setData</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.numElements; i++) &#123;</span><br><span class="line">        <span class="keyword">this</span>.dataStore[i] = <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="keyword">this</span>.numElements + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 输出指定的数组中全部的元素，每 10 个自动换行</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toString</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = <span class="keyword">this</span>.numElements;</span><br><span class="line">    <span class="keyword">var</span> result = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; len) &#123;</span><br><span class="line">        result += <span class="keyword">this</span>.dataStore[i] + <span class="string">' '</span>;</span><br><span class="line">        <span class="keyword">if</span> (((i + <span class="number">1</span>) % <span class="number">10</span> === <span class="number">0</span>) &amp;&amp; i &gt; <span class="number">0</span>) result += <span class="string">'\n'</span>;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 把后一个数和前一个数进行交换</span></span><br><span class="line"><span class="comment">* @param &#123;array&#125; arr</span></span><br><span class="line"><span class="comment">* @param &#123;number&#125; firstIndex</span></span><br><span class="line"><span class="comment">* @param &#123;number&#125; secondIndex</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span> (<span class="params">arr, firstIndex, secondIndex</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp;</span><br><span class="line">    temp = arr[firstIndex];</span><br><span class="line">    arr[firstIndex] = arr[secondIndex];</span><br><span class="line">    arr[secondIndex] = temp;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** #region default */</span></span><br><span class="line"><span class="comment">// randomList = new CArray(100);</span></span><br><span class="line"><span class="comment">// console.log(randomList.dataStore);</span></span><br><span class="line"><span class="comment">// console.log(randomList.toString());</span></span><br><span class="line"><span class="comment">/** #endregion */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    swap</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<p>参考文献</p>
-<ul>
-<li>《数据和算法 JavaScript 描述》</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2673,7 +2612,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">101</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2763,7 +2702,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">65k</span>
+    <span title="博客总字数">66k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">

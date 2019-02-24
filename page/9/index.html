@@ -307,6 +307,1000 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/08/03/ES6 对象的扩展/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/ES6 对象的扩展/" itemprop="url">ES6 对象的扩展</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-03T19:30:27+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《深入理解-ES6》/" itemprop="url" rel="index">
+                    <span itemprop="name">《深入理解 ES6》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  443
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="对象的分类"><a href="#对象的分类" class="headerlink" title="对象的分类"></a>对象的分类</h3><ol>
+<li><p>普通对象<br>具有 JavaScript 对象所有的默认内部行为</p>
+</li>
+<li><p>特异对象<br>具有某些与默认行为不符的内部行为</p>
+</li>
+<li><p>标准对象<br>ES6 规范中定义的对象，例如： Array, Date 等。标准对象既可以是普通对象，也可以是特异对象</p>
+</li>
+<li><p>内建对象<br>脚本开始执行时存在于 JavaScript 执行环境中的对象，所有标准对象都是内建对象</p>
+</li>
+</ol>
+<h3 id="对象字面量语法扩展"><a href="#对象字面量语法扩展" class="headerlink" title="对象字面量语法扩展"></a>对象字面量语法扩展</h3><ol>
+<li>属性初始值的简写</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">'1'</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>对象方法的简写</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  name() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>可计算属性名</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">'name'</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  [ name ]() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="新增方法"><a href="#新增方法" class="headerlink" title="新增方法"></a>新增方法</h3><ol>
+<li>Object.is()</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// es5</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> === <span class="literal">NaN</span>); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> === <span class="number">-0</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> === +<span class="number">0</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">-0</span> === <span class="number">-0</span>); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// es6</span></span><br><span class="line"><span class="built_in">Object</span>.is(<span class="literal">NaN</span>, <span class="literal">NaN</span>); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// es6</span></span><br><span class="line"><span class="built_in">Object</span>.is(<span class="number">-0</span>, +<span class="number">0</span>); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Object</span>.is(<span class="number">-0</span>, <span class="number">0</span>); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Object</span>.is(+<span class="number">0</span>, <span class="number">0</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Object.assign()</li>
+</ol>
+<hr>
+<h3 id="重复的对象字面量属性"><a href="#重复的对象字面量属性" class="headerlink" title="重复的对象字面量属性"></a>重复的对象字面量属性</h3><ol>
+<li>ES5 的时候，重复的字面量属性是会报错</li>
+<li>ES6 会使用重复属性名中最后一个属性</li>
+</ol>
+<hr>
+<h3 id="自有属性枚举顺序"><a href="#自有属性枚举顺序" class="headerlink" title="自有属性枚举顺序"></a>自有属性枚举顺序</h3><ol>
+<li>ES5 自有属性的枚举是根据 JavaScript 引擎厂商自行决定</li>
+<li>ES6 严格规定对象的自有属性被枚举<ol>
+<li>所有数字键按升序排序</li>
+<li>所有字符串按照它们被加入对象的顺序排序</li>
+<li>所有 symbol 按照它们被加入对象的顺序排序</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="增强对象原型"><a href="#增强对象原型" class="headerlink" title="增强对象原型"></a>增强对象原型</h3><ol>
+<li>改变对象的原型<br>ES5: Object.getPrototypeof(obj)<br>ES6: Object.setPrototypeof(obj, prototypeFun)<br>  super.xxxx(用于获取当前对象的 prototype)</li>
+</ol>
+<hr>
+<h3 id="正式的方法定义"><a href="#正式的方法定义" class="headerlink" title="正式的方法定义"></a>正式的方法定义</h3><ol>
+<li>ECMAScript6 关于对象中方法的定义：定义为一个 函数，它会有一个内部的 [[HomeObject]] 属性来容纳这个方法从属的对象</li>
+</ol>
+<hr>
+<p>参考文献：</p>
+<ul>
+<li>《深入理解 ES6》</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/08/02/JavaScript 的数据类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/02/JavaScript 的数据类型/" itemprop="url">JavaScript 的数据类型</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-02T18:27:28+08:00">
+                2018-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《JavaScript-高级程序设计》-第三版/" itemprop="url" rel="index">
+                    <span itemprop="name">《JavaScript 高级程序设计》 第三版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="String（待更新）"><a href="#String（待更新）" class="headerlink" title="String（待更新）"></a>String（待更新）</h3><h3 id="Number（待更新）"><a href="#Number（待更新）" class="headerlink" title="Number（待更新）"></a>Number（待更新）</h3><h3 id="Boolean（待更新）"><a href="#Boolean（待更新）" class="headerlink" title="Boolean（待更新）"></a>Boolean（待更新）</h3><h3 id="undefined（待更新）"><a href="#undefined（待更新）" class="headerlink" title="undefined（待更新）"></a>undefined（待更新）</h3><h3 id="null（null-也属于-Object）（待更新）"><a href="#null（null-也属于-Object）（待更新）" class="headerlink" title="null（null 也属于 Object）（待更新）"></a>null（null 也属于 Object）（待更新）</h3><h3 id="object-es6-（待更新）"><a href="#object-es6-（待更新）" class="headerlink" title="object es6: * （待更新）"></a>object es6: * （待更新）</h3><ol>
+<li>Array</li>
+<li>Date</li>
+<li>RegExp</li>
+<li>NodeList       –&gt;  document.querySelectorAll(‘div’)</li>
+<li>HTMLCollection –&gt;  getElementsByTagName(‘div’)</li>
+<li>Set(WeakSet)*</li>
+<li>Map(WeakMap)*</li>
+<li>Symbol*</li>
+</ol>
+<h3 id="判断类型有这几种方法："><a href="#判断类型有这几种方法：" class="headerlink" title="判断类型有这几种方法："></a>判断类型有这几种方法：</h3><ul>
+<li>typeof           可以检测原始类型和函数，局限：用typeof 去判断一个没有声明的变量会报错</li>
+<li>instanceof       根据构造函数来区别对象</li>
+<li>Object.prototype.toString.call()  可以判断任何一个数据</li>
+<li>isNaN            检测 NaN</li>
+</ul>
+<h3 id="基本类型和引用类型"><a href="#基本类型和引用类型" class="headerlink" title="基本类型和引用类型"></a>基本类型和引用类型</h3><ol>
+<li>根据数据在栈中存储的类型</li>
+<li><p>数据的表现形式</p>
+</li>
+<li><p>在栈中存储的类型：<br>a. 数据的值实际存储在栈中的则是引用类型<br>b. 数据的值实际存储在堆中，而在栈中只是保留了堆物理空间的引用</p>
+<p>这种划分的手法是抽象的<br>基本类型，值存在内存的栈中，相互对立，没有直接的联系<br>引用类性：值存在内存的栈中，内部有联系（我们可以通过其他方法，切断联系，重新使用一块内存空间，JSON.parse(JSON.stringify)）</p>
+</li>
+<li><p>具体的划分 (数据表现的形式)<br>5 种基本类型：string, boolean, number, null, undefined<br>1 引用类型： 对象</p>
+<p>访问变量的方式：按值和按引用访问</p>
+<p>变量与实际数据的关系<br>变量与变量之间的关系</p>
+<p>变量的赋值</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">9</span>; <span class="comment">// 变量和基本类型值的关系</span></span><br><span class="line"><span class="keyword">var</span> b = a; <span class="comment">// 变量和变量之间的关系</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>在 JavaScript 的语法层面：</p>
+<ul>
+<li>首先使用  var 申明的变量，是被提前到作用域的顶部，并初始化为 undefined， 当 JavaScript 的执行到赋值的位置就把对应的值分配给指定的变量，遇到变量之间的赋值首先是先访问赋值的变量的值，然后再把该值赋给指定的变量。</li>
+</ul>
+</li>
+<li><p>在浏览操作内存的层面：</p>
+<ul>
+<li>首先是在栈中创建两个变量 a 和 b，一开始初始化为 undefined ，遇到值的时候就直接把这个值分配给变量，a 的值 为 9；JavaScript 继续执行下一条语句，先在栈中访问 a 变量的值，并把 a 的值进行复制一份，栈中找到 b 的位置，并把该值分配给 b。刚才的操作我们值说的在栈中的操作过程。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>若是我们创建一个引用类型的值的时候情况会稍稍不同：具体的值存储的位置有改变。引用的值的类型实际是存在堆中，在栈中分配个变量的只是堆中的一个地址的指针。语法的层面和基本类型的赋值的过程相差无几。</p>
+</li>
+<li><p>在浏览器内存的层面：</p>
+<ul>
+<li>首先是在栈中创建 2 个变量 a 和 b，并一开始初始化为 undefined, 遇到引用类型的值，首先是在堆一个物理空间中创建并存储，赋值的时候就把这个物理空间的指针分配给栈中 a 变量。当 JavaScript 执行到下一句的时候，先是访问栈中 a 变量的值，这个值是一个指针，指向存储在堆中实际的值，把这个指针复制一个并分配给在栈中的 b 变量</li>
+</ul>
+</li>
+</ol>
+<p>值的传递：<br>    在函数中参数中按值传递， 函数的接受的参数所发生的事情</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span> (<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2</span><br><span class="line">&#125;;</span><br><span class="line">add(<span class="number">10</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>首先在 JavaScript 语法层面：</p>
+<ul>
+<li>Js 的解析器解析之后，会把 add 这个函数声明提到该作用域的最顶层。当执行到调用的时候就会把创建好的两个值，传递给 add 这个函数两个内部变量（依次皴法在 arguments 这个类数组中）</li>
+</ul>
+</li>
+<li><p>在浏览器内存的层面：</p>
+<ul>
+<li>首先 Js 的解析器解析之后，并在内存的栈中创建一个 add 的变量，并且他的值就是一个指针，这个指针指向堆中的一个物理地址，这个物理地址所在的空间就存储这个 function, 这个 function 声明了两个局部变量 num1 和 num2，没有调用的时候并不会占有内存空间。当 Js 执行到 add(10, 100) 的时候会临时创建两个数据，并在栈中创建并存放 2 个变量 num1 和 num2 ，在调用这个函数的同时临时产生的数据会依次分配到栈中对应变量的位置。同时函数有自己的隐藏的变量 arguments 这个类数组中。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>参考文献：</p>
+<ul>
+<li>《JavaScript 高级程序设计》 第三版</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/21/JavaScript 的语法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/21/JavaScript 的语法/" itemprop="url">JavaScript 的语法</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-21T14:16:49+08:00">
+                2018-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《JavaScript-高级程序设计》-第三版/" itemprop="url" rel="index">
+                    <span itemprop="name">《JavaScript 高级程序设计》 第三版</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  609
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><ul>
+<li>变量</li>
+<li>控制语句</li>
+<li>数据类型</li>
+<li>操作符</li>
+<li>内置功能</li>
+</ul>
+<ol>
+<li><p>第一个概念：区分大小写</p>
+</li>
+<li><p>第二个概念：标识符</p>
+<ul>
+<li><p>标识符：就是指变量，函数，属性的名字，或者是函数的参数</p>
+<ol>
+<li>第一个字符必须是一个字母， 下划线 <code>_</code> 或一个美元（$）</li>
+<li>其他字符可以是字母，下划线，美元符号或数字</li>
+</ol>
+</li>
+<li><p>推荐标识符采用小驼峰</p>
+</li>
+</ul>
+</li>
+<li><p>注释<br> a. 单行注释<br> b. 块级注释</p>
+</li>
+<li><p>语句</p>
+<ul>
+<li>写分号(推荐)</li>
+<li>不写分号：不写分号，解析器会自动插入分号，这样加重解析器的负担</li>
+</ul>
+</li>
+</ol>
+<h3 id="关键词和保留字"><a href="#关键词和保留字" class="headerlink" title="关键词和保留字"></a>关键词和保留字</h3><ol>
+<li><p>ECMA - 262 描述了一组具有特点含义的关键字：</p>
+<ul>
+<li>这些关键字的特点：表示控制语句的开始和结束，或者表示执行特定的操作</li>
+<li>关键字也是语言保留的，不能作为标识符</li>
+</ul>
+</li>
+<li><p>关键字：es5新增的使用 * （分类不正确可以指出）</p>
+<ol>
+<li>判断：if, else, break, switch, case, break, default, instanceof, typeof</li>
+<li>循环：for, in, while,</li>
+<li>调试：try, catch, finally, throw, debugger*</li>
+<li>申明方式：var, void, function</li>
+<li>扩充作用域: with</li>
+<li>对象：delete,</li>
+<li>函数：return，new, this</li>
+</ol>
+</li>
+<li><p>es3: 保留字（以 浏览器兼容的版本为准） （分类不正确可以指出）</p>
+<ol>
+<li>变量声明:  const, volatile, transient, synchronized,</li>
+<li>数据类型:  int, float, short, long, double, boolean, char</li>
+<li>导入导出:  export, import,</li>
+<li>类:       class, static, public, private, super, protected, extends</li>
+<li>其他:     package, native, interface, implements, enum, byte, abstract</li>
+<li>判断:     goto</li>
+<li><p>调试:     throws, debugger, final</p>
+</li>
+<li><p>解释：（分类不正确可以指出）</p>
+<ul>
+<li>volatile:     在程序设计中，尤其是在 C 语言、C++、C# 和 Java 语言中，使用 volatile 关键字声明的变量或对象通常具有与优化、多线程相关的特殊属性。</li>
+<li>transient:    Java 中 transient 关键字的作用，简单地说，就是让某些被修饰的成员属性变量不被序列化</li>
+<li>synchronized: Java 中 synchronized 同步方法</li>
+<li>protected:    Java 或 C中 protected 类成员的修饰属性</li>
+<li>enum:         枚举</li>
+<li>abstract:     抽象</li>
+</ul>
+</li>
+</ol>
+<p>保留字每个版本都是不一致的，es3 定义的大量的保留字，但是在 es5 中的保留字相对来说就很少，并且是有严格模式和非严格模式之间的区别</p>
+</li>
+<li><p>es5: 保留字</p>
+<ol>
+<li>非严格模式：    class, enum, extends, super, const, export, import</li>
+<li>“use strict”: 在非严格模式基础上增加了，后面的保留字：implements, package, public, interface, private, static, let, protected, yield, eval, arguments</li>
+</ol>
+</li>
+</ol>
+<hr>
+<p>参考文献：</p>
+<ul>
+<li>《JavaScript 高级程序设计》 第三版</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/20/ES6 模块/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="james">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭涧">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/20/ES6 模块/" itemprop="url">ES6 模块</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发布日期</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-20T12:48:44+08:00">
+                2018-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">书籍笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/书籍笔记/《深入理解-ES6》/" itemprop="url" rel="index">
+                    <span itemprop="name">《深入理解 ES6》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">文章总字数&#58;</span>
+                
+                <span title="文章总字数">
+                  382
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
+                
+                <span title="阅读时间">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h3 id="ES6之前的代码模块封装"><a href="#ES6之前的代码模块封装" class="headerlink" title="ES6之前的代码模块封装"></a>ES6之前的代码模块封装</h3><ol>
+<li>使用闭包，产生一个作用域去封装数据和代码，并挂载到 window 对象</li>
+</ol>
+<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><ol>
+<li>模块是是什么：模块是自动运行在严格模式下并且没有办法退出运行的 JavaScript 代码。</li>
+</ol>
+<h3 id="模块化的特点："><a href="#模块化的特点：" class="headerlink" title="模块化的特点："></a>模块化的特点：</h3><ol>
+<li>与作用域的关系：在模块顶部创建的变量不会自动添加到全局共享作用域，只会在该模块的顶级作用域中存在</li>
+<li>在模块的顶部，；this 的值是 undefined</li>
+<li>模块不支持 HTML 风格的代码注释</li>
+</ol>
+<h3 id="模块和脚本的区别"><a href="#模块和脚本的区别" class="headerlink" title="模块和脚本的区别"></a>模块和脚本的区别</h3><ol>
+<li>脚本：任何不是模块的 JavaScript 代码</li>
+</ol>
+<h3 id="模块的-导入和导出"><a href="#模块的-导入和导出" class="headerlink" title="模块的 导入和导出"></a>模块的 导入和导出</h3><ul>
+<li><p>导出：导出声明和导出引用</p>
+</li>
+<li><p>导入：导入单个绑定，导入多个绑定，命名空间导入, 无绑定导入</p>
+</li>
+<li><p>注意：不管 import 语句把一个模块写了多少次，该模块将只执行一次</p>
+</li>
+<li><p>as 可以用于改变导入或导出的名字</p>
+</li>
+<li><p>导入和导出默认值这个语法被优化过，尽量使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; name <span class="keyword">as</span> <span class="keyword">default</span> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新导出一个绑定</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">'./path'</span></span><br><span class="line"><span class="keyword">export</span> &#123; name <span class="keyword">as</span> newName &#125; <span class="string">'./path'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模块语法的限制</p>
+<ol>
+<li><p>export 和 import 一个重要的限制是：它们必须在其他语句和函数之外使用，否则会出现语法的错误</p>
+<ul>
+<li>原因： 其中一个原因： 是要让 JavaScript 引擎静态地确定哪些可以导出</li>
+</ul>
+</li>
+<li><p>import 只能在顶部使用</p>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<p>参考文献：</p>
+<ul>
+<li>《深入理解 ES6》</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/07/12/git 删除远程 commit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1216,260 +2210,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/06/26/http 概述/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/26/http 概述/" itemprop="url">http 概述</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-26T17:21:01+08:00">
-                2018-06-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《HTTP-权威指南》/" itemprop="url" rel="index">
-                    <span itemprop="name">《HTTP 权威指南》</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  746
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="HTTP-是什么，作用是什么"><a href="#HTTP-是什么，作用是什么" class="headerlink" title="HTTP 是什么，作用是什么"></a>HTTP 是什么，作用是什么</h3><ul>
-<li>HTTP 是一种数据传输协议，作用是：确保数据在传输过程中不会被损坏或产生混乱。是应用层协议</li>
-<li>HTTP 在网络中所处的层次：应用层</li>
-</ul>
-<h4 id="web客户端"><a href="#web客户端" class="headerlink" title="web客户端"></a>web客户端</h4><ul>
-<li>什么是web客户端：用户使用的终端</li>
-<li>客户端的作用是什么：发送 HTTP 请求，展示 HTTP 服务器返回的数据</li>
-</ul>
-<h4 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h4><ul>
-<li>什么是服务器</li>
-<li>客户端的作用是什么： HTTP服务器是存储着因特网的资源</li>
-</ul>
-<h4 id="资源的种类"><a href="#资源的种类" class="headerlink" title="资源的种类"></a>资源的种类</h4><ol>
-<li><p>媒体标签 MIME type</p>
-<ul>
-<li>json格式的文本文档: Content-Type: application/json</li>
-<li>HTML 格式的文本文档：Content-Type: text/html</li>
-<li>ASCII 文本文档：Content-Type: text/plain</li>
-<li>JPEG格式的图片：Content-Type: image/jpeg</li>
-<li>GIF格式的图片：Content-Type: image/gif</li>
-<li>Apple 的 QuickTime 电影格式：Content-Type: vdeo/quicktime</li>
-<li>微软的 PowerPoint 演示文件：Content-Type: application/vnd.ms-powerpoint</li>
-</ul>
-</li>
-<li><p>URI<br>服务器资源名被称为统一资源标识符，（ Uniform Resource Identifier, URI ）具有唯一性</p>
-<ul>
-<li>两种形式：URL 和 URN<br>URL ：统一资源定位符，描述一台特定服务器上某资源的特定位置.例如： <a href="http://www.joes-hardware.com/specials/saw-blade.gif，URL" target="_blank" rel="noopener">http://www.joes-hardware.com/specials/saw-blade.gif，URL</a> 指明了协议，服务器，本地资源<br>URN ：统一资源名，作为特定内容的唯一名称使用的，与目前的资源所在地无关。通过 URN 可以用同一个名字通过多种网络访问协议来访问资源。例如：urn:ierf:rfc:2141。在使用阶段，尚未大范围使用</li>
-</ul>
-</li>
-</ol>
-<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><ul>
-<li>一个 HTTP 事务由一条（从客户端发往服务器的）请求命令和 一个（从服务器发回客户端的）响应结果组成。这种通信是通过名为 HTTP 报文 （ HTTP message ）的格式化数据进行的</li>
-</ul>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
-<li>GET</li>
-<li>PUT</li>
-<li>DELETE</li>
-<li>POST</li>
-<li>HEAD<h4 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h4></li>
-<li>必要性：每个 HTTP 响应报文返回时都会携带一个状态码</li>
-<li>形式：三位数字，伴随着么个数字状态码，HTTP 还会发送一条解释性的 ‘ 原因短语 ’</li>
-<li>作用：告知客户端请求是否成功，或者是否需要采取其他动作</li>
-</ul>
-<h4 id="Web页面中可以包含多个对象"><a href="#Web页面中可以包含多个对象" class="headerlink" title="Web页面中可以包含多个对象"></a>Web页面中可以包含多个对象</h4><ul>
-<li>一个首页，首先获取 HTML ，然后获取每个嵌入式的图片，其他的程序。</li>
-</ul>
-<h4 id="报文"><a href="#报文" class="headerlink" title="报文"></a>报文</h4><ul>
-<li>形式：<ul>
-<li>HTTP 报文由一行一行的简单字符串组成的，HTTP 报文是纯文本，不是二进制代码。</li>
-<li>HTTP 报文包括三部分：<ul>
-<li>起始行：<br>作用：在请求报文中用来说明做些什么，在响应报文中说明出现来什么情况</li>
-<li>首部字段</li>
-<li>主体<br>作用：在请求主体中包括来要发送给 Web 服务器的数据，响应主体中装载来要返回给客户端的数据</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>种类：请求报文 （ request message ）, 响应报文 （ response message ）</li>
-</ul>
-<h3 id="连接-（TCP）"><a href="#连接-（TCP）" class="headerlink" title="连接 （TCP）"></a>连接 （TCP）</h3><ol>
-<li>TCP 什么是TCP 作用是什么<ul>
-<li>TCP ( Transmission Control Protocol ), 是一种传输控制协议</li>
-</ul>
-</li>
-</ol>
-<hr>
-<p>参考资料</p>
-<ul>
-<li>《HTTP 权威指南》</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/06/26/我的 HTML 基础知识（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1669,625 +2409,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/05/08/git 初始仓库/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/08/git 初始仓库/" itemprop="url">git 初始仓库</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-08T14:00:06+08:00">
-                2018-05-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  313
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">$ git add &lt;file&gt;</span><br><span class="line">$ git commit -m <span class="string">"xxx"</span></span><br></pre></td></tr></table></figure>
-<h3 id="首次强制拉取"><a href="#首次强制拉取" class="headerlink" title="首次强制拉取"></a>首次强制拉取</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master ----allow-unrelated-histories</span><br></pre></td></tr></table></figure>
-<h3 id="首次推送"><a href="#首次推送" class="headerlink" title="首次推送"></a>首次推送</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<h3 id="config-用户名和邮箱"><a href="#config-用户名和邮箱" class="headerlink" title="config 用户名和邮箱"></a>config 用户名和邮箱</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name &quot;xxx&quot;</span><br><span class="line">$ git config user.email &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="查看配置文件"><a href="#查看配置文件" class="headerlink" title="查看配置文件"></a>查看配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list</span><br></pre></td></tr></table></figure>
-<h3 id="拉去其他分支，并切换到该分支"><a href="#拉去其他分支，并切换到该分支" class="headerlink" title="拉去其他分支，并切换到该分支"></a>拉去其他分支，并切换到该分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch orign &lt;branch_name&gt;</span><br><span class="line">$ git checout &lt;fetch_branch_name&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="代码-clone-的方式"><a href="#代码-clone-的方式" class="headerlink" title="代码 clone 的方式"></a>代码 clone 的方式</h3><p>  代码库的链接：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ https: https://gitlab.pengjiandry.com/root/cnodeNews.git</span><br><span class="line">$ ssh: git@gitlab.pengjiandry.com:root/cnodeNews.git</span><br></pre></td></tr></table></figure>
-<p>  第一种方式：使用默认的用户和密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://gitlab.pengjiandry.com/root/cnodeNews.git</span><br></pre></td></tr></table></figure>
-<p>第二种方式：显示的指定用户和密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone http://username:password@gitlab.pengjiandry.com/root/cnodeNews.git</span><br></pre></td></tr></table></figure>
-<p>第三种方式：使用 ssh, 在 clone 之前请先检查一下 ssh 密钥设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@gitlab.pengjiandry.com:root/cnodeNews.git</span><br></pre></td></tr></table></figure>
-<p>  ssh密钥的生成：</p>
-<ol>
-<li>需要的操作：先生成一个在 ~ (/User/pengjian) ~/.ssh 下</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;your.email@example.com&quot; -b 4096</span><br></pre></td></tr></table></figure>
-<ul>
-<li>第一个交互是输入名字，默认是：id_rsa</li>
-<li>完成后会生成两个文件： id_rsa.pub / id_rsa</li>
-<li>在服务端就是需要 id_rsa.pub 的内容</li>
-</ul>
-<ol start="2">
-<li>~/.ssh/config 其中一个 ssh 密钥的配置</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host git.coding.net # git的访问地址</span><br><span class="line">User 2393375953@qq.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/coding_rsa</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/05/03/浏览器中的 BOM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/03/浏览器中的 BOM/" itemprop="url">浏览器中的 BOM</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-03T10:20:43+08:00">
-                2018-05-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《JavaScript-高级程序设计》-第三版/" itemprop="url" rel="index">
-                    <span itemprop="name">《JavaScript 高级程序设计》 第三版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  150
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="HTML5-把很多-BOM-相关功能都纳入-HTML5-规范"><a href="#HTML5-把很多-BOM-相关功能都纳入-HTML5-规范" class="headerlink" title="HTML5 把很多 BOM 相关功能都纳入 HTML5 规范"></a>HTML5 把很多 BOM 相关功能都纳入 HTML5 规范</h3><p>  根本上：BOM 只处理浏览器窗口和框架（人们习惯把针对浏览器的 JavaScript 的扩展算作 BOM 的一部分）<br>  比如：</p>
-<ul>
-<li>弹出新浏览器窗口的功能</li>
-<li>移动，缩放和关闭浏览器窗口的功能</li>
-<li>提供浏览器详细信息的 navigator 对象</li>
-<li>提供浏览器所加载页面的详细信息的 location 对象</li>
-<li>提供用户显示器分辨率详细信息的 screen 对象</li>
-<li>对 cookies 的支持</li>
-<li>像 XMLHttpRequest 和 IE 的 ActiveObject 这样的自定义的对象</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.pengjiandry.com/2018/04/22/DOM 的历史/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="james">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="彭涧">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/22/DOM 的历史/" itemprop="url">DOM 的历史</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发布日期</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-22T18:11:47+08:00">
-                2018-04-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">书籍笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/书籍笔记/《JavaScript-高级程序设计》-第三版/" itemprop="url" rel="index">
-                    <span itemprop="name">《JavaScript 高级程序设计》 第三版</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">文章总字数&#58;</span>
-                
-                <span title="文章总字数">
-                  545
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时间 &asymp;</span>
-                
-                <span title="阅读时间">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h3 id="DOM-是什么"><a href="#DOM-是什么" class="headerlink" title="DOM 是什么"></a>DOM 是什么</h3><ol>
-<li><p>文档对象模型（DOM, Document Object Model）:是针对 XML 但经过扩展用于 HTML 的应用程序编程接口（API Application Programming Interface）</p>
-<ul>
-<li>由于 HTML 是一种超文本标记语言，是在浏览器中展示网页用的，所以 DOM 其实针对浏览器为应用程序提供的编程接口</li>
-</ul>
-</li>
-<li><p>产生的背景：(1998年10月)<br> Netscape 和 微软 公司为获得更得更多的浏览器市场份额，都自己开发了 DHTML( Dynamic HTML ), 两个浏览器之间的网页不兼容，导致 web 网页的跨平台特性消失，增加应用的开发成本，于是负责制定 Web 通信标准的 W3C (World Wide Web Consortium，万维网联盟)开始规划 DOM</p>
-<p> HTML 规范的发展的发展：</p>
-<ul>
-<li>1992年11月     HTML 1.1 规范完成</li>
-<li>1997年         HTML 4.0</li>
-<li>1999年         HTML 4.1</li>
-<li>2014年10月     HTML 5.0 标准定制</li>
-</ul>
-</li>
-<li><p>DOM 级别</p>
-<ol>
-<li><p>DOM 0：指的就是 Internet Explorer 4.0 和 Netscxape Navigator 4.0 中最初支持的 DHTML</p>
-</li>
-<li><p>DOM 1：</p>
-<ul>
-<li>主要目标： DOM 对象映射 HTML 文档结构</li>
-<li>DOM core</li>
-<li>DOM HTML：DOM HTML 是建立在 DOM core 的基础之上，扩展 HTML 的对象和方法</li>
-</ul>
-</li>
-<li><p>DOM 2</p>
-<ul>
-<li>DOM 2 是在 DOM 1 的基础之上进行扩充：</li>
-<li>DOM View（ DOM 视图）：定义跟踪不同文档</li>
-<li>DOM Events（ DOM 事件）：定义事件和事件处理的接口</li>
-<li>DOM Style （ DOM 样式 ）：定义基于 CSS 为元素应用样式的接口</li>
-<li>DOM 遍历和范围 （ DOM Traversal and Range ）：定义了遍历和操作文档的接口</li>
-</ul>
-</li>
-<li><p>DOM 3</p>
-<ul>
-<li>DOM3 级则进一步扩展了 DOM：</li>
-<li>引入了以统一方式加载和保存文档的方法（在 DOM 加载和保存模块（DOMLoad and Save）中定义）</li>
-<li>新增了验证文档的方法（在 DOM 验证（DOMValidation）模块中定义）</li>
-<li>也对 DOM core 进行了扩展（支持 XML 1.0）</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<hr>
-<h3 id="其他的-DOM-标准"><a href="#其他的-DOM-标准" class="headerlink" title="其他的 DOM 标准"></a>其他的 DOM 标准</h3><p>除了 DOM core 和 DOM HTML 之外其他的 DOM标准：</p>
-<ul>
-<li>SVG( 可伸缩矢量图 )</li>
-<li>MathML( 数学标记语言 )</li>
-<li>SMIL( 同步多媒体集成语言 )</li>
-</ul>
-<hr>
-<h3 id="其他时间："><a href="#其他时间：" class="headerlink" title="其他时间："></a>其他时间：</h3><ul>
-<li>1989 年互联网才开始转为民用</li>
-<li>1999年 IE5 中首次实现 DOM</li>
-</ul>
-<hr>
-<p>参考文献：</p>
-<ul>
-<li>《JavaScript 高级程序设计》 第三版</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2342,7 +2463,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">101</span>
+                  <span class="site-state-item-count">105</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -2353,7 +2474,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2364,7 +2485,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2432,7 +2553,7 @@
     
       <span class="post-meta-item-text">博客总字数&#58;</span>
     
-    <span title="博客总字数">66k</span>
+    <span title="博客总字数">66.8k</span>
   
 </div>
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
